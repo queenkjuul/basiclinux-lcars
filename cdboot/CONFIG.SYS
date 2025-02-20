@@ -1,0 +1,64 @@
+[menu]
+menuitem=LINUXIDE, Start BasicLinux from IDE/ATAPI CD-ROM
+menuitem=LINUXSCSI, Start BasicLinux and load additional drivers from floppy (SCSI)
+menuitem=LINUXUSB, Start BasicLinux and load USB drivers from floppy
+menuitem=DOSIDE, Enter DOS Prompt with IDE/ATAPI CD-ROM Support
+menuitem=DOSSCSI, Enter DOS Prompt with SCSI CD-ROM Support
+menuitem=DOSUSB, Enter DOS Prompt with USB Support
+menudefault=LINUX,10
+menucolor=7,0
+
+[COMMON]
+device=himem.sys /testmem:off
+files=60
+buffers=20
+dos=high,umb
+stacks=9,256
+lastdrive=z
+
+[LINUXIDE]
+device=vide-cdd.sys /D:oemcd001 
+
+[LINUXSCSI]
+device=btdosm.sys 
+device=flashpt.sys
+device=btcdrom.sys /D:oemcd001
+device=aspi2dos.sys
+device=aspi8dos.sys
+device=aspi4dos.sys
+device=aspi8u2.sys
+REM aspicd.sys not working?
+REM usbcd.sys works with SCSI drives ~\_(-_-)_/~
+REM aspicd.sys /D:oemcd001
+device=usbcd.sys /D:oemcd001
+
+[LINUXUSB]
+device=usbaspi.sys
+device=usbcd.sys /D:oemcd001
+device=DI1000DD.SYS
+
+[DOSIDE]
+device=vide-cdd.sys /D:oemcd001
+
+[DOSSCSI]
+device=vide-cdd.sys /D:oemcd001 
+device=btdosm.sys 
+device=flashpt.sys
+device=btcdrom.sys /D:oemcd001
+device=aspi2dos.sys
+device=aspi8dos.sys
+device=aspi4dos.sys
+device=aspi8u2.sys
+REM device=aspicd.sys /D:oemcd001
+device=usbcd.sys /D:oemcd001
+
+[DOSUSB]
+device=usbaspi.sys
+device=usbcd.sys /D:oemcd001
+device=DI1000DD.SYS
+
+
+
+
+
+
