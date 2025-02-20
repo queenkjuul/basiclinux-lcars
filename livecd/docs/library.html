@@ -1,0 +1,41 @@
+<HTML>
+<Head>
+<Title>BasicLinux Library</Title>
+<META NAME="keywords" CONTENT="Linux for laptops, laptop Linux, 386, 486, low, RAM, memory, Powerpoint, Power Point, footprint, resource, compact, small, tiny, mini, PCMCIA, pocket, retro, old, Xvesa, Castlemaze, microcom, swm, links browser">
+</Head>
+<BODY BGCOLOR="#cccccc" TEXT="#000000" link="#0000cc">
+<FONT size=4>
+<HR>
+<center>
+<big><big> 
+<B>Upgrading&nbsp; the&nbsp; BL3&nbsp; Library</B>
+</big></center> 
+<HR>
+<BR>
+Most Linux applications use shared libraries; that is, they expect a standard set of subroutines (library) to be present.&nbsp; Currently glibc2 is the standard Linux library -- nearly every application requires it. 
+<P>
+BasicLinux does not have glibc2.&nbsp; In order to reduce the load on old PCs, BL3 uses a much smaller library, libc5, which was the standard Linux library in the late 1990s.&nbsp; All <A HREF="slack.htm">Slackware</A> 3.x and 4.0 packages use libc5 (as do RedHat and Debian packages of the same era). 
+<P>
+libc5 is a perfectly good library, and most users will find everything they need in the <A HREF="slack.htm">Slackware 4.0 packages</A> or in the <A HREF="add-ons/index.htm">BL3 add-on packages</A>.&nbsp; However, if you wish to use Linux software from another source, you will probably need to upgrade the library.
+<P>
+<h2><U>How to install glibc2</U></h2>
+<P>
+It takes two packages to upgrade the BL3 library.&nbsp; You will find the first in <A HREF="slack.htm">Slackware 9.0</A> in the <B>/slackware/a</B> directory:
+<p>
+<table>
+<TR><TD> &nbsp; &nbsp; &nbsp; &nbsp; </TD><TD><font size=5>glibc-solibs-2.3.1-i386-3.tgz &nbsp; &nbsp; &nbsp; </TD><TD><font size=5>1042967</TD>
+<TR><TD></TD><TD><font size=5>misc-libs.tgz</TD><TD align=right> <font size=5>863372</TD>
+</table>
+<BR>
+You will find the second <A HREF="glibc2/misc-libs.tgz">here</A>. &nbsp;Use the <B>pkg</B> command to install them both. 
+<P>
+&nbsp; &nbsp; &nbsp; &nbsp; pkg &nbsp; glibc-solibs-2.3.1-i386-3.tgz<BR>   &nbsp; &nbsp; &nbsp; &nbsp; pkg &nbsp; misc-libs.tgz<BR> 
+<P>
+That will enable you to run a lot of current software. &nbsp;However, some applications will require additional libraries (ldd will tell you this).&nbsp; You should be able to find those libraries in <A HREF="slack.htm">Slackware 9.0</A> -- probably in the <B>a</B> or <B>l</B> directories.
+</BODY>
+</HTML>
+
+
+
+
+

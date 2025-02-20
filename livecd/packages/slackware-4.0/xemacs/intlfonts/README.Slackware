@@ -1,0 +1,36 @@
+
+GNU International Fonts Ver.1.1 for Slackware
+
+Here's a big batch of international fonts to use with the MULE version
+of XEmacs.  These fonts have been converted to the .pcf.gz format that is
+preferred by XFree86.  Here's how to install them:
+
+1.  Untar the package you want to install.  As an example, we will use
+    European.tar.gz:
+
+    tar xzvf European.tar.gz
+    cd European
+
+2.  Next, copy the fonts into your /usr/X11R6/lib/fonts/misc directory:
+
+    cp *.pcf.gz /usr/X11R6/lib/fonts/misc 
+
+3.  Append the fonts.alias information to the existing fonts.alias in
+    /usr/X11R6/lib/fonts/misc.  (skip this step if the fonts archive
+    didn't contain a fonts.alias file -- not all of them do)
+
+    cat fonts.alias >> /usr/X11R6/lib/fonts/misc/fonts.alias
+
+4.  Run mkfontdir in the directory you installed the fonts in:
+
+    cd /usr/X11R6/lib/fonts/misc
+    mkfontdir .
+
+That's it!  The fonts should now be ready to use by X.
+
+Have fun! :)
+
+--
+Patrick J. Volkerding
+volkerdi@slackware.com
+

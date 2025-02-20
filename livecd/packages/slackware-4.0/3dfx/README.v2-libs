@@ -1,0 +1,26 @@
+=======
+v2-libs
+=======
+
+Contents:   Glide v2.53 (libc5) for the Voodoo 2 chipset
+            Mesa 3.0 compiled against this version of Glide
+            Glide and Mesa header files
+
+To install and use v2-libs.tgz, follow these instructions:
+
+(1) Become root.
+
+(2) Install the v2-libs package:
+
+       hostname:~# installpkg v2-libs.tgz
+
+(3) Run ldconfig to update the shared library cache:
+
+       hostname:~# /sbin/ldconfig -v
+
+(4) Done!
+
+Hopefully you can now play all of those OpenGL-enhanced games. :)
+
+-David Cantrell
+ david@slackware.com

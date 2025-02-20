@@ -1,0 +1,26 @@
+=======
+xvrlibs
+=======
+
+Contents:  replacement XFree86 libraries for use with the Voodoo Rush
+           X server.
+
+These libraries are needed to use the Voodoo Rush X server. To install
+them, follow these instructions:
+
+(1) Become root.
+
+(2) Install the package:
+
+       hostname:~# installpkg xvrlibs.tgz
+
+(3) Update the shared library cache:
+
+       hostname:~# /sbin/ldconfig -v
+
+(4) Done!
+
+The libraries should be ready for use now.
+
+-David Cantrell
+ david@slackware.com

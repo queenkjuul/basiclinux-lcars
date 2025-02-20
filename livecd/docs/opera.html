@@ -1,0 +1,62 @@
+<HTML>
+<Head>
+<Title>Installing Opera</Title>
+<META NAME="keywords" CONTENT="Linux for laptops, laptop Linux, 386, 486, low, RAM, memory, Powerpoint, Power Point, footprint, resource, compact, small, tiny, mini, PCMCIA, pocket, retro, old, Xvesa, Castlemaze, microcom, swm, links browser">
+</Head>
+<BODY BGCOLOR="#cccccc" TEXT="#000000" link="#0000cc">
+<FONT size=5>
+<HR>
+<center>
+<big> 
+<B>How&nbsp; to&nbsp; Install&nbsp; Opera&nbsp; on &nbsp;BL3</B>
+</big></center> 
+<HR>
+<BR>
+Two graphical browsers are available for BL3: &nbsp;links2 and Opera. &nbsp;To run links2, you need a 486 with at least 16mb RAM. &nbsp;You will find the links2 package in the <A HREF="add-ons/index.htm">BL3 add-ons</A>.&nbsp; Simply install it (pkg) and run it.
+<P>
+To run Opera, you need a Pentium with at least 32mb RAM.&nbsp; It is a superior browser, but it is more complicated to install.&nbsp; Here are the step-by-step instructions:
+<p>
+
+<B><U>Step 1</B>: &nbsp; Upgrade main BL3 library</U>
+<P>
+It takes two packages to upgrade the BL3 library.&nbsp; You will find full instructions <A HREF="library.html">here</A>.
+<P>
+&nbsp; &nbsp; &nbsp; &nbsp; pkg &nbsp; glibc-solibs-2.3.1-i386-3.tgz<BR>   &nbsp; &nbsp; &nbsp; &nbsp; pkg &nbsp; misc-libs.tgz<BR> 
+<P>
+<BR>
+<B><U>Step 2</B>: &nbsp; Add some X libraries</U>
+<P>
+All the X libraries you need are in one package called <B>x-libs.tgz</B>. &nbsp;You will find it in the <A HREF="add-ons/index.htm">BL3 add-ons</A>.
+<P>
+&nbsp; &nbsp; &nbsp; &nbsp; pkg &nbsp; x-libs.tgz<BR>
+<P>
+<BR>
+<B><U>Step 3</B>: &nbsp; Get the <B>Opera 8</B>  static-QT package</U>
+<P>
+Go to <A HREF="http://www.opera.com/download/">http://www.opera.com/download/<A>. &nbsp;It will offer you a Windows version. Click on <font color=red>Show other versions</font>. &nbsp;Then click on <font color=red>Linux i386</font>. &nbsp;You will be shown a drop-down menu. &nbsp;Select <font color=red>Other/Static DEB</font>. &nbsp;Mark the box that says <font color=red>Download this package in TAR.GZ format</font> and choose your download site.
+<P>   
+<BR>
+<B><U>Step 4</B>: &nbsp; Install the <B>Opera 8 </B> static-QT package</U>
+<P>
+Put the Opera package in /tmp and unpack it:
+<P>
+&nbsp; &nbsp; &nbsp; &nbsp; tar -zxvf &nbsp; opera-8.<font color=blue>???</font>-static-qt.i386-en.tar.gz
+<P>
+That will create a new directory containing the Opera files.  &nbsp; Go into that directory and start the installation routine:
+<P>
+&nbsp; &nbsp; &nbsp; &nbsp; cd &nbsp;opera-8.<font color=blue>???</font>-static-qt.i386-en<BR>
+&nbsp; &nbsp; &nbsp; &nbsp; install.sh
+<P>
+<HR>
+<TABLE>
+<TR><TD><font size=5><U>Note</U>: &nbsp;    
+<TD><font size=5><font color=blue>???</font> represents the version/date of the Opera package.</TD></TR>  
+<TR><TD></TD><TD><font size=5>Use the actual numbers from the package you download.</TD></TR> 
+</TABLE>
+</BODY>
+</HTML>
+
+
+
+
+

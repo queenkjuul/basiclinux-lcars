@@ -1,0 +1,23 @@
+===
+xvr
+===
+
+Contents:  XFree86 server for the Voodoo Rush chipset
+
+This package will install a replacement for the XF86_SVGA server that
+supports the Voodoo Rush chipset. Make sure you have removed the other
+XF86_SVGA server before installing this package.
+
+(1) Become root.
+
+(2) Install the package:
+
+       hostname:~# installpkg xvr.tgz
+
+(3) Update your X configuration to use the /usr/X11R6/bin/XF86_SVGA
+    server if you don't use that one already.
+
+(4) Done!
+
+-David Cantrell
+ david@slackware.com
