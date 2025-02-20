@@ -1,0 +1,18 @@
+#!/bin/sh
+#
+# Usage: ed-tkdesk [file ...]
+# Opens a new editor window, and loads files if any are given.
+
+if [ $# -gt 0 ]; then
+  FILES=
+  for f in $@; do
+    if [ -z "`echo $f | grep '^[/~]'`" ]; then
+      FILES="`pwd`/$f $FILES"
+    else
+      FILES="$f $FILES"
+    fi
+  done
+  tkdeskclient "cd `pwd`; dsk_edit `echo $FILES`; cd"
+else
+  tkdeskclient 'dsk_edit "New File"'
+fi

@@ -1,0 +1,626 @@
+  4.  Configuration
+
+  Congratulations! Now you have IceWM up and running. You don't like the
+  default look? Don't worry: This section is on customizing IceWM.
+
+  As it is the case with most Linux and Unix programs IceWM can be
+  configured using plain text config files. First let's take a look
+  which config files are available.
+
+
+  4.1.  How to customize IceWM?
+
+  You can customize IceWM by editing the following configuration files:
+
+
+  o  preferences
+
+  o  winoptions
+
+  o  menu
+
+  o  toolbar
+
+
+  4.2.  Where are the configuration files?
+
+  You could not find the config files? Maybe you were looking in wrong
+  places - the location depends upon the method you used to install
+  IceWM.
+
+  In a plain vanilla source install, the global version of the files
+  will be located in "/usr/local/lib/Xll/icewm/". If you installed the
+  standard RPM, they will be in "/usr/X11R6/lib/X11/icewm/". The system
+  wide configuration files for the Debian package seem to be in
+  "/etc/X11/icewm/".
+
+  However, if you wish to make a configuration of your own you should
+  not edit these global config files but create a subdirectory of your
+  home directory called ".icewm/". Copy the system wide files to your
+  local ".icewm" directory and edit these copies.
+
+  Note: You may have to alter the permissions of the copies in order to
+  read and write to them.
+
+
+  4.3.  You mean I have to edit these files?
+
+  The config files need to be changed if you want to change IceWMs'
+  behavior.  This does not necessarily mean that you have to use an
+  editor for this - graphical configuration tools for IceWM are
+  available.
+
+  "iceconf" was written with perl/gtk and is not longer maintained. You
+  can try it, but it requires the perl/gtk package and does not control
+  many of the recent IceWM options.
+
+  You can also try "IcePref". More information on this program is
+  available at
+
+
+       http://members.xoom.com/SaintChoj/icepref.html
+
+
+  Note: Remember that IceWM is evolving and new features are being added
+  with almost any new version. The result is that it's hard for a GUI
+  author to keep up to date and have every option available.  Don't be
+  surprised if there are options that are only available if you manually
+  edit the config files.
+
+
+  4.4.  Which file controls what?
+
+  The division of labor among the several files is quit logical once you
+  become accustomed to it.
+
+
+     menu
+        Controls the contents of the "start" menu
+
+     preferences
+        Controls the general behavior of IceWM
+
+     programs
+        Controls the contents of the "programs" submenu of the "start"
+        menu
+
+     toolbar
+        controls the row of launcher icons on the taskbar and has the
+        same syntax as the menu file
+
+     winoptions
+        Controls the behavior of individual applications (as identified
+        by the names of their respective windows)
+
+
+  4.5.  What are the focus models good for?
+
+  To answer this question it is a good idea to first take a look at the
+  four general focus models that are implemented by IceWM:
+
+
+     clickToRaise
+        When a window is clicked, it is raised and activated. This is
+        the behavior of Win95 and OS/2.
+
+     clickToFocus
+        A Window is raised and focused when titlebar or frame border is
+        clicked and it is focused but not raised when the window
+        interior is clicked.
+
+     pointerFocus
+        When the mouse is moved, focus is set to window the mouse is
+        pointing at. It should be possible to change the focus with the
+        keyboard when the mouse is not moved.
+
+     explicitFocus
+        When a window is clicked, it is activated but not raised. New
+        windows do not automatically get the focus unless they are
+        transient windows for the active window.
+
+  "A window is raised" is telling and needs no further explanation.
+
+  "A window is activated, is focused, gets the focus, ..." means that
+  input (e. g. keystrokes) now are sent to that window.
+
+  In short: The focus model controls what you have to do to make a
+  window pop up and to have it listen to what you type.
+
+
+  5.  How to...?
+
+  This section explains how to make IceWM behave in accord with your
+  wishes.
+
+
+  5.1.  Use UseRootButtons and ButtonRaiseMask
+
+  "UseRootButtons" and "ButtonRaiseMask" are so called bitmask options.
+
+  This concept is e.g. used by "chmod" where 4 stands for read access, 2
+  for write access and 1 for execute (or change directory) access and
+  you add up the relevant numbers to control the file access.
+
+  As far as "UseRootButtons" and "ButtonRaiseMask" are concerned, 1
+  stands for the first mouse button, 2 for the second one and 4 for the
+  third one. The following list shows which number stands for which
+  combination of mouse buttons:
+
+
+           ---------------------------------
+            Value   Stands for
+           ---------------------------------
+              0     No mouse button at all
+              1     Button 1
+              2     Button 2
+              3     Buttons 1 and 2
+              4     Buttons 3
+              5     Buttons 1 and 3
+              6     Buttons 2 and 3
+              7     All three mouse buttons
+           ---------------------------------
+
+
+  Any value greater than seven has the same effect as seven.
+  "UseRootButtons" controls which buttons call up a menu when clicked on
+  an unoccupied region of the desktop.  "ButtonRaiseMask" determines
+  which buttons will raise a window when clicked on that window's title
+  bar.
+
+
+  5.2.  Set the mouse button a menu is bound to
+
+  There is an option for each of the root menus which controls which
+  button is bound to that menu.
+
+
+           -----------------------------------------
+            Option Name            Controls
+           -----------------------------------------
+            DesktopWinMenuButton   Window menu
+            DesktopWinListButton   Window list
+            DesktopMenuButton      Application menu
+           -----------------------------------------
+
+
+  The value of each option determines the button to which the
+  corresponding menu is bound according to the following scheme:
+
+
+           -----------------------------
+            Value   Stands for
+           -----------------------------
+              0     No mouse button
+              1     Left mouse button
+              2     Right mouse button
+              3     Middle mouse button
+             4-6    Other buttons
+           -----------------------------
+
+
+  5.3.  Assign an option to a given application
+
+  Assigning a particular option (icon, default layer, default workspace,
+  etc.) to a given application or application window can be done as
+  follows:
+
+  First, you should aquire the "WM_CLASS" descriptor using "xprop".
+  Simply run
+
+
+           xprop |grep WM_CLASS
+
+
+  in an XTerm. The first item is the window name and the second item it
+  the window class. You can then add the desired options to your
+  "winoptions" file. Entries in that file have one of the following
+  formats:
+
+           name.class.option: value
+           class.option:      value
+           name.option:       value
+
+
+  The "WM_CLASS" for a Netscape Navigator window is
+
+
+           "Navigator", "Netscape"
+
+
+  To assign the icon set "navigator_*.xpm" to the Netscape Navigator
+  window, use this option:
+
+
+           Navigator.Netscape.icon: navigator
+
+
+  The other options work according to roughly the same pattern.
+
+
+  5.4.  Have windows iconified/maximized as soon they are mapped
+
+  There may be programs that you either want to start up iconified or
+  maximized. Until now, there is no possible entry in your "winoptions"
+  file that iconifies or maximizes a windows of a given name or class as
+  it is mapped.
+
+  Fortunately some programs (like netscape) have a command line option
+  to be started iconic and most X program support "-geometry" to specify
+  a default window size.
+
+
+  5.5.  Lock the screen
+
+  Screen locking is something you should do whenever you leave your
+  machine (even at home and even for only a few seconds - just imagine a
+  cat pushing the enter button at the wrong moment). It should be a
+  habit like logging out root as soon as possible.
+
+
+  5.5.1.  ... by keybord
+
+  With IceWM screen locking is very easy: If you press
+
+
+           Ctrl-Alt-Del
+
+
+  a menu pops up offering you the follwing tasks:
+
+
+  o  Lock "W"orkstation
+
+
+  o  "L"ogout
+
+  o  "C"ancel
+
+  o  "R"estart icewm
+
+  o  Re"b"oot
+
+  o  Shut"d"own
+
+  The letters that are emphasized in this FAQ are underlined in real
+  life. The meaning of this emphasis is that you may e. g. press "W" to
+  lock your workstation.
+
+  Another possibility (this is the one I prefer because I once to often
+  pressed "L" in order to lock my machine) is to press ENTER. The result
+  is the same because the button that is active by default is Lock
+  Workstation.
+
+  A more obvious reason for using ENTER in place of "W" is that it is
+  easier to type in: Del and ENTER are next to each other.
+
+  You could as well use your mouse to click on Lock Workstation but if
+  you are already using your keyboard to evoke the menu why not use the
+  keyboard to select from it?
+
+
+  5.5.2.  ... by mouse
+
+  If you prefer to use your mouse to lock the screen you may add the
+  following entry to your "$HOME/.icewm/toolbar"
+
+
+           prog    xlock   xlock   xlock
+
+
+  You could as well add that line "$HOME/.icewm/menu" or
+  "$HOME/.icewm/programs" but that's not a good idea: Screen locking is
+  often done in a hurry and if you have to scan through a menu this will
+  increase the chance that you will not lock your machine at all.
+
+
+  5.5.3.  ... using a lock command other than xlock
+
+  How to define a different lock command is described in section
+  ``Setting the lock command''
+
+
+  6.  How to keep IceWM from...?
+
+  This section explains how to keep IceWM from doing something you don't
+  like it to do.
+
+
+  6.1.  Grabbing keystrokes
+
+  What if you are running an application and need to use a keystroke
+  that is grabbed by IceWM?
+
+  Marko suggests the following workaround:
+
+
+  1. Activate scroll lock
+
+  2. Do problematic key stroke
+
+  3. Deactivate scroll lock
+
+  He advises that this will only work if "ScrollLock" is set up as a
+  modifier.
+
+
+  6.2.  Setting background color/image
+
+  If you provide the appropriate options in your "preferences" file,
+  IceWM will set the background color or the background image for you.
+  You can use
+
+
+           DesktopBackgroundColor="color"
+
+
+  to set a background color and
+
+
+           DesktopBackgroundImage="image"
+
+
+  to set a background image. To keep icewm from setting a background
+  color/image you simply set both options to an empty string:
+
+
+           DesktopBackgroundColor=""
+           DesktopBackgroundImage=""
+
+
+  Hints:
+
+
+  1. Commenting out DesktopBackgroundColor="color" and
+     DesktopBackgroundImage="image" does not have the intended effect.
+
+  2. IMHO using a background image (especially a huge one) isn't that
+     good an idea. It awfully slows down the X windowing system.
+
+
+  7.  Using IceWM
+
+  This section is a collection of questions on using IceWM.
+
+
+  7.1.  What does Logout(Cancel)Command do?
+
+  For most users, nothing. Both commands were meant for GNOME
+  integration as alternative commands that would be run when users
+  initiated a logout or logout cancel. Since GNOME did not seem to
+  incorporate this feature, they generally go unused.
+
+
+  7.2.  What is the blank field in the task bar good for?
+
+  If you are running IceWM with the "TaskBarDoubleHeight" option set, a
+  blank field in the task bar occurs. It is a command line interface.
+
+  In this field you can enter commands to start programs. If you click
+  inside the field and enter "xclock" the X clock is started.
+
+  If you click on it and simply press Ctrl-Enter an XTerm is being
+  started.
+
+  If you enter a non-X command and press Ctrl-Enter an that command is
+  being executed in an XTerm.
+
+
+  7.3.  What image formats can I use with IceWM?
+
+  If IceWM is compiled with the standard xpm libraries, then it can only
+  employ xpm images (as backgrounds, etc.). If, however, IceWM is
+  compiled with Imlib support, it can display all common image formats
+  including jpeg, gif, png, and tiff.
+
+
+  7.4.  Setting the clock format
+
+  Setting up the look of the task bar clock of IceWM as well as the
+  format of the associated tooltip is rather easy. IceWM uses the same
+  format as the Unix standard function strftime so when in doubt you can
+  always refer to
+
+
+           man 3 strftime
+
+
+  To set the clock format you use
+
+
+           TimeFormat="<format string>"
+
+
+  and for the clock tooltip format you use
+
+
+           DateFormat="<format string>"
+
+
+  Ordinary characters placed in the format string are printed without
+  conversion (if possible, see below). Conversion specifiers are
+  introduced by a percent character ('%'),  and are replaced by a
+  corresponding string.
+
+  Important Note: While DateFormat and TimeFormat both support all the
+  format descriptors the latter only has full support if used with
+
+
+      TaskBarClockLeds=0
+
+
+  (which is set equal 1 by default).
+
+  The reason for this is that there are no icons to display the name of
+  a month, day, or time zone. To be more precise there are only icons
+  for
+
+
+  1. digits (0, 1, 2, 3, 4, 5, 6, 7, 8, 9)
+
+  2. colon, dot, slash, and space
+
+  3. A, P, and M (for AM and PM)
+
+  Format descriptors which may only be in TimeFormat if
+  TaskBarClockLeds=0 (in genaral or depending on the locale) are labeled
+  as restricted in the following table. It shows the replacement for all
+  format descriptors available.
+
+  The values in parentheses show what the different format specifiers
+  display for
+
+  YYYY/MM/DD HH:MM:SS TimeZone = 1999/09/04 19:09:22 UTC
+
+  on my machine with hardware clock and Linux running UTC, local being
+  "C" (i.e.  no internationalization at all):
+
+
+     %a (Sat) restricted
+        The abbreviated weekday name according to the current locale.
+
+     %A (Saturday) restricted
+        The full weekday name according to the current locale.
+
+     %b (Sep) restricted
+        The abbreviated month name according to the current locale.
+
+     %B (September) restricted
+        The full month name according to the current locale.
+
+     %c (Sat Sep 04 19:09:22 1999) restricted
+        The preferred date and time representation for the current
+        locale.
+
+     %d (04)
+        The day of the month as a decimal number (range 01 to 31).
+
+     %H (19)
+        The hour as a decimal number using a 24-hour clock (range 00 to
+        23).
+
+     %I (07)
+        The hour as a decimal number using a 12-hour clock (range 01 to
+        12).
+
+     %j (247)
+        The day of the year as a decimal number (range 001 to 366).
+
+     %m (09)
+        The month as a decimal number (range 01 to 12).
+
+
+     %M (09)
+        The minute as a decimal number.
+
+     %p (PM) restricted
+        Either "am" or "pm" according to the given time value, or the
+        corresponding strings for the current locale.
+
+     %S (22)
+        The second as a decimal number.
+
+     %U (35)
+        The week number of the current year as a decimal number,
+        starting with the first Sunday as the first day of the first
+        week.
+
+     %W (35)
+        The week number of the current year as a decimal number,
+        starting with the first Monday as the first day of the first
+        week.
+
+     %w (06)
+        The day of the week as a decimal, Sunday being 0.
+
+     %x (09/04/99) restricted
+        The preferred date representation for the current locale without
+        the time.
+
+     %X (19:09:22) restricted
+        The preferred time representation for the current locale without
+        the date.
+
+     %y (99)
+        The year as a decimal number without a century (range 00 to 99).
+
+     %Y (1999)
+        The year as a decimal number including the century.
+
+     %Z (UTC) restricted
+        The time zone or its name or its abbreviation.
+
+     %% restricted
+        A literal "%" character.
+
+
+  7.5.  Setting the lock command
+
+  By default IceWM uses "xlock" (without any argument) to lock your
+  screen. There may be several reasons for using a different lock
+  command:
+
+
+  o  There is no "xlock" on your machine.
+
+  o  "xlock" tends to crash on your machine either leaving you locked
+     out (best case) or unlocking your session (worst case).
+
+  o  xlock has some CPU intensive modes compiled in that interfere with
+     your SETI@HOME session.
+
+  It is very easy to set a lock command: Simply add
+
+
+           LockCommand="xlock -mode blank"
+
+
+  to your "$HOME/.icewm/preferences" and xlock will run in blank mode
+  (which shows nothing but a black screen).
+
+  The example was chosen on purpose: Using this mode you have the best
+  chance of your monitor going asleep (enter power saving mode).
+
+
+  9.  Tips and Tricks
+
+  This section is a collection of tips and tricks for making your life
+  easier.
+
+  9.1.  Using the CLI (command line interface)
+
+  You should run IceWM with "TaskBarDoubleHeigth=1" because that will
+  enable the CLI (see ``What is the blank bar in the task bar good
+  for?'' for some more information).
+
+  The CLI is especially useful if you rather frequently need to access
+  man pages and don't want to have xman hang around all the time.
+
+  If you enter "man perl" and press "Ctrl-ENTER" an XTerm will pop up
+  displaying the main Perl man page. If you press "q" not only the man
+  page no longer is displayed but the XTerm will terminate, too.
+
+  This only is one example of how to use the CLI. You can use it to
+  issue any other command as well. A problem that might occur is that
+  the XTerm will terminate before you had time to read the output of a
+  command (it terminates as soon as the command is done).
+
+  In most such cases it is sufficient to pipe the output through "less"
+  (this is one of the rare cases you cannot use "more" because it
+  terminates after displaying the last line). However, there are cases
+  (mainly programs that write colorful output such as "ls") that may
+  result in trouble with "less".
+
+  Fortunately Linux (any Unix version?) offers a solution to these
+  cases, too: The "sleep" command. It sleeps some time, then terminates.
+  So you could use
+
+
+           ls $HOME/bin --color ; sleep 1m
+
+
+  to list all programs in your "$HOME/bin" directory. The "sleep"
+  command will wait the given period of time (in this case a minute)
+  before the XTerm automatically will close (you can use "Ctrl-C" to
+  abort the "sleep" command before that time went by).
+
+

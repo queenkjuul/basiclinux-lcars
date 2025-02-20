@@ -1,0 +1,22 @@
+
+Miscellaneous
+* Autoconf: (autoconf).         Create source code configuration scripts.
+
+GNU admin
+* aclocal: (automake)Invoking aclocal.          Generating aclocal.m4
+* automake: (automake).         Making Makefile.in's
+
+GNU Gettext Utilities
+* Gettext: (gettext).                           GNU gettext utilities.
+* gettextize: (gettext)gettextize Invocation.   Prepare a package for gettext.
+* msgfmt: (gettext)msgfmt Invocation.           Make MO files out of PO files.
+* msgmerge: (gettext)msgmerge Invocation.       Update two PO files into one.
+* xgettext: (gettext)xgettext Invocation.       Extract strings into a PO file.
+
+GNU programming tools
+* libtoolize: (libtool)Invoking libtoolize.     Adding libtool support.
+* Libtool: (libtool).           Generic shared library support script.
+
+Individual utilities
+* libtoolize: (libtool)Invoking libtoolize.     Adding libtool support.
+* Libtool: (libtool).           Generic shared library support script.

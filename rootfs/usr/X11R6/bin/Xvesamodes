@@ -1,0 +1,3 @@
+exec Xvesa -listmodes 2>&1 | grep -v ^0x
+exec Xvesa -listmodes 2>&1 | grep -v Pseudo | grep ^0x | sed 's/0.......//' | sed  's/ .*$//' | tr '\n' '\t' | fold -sw 60
+read n

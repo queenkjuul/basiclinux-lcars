@@ -1,0 +1,13 @@
+! Copyright (c) 1990-1997  Michael Sandrof, Troy Rollo, Matthew Green,
+! and other ircII contributors.
+!
+! All rights reserved.  See the HELP IRCII COPYRIGHT file for more
+! information.
+!
+Usage: BIND <key> ENTER_MENU
+  Enters the menu what was loaded by MLOAD and set into MENU.
+
+See Also: 
+  MENUS
+  SET MENU
+  MLOAD

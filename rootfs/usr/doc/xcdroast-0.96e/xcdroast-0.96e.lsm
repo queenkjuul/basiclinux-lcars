@@ -1,0 +1,16 @@
+Begin3
+Title:          X-CD-Roast 
+Version:        0.96e
+Entered-date:   25Nov98 
+Description:   	CD-Writer-Program for X. Frontend for CD-related programs
+		like "cdrecord" and "mkisofs". 
+Keywords:       cdwriter, X, SCSI, CD, CDDA, cdrecord, mkisofs 
+Author:         tn@fh-muenchen.de (Thomas Niederreiter)  
+Maintained-by:  tn@fh-muenchen.de (Thomas Niederreiter) 
+Primary-site:  	http://www.fh-muenchen.de/rz/xcdroast
+Alternate-site: sunsite.unc.edu /pub/Linux/utils/disk-management
+		886kB xcdroast-0.96e.tar.gz 
+Platforms:      Linux, CD-Writers
+Copying-policy: GPL
+End
+

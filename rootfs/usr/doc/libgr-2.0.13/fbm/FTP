@@ -1,0 +1,24 @@
+Availability
+
+    Anonymous FTP
+
+    Host:	nl.cs.cmu.edu (128.2.222.56)
+    User:	anonymous
+    Password:	name@site
+    Directory:	/usr/mlm/ftp/
+    Filename:	fbm.tar.Z
+    Transfer:	'image'
+
+    Note: you must 'cd' to /usr/mlm/ftp directly, you cannot access
+    either /usr, or /usr/mlm alone.  Don't forget to specify 'image'
+    format transfer.
+
+    An alpha release TIFF converter, tiff2fbm, is also in the FTP area.
+    Get files tiff.tar.Z and tiff2fbm.dist.
+
+
+    Other files:
+
+	tiff.tar.Z		Sam Leffler's TIFF support
+	utah.tar.Z		Utah RLE package
+	pbm.tar.Z		Jef Poskanzer's PBM bitmap package

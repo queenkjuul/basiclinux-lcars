@@ -1,0 +1,9 @@
+v voice
+o op
+b ban
+u unban
+i invite
+d dcc
+k kill
+m (voice op ban unban invite dcc)
+n (voice op ban unban invite dcc kill)

@@ -1,0 +1,95 @@
+ABOUT SHALOMSCRIPT (1.2, IBM version). . .
+
+
+Copyright & Distribution Information...
+
+ShalomScript is copyright (c) 1990-1992 by Jonathan Brecher. I made this font. If you mess with it or claim it as your own, I'm going to be very upset. All rights reserved, and assorted other legal stuff.
+
+ShalomOldStyle is distributed under a modified Shareware concept. I've devoted something approaching 100 hours to this font, including time spent working on its original release as part of the font Shalom. I have tried my utmost to produce a quality product, and I think I've succeeded. In fact, I have modified (dare I say improved on?) every single character in this font since its last release in version 1.1.2. However, only you know how much you use this font. At the least I would like a postcard of your home town, but if you use it a lot, consider that other Shareware fonts commonly are priced from $10-$25; commercial fonts can range upwards of $50-$100. I do not believe in saying "Delete all copies of this font if you haven't paid me in ten days"; I would much rather you kept this font around in case you ever did need it. However if you do find yourself using it... Any use of this font in any product or publication that earns you money certainly obligates you to some sort of payment to me. I do not feel obligated to send updates to people who don't pay me. When writing, please be sure to indicate that you are using IBM version 1.2, and please include a full return address.
+
+ShalomScript was created with Fontographer 3.0.5 and revised with Fontographer 3.5.1 on a Macintosh SE. It is a Type 1 font and works well with Adobe Type Manager (ATM). Versions are available for the Macintosh, for the NeXT, and in an assortment of flavors for use on UN*X machines, at present, and may become available on other platforms in the future. Please do NOT convert this font to any other format without my permission: I have no objections in principle, but I want to ensure that all copies of my font remain up to my standard of quality. No Warranties and stuff like that, although I would be happy to help you trace down any bugs. I am ALWAYS open to suggestions or (gasp!) criticism. Please contact me at one of the addresses below.
+
+Please give copies of this font to everyone, but MAKE SURE YOU INCLUDE ALL RELATED FILES (ShaloScr.AFM, ShaloScr.PFM, ShaloScr.PFB, ShaloScr.sam, ShaloScr.sht, ShaloScr.txt)! It may not be sold except by users' groups for duplicating fees, commercial services for downloading time, etc. Commercial Shareware distribution companies (EduCorp et. al.) please contact me.
+
+Look also for my related fonts, ShalomOldStyle and ShalomStick. ShalomOldStyle and ShalomStick have EXACTLY the same character widths and character mapping. ShalomScript, however, has some characters with different widths and requires different vowels for some letters.
+
+The widths of several characters (mainly punctuation) and the kerning between many letter pairs were slightly changed for version 1.2. If you are upgrading for an earlier version, you may have to check your line breaks and spacing. Sorry.
+
+SPECIAL NOTES FOR IBM USERS:
+
+Shalom was created with Fontographer 3.05 and revised with Fontographer 3.5.1 for the Macintosh. I have no facilities to test this font on an IBM, so I cannot absolutely guarantee that it will work. But it shoud. I would be happy to (try to) fix any problems you have.
+
+INSTALLATION:
+
+FOR USE WITH ATM 1.x AND WINDOWS 3.x:
+	Copy ShaloScr.PFB to your \PSFONTS directory.
+	Copy ShaloScr.PFM to your \PSFONTS\PFM directory.
+	Ignore ShaloScr.AFM for most applications.
+	If you plan to use ATM, open the ATM Control panel under Windows and press the "Add..." button. Select Shalo in the \PSFONTS\PFM directory and press the "Add" button. 
+If you have a PostScript printer and you are using ATM 1.x:
+	Open your WIN.INI file with the Windows Notepad program. Always work on a copy in case you mess up!
+	At the end of the "softfonts" list, you will see something like "[PostScript,LPT2]" followed by a list containing something like "softfonts5=c:\psfonts\pfm\ShaloScr.PFM"
+	Change this to "softfonts5=c:\psfonts\pfm\ShaloScr.PFM,c:\psfonts\ShaloScr.PFB"
+	Save, close, exit Windows, and Restart.  Everything should be set.
+
+If you are running OS/2, please follow the instructions in your OS/2 manual to install this font. OS/2 has ATM built in. To the best of my knowledge, my Shalom fonts are not usable on an IBM-based computer without ATM.
+
+
+
+I may be reached at:
+
+Jonathan Brecher, 9 Skyview Road, Lexington, MA 02173-1112 USA
+or
+brecher@husc.harvard.edu (Internet)
+or
+{husc6|uunet}!husc!brecher (UUCP)
+or
+brecher@husc.bitnet (Bitnet)
+or
+brecher@husc.harvard.edu@internet# (AppleLink)
+or
+>INTERNET:brecher@husc.harvard.edu (CompuServe)
+
+I also regularly call the BCS*Mac BBS (617-864-0712)
+
+
+NOW FOR THE NEAT STUFF, or, WHAT THIS FONT IS ABOUT
+
+ShalomScript is a fairly complete Hebrew typeface. It is, however, just another font as far as your computer is concerned. Standard American software is not really set up for an alphabet that reads from right to left. Anyone using this font will find themselves composing Hebrew text "backwards," or left to right. Sorry, there's not a whole lot I can do about it. If you really need a Hebrew font that writes in the right direction, you probably want something else. 
+
+IMPORTANT: ShalomScript is a PostScript font designed to be printed on a laser printer. It may or may not look good on your screen, but it should be fine when printed.
+
+KEYBOARD MAPPING
+
+Because this font is not suitable for creating long Hebrew documents, I've decided not to use the "official" Hebrew keyboard mapping. (This may change if I get many requests to do so, but so far I've had few.) Instead, I've done my best to map the Hebrew alphabet to the qwerty keyboard. The aleph, bet, gimel, daled, hay, vav, zayin, chet, yod, kaf, lamed, mem, nun, samach, ayin, pey, qoph, resh, and tav are transliterated to the a,b,g,d,h,v,z,c,y,k,l,m,n,s,i,p,q,r, and t respectively. The tet and tzadi are on the e and x because I don't have a better place to put them. Final forms of the kaf, mem, nun, pey, and tzadi are on the shifted equivalent (K,M,N,P,X) The shin (without a dot) is on the w because the shape is similar, while the shin and sin with dots are on the D and S, respectively.
+
+Several exclusively Yiddish characters and combinations of characters are also provided, but in general there is no logic to the placement of these characters. A pasakh alef and a komets alef are on the A and Z keys. The tsvey vovn and vov yud are on the B and G keys. A khirik yud, tsvey yudn, and a pasakh tsvey yudn may be found on F, H, and u. All of these characters except for the pasakh tsvey yudn may be produced with other characters or combinations of characters, however, the double-character keys have a slightly closer spacing between the pair.
+The center dot (dagesh) for the bet, kaf, pey, etc. may be placed by typing a < after (to the right of) the letter. The > key will also provide a dagesh, but at a slightly different offset for the nun. A dgaesh for the yud may be produced with the f key.
+
+The vowels are pretty much strung along the number keys:
+1:	cheereek
+2:	tzayray
+3:	segol
+4:	sh'va
+5:	koobootz
+6:	chataf segol
+7:	chataf patach
+8:	chataf kamatz
+9:	high sh'va (9) and high kamatz (shift-9) both used only with final chaf
+-:	patach
+=:	kamatz
+ShalomScript characters come in one of three widths, and since Hebrew likes its vowels centered under the letters, there must be three corresponding sets of vowels. Most letters take the vowels produced by the keys listed above (1,2,3, etc.). The narrow letters (daled, gimel, vav, zayin, yod, nun) use shifted numbers (!,@,#, etc.). The very narrow vav must use a third set of vowels (Q,W,E, etc.) where the appropriate key is shifted down one row on the keyboard and slightly to the right. In all cases the vowel must be typed after (to the right of) the consonant under which it will go. Of course, you are free to use only one set of vowels for all characters, but it won't look as good. 
+
+For the techie types out there, the vowels all have zero width and negative offset. This makes editing the vowels extremely difficult, but there really was no other option.
+
+If you plan on using this font, I STRONGLY recommend printing out the cheat sheet that is distributed with it.
+
+The above, of course, refers only to the vowels which go below consonants; the cholam and shoorook may also be created. A full cholam may be produced by typing an o, while a cholam without a vav may be produced with O (shift-o). A shoorook may be created by typing V. All three of these vowels, including the cholam without a vav, are treated as separate characters in this font. They should all be typed BEFORE (to the left of) the appropriate consonant.
+
+There are, in addition, several other characters available. A high connecting bar is produced with the tilde (~). An overbar, which is used in Yiddish, may be produced with the ) key. The lowercase and capital j produce short and long dashes, while the L key yields an ellipsis. The grave (`) key produces a low (opening) quote, a capital C yields a low (opening) single quote (or alternate comma), and the vertical bar (|) will produce an exclamation point. The locations of these characters are the result of trying to fit as many things as possible into logical locations on the keyboard. Inevitably, some do not end up on logical positions. Oh, well.
+
+The period, comma, semicolon, colon, slash, backslash, single quote, double quote, opening and closing brackets, and question mark are all in their expected locations.
+
+I hope you find this font useful.
+
+MORE LEGALESE: All brand or product names are trademarks or registered trademarks or their respective holders and are provided here solely in an informational manner.

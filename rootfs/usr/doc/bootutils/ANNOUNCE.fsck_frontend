@@ -1,0 +1,31 @@
+I have uploaded version 1.7 of my generic fsck/mkfs frond-end to
+sunsite.unc.edu and tsx-11.mit.edu.  Look for fsutil-1.7.tar.z in
+the usual places.  The following is an excerpt from the README.
+
+This is version 1.7 of my generic, front-end for fsck and mkfs.  This
+little utility takes the guess-work out of trying to remember the
+often cryptic name for a particular file system-specific utility.  In
+most cases, you can simply type 'fsck /dev/xyz' without regard to the
+file system type.  Mkfs is similarly supported, but is (IMO) of
+dubious value.  When invoked as fsck, it also supports a 'check all'
+option.
+
+Changes from version 1.6 to 1.7
+
+	Changed -V option to cause verbose output.  Using -V
+	more than once results in the same output but inhibits
+	execution of fs-specific programs (i.e. debug mode).
+
+	Look for file system-specific programs in /etc/fs first,
+	then in /etc and finally in the user's PATH.  Use this
+	to reduce some of the clutter in /etc.
+
+	Ignore ISO9660 file systems when checking all systems.
+
+	Allow file systems to be specified with either the device
+	name or the mount point.
+
+	Return meaningful exit codes.  See the manual pages for
+	details.
+
+David

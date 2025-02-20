@@ -1,0 +1,26 @@
+Here is yet another set of examples of the uses of the kerneld message channel.
+They might be seen as simple minded, but rather entertaining.
+
+The net result is that you now can create _any_ sound instead of a
+normal "beep", or create your own "Flying Linux screen blanker".
+
+Please make sure that the screen blanker cleans up after itself, and exits,
+when it receives SIGQUIT!
+
+Apply the patch, compile the "kdsound" daemon and install it together
+with your own "do_sound" in "/sbin".
+
+To make the "beeper" work automatically, just add this to your "/etc/rc.local",
+or just about anywhere, after the startup of "kerneld":
+	if [ -x /sbin/kdsound ]; then
+		/sbin/kdsound 2> /dev/console &
+	fi
+
+And; _you_ decide how the screen blanker should look...
+
+NOTE!  This is just an example of how it can be done!
+The _real_ support will be released later, although in principle it
+will look _very_ similar (but a lot nicer...)!
+
+
+Bjorn Ekwall in January 1996.

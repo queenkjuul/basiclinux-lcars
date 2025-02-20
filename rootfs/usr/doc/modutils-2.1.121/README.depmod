@@ -1,0 +1,43 @@
+(C) 1997 by Marcin Dalecki <dalecki@sub994.sub.uni-goettingen.de>
+
+********************************************************************************
+
+	depmod, modprobe -- kernel module administration utilities
+
+********************************************************************************
+
+Depmod  - is used for creating symbol dependences between stacked
+	(or better interdependent) modules.
+
+Modprobe - is the corresponding loading frontend, which uses the information
+	created by depmod.
+
+Those are the depmod and modprobe programs for the *new* modutils used by the
+Linux-2.1.18 and above kernels. This is a complete rewrite of the corresponding
+programs found formerly in the packages called modules-2.x.x. There is no
+support for the older kernels! therefore You will need FIRST to install at least the
+headers for the new kernel, before compiling those programs.
+
+The main advantages over the former programs called the same are:
+
+1.	Use C instead of C++.
+
+2. 	All comments are in english, altough my english is not-quite
+	perfect kind.
+
+3.	No reentrancy problems with string allocation.
+
+4.	Don't fold them into one executable.
+
+	This facilitates arbitrary renaming of the executables.
+
+5.	No arbitrary limits.
+
+6. 	Supposedly far more secure in usage. During the study of the originals
+	I found at least ONE BIG BACK HOLE similiar to the problems formerly
+	found with the mount programm, which made it possible for *every* local
+	user to gain root privileges. I'm not going to tell You where exactly...
+
+Good Luck!
+
+				Marcin

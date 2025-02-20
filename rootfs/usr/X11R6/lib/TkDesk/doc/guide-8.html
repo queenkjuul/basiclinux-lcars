@@ -1,0 +1,154 @@
+<HTML>
+<HEAD>
+<TITLE>TkDesk User's Guide: Frequently Asked Questions </TITLE>
+</HEAD>
+<BODY>
+<A HREF="guide-7.html">Previous</A>
+<A HREF="guide-9.html">Next</A>
+<A HREF="guide.html#toc8">Table of Contents</A>
+<HR>
+<H2><A NAME="s8">8. Frequently Asked Questions </A></H2>
+
+
+<P>This section is intended to give answers to the most frequently asked
+questions about TkDesk.  This file is derived from the emails I'm
+receiving, so if you think something is missing just tell me about it
+(<CODE>
+<A HREF="mailto:zzhibol@rrzn-user.uni-hannover.de">zzhibol@rrzn-user.uni-hannover.de</A></CODE>).</P>
+
+<H2><A NAME="apppos"></A> <A NAME="ss8.1">8.1 How can I change the position of the application bar?</A></H2>
+
+
+<P>You can drag the application bar around simply by holding down the
+Alt- or Meta-key and simultaneously pressing the left mouse button
+over the application bar. You can also invoke the
+&quot;Move...&quot; entry from the comet button's popup menu to do
+the same without having to press Alt/Meta.</P>
+<P>Since version 1.0b1 the configuration file "AppBar" sets also a
+variable named tkdesk(appbar,wm_managed) which can be used to have the
+apllication bar managed by the window manager, although this is
+usually not necessary.</P>
+
+
+<H2><A NAME="ss8.2">8.2 Can I have transparent icons?</A></H2>
+
+
+<P>No, but have a look at the answer to the next question.</P>
+
+
+<H2><A NAME="ss8.3">8.3 How can I change the background colour of the icons and desk items?</A></H2>
+
+
+<P>The background colour of icons used when the window manager iconifies
+a window can be set in the configuration file "System". The variable
+you are looking for is tkdesk(color,icon_background). By setting this
+variable to the same colour as your root window you can achieve the
+effect of transparent icons. You can define the colour either as a
+normal name (such as "grey", "blue") or in the form #rrggbb.</P>
+
+
+<H2><A NAME="ss8.4">8.4 How can I have a different set of desk items on each virtual screen? </A></H2>
+
+
+
+<H3>FVWM and similar or derived window managers</H3>
+
+
+<P>First, you have to set the variable
+<CODE>tkdesk(desk_items,wm_managed)</CODE> in the System config file to 1.
+Then you have to configure fvwm to not decorate windows of class
+<CODE>dsk_DeskItem</CODE>. For instance:
+<BLOCKQUOTE><CODE>
+<PRE>
+Style &quot;dsk_DeskItem&quot;    NoTitle, NoHandles, WindowListSkip, BorderWidth 0
+</PRE>
+</CODE></BLOCKQUOTE>
+</P>
+
+<H3>CDE window manager</H3>
+
+
+<P>As for FVWM, you first have to set the variable
+<CODE>tkdesk(desk_items,wm_managed)</CODE> in the System config file to 1.
+To tell the CDE window manager (dtwm) to not decorate desk items you
+have to add the following line to either the file Dtwm or .Xdefaults
+in your home directory, and then restart dtwm:
+<BLOCKQUOTE><CODE>
+<PRE>
+Dtwm*dsk_DeskItem*clientDecoration:  none
+</PRE>
+</CODE></BLOCKQUOTE>
+</P>
+
+
+
+<H2><A NAME="ss8.5">8.5 Binding to execute (export foo=bar; program;) doesn't work.</A></H2>
+
+
+<P>Yes, this is a bit tricky. What you need to do is the following:</P>
+<P>
+<BLOCKQUOTE><CODE>
+<PRE>
+dsk_exec sh -c {export foo=bar; program}
+</PRE>
+</CODE></BLOCKQUOTE>
+</P>
+
+
+<H2><A NAME="ss8.6">8.6 Composing characters doesn't work in TkDesk's editor.</A></H2>
+
+
+<P>Currently you have to edit the file cb_tools/bindings.tcl in TkDesk's
+library directory to make this work.  Locate the two lines containing
+the word &quot;XKB&quot;; all you need to do is to comment out the
+following lines by prepending a '#'.</P>
+
+
+<H2><A NAME="ss8.7">8.7 I'd like TkDesk to do this and that. How can I achieve this?</A></H2>
+
+
+<P>The first place to start are the various configuration files of TkDesk.
+These can be accessed either by the "TkDesk/Edit Config Files" menu
+of the file browser windows, or by the "Configuration" submenu of the
+popup menu of the very first button of the application bar of TkDesk.
+<CODE>:-)</CODE></P>
+<P>Since TkDesk uses Tcl as the language for its configuration, and these
+configuration files are simply "source"ed, you could add any sort of
+Tcl proc for instance to the configuration file "System". This proc
+would then be available in every other configuration file as well.
+With the set of commands provided by TkDesk, which are listed e.g.
+in the configuration file "Popups", TkDesk provides a very powerful
+platform for the user who knows Tcl.</P>
+
+
+<H2><A NAME="ss8.8">8.8 Is there a TkDesk mailing list? </A></H2>
+
+
+<P>Yes! Thanks to Chris Sterritt, there is a mailing list dedicated to
+TkDesk at mrj.com.  Just send a mail to
+<CODE>
+<A HREF="mailto:majordomo@mrj.com">majordomo@mrj.com</A></CODE>
+with an empty subject line and &quot;subscribe tkdesk&quot; as the
+message body. Please join!</P>
+
+
+<H2><A NAME="tcltk"></A> <A NAME="ss8.9">8.9 Where can I find out more about Tcl/Tk?</A></H2>
+
+
+<P>The official Tcl/Tk homepage is at
+<CODE>
+<A HREF="http://www.sunlabs.com/research/tcl">http://www.sunlabs.com/research/tcl</A></CODE>.
+The Tcl/Tk FAQs and lots of user-contributed software can be obtained
+from <CODE>
+<A HREF="ftp://ftp.neosoft.com/pub/tcl">ftp://ftp.neosoft.com/pub/tcl</A></CODE>.
+There is also a newsgroup dedicated
+to Tcl/Tk: <CODE>
+<A HREF="news:comp.lang.tcl">comp.lang.tcl</A></CODE>.</P>
+
+
+<HR>
+<A HREF="guide-7.html">Previous</A>
+<A HREF="guide-9.html">Next</A>
+<A HREF="guide.html#toc8">Table of Contents</A>
+</BODY>
+</HTML>

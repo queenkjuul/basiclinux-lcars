@@ -1,0 +1,32 @@
+
+
+Here's some quick documentation on /set format_*'s
+
+Most of the format's can be overridden by /on's.
+A format can be deleted, which effectively get's rid of that message period.
+ie   /set -format_Away   internal away is effectively cancelled.
+
+Colors selections.
+
+%W %w	Bold while and white
+%K %k	Bold black and black
+%G %g	Bold Green and green
+%Y %y	Bold Yellow and yellow
+%C %c	Bold Cyan and Cyan
+%B %b	Bold Blue and blue
+%P %p	Bold Purple or Magenta and purple or Magenta
+%M %m	"	"	"	"	"	"
+%R %r	Bold Red and red
+%n	No color or color off.
+
+All alias's and ircii $ variables can be used within a format.
+
+$[-30.]0  will pad left a variable using . instead of spaces for the pad.
+
+To figure out what a /set format* actually will show you set the format
+variable to $0-  this will show you the parameters returned. There are a few
+instances of of a invisible character being returned. These will disappear
+as I rediscover them. I needed them as a place holder and a space or other
+character just wouldn't do it.
+ 
+

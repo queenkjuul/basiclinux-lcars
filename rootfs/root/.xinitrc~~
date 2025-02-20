@@ -1,0 +1,5 @@
+# wallpaper: replace blank.xpm with image of your choice 
+xli -background NavyBlue -onroot /usr/share/images/blank.xpm 
+
+exec jwm
+

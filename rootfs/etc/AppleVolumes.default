@@ -1,0 +1,30 @@
+# This file looks empty when viewed with "vi".  In fact, there is one
+# '~', so users with no AppleVolumes file in their home directory get
+# their home directory by default.
+# 
+# volume format:
+# path [name] [casefold=x] [codepage=y] [options=z,l,j] \
+#   [access=a,@b,c,d] [dbpath=path] [password=p]
+#
+#
+# casefold options:
+# tolower    -> lowercases names in both directions
+# toupper    -> uppercases names in both directions
+# xlatelower -> client sees lowercase, server sees uppercase
+# xlateupper -> client sees uppercase, server sees lowercase
+#
+# access format:
+# user1,@group,user2  -> restricts volume to listed users/groups
+#
+# miscellaneous options
+# prodos              -> make compatible with appleII clients.
+# crlf                -> enable crlf translation for TEXT files.
+# noadouble           -> don't create .AppleDouble unless a resource
+#                        fork needs to be created.
+#
+# codepage=filename   -> load filename from nls directory.
+# dbpath=path         -> store the database stuff in the following path.
+# password=password   -> set a volume password (8 characters max)
+#
+# 
+~

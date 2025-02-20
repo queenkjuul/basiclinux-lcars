@@ -1,0 +1,37 @@
+
+On laptop computers, the APM support provides access to battery status
+information and may help you to conserve battery power, depending on your
+laptop and the APM implementation.
+
+Rik Faith <faith@acm.org> has transferred maintenance of the Linux apmd
+package over to me, Avery Pennarun <apenwarr@worldvisions.ca> and I'm
+finally getting around to making a release with the many updates we've
+collected since the last release back in 1996.
+
+Here's what apmd can do:
+
+	- apmd(8): logs the battery status to syslog every now and then and
+	  handles background power management tasks;
+	
+	- apm(1): a command-line tool to print the current battery status or
+	  suspend the computer;
+
+	- xapm(1x): provides a battery meter for X;
+	
+	- libapm.a: a library for writing similar APM applications.
+
+The new 3.0beta versions add a new feature to apmd:  it can run arbitrary
+commands (like 'cardctl suspend') when you suspend or resume your system. 
+It also supports BIOS clocks that are set to UTC time.
+
+This release also fixes some small bugs that were in apmd-2.4.  Since it's a
+beta release, I expect it adds some new bugs as well.  Please help us test
+it out!
+
+The new home of apmd is at:
+
+		http://www.worldvisions.ca/~apenwarr/apmd/
+		
+Have fun,
+
+Avery

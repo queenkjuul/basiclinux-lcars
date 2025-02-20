@@ -1,0 +1,161 @@
+# This is my .ircrc file.  Put here as an example.
+# updated for 2.2.2
+
+# Give my primary window a name 
+window name Main
+
+# Aliases that I use every now and again
+alias wchannel win channel $0 name $0
+alias wjoin win new channel $0 name $0
+alias re msg $,
+alias talkto window new name $0;query $0
+alias reply talkto $* $,
+alias m msg
+alias finger exec finger
+alias unalias alias -$0
+alias clock set clock
+alias cl clear
+alias mode //mode $C
+alias oops msg $. Sorry, that wasn't meant for you.;msg $0 $B
+alias swap window swap last
+alias this ^window level crap;$*;wait;^window refnum Main level all
+alias names //names -pub
+alias list //list -pub
+alias unset set -$0
+
+# Some very handy things. 
+# This saves some WHO information for later use
+on -who * ^assign last_who_nick $1;^assign last_who_channel $0
+# This puts the last WHOIS nick into last_whos 
+on -311 * ^assign last_whois $1
+# This puts the last signedon person into last_notify 
+on -notify_signon * ^assign last_notify $0
+
+# The following key bindings will erase whatever is in the input line 
+# They are *extremely* handy little buggers 
+bind ^U erase_line
+bind ^Xm parse_command type ^U/msg $last_who_nick 
+bind ^Xj parse_command type ^U/join $last_who_channel 
+bind ^X^M parse_command type ^U/msg $last_whois 
+bind ^X^N parse_command type ^U/msg $last_notify 
+bind ^X. parse_command type ^U/msg $. 
+bind ^X, parse_command type ^U/msg $, 
+
+# My Key bindings 
+bind ^X meta2 
+bind ^L parse clear;//last - -public 5
+bind ^R parse /!$"Search: "
+bind meta1-[ meta2
+bind meta1-s unstop_all_windows
+bind meta1-= backward_history
+bind meta2-A backward_history
+bind meta2-B forward_history
+bind meta2-D backward_character
+bind meta2-C forward_character
+bind ^O next_window
+bind meta1-o previous_window
+bind ^X^L refresh
+bind meta1-^Z stop_irc
+bind ^Z parse away I'm ^Zing... be right back...;type ^[^Z
+bind ^X^Z parse away I'm ^Zing... be right back...;type ^[^Z
+bind ^X2 parse window new
+bind ^X^D parse window kill
+bind ^Xd parse window hide
+bind ^X1 parse window hide_others
+bind ^Xn parse names -min $"Users: "
+bind ^Xl parse list -min $"Users: "
+bind ^Xw parse who $T
+bind ^Xt parse topic $"Topic: "
+bind ^X^W parse whois $,
+bind ^X^J parse whois $:
+
+# ON functions to format things the way I like them 
+on ^notice * echo $0 $1-
+on ^mail 1 echo *** You have $0 new mail message, total of $1
+on ^mail * echo *** You have $0 new mail messages, total of $1
+on ^names * echo *** $([$CHANNEL_NAME_WIDTH]0) $1-
+on ^list * echo *** $([$CHANNEL_NAME_WIDTH]0) $[5]1 $2-
+on ^flood *
+on flood ^irciihelp
+on flood ^nickserv
+on flood ^msgserv
+on flood ^infoserv
+on ^disconnect * server 0
+
+on ^idle 5 away I've wandered off again...
+on ^idle 10 away I'm still not back?  What's with me today...
+on ^idle 20 away Well, I must be long gone.
+
+# The following are used to start up a shell in an IRCII window 
+# I suggest looking the shell script in the scripts directory 
+# Shell stuff 
+# Shell stuff 
+alias shell if (shell_flag)
+	{window show shell}
+	{
+		window new name Shell
+		exec -name shell -win exec ircflush $SHELL
+		query %shell
+		^assign shell_flag 1
+	}
+on ^exec_exit shell window refnum shell kill;assign shell_flag 0
+on ^window_kill shell exec -close %shell
+
+# These two aliases let you replace ASSIGN'd nicks in MSGs and QUERYs 
+# For example, if you do ASSIGN BC BigCheese 
+# Then you can do MSG BC Hello 
+alias msg if ( [$($0)] ) {//msg $($0) $1-} {//msg $0 $1-}
+alias query if ( [$($0)] ) {//query $($0)} {//query $0-}
+
+# This keeps track of the nicks of people you MSG.  You can then
+# just hit the tab key ^I to flip through the list of people
+# you sent MSGs to.  
+load tabkey
+
+# MUD compatabilty fun 
+on ^public_notice * echo $0 $2-
+on ^send_notice +* echo $N $1-
+on ^send_notice #* echo $N $1-
+on ^send_notice 0* echo $N $1-
+on ^send_notice 1* echo $N $1-
+on ^send_notice 2* echo $N $1-
+on ^send_notice 3* echo $N $1-
+on ^send_notice 4* echo $N $1-
+on ^send_notice 5* echo $N $1-
+on ^send_notice 6* echo $N $1-
+on ^send_notice 7* echo $N $1-
+on ^send_notice 8* echo $N $1-
+on ^send_notice 9* echo $N $1-
+on ^send_notice "-*" echo $N $1-
+alias me notice $C
+
+# My settings 
+set scroll on
+set shell bin/csh
+set shell_flags -fc
+set help_window on
+set lastlog 100
+set lastlog_level all -crap
+set shell_limit 0
+set flood_after 3
+set flood_warning on
+set auto_unmark_away on
+set send_ignore_msg on
+set beep_when_away 3
+set notify on
+set input_prompt $T> 
+set indent on
+set mail on
+set beep_max 3
+set -continued_line
+set send_ignore off
+set history_file /afs/andrew/usr3/ms5n/.irchist
+set status_format  *%R* IRCII %V:   %H%N%*%S  %C%+%Q  %O%M%A%T%W ***
+set status_overwrite (Overwrite) 
+set status_away  (Away)
+set status_query  Query %Q
+set status_clock  %T
+set status_mail  (Mail:%M)
+set userinfo I'm on my way, I don't know where I'm going.
+set always_split_biggest on
+set suppress_server_motd on

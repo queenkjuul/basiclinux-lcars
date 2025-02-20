@@ -1,0 +1,52 @@
+#!/bin/sh
+
+#
+# Check for properties file
+#
+if [ ! -r "$JAVA_HOME/lib/appletviewer.properties" ] ; then
+    echo "Could not read properties file: $JAVA_HOME/lib/appletviewer.properties" 1>&2 
+    exit 1
+fi
+
+#
+# Create .hotjava directory
+#
+if [ ! -d "$HOME/.hotjava" ] ; then
+    echo "Creating $HOME/.hotjava directory"
+    /usr/bin/mkdir -p $HOME/.hotjava
+fi
+
+#
+# source a script that extracts RUNTIME_ARGS and APP_ARGS
+#
+. `dirname $0`/.extract_args
+
+#
+# Strip -debug from APP_ARGS
+#
+debugging=false
+for a in $APP_ARGS; do
+   case "$a" in 
+    -debug) debugging=true  ;;
+    *)      args="$args $a" ;;
+   esac
+done
+
+if [ -n "$NS_JAVA" ]
+then
+   progsuffix=_ns
+elif [ -n "$DYN_JAVA" ]
+then
+   progsuffix=_dyn
+fi
+
+#
+# Run the applet viewer. We hardwire the debugger's class -- oh, well.
+#
+if test "$debugging" = "true"
+then
+    `dirname $0`/java_g$progsuffix $RUNTIME_ARGS sun.tools.ttydebug.TTY \
+                                          sun.applet.AppletViewer ${args}
+else
+    `dirname $0`/java$progsuffix $RUNTIME_ARGS sun.applet.AppletViewer $args
+fi

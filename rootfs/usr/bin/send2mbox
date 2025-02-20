@@ -1,0 +1,7 @@
+#!/bin/sh
+echo -n "From default@address " >> ~/mail/outbox
+date +'%a %b %e %T %Y' >> ~/mail/outbox
+cat | sed 1d >> ~/mail/outbox
+echo >> ~/mail/outbox
+echo >> ~/mail/outbox
+

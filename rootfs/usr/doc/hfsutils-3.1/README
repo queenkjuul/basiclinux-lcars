@@ -1,0 +1,107 @@
+
+hfsutils - tools for reading and writing Macintosh HFS volumes
+Copyright (C) 1996, 1997 Robert Leslie
+
+$Id: README,v 1.3 1997/08/13 23:09:09 rob Exp $
+
+===============================================================================
+
+What is this?
+
+  HFS is the "Hierarchical File System" used on modern Macintosh computers.
+  With this package, you can read and write Macintosh-formatted media such as
+  floppy disks, CD-ROMs, and SCSI hard disks on most UNIX platforms. You can
+  also format raw media into an HFS volume.
+
+  This package contains a number of different tools:
+
+    * Several command-line programs (hmount, hls, hcopy, et al.)
+    * A Tk-based front-end for browsing and copying files through a
+        variety of transfer modes (MacBinary, BinHex, text, etc.)
+    * A Tcl package and interface for scriptable access to volumes
+    * A C library for low-level access to volumes
+
+How is this different from other HFS packages?
+
+  This package attempts to provide a portable, free implementation of
+  routines for accessing HFS volumes. It is implemented as a set of user-level
+  tools to provide maximum portability.
+
+  The command-line programs are intended to be used in the same vein as the
+  Mtools command-line programs used to access MS-DOS filesystems.
+
+  The graphical front-end provides point-and-click access to Macintosh
+  volumes, which is often more convenient than the command line.
+
+  The Tcl interface offers a scriptable HFS "shell" that is more efficient
+  than the external command-line programs and allows for greater
+  extensibility.
+
+  The C library can be linked with other programs wanting to manipulate
+  Macintosh files in their native format. For example, an implementation of
+  the Macintosh Resource Manager could be built on top of this library to
+  provide seamless access to data objects contained within the resource forks
+  of Macintosh files.
+
+===============================================================================
+
+Notes on this release
+
+  This release uses GNU autoconf to automatically configure the software
+  for installation and use on your system. This means you should not have
+  to modify any files by hand to get the software to compile -- if you do,
+  please let me know so I can fix it for a future release.
+
+  For general installation instructions, please read the `INSTALL' file.
+
+  There are a few special options you can give the `configure' program that
+  you should know about:
+
+      --with-tcl            build the Tcl/Tk components
+      --with-tk             build the Tk-based X interface `xhfs'
+      --disable-cli         do not build or install the command-line utils
+      --enable-devlibs      enable installation of the developer libraries
+
+  To build the Tcl tools `hfssh' and `hfs', you must use `--with-tcl'.
+  To build the X interface `xhfs', you must use `--with-tcl --with-tk'.
+
+  In order to build the Tcl tools you must have Tcl 7.6 already installed
+  on your system. To build the X interface, you must have Tk 4.2 installed
+  as well. (You may be able to use other versions of Tcl or Tk, but your
+  mileage will vary.)
+
+  If `configure' is unable to locate the directories containing your Tcl or
+  Tk header or library files, you will have to supply them. For example:
+
+      ./configure --with-tcl=/usr/local/tcl/include  \
+                  --with-tcl-libs=/usr/local/tcl/lib
+
+  You can use similar options `--with-tk=DIR' and `--with-tk-libs=DIR'.
+  When in doubt, wait and see if `configure' complains.
+
+  By default, the command-line utilities (hmount, hls, hcopy, etc.) are
+  always built and installed. If you don't want them, use `--disable-cli'.
+
+  If you want to install the developer libraries (libhfs.a, hfs.h) as well
+  as the programs, use `--enable-devlibs'. The libraries are not installed
+  by default.
+
+  The `INSTALL' file contains the rest of the details you will need to
+  compile and install the software. Please read it!
+
+===============================================================================
+
+Contacting the author
+
+  Please see the `COPYRIGHT' file for copyright and warranty information.
+
+  Send comments, bug reports, suggestions, patches, etc. to:
+
+    * Robert Leslie <rob@mars.org>
+
+  See also the HFS Utilities home page on the Web:
+
+    * http://www.mars.org/home/rob/proj/hfs/
+
+===============================================================================
+

@@ -1,0 +1,8 @@
+/* XPM */
+static char * paintF_xpm[] = {
+"14 3 2 1",
+" 	c #79E77DF779E7 m black s B",
+".	c #000000000000 m black s C",
+"              ",
+" ............ ",
+"              "};

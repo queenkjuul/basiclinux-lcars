@@ -1,0 +1,5 @@
+# When the ESC key is not in the left corner,
+# maybe the ` key is. Then use ` as META1!
+#
+bind ` meta1
+bind meta1-` type `

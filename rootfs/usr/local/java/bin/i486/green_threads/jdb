@@ -1,0 +1,5 @@
+#! /bin/sh
+#
+# Shell wrapper to startup up the Java Debugger's TTY classes.
+
+$JAVA_HOME/bin/java_g sun.tools.ttydebug.TTY $@

@@ -1,0 +1,13 @@
+/* XPM */
+static char * paintS_xpm[] = {
+"7 7 3 1",
+" 	c #FFFFFFFFFFFF m white s A",
+".	c #79E77DF779E7 m black s C",
+"X	c #000000000000 m black s E",
+"   .   ",
+"  ...  ",
+"  .X.  ",
+" ..X.. ",
+" .XXX. ",
+"..XXX..",
+"......."};

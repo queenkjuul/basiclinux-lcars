@@ -1,0 +1,13 @@
+prefix=/usr/local
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+VERSION=2.1.99
+driverdir=$(libdir)/$(PACKAGE_TARNAME)/$(PACKAGE_VERSION)
+
+Name: libgphoto2
+Description: Library for easy access to digital cameras
+Requires:
+Version: 2.1.99
+Libs: -L${libdir} -lgphoto2 -lgphoto2_port -lm
+Cflags: -I${includedir}/gphoto2 -I${includedir}

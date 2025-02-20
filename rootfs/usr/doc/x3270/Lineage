@@ -1,0 +1,113 @@
+x3270 Lineage
+
+Here is the official copyright notice for x3270 3.1:
+
+     Modifications Copyright © 1993, 1994, 1995 by Paul Mattes.
+     Original X11 Port Copyright © 1990 by Jeff Sparkes.
+     Permission to use, copy, modify, and distribute this software and its
+     documentation for any purpose and without fee is hereby granted,
+     provided that the above copyright notice appear in all copies and
+     that both that copyright notice and this permission notice appear in
+     supporting documentation.
+
+     Copyright © 1989 by Georgia Tech Research Corporation, Atlanta, GA
+     30332.
+     All Rights Reserved. GTRC hereby grants public use of this software.
+     Derivative works based on this software must incorporate this
+     copyright notice.
+
+The Georgia Tech fonts (the fonts with the name "gt" in them), carry an
+additional notice:
+
+     Copyright © 1990 by the Georgia Institute of Technology.
+     All rights reserved except for those rights explicitly mentioned
+     below.
+     Permission is granted to distribute freely or to modify and
+     distribute freely any materials and information contained herein as
+     long as the above copyright and all terms associated with it remain
+     intact.
+
+The 3270-20 font is derived from an NCD font, so it carries an additional
+notice:
+
+     Copyright © 1989-1991 Network Computing Devices, Inc.
+     NCD is a registered trademark of Network Computing Devices, Inc.
+
+     Permission to use, copy, modify, and distribute this software and its
+     documentation for any purpose and without fee is hereby granted,
+     provided that the above copyright notice appear in all copies and
+     that both that copyright notice and this permission notice appear in
+     supporting documentation, and that the name of NCD may not be used in
+     advertising or publicity pertaining to distribution of the software
+     without specific, written prior permission. NCD makes no
+     representations about the suitability of this software for any
+     purpose. It is provided ``as is'' without express or implied
+     warranty.
+
+     NCD DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING
+     ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS, IN NO EVENT
+     SHALL NCD BE LIABLE FOR ANY SPECIAL, INDIRECT OR CONSEQUENTIAL
+     DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR
+     PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER
+     TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+     PERFORMANCE OF THIS SOFTWARE.
+
+The ComplexMenu sources are derived from the MIT X11R5 Athena SimpleMenu
+widget, and carry an additional notice:
+
+     Copyright © 1989 Massachusetts Institute of Technology
+
+     Permission to use, copy, modify, distribute, and sell this software
+     and its documentation for any purpose is hereby granted without fee,
+     provided that the above copyright notice appear in all copies and
+     that both that copyright notice and this permission notice appear in
+     supporting documentation, and that the name of M.I.T. not be used in
+     advertising or publicity pertaining to distribution of the software
+     without specific, written prior permission. M.I.T. makes no
+     representations about the suitability of this software for any
+     purpose. It is provided "as is" without express or implied warranty.
+
+     M.I.T. DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE,
+     INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS, IN
+     NO EVENT SHALL M.I.T. BE LIABLE FOR ANY SPECIAL, INDIRECT OR
+     CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS
+     OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE
+     OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE
+     USE OR PERFORMANCE OF THIS SOFTWARE.
+
+What this means is that you (whomever you may be) may use x3270 3.1 for
+whatever purpose you desire except selling it, and the only restriction is that
+you include the above notices in each copy or derivative work you distribute.
+
+x3270 3.0.x comes from several sources:
+
+                                   3270tool
+                                      |
+                                      V
+                                   x3270 1.2
+                                      |
+              +-----------------------+------------------------+
+              |                       |                        |
+              V                       V                        V
+ x3270 1.2-cutpaste-iso8859-1     x3270 2.65               x3270 3.1
+                                                               |
+                                                               V
+                                                         [you are here]
+
+The original work was 3270tool, a 3270 emulator for Suntools (Sun's original
+proprietary windowing environment). This was developed by Robert Viduya at
+Georgia Tech, and is why GTRC's copyright notice is first.
+
+3270tool was then ported to X11R4 by Jeff Sparkes, and given the name "x3270."
+This is why his name is second.
+
+x3270 3.1 started with Jeff's x3270 version 1.2, and was made very much bigger
+by Paul Mattes, with contributions and suggestions by a number of users from
+the net. This is the version you are looking at right now.
+
+Given the spirit of creativity on the net (and the availability of source code)
+there are a number of other versions of x3270, all based on Jeff's code, most
+notably v1.2-cutpaste-iso8859-1 and v2.65. x3270 3.1 is a separate line of
+development from these other versions. Patches for those versions do not apply
+to x3270 3.1, and some of the features found in those versions may not be in
+3.1. X resource definitions are generally not compatible, either.

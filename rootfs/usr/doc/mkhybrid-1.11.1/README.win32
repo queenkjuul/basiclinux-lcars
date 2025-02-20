@@ -1,0 +1,11 @@
+mkhybrid can be complied on Win95/NT4 using Cygnus' GNU-Win32 -
+available from:
+
+	http://www.cygnus.com/misc/gnu-win32/
+
+To build, start a "bash" shell (open a DOS/Command window, cd to the required
+directory and type "bash"), and type "./configure" and "make"
+
+A Win32 mkhybrid binary is available from:
+
+	ftp://ftp.ge.ucl.ac.uk/pub/mkhfs/README.mkhybrid-win32

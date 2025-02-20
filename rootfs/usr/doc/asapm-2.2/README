@@ -1,0 +1,101 @@
+asapm is Advanced Power Management monitor utility for X Windows
+Copyright (c) 1998  Albert Dorofeev <Albert@mail.dma.be>
+For the updates check http://bewoner.dma.be/Albert/linux/
+
+Description:
+============
+
+This is an AfterStep look & feel Advanced Power Management (APM) 
+monitor for laptops and notebook PCs running Linux or FreeBSD 
+and X Windows.
+
+I have a laptop myself and I ran xapm when I used fvwm window
+manager. Then I switched over to AfterStep which looks really
+beautiful. (see http://www.afterstep.org/). I wanted some
+nice applet to put it in my Wharf. Well, to make the story
+short, I did not find any that I liked. The best bet was then
+to write my own. So, I just grabbed a X book and tried.
+
+The interface evolved with the time and I am finally beginning
+to like the way it looks. I may stop writing new versions for
+a while now. Let me know if there are any neat options you'd
+like to see though.
+
+Basically, the tool shows you the following:
+- The bar-like indicator of the charge left in the battery
+  which appears on the left side and is battery-shaped.
+  The bottom part shows the charge left in the battery.
+  The colors may be customized.
+- The top line works as a pair of indicators. You see there
+  a battery outline which is "green" when the battery status
+  is high, "yellow" when the battery status is low, and
+  "red" when the battery status is critical. The colors may
+  be customized. The definition of the high, low, critical
+  status may be mine :-) or APM daemon's - you can choose.
+  The AC plug outline is black while you run the computer
+  on the battery and it turns "green" when your computer
+  is connected to the mains.
+- The second line is the charge left in the battery in percent.
+  If the APM daemon does not return a good value for it, the
+  display is disabled.
+- The third line is the estimate of the time left before the
+  complete discharge of the battery. This estimate is either
+  provided by the APM daemon or is calculated by this tool
+  itself. When there is no estimate available the display is
+  disabled.
+
+The tool parses the resource files if such are available and you
+can specify certain commands to be executed in reaction to certain
+APM events. For example, you may use hdparm (8) to change the 
+timeouts for the hard disk spin-down when you switch to/from the
+AC power. Just be careful with that tool, okay? You can also
+ask asapm to suspend the computer when the power reaches down to,
+say, 10% (use apm (1)) in case you forget to shut down your computer 
+and go to sleep (talking from my own experience here :-).
+The default location for the resource file ~/.asapmrc (what
+a surprise!) and can be changed with -rc option.
+
+Actually, there are more customization options then I personally want. 
+There are tons of them. Check the man page for the details 
+(nroff -man asapm.man | more) or run asapm -h for a brief description.
+The syntax of the asapm resource file is described in there too.
+
+The program may be used directly or in the Afterstep "wharf". It also 
+supports the WindowMaker docker (-withdrawn option). It may be used 
+in all other window managers as well. I tried it with fvwm2 and it looks
+quite nice sitting in a corner as an icon.
+
+You may want to have a look in the CHANGES file for the history of updates.
+
+Credits:
+========
+
+Great many thanks to 
+	Jim Knoble <jmknoble@pobox.com>
+	Brett Taylor <brett@peloton.physics.montana.edu>
+	Brian Handy <handy@physics.montana.edu> 
+	John Schweitzer <thanatos@chaeron.dyn.ml.org>
+	Dagmar d'Surreal <dagmar@estates.ml.org>
+for their bright ideas, new features, improved looks, testing, 
+patches and moral support!
+
+The original inspiration from the apmx tool by Jeff Chua <jchua@fedex.com>. 
+There is some code taken from his source - the "/proc/apm" access.
+The code for FreeBSD APM device access comes from apm tool by 
+Tatsumi Hosokawa <hosokawa@jp.FreeBSD.org>.
+The ideas for the digits on the screen come from asclock by 
+Beat Christen <bchriste@iiic.ethz.ch> and wmapm by 
+Chris D. Faulhaber <jedgar@speck.ml.org>.
+
+Distribution:
+=============
+
+The application and the source code are under GPL. See LICENSE 
+file for details.
+
+Naturally, I would like to hear of all changes and improvements 
+made to this utility.
+
+Enjoy and may the source be with you,
+Albert "Tigr"
+

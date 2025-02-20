@@ -1,0 +1,142 @@
+Mon Feb  2 15:50:34 GMT 1998  James Pearson <j.pearson@ge.ucl.ac.uk>
+
+	Version 1.11.1
+
+	Fixed memory bug when used without any HFS options
+
+	Joliet names are now truncated and illegal characters filtered out
+
+Fri Jan 16 17:09:48 GMT 1998  James Pearson <j.pearson@ge.ucl.ac.uk>
+
+	Version 1.11
+
+	Changed version numbering to be the same as mkisofs
+
+	Code no longer considered beta level
+
+	Minor changes to allow the code to be complied and run
+	on Win95/NT using Cygnus' GNU-Win32 (available from
+	http://www.cygnus.com/misc/gnu-win32/)
+	
+Thu Dec  4 17:17:45 GMT 1997  James Pearson <j.pearson@ge.ucl.ac.uk>
+
+	Version 0.49b
+
+	Fixed an HFS bug that caused a failure with directory names that
+	had special AUFS characters
+
+	Fixed mkisofs bug in eltorito.c that wrote warning messages
+	to stdout not stderr
+
+	Code no longer considered alpha level
+
+Thu Nov 27 19:00:02 GMT 1997  James Pearson <j.pearson@ge.ucl.ac.uk>
+
+	Version 0.48a
+
+	Added Apple's extensions to ISO9660 that can be used instead of
+	the HFS options (see README.mkhybrid for more details).
+
+	Added more verbose HFS error messages.
+
+	Changed the Joliet option flag to -J (-j still works) to be
+	compatible the with next release of mkisofs (v1.12)
+
+Wed Oct 15 11:16:21 BST 1997  James Pearson <j.pearson@ge.ucl.ac.uk>
+
+	Version 0.47a
+
+	Fixed bug that prevented volume_space_size not being set in the
+	PVD (or SVD)
+	
+Mon Oct  6 15:46:24 BST 1997  James Pearson <j.pearson@ps.ucl.ac.uk>
+
+	Version 0.46a
+
+	Small Joliet bug fix - source directories that are not readable
+	are set to empty ordinary files in the ISO9660 filesystem - this
+	is now true for the Joliet directory (partially responsible
+	for NT4 having problems with CDs where this happened)
+
+	Minor documentation updates.
+
+Mon Sep 15 14:15:11 BST 1997  James Pearson <j.pearson@ps.ucl.ac.uk>
+
+	Version 0.45a
+
+	Attempt to prevent the HFS Catalog file growing (see
+	"Implementation" in README.mkhybrid for more details)
+	This is only likely to be a problem where folders have lots
+	of small files.
+
+Mon Aug 18 12:00:24 BST 1997  James Pearson <j.pearson@ps.ucl.ac.uk>
+
+	Version 0.44a
+
+	If the directories were deeper than 8 and the -D flag was not
+	used, then the "rr_moved" directory was not added to the Joliet
+	directory tree. This has now been fixed - but one day, the deep
+	Joliet directories may not have to be relocated ...
+
+	Fixed memcmp problem with possible uninitialised memory in
+	j_compare_paths(), which *might* cause incorrect Joliet directory
+	sort order
+
+Wed Aug 13 14:58:56 BST 1997  James Pearson <j.pearson@ps.ucl.ac.uk>
+
+	Version 0.43a
+
+	Fixed bug for incorrect Joliet path table size
+
+	Fixed some old minor mkisofs bugs (TRANS.TBL not having a
+	version number by default and incorrect date in the PVD).
+
+Mon Aug 11 17:17:07 BST 1997  James Pearson <j.pearson@ps.ucl.ac.uk>
+
+	Version 0.42a
+
+	Now will not try to create the HFS "Desktop DB" and "Desktop DF"
+	if they already exist when used with the HFS options.
+
+	Fixed a serious bug in the hfs code that truncated some files.
+
+	"TRANS.TBL" was missed out of the Joliet directory if the -T
+	option was given (previously an empty file with no name was used
+	which could cause problems on NT 4)
+
+Fri Aug  8 10:19:46 BST 1997  James Pearson <j.pearson@ps.ucl.ac.uk>
+
+	Version 0.41a
+
+	Fixed bug which created invalid HFS/ISO9660 volumes if the -j (Joliet)
+	option was not used
+
+Mon Aug  4 15:08:43 BST 1997  James Pearson <j.pearson@ps.ucl.ac.uk>
+
+	Version 0.4a
+
+	Added (partial?) Joliet support.
+
+	Now based on mkisofs v1.11
+
+Tue Jul 29 11:57:14 BST 1997  James Pearson <j.pearson@ps.ucl.ac.uk>
+
+	Version 0.32a
+
+	Allocation sizes improved to cut down on wasted space. Now uses
+	the HFS "allocation" size rounded up to the nearest 2048 bytes.
+	Savings can be significant with a large volume containing lots
+	of smallish files.
+
+Wed Jul 23 15:36:08 BST 1997  James Pearson <j.pearson@ps.ucl.ac.uk>
+
+	Version 0.31a
+
+	Deep directories (greater than RR_relocation_depth) cause core
+	dump in "copy_to_mac_volume" as the relocated directory was not
+	marked as an HFS folder. Fixed by putting deep HFS folders in
+	their correct location. 
+
+Mon Jul 21 15:50:05 BST 1997  James Pearson <j.pearson@ps.ucl.ac.uk>
+
+	Version 0.3a, first public release.

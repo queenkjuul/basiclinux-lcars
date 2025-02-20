@@ -1,0 +1,6 @@
+#!/bin/sh
+[ -e /dev/mouse ] || Xsetup
+
+set -- `cat /etc/Xconfig`
+exec Xvesa -screen $1 -$2 -ac 
+

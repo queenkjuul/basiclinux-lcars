@@ -1,0 +1,40 @@
+TODO for next version:
+----------------------
+
+
+
+TODO Medium Term:
+-----------------
+
+6. Add Chris´s tar file browser
+7. Complete keyboard-handling
+8. Count down number of files during copying, moving etc.
+9. Have site-wide config files, coyp to ~/.tkdesk only if changed.
+15. "scroll-while-typing" (see item 46)
+23. Make output viewer configurable
+33. Use "file" command output as another file-type criteria for popups etc.?
+35. Configurable dialog icons
+36. Saveable command lines on a file-per-file basis.
+37. Non-coupled file listboxes in the browser window.
+40. Message bar above appbar.
+41. "locate"-support für "Find Files" (Suggestions: Uli Emmerichs)
+42. Make file lists (columns, widths etc.) configurable
+43. Icon "shelf" (Kenn Persinger)
+44. NLS
+45. Add "Append" option and "Safe" button to Periodic Execution (Maan Hamze)
+46. "Highlighting": typing "a" highlights all objects starting with [Aa]
+
+
+Long Term: (ie. post 1.0 versions)
+-----------
+
+1. Configuration from within TkDesk, through nice'n'friendly dialog boxes.
+2. Transparent Tar and FTP access (similar to Midnight Commander).
+8. Remove dragndrop window? Info via cursor?
+9. Switch to [incr tcl] 2.0!
+10. A .trash directory in each directory?
+11. Windoze like directory tree.
+12. Offix DnD?
+13. Full iconic file lists.
+14. Quote key for editor (to allow ^L etc.)
+16. Undo'able file operations

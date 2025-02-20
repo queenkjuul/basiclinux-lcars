@@ -1,0 +1,121 @@
+
+INSTALL                        TkDesk 1.0                       26.02.1998
+--------------------------------------------------------------------------
+
+ 	        Building and Installation of TkDesk 1.0
+
+
+This file describes how to compile and install the source release of
+TkDesk.  Linux users may find precompiled dynamic or static (not
+requiring Tcl/Tk) binaries at the TkDesk homepage:
+http://people.mainz.netsurf.de/~/bolik/tkdesk/
+
+
+Requirements
+------------
+
+If you have to (or want to) compile TkDesk yourself, you'll need either
+Tcl/Tk 7.5/4.1 , or better 7.6/4.2 installed on your system.  Tcl/Tk 8.0
+is not supported yet.  It will be once [incr Tcl] supports it.
+
+If you don't have the right version of Tcl/Tk installed yet you can get
+it from ftp://ftp.smli.com/pub/tcl or any mirror site.  The files to
+download are tcl7.6p2.tar.gz and tk4.2p2.tar.gz.
+
+
+Compilation
+-----------
+
+To compile TkDesk you first have to create the Makefiles for your system
+by running "./configure".  If you don't want to install TkDesk underneath
+/usr/local, which is the default, do "./configure --prefix=<path>".
+
+When configure exits (successfully), run "make".
+
+If you get an error message saying that "ranlib" could not be found:
+This error is ignored by make, and you can safely do the same. Some
+systems require archives to be ranlib'ed, others don't.
+
+Linux RedHat users:
+There may be a missing symbolic link that you have to create yourself
+to link TkDesk.  This is the procedure suggested by David Scott:
+
+   1) Make sure you have /lib/libdl.so.1
+   2) Run /sbin/ldconfig
+   3) cd /lib
+   4) ln -s libdl.so.1 libdl.so
+   5) Try compiling again (I think it worked for me!)
+
+
+Test Drive
+----------
+
+If you'd like to have a look at TkDesk when make is finished but
+before installing it, do the following:
+
+   1) Comment out the 6th line in the file tkdesk, that's the one
+      beginning with "set tkdesk(library) ..." by putting a "#" in
+      the first column.
+   2) Start tkdesk with the command "./tkdesksh tkdesk -default"
+
+   
+Installation
+------------
+
+Just issue the command "make install" to install the TkDesk binaries and
+scripts, the Tcl library, and the manual pages. Note that you may have
+to become the root user first to gain write access to the installation
+directories.
+
+And that's it! You now should be able to start TkDesk from the command
+line by typing "tkdesk".  The principal rule then is to click on
+everything with all your mouse buttons (not always simultaneously though :-)).
+
+
+Where To Go From Here
+---------------------
+
+Since 1.0b4 there is a short "Quick Start Guide" available that's
+automatically displayed when TkDesk is run for the first time.
+It's also available from the browser window's "Help" menu.
+Please read it, it's *really* short!
+
+The TkDesk User's Guide is available both as PostScript in the "doc"
+subdirectory (of the directory created when you untar'ed the TkDesk
+package), as well as online via the help button of the application bar
+or the "Help" menu.  Unfortunately, it's seriously out of date.
+Hopefully there will be an updated version for TkDesk 1.0.
+
+I hope you enjoy TkDesk! If you have any suggestions for the further 
+development of TkDesk, or in the unlikely event of finding a bug, or fancy
+helping with the further development of TkDesk, please send me an email to 
+Christian.Bolik@mainz.netsurf.de. I'd also appreciate it if you just told
+me what you think about TkDesk in general.  Oh yes, and donations are of
+course always welcome! :-)
+
+Have fun!
+
+     Christian
+
+
+(Following is the copyright notice for TkDesk.)
+
+#    TkDesk - a file manager for Unix and the X Window System
+#    Copyright (C) 1996  Christian Bolik
+#
+#    This program is free software; you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation; either version 2 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this program; if not, write to the Free Software
+#    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#    See the file "COPYING" in the base directory of this distribution
+#    for more.
+

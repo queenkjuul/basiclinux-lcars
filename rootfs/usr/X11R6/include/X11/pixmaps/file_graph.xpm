@@ -1,0 +1,23 @@
+/* XPM */
+static char *file_graph[] = {
+	"16 16 3 1",
+	". c grey90   m white g4 grey90",
+	"b c black  m black g4 black",
+	"g c yellow m white g4 white",
+	"................",
+	".........b..b...",
+	"..bbbbb.bbb.....",
+	"..bgggb..b..b...",
+	"..bgggb..b..b...",
+	"..bgbgb...b.b...",
+	"..bggbb.bbb.....",
+	"..bbbbbbgggb....",
+	"......bbggggbbb.",
+	"......bgbggbb...",
+	"......bggbbgb...",
+	".......bbggb....",
+	".....bb.bbb.....",
+	"...bb...........",
+	"................",
+	"................",
+};

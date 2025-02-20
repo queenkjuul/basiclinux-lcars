@@ -1,0 +1,41 @@
+#!/bin/sh
+clear
+echo
+echo "This script installs Slackware packages.  You can use the full name of the"
+echo "package file (including path) or you can cd to the package's directory."
+echo
+while true ; do
+  case $1 in
+  '') 
+    echo -n "Which package do you wish to install? "
+    read REPLY
+  ;;
+  *)
+    REPLY=$1
+  ;;
+  esac
+  ls "$REPLY" >/dev/null 2>/dev/null 
+  if [ $? != 0 ] ; then
+    echo "Sorry, I see no file called "$REPLY
+    break
+  fi
+  echo "$REPLY" | grep gz$ >/dev/null
+  if [ $? != 0 ] ; then
+    echo "Sorry, the filename must end in tar.gz or .tgz"
+    break
+  fi
+
+zcat $REPLY | tar -xvf - -C /
+
+  ls /install/doinst.sh >/dev/null 2>/dev/null 
+  if [ $? = 0 ] ; then
+    cd / 
+    chmod +x /install/doinst.sh  
+    /install/doinst.sh
+    rm -r /install
+    cd -
+  fi
+ldconfig 2>/dev/null
+echo
+break
+done

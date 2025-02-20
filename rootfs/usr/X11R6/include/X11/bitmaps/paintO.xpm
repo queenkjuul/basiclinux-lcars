@@ -1,0 +1,7 @@
+/* XPM */
+static char * paintO_xpm[] = {
+"14 2 2 1",
+" 	c #FFFFFFFFFFFF m white s A",
+".	c #000000000000 m black s E",
+"..  ..  ..  ..",
+"..  ..  ..  .."};

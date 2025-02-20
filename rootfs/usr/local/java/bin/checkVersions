@@ -1,0 +1,249 @@
+#!/bin/sh
+
+######################################################################
+# NOTE: this file is NOT a part of the standard Sun JDK distribution!
+# It is part of the Linux JDK, for use in dealing with the wide 
+# variety of shared library versions that various people have.
+######################################################################
+
+# THIS FILE HAS BEEN MODIFIED TO WORK WITH BASICLINUX 3.5 LIVECD
+
+# Check the library versions of the executable to see if they are suitably
+# advanced.  If so, don't add a reference to the linuxlibs subdirectory
+# into LD_LIBRARY_PATH's value
+
+
+# grab the first number of a dotted version number and return it
+firstField() {
+    expr "$1" : "\([0-9][0-9]*\).*"
+}
+
+# return  everythng after the first number of a dotted version number
+# (excluding the dot following the first number). 
+restFields() {
+    expr "$1" : "[0-9][0-9]*\.\(.*\)"
+}
+
+# returns 0 if the first version number (a dotted version number) is
+# greater than or equal to the second version number.
+isGreaterOrEqual() {
+    ver1="$1"
+    ver2="$2"
+
+    # echo "v1 [$ver1] v2 [$ver2]"
+
+    # first, a quick test for equality, then some "did one or the
+    # other run out early" tests.
+    if [ "$ver1" = "$ver2" ] ; then
+	return 0
+    elif [ -z "$ver1" ] ; then
+	# ver1 ran out first, so it's less
+        return 1
+    elif [ -z "$ver2" ] ; then
+	# v1 has fields, so it's greater
+        return 0
+    fi
+
+    # at this point, the two version still have at least term remaining,
+    # so compare those terms.
+
+    v1Term="`firstField $ver1`"
+    v2Term="`firstField $ver2`"
+
+    if [ "$v1Term" -gt "$v2Term" ] ; then
+	# v1 definitely is greater
+	return 0
+    elif [ "$v1Term" -lt "$v2Term" ] ; then
+	# v1 definitely is less
+	return 1
+    fi
+
+    # if we're here, the first terms are equal, so we need to
+    # check the next ones.
+
+    isGreaterOrEqual "`restFields $ver1`" "`restFields $ver2`"
+    return 
+}
+
+
+# given the output of ldd as argument 1, this function emits the
+# actual version number of the actual library, following symlinks
+getVers() {
+    libline="$1"
+    
+    lib=`echo $libline | awk '{ print $3 } '`
+    lib=`ls -l $lib | awk '{print $NF}'`
+
+    echo "$lib" | sed 's/^.*\.so\.//'
+}
+
+
+# returns the current version of the library given by parameter
+# 1
+getLibVers() { 
+    libName="$1"
+    lddOut="$2"
+    libsVers=`egrep "$libName" "$lddOut"`
+    getVers "$libsVers"
+}
+
+# given the a library name to look for (1), and the name of a file
+# containing the output of ldd on the target executable (java), this
+# return the name of the library, including the major version
+getLibName() {
+    egrep $1 $2 | awk '{ print $1 }'
+}
+
+# returns 0 if the supplied libraries are needed, 1 if they
+# are not
+checkLibc5Version () {
+    lddOut="$1"
+
+    libcVers=`getLibVers libc $lddOut`
+    libdlVers=`getLibVers libdl $lddOut`
+    
+    # 5.4.33 & 1.9.6 seem to do it too
+    if isGreaterOrEqual "$libdlVers" 1.9.6 ||
+       ( isGreaterOrEqual "$libcVers" 1.5.44 &&
+         isGreaterOrEqual "$libdlVers" 1.9.9 )
+    then
+        # supplied libraries are not needed
+	return 1
+    else
+        # supplied libraries ARE needed
+	return 0
+    fi
+}
+
+
+# returns 0 if the supplied libraries are needed, 1 if they
+# are not
+checkGlibcVersion () {
+    lddOut="$1"
+
+    libcVers=`getLibVers libc $lddOut`
+    libdlVers=`getLibVers libdl $lddOut`
+    
+    # NOTE: almost all of the mail that I (sbb) got about the
+    # behavior on glibc systems indicates that things just "run out of the
+    # box", so for right now I'm opting to leave the our supplied libraries
+    # in place.
+    return 1
+}
+
+# computes the standard environment variables which describe where this
+# shell script was found (and, by implication, where both java and the
+# target libraries can be found).  Sets global variables ARCH, THREADS_TYPE,
+# and JAVA_HOME (if not set).
+computeDirVars() {
+#    prog=`type -p $0` >/dev/null 2>&1
+    # If prog is a symlink, trace it to the real home directory
+
+#    while [ -L "$prog" ]
+#    do
+#	newprog=`expr "\`/bin/ls -l "$prog"\`" : ".*$prog -> \(.*\)"`
+#	expr "$newprog" : / >/dev/null || newprog="`dirname $prog`/$newprog"
+#	prog="$newprog"
+#    done
+
+    CV_HOME=/usr/local/java
+    progname=`basename $0`
+    ARCH="i486"
+
+    # The default THREADS_TYPE is "green_threads".  To change the default change
+    # the setting of the DEFAULT_THREADS_FLAG variable.  The only valid values 
+    # of that variable are 'green' and 'native'. 
+    # 
+    # This introduces a dependency of this wrapper on the policy used to do builds.
+    # e.g. the usage of the name "green_threads" here is dependent on the build
+    # scripts which use the same name. Since this is somewhat analogous to the
+    # wrapper already depending on the build scripts putting the executable in
+    # a specific place (JAVA_HOME/bin/${ARCH}), the new dependency does not
+    # seem all that bad.
+
+    DEFAULT_THREADS_FLAG=green
+
+    if [ "${THREADS_FLAG:-${DEFAULT_THREADS_FLAG}}" = native ]
+    then 
+	THREADS_TYPE=native_threads
+    else
+	THREADS_TYPE=green_threads
+    fi
+
+    export THREADS_TYPE
+    #echo "Using executables built for $THREADS_TYPE"
+
+    if [ -z "$JAVA_HOME" ] ; then
+	export JAVA_HOME
+	JAVA_HOME=$CV_HOME
+    fi
+}
+
+# Returns 0 if the supplied libraries are needed, nonzero (1) if 
+# they should be ignored.
+checkX86Versions() {
+    binPath="${JAVA_HOME}/bin/${ARCH}/${THREADS_TYPE}"
+
+    execFile=${1:-java}
+    execName="$binPath/$execFile"
+
+    lddOut=/tmp/ldd.out.$$
+
+    ldd $execName > $lddOut
+    libcMainVer=`getLibName libc $lddOut`
+    case $libcMainVer in
+	libc*.5)
+	    checkFun=checkLibc5Version
+	    ;;
+
+	libc*.6)
+	    checkFun=checkGlibcVersion
+	    ;;
+    esac
+
+
+    $checkFun $lddOut
+    result=$?
+
+    rm -f $lddOut
+
+    return $result
+}
+
+
+#####################################################################
+#
+# The "main" part
+#
+# exits with zero exit code if the supplied libraries are needed, 
+# nonzero (1) if they are not.  This result is only examined in the
+# case where there are no command line flags
+
+
+main () {
+    # disable this code in the rare cases where it's doing more harm than
+    # good.
+    if [ "$JDK_NO_VERS_CHECK" ]
+    then
+	exit 0
+    fi
+
+    computeDirVars
+
+    case "$ARCH" in
+	i[3-6]86)
+	    checkX86Versions $*
+            return    # returns whatever the checkX86Versions returned
+	    ;;
+
+	*)		# all other OS versions (at the moment)
+            return 1	# don't use the supplied libraries
+	    ;;
+	    
+    esac
+}
+
+
+main $*
+
+

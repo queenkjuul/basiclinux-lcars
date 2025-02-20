@@ -1,0 +1,1625 @@
+<html>
+<head>
+<title>X-CD-Roast 0.96e Manual 
+</title>
+</head>
+<body>
+
+<h1>Manual for X-CD-Roast 0.96e</h1>
+<h3>26.11.98 Thomas Niederreiter</h3>
+<a href="mailto: tn@fh-muenchen.de">tn@fh-muenchen.de</a>
+
+<p><font color=#007f00>Modifications for safe use by non-root users done
+by Till Kamppeter, 03.10.98 (<A
+HREF="mailto:till.kamppeter@theo.phy.uni-bayreuth.de">till.kamppeter@theo.phy.uni-bayreuth.de</A>).</font>
+<h3><i><p>
+
+If you want to report a bug please read <a href = #bugreport>this section</a> first!!!
+</i></h3>
+
+<hr>
+<font color=#ff0000>
+<blockquote>
+Note: Updated sections (since version 0.96d) of this README are displayed
+in red color!
+</blockquote>
+</font>
+<p>
+<font color=#007f00>
+<blockquote>
+Note: Sections concerning only the nonroot-mode of X-CD-Roast 0.96e
+are displayed in green color. Please read "<b>README.nonroot</b>" for instructions
+how to setup and activate the nonroot-mode.
+</blockquote>
+</font>
+<hr>
+
+<h1>Table of contents:</h1>
+<ul>
+    <a href = #DISCLAIMER>1) DISCLAIMER</a>
+<br><a href = #Introduction>2) Introduction/Whats New</a>
+<br><a href = #software>3) Software-Requirements</a>
+<br><a href = #hardware>4) Hardware-Requirements</a>
+<br><a href = #Installation>5) Installation</a>
+<br><a href = #1start>6) First start</a>
+<br><a href = #scsiinfo>7) SCSI/IDE-Info</>
+<br><a href = #setup>8) Setup-Menu</a>
+<br><a href = #Copy-Data-CD>9) Copy-Data-CD</a>
+<br><a href = #qkcp>10)   Quick-Copy-CD</a>
+<br><a href = #copymx>11) Copy-Audio-CD</a>
+<br><a href = #mastercd>12)  Master-CD</a>
+<br><a href = #info>13)  Useful Information</a>
+<br><a href = #bugs>14)  Known Bugs</a>
+<br><a href = #faq>15)  Frequently Asked Questions and Problem-solver</a>
+<br><a href = #credits>16)  Credits</a>
+<br><a href = #conclusion>17)  Supported CD-Writers</a>
+</ul>
+
+<hr>
+<h2><a name = DISCLAIMER>1) DISCLAIMER</a></h2>
+
+<p>
+I am not responsible for any damage to your hardware or software caused
+by this program.  The use of the program can be dangerous.  If you don't
+know what you are doing, don't do it.  I am also not responsible for
+any misuse of the program by creating copies of CDs without permission.
+
+<p><center>
+<h2>USE IT AT OWN RISK !</h2>
+</center><p>
+
+<h2><a name = Introduction>2) Introduction/Whats New</a></h2>
+
+<p>
+X-CD-Roast is a full X based CD-Writer-Program, and it is the successor
+of the <i>cdwtools-0.93</i>.  <font color=#ff0000>It is a frontend for some CD related programs
+like <i>cdrecord-1.6.1</i> and <i>mkisofs-1.12b4</i>. </font> With some simple mouse-clicks
+you can copy or create your own CDs, without long study of any
+commandline-parameters.
+
+<p>
+<b>Feature-list:</b>
+
+<ul>
+<li> Point'n'Click X11-Interface.
+<li> Automatic SCSI- and IDE-Hardware Setup.
+<li> Copies ISO9660-CDs, Non-ISO9660-CDs (like Mac- or Sun-CDs),
+  Mixed-Mode-CDs and Audio-CDs.
+<li> Master ISO9660-Data-CDs.
+<li> Create your own Audio-CDs.
+<li> Quick CD->CD Copy (no need of an image partition)
+<li> Logfile
+</ul>
+
+<p>
+<b>What is new with Version 0.96:</b>
+
+<ul>
+<li> Completely rewritten GUI.
+<li> Supports commandline-switches. Start it with "xcdroast -?" to get an
+     overview.
+<li> IDE-Support for IDE-HDs and IDE-CD-ROMs (Audioread not yet supported).
+<li> Displays an graphically overview of all SCSI- and IDE-Devices found.
+<li> Up to 64 SCSI and 8 IDE Devices supported.
+<li> Can read Audio now with all SCSI-CD-ROMs (hopefully).
+<li> Won't need an extra image-partition anylonger - you can save your
+     images anywhere on your system.
+<li> Uses MSDOS-conform image- and audio-filenames. So you can mount your
+     DOS-Partition and save your stuff there.
+<li> Will now run even when no CD-ROM or CD-Writer is connected. Useful 
+     when you only want to master something.
+<font color=#007f00>
+<li> Can safely be used by non-root users if started in nonroot-mode.
+</font>
+<font color=#ff0000>
+<li> Supports most SCSI-CD-Writers and ATAPI-Writers. See <b>"README.ATAPI"</b> for more info.
+</font>
+<li> Hundreds of small improvements and fixes.
+</ul>
+
+<p>
+<b>Stuff NOT working yet:</b>
+<ul>
+<li> Multisession not yet implemented (will follow soon).
+<li> Bootable CD Creation not yet implemented (will also follow soon).
+</ul>
+
+<h2><a name = software>3) Software-Requirements</a></h2>
+
+<p>
+This program is a mixture of C and Tcl-programs. 
+To compile it you need the Tcl, Tk and Tix-Libraries.
+Refer to the file <b>"README.Compile"</b> for the compilation-HowTo. 
+You can also download X-CD-Roast as precompiled RPM. But please note
+that this is not running on some machines. If you have any problems
+recompile X-CD-Roast! In 99% of all cases all problems are gone then!
+<p>
+You need:
+<ul>
+
+<li> Linux System with an installed X Window System.
+<li> Linux Kernel 2.0 or above. 
+<font color=#ff0000> Kernel 2.0.35 or above recommended!
+
+   <blockquote>
+   <b>Note: You must include SCSI-Disk, CD-Rom and Generic-Support in 
+	   the kernel! For use of ATAPI-Devices you also have to 
+	   enable the ATAPI SCSI-Emulation. </b>
+   </blockquote>
+</font>
+</ul>
+
+<p>
+<h3>Where can I get this files?</h3>
+
+	Here some example-sites. (Please search a mirror if these sites
+	are too slow for you)
+
+<pre>
+	Kernel: ftp://ftp.kernel.org/pub/linux/kernel/v2.0
+	        ftp://ftp.leo.org/pub/comp/os/Linux/Linus/v2.0
+</pre>
+
+<h2><a name = hardware>4) Hardware-Requirements</a></h2>
+
+<p>
+To use this program you need the following hardware:
+<ul>
+
+<li> At least a 486/33 (faster recommended) and 16 MB Ram (less might work,
+   but will harm performance).
+
+<li> Any Graphic-card running with X11.
+
+<li> SCSI-Controller running with Linux. (Not necessary with ATAPI-Writers)
+
+<li> A Harddrive (SCSI or IDE) with enough space left for storing CD-Images.
+   
+<li> A supported ATAPI/SCSI-CD-Writer. (<a href = #conclusion>See 17) Supported CD-Writers</a>)
+</ul>
+
+Optional hardware supported:
+
+<ul>
+<li> SCSI- or IDE-CD-Rom to enable Quick-CD-Copy (see below).
+ 
+<li> 16-Bit Soundcard to listen to audio-tracks. 
+</ul>
+
+<hr>
+<h2><a name = Installation>5) Installation</a></h2>
+Before you can use X-CD-Roast you have to compile it. Please study the
+file "<b>README.Compile</b>" for instructions.
+<p>
+<font color=#007f00>
+<b>Instructions for nonroot-mode:</b> <p>
+
+Still logged in as root type <i>xcdroast -nonroot</i> to start the program for the 
+first time 
+(This assumes that /usr/local/bin is in your search-path - 
+or whereever you installed X-CD-Roast). Then you should see a message that no
+configuration-file was found.
+Click on <b>Ok</b> to continue. Next read the disclaimer-warning and
+click on <b>Setup</b> to do the initial setup.<p>
+</font>
+
+<em><font color=#007f00>
+Note: Before this initial setup is done the program can't be used and non-root 
+users are even not allowed to start it.</font></em><p>
+
+<p>
+
+<u>X-CD-Roast Commandline-switches:</u> <p>
+-scanscsi <i>number</i>: 
+<blockquote>
+Defines for how much SCSI-Devices X-CD-Roast should scan. If set to 0, then
+the SCSI-Bus won't be scanned at all. Maximum value is 64, but then you have
+to take care yourself, that all Generic-SCSI-Devices exist in the i
+/dev-directory. Default value is 16.
+</blockquote>
+-scanide <i>number</i>:
+<blockquote>
+Defines for how much IDE-Devices X-CD-Roast should scan. If set to 0 then
+the IDE-Bus won't be scanned at all. Maximum value is 16, default is 8.
+</blockquote>
+-configdir <i>directory</i>:
+<blockquote>
+Set the directory where X-CD-Roast saves all
+configuration-data. Default is ~/.xcdroast. <font color=#007f00>This
+option can only be used by the super user in nonroot-mode.</font>
+</blockquote>
+-libdir <i>directory</i>:
+<blockquote>
+This is the directory where X-CD-Roast searches for its add-on
+utilities and library-files. Default is
+/usr/local/lib/xcdroast-0.96c. <font color=#007f00>This option can
+only be used by the super user in nonroot-mode.</font>
+</blockquote>
+-display <i>host</i>:
+<blockquote>
+Display the X-CD-Roast-window on the X11-display of <i>host</i>.<br>
+Note: This is equivalent with an "export DISPLAY=host" on the shell.
+</blockquote>
+<font color=#ff0000>
+-nonroot:
+<blockquote>
+              Activate  the  "nonroot"-mode. This way only "root"
+              can change any X-CD-Roast options  that  may  be  a
+              security-problem. Every normal user can then use X-
+              CD-Roast without any risk of causing  harm  to  the
+              system.  (See "<b>README.nonroot</b>" for detailed info)
+</blockquote>
+-usecdparanoia:
+<blockquote>
+              Use a preinstalled CDParanoia 
+              instead  of  the  built-in  readcdda. CDParanoia is
+              able to read audio-data from lot more devices  than
+              readcdda - therefore when you have problems to read
+              audio-CDs try this option.  (See "<b>README.cdparanoia</b>"
+              for detailed info)
+</blockquote>
+</font>
+
+-debug <i>level</i>:
+<blockquote>
+Prints some debug-output to the console. The larger the level, the
+more output will be generated. (e.g. -debug 2)
+</blockquote>
+<hr>
+<h2><a name = 1start>6) First start</a></h2>
+
+<p>
+You must be user "root" to run this program. Alternatively you can
+do a <i>"chown root /usr/local/bin/xcdroast"</i> and <i>"chmod +s /usr/local/bin
+/xcdroast"</i> as user root. Now all users can run xcdroast - Every user
+will get an own config-file, but can also erase all your disks when picking
+a wrong image-partition. On some systems you can't run mount, umount and some
+other system-programs not as non-root. So when you have problems with the
+automatic mount-code, its because you are not root. <b>SO BE CAREFULLY!</b> 
+<p>
+<font color=#007f00>
+The other possibility is to use the nonroot-mode. In this mode only the
+super-user can change security-relevant options and therefore no user
+can damage the system. In nonroot-mode you also have to do the chown and
+chmod as described in the paragraph above.
+</font>
+<p>
+Type <i>xcdroast</i> to start the program (This assumes that /usr/local/bin 
+is in your search-path - or whereever X-CD-Roast is installed)
+Then you should see a message that no configuration-file was found.
+Click on <b>Ok</b> to continue. Next read the disclaimer-warning and
+click on <b>Setup</b>. <br>
+You can also see if X-CD-Roast found all your hardware with the <b>SCSI/IDE-Info
+</b>-Button.
+
+<blockquote>
+Note 1: If you can't start xcdroast, it is perhaps not in your path.
+      Go into the directory where xcdroast is installed and type
+      "./xcdroast" in this case.
+</blockquote>
+<font color=#007f00>
+<blockquote>
+Note 2: If instead of a window only an error message appears that root has 
+      not configured the program yet, a super user has to configure it before 
+      non-root users can start it.
+</blockquote>
+</font>
+<blockquote>
+Note 3: If you turn off the disclaimer-display by pressing the "Don't show again"-Button, you have to save your configuration in the Setup-Menu to make this permanent.
+</blockquote> 
+<hr>
+<h2><a name = scsiinfo>7) SCSI/IDE-Info</a2></h2>
+<p>
+In this screen all SCSI- (up to 64) and IDE-Devices (up to 8) are displayed.
+For SCSI you see an icon which expresses the device-type, its vendor and model-id and
+the revision. In small print you see the SCSI-host, channel, id and lun.
+For IDE you see also an icon, its id and the device (e.g. /dev/hda) it is 
+assigned to. 
+<p>
+If you have more than 16 SCSI-Devices you can use the scrollbar to see more.
+<p>
+
+<hr>
+<h2><a name = setup>8) Setup Menu</a></h2>
+
+<p>
+In the setup menu you specify all your hardware and choose the behaviour of
+X-CD-Roast in some cases, all other
+program modules will use the devices and settings you set here.
+
+<ul>
+<h3><li>CD-Setup:</h3>
+  
+  <p><dd>
+  <b>CD-Writer Device</b>: This is your CD-Writer. You can here only choose
+     from your SCSI-Devices type 4 and 5 (Worm and CD-Rom). Some CD-Writer
+     identify themselves as CD-Roms, but please don't set a real CD-Rom as 
+     write-device. 
+
+  <p><dd>
+  <b>CD-Writer Mode</b>: This is mode in which the writer is accessed. 
+    You can choose here all different Driver-Types <font color=#ff0000>cdrecord-1.6.1</font> supports.
+    Leave this option at "<b>Autodetect</b>". Autodetect will take care of ALL
+    writers mentioned in the "supported CD-Writers-Section" and you should
+    change this value only, when you have a writer cdrecord does not know
+    about yet and you know which driver works with your writer. 
+
+  <p><dd>
+  <b>CD-Writer Speed</b>: This is the speed at which the data is written. 
+    Don't specify a speed greater than the writer can handle. 
+    For some writers it may be necessary to set to
+    "Zero"-Speed. You have to experiment with that value when you have 
+    problems.
+
+  <p><dd>
+  <b>Data-Read-Device</b>: This is the device that is used for all DATA-READ Operations
+    on CD-ROMs. You can even specify your CD-Writer as Read Device. Here you 
+    can choose from SCSI- and IDE-Devices. 
+
+  <p><dd>
+  <b>Audio-Read-Device</b>: Audio-Read is only supported for SCSI-Devices, so
+   you cant specify an IDE-Device here. Its perfectly ok to select your
+   CD-Writer as Read-Device and I also recommend this.  
+
+  <p><dd>
+  <b>Audio-Read-Mode</b>: Usually you should leave this setting at "Autodetect",
+  but when X-CD-Roast says "Unsupported Device" when you try to read Audio-Tracks, you can try here some settings to find out if your SCSI-CD-Rom is compatible
+  to a drive from another vendor. This is try and error, but you should get
+  each CD-Rom-Drive to work with that. When your
+  Audio-Read-Device is SCSI-3/mmc-compliant (most newer CD-Writers are), you
+  should set this to <b>"SCSI-3/mmc"</b>. Autodetection won't work for these
+  devices yet. <font color=#ff0000>If you have a ATAPI-CDROM you want to
+  use to read audio-tracks set this to "<b>ATAPI</b>". If this still not works, try
+  the CDParanoia-Mode.</font>
+
+  <p><dd>
+  <b>Audio Read-Back Speed</b>: This is the speed for reading audio data from 
+    the CD-ROM. Data is read always at maximum speed.
+    When you set this to "Default" then no speed-select command will be
+    sent to the read-device. Experiment with the other settings to find
+    out which speed works best for you.
+    If you have a Philips CDD 2600 or a HP 6060i Writer you have to set
+    this to 1x or 2x. <br>
+    Please note that the speed select only works for
+    CD-Writers! Most CD-Roms do not have a speed select and if they do, its
+    done for each vendor differently. You can always use your writer for
+    audio read, though. 
+
+<p>
+<h3><li>HD-Setup:</h3>
+
+  <font color=#007f00><em>Nonroot-Mode Note:</em> This part only appears if you are
+  logged in as 'root' because doing wrong things here can delete the whole
+  hard disk. For non-root users these settings are overtaken from 'root's
+  configuration.</font><p>
+
+  Here you set which space on your harddisks X-CD-Roast may use to store
+  CD-Images.<br>
+  You can enter two different partitions (Partition 1 and Partition 2) which
+  will totaly belong to X-CD-Roast. You can't use the partitions to store
+  any data permanently because X-CD-Roast will overwrite them if requested.
+  <br>Note: You have have to set one of the three blocks, but you are free
+  to use all.
+  <p>
+  If you don't have a own partition (which should be about 800 MB in size)
+  dedicated only for X-CD-Roast available, you can enter a <i>Image-Data-Path</i>. X-CD-Roast will save then all CD-Images and Audio-Tracks to that directory, 
+  not disturbing other data that may be stored there. This is useful when
+  you have lot of space on your HD left, but not in a own partition. You
+  also can mount your DOS-Partition and let X-CD-Roast store its images there.
+ 
+  <p><dd>
+  <b>Image Partition</b>: This is the HD-Partition where CD-Images will be 
+    stored. Should be about 800 MB in size when copying full CDs.
+
+  <p><dd>
+  <b>Image Mountpoint</b>: This is the mount point where the image partition
+    will be mounted. This is needed when you copy the image to a file
+    instead of copying it raw to a partition, or when copy Audio 
+    or non-ISO9660-CDs.
+
+  <p><dd>
+  <b>Image-Data-Path</b>: A path pointing to a directory in that enough
+    space for image-data is left. X-CD-Roast does not care where that 
+    directory is...it can be on a mounted DOS-Partition or even on NFS 
+    (but not recommended because slow).
+  <p>
+  In each block is a "Default"-Button. Here you can choose which Disk-Space
+  X-CD-Roast will use as default. (You can change "on-the-fly" the partition
+  or directory later - but here you set what is enabled first).
+  <p>
+  
+
+<h3><li>Misc.:</h3>
+
+  <p><dd>
+  <b>DSP-Device for Audio</b>: This is your soundcard's dsp-device. You can use
+    the soundcard to listen to audio-tracks.
+    If don't have a soundcard that is able to play digital data at
+    44.1 kHz, 16-bit, stereo, set this to <code>None</code>
+    <br>
+    Use the <i>Test</i>-Button to check if your soundcard works with X-CD-Roast.
+    If you hear a "Gong"-Sound all works ok.
+
+  <p><dd>
+  <b>Beep via/when</b>: Here you can choose whether X-CD-Roast uses your Soundcard or
+   your internal speaker when it wants to beep. <br>
+   Here you set the events the program reacts to with a 
+    beep. This can be used to get your attention when e.g. the CD is is
+    finished.
+    <p>
+    There are four options:
+    <ol>
+     <li>Never: No beeps.
+     <li> On Completion: Always when a read/verify/write operations is
+     completed.
+     <li> On Warnings: When a warning window pops up.
+     <li> Always: On both events mentioned above.
+    </ol>
+
+  <p><dd>
+  <b>Logfile</b>: Enter a filename in which all your actions will be
+    logged. You also can disable logging.
+    If enter a filename without a path (e.g. logfile.log instead of
+    /tmp/logfile.log) then X-CD-Roast will save it in your
+    config-directory (default: ~/.xcdroast). <font color=#007f00>If you
+    try to put your log file into a non-existing directory or into a
+    directory where you have no write permissions, the logging facility is
+    turned off automatically</font>
+
+  <p><dd>
+  <b>Auto-Raise/Lower</b>: Here you set if X-CD-Roast should automatically
+    iconify its windows on certain occasions.
+    <p>
+    There are three options:
+    <ol>
+     <li>Never: Never iconify or deiconfiy automatically.
+     <li>Always: Everytime a new window pops up, iconify its parent
+         window - this way you have always only ONE window of X-CD-Roast
+         on screen.
+     <li>Only on Read/Verify/Write: Only iconify the X-CD-Roast Master-window
+         when a Read, Verify of Write-process is running. 
+    </ol>
+
+    <p><dd>
+    <b>Save Window-Positions</b>: Here you set if X-CD-Roast should 
+    remember the position of the Read/Write/Verify/Master-Process-Windows.
+    <p>
+    There are three options:
+    <ol>
+     <li>Never: Dont save the window-positions -> Display the windows
+     centered relative to the main-X-CD-Roast-screen.
+     <li>Save pos for all windows: Use the same screen-coordinates for 
+     all the process-windows. e.g.: If you move a "Read-Image"-Window to
+     a new screen-position, the "Write-Image"-Window will appear on the
+     same position.
+     <li>Own pos for each process-window: Save the coordinates for each
+     process-window seperately. 
+    </ol>
+
+<p>
+<h3><li>Defaults:</h3>
+<p>
+Here you set the default values for various different settings X-CD-Roast
+may need later. All these values can changed later in there own context, but
+here you set their startup values.
+
+   <p><dd>
+   <b>Default Write-Options</b>: These are covered in the <i>Write Image</i>
+    Section later.
+   <p><dd>
+   <b>Default Subprocess-View</b>: Here you set the default behaviour of the
+     Read, Verify and Write-Windows. You can choose how these windows are
+     displayed and what kind of information is shown. 
+   <p><dd>
+   <b>Default Read-Audio-Opt.</b>: See <i>Read Audio</i> later.
+   <p><dd>
+   <b>Listen while recording:</b>: See <i>Read Audio</i> later. 
+   <p><dd>
+   <b>Default Time-Offset Unit</b>: See <i>Read Audio</i> later.
+
+</ul>
+
+<p>
+After you have finished set up, press <b>Save</b> to create a configuration
+file <i>xcdroast.conf</i>. Please note that your hardware settings, partitions 
+and mount points are also saved in that file.
+
+<p>
+At each startup the settings in the file are compared to your current 
+system settings and, if there are mismatches, you are forced to enter 
+setup again.
+
+<p>
+Note: If you have been forced to enter setup, you can't access any of
+X-CD-Roast functions until you completed successfully the setup. 
+  
+<hr>
+<h2><a name = Copy-Data-CD>9) Copy-Data-CD</a></h2>
+
+At startup you are in the <i>CD/Image-Info</i>-Subsection of the
+Copy-Menu.
+<p>
+The setup of your devices is diplayed at the top of the menu. To change 
+any of the values, you must enter the setup menu again.
+But you can change your Image-Device on-the-fly when you set more than one
+Image-Partiton/Path in the Setup-Menu. This way you can store more than
+one Image at the same time.
+<p>
+You see a window titled <b>CD-Information</b> which identifies
+the CD in the Data-Read device. The window <b>Image-Information</b> gives you 
+information about the contents of the image partition.
+<blockquote>
+<br>Hint: When you double-click on an image-filename in the image-information
+window or a data-track in the cd-information-window, you can look what files are stored in that image.
+</blockquote>
+<p>
+The button <b>Eject CD</b> will try to eject the CD in the Data-Read-Device.
+<p>
+The button <b>Update Information-Windows</b> updates the two information windows. You should
+press this button after inserting a new CD.
+
+<p>
+Copy a Data-CD in four steps: 
+<ol>
+<li><a href = #Read Image>Read Image</a>
+<li><a href = #Verify Image>Verify Image</a>
+<li><a href = #copywriteimage>Write Image</a>
+<li><a href = #verifyburnimage>Verify Burned Image</a>
+</ol>
+
+<p>
+First read the entire contents of the CD to a HD-Partition. Then
+optionally verify the data by comparing the partition with the CD. Next
+write the CD-image from the HD to a CD-Recordable. The last step is
+the verification of burned CD-R with the image on the HD.
+
+<dl>
+<a name = Read Image><dt> <b>Read Image</b>:</a>
+
+   <dd>
+   <i>Diskspace needed for Image</i> displays the size of the image and <i>Diskspace available</i> shows 
+   how much space is left on the image partition. 
+   <i>Image-ISO9660-Label</i> displays the label of the CD in the CD-Rom-Drive.
+   <p>
+   Here, you can choose whether you want to read the image to a file or 
+   raw to the partition. I recommended a read to the partition because
+   this is a little bit faster. If you selected an "Image-Path" to save 
+   the image, you can only read to a file. 
+
+   <p>
+   If you insert a non-ISO9660 CD (like Mac or Sun-CDs) you have to 
+   read the image to file because this is only way to determine 
+   the image size when writing.
+
+   <blockquote>
+   Note: If you read the image to a file, you can enter a filename. 
+         Always make sure you have the extention ".raw". <font color=#007f00>
+         It is not possible to write the file outside the "Image-Path", e. g. 
+         on the system disk, so accidental deletion of system data, or 
+         overfilling the system disk is impossible.</font>.
+   </blockquote>
+
+<a name = Verify Image><dt> <b>Verify Image</b>:</a>
+
+   <dd>
+   <i>Image-Size</i> displays the size of image on the CD.
+   <i>Image-ISO9660-Label</i> displays the label of the CD in the CD-Rom-Drive.
+   Verify always compares the CD in the drive with the image on the HD.
+
+   <p>
+   Note: You should not need to change any of the settings displayed
+         in the verify-menu. They are correctly set when you enter
+         the menu after reading the image.
+<p>
+<dt> <a name = copywriteimage><b>Write Image</b>:</a>
+
+   <dd>
+   This writes the CD-Image from HD to a CD-Recordable.
+
+   <p>
+   You can specify the type of your CD-R and some write options:
+   <ol>
+
+   <li> <b>Simulation-Write</b>: Simulates the write-process. Your CD-R will
+     not be written. Do this to test whether your system is fast enough
+     to write without errors. 
+
+   <li> <b>Eject After Write</b>: If you want to autoeject the CD-R after it has
+     been written, enable this option.
+   
+   <li> <b>Pad Data-Track</b>: This add 30 kilobytes (15 sectors) of nulls to
+     the end of each data track. This is a work-around for a bug in Linux
+     (up to and including at least version 1.2.8), which sometimes does 
+     not correctly read the last few sectors written. 
+     Currently X-CD-Roast fixes the problem with disabling the read-
+     ahead-cache of Linux when approaching the very last sectors of a
+     CD. 
+   </ol>
+<p>
+<dt> <a name = verifyburnimage><b>Verify Burned Image</b>:</a>
+
+   <dd>
+   You can use this to check if the burned CD-R was written correctly.
+<p>
+<dt> <b>Delete Images:</b>
+   <dd>
+   If you need to make some room on your image-partition (e.g. because
+   some audio-tracks are still lying around), you can here clean up a 
+   little.
+</dl>
+</ul>
+
+<hr>
+<h2><a name = qkcp>10) Quick Copy-CD</a></h2>
+
+<p>
+<b>Quick Copy-CD</b> allows copying of a pure <b>ISO9660-Data-CD</b>
+without the need of creating an image on HD.
+<i>You need a seperate CD-ROM device</i> in addition to your writer to
+utilize this feature. In this mode, data is read off the CD-ROM device
+and written immediately to the writer.  Please note that your 
+<i>read device should be faster than your writer</i> 
+(alternatively, decrease write speed) - I recommend that the read device 
+is twice as fast as the writer, but I successfully burned CDs with 
+4.4x read speed and writing with 4x speed - and that any errors 
+(e.g., read errors) result in a wasted CR-R! 
+
+<pre><h3>		      USE THIS FEATURE WITH CAUTION !!!!!
+</h3></pre>
+
+I strongly recommend experimenting with this option only with 
+simulation write enabled. The write options have been already explained
+in the write-image section of this README file.
+
+
+<hr>
+<h2><a name = copymx>11) Copy Audio-CD</a></h2>
+
+<p>
+Some notes about Audio-CDs:
+
+<p>
+Audio CDs are divided into tracks. Each track usually contains a song and,
+between tracks, there is a two-second pause. Some CDs, however, do not have 
+these two seconds pauses between tracks, which makes it tricky to copy them.
+This software writes audio CDs in the <i>track-at-once-mode</i>, which 
+means that the hardware (the writer) itself <b>ALWAYS</b> creates the
+two-second pause. There is NO way to get around this at the moment. So, if you
+want to copy a CD without the two-second pause, you have to read in the 
+whole CD as ONE big track (see merging below). 
+It is also not possible to set or read CD-indexes at present. 
+This will change when cdrecord allows this.
+
+<p>
+Copying audio or mixed-mode is very similar to copying data CDs.
+First read in the tracks (can be data or audio). Next verify
+the tracks. Verification by comparison is only possible with data 
+tracks. To verify audio tracks, you must listen to them (soundcard required).
+Then you can write the CD. The last step is verification of the data track 
+written on CD.
+
+<ol>
+<li> <b>Read Tracks</b>
+   <br>
+   <i>Tracks totals</i> shows how much tracks are on the CD in the Audio-Read-CD-Rom-drive. 
+   <i>Total length</i> displays the total length of this CD.
+   <i>Tracks selected</i> is how many tracks are selected to read. 
+   <i>Selected length</i> is the length of all tracks selected to read.
+   <i>Free Space</i> shows the free space on the image partition.
+
+   <br>
+   In the field <b>CD-Title</b> you can type the name of the CD. This name
+   will be saved in the <i>audio-description</i> file and is only for your
+   information.
+   <b>Filename-prefix</b> is the prefix of the file name used for the track
+   files.  A number and the extension <i>.cdr</i> (Audio)
+   or <i>.raw</i> (Data) will be appended to this prefix.
+
+   <p>
+   When you press on the <i>Select/Show Tracks to Read</i>-Button a new
+   window will pop up where you can choose or review which tracks will
+   be read when you press on the <i>Start Read Tracks</i>-Button. 
+   You can also select a Data-Track (e.g. when using a Mixed-Mode-CD) and
+   it will also be read by your Audio-Read-CD-Rom-Device, NOT the Data-
+   Read-CD-Rom-Device. (This means you dont have to switch disks when you 
+   have choosen different read-devices in the setup).
+
+   <p>
+   <b>Options</b>: 
+   <br>
+   <i>Explaination</i>: Audio-Tracks have a beginning and an end.
+   An offset is the relative time to the beginning or end.
+   If you have a start offset of 1 sec. then the audio track will be
+   recorded beginning 1 sec. after its real start. Negative values go
+   back in time, and positive values go forward. 
+
+   <blockquote>
+   <b>Example</b>: If you have a track with 2 minutes and you want record
+   only 30 sec. beginning after the first minute, you would enter
+   a <i>start offset of 60 sec.</i> and an <i>end offset of -30 sec.</i>
+   </blockquote>
+
+   <p>
+   <b>Global Offsets</b>:
+   Global Offsets means that all tracks are assigned the same offset.
+
+   <p>
+   <b>Skip last 2 sec. of track:</b> Most audio CDs have a 2 sec. pause
+   between the tracks. The CD-Writer automatically creates these 2 
+   sec. pauses when writing audio tracks. 
+   If you skip the 2 sec. pause at recording time,  you get the 
+   2 sec. back when writing the track so the track retains its 
+   original length.
+   Nevertheless, I recommend listening to the track before burning
+   the CD to make sure to complete song has been recorded. 
+   <p>
+
+   <b>Listen to audio while recording</b>: 
+   When you read digital audio-tracks to
+   disk you can listen to them at the same time. Note: If you enable this
+   feature all audio-tracks will be read with single-speed. And you need
+   to enable your soundcard in the "Misc.-Setup".
+
+   <p>
+   <b>Time-Offset Units</b>: Here you choose whether you want the offsets 
+   displayed in seconds or in frames (1/75 sec.).
+
+   <p>
+   In the main-window you select which tracks you want to read.
+   There you can enter a track title for audio tracks (for your 
+   information only). The columns Preemphasis and Copy permitted show
+   this information, you can't change them.
+
+   <p>
+   The playbuttons pre-play the audio-track exactly like they will be
+   recorded. The play quality may be not very good. This depends on
+   your hardware. You need a soundcard for this feature.
+ 
+   <p>
+   <b>Merging</b>:
+   If you want record several tracks into one track, e.g., to get 
+   around the automatic 2 sec. pause between tracks, you can merge tracks.
+   Just select several tracks in order and click on "Merge Tracks".
+   You will see a black arc connecting these tracks. Offsets between 
+   connected tracks are ignored.
+   A merged Track will contain more than one track of the original-CD, but
+   will write as a single track (that is quite long) to a CD-R. The resulting
+   CD-R will then have less tracks than the original CD, but the same play-
+   lenght. You can't jump to the tracks you merged in, with your Audio-CD-Player track-
+   selector.  
+
+   <p> 
+<li> <b>Verify Data-Track</b>
+   <br>
+   Compares the data track of the CD (Mixed-Mode only) with the
+   data track file on HD.
+<p>
+<li> <b>Play Audio-Track</b>
+
+   <br>
+   Plays an audio track from the file on the image partition. With
+   the info button you see all information stored to this track.
+
+   <p>
+   The play-audio window should be self-explanatory. Note that you
+   can jump around in the track by left-clicking somewhere in the
+   process display.
+<p>
+<li> <b>Delete Tracks</b>
+   <br>
+   Here you can delete some or all tracks from your hard drive.   
+<p>
+<li> <b>Write Tracks</b>
+   <br>
+   <i>Tracks on HD</i> displays how many data or audio tracks have been found
+   on the image partition.
+   <p>
+   <i>Total length</i> shows the total length of all tracks on the HD.
+   <p>
+   <i>Tracks to write on CD</i> shows how many tracks are scheduled to write. 
+   <i>Total CD-Size</i> shows how long the resulting CD will be. The 2 sec.
+   pause between each track is already included.
+   <p>
+   The <i>Additional Options</i>-Box has already been explained in the 
+   "Write Image"-Section, except the new Option "Swap Audio". "Swap Audio"
+   will swap the byte-order of audio-tracks to write. Usually you won't
+   need this option, but if you end up with an Audio-CD containing only
+   static noise, you can fix that with that option. (And please drop me
+   a note.) Remember, don`t touch this option until you really know
+   you need it! Its not the same as the -swab option you might have needed
+   when you have run cdrecord from command-line. X-CD-Roast tries to 
+   do all necessary byte-order convertions automatically. 
+   <font color=#ff0000> There is also a new option "Fix Wav-Files". This
+   option pads wav-files you selected to burn to the correct length. Its
+   save to enable this option in case you are not sure. </font>
+   <p>
+   After you pressed on <i>Select/Show Tracks to Write</i> you can choose
+   which tracks you want to burn in which order to CD.
+   <br>
+   The window is tiled in two parts. The upper half shows all the tracks
+   that are scheduled to write in their correct order. The lower half
+   shows all available tracks found on HD, that are NOT yet scheduled
+   to write. <br>
+   Click on the <i>Order</i>-Button on an available track and it will show
+   a number. The next track you click on will have higher number and so on.
+   <br>
+   When you click on <i>Refresh</i> all selected tracks will be moved to the
+   upper half in the order you selected them. With the <i>Insert selected
+   Tracks</i>-Combobox you can specify exactly where the tracks from the lower
+   half will be included in the upper half. 
+   <p>
+   To deselect Tracks from writing click on its <i>Order</i>-Button so that
+   the displayed number vanishes and click on <i>Refresh</i> again to see
+   the new list.
+   <p>
+   In the Headline of this window you can choose <i>Save Track-list</i> which
+   creates a textfile containing your actual track-selection.
+   <p>
+   If you are pleased with your selection you leave the window with <i>Done</i>
+   and now you can click on <i>Start Write Tracks</i>.
+<p>
+
+<li> <b>Verify Burned Data-Track</b>
+
+   <br>
+   Compares the data track on the burned CD-R with the one on the HD.
+
+</ol>
+
+</ul>
+
+
+<hr>
+<h2><a name = mastercd>12) Master-CD</a></h2>
+<h3>Contents of this section</h3>
+<ol>
+<li><a href = #setmasdir>Master from/to</a>
+<li><a href = #setimgtype>Set Image-Type</a>
+<li><a href = #setiso9660>Set ISO9660 Header-Strings</a>
+<li><a href = #Master Image>Master Image</a>
+<li><a href = #Write Image>Write Image</a>
+<li><a href = #Verify Burned Image>Verify Burned Image</a>
+<li><a href = #ISO9660notes>Some notes about the ISO9660-Filesystem</a>
+
+</ol>
+
+<p>
+Master a CD means that you setup a directory tree containing up to 650 MB
+of data that is to be burned on a CD. Because the filesystem on a CD is
+completely different from a filesystem on the harddrive, we must convert
+the data to the CD-ROM format ISO9660. This takes quite some time. 
+
+<ol>
+
+<h3><a name = setmasdir><li> <b>Master from/to:</b></a></h3>
+   Here you set where the data is you want to master. You can double-
+   click on the directory-selection-window to browse through your file-tree.
+   You also can enter the directory in the entry-box below. You have to
+   press the <i>Return-Key</i> after you entered the path.
+   <p>
+   <b>Exclude paths</b>: Here you can enter some paths that will NOT be
+    included in the CD-Image. Please note that you have to enter the
+    full path to get this working. 
+   <p>
+   <b>Exclude globs</b>: Here you can enter simple regular-expressions 
+    to remove some files from the CD-Image. (e.g. "*.o" will erase all files
+    that end with ".o" from the directory-tree). The globs will be matched
+    against all files and directories in the tree.
+   <p>
+   After you set all, the <i>Preview CD-Contents</i>-Button display the
+   contents of the root-directory of the resulting CD. Note that this is 
+   only a simulated output and may not 100% match the real burned CD.
+   With the <i>Calculate Size</i>-Button X-CD-Roast tries to calculate 
+   the exact size of the resulting Image. <br>
+   <b>Note:</b> This also takes excluded paths and globs into account. 
+
+<p>
+<h3><a name = setimgtype><li> Set Image-Type:</a></h3>
+   Here you define how the data should be mastered. This is done by
+   setting the target system on which the CD will be used.
+   <p>
+   You can choose:          
+   <ul>
+      <li><b>Unix Rock-Ridge:</b>
+          Use this for CDs with long filenames that are case sensitive, 
+          links, permissions...
+          This type of CD is perfect for Linux CDs and can be read by
+          most other systems with a few drawbacks. Win95/NT ignores
+          links and permissions. DOS has problems with long
+          filenames.
+      <li><b>Rock-Ridge + Win95/NT:</b>
+          This is a good setting for most cases. It will create a 
+          Rock-Ridge CD perfect for Unix-Systems, 
+	  and due the Joliet-Support a very good 
+          result on Win95/NT-Systems.
+     <li><b>Win95/NT:</b>
+	  This creates a true Joliet-CD for Win95/NT. This CD can only
+	  be read on this systems or with Linux with the Joliet-patch.
+	  DOS will only display short filenames.
+     <li><b>DOS:</b>
+	  Creates a CD with short filenames and no extras. Fully readable
+	  on all systems.
+     <li><b>Custom:</b>
+	  <br>
+          Define your own CD-Type:
+          <ul>
+	  <li><b> Include all files:</b>
+             Don't skip files that contain a ~ or #. (Usually backup-files)
+          <li><b> Follow symb. Links:</b>
+             Follow symbolic links instead of writing them as link file
+             in Rock Ridge or ignoring them otherwise.
+          <li><b> Allow long (32-char) filenames:</b>
+	     Use long filenames instead of the 8.3 format used on DOS.
+	  <li><b> Enable Rock Ridge extensions:</b>
+	     Use the Rock Ridge protocol to allow special files like 
+	     links, devices and so on.
+             This option will write all permissions and user and group-ids 
+	     as they are in the filesystem. (Usually useless information for
+             other systems)
+	  <li><b> Rock Ridge with anonymity:</b>
+	     Like the normal Rock Ridge, only that all user and group-ids
+	     are set to 0. All permissions will be set in a way that is 
+	     more useful (i.e., all files readable, none writeable, etc. )
+	  <li><b> Create TRANS.TBL-files:</b>
+	     Generates a file TRANS.TBL in each directory on the CD, which
+	     can be used on non-Rock Rigde capable systems to help establish
+	     the correct file names.
+	  <li><b> Omit trailing periods:</b>
+	     Omit trailing periods from files that do not have a period.
+	     This violates the ISO9660 standard, use with caution.
+	  <li><b> Do not use deep dir. relocation:</b>
+ 	     Do not use deep directory relocation, and instead just
+	     pack them in a way we see them. This violates the ISO9660
+	     standard, use with caution. This means that you can have 
+             more than 8 directory levels even when not rock-ridge is used.
+             (Works on Windows95/NT)
+
+	  <li><b> Allow files beginning with a dot:</b>
+	     Allow filenames to begin with a period. Usually, a 
+	     leading dot is replaced with an underscore in order
+	     to maintain MS-DOS compatibility.
+	  <li><b> Omit ISO version numbers:</b>
+	     Omit version numbers from ISO9660 filenames. This may
+	     violate the ISO9660 standard, but no one really uses
+	     the version numbers anyway. Use with caution.
+	  <li><b> Enable Joliet extensions:</b>
+	     Windows 95/NT introduced a new CD-format that allows
+	     to put long filenames, deeper directory-levels and more
+	     than one dot per filenames on a CD. This format is called
+	     Joliet. It is possible to use Joliet at the same time as
+ 	     the Rock-Ridge extensions which do the same stuff for 
+	     Unix-based operating systems. 	
+	     </ul>
+        </ul>
+	<p>
+	With the <i>Save as default</i>-Button you save your favourite
+        setting. It will be automatically reloaded at the next start
+        of X-CD-Roast.
+       <p>
+
+<h3><a name = setiso9660><li> <b>Set ISO9660 Header-Strings:</b></a></h3>
+   Here we prepare the ISO9660-Header-Strings.
+   <p>
+    <ul>
+    <li><b> Volume-ID:</b>
+	Volume-ID to be written in the master block. DOS calls this
+        disk label. 
+    <li><b> Publisher-ID:</b>
+        This should describe the publisher of the CD-ROM, usually with
+	mailing address and phone number. Can be 128 chars long.
+    <li><b> Preparer-ID:</b>
+        This should describe the preparer of the CD-ROM, usually with
+	mailing address and phone number. Can be 128 chars long.
+    <li><b> Application-ID:</b>
+	This should describe the application on the CD. Can be 128
+	chars long.
+
+   <p>
+   <i>Read ID's from CD</i> reads all values from a CD in the Data-Read-Device.
+   <p>
+   <i>Clear Entries</i> clears all entries. 
+	<p>
+	With the <i>Save as default</i>-Button you save your favourite
+        setting. It will be automatically reloaded at the next start
+        of X-CD-Roast.
+    </ul>
+
+<h3><a name = Master Image><li> <b>Master Image:</b></a></h3>
+ 
+   Here you set where the image should be generated (just as with 
+   "Read-Image"). 
+   <p>
+   With the <i>Calculate Size</i> button you can find out the exact 
+   size of the image before you master it.
+   <ul>
+   <blockquote>
+	Please note, that the given size also depends on the ISO-Settings
+	like Rock-Rigde and follow Sym-Links. So set the image-type before
+	you calculate the size, when you want a precise value. 
+   </blockquote>
+   </ul>
+
+   <p>
+   After mastering you can see into your image with the <i>Review
+   Image-Contents</i>-Button to check
+   whether the correct files
+   have been mastered. The way filenames are displayed can differ a 
+   little on other systems. 
+
+<h3><a name = Write Image><li><b>Write Image:</b></a></h3>
+   See <a href = #copywriteimage>Write-Image on the copy dialog.  </a>
+
+<h3><a name = Verify Burned Image><li><b>Verify Burned Image:</b></a></h3>
+   See <a href = #verifyburnimage>Verify Burned Image on the copy dialog.</a>
+<h3><li><a name = ISO9660notes>Some notes about the ISO9660-Filesystem:</a></h3>
+ <p>
+ Please consider that the ISO9660 standard does not allow more than 8
+ directory levels. If you have more than that, a directory "RR_MOVED" will
+ be created in the root of your CD containing all the files that are 
+ beyond the eighth directory level. You can get around this limitation
+ with the "Do not use deep dir. relocation"-Setting of the Image-Type.
+ (Tested with Linux/Win95/NT)
+
+ <p>
+ If you enabled Rock-Ridge on the CD, then this directory will be invisible 
+ mapped back at the correct position when you mount the CD on Rock-Ridge
+ capable systems (Unix). 
+ <p>
+ When you see a directory "rr_moved" in the Image-Content preview window and
+ Rock-Ridge was not enabled, you had more than 8 directory levels.
+ <p>
+ For full Windows 95/NT compatiblity you should enable Rock-Rigde and
+ Joliet at the same time. This way both the Linux and Windows systems can
+ use the CD as best as possible. 
+</ol>
+
+<hr>
+<h2><a name = info>13) Useful Information</a></h2>
+
+<p>
+<b>READ THIS - It will help!</b>
+
+<ol>
+<li> Timing is critical while writing a CD. Be sure that nobody starts
+  heavy-loaded processes. (Perhaps by shutting down the network.)
+  You must maintain a steady data flow. If the CD-Writer "runs dry",
+  the resulting disc may be unreadable. The more cache the CD-Writer
+  has, the likelihood of missing data drops.
+  <p>
+  I was able to write a CD successfully with 4x-speed, on a Yahama Writer 
+  with an ISA-Adaptec 1542B, 486/50. So there is enough
+  power in Linux. Don't worry. But do use simulation writes to 
+  play safe.
+
+<li> The <b>Adaptec 2940-Series</b> is known to produce a lot of troubles with
+  CD-Writers under Linux. Do enable Disconnect, reduce the SCSI-Transfer-
+  Rate to a minimum for the Writer to prevent troubles. If everything
+  else fails try to write with slower speed to see if the problem persists.
+  Using the most recent driver for the Adaptec 
+  solves a lot of problems. Go and install a new kernel! I have been
+  told that you should let the driver-options at the default values! 
+  Especially the "tagged command queueing" seems to cause lot of problems.
+
+<li> For NCR-810 based controllers use the new NCR53C8XX-Driver and 
+     enable async. mode if you have problems. 
+
+<li> The next hints are taken from the <i>cdwrite</i> manpage:
+
+       <p>
+       Unless  your  SCSI  controller  and driver support discon-
+       nect/reconnects, you will probably not be able to write  a
+       CD  correctly  if  the  CD writer and hard disk are on the
+       same SCSI bus.  It is not recommended that IDE drives  are
+       used  on  CD-writing system; if they are, it is imperative
+       that interruptible operation is enabled using  the  hdparm
+       command.
+
+       <p>
+       It  is  not recommended to use more than single speed when
+       reading data off a filesystem (as opposed to  a  raw  disk
+       partition).
+
+       <p>
+       <i>cdwrite</i>  does  not  verify that the input data will fit on
+       the media.  In the case of media  overrun,  the  resulting
+       disc is usually unreadable.
+
+       <p>
+       A Compact Disc can have no more than 100 tracks.
+
+       <p>
+       When  creating  a disc with both audio and data tracks, it
+       is conventional to place the data on  track  1.   Some  CD
+       players  or  CD-ROM  drives may respond incorrectly to any
+       other arrangement, although the specifications permit  it.
+
+       <p>
+       Many  systems are not able to read more than a single data
+       track, or need special software to do so.
+
+       <p>
+       Some CD players have problems reading "gold"  CD's,  and
+       some have problems reading the outermost tracks (i.e. very
+       long CD's).
+
+<li> I encountered a slightly unstable writing behavior when writing
+  CDs with a lot of tracks. (Audio or Mixed-Mode). After I upgraded
+  the firmware of my writer, it worked perfectly. ALWAYS use
+  the simulation-write mode to check out whether your writer <-> SCSI 
+  controller combination works stable.
+  (You can also experiment with the SCSI-Setup in your SCSI-Bios...
+   disabling disconnect may help.)
+
+<li> Mounting an ISO-Image was dangerous with old kernels, if you use a 
+  new kernel, you can do this. If you mastered a CD to a partition, 
+  just mount this partition, if you created a image in a file, you 
+  can use the new loopback mount to mount it.
+
+<li> When you read digital audio tracks of a CD, check the quality of the 
+  sound-files before you write them. Many CD-ROMs I tested support
+  digital access to the tracks, but the resulting quality is noisy or 
+  "scattered".
+  <p>
+  It is best to use your CD-Writer for audio read. They should all 
+  perform perfectly.
+ 
+<li> You can create your own audio tracks. Use the program "sox" (not 
+  included) to convert any sound-format to the CDDA-Format. If you
+  do that on a little-endian-machine like a 386/486/Pentium you have
+  to reverse the byte order to big endian with the "-x" switch.
+  X-CD-Roast now wants all its audio-tracks in big-endian-format, the 
+  byteorder-handling is done internally in cdrecord.
+ 
+  <p>
+  Example: To convert a file "sound.wav" (44.1kHz, 16-bit, Stereo) to
+  CDDA do this:
+     <p>
+     <b>sox sound.wav -x sound.cdr</b>
+
+  <blockquote>
+  Hint: After creating your own audio-tracks and copying them to the
+    image directory, use the "Play Audio-Tracks"-Option to listen
+    to your track. If it plays ok, you made everything right.
+    (The audio-files must have a ".cdr"-extension to be recognized
+     by X-CD-Roast)
+
+    </blockquote>
+   New: X-CD-Roast can now write wav files directly. Just copy
+   the wav-files in the "Image-Data-Path" where X-CD-Roast looks
+   for its tracks. You have to care yourself that the files are in
+   44.1kHz, 16-Bit, stereo format! <font color=#ff0000>Be sure
+   to enable the "Fix Wav-Files" Option in the Write-Tracks-Menu.</font>
+   <li>
+   If your Audio-Tracks are only noise after burning, then you got
+   the endian-setting wrong. In this case you have to enable the
+   "Swap Audio"-option in the "Write Tracks"-menu. 
+    <li>If X-CD-Roast displays the track-sizes on a CD to large by a
+    factor of 4, then you have perhaps jumpered your CD-Rom for 
+    Unix-mode or you use a CD-Rom designed only for Unix-Workstations.
+    The term "Unix" means here Unix-Hardware like Workstations from Sun or
+    HP. Remove the "unix"-jumper on your CD-Rom to get the right sizes
+    of your tracks. 
+</ol>
+      
+<hr>
+<h2><a name = bugs>14) Known Bugs</a></h2>
+<ol>
+
+<li> I had some reports that mkisofs tend to core-dump when you use
+     it on glibc-based systems (e.g. RedHat 5.0). In this case you have
+     to upgrade your glibc. ftp.redhat.com offers a new version in its
+     update directories. 
+
+<li> When you start X-CD-Roast with a "-help" or "-h" Option you get
+     an Seg. Fault. Use "--help" or "-?". Similar problem when you use
+     "-display" to a host you cannot connect to. 
+     This is a embedded Tix problem I don't know how to fix.
+
+<li> Right now its not possible to write Mixed-Mode-CDs with a SONY-Writer.
+     This is due a bug in cdrecord. The Author of cdrecord is working on
+     that.
+
+<li> If you have more than one SCSI-controller or you load/unload your
+     SCSI-driver as a module, you might have problems with cdrecord
+     finding your CD-Writer. In this case you have to install the
+     Linux.scsi-patch which is in the cdrecord-source directory.
+
+<li> When you abort a dummy-write with the "cancel"-button, you might
+     end up with a CD-Writer in undefined state. If you are not able
+     to remove the CD from the Writer you have to turn it off/on or
+     in the worst case reboot your system. Especially the Philips 2600
+     is known to refuse any further work until you turn in off/on. 
+ 
+<li> When using the precompiled binary you get in some rare conditions 
+     a "Tcl_CloseFile: unexpected file type, IOT trap/Abort"-Message.
+     This results from some library incompatibilities and your system.
+     You have to recompile the whole xcdroast to get it running.
+
+<li> Sometimes the automatic mount or umount or formatting of a partition
+     fails. Thats because on some systems you cant do that as non-root. 
+     Not even the suid-bit helps in the case -> You have to run xcdroast
+     as real root-user. (Does somebody knows how to get around that?)
+
+<li> The Generic-SCSI-Interface of Linux is quite unstable. If you 
+  experience a lock-up of X-CD-Roast when you start it up, or your SCSI-
+  Devices are not anymore correctly identified, then you have to
+  reboot your Computer.
+  Some devices behave better than others... it also depends on your 
+  controller. I hope somebody will reimplement the SCSI-Interface soon.
+
+<li> Copying non-ISO9660 CDs is a little tricky. At the moment, I am 
+  skipping the last two blocks of such a CD to ensure that I don't 
+  reach an "unwritten" area, which can cause the kernel to crash.
+  If you know a better way, I'd appreciate hearing from you.
+
+<li> Sometimes the program freezes when trying to read from the CD-ROM or 
+  writer when its tray is open. This looks like a hardware bug to me.
+  If this happens, you have to restart the program.
+
+<li> In some cases you can click on buttons, which should be "locked"  
+  (when the watch mouse cursor is active). This is due the complex
+  grabbing code in Tk and is a generally known problem. This behavior
+  may be different in different Tk-versions.
+ 
+<li> When you press on "cancel" while reading or verifying an image, you 
+  have to wait some seconds until the button responds. This is because
+  the program waits until the working process terminated.
+
+</ol>
+
+
+<hr>
+<h2><a name = faq>15) Frequently Asked Questions and Problem-solver</a></h2>
+
+<p>
+Q: I am using the predecessor of this program, "cdwtools-0.93", what
+   is new with X-CD-Roast?
+
+<p>
+A: Really new is the much easier to use X-Interface, the automatic
+   SCSI setup, better audio-track control and a log facility.
+
+<p>
+-
+
+<p>
+Q: Is it safe to burn CDs under X?
+
+<p>
+A: Any 486 should be fast enough to handle this, but if you are in doubt
+   try simulated writes to check if errors occur.
+<p>
+- 
+
+<p>
+Q: What about Multisession-support?
+
+<p>
+A: X-CD-Roast doesn't allow Multisession yet. If you need this feature
+   you have to do it manually. I expect to have support for this in
+   Version 0.97 of X-CD-Roast.
+<p>
+-
+<p>
+Q: Why is there no Quick-Audio-Copy?
+
+<p>
+A: Reading digital Audio from a CD must not be interrupted in order to
+   produce a "clean" stream. The problem is, that it is difficult
+   to address a specific sector on an Audio-CD, because there are no
+   sector-numbers like on a Data-CD. But you have to stop reading from
+   time to time to write the read data to harddisk. The longer this
+   writing lasts, the greater is the chance that the audio-read device
+   loses its track on the current audio-sector...if this happens you 
+   have a "click" in the recording. <br>
+   When you now want to read audio data and write it at the same time
+   to a CD-Recordable the problem with the writing-time is much worse,
+   because the CD-Writer is much slower than a harddrive. The result 
+   would be a very bad copy...therefore I don't bother with programming
+   a quick-audio-copy. (It might be possible with very clever buffering
+   and a good knowledge of the devices used...but I dont know what 
+   devices you are using and without vendor-support I'm not able to 
+   do something like that.)
+ 
+<p>
+-
+
+<p>
+Q: Hey, my backspace or delete key doesn't work in entry-fields.
+   Is this a bug?
+
+<p>
+A: No, this is not a bug, it is just an incorrect key mapping in X11.
+   You can fix it by putting this line in your .xinitrc (or if you have
+   an Xmodmap-file, by changing the corresponding line.)
+
+	xmodmap -e "keycode 22 = BackSpace"
+ 
+<p>
+-
+
+<p>
+Q: I fail to compile X-CD-Roast, all I get are error-messages.
+
+<p>
+A: You have probably a kernel that is too old. Install 2.0 or 
+   above.
+<font color=#ff0000>Or you dont have all the development-packages
+from your linux-distributions
+installed. X11-development is needed for example.</font>
+<p>
+-
+
+<p>
+Q: X-CD-Roast failed to detect any of my SCSI-Hardware, what can I do?
+
+<p>
+A: Check if you compiled generic SCSI support in the kernel, and if 
+   the generic devices exist. To create the generic devices run 
+
+	<p>
+	<b>./MAKEDEVICES.sh</b>
+
+   <p>
+   in the xcdroast-0.96e directory.
+
+   Next check if you installed "generic-SCSI" support in your kernel. 
+   Do a <i>"cat /proc/devices"</i>.. There should be a line "21 sg".
+   If not you have to recompile your kernel.
+<p>
+-
+<font color=#ff0000>
+<p>
+Q: How well are CD-RW-Writers supported?
+
+<p>
+A: You can write on CD-RW's exactly like on a CD-Recordable. X-CD-Roast does
+   not handle these any differently. To erase a CD-RW you have to call
+   cdrecord manually (see the X-CD-Roast logfile where to find cdrecord and
+   what your scsi-device is). 
+<blockquote>
+e.g.: <b>/usr/local/lib/xcdroast-0.96e/bin/cdrecord-1.6.1 dev=4,0 blank=fast</b>
+<br>(This will erase the CD-RW in the CD-Writer with the SCSI-ID 4)
+</blockquote>
+   Future versions of X-CD-Roast will provide a button to do this
+   the convenient way.
+<p>
+-
+</font>
+
+<p>
+<hr>
+<p><a name = bugreport>
+<b>Q: I think I found a bug, what should I do?</b>
+
+<p>
+A: Before you send me a bug-report, check to see whether I mentioned this 
+   behavior somewhere in the README file. Then check if all your software 
+   and hardware meet the requirements listed in the requirement section of
+   the documentation.<p>
+   If it is a cdrecord-problem (so anything that relate somehow to 
+   CD-writing) check the READMEs that came with cdrecord!<br>
+   DONT WRITE ME ABOUT THAT! Ask <a href="mailto: schilling@fokus.gmd.de">
+   Joerg Schilling</a> (the author of cdrecord) when you have cdrecord-problems!
+   <p>
+   Also check to see whether there is a new version of this program is 
+   available, look at the primary site: 
+
+     <p>
+     <a href = http://www.fh-muenchen.de/rz/xcdroast>http://www.fh-muenchen.de/rz/xcdroast</a>  
+
+   <p>
+   Ok, you've done all this and the error persist. 
+   <p>
+   Supply me with the following information:
+     <ol>
+   <li> Your kernel and X-CD-Roast version. Also your linux-distribution
+        is interesting.
+   <li> Try to reproduce the error with "xcdroast -debug" and mail me
+        the output.
+   <li> A copy of your xcdroast.conf-file. (If you dont have one, mail me
+     the list of your scsi-devices)
+   <li> An exact description of the error, what you have done and what
+     happened. (If a error-window with a stack-trace button pops up, mail
+     me the stack trace too. Older versions of Tk output the 
+     stack trace in the xterm where you started the program.)
+     </ol>
+
+<hr>  
+<h2><a name = credits>16) Credits</a></h2>
+
+<p>
+Thanks go to:
+
+<ul>
+<li> The FH-Munich: For supplying me the hardware and time.	
+	       	 And especially Andreas Boeck of the FHM Computer Center
+	 	 and Prof. Dr. Stanek supporting the project and their 
+		 helpful advice on numerous design questions.
+		 Thanks also to Prof. Dr. Russell Block for reviewing
+         	 this README file, and correcting a lot of grammatically
+		 adventures.	
+
+<li> Authors of cdwrite: Adam Richter (<a href="mailto: adam@yggdrasil.com">adam@yggdrasil.com</a>)
+                      H. Peter Anvin (<a href="mailto: hpa@storm.net">hpa@storm.ne</a>)
+                      and the others mentioned in the cdwrite manpage.
+		      David Gates for Sony-Support.
+<li> Author of cdda2wav: Heiko Eissfeldt (<a href="mailto: heiko@colossus.escape.de">heiko@colossus.escape.de</a>)
+
+<li> Author of mkisofs: Eric Youngdale and Yggdrasil Computing
+
+<li> Author of fdisk3.04: Andries E. Brouwer
+
+<li> Authors of Tcl/Tk: John Ousterhout and many others.
+
+<li> Author of Tix: Ioi Kim Lam 
+
+<li> Bill Chimiak (<a href="mailto: chim@bgsm.edu">chim@bgsm.edu</a>) for converting this README to HTML.
+<li> Author of cdrecord: Jörg Schilling (<a href=mailto:schilling@fokus.gmd.de>schilling@fokus.gmd.de</a>)
+<li> Author of cdparanoia-patch: Adrian Knoth (<a href=mailto:adi@erfurt.thur.de>adi@erfurt.thur.de</a>)
+<li> Author of nonroot-patch: Till Kamppeter (<a href=mailto:till.kamppeter@theo.phy.uni-bayreuth.de>till.kamppeter@theo.phy.uni-bayreuth.de</a>)
+<li> Deti Fliegl (<a href=mailto:deti@gmx.de>deti@gmx.de</a>) for the readcdda-ATAPI-Mode.
+<li> Michael Gernoth (<a href=mailto:michael.gernoth@fen.baynet.de>michael.gernoth@fen.baynet.de</a>) for the SuSE-aware configure-script.
+
+</ul>
+
+
+<hr>
+<h2><a name = conclusion>17) Supported CD-Writers</a></h2>
+
+<p>
+These CD-Writers are supported by <font color=#ff0000>cdrecord-1.6.1</font> and therefore by
+this version of X-CD-Roast. More will be most likely supported by
+future versions of cdrecord.
+
+<blockquote><b>
+Please direct all questions about CD-Writers to the author of
+cdrecord: Joerg Schilling (<a href=mailto:schilling@fokus.gmd.de>schilling@fokus.gmd.de</a>).
+</b></blockquote>
+
+<ul>
+<li>All SCSI-3/mmc compliant drives
+<li>All ATAPI/mmc compliant drives
+<p>
+<li>        COMPRO CW-7502
+<li>        Dysan CR-622 ???? See Wearnes 622
+   <li>     Dysan CR-1622
+<li>        DynaTec CDM-240J (see Pinnacle RCD-4x4)
+<li>        DynaTec CDM-240  (use cdrecord driver=yamaha_cdr100 and report inquiry)
+<li>        DynaTec CDM-400  (use cdrecord driver=yamaha_cdr100 and report inquiry)
+<li>        Grundig CDR-100  
+<li>        Hewlett Packard 4020i
+<li>        Hewlett Packard 6020i
+<li>        HP C4324/C4325 (HP SureStore 4020i/6020i)
+<li>        HP 7100
+<li>        HP 7110
+<li>        HP 7200
+<li>        HP 8100
+<li>        Hi-Val CD-R (see Pinnacle RCD-4x4)
+<li>	    JVC XR-W2001 (uses TEAC code - see below - audio not working)
+<li>        JVC XR-W2010 (uses TEAC code - see below - audio not working)
+<li>        JVC XR-W2020 (uses TEAC code - see below - audio not working)
+<li>        Kodak PCD-200 or Kodak PCD-200 Plus
+<li>        Kodak PCD-225
+<li>        Kodak PCD-240
+<li>        Kodak PCD-600 (not tested)
+<li>        Matsushita CW-7502
+<li>        Memorex CR-622 ???? See Wearnes 622
+<li>        Memorex CR-1622 
+<li>        Microboards PlayWrite 2000 (use cdrecord driver=sony_cdu924 and report inquiry)
+<li>        Microboards PlayWrite 4000 (use cdrecord driver=yamaha_cdr100 and report inquiry)
+<li>        Microboards PlayWrite 4001RW
+<li>        MicroNet MasterCD Plus 4x4 (use cdrecord driver=yamaha_cdr100 and report inquiry)
+<li>        MicroNet MasterCD Plus 4x6
+<li>        Mitsumi CR-2401-TS (not tested)
+<li>        Mitsumi CR-2600-TE
+<li>        Mitsumi CR-2801
+<li>        Mitsumi CR-4801
+<li>        Olympus CDS615E
+<li>        Olympus CDS620E (use cdrecord driver=sony_cdu924   and report inquiry)
+<li>        Olympus CD-R2x6 (use cdrecord driver=sony_cdu924   and report inquiry)
+<li>        Optima Dis Kovery 650 CD-R (use cdrecord driver=sony_cdu924   and report inquiry)
+<li>        OTI CDRW 965
+<li>        Panasonic CW-7502
+<li>        Philips CDD 521 (CDD521/02  Revision: 2.06 has bad firmware - seems not to work)
+<li>        Philips CDD 521 (upgraded units only: ID: CDD521/10  Revision: 2.07)
+<li>        Philips CDD 522
+<li>        Philips CDD 2000
+<li>        Philips CDD 2600
+<li>        Philips CDD 3600
+<li>        Philips CDD 3610
+<li>        Philips Omniwriter 26
+<li>        Philips Omniwriter 26A
+<li>	    Pinnacle Micro RCD-1000 (see TEAC/JVC): Need to upgrade firmware to 2.35
+<li>        Pinnacle Micro RCD-5020 (see TEAC/JVC - audio not working)
+<li>        Pinnacle Micro RCD-5040 (see TEAC/JVC - audio not working)
+<li>        Pinnacle Micro RCD-4x4 
+<li>        Pioneer DW-S114X
+<li>        Plasmon CDR 4220 (not tested)
+<li>        Plasmon RF-4100
+<li>        Plasmon RF-4102
+<li>        Plasmon CDR 4400 (use cdrecord driver=yamaha_cdr100 and report inquiry)
+<li>        Plasmon CDR 480
+<li>        Plextor PX-R24CS (use cdrecord driver=ricoh_ro1420c and report inquiry)
+<li>	    Plextor PX-R412C
+<li>        Procom PCDR 4 (use cdrecord driver=yamaha_cdr100 and report inquiry)
+<li>        Ricoh RO-1420C
+<li>        Ricoh MP-6200
+<li>        Ricoh MP-6200I
+<li>        Ricoh MP-6201
+<li>        Smart & Friendly CD-R1002 (use cdrecord driver=sony_cdu924   and report inquiry)
+<li>        Smart & Friendly CD-R1004 (use cdrecord driver=yamaha_cdr100 and report inquiry)
+<li>        Smart & Friendly CD-R2004 (use cdrecord driver=sony_cdu924   and report inquiry)
+<li>        Smart & Friendly CD-R2006 PLUS
+<li>        Smart & Friendly CD-R2006 PRO
+<li>        Smart & Friendly CD-R4000 (use cdrecord driver=yamaha_cdr100 and report inquiry)
+<li>        Smart & Friendly CD-R4006
+<li>	    Smart & Friendly CD-R4012
+<li>	    Smart & Friendly CD-RW226
+<li>        Sony CDU920S
+<li>        Sony CDU924S
+<li>        Sony CDU926S
+<li>        Sony CDU928
+<li>        Sony CDU940S
+<li>        TEAC CD-R50S 
+<li>        TEAC CD-R55S
+<li>        Taiyo Yuden CD-WO EW-50
+<li>	    Traxdata CDR-4120
+<li>	    Traxdata CDRW-4260
+<li>        Turtle Beach 2040R (use cdrecord driver=ricoh_ro1420c and report inquiry)
+<li>        Wearnes CD-R622
+<li>        Wearnes CD-R632P
+<li>        Yamaha CDR-100
+<li>        Yamaha CDR-102
+<li>        Yamaha CDR-200
+<li>        Yamaha CDR-400 (Firmware revision 1.0d and up otherwise upgrade)
+<li>        Yamaha CDR-401
+<li>        Yamaha CRW-4001
+<li>	    Yamaha CRW-2260
+<li>        Yamaha CRW-4260
+
+</ul>
+<h3>The following drives will <u>never</u> be supported by cdrecord because they are too old:</h3>
+<ul>
+<li>        JVC XR-W1001
+<li>        Pinnacle Micro RCD-202
+<li>        Ricoh RS-9200CD
+</ul>
+
+<h3>The following drives are curently not supported because I don't get specs:
+(some of them way partially work: see above)</h3>
+<ul>
+<li>        Creative Labs CDR 4210
+<li> 	    JVC XR-W2001
+<li>        JVC XR-W2010
+<li>        JVC XR-W2020
+<li>        Panasonic CW-7501
+<li>        Pinnacle Micro RCD-1000
+<li>        Pinnacle Micro RCD-5020
+<li>        Pinnacle Micro RCD-5040
+<li>        Plasmon CDR-4240
+<li>        Ricoh RS-1060C
+<li>        Sony CDW-900E
+</ul>
+
+<h3>What about ATAPI-Writers?</h3>
+<ul>
+<li> Read "<b>README.ATAPI</b>" to learn how to configure your kernel to 
+support ATAPI-Devices with cdrecord. 
+</ul>
+
+<blockquote>
+Note: If you have a writer that is not supported by X-CD-Roast yet, you
+may want to try out a newer (perhaps beta-version) of "cdrecord". You can download it at <a href=ftp://ftp.fokus.gmd.de/pub/unix/cdrecord/>ftp://ftp.fokus.gmd.de/pub/unix/cdrecord/</a>. 
+</blockquote>
+
+<hr>
+
+<address>
+26.11.98 Thomas Niederreiter 
+<a href="mailto:tn@fh-muenchen.de">tn@fh-muenchen.de</a>
+</address>
+
+</body>
+</html>
+

@@ -1,0 +1,9 @@
+! Copyright (c) 1990-1997  Michael Sandrof, Troy Rollo, Matthew Green,
+! and other ircII contributors.
+!
+! All rights reserved.  See the HELP IRCII COPYRIGHT file for more
+! information.
+!
+Usage: LOAD version
+  This sets your CLIENT_INFORMATION variable to your client version.
+  This can be seen with CTCP <nick> VERSION.

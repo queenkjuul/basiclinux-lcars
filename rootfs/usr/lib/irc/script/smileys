@@ -1,0 +1,14 @@
+# Reverse smileys.. the way I like them  *grin*
+#
+bind meta2-: type  :)
+bind meta2-( type  :(
+bind meta2-* type  :*
+bind meta2-I type  :I
+bind meta2-# type  :#
+bind meta2-; type  ;)
+
+# Experimental.. a boldface!
+#
+bind meta2-) type  :)
+
+# lynx91,92

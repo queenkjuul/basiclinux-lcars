@@ -1,0 +1,44 @@
+*background:			grey90
+*file_label.background:		grey80
+*folder_form.background:	grey80
+*folder_pane.background:	grey80
+*folder_info.background:	grey80
+*menu_form.background:		grey80
+*quota_label.background:	grey80
+*dir_pane.background:		grey80
+*workspace_form.background:	grey80
+
+*Command.background:		grey80
+*Toggle.background:		grey80
+
+*device_area.background:	grey80
+
+*clock.background:		grey90
+*clock.borderSize:		0.2
+*clock.BorderColor:		steelblue
+
+*iconFont:		8x13
+*font:			-*-helvetica-medium-r-*-*-14-*-*-*-*-*-*-*
+*dialog_accept.font:	-*-helvetica-bold-r-*-*-14-*-*-*-*-*-*-*
+*apply_info.font:	-*-helvetica-bold-r-*-*-14-*-*-*-*-*-*-*
+*wse_apply.font:	-*-helvetica-bold-r-*-*-14-*-*-*-*-*-*-*
+!*multiWindow:		FALSE
+*saveWSOnExit:		True
+
+*trashcan:		~/tmp
+
+*dir_simple.translations:	<Key>e:	start-exec() \n\
+				<Key>d: start-delete() \n\
+				<Key>m: start-move() \n\
+				<Key>c: start-copy() \n\
+				<Key>i:	start-info()
+*file_simple.translations:	<Key>e:	start-exec() \n\
+				<Key>d: start-delete() \n\
+				<Key>m: start-move() \n\
+				<Key>c: start-copy() \n\
+				<Key>i:	start-info()
+*ws_simple.translations:	<Key>e:	start-exec() \n\
+				<Key>d: start-delete() \n\
+				<Key>m: start-move() \n\
+				<Key>c: start-copy() \n\
+				<Key>i:	start-info()

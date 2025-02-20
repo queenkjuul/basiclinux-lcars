@@ -1,0 +1,10 @@
+! Copyright (c) 1990-1997  Michael Sandrof, Troy Rollo, Matthew Green,
+! and other ircII contributors.
+!
+! All rights reserved.  See the HELP IRCII COPYRIGHT file for more
+! information.
+!
+Usage: BIND <key> HELP_CHARACTER
+  This shows help on the current input buffer without disturbing
+  the contents of the buffer.  It is as though you had typed
+  HELP followed by whatever is in the input buffer.

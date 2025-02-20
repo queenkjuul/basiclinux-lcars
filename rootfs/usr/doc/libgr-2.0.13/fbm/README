@@ -1,0 +1,203 @@
+This directory contains Release 1.0 of the Fuzzy Pixmap Manipulation (FBM)
+library of programs.  This collection (in combination with Jef Poskanzer's
+PBM collection) provides a complete package for manipulating and converting
+color and black and whites images, including 24bit RGB, 8bit mapped color,
+8bit grayscale, and 1bit bitmapped images.
+
+Compilation
+
+	Unpack all files in one directory.  Edit Makefile and put in
+	appropriate values for defaults.
+
+	If you wish to have the tiff2fbm and fbm2tiff programs, first
+        obtain, unpack, and compile libtiff.a, and then modify FBM 's
+	Makefile to include this library.  Then type "make tiff".  Note
+	that some versions of libtiff are not careful to put file
+	tiffcompat.h into the intstall directory.  The tifflib is
+	available from UCBVAX.BERKELEY.EDU, file pub/tiff/v2.2.tar.Z.
+
+	If you have the Utah Raster Toolkit, the 'fbcat' program can be
+	compiled with the -DRLE flag to include support for RLE files.
+	Credit for RLE support to Paul Milazzo <milazzo@pearl.bbn.com>.
+	Get the Toolkit from CS.UTAH.EDU, file pub/toolkit-2.0.tar.Z.
+
+	Get Jef Poskanzer's PBMPLUS source from EXPO.LCS.MIT.EDU, file
+	contrib/pbmplus.tar.Z.
+
+File Formats
+
+	FBM   (-F)	FBM file with 256 byte header (with title & credits)
+	Sun   (-S)	Sun rasterfile with 32 byte header
+	Tiff  (-T)	Aldus TIFF
+	PBM   (-P)	Poskanzer format for 1bit files
+	GIF   (-G)	CompuServe GIF format
+	RLE   (-R)	Utah RLE format
+	IFF   (-I)	Amiga IFF files (except HAM mode files)
+	PCX   (-Z)	PC PaintBrush format for IBM
+	Face  (-B)	Bennet Yee's 1bit files, used at CMU
+
+	All programs (except fbinfo) can read any of the formats, and use
+	the magic number to decide the file type.  If the input is not a
+	pipe and is compressed using the net standard 'compress' program,
+	the file will be uncompressed as it is read.  Note however that 
+	the operation to be performed must make sense; that is you cannot
+	halftone a color image, quantize a grayscale image, or resize a
+	1bit file.
+
+Files and Programs:
+
+	README		This file
+	README.lib	Lists the subroutines in libfbm.a
+	Makefile	Make utility configuration file
+	fbm.1		General manual entry
+	*.1		Individual manual entries
+	fbm.h		Defines FBM data structures
+
+	clr2gray  Convert color to grayscale
+	fbcat	  Copy image (used for format conversion)
+	fbclean	  Flip isolated pixels (clean image)
+	fbedge	  Compute derivative image (edge detection)
+	fbext	  Extract region, resize, change aspect ratio
+	fbgamma	  Gamma correct grayscale or color image for display
+	fbhalf	  Halftone grayscale image (Blue noise, Floyd-Steinberg, etc)
+	fbham	  Convert FBM 24bit RGB to Amiga HAM mode
+	fbhist	  Compute histogram
+	fbinfo	  Dump image header
+	fbm2pod	  Convert grayscale image to Diablo graphics (!)
+	fbm2tga	  Convert image to Targa format
+	fbm2tiff  Convert FBM files to 1, 2, 4, 8, or 24 bit TIFF
+	fbmask	  Set region to gray value
+	fbnorm	  Normalize image intensity / increase contrast
+	fbpalet	  Replace an imager's colormap with another, remove duplicates
+	fbps	  Convert to PostScript
+	fbquant	  Color quantization (24 bit to 8..256 colors) Mod. Heckbert
+	fbrot	  Rotate 90, 180, or 270 degrees
+	fbsample  Sample a 1bit file to produce an 8bit file
+	fbsharp	  Sharpen (edge enhancement) by digital Laplacian
+	gray2clr  Add a "gray" colormap to a grayscale image
+	idiff	  (and udiff) convert raw byte stream into byte difference
+	pbm2ps	  Convert PBM file to PostScript
+	pbmtitle  Add a title to a PBM file
+	raw2fbm	  Convert raw file to FBM format (eg: Amiga Digiview files)
+	tga2fbm   Convert Targa file to FBM format
+	tiff2fbm  Convert tiff file to FBM format
+	uunet2fbm Convert UseNet Facesaver file to FBM format
+
+Extensions
+
+	Several file extension conventions are used, but none are enforced
+
+	.Z		Compressed file, appended to other extensions
+
+	.fbm		Standard extension for FBM format files
+	.cbm		Sometimes used to mean a 24bit color FBM file
+
+	.ip		8bit grayscale Amiga file (with 1.2 aspect ratio)
+	.cp		24bit color Amiga file (with 1.2 aspect ratio)
+
+	.1bit		Sun 1bit rastefile
+	.clr		Sometimes used to mean a 8bit mapped color Sun file
+
+	.bm		Bennet Yee's "Face" format (1bit)
+	.pbm		Poskanzer 1bit format
+	.gif		Compuserve GIF format
+	.pcx		ZSoft's PCPaintbrush format
+	.tif or .tiff	Aldus's TIFF format (used on NeXT)
+
+Example Unix pipelines to view files:
+
+	Starting with an 8 bit raw Amiga grayscale file, foo.ip, first
+	create an FBM format file with a title and credit, then process
+	that file for viewing on a Sun screen by normalizing, rotating,
+	resizing, sharpening, and halftoning.
+
+	% raw2fbm -d1 -a1.2 -w640 -h400 \
+	  -t'Random Title' -c'Random Credit' < foo.ip > foo.fbm
+
+	% fbinfo foo.fbm
+	foo.fbm        	"Random Title"
+			[ Random Credit ]
+			[640x400x8]    8 physbits  1.2 aspect ratio
+			row length 640, plane length 256000, colormap length 0
+
+
+	% fbnorm < foo.fbm | \			(normalize)
+	  fbrot | \				(rotate 90 deg clockwise)
+	  fbext -a1 -W900 -H768 | \		(resize & make aspect ratio 1)
+	  fbhalf -s10 -S > foo.1bit		(sharpen, halftone, write Sun)
+
+
+
+	Starting with a 24 bit color Amiga file, bar.cp, first create an
+	FBM format file with title and credit, then render that file for
+	viewing on a Sun by normalizing, rotating, sharpening, and
+	quantizing.
+
+	% raw2fbm -d3 -a1.2 -w640 -h400 \
+	  -t'Random Color Title' -c'Random Color Credit' < bar.cp > bar.cbm
+
+	% fbinfo bar.cbm
+	bar.cbm        	"Random Color Title"
+			[ Random Color Credit ]
+			[3x640x400x8]    8 physbits  1.2 aspect ratio
+			row length 640, plane length 256000, colormap length 0
+
+
+	% fbnorm < bar.cbm | \			(normalize)
+	  fbrot | \				(rotate 90 deg clockwise)
+	  fbext -a1 -W900 -H768 | \		(resize & make aspect ratio 1)
+	  fbsharp 3.0 | \			(sharpen it)
+	  fbquant -S > bar.clr			(quantize and write Sun)
+
+	(Note that sharpening is an integral option to the halftoning
+	 program using the -s option, but that color images must currently
+	 be sharpened using a separate program.  Note also that more
+	 sharpening is used on black and white images than on color images).
+
+      Starting with a 256 color Sun raster image, baz.clr, generate a NeXT
+	readable 2bit grayscale image (note fbm2tiff is not a filter, but
+	writes to a named file.  Tiff2fbm reads a named file):
+
+			-- Without Dithering --
+      % clr2gray < baz.clr | \			(convert to gray)
+	fbm2tiff -N baz.tiff			(chop 8bit grays to 2bit)
+
+			-- With Dithering (note 1) --
+      % clr2gray < baz.clr | \			(convert to gray)
+	fbnorm | \				(normalize, optional)
+	unmap | \				(convert to RGB)
+	fbquant -c4 | \				(fbquant also dithers RGB)
+	clr2gray | \				(back to gray: 0, 85, 190, 255)
+	fbm2tiff -N baz.tiff			(convert 4 grays to NeXT 2bit)
+
+	Note 1: Yes, this is gross...and inefficient.  But the
+	images look fine.  Dithering should be an option of fbm2tiff,
+	and really the halftoning algorithms should be generalizes
+	to produce more than just bitmaps.
+
+Notes on the 'fbext' program
+
+	Usage:	fbext [ -w<width> -h<height> -W<maxwdith> -H<maxheight>
+		        -s<size> -a<aspect> -t'title' -c'credits' ]
+		     [ x y [ width height ] ]
+		< foo.fbm > bar.fbm
+
+	fbext (bitmap extract) is a very useful anmd multipurpose program.
+	Its basic operation is to copy a rectangular portion of one image
+	(color or black and white) to a second image, possibly changing
+	either the width or height or both.  It can also change the title
+	or credits fields of the image.  Because it is so versatile, there
+	are a host of options:
+
+	-w<num>  or  -h<num>	Force width and/or height to a certain size
+	-W<num>  or  -H<num>	Limit width and height to a certain size
+	-a<num>			Force the output to have a given aspect ratio
+	-s<num>			Scale image to have no more than a given
+				number of pixels.
+	<x0> <y0> <width> <height>  select a rectangular region of the image
+				to extract.  The default is the entire image.
+
+	Note that the output size limits are cumulative.  Thus if you set a
+	maximum width, height, and number of pixels, the image will be the
+	smallest of the three limits.
+

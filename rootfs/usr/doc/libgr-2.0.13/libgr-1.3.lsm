@@ -1,0 +1,26 @@
+Begin
+35:PkgName    = libgr-1.3.tar.gz
+35:Title      = Some Graphics libraries with DLL shared image.
+25:Version    = 1.3
+65:Desc1      = The tiff, fbm, urt, pbm, pgm, ppm, pnm and jpeg libs
+65:Desc2      = in a form specially adapted to Linux shared DLL.
+65:Desc3      =
+65:Author     = Various
+65:MaintBy    = Rob Hooft (hooft@EMBL-Heidelberg.DE)
+65:MaintAt1   = sunsite.unc.edu
+65:PathFile1  = /pub/Linux/libs
+65:MaintAt2   =
+65:PathFile2  =
+65:Required1  = For this version, libc 4.4.1, libm 4.4.1 are required.
+65:Required2  =
+65:Required3  =
+65:CopyPolicy = See Original Source.
+65:Keywords   = tiff, fbm, urt, pbm, pgm, ppm, pnm, jpeg, graphics, library
+15:ApproxSize =
+65:Last3Rel   = 1.2 1.1 1.0
+65:Comment1   =
+65:Comment2   =
+65:Comment3   =
+30:CheckedBy  = Rob Hooft (hooft@EMBL-Heidelberg.DE)
+ 8:Date       = 29AUG93
+End

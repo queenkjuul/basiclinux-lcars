@@ -1,0 +1,178 @@
+<HTML>
+<HEAD>
+<TITLE>TkDesk User's Guide: Configuration of TkDesk </TITLE>
+</HEAD>
+<BODY>
+<A HREF="guide-6.html">Previous</A>
+<A HREF="guide-8.html">Next</A>
+<A HREF="guide.html#toc7">Table of Contents</A>
+<HR>
+<H2><A NAME="config"></A> <A NAME="s7">7. Configuration of TkDesk </A></H2>
+
+
+<P>Currently, TkDesk can be configured only by editing ASCII files.  This
+is not necessarily a drawback, because this way you can add complex
+Tcl/Tk procedures to the configuration files, but if you don't know
+Tcl/Tk you would probably prefer a dialog-based configuration.  This
+should be implemented in a future release of TkDesk.</P>
+<P>If you don't know Tcl/Tk: don't despair!  For the biggest part of
+TkDesk's configuration files it is absolutely not necessary for you to
+know how to program in Tcl/Tk, since you just have to modify values or
+extend the examples I have provided. And to those who want to exploit
+all of the power available by using Tcl/Tk as TkDesk's configuration
+language, have a look at the answer to FAQ
+<A HREF="guide-8.html#tcltk">Where can I find out more about Tcl/Tk?</A>.</P>
+<P>The configuration files can be accessed from the <CODE>TkDesk</CODE> menu
+via the entry <CODE>Edit Config Files</CODE>, or from the
+&quot;Configuration&quot; submenu of the popup menu of the
+application bar's first button (I should really call this the
+&quot;comet-button&quot; or something similar).  The built-in editor
+will then appear with the selected configuration file(s)
+already loaded.  Each configuration file contains rather detailed
+comments on what the individual settings are for, and how they can be
+modified.  Well, at least they contain examples, which can guide your
+modification attempts.  Once you have modified the configuration file,
+you can save it and reload it into TkDesk making use of the entries of
+the editor's &quot;TkDesk&quot; menu described in section
+<A HREF="guide-6.html#editor">The Built-in Editor</A>. Use F5 to save the file
+and reload it into TkDesk, and F6 to do the same but additionally
+close the configuration file.</P>
+<P>The following sections briefly describe what the individual
+configuration files are used for by TkDesk, and what settings can be
+defined by them.</P>
+<P>As already mentioned, each configuration file contains directions on
+how to modify its definitions.  The general advice is: just look at
+the example definitions, because these make things clearer than lots
+of explanations can. And don't be shy, but experiment! It's easier
+than you might think, really!</P>
+
+<H2><A NAME="appbar"></A> <A NAME="ss7.1">7.1 AppBar </A></H2>
+
+
+<P>This configuration file lets you define all aspects of the application
+bar (apart from its geometry, use the entries of the submenu
+&quot;Application Bar&quot; of the comet-button's popup menu for
+this). This is what you can define here:</P>
+<P>
+<UL>
+<LI> If the application bar should be managed by the window manager
+just as an ordinary window. I don't like this, so this is disabled by
+default <CODE>:-)</CODE>.</LI>
+<LI> The maximum number of buttons in a column (vertical layout) or
+row (horizontal layout). Yes, the application bar can contain several
+columns or rows!</LI>
+<LI> The fonts to use for the time and date display.</LI>
+<LI> The actual button definitions, ie. which image to display, and
+the entries of the (possibly cascaded) popup menu. See the
+&quot;AppBar&quot; file itself for the syntax used. TkDesk comes
+with a rich set of b/w XBM and colour XPM images, these are located in
+the <CODE>images</CODE> subdirectory of TKDesk's library directory. You
+can find out where this is by looking at the fifth line of the
+<CODE>tkdesk</CODE> script.</LI>
+</UL>
+</P>
+
+
+
+<H2><A NAME="ss7.2">7.2 ButtonBar </A></H2>
+
+
+<P>This file defines the contents and appearance of the Button Bar,
+which is displayed underneath the menu bar of TkDesk's file browser
+or file list windows. Both button bars are configured independently
+from one another.</P>
+
+
+<H2><A NAME="ss7.3">7.3 Commands </A></H2>
+
+
+<P>In this file you can define entries which will be added to TkDesk's
+&quot;Command&quot; menu, for example to uncompress all selected
+files or do whatever you can possibly imagine.</P>
+
+
+<H2><A NAME="ss7.4">7.4 Directories </A></H2>
+
+
+<P>Here you can define entries and cascaded submenus of directories which
+will be added to TkDesk's &quot;Directories&quot; menu. More details
+are contained in the &quot;Directories&quot; file itself.</P>
+<P>You can also define a list of directories whose parent directories are
+not to be displayed in file browser windows, as is usually the case
+with your home directory. This can speed up display of directories
+underneath an AFS directory, for instance.</P>
+<P>Another list lets you define action that are to be performed when a
+specific directory is opened. This can be used for example to
+auto-mount floppy and CDROM drives.</P>
+
+
+<H2><A NAME="ss7.5">7.5 FileTags </A></H2>
+
+
+<P>Contains definitions for color and font of specific file types, that
+will be used in TkDesk's file lists. Also the icons displayed when the
+&quot;Add Icons&quot; option is selected are configured here, as
+well
+as the icons used for the desk items, i.e. files and directories which
+have been dropped on the root window. </P>
+
+
+<H2><A NAME="ss7.6">7.6 Popups </A></H2>
+
+
+<P>The popup menus that appear when the right mouse button is clicked
+over a file or directory are defined here. There are individual
+definitions for the popup menus of directories, executables, and of
+other files.</P>
+
+
+<H2><A NAME="ss7.7">7.7 Sounds </A></H2>
+
+
+<P>Here the command to be used for playing sounds can be defined, as well
+as the sound files which are to be played at certain events.
+TkDesk comes
+with a few VOC sound files which are located in
+the <CODE>sounds</CODE> subdirectory of TkDesk's library directory. You
+can find out where this is by looking at the fifth line of the
+<CODE>tkdesk</CODE> script.</P>
+
+
+<H2><A NAME="ss7.8">7.8 System </A></H2>
+
+
+<P>All the more &quot;basic&quot; features of TkDesk can be configured
+here. These are:</P>
+<P>
+<UL>
+<LI> Colours to be used by TkDesk,</LI>
+<LI> Fonts to be used by TkDesk,</LI>
+<LI> Default geometry of file listboxes,</LI>
+<LI> Definitions of shell command which are used by TkDesk to copy,
+move, delete etc. files. These should be fine as they are in most cases.</LI>
+<LI> The default command for printing,</LI>
+<LI> Which editor to use, plus settings for the built-in editor,</LI>
+<LI> Periods for automatic refreshing of the file lists and saving
+of TkDesk's configuration,</LI>
+<LI> Maximum number of entries in history menus,</LI>
+<LI> If TkDesk should ask for confirmation when the user wants to
+quit TkDesk,</LI>
+<LI> If TkDesk should allow the menus to be &quot;tearoff-able&quot;,</LI>
+<LI> The paths in which TkDesk will look for images and sounds used
+in the configuration files,</LI>
+<LI> Icons to use for file list and browser windows, and for the
+help window,</LI>
+<LI> And if TkDesk should try to emulate Motif as closely as possible.</LI>
+</UL>
+</P>
+<P>And that's it! Well, for the moment at least...</P>
+
+
+
+
+<HR>
+<A HREF="guide-6.html">Previous</A>
+<A HREF="guide-8.html">Next</A>
+<A HREF="guide.html#toc7">Table of Contents</A>
+</BODY>
+</HTML>

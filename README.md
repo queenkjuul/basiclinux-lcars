@@ -148,10 +148,15 @@ The various boot scripts (`BOOT.BAT`, `SCSI.BAT`, `HDBOOT.BAT`) all accept argum
 The following parameters are available:
 
 `usbhid` - install USB mouse+keyboard drivers at boot time
+
 `usbstor` - install USB storage drivers at boot time
-`ide-cd` - install IDE CD-ROM drivers at boot time (default in `BOOT.BAT`/LiveCD)
+
+`ide-cd` - install IDE CD-ROM drivers at boot time (default in `BOOT.
+BAT`/LiveCD)
 `swapoff` - do not look for swap files on DOS partitions at boot
+
 `norootverify` - skip root filesystem check at boot
+
 
 ### IDE/ATAPI CD-ROM
 

@@ -1,0 +1,86 @@
+About Lizards.
+
+Lizards is a clone of R*pt*n from the old BBC Micro and B**ld*rd*sh from the
+C64/spectrum. It's a run-around-collect-em-up type game, running under Linux
+using the most excellent SVGAlib and Brad Pitzel's excellent soundIt library
+(included in this release).
+
+This release runs in 640x480x256 mode. If your system is unable to handle
+this, drop me an e-mail and I can provide a (mega fast, but inferior)
+320x200 version.
+
+No-one needs gameplay instructions, but here are some features:
+
+
+A few pre-designed levels
+
+Built-in level editor (any volunteers want to design any more levels? I'm
+   no good at it :( )
+
+Cool noises 
+
+Bizarre Knitted monsters (a scottish trait - we knit our relatives here)
+
+Hideous leathery eggs
+
+Bloody irritating square things 
+
+and much more......
+
+
+******************************************************************************
+
+Anyway, here's what you do.
+
+Control Keys:
+
+Cursors for movement, alternatively QAOP may also be used. 
+
+Escape commits suicide - in case you get stuck somewhere. NOTE: This does
+*not* reset the level, as it did on previous versions. This makes the game
+slightly less frustrating, but creates endless possibilites of screwing the
+level up and being unable to finish without.....
+
+X which resets the level, but costs you a life.
+
+M Shows the map, if you have it.
+
+Smily-ometer, is your score. The ultimate goal is to have four blazing white
+smileys with shades. 
+
+*******************************************************************************
+
+Level Editor. Not much of a front end here, but functional. The cursor is
+simply a copy of the current block. The current block can be cycled by using
+the UP and DOWN cursor keys (NOT on the numeric keypad). The cursor may be
+moved using QAOP, and a blcok placed by pressing the Spacebar. You can move
+to next and previous levels using the Numeric Keypad UP and DOWN.
+
+NOTE: There is no validity checking - if anyone thinks it's worthwhile, let
+me know and I'll do it. A valid level must have (1) One incident of the
+character. (2) At least One diamond.
+
+And that's about it, except for....
+
+******************************************************************************
+
+This game was basically written in 4 days. I am one of those unfortunates
+with only 8Mb of memory and am therefore somewhat reluctant to run X. I
+decided to produce a wheen-load of games to run on the linux console. This
+is the first of these games (and in fact the first game I've ever written!).
+Before I go any further, my e-mail address is
+
+          alba@easynet.co.uk
+    
+and my snail mail address is
+
+          John M Dow
+	  Flat 17
+	  15 Cowgatehead
+	  Greyfriars
+	  Edinburgh
+	  Scotland
+	  UK
+	  
+This software is provided under the GNU General Public License. Please read
+the file COPYING in this directory.

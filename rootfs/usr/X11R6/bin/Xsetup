@@ -1,0 +1,59 @@
+#!/bin/sh
+clear
+echo
+echo
+echo "Xsetup"
+echo "~~~~~~"
+echo "This routine runs automatically the first time you execute startx."
+echo "To run it again, execute:  Xsetup"
+echo
+echo
+echo "Which screen resolution do you want?"
+echo
+echo "    (A)  640x480       (standard VGA)"
+echo "    (B)  640x480x15    (more colors)"
+echo "    (C)  800x600x15    (Super VGA)"
+while :; do
+  read REPLY 
+  case $REPLY in a|A) echo 640x480 > /etc/Xconfig
+                      break;;
+                 b|B) echo 640x480x15 > /etc/Xconfig
+                      break;;
+                 c|C) echo 800x600x15 > /etc/Xconfig
+                      break;;
+  esac
+  echo -n "?? " 
+done        
+echo
+echo "Which port is your mouse on?"
+echo
+echo "    (P)  PS/2 mouse             (little round plug)"
+echo "    (1)  Serial mouse on COM1   (oblong plug)"
+echo "    (2)  Serial mouse on COM2   (oblong plug)"
+while :; do
+  read REPLY 
+  rm /dev/mouse 2>/dev/null
+  case $REPLY in p|P) ln -s /dev/psaux /dev/mouse
+                      break;;
+                   1) ln -s /dev/ttyS0 /dev/mouse
+                      break;;
+                   2) ln -s /dev/ttyS1 /dev/mouse
+                      break;;
+  esac
+  echo -n "?? " 
+done        
+echo
+echo "How many buttons does your mouse have?"
+echo
+echo "    (2)  two buttons"
+echo "    (3)  three buttons"
+while :; do
+  read REPLY 
+  case $REPLY in 2) echo 2button >> /etc/Xconfig
+                    break;;
+                 3) echo 3button >> /etc/Xconfig
+                    break;;
+  esac
+  echo -n "?? " 
+done        
+echo

@@ -1,0 +1,49 @@
+device "pcnet_cs"
+  class "network" module "misc/8390", "pcnet_cs"
+
+device "serial_cs"
+  class "serial" module "serial_cs"
+
+device "ide-cs"
+  class "ide" module "ide-cs"
+
+card "Network Card"
+  function network_adapter
+  bind "pcnet_cs"
+
+card "Serial or Modem Card"
+  function serial_port
+  bind "serial_cs"
+
+card "ATA/IDE Fixed Disk"
+  function fixed_disk
+  bind "ide-cs"
+
+card "Portable NetMobile Data/Fax Modem"
+  manfid 0x0121, 0x3222
+  bind "serial_cs"
+
+card "DynaLink Modem"
+  version "Intelligent", "AT&T  FAX/MODEM", "            "
+  bind "serial_cs"
+
+include port 0x100-0x4ff, port 0x800-0x8ff, port 0xc00-0xcff
+include memory 0xc0000-0xfffff
+include memory 0xa0000000-0xa0ffffff, memory 0x60000000-0x60ffffff
+exclude irq 4  # COM1
+exclude irq 7  # printer
+
+# Example of option (to fix sluggish network)
+# module "pcnet_cs" opts "mem_speed=600"
+
+# Example of config for NetWave wireless card
+#--------------------------------------------------------
+# device "netwave_cs"
+#   class "wireless" module "netwave_cs"
+#--------------------------------------------------------
+# card "Xircom CreditCard Netwave"
+#   version "Xircom", "CreditCard Netwave"
+#   bind "netwave_cs"
+#--------------------------------------------------------
+# module "netwave_cs" opts "domain=0x50 scramble_key=0x0"
+#--------------------------------------------------------

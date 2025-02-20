@@ -1,0 +1,20 @@
+IRC II is copyright (c) 1990 by Michael Sandrof.  You have the
+right to copy, compile, and maintain this software.  You also
+have the right to make modifcations to this code for local use
+only.
+
+Version 2.1.1 to 2.2pre7 are Copyright 1991, 1992 Troy Rollo.
+
+Versions 2.2pre8 and above are copyright (c) 1992, 1993, 1994,
+1995, 1996 and 1997 matthew green.  Any modifications to this
+code may be redistributed with this copyright attached.
+
+One module of the source code, scandir.c is copyright (c) 1983
+by the Regents of the University of California, with modifications
+by various contributors.  All rights are reserved by the
+University of California.  
+
+This software is provided ``as is'' and without any express or
+implied warranties, including, without limitation, the implied
+warranties of merchantibility and fitness for a particular
+purpose.

@@ -1,0 +1,23 @@
+[H[J[40;36;1mWelcome to the BasicLinux 3.5 LiveCD
+BL3 is a mini-Linux designed specifically for old PCs. It provides extensive 
+networking capabilites (including dial-up PPP), a user-friendly shell and an 
+assortment of utilities. BL3 also has a slim version of the X GUI and some 
+applications (including the MagicPoint presentation tool). The BL3 kernel has 
+been customized to minimize the memory footprint on old PCs. Enhanced kernels
+and additional packages are located on the LiveCD which you can switch to after
+installing to hard drive. All official kernel modules are installed to 
+/lib/modules, and all official BasicLinux add-ons are already installed.
+You can install packages from LiveCD/packages/slackwar after installation.
+
+HINTS FOR NEW USERS
+~~~~~~~~~~~~~~~~~~~[0m
+Use [1md[0m to browse directories and view files (using the arrow keys).
+Adding [1m--help[0m to a command usually gives you brief documentation.
+For some commands, [1mman [command_name][0m will provide more documentation.
+BasicLinux HTML documentation is located in /docs on the LiveCD.
+To configure a modem, use [1mpppsetup[0m.   To send/receive mail, run [1mmail[0m. 
+[1mwp, vi, nano[0m are the available editors.
+To activate the stand-alone GUI, execute [1mstartx[0m (requires 8mb RAM). 
+For remote X (via network), execute [1mstartxt[0m (works with 4mb RAM).
+See [1m/etc/rc[0m for commands to activate cdrom/network/pcmcia.
+[J[40;36;1mLogin as root with no password[0m

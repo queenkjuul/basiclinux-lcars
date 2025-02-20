@@ -1,0 +1,20 @@
+#!/bin/sh
+# @(#)native2ascii.sh	1.2 97/04/29
+
+#
+# source a script that extracts RUNTIME_ARGS and APP_ARGS
+#
+. `dirname $0`/.extract_args
+
+if [ -n "$NS_JAVA" ]
+then
+    progsuffix=_ns
+elif [ -n "$DYN_JAVA" ]
+then
+    progsuffix=_dyn
+fi
+
+#
+# Run the native2ascii tool
+#
+`dirname $0`/java$progsuffix $RUNTIME_ARGS sun.tools.native2ascii.Main $APP_ARGS

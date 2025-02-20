@@ -1,0 +1,57 @@
+prog xterm xterm rxvt -ls -g 67x20 -C 
+separator
+menu Applications folder {
+    prog "TkDesk" desktop tkdesk
+    prog "X File Manager" filemgr xfm
+    prog "Image Viewer" xv xv
+    prog "WWW Browser" xterm rxvt -e links /root/hotlist.html
+    prog "Graphical WWW Browser" netscape links2ssl -g /root/hotlist.html
+    prog "Sylpheed Mail" mail sylpheed
+    prog "Gimp" palette gimp
+    prog "XPaint" paint xpaint
+    prog "XCDRoast" cdrom xcdroast
+}
+separator
+menu Office folder {
+    prog AbiWord font abiword
+    prog "Spreadsheet" pager rxvt -e sc
+    prog MagicPoint graph mgp /usr/share/mgp/demo.mgp
+}
+separator
+menu Games folder {
+    prog Freecell cards xfreecell
+    prog "Spider Solitaire" heart spider
+    prog LinCity city xlincity
+    prog Tetris tetris wish /usr/games/tktet.tcl
+    prog "Go Fish!" xv rxvt -e fish
+    prog "GNU Chess" slon rxvt -e gnuchess
+    prog Mahjongg xmahjongg xmahjongg
+    prog Lander xlander xlander
+    prog XFractInt fractal rxvt -e xfractint
+    prog Digger app xdigger
+    prog Runner app xrunner
+    prog Koules app koules
+}
+separator
+menu Utilities folder {
+    prog "TkNotepad" edit tknotepad
+    prog Editor edit rxvt -e e3pi
+    prog Clock clock rclock 
+    prog Calendar calendar xcal
+    prog Calculator calc calctool 
+    prog XGrab camera xgrab
+    prog Seyon app seyon
+    prog Minicom xterm xminicom
+    prog "Process Viewer" xterm rxvt -e top
+    prog "Python 1.5 REPL" sh1 rxvt -e python
+    prog "YaBASIC Interpreter" sh1 rxvt -e yabasic
+}
+separator
+menu "Control Panel" folder {
+    prog "Edit Menu" file rxvt -e e3pi /usr/local/lib/X11/icewm/menu 
+    prog  Help manual rxvt -e zless /usr/local/lib/X11/icewm/icewm.faq.gz
+}
+separator
+prog ppp-on netscape ppp-on
+separator
+prog ppp-off netscape ppp-off

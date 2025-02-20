@@ -1,0 +1,186 @@
+Tue Jan 19 22:24:08 1999  Martin Mares  <mj@albireo.ucw.cz>
+
+	* Released as version 1.10.
+
+Mon Jan 18 08:51:17 1999  Martin Mares  <mj@albireo.ucw.cz>
+
+	* lspci.8, setpci.8: Miscellaneous fixes as suggested by
+	Dag Wieers <dag@digibel.be>.
+
+Sun Nov 29 20:05:56 1998  Martin Mares  <mj@albireo.ucw.cz>
+
+	* pciutils.spec (Name): Update from Krzysztof G. Baranowski.
+
+Sun Nov 22 10:49:56 1998  Martin Mares  <mj@albireo.ucw.cz>
+
+	* Makefile, pciutils.h: Moved pci.ids to /usr/share.
+
+	* Released as version 1.09.
+
+Wed Nov 18 15:47:05 1998  Martin Mares  <mj@albireo.ucw.cz>
+
+	* lspci.c (show_htype1): Fixed displaying of prefetchable memory behind
+	bridge. Thanks to Petr Vandrovec <vandrove@vc.cvut.cz> for bug report.
+
+Fri Oct 23 18:59:19 1998  Martin Mares  <mj@albireo.ucw.cz>
+
+	* setpci.c: Don't include <syscall-list.h> with glibc >= 2.1.
+
+Mon Oct 19 21:53:30 1998  Martin Mares  <mj@albireo.ucw.cz>
+
+	* Released as version 1.08.
+
+	* setpci.c: glibc 2.1.x already defines pread() and pwrite().
+
+	* lspci.8: Changed warning about lspci -xxx.
+
+	* lspci.c: Require "-xxx" for full configuration space dump, so that
+	it's impossible to crash the machine by single typo.
+
+	* specs: Added (courtesy of Krzysztof G. Baranowski <kgb@knm.org.pl>).
+
+Wed Sep  9 12:03:24 1998  Martin Mares  <mj@albireo.ucw.cz>
+
+	* lspci.c (show_bases): Better displaying of unassigned and
+	disabled bases. Thanks to Gabriel Paubert <paubert@iram.es>
+	for an idea.
+
+Wed Sep  2 10:58:01 1998  Martin Mares  <mj@albireo.ucw.cz>
+
+	* setpci.c (pread): Recognize glibc 1.99 numbered as 2.0 on the PPC.
+	(thanks to Geert Uytterhoeven for finding this out)
+
+Fri Jul 17 10:43:30 1998  Martin Mares  <mj@albireo.ucw.cz>
+
+	* lspci.c (show_verbose): Print subsystem ID using the new resolver.
+	(show_machine): Print subsystem ID.
+
+	* names.c: New name resolution engine supporting subsystem IDs.
+
+	* Released as version 1.07.
+
+Wed Jul 15 15:37:21 1998  Martin Mares  <mj@albireo.ucw.cz>
+
+	* lspci.c (show_htype2 etc.): Displaying of CardBus headers.
+	(show_bases): Honor the `cnt' argument.
+	(grow_tree): Parse CardBus headers in tree mode as well.
+
+	* pci.h: Updated CardBus header field description. I still don't
+	have the CardBus standard available, but OZ6832 specs contain
+	full description of all header fields supported by the chip.
+
+Tue Jun  9 22:53:59 1998  Martin Mares  <mj@albireo.ucw.cz>
+
+	* Released as 1.06.
+
+	* names.c (parse_name_list): Killed an unused variable.
+
+	* setpci.c (pread, pwrite): Define SYS_(pread|pwrite) as __NR_\1
+	if they are not defined by glibc (needed for glibc built on older
+	kernels). Ugly.
+
+	* setpci.c (exec_op): Fixed error messages. Thanks, Steve!
+
+Mon Jun  8 10:59:22 1998  Martin Mares  <mj@albireo.ucw.cz>
+
+	* Released as 1.05.
+
+	* setpci.c: Problems with pread()/pwrite() with glibc on Alpha
+	should be gone. Again thanks to Steve for bug report.
+
+	* filter.c (filter_parse_slot): Fixed ":x" type filters.
+
+	* pci.ids: Killed duplicate entry. Thanks to Stephen Williams
+	<steve@icarus.com> for reporting this.
+
+Sun Jun  7 19:27:51 1998  Martin Mares  <mj@albireo.ucw.cz>
+
+	* lspci.c (main), setpci.c (main): Implemented "--version".
+
+	* Released as 1.04.
+
+	* pciutils.h (PCIUTILS_VERSION): Added version string.
+
+	* filter.c, names.c: Extraneous #include <linux/pci.h> removed.
+	Thanks to Geert Uytterhoeven <Geert.Uytterhoeven@cs.kuleuven.ac.be>
+	for bug report.
+
+Thu May 28 14:45:58 1998  Martin Mares  <mj@lomikel.karlin.mff.cuni.cz>
+
+	* pci.ids: More updates from Jens Maurer.
+
+Wed Apr 22 10:00:39 1998  Martin Mares  <mj@albireo.ucw.cz>
+
+	* pci.ids: Updates from Jens Maurer.
+
+Sun Apr 19 11:14:25 1998  Martin Mares  <mj@albireo.ucw.cz>
+
+	* Released as 1.03.
+
+	* setpci.8: Written.
+
+	* setpci.c: Finished.
+
+	* lspci.c: Now able to fetch expansion ROM base from kernel device list
+	and print it if not in buscentric mode.
+
+Tue Mar 31 23:11:57 1998  Martin Mares  <mj@albireo.ucw.cz>
+
+	* setpci.c: Added.
+
+Sun Mar 22 15:39:08 1998  Martin Mares  <mj@albireo.ucw.cz>
+
+	* lspci.8: Updated the documentation.
+
+	* lspci.c: Modified to use the new filtering mechanism (options -f and -d).
+
+	* filter.c: Introduced new generic device filter.
+
+Thu Mar 19 17:03:48 1998  Martin Mares  <mj@lomikel.karlin.mff.cuni.cz>
+
+	* lspci.c (grow_tree, show_tree_dev, print_it): Fixed displaying
+	of PCI-to-PCI bridges in the tree format.
+
+Sun Feb 15 10:12:25 1998  Martin Mares  <mj@albireo.ucw.cz>
+
+	* lspci.c (show_machine): Added non-verbose mode of machine-readable
+	dump.
+
+	* pci.ids: Updates from Jens Maurer.
+
+	* Released as version 1.02.
+
+Thu Feb 12 16:53:28 1998  Martin Mares  <mj@lomikel.karlin.mff.cuni.cz>
+
+	* lspci.c: Added a "-m" switch for dumping machine-readable
+	configuration data (requested by Bjoern Kriews <bkr@cut.de>).
+
+Mon Feb  9 13:17:43 1998  Martin Mares  <mj@albireo.ucw.cz>
+
+	* Makefile, pciutils.h: Include local pci.h instead of <linux/pci.h>
+	if available. This should avoid all problems with official kernel
+	not synchronized to newer PCI code in CVS -- standard distribution
+	of pciutils now contains pci.h from current CVS kernel, pciutils
+	in CVS contain no pci.h and use the correct kernel include.
+
+	* Makefile: Fixed installation path for man pages.
+
+Sat Feb  7 15:15:46 1998  Martin Mares  <mj@albireo.ucw.cz>
+
+	* README: Updated.
+
+	* lspci.8: Created a man page.
+
+	* Releasing as version 1.0.
+
+Tue Feb  3 20:56:00 1998  Martin Mares  <mj@albireo.ucw.cz>
+
+	* Makefile: Recognize architecture by calling uname and pass it as ARCH_xxx
+	to all the C sources. This should eliminate problems with 32-bit compilers
+	on sparc64.
+
+	* lspci.c (show_verbose): Recognize CardBus bridge header type.
+	(show_htype2): Stub routine.
+	(scan_config): Write sensible error message if the kernel denies reading of
+	upper part of the PCI config space.
+

@@ -1,0 +1,156 @@
+
+TODO list for Gnuchess 4.0 pl 75.
+
+
+1.  Optimizations
+
+X   * Consider positions with insufficient mating material as terminal. 
+      This ought to speed up the endgame phase by quite a bit.  
+
+X   * Don't pass INCscore around since its a global variable.
+
+X   * Thinking on opponent's time.  This was fixed, but got lost in
+      the ensuing confusion.
+      (Note: There appears to be some problem when a mate is found
+      during the thinking process and the opponent actually makes the
+      predicted move.  For the moment, when this occur, the program
+      assumes that it doesn't know this and starts the search from 
+      the beginning).
+
+X   * Remove ISZERO.  Its not being used often, but incremented and 
+      decremented in MakeMove and UnmakeMove.
+
+    * Delay move generation until after null move is tried. 
+
+    * Instead of the messy K + KP perfect code in eval.c, how about 
+      using a database.  This will allow us to extend gnuchess in the 
+      endgame database direction.  
+
+    * Make alpha-beta window bigger when winning/losing.
+
+
+2.  Improving program strength
+
+X   * Problem with draw by repetition.  Gnuchess should offer draw
+      and if opponent reject, then play on, not stop and die.
+
+    * Threat extensions. 
+
+    * Singular extensions?  Maybe just PV-Singular extensions.
+
+    * Separate the quiescent search from the full width search.  
+      This will simplify the code and allow us to do things with 
+      the quiescence which is not possible now e.g. null-move in 
+      quiescence.
+
+    * Instead of adding 2 * Sdepth * TCleft when failing low, make
+      the program complete the whole ply.
+
+    * Make the program don't lose on time no matter what.
+
+
+3.  Adding more chess knowledge
+
+    * Development bonuses.  
+
+X   * Decrease penalties for isolated pawns.  Give extra penalties if
+      isolated pawns are on open file. 
+
+    * If computer is losing in the endgame, don't give it PawnBonus to
+      encourage it to trade pawns.
+
+    * Bonus for outpost knight/bishop if protected by pawn.
+
+    * Opposite colour bishops.
+
+    * Bonus for rook behind passed pawn.
+
+    * Stupid moves like c4-c5 attacking Bd6, but closing pawn structure.
+
+    * B+P+K vs K especially when its a draw.  Maybe use database.
+
+    * Bonus for lever moves.
+
+    * Redo the pass pawn logic.  The current algorithm is lousy.
+
+
+4.  Tidying up of the code
+
+     * Remove flag.rcptr variable and make capture extension standard. 
+
+     * Is util.c needed anymore?  No, so removed.
+   
+X    * Instead of the find, use rm in Makefile clean:
+
+     * Remove DISTDIR from Makefile.
+
+     * Remove the newer version of time control and use OLDTIME as the default. 
+
+     * Gnuchess has too many -D options (just look at the makefile).  
+       I think quite a few of them are outdated or unnecessary.  Perhaps 
+       some of these could be removed.
+
+     * Need to update Makefile.dos?  How?  How about using Borland C++ ?
+       Both for DOS and for OS/2.
+
+     * Clean up the codes to follow GNU standards (could take time).
+
+     * Clean up the test directory.
+
+X    * Faster compilation of genmoves.c
+	
+X    * Remove -DLEGAL flag.  Its quite useless.
+
+
+5.   Features
+
+X    * Support for Windows NT and Windows 95 from Mann
+  
+X    * Autoconf
+
+     * Make the autoplay feature requested by Vincent Diepeveen
+
+     * PGN & EPD support
+
+     * Anybody want to write a retrograde analyzer for GNU?
+
+     * Support PGN/EPD standard
+
+     * A problem solver mode for those test problems with
+       good reporting of score.
+
+     * A fast mate solver.
+
+     * To resign when losing by more than a Q.
+
+     * A port to Windows.  If no one volunteers, I'll probably
+       tackle this myself.
+
+     * A DOS release.
+
+6.   Bugs reported and to be fixed.
+
+     * gnuchess.hash problem reported by Henry Choy
+       (Actually problem was vague, I had no problem with
+        using gnuchess.hash).
+
+X    * Fixed some bugs in gnuan.c
+
+X    * Updated ARTICLE and ARTICLE.2
+
+X    * Bug fixes from Tony Acero for book.c and gnuan.c
+
+     * eco.pgn has no move number.  Make sure pgn reader can read it.
+
+X    * Bug fix from Tim Mann for hash table code.
+
+     * Update docs to mention that gnuchessx is to be used with
+       xboard.
+     
+     * mate in book problem by Mann.
+
+X    * Bad o-o-o and o-o in book by Joe Stella
+
+     * Mike's patch for non-ANSI C compiler to compile with unprotoize
+
+X    * All *.z files are now *.gz files (gzipped).

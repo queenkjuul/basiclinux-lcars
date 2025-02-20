@@ -1,0 +1,23 @@
+#!/bin/sh
+
+clear
+echo ""
+for lc in `seq 1 12`;do
+LINE="`sed $lc!d /usr/bin/tux.txt`"
+test $lc = 1 && LINE="$LINE"" `whoami`@`hostname`"
+test $lc = 2 && LINE="$LINE"" ---------------------------"
+test $lc = 3 && LINE="$LINE"" OS:         `uname -s`"
+test $lc = 4 && LINE="$LINE"" Kernel:     `uname -r`"
+test $lc = 5 && LINE="$LINE"" Arch:       `uname -m`"
+test $lc = 6 && LINE="$LINE"" Uptime:     `uptime | cut -d ' ' -f 3- | cut -d ',' -f 1 | cut -c 10`"
+test $lc = 7 && LINE="$LINE"" CPU Vendor: `cat /proc/cpuinfo | grep vendor_id | head -n 1 | cut -d ' ' -f 2`"
+test $lc = 8 && LINE="$LINE"" CPU Model: `cat /proc/cpuinfo | grep "model name" | head -n 1 | cut -d ':' -f 2`"
+test $lc = 9 && LINE="$LINE"" CPU Freq.: `cat /proc/cpuinfo | grep "MHz" | head -n 1 | cut -d ':' -f 2` MHz"
+test $lc = 10 && LINE="$LINE"" Memory:     `free | sed 2!d | tr -s '\t' ' ' | cut -d ' ' -f 3`K (`free | sed 2!d | tr -s '\t' ' ' | cut -d ' ' -f 4`K used)"
+test $lc = 11 && LINE="$LINE"" Swap:       `free | sed 3!d | tr -s '\t' ' ' | cut -d ' ' -f 3`K (`free | sed 3!d | tr -s '\t' ' ' | cut -d ' ' -f 4`K used)"
+echo "$LINE"
+done
+
+echo ""
+echo "          -= fetch for BasicLinux 3.5 LCARS LiveCD =-"
+echo "                     Live Long and Prosper"

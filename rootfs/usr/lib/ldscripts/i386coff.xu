@@ -1,0 +1,30 @@
+OUTPUT_FORMAT("coff-i386")
+ SEARCH_DIR(/usr/ix86-coff/lib);
+ENTRY(_start)
+SECTIONS
+{
+  .text  : {
+    *(.text)
+    ;
+  }
+  .data  : {
+    *(.data)
+    ;
+  }
+  .bss  :
+  { 					
+    *(.bss)
+    *(COMMON)
+    ;
+  }
+   .init : { *(.init) }
+   .fini : { *(.fini) }
+  .stab  0  : 
+  {
+    [ .stab ]
+  }
+  .stabstr  0  :
+  {
+    [ .stabstr ]
+  }
+}

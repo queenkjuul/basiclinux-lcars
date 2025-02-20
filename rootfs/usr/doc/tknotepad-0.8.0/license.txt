@@ -1,0 +1,17 @@
+the UNDO / REDO was taked from X-WordPad?
+
+and I lost the license file and cannot locate the license to it.
+
+I have since slightly modified the Undo/ Redo code to suite my needs.
+
+
+The find / Replace code was taken from another editor and have since 
+been refined and modifed to work as I want them to.
+
+The license for thse programs allowed modification and use, but both I think
+wanted the licences included from them.
+
+Unfortuanetly I lost them somehow.
+
+My current feeling are this is now your code so do as you wish!
+

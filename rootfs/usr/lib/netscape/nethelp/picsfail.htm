@@ -1,0 +1,120 @@
+<HTML>
+<HEAD>
+<META http-equiv="PICS-Label" content='(PICS-1.0 "http://home.netscape.com/default_rating" l gen true comment "Default rating for content free PICS disabled access screen" r (s 0))'>
+<META NAME="Producer" CONTENT="anticsonline">
+<TITLE>NetWatch Protection Alert</TITLE>
+
+<SCRIPT ARCHIVE="picsfail.jar" id=picsfailscript LANGUAGE="JavaScript1.2">
+<!--
+
+tNotRated = false;
+PICSpath = "http://home.netscape.com/communicator/netwatch/"
+PICSconfigpage = PICSpath+"setup.html";
+PICSdisable = PICSpath+"disable.html";
+PICSviewpage = PICSpath+"picsview.html";
+//
+// Remind: insert original URL after "picsfail=" later
+//
+originalURL = "?picsfail=";
+
+section1 = '<BODY BGCOLOR="#FFFFFF"><IMG SRC="netwatch.gif" WIDTH="612" HEIGHT="50"><TABLE  CELLSPACING=0 CELLPADDING=0 BORDER=0><TR VALIGN=TOP><TD WIDTH=92>&nbsp;</TD><TD WIDTH=520 COLSPAN="2"><FONT FACE=Arial,Helvetica><SPACER TYPE=vertical SIZE=10><H1>NetWatch Protection Alert</H1><SPACER TYPE=vertical SIZE=10><P>This browser is protected by Netscape NetWatch. NetWatch is the built-in ratings protection feature of Netscape Navigator.</P>';
+
+section3 = '<P>To view the page, you must either change the current NetWatch settings or disable NetWatch for this session (from now until you restart Navigator). You may also view the ratings assigned to this page.</P><P>Before you can implement any of these options, you must enter your NetWatch password and grant access permission to the NetWatch applet. You will be prompted to do both these things.</P><BR><P><A target="_top" HREF='+PICSconfigpage+'>Change NetWatch settings</A> </P><P><A HREF='+PICSdisable+originalURL+' onClick="javascript:showURL();">Disable NetWatch for this session</A></P>';
+
+page_end = "</TD></TR></TABLE><SPACER TYPE='BLOCK' WIDTH=100 HEIGHT=50></BODY>";
+
+function setupPage() {
+  
+  if (!checkURL()) 
+  {
+     document.write("Internal error.  URL type unknown");
+     return;
+  }
+
+  document.write(section1);
+  
+  if (tNotRated) 
+    document.write("<P><B>The page that you have just tried to access has not been rated. This browser will not display unrated pages</B></P>");
+  else
+    document.write("<P><B>The page that you have just tried to access does not meet the acceptable ratings levels for this browser.</B></P>");
+
+  document.write(section3);
+  if (!tNotRated) 
+    document.write("<P><A HREF="+PICSviewpage+">View the page's ratings</A></P>");
+
+  document.write(page_end);
+}
+
+function checkURL() {
+
+  netscape.security.PrivilegeManager.enablePrivilege("UniversalBrowserRead");
+  url = parent.window.location.href;
+  search_data = url.substring(url.indexOf("?")+1, url.length);
+ 
+  /* the search data looks something like this:
+   * Destination=http%3A//www.playboy.com&Service=http%3A//www.rsac.org/ra
+tingsv01.html&l=3.000000&v=0.000000&s=0.000000&n=0.000000
+   *
+   * first parse it into tokens at the '&' boundarys
+   * then parse it into name value pairs at the '=' boundarys.
+   */
+ 
+  sd_array = search_data.split("&");
+ 
+  name_value_array = new Array(sd_array.length);
+
+  name_value = sd_array[0].split("=");
+ 
+  if(name_value[0] == "NO_RATING") {
+    tNotRated = true;       
+
+  }
+  else if(name_value[0] != "Destination")
+        {
+         document.write("Internal error.  Restriction type unknown");
+         return false;
+        }
+       else 
+        {
+         destination_url = name_value[1];
+
+         name_value = sd_array[1].split("=");
+
+         if(name_value[0] == "NO_RATING")
+           {
+              tNotRated = true;
+           }
+         else if(name_value[0] != "Service")
+           {
+            document.write("Internal error.  Restriction type unknown");
+            return false;
+           }  
+         else
+           {
+	     // Remind: Should do a lot more here
+ 	     // e.g. Retrieving original URL ...
+	     if(name_value[1]== "http%3A//www.rsac.org/ratingsv01.html")
+              {
+               // RSACi ratings type
+	       rating_data="?RSACI&"+sd_array[2]+"&"+sd_array[3]+"&"+sd_array[4]	
+	      }
+
+           }
+        }
+
+  return true;
+}
+
+function showURL() {
+//  alert("URL="+top.document.URL);
+
+}
+
+setupPage();
+
+//-->
+</SCRIPT>
+
+</HEAD>
+
+</HTML>

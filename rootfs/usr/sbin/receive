@@ -1,0 +1,8 @@
+#!/bin/sh
+clear
+echo
+echo -e "Press \033[1m^c\033[m to stop receiving."
+while true ; do
+nc -l -p 33 | tar -xv
+done
+

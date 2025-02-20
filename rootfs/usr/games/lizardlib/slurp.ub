@@ -1,0 +1,11 @@
+/* SoundIt library 0.03
+
+   Copyright 1994 Brad Pitzel  pitzel@cs.sfu.ca
+
+   Feel free to use/distribute/modify as long as proper credits
+   are included.
+*/
+ 
+/* Designed for digital sound effects in games.
+
+   Will mix channels of mono 8-bit raw samples,

@@ -1,0 +1,21 @@
+; help.hpf
+; Auto-generated NetHelp project file
+
+Window-Name="Communicator Help"
+Window-Size="425,440"
+NetHelp-Version="2.0"
+<Frame_Group src = "../../NSHIfrm.htm" default_window = "">
+
+<ID_MAP>
+
+HELP_SEC_INFO = "coll.htm#HELP_SEC_INFO" : target = "Topic"
+sec_getcerts = "coll.htm#sec_getcerts" : target = "Topic"
+HELP_SEC_INFO_OUTGOING = "coll.htm#HELP_SEC_INFO_OUTGOING" : target = "Topic"
+HELP_SEC_CERTS_ISSUERS = "coll.htm#HELP_SEC_CERTS_ISSUERS" : target = "Topic"
+HELP_SEC_PASS_UNSET = "coll.htm#HELP_SEC_PASS_UNSET" : target = "Topic"
+HELP_SEC_PREFS_NAVIGATOR = "coll.htm#HELP_SEC_PREFS_NAVIGATOR" : target = "Topic"
+HELP_SEC_PREFS_MESSENGER = "coll.htm#HELP_SEC_PREFS_MESSENGER" : target = "Topic"
+HELP_SEC_PREFS_APPLET = "coll.htm#HELP_SEC_PREFS_APPLET" : target = "Topic"
+HELP_SEC_CERTS_CRYPTOMODS = "coll.htm#HELP_SEC_CERTS_CRYPTOMODS" : target = "Topic"
+
+</ID_MAP>

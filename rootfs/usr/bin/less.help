@@ -1,0 +1,76 @@
+                     SUMMARY OF COMMANDS
+
+      Commands marked with * may be preceded by a number, N.
+      Notes in parentheses indicate the behavior if N is given.
+
+  h  H                 Display this help.
+  q  :q  :Q  ZZ        Exit.
+
+  ^E  j  ^N  CR     *  Forward  one line (or N lines).
+  y  ^Y  k  ^K  ^P  *  Backward one line (or N lines).
+  f  ^F  ^V  SPACE  *  Forward  one window (or N lines).
+  b  ^B  ESC-v      *  Backward one window (or N lines).
+  z                 *  Forward  one window (and set window to N).
+  w                 *  Backward one window (and set window to N).
+  d  ^D             *  Forward  one half-window (and set half-window to N).
+  u  ^U             *  Backward one half-window (and set half-window to N).
+  r  ^R  ^L            Repaint screen.
+  R                    Repaint screen, discarding buffered input.
+
+  /pattern          *  Search forward for (N-th) matching line.
+  ?pattern          *  Search backward for (N-th) matching line.
+  ESC-/pattern      *  Search from top of file for (N-th) matching line.
+
+  /!pattern         *  Search forward for (N-th) NON-matching line.
+  ?!pattern         *  Search backward for (N-th) NON-matching line.
+  ESC-/!pattern     *  Search from top of file for (N-th) NON-matching line.
+
+  n                 *  Repeat previous search (for N-th occurrence).
+  ESC-n             *  Repeat previous search in reverse direction.
+
+  g  <  ESC-<       *  Go to first line in file (or line N).
+  G  >  ESC->       *  Go to last line in file (or line N).
+  p                 *  Go to beginning of file (or N percent into file).
+  %                    Go to a matching bracket.
+  {                 *  Go to the } which matches the (N-th) { in the top line.
+  }                 *  Go to the { which matches the (N-th) } in the top line.
+  (                 *  Go to the ) which matches the (N-th) ( in the top line.
+  )                 *  Go to the ( which matches the (N-th) ) in the top line.
+  [                 *  Go to the ] which matches the (N-th) [ in the top line.
+  ]                 *  Go to the [ which matches the (N-th) ] in the top line.
+  m<letter>            Mark the current position with <letter>.
+  '<letter>            Go to a previously marked position.
+  ''                   Go to the previous position.
+  ^X^X                 Same as '.
+
+
+                         FLAGS
+
+        Most flags may be changed either on the command line,
+        or from within less by using the - command.
+
+  -a  -A        Set forward search starting location.
+  -b [N]        Number of buffers.
+  -B            Automatically allocate buffers.
+  -c  -C        Repaint by scrolling/clearing.
+  -d            Dumb terminal.
+  -e  -E        Quit at end of file.
+  -f            Force open non-regular files.
+  -g            Use 7 bit characters.
+  -h [N]        Backwards scroll limit.
+  -i            Ignore case in searches.
+  -k [file]     Use a lesskey file.
+  -l [file]     Log file.
+  -L [file]     Log file (unconditionally overwrite).
+  -m  -M        Set prompt style.
+  -n  -N        Use line numbers.
+  -P [prompt]   Define new prompt.
+  -q  -Q        Quiet the terminal bell.
+  -r            Translate control characters.
+  -s            Squeeze multiple blank lines.
+  -t [tag]      Find a tag.
+  -u  -U        Change handling of backspaces.
+  -w            Display ~ for lines after end-of-file.
+  -x [N]        Set tab stops.
+  -z [N]        Set size of window.
+  

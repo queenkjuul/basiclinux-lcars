@@ -1,0 +1,16 @@
+# An example on how to connect to a MUD game using ircII as client
+#
+alias Nemesis {
+	^window new name Nemesis level crap lastlog all
+	^exec -window -name Nemesis telnet 131.159.8.67 2000
+	^query %Nemesis
+	^on ^exec_exit Nemesis window show Nemesis kill
+}
+
+# The following are features provided by the |Nemesis IRC
+# service robot. No other MUD has that, so don't adapt it.
+#
+alias Nwho msg |Nemesis who
+alias Ntell msg |Nemesis tell
+
+# lynx92

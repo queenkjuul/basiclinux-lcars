@@ -1,0 +1,16 @@
+version 1.2
+
+Still need to add a nice front end. Better levels are on the way. There are
+15 in this version. Better samples could be called for. Don't need to speed
+it up, though!
+
+version 1.3
+
+Slight bug in level 2 fixed
+640x480x256 version running and in this distribution. Do I *really* need to
+do a front end? Would anyone like me to do Gauntlet instead?
+
+version 1.4
+640x480x256 only version in distribution. Front end up and running, with
+builtin level editor. Provided levels aren't up to much - I'm hoping you lot
+can help here :)

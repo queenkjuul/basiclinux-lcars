@@ -1,0 +1,178 @@
+
+How to compile X-CD-Roast 0.96e
+-------------------------------
+
+Compiling X-CD-Roast is very easy, when you have all the required libraries
+installed. On most recent distributions TCL/TK 8.0 and Tix should be 
+preinstalled and therefore you have no further trouble. 
+(I tested this with RedHat 4.2, 5.1 and 5.2 - No need to care about any
+libs. Just compile X-CD-Roast and it should work at once)
+ 
+-----------
+Note for SuSE-Linux Users: 
+
+Be sure that the X11-Development-package is installed! Without it
+you will get a lot of error-messages at compile-time!
+If you have not installed the tcl/tk/tix-packages shipped with SuSE, but
+instead build your own libraries you have to call configure with the 
+--nosuse option.
+
+	./configure --nosuse
+
+----------
+
+Run the "./configure"-script in this directory to automatically check
+if you have everything installed you need for compilation.
+
+If the script fails you have to install TCL/TK and Tix yourself. Perhaps
+these libraries are on your Linux-distribution-CD and you never installed them.
+Otherwise you have to download the source-code for the libraries and install 
+them manually. (See later how to do that)
+
+X-CD-Roast will be installed by default to /usr/local. If you prefer
+another base-directory (e.g. /usr ), then you can use the --prefixdir
+option of configure.
+
+	./configure --prefixdir /usr
+
+This will cause that the "make install"-command will install X-CD-Roast
+to /usr/bin/xcdroast, and its libraries to /usr/lib/xcdroast-0.96e.
+
+If you are not sure where to install X-CD-Roast, just keep the default
+value /usr/local. This means just run "./configure" without any additional
+options.
+
+
+Hint for RedHat 5.0 users: You have to update your glibc in order to get
+	Master-Image working. Download it from the RedHat-Server or update
+	to RedHat 5.1 or 5.2.
+
+Overview:
+---------
+
+Step 1: Run "./configure"
+-------------------------
+If the script tells you that everything is fine, you can type
+"make" and afterwards "make install" to compile and install
+X-CD-Roast. Then you are ready to burn and you can quit reading this.
+
+When configure fails, follow the next steps:
+
+Step 2: Download TCL/TK/Tix Libraries:
+--------------------------------------
+
+ftp://ftp.smli.com/pub/tcl/tcl8.0p2.tar.gz
+ftp://ftp.smli.com/pub/tcl/tk8.0p2.tar.gz
+ftp://ftp.xpi.com/pub/Tix4.1.0.006.tar.gz
+
+(or get them on my webpage "http://www.fh-muenchen.de/rz/xcdroast")
+
+Note: It is not necessary to install tcl/tk8.0p2 (patchlevel 2 of TCL/TK 8.0),
+      the original release 8.0 or patchlevel 1 will also work nicely.
+      Also the new 8.0.3 release will work.
+
+Note 2: When you update one of these libraries you have to recompile ALL
+        of them in order to work together. When you update your TCL/TK
+        installation to patchlevel 2 without recompiling Tix, X-CD-Roast
+        will just create segmentation-faults from time to time.
+
+
+Step 2.1: Compile and Install Libraries (static) :
+------------------------------------------------
+
+Note: This describes how to build the static stand-alone version of
+      X-CD-Roast. Stand-alone means that all libraries and external
+      data is compiled into one big binary. This way you can transfer
+      the binary to another system, without installing any additional
+      libraries. When you have both static and shared (dynamic) 
+      libraries on your system, the linker will always use the shared
+      ones... 
+
+Note 2: You have to compile all the libraries from the same base-directory
+        (e.g. unpack all the distribution-files in /home/src and compile them
+        there). When you have different compilation-directories then the
+        compilation of the libs may fail. Also don't delete the source-files
+        of a library after you installed it, because the next library-
+        compilation relies on its files. When you installed all of TCL/TK 
+        and Tix, then its save to delete the source-directories in order 
+        to free diskspace.
+
+If you want to create a shared linked binary, skip this and 
+read Step 2.2.
+
+
+1) Unpack tcl8.0.tar.gz and compile:
+
+   cd tcl8.0/unix
+   ./configure
+   make
+   make install   (as root)
+
+2) Unpack tk8.0.tar.gz and compile:
+
+   cd tk8.0/unix
+   ./configure
+   make
+   make install  (as root)
+
+3) Unpack Tix4.1.0.006.tar.gz and compile:
+
+   cd Tix4.1.0/unix/tk8.0
+   ./configure --enable-sam
+   make
+   cd ..
+   ./configure
+   make install  (as root)
+
+
+Step 2.2: Compile and Install Libraries (shared) :
+------------------------------------------------
+
+Note: This are instruction how to compile the shared libraries
+      needed for X-CD-Roast. If you want X-CD-Roast statically
+      linked, follow the instructions in Step 2.1. 
+      When you compile a shared linked version of X-CD-Roast, the
+      resulting binary is much smaller, but needs access to all
+      the libraries to run.
+  
+     
+1) Unpack tcl8.0.tar.gz and compile:
+
+   cd tcl8.0/unix
+   ./configure --enable-shared
+   make
+   make install   (as root)
+
+2) Unpack tk8.0.tar.gz and compile:
+
+   cd tk8.0/unix
+   ./configure --enable-shared
+   make
+   make install   (as root)
+
+3) Unpack Tix4.1.0.006.tar.gz and compile:
+
+   cd Tix4.1.0/unix/tk8.0
+   ./configure --enable-shared
+   make
+   cd ..
+   ./configure
+   make install   (as root)
+
+Now the user root should do a "ldconfig" to register the new shared
+libraries in the system.
+ 
+
+Step 3: Compile and Install X-CD-Roast:
+---------------------------------------
+
+Now you have everything prepared for compilation of X-CD-Roast.
+Go back to your xcdroast-0.96e-dir and type "./configure" to create
+the Makefiles. Then type "make" to compile xcdroast. 
+
+After a "make install" you are ready to burn!
+
+
+24.11.98 Thomas Niederreiter 
+
+

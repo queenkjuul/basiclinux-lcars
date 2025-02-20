@@ -1,0 +1,13 @@
+Some minor modifications that must be made to BitchX:
+  * Additional set for FORMAT_USERS named FORMAT_USERS_TITLE
+    FORMAT_USERS_TITLE $G Channel list for %B$1%n at %G(%n$0%G)%n:
+    eg:
+    ::: Channel userlist for #BitchX at (12:00):
+    ::: [ Nickname ] [  level ] User@Hostname
+    ::: [ BarK0de  ] [ 90:2:2 ] gumbee@ewheat.org
+
+  * FORMAT_KILL You have been killed by $1 on $2 [$3-] displays as:
+    You have been killed by ewheat.org!BarK0de [(erp)]
+    $1 should have nick and server seperated into two different variables.
+    $1 should give nick, $2 should give server, $3 has the reason without 
+    the brackets.

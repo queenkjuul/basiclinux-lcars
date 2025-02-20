@@ -1,0 +1,40 @@
+This file describes the use of the command line options.
+
+Th efollowing optinos are allowed:
+
+	-f  	for a new window can be given no argument or a file name
+	-nf 	create a new file, this sets the title to the new file name requires a 
+		file name as an argument     	  
+	-fg  	set the foreground color 
+		should be the first options used if they are used.
+	-bg	set the background color 
+		should be the first options used if they are used.
+	-p 	input data from a pipe, this requires an incoming pipe |
+		if used it shoudl be the last option on the command line
+
+See examples below:
+
+	The order of the command line switches is important when mixed together.
+	If the -f and -p are used together it is possible to fork a new tknotepad 
+	with the output of the pipe. The below line will do this
+
+	cat /proc/cpuinfo | tknotepad -f -p                
+
+	here are some examples of the options and there usage
+
+	cat /proc/cpuinfo | tknotepad -bg yellow -fg magenta -f tknotepad -p
+	cat /proc/cpuinfo | tknotepad -p
+	cat /proc/cpuinfo | tknotepad -bg yellow -fg magenta -bg yellow -p      
+	tknotepad -bg yellow -fg magenta -f -f tknotepad
+	tknotepad -f
+	tknotepad -nf newfilename
+
+ 	or to use them all and pipe the output of a file or process into a new file and 
+	open another file at the same time try
+
+ 	cat /proc/cpuinfo | tknotepad -bg yellow -fg magenta -f tknotepad -p -nf cpuinfo 
+	cat /proc/cpuinfo | tknotepad -f tknotepad -p -nf cpuinfo 
+
+	or just create a new file from the output of a pipe
+
+	cat /proc/cpuinfo | tknotepad -p -nf cpuinfo 

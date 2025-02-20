@@ -1,0 +1,26 @@
+#!/bin/sh
+clear
+echo
+echo -e Before you begin here, you must start "\033[1m"receive"\033[m" on the other computer.
+echo
+while true ; do
+  echo -n "What is the hostname of the other computer? "
+  read hostname
+  ping -c 1 $hostname >/dev/null
+  if [ $? = 0 ] ; then 
+    break
+  fi
+done
+echo
+echo 'You can send single files or entire directories (with subdirectories).'
+while true ; do
+  echo -n 'What is the name of the file/directory? '
+  read filename
+  ls $filename >/dev/null
+  if [ $? = 0 ] ; then
+    tar -cf - $filename| nc $hostname 33 
+    echo $filename has been sent.
+    echo -e "Press \033[1m^c\033[m if you are finished."
+    echo
+  fi
+done

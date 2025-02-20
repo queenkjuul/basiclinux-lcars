@@ -1,0 +1,153 @@
+<?xml version="1.0"?>
+
+<JWM>
+
+<!-- The root menu, if this is undefined you will not get a menu. -->
+<RootMenu>
+   <Program label="Xterm">rxvt -sr -ls -g 67x20 -C</Program>
+   <Menu lable="Applications">
+      <Program label="TkDesk">tkdesk</Program>
+      <Program label="X File Manager">xfm</Program>
+      <Program label="Image viewer">xv</Program> 
+      <Program label="WWW Browser">rxvt -e links /root/hotlist.html</Program>
+      <Program label="Sylpheed Mail">sylpheed</Program>
+      <Program label="Gimp">gimp</Program>
+      <Program label="XPaint">xpaint</Program>
+      <Program label="XCDRoast">xcdroast</Program>
+      <Menu label="Office">
+         <Program label="MagicPoint">mgp /usr/share/mgp/demo.mgp</Program>
+         <Program label="AbiWord">abiword</Program>
+         <Program label="Spreadsheet">rxvt -e sc</Program>
+         <Program label="Browser">rxvt +sb -g 70x28 -e links-0.95 ~/hotlist.html</Program> 
+      </Menu>
+   </Menu>
+   <Menu label="Games">
+      <Program label="Freecell">xfreecell</Program>
+      <Program label="Spider Solitaire">spider</Program>
+      <Program label="LinCity">xlincity</Program>
+      <Program label="Tetris">wish /usr/games/tktet.tcl</Program>
+      <Program label="Go Fish!">rxvt -e fish</Program>
+      <Program label="GNU Chess">rxvt -e gnuchess</Program>
+      <Program label="Mahjongg">xmahjongg</Program>
+      <Program label="Lander">xlander</Program>
+      <Program label="XFractInt">rxvt -e xfractint</Program>
+      <Program label="Digger">xdigger</Program>
+      <Program label="Runner">xrunner</Program>
+      <Program label="Koules">koules</Program>
+   </Menu>
+   <Menu label="Tools">
+      <Menu label="Calendar">
+         <Program label="This Month">xcal</Program>
+         <Program label="Next Month">xcal nm</Program>
+         <Program label="This Year">xcal y</Program>
+         <Program label="Next Year">xcal ny</Program>
+      </Menu> 
+      <Program label="Clock">rclock -g 125x110</Program>
+      <Program label="Calculator">calctool -g 20x20</Program>
+      <Program label="TkNotepad">tknotepad</Program>
+      <Program label="XGrab">xgrab</Program>
+      <Program label="minicom">xminicom</Program>
+      <Program label="Python 1.5 REPL">rxvt -e python</Program>
+      <Program label="YaBASIC">rxvt -e yabasic</Program>
+   </Menu>
+   <Menu label="System utilities">
+      <Program label="process monitor">rxvt +sb -g 68x20 -e top</Program>
+      <Program label="environment">rxvt +sb -g 68x20 -e sh -c "env;read r"</Program>
+      <Program label="kernel messages">rxvt +sb -font 6x13 -g 100x25 -e sh -c "dmesg|less"</Program>
+      <Program label="disk usage">rxvt +sb -g 68x10 -e sh -c "df -h;read r"</Program>
+      <Program label="directory usage">rxvt +sb -g 30x20 -e sh -c "du -hd1 /;read r"</Program>
+      <Program label="partition table">rxvt +sb -g 68x20 -e sh -c "fdisk -l|grep -v Units|sed -e 's/Boot/ Boot/' -e 's/End/  End  /';read r"</Program>
+      <Program label="video modes">rxvt -sr -g 68x20 -e sh -c Xvesamodes</Program>
+      <Program label="network status">rxvt +sb -g 68x20 -e sh -c "ifconfig;read r"</Program>
+      <Program label="ppp-on">eznet up</Program>
+      <Program label="ppp-off">ppp-off</Program>
+   </Menu>
+   <Separator/>
+   <Menu label="Edit settings">
+      <Program label="JWM menu">rxvt +sb -g 70x27 -e e3pi ~/.jwmrc</Program>
+      <Program label="Xvesa parameters ">rxvt +sb -g 30x10 -e e3pi /etc/Xconfig</Program>
+      <Program label="X startup">rxvt +sb -g 68x15 -e e3pi ~/.xinitrc</Program>
+      <Program label="system startup">rxvt +sb -g 68x27 -e e3pi /etc/rc</Program>
+      <Program label="aliases">rxvt +sb -g 68x27 -e e3pi /etc/profile</Program>
+      <Program label="welcome screen">rxvt +sb -g 70x27 -e e3pi /etc/issue</Program>
+      <Program label="modem config">rxvt +sb -g 70x20 -e e3pi /var/eznet/eznet.conf</Program>
+      <Program label="mail config">rxvt +sb -g 70x15 -e e3pi ~/.pmailrc</Program>
+      <Program label="DNS config">rxvt +sb -g 60x10 -e e3pi /etc/resolv.conf</Program>
+   </Menu>
+   <Separator/>
+   <Restart/>
+   <Exit/>
+</RootMenu>
+
+<Border>
+   <Font antialias="false">-bitstream-charter-bold-r-normal-*-18-0-0-0-p-0-*-*</Font>
+   <Width>5</Width>
+   <Height>20</Height>
+   <Foreground>black</Foreground>
+   <Background>#DCDAD5</Background>
+   <ActiveForeground>black</ActiveForeground>
+   <ActiveBackground>#8899AA</ActiveBackground>
+</Border>
+
+<Tray autohide="false">
+  <Font antialias="false">-bitstream-charter-bold-r-normal-*-20-0-0-0-p-0-*-*</Font>
+  <Height>28</Height>
+  <Foreground>black</Foreground>
+  <Background>#DCDAD5</Background>
+  <ActiveForeground>black</ActiveForeground>
+  <ActiveBackground>#8899AA</ActiveBackground>
+</Tray>
+
+<Pager>
+   <Outline>black</Outline>
+   <Foreground>#DCDAD5</Foreground>
+   <Background>#888888</Background>
+   <ActiveForeground>#8899AA</ActiveForeground>
+   <ActiveBackground>#3A4956</ActiveBackground>
+</Pager>
+
+<Menu>
+   <Font antialias="false">-bitstream-charter-bold-r-normal-*-18-0-0-0-p-0-*-*</Font>
+   <Foreground>black</Foreground>
+   <Background>#DCDAD5</Background>
+   <ActiveForeground>white</ActiveForeground>
+   <ActiveBackground>#3A4956</ActiveBackground>
+</Menu>
+
+<Popup enabled="false">
+</Popup>
+
+<Clock>
+   <Program>xcal</Program>
+</Clock>
+
+<!-- Number of virtual desktops -->
+<DesktopCount>2</DesktopCount>
+
+<!-- Double click speed (in milliseconds) -->
+<DoubleClickSpeed>400</DoubleClickSpeed>
+
+<!-- Double click delta (in pixels) -->
+<DoubleClickDelta>2</DoubleClickDelta>
+
+<!-- The focus model (sloppy or click) -->
+<FocusModel>sloppy</FocusModel>
+
+<!-- Key bindings -->
+<Key key="Up">up</Key>
+<Key key="Down">down</Key>
+<Key key="Right">right</Key>
+<Key key="Left">left</Key>
+<Key key="Return">select</Key>
+<Key key="Escape">escape</Key>
+
+<Key mask="A" key="Tab">next</Key>
+<Key mask="A" key="F4">close</Key>
+<Key mask="A" key="#">desktop#</Key>
+<Key mask="A" key="F1">root</Key>
+<Key mask="A" key="F2">window</Key>
+
+</JWM>
+
+
+

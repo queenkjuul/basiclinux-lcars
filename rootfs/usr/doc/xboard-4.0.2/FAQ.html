@@ -1,0 +1,1790 @@
+<HTML><HEAD><TITLE>
+GNU Chess and XBoard: Frequently Asked Questions</TITLE></HEAD>
+<BODY>
+<PRE>From: mann@pa.dec.com (Tim Mann)
+Newsgroups: gnu.chess,rec.games.chess.computer,alt.chess.ics,alt.answers,rec.answers,news.answers
+Subject: FAQ -- GNU Chess and XBoard Frequently Asked Questions
+Followup-To: gnu.chess
+Reply-To: bug-gnu-chess@gnu.org
+Approved: news-answers-request@MIT.EDU
+Summary: Answers to frequently asked questions in the gnu.chess
+  newsgroup, covering the chess-playing program GNU Chess, the chess
+  interfaces XBoard and WinBoard, and other chess topics.
+
+Archive-name: games/chess/gnu-faq
+Version: $Id: FAQ.html,v 1.113 1999/02/25 22:17:26 mann Exp $
+Posting-frequency: monthly</PRE>
+
+<H1>GNU Chess and XBoard:<BR> Frequently Asked Questions</H1>
+
+Here is the list of frequently asked questions and
+answers for the gnu.chess newsgroup, covering the
+chess-playing program GNU Chess, the
+chess interfaces XBoard and WinBoard, and a few other chess topics.
+In addition to the plain text version that is posted to the
+newsgroups, a hyperlinked version of this FAQ is available on
+the Web through the page
+<A HREF=
+"http://www.research.digital.com/SRC/personal/Tim_Mann/chess.html"
+>http://www.research.digital.com/SRC/personal/Tim_Mann/chess.html</A>.
+
+
+<HR>
+<H2>Outline</H2>
+
+<UL>
+<LI><A HREF="#[A0]">[A] Introduction and hot topics</A></LI>
+<LI><A HREF="#[B0]">[B] GNU Chess</A></LI>
+<LI><A HREF="#[C0]">[C] GNU Chess, bugs and problems</A></LI>
+<LI><A HREF="#[D0]">[D] XBoard and WinBoard</A></LI>
+<LI><A HREF="#[E0]">[E] XBoard and WinBoard, bugs and problems</A></LI>
+<LI><A HREF="#[F0]">[F] Crafty and other topics</A></LI>
+</UL>
+
+<HR>
+<H2>Detailed contents</H2>
+
+<UL>
+<LI><A NAME="[A0]" HREF="#[A]">[A] Introduction and hot topics</A></LI> 
+<UL>
+<LI><A HREF="#[A.1]">[A.1] What are the gnu.chess newsgroup and info-gnu-chess
+mailing list for?</A></LI> 
+<LI><A HREF="#[A.2]">[A.2] How do I subscribe or unsubscribe?</A></LI>
+<LI><A HREF="#[A.3]">[A.3] Where can I get chess information and chess
+software?</A></LI> 
+<LI><A HREF="#[A.4]">[A.4] What are the current version numbers for GNU Chess,
+XBoard, etc.?</A></LI> 
+<LI><A HREF="#[A.5]">[A.5] Who is working on this project?</A></LI>
+<LI><A HREF="#[A.6]">[A.6] How do I report bugs, offer help, etc.?</A></LI>
+</UL>
+
+<LI><A NAME="[B0]" HREF="#[B]">[B] GNU Chess</A></LI>
+<UL>
+<LI><A HREF="#[B.1]">[B.1] What is GNU Chess?</A></LI>
+<LI><A HREF="#[B.2]">[B.2] What is GNU Chess's rating?</A></LI>
+<LI><A HREF="#[B.3]">[B.3] Does GNU Chess run on a PC under DOS (or Windows,
+or OS/2)?</A></LI> 
+<LI><A HREF="#[B.4]">[B.4] Does GNU Chess run on an Amiga?</A></LI>
+<LI><A HREF="#[B.5]">[B.5] Does GNU Chess run on a Macintosh?</A></LI>
+<LI><A HREF="#[B.6]">[B.6] Does GNU Chess run on VMS?</A></LI>
+<LI><A HREF="#[B.7]">[B.7] Does GNU Chess run on the Acorn Archimedes?</A></LI>
+<LI><A HREF="#[B.8]">[B.8] Does GNU Chess run on Atari computers?</A></LI>
+<LI><A HREF="#[B.9]">[B.9] How do I build GNU Chess?  Do I have to have
+gcc?</A></LI> 
+</UL>
+
+<LI><A NAME="[C0]" HREF="#[C]">[C] GNU Chess, bugs and problems</A></LI>
+<UL>
+<LI><A HREF="#[C.1]">[C.1] XBoard tells me
+"Error: first chess program (gnuchessx) exited unexpectedly".</A></LI> 
+<LI><A HREF="#[C.2]">[C.2] GNU Chess
+lets its flag fall a move or two before the time control.</A></LI> 
+<LI><A HREF="#[C.3]">[C.3] GNU Chess
+freezes after it gets out of its opening book.</A></LI> 
+<LI><A HREF="#[C.4]">[C.4] GNU Chess sometimes 
+tells me that a legal move is illegal.</A></LI>
+<LI><A HREF="#[C.5]">[C.5] GNU Chess crashes when I try to compile and run it
+on the DEC Alpha.</A></LI>
+<LI><A HREF="#[C.6]">[C.6] Running (or building) GNU Chess fails with
+a message about FIONREAD.</A></LI>
+<LI><A HREF="#[C.7]">[C.7] GNU Chess runs way too slow and makes my 
+disk seek wildly.</A></LI>
+</UL>
+
+<LI><A NAME="[D0]" HREF="#[D]">[D] XBoard and WinBoard</A></LI>
+<UL>
+<LI><A HREF="#[D.1]">[D.1] What is XBoard?</A></LI>
+<LI><A HREF="#[D.2]">[D.2] Is there an XBoard for Microsoft Windows?  What is
+WinBoard?  How do I install WinBoard?</A></LI>
+<LI><A HREF="#[D.3]">[D.3] Is there an XBoard for the Amiga?  What is
+AmyBoard?</A></LI>
+<LI><A HREF="#[D.4]">[D.4] Is there an XBoard for the Macintosh?</A></LI>
+<LI><A HREF="#[D.5]">[D.5] Does XBoard run on VMS?</A></LI>
+<LI><A HREF="#[D.6]">[D.6] What is cmail?</A></LI>
+<LI><A HREF="#[D.7]">[D.7] How do I build XBoard?  Do I have to have
+gcc?</A></LI>
+<LI><A HREF="#[D.8]">[D.8] Can I use XBoard to play a game of chess with
+another human?</A></LI>
+<LI><A HREF="#[D.9]">[D.9] Will WinBoard run on Windows 3.1?</A></LI>
+<LI><A HREF="#[D.10]">[D.10] How do I use XBoard or WinBoard as an external
+viewer for PGN files with my Web browser?</A></LI>
+<LI><A HREF="#[D.11]">[D.11] How do I use WinBoard as an external viewer for
+PGN files with the MS Windows File Manager or Explorer?</A></LI>
+<LI><A HREF="#[D.12]">[D.12] How do I use ICC timestamp or FICS timeseal
+with XBoard?</A></LI>
+<LI><A HREF="#[D.13]">[D.13] How do I use ICC timestamp or FICS timeseal
+with WinBoard?</A></LI>
+<LI><A HREF="#[D.14]">[D.14] How do I play bughouse with XBoard or WinBoard?
+</A></LI>
+<LI><A HREF="#[D.15]">[D.15] How can I scroll back in the WinBoard console?
+</A></LI>
+<li><a href="#[D.16]">[D.16]
+  What is Zippy?  How can I interface a chess program to the Internet 
+  Chess Servers?</a></li> 
+<li><a href="#[D.17]">[D.17]
+  How can I interface my own chess program to XBoard or WinBoard?</a></li>
+<li><a href="#[D.18]">[D.18]
+  How can I recompile WinBoard from source?</a></li>
+<li><a href="#[D.19]">[D.19]
+  How can I use XBoard or WinBoard to talk
+  to an Internet Chess Server through a firewall or proxy?</a></li>
+<li><a href="#[D.20]">[D.20] 
+  How can I use XBoard or WinBoard on chess.net with accuclock?</a></li>
+</UL>
+
+<LI><A NAME="[E0]" HREF="#[E]">[E] XBoard and WinBoard, bugs and problems</A></LI>
+<UL>
+<LI><A HREF="#[E.1]">[E.1] I can't build XBoard because the
+X11/Xaw/... include files are not found.</A></LI>
+<LI><A HREF="#[E.2]">[E.2] Configuring or building XBoard fails due to
+missing header files, missing libraries, or undefined symbols.</a></li>
+<LI><A HREF="#[E.3]">[E.3] I have problems using WinBoard on ICS with a modem.
+I'm not running SLIP or PPP, but just dialing in to an ordinary login account
+("shell account").</A></LI>
+<LI><A HREF="#[E.4]">[E.4] 
+I have problems using WinBoard on ICS with Windows 95 and SLIP
+or PPP.  When trying to start up, it gets the error "Address family
+not supported by protocol family" (or some equally strange message).
+</A></LI> 
+<LI><A HREF="#[E.5]">[E.5] When I try to run WinBoard, I get the message
+"Failed to start chess program gnuchesx on localhost: NO LANGFILE (file
+gnuchess.lang not found)".</A></LI>
+<LI><A HREF="#[E.6]">[E.6] I want to use XBoard or WinBoard as an Internet
+Chess Server interface, but the ICS Client option is grayed out on the
+menu.</A></LI> 
+<LI><A HREF="#[E.7]">[E.7] How do I give command-line options to
+a Windows program like WinBoard?</A></LI>
+<LI><A HREF="#[E.8]">[E.8] When I try to log in to ICC using timestamp
+(or to FICS using timeseal) with XBoard, it accepts my handle, but 
+just beeps at me when I type my password.
+</A></LI> 
+<LI><A HREF="#[E.9]">[E.9]
+When I exit from WinBoard after using it to play against GNU Chess
+or Crafty, the chess program keeps running in the background.
+</A></LI>
+<li><a href="#[E.10]">[E.10]
+When running WinBoard, I get the message
+"Error getting user name:
+The operation being requested was not performed because user
+has not logged on to the network."
+</a></li>
+<li><a href="#[E.11]">[E.11]
+  WinBoard crashes Windows 95!
+</a></li>
+<li><a href="#[E.12]">[E.12]
+  Why do my ICS 
+  opponents often get extra time after they make their moves?
+  Why do I sometimes lose time off my clock after I make my move?
+</a></li>
+<li><a href="#[E.13]">[E.13]
+  I can't run WinBoard 4.0.x unless I delete the WinBoard.ini file each time!
+</a></li>
+<li><a href="#[E.14]">[E.14]
+  How do I turn pondering on and off from the WinBoard command line?
+</a></li>
+
+</UL>
+
+<LI><A NAME="[F0]" HREF="#[F]">[F] Crafty and other topics</A></LI>
+<UL>
+<LI><A HREF="#[F.1]">[F.1] What is XChess?</A></LI>
+<LI><A HREF="#[F.2]">[F.2] What is Winsock Chess?</A></LI>
+<LI><A HREF="#[F.3]">[F.3] What is Crafty?</A></LI>
+<LI><A HREF="#[F.4]">[F.4] How do I use Crafty with XBoard?</A></LI>
+<LI><A HREF="#[F.5]">[F.5] How do I use Crafty with WinBoard?</A></LI>
+</UL>
+</UL>
+
+<HR>
+<H2><A NAME="[A]">[A] Introduction and hot topics</A></H2>
+<HR>
+<H3><A NAME="[A.1]">[A.1] What are the gnu.chess newsgroup and info-gnu-chess mailing list for?</A></H3>
+
+The newsgroup gnu.chess and the mailing list info-gnu-chess@gnu.org
+are for the discussion of GNU Chess, XBoard, and related free chess software.
+
+<P>gnu.chess and info-gnu-chess are not for general chess or computer chess
+discussion.  You won't be flamed if you post such messages here, but you will
+find more information in other places.  See topic <A HREF="#[A.3]">[A.3]</A> below.
+
+<P>PLEASE DO NOT try to start or play chess games by posting messages to
+gnu.chess.  Instead, read the rec.games.chess FAQ 
+(see topic <A HREF="#[A.3]">[A.3]</A>)
+to learn about the IECG, the
+IECC, and other groups that you can join to find opponents, and send one or
+more of them email to join.
+
+<P>The newsgroup and mailing list are gatewayed bidirectionally; that is,
+any article posted on the newsgroup is automatically forwarded to the
+mailing list, and any mail sent to the list is automatically forwarded
+to the newsgroup.
+
+<HR>
+<H3><A NAME="[A.2]">[A.2] How do I subscribe or unsubscribe?</A></H3>
+
+The simplest way is to either choose to read gnu.chess in your newsreader, or
+choose not to.
+
+<P>If you want to be added to or deleted from the mailing list, mail to
+info-gnu-chess-request@gnu.org (not to the list or newsgroup itself).
+
+<HR>
+<H3><A NAME="[A.3]">[A.3] Where can I get chess information and chess 
+software?</A></H3>
+
+As a shortcut to most things mentioned in this FAQ, try my Chess Web page,
+<A HREF=
+"http://www.research.digital.com/SRC/personal/Tim_Mann/chess.html"
+>http://www.research.digital.com/SRC/personal/Tim_Mann/chess.html</A>.
+My Web page is the best place to get the latest versions of XBoard and WinBoard
+and the most up-to-date version of this FAQ.
+
+<P>For general news and information about chess, try the newsgroup hierarchy
+rec.games.chess.*, especially the groups rec.games.chess.misc and
+rec.games.chess.computer.  Both of the latter groups have very informative
+FAQs maintained by Steve Pribut; look for them on the newsgroups or at
+<A HREF=
+"http://www.clark.net/pub/pribut/chess.html"
+>http://www.clark.net/pub/pribut/chess.html</A>.
+
+<P>Like other GNU software, you can get GNU Chess and XBoard by anonymous FTP
+from 
+<A HREF=
+"ftp://ftp.gnu.org/pub/gnu/"
+>ftp://ftp.gnu.org/pub/gnu/</A>
+and its many mirror sites.  Look in the subdirectories gnuchess and xboard.
+The .tar.gz suffix on the files there indicates they were packed with tar
+and compressed with gzip.  The GNU FTP sites generally 
+carry Unix-compatible versions of GNU software only,
+so you won't find WinBoard there; get it from my Web page (above) or from
+the Internet Chess Library (next paragraph).
+
+<P>For other chess software, try the Internet Chess Library.  Use anonymous FTP
+to connect to ftp.freechess.org, or go to the Web page
+<A HREF=
+"http://www.freechess.org/"
+>http://www.freechess.org/</A>.
+You can get chess software, game
+collections, the FAQ file for rec.games.chess, and other chess-related
+material there, in the directory pub/chess.  The FTP server can
+automatically decompress files for you as you download them, useful if you
+don't have gzip.
+
+<P>Here is a sample anonymous ftp session.  Some of the ftp server's responses
+are abbreviated, but all the commands you must type are included.
+
+<PRE>
+% ftp ftp.gnu.org
+Connected to ftp.gnu.org
+Name: anonymous
+Password: your-email-address@your-site
+ftp&gt; binary
+200 Type set to I.
+ftp&gt; cd /pub/gnu/gnuchess
+250 CWD command successful.
+ftp&gt; dir
+-rw-r--r-- 1 14910 wheel 1512181 May 20 00:52 gnuchess-4.0.pl79.tar.gz
+ftp&gt; get gnuchess-4.0.pl79.tar.gz
+150 BINARY connection for gnuchess-4.0.pl79.tar.gz (1512181 bytes).
+226 Transfer complete.
+ftp&gt; cd /pub/gnu/xboard
+ftp&gt; dir
+-rw-r--r-- 1 14910 wheel  393119 May 20 00:25 xboard-4.0.2.tar.gz
+ftp&gt; get xboard-4.0.2.tar.gz
+150 BINARY connection for xboard-4.0.2.tar.gz (393119 bytes).
+226 Transfer complete.
+ftp&gt; quit
+</PRE>
+
+<HR>
+<H3><A NAME="[A.4]">[A.4] What are the current version numbers for GNU Chess, XBoard, etc.?</A></H3>
+
+At this writing, the current version numbers are:
+
+<UL>
+<LI>GNU Chess 4.0.79</LI>
+<LI>GNU Chess 4.14 for Windows</LI>
+<LI>GNU Chess Mac 4.0b5</LI>
+<LI>XBoard 4.0.2</LI>
+<LI>WinBoard 4.0.2</LI>
+</UL>
+
+<HR>
+<H3><A NAME="[A.5]">[A.5] Who is working on this project?</A></H3>
+
+Stuart Cracraft is the GNU Chess project coordinator.  Currently no
+one seems to be working on the GNU Chess engine itself.  Conor
+McCarthy is responsible for GNU Chess 4.xx for Windows.  Tim Mann
+maintains this FAQ and is the lead developer on XBoard and WinBoard,
+but he has little time to spend on the project.  Evan Welsh, the
+author of cmail, is not actively working on it but does fix bugs when
+they are reported.
+
+<HR>
+<H3><A NAME="[A.6]">[A.6] How do I report bugs, offer help, etc.?</A></H3>
+
+Any time you want to report a possible bug in GNU Chess, XBoard, etc.,
+we need to know exactly what you did, and exactly what error (or
+other) messages you got.
+
+<P>If you are using Unix, run the "script" program, run XBoard with
+the -debug flag (if you get as far as running it), do whatever is
+necessary to reproduce the problem, type "exit" to the shell, and mail
+us the resulting typescript file.  We also need to know what
+hardware/operating system combination you are using.  The command
+"uname -a" will usually tell you this; include its output in your
+typescript.
+
+<P>If you are using MS Windows, run WinBoard with the -debug flag, and
+send us a copy of the WinBoard.debug file.  If you aren't sure how to
+add command-line flags to WinBoard, you can hit Ctrl+Alt+F12 to create
+a WinBoard.debug file after WinBoard starts, but that is not as good,
+because a few messages that would have been printed at the start are
+lost.
+
+<p>Either way, please send us the exact text of the commands you typed
+and the output you got, not just your recollection of approximately
+what they were.  The messages may seem meaningless to you, but they
+are very meaningful to us and essential for diagnosing problems.
+
+<P>You should be able to contact all the members of the project by sending mail
+to bug-gnu-chess@gnu.org.  If you don't trust this list, you can send
+mail about XBoard, WinBoard, or the FAQ to mann@pa.dec.com (Tim Mann); 
+mail about cmail 
+to R.E.Welsh@quadstone.co.uk (Evan Welsh).  Comments that are of interest to
+all users of the software should be posted to the gnu.chess newsgroup.
+
+<HR>
+<H2><A NAME="[B]">[B] GNU Chess</A></H2>
+<HR>
+<H3><A NAME="[B.1]">[B.1] What is GNU Chess?</A></H3>
+
+GNU Chess is a free chess-playing program developed as part of the GNU project
+of the Free Software Foundation (FSF).
+
+<P>GNU Chess is a communal chess program.  Contributors donate their time and
+effort in order to make it a stronger, better, sleeker program.  Contributions
+take many forms: interfaces to high-resolution displays, opening book
+treatises, speedups of the underlying algorithms, additions of extra
+heuristics.  These contributions are then distributed to the large user-base
+so that all may enjoy the fruits of our labor.
+
+<P>GNU Chess is intended to run under Unix or Unix-compatible systems.  It is
+written in C and should be portable to other systems.
+
+<P>For a test drive, try WebChess, a World Wide Web interface to GNU Chess
+provided by DJ Delorie.  The URL is 
+<A HREF=
+"http://www.delorie.com/game-room/chess/"
+>http://www.delorie.com/game-room/chess/</A>.
+
+<HR>
+<H3><A NAME="[B.2]">[B.2] What is GNU Chess's rating?</A></H3>
+
+It would be irresponsible to answer this question with a number, without first
+explaining a few things about ratings.
+
+<P>The ratings that are commonly given for computer chess players are less
+meaningful than they may seem.  Most computer chess players (including GNU
+Chess) do not play in tournaments against humans, or do so only rarely, so
+they do not have official ratings from FIDE, USCF, or other chess
+organizations.
+
+<P>Some people have methods for rating chess programs approximately by giving
+them a set of problems to work on and seeing how they do, or by having them
+play tournaments against each other.  Any rating number produced by such
+means should be taken with a grain of salt; it may be only a rough
+approximation to the rating the program would achieve in over-the-board
+tournament competition against humans.  The chess skills required for solving
+problems or playing against other computers are not necessarily the same as
+those required for play against humans.  Also, of course, tournaments among
+computers can rate the computers only relative to one another, not relative to
+humans.  Some of the computers need to be rated by other means to give the
+ratings a basis to start from.
+
+<P>Compared with human players, computer players are strong tactically but weak
+strategically, and are much better at blitz chess than at slow chess.  These
+differences make it more difficult to assign a meaningful rating too.
+
+<P>Several computers do play regularly on the Internet chess servers and have
+achieved ratings there.  These ratings have the advantage of being based on
+many games.  On the other hand, ICS ratings are only roughly comparable to
+USCF or FIDE ratings.  Many players have ICS ratings that are hundreds of
+points higher or lower than their USCF or FIDE ratings.
+
+<P>Finally, unlike dedicated chess machines, or PC chess programs that run on
+only a few different models of Intel processors, GNU Chess runs on many
+different kinds of CPU at many different speeds.  Thus its strength depends on
+how fast a machine you run it on and how much optimization your C compiler
+does.  Some people have formulas for estimating how a computer player's rating
+varies on faster or slower machines---see the rec.games.chess FAQ for more
+information---but these need to be taken with a grain of salt too.
+
+<P>All that said, here are some numbers.
+
+<P>- On the Internet Chess Club, a copy of GNU Chess running on an SGI
+Onyx R4400 under the handle MaxII once achieved a blitz rating of over
+2500 and a standard rating of over 2300.  Current ICC and FICS ratings
+for computers using GNU Chess tend to be a good deal lower.
+
+<P>- Wolfgang Gabriel ran the Bednorz-Toennissen Test BT2630 with GNU
+Chess 4.0 pl74 on a 60 MHz Pentium with 16 MB of RAM.  The test gave
+an estimated rating of 2213.  He also ran Fritz-2 on the same hardware
+and got an estimated rating of 2311.
+
+<HR>
+<H3><A NAME="[B.3]">[B.3] Does GNU Chess run on a PC under DOS (or Windows, or OS/2)?</A></H3>
+
+Yes.  There are several versions available.
+
+<P><i>WinBoard</i> provides a graphical user interface to GNU Chess
+that runs on Windows 95 and Windows NT.  See topic <A
+HREF="#[D.2]">[D.2]</A>.  The WinBoard distribution includes a GNU
+Chess executable for the Intel architecture, plus instructions and
+patches (when necessary) for recompiling GNU Chess from the official
+sources, available separately.
+
+<P><i>GNU Chess 4.xx for Windows</i> bundles GNU Chess and a custom
+graphical interface into a single program.  Unlike WinBoard, it runs
+on Windows 3.1 if you have the Win32s compatibility package installed
+(available free from Microsoft).
+You can get GNU Chess 4.xx for Windows from
+<A HREF=
+"ftp://ftp.gnu.org/pub/gnu/gnuchess/"
+>ftp://ftp.gnu.org/pub/gnu/gnuchess/</A>,
+filename currently gnuchessPC-4.15.zip.
+The distribution includes complete sources and an Intel executable.
+If you need Win32s, you can get it from
+<A HREF=
+"ftp://ftp.microsoft.com/Softlib/MSLFILES/PW1118.EXE"
+>ftp://ftp.microsoft.com/Softlib/MSLFILES/PW1118.EXE</A>.
+
+<P>The standard <i>GNU Chess 4.0</i> distribution
+can be compiled for MS-DOS, and will run under Windows in a DOS
+box, but with no graphical interface.  Depending on what patchlevel of GNU
+Chess you get and what C compiler you have, you may need to make minor source
+changes to get it to compile.  Some precompiled versions are available in the
+Internet Chess Library; the most recent at this writing is:
+<A HREF=
+"ftp://ftp.freechess.org/pub/chess/DOS/gch4077.zip"
+>ftp://ftp.freechess.org/pub/chess/DOS/gch4077.zip</A>.
+
+<P>Here is a listing of GNU Chess files for the PC in the Internet
+Chess Library (topic <A HREF="#[A.3]">[A.3]</A>).  They are scattered
+among the directories /pub/chess/Win3, /pub/chess/DOS, and (don't
+forget) /pub/chess/DOS/OLD-STUFF.  This listing may be outdated; see
+the library itself to look for additions.
+
+<PRE>
+MS-DOS:
+  gch4077.zip       497874  GNU Chess 4.0.pl77 for MS-DOS; needs 386 or better.
+  gnu40-62.exe     1323260  Probably GNU Chess 4.0.pl62 for MS-DOS
+  gnu40dos.exe T    317072  GNU Chess 4.0pl60 by Free Software Foundation
+                         -  compiled for DOS, executables only
+  gnu40src.exe      307786  GNU Chess 4.0pl60 by Free Software Foundation
+                         -  sources only
+  gnuchs31.exe T    270559  GNU Chess 3.1 by Free Software Foundation
+                         -  compiled for DOS, sources and executables
+  gnuchs40.exe T    355494  GNU Chess 4.0pl60 by Free Software Foundation
+                         -  compiled for 80386er, executables only
+
+Windows:
+  chess321.exe W  M 238185  GNU Chess 3.21 ported by Daryl K. Baker
+
+OS/2:
+  gpl65os2.zip      677824  gnuchess-4.0.pl65 compiled for os2.
+  gc-os2-m.zip      578032  gnuchess 4.0 for os2 with mouse support.
+  gnu40os2.zip     1303602  Executables for running gnuchess 4.0 pl62
+                         -  under OS/2. 
+  pmchs.exe    W  M  92004  OS/2 PM Chess 1.01 (GNU Chess 3.1 Windows by
+                         -  Daryl K. Baker) port to OS/2 by Kent Cedola
+  pmchssrc.exe      110279  OS/2 PM Chess 1.01 (GNU Chess 3.1 Windows by
+                         -  Daryl K. Baker) sources only
+</PRE>
+
+<P>Porting GNU software to PCs is not a major focus of the GNU
+project, and these ports are not supported by the FSF.  Contact the
+people who did the ports if you have questions or problems.
+
+<HR>
+<H3><A NAME="[B.4]">[B.4] Does GNU Chess run on an Amiga?</A></H3>
+
+There are at least three ports of GNU Chess to the Amiga.  As with the PC
+ports, these ports are not supported by the FSF; contact the people who did
+the ports if you have problems or questions.
+
+<P>The AmyBoard port (probably the best) is discussed in topic <A
+HREF="#[D.3]">[D.3]</A>.
+
+<P>UChess and AmigaGnuChess are available in the Internet Chess
+Library (topic <A HREF="#[A.3]">[A.3]</A>), in the directory
+/pub/chess/Amiga.  UChess is the newer of the two.
+
+<PRE>
+-r--r--r--  1 chess    chess   204025 Mar 31  1993 AmigaGnuChess.lha
+-r--r--r--  1 chess    chess    10122 Mar 31  1993 AmigaGnuChess.readme
+
+-r--r--r--  1 chess    chess   705327 May  7 10:28 UChess283.lha
+-r--r--r--  1 chess    chess    21478 May  7 10:26 UChess283.readme
+-r--r--r--  1 chess    chess   199387 May  7 10:27 UChess283Patch.lha
+-r--r--r--  1 chess    chess    21589 May  7 10:26 UChess283Patch.readme
+</PRE>
+
+<HR>
+<H3><A NAME="[B.5]">[B.5] Does GNU Chess run on a Macintosh?</A></H3>
+
+There is a port of GNU Chess 4.0 to the Macintosh.  It's available
+from the Internet Chess Library (topic <A HREF="#[A.3]">[A.3]</A>)
+under /pub/chess/Macintosh or /pub/chess/uploads/Macintosh, in the
+following files:
+
+<PRE>
+    GnuChessMac40b5.hqx  - executable binary
+    GCMsource40b5.hqx    - source
+</PRE>
+
+As with the PC ports, the Macintosh port is not supported by the Free Software
+Foundation.  If you have questions or problems, contact Dan Oetting,
+oetting@gldfs.cr.usgs.gov.
+
+<P>If you have the old Mac port of GNU Chess 3.0, be sure to get 4.0 instead.
+GNU Chess has come a long way since version 3.0!
+
+<HR>
+<H3><A NAME="[B.6]">[B.6] Does GNU Chess run on VMS?</A></H3>
+
+An old VAX VMS version is available at ada.cenaath.cena.dgac.fr in the [.VMS]
+directory:
+
+<PRE>
+Directory CENA10:[ANONYMOUS.VMS]
+
+GNUCHESS.ZIP;1                     307  21-MAR-1994 18:42:05.13
+</PRE>
+
+It's only a character cell version for VT100, VT200, etc. terminals.
+Thanks to Patrick Moreau for this information.
+
+<HR>
+<H3><A NAME="[B.7]">[B.7] Does GNU Chess run on the Acorn Archimedes?</A></H3>
+
+Steve Dicks (steve@starswan.demon.co.uk) tells us:
+<blockquote>
+You might like to know that I have recently successfully completed
+a port of GNU Chess 4.0.pl75 to the Acorn Archimedes, and I have written my 
+own graphical front-end to it called ArcBoard (current version 0.05). It
+is currently available from 
+<a href="ftp://ftp.demon.co.uk/pub/archimedes/games/"
+>ftp://ftp.demon.co.uk/pub/archimedes/games/</a>.
+</blockquote>
+
+<HR>
+<H3><A NAME="[B.8]">[B.8] Does GNU Chess run on Atari computers?</A></H3>
+
+Yves Debilloez (101361.2061@CompuServe.COM or yde@ficsgrp.com) tells us:
+<blockquote>
+There is a version of GNU chess for Atari available.  
+It can be downloaded from my homepage:
+<a href="http://ourworld.compuserve.com/homepages/yves_debilloez/homepage.htm"
+>http://ourworld.compuserve.com/homepages/yves_debilloez/homepage.htm</a>.
+</blockquote>
+
+<HR>
+<H3><A NAME="[B.9]">[B.9] How do I build GNU Chess?  Do I need gcc?</A></H3>
+
+The first step to building GNU Chess is to get the distribution file and
+unpack it.  See topic <A HREF="#[A.3]">[A.3]</A> for places you can ftp the distribution from.
+
+<P>To unpack the gnuchess distribution, gnuchess-*.tar.gz, put it into a new,
+empty directory, cd there, and give this Unix command:
+
+<PRE>
+    gzip -cd gnuchess-*.tar.gz | tar -xvf -
+</PRE>
+
+If this command fails because you don't have gzip, see topic <A
+HREF="#[A.3]">[A.3]</A>, and ask a local Unix expert if you need more
+help.
+
+<P>The above command will unpack all the files into a new directory.  Next, cd
+into this new directory.  
+
+<P>Decide what directory tree you are going to install GNU Chess in.
+The default is /usr/local.  If you have write access to this directory
+tree, make sure that it contains subdirectories bin, lib, and man.
+(If you must "su" to get write access to /usr/local, you don't need to
+do so until just before the "make install" below.)  Type the
+following:
+
+<PRE>
+    configure
+    make
+    make install
+</PRE>
+
+If you are going to install GNU Chess under your home directory for personal
+use, do this instead:
+
+<PRE>
+    mkdir $HOME/bin $HOME/lib $HOME/man
+    configure --prefix=$HOME
+    make
+    make install
+</PRE>
+
+If you have problems or special requirements, see the files README, INSTALL,
+Makefile.in, and configure.in for more information.
+
+<P>You don't need to have gcc to build GNU Chess.  However, GNU Chess is written
+in ANSI C.  If you have only an old K&R C compiler, be sure you have the
+current patchlevel of GNU Chess, and get "unproto" by:
+
+<P>
+    Wietse Venema<BR>
+    wietse@wzv.win.tue.nl<BR>
+    Mathematics and Computing Science<BR>
+    Eindhoven University of Technology<BR>
+    The Netherlands
+
+<P>It was released in comp.sources.misc Vol 27 with patches in vol 28 and
+vol 38.  Among other places, it can be found on unix.hensa.ac.uk in
+pub/uunet/usenet/comp.sources.misc/volume27/unproto.
+
+<P>Compile it and copy the cpp it produces into the gnuchess src
+directory before you type "make" there.
+
+<HR>
+<H2><A NAME="[C]">[C] GNU Chess, bugs and problems</A></H2>
+<HR>
+<H3><A NAME="[C.1]">[C.1] XBoard tells me "Error: first chess
+  program (gnuchessx) exited unexpectedly".</A></H3>
+
+Try running XBoard again with the "-debug" flag on the command line.  This
+will print out all the messages received from GNU Chess.  
+
+<P>If you see this problem as soon as GNU Chess starts up, most likely
+GNU Chess is exiting with an error message.  If you see the message
+"NO LANGFILE", it means that you did not install GNU Chess correctly,
+and it is unable to find the file gnuchess.lang.  Make sure that you
+defined LIBDIR in the gnuchess Makefile, and that gnuchess.lang is in
+that directory.  If gnuchess.lang is not there, you probably didn't
+type "make install" in the gnuchess src directory; you must do this to
+install gnuchess.lang (and the gnuchess book).  If you defined LIBDIR
+to something that is not an absolute pathname (that is, to something
+that does not start with a "/"), GNU Chess will work only if you run
+it from the GNU Chess "src" directory where you built it.
+
+<P>If the problem happens while GNU Chess is running, you may have hit
+a GNU Chess bug.  There used to be a bug that could corrupt the stack
+and cause the program to exit, sometimes with a nonsensical message
+first, sometimes with no message.  It was especially evident on Linux.
+We believe this bug is fixed in GNU Chess 4.0.pl77 and later.
+
+<HR>
+<H3><A NAME="[C.2]">[C.2] GNU Chess lets its flag fall a move or two
+before the time control.
+</A></H3>
+
+GNU Chess is known to be a bit too aggressive in using its clock time and
+sometimes lets its flag fall.  Some bugs that caused this symptom have been
+fixed, but more work on the problem may be needed.
+
+<HR>
+<H3><A NAME="[C.3]">[C.3] GNU Chess freezes after it gets out of its
+opening book.
+</A></H3>
+
+a) First, be sure you have the latest versions of GNU Chess (and
+XBoard or WinBoard, if you are using them); see topic <A
+HREF="#[A.4]">[A.4]</A> above.  Several different bugs that could
+cause this symptom existed in old versions but have been fixed in the
+latest ones.
+
+<P>b) Another possibility is that you have a persistent transposition
+table (hashfile) that has been corrupted.  Look in the LIBDIR
+directory you defined in the GNU Chess Makefile, and if you find a
+file named gnuchess.hash there, remove it.  Do not use the hashfile if
+you are running multiple copies of GNU Chess at the same time (for
+instance, with Two Machines mode in XBoard).  In fact, it is probably
+best not to use the hashfile under any circumstances.
+
+<HR>
+<H3><A NAME="[C.4]">[C.4] GNU Chess sometimes 
+tells me that a legal move is illegal.
+</A></H3>
+
+See topic <A HREF="#[C.3]">[C.3]</A>; the same answer applies.
+
+<HR>
+<H3><A NAME="[C.5]">[C.5] GNU Chess crashes when I try to compile and run it on the DEC Alpha.</A></H3>
+
+Get the latest version of GNU Chess.  Some bugs that showed up only on the
+Alpha are fixed in version 4.0 patchlevel 73 and later.  If you still have
+problems, try compiling with the -migrate flag or the -O1 flag.  Some older
+versions of the Alpha C compiler have optimizer bugs that affect GNU Chess.
+
+<HR>
+<H3><A NAME="[C.6]">[C.6] Running (or building) GNU Chess fails with
+a message about FIONREAD.
+</A></H3>
+
+The message looks something like this:
+
+<PRE>
+    FIONREAD: Operation not supported on socket
+    You probably have a non-ANSI ioctl.h; see README. -1 45 4004787f
+</PRE>
+
+<P>If you are using gcc to compile, the solution to this error message
+is usually to go to the GNU Chess Makefile, find the line that starts
+"CFLAGS=" (with no # character in front of it), and append the flag
+"-traditional-cpp" to the end of the line.  Then do
+
+<PRE>
+    rm dspcom*.o gnuan.o
+    make
+    make install
+</PRE>
+
+to rebuild gnuchess.
+
+<P>If you aren't using gcc, we don't really understand why this should happen,
+but we do have a brute-force workaround: You can simply disable the gnuchess
+feature that uses FIONREAD.  Find all the places in dspcom.c (and gnuan.c)
+where the line "#ifdef FIONREAD" occurs.  Change each of them to "#ifdef
+NOTDEF".  Then recompile gnuchess.
+
+<P>With this code disabled, if you tell gnuchess to think on your time ("hard"
+mode), you will have to type ^C to make it stop thinking when you want to make
+your move.  The current version of XBoard does this automatically, so
+disabling the code has no effect on XBoard.
+
+<HR>
+<H3><A NAME="[C.7]">[C.7] GNU Chess runs way too slow and makes my 
+disk seek wildly.</A></H3>
+
+This happens if you don't have enough real memory (RAM) to run GNU
+Chess.  You may need 16MB or more.  You can reduce GNU Chess's memory
+requirements by reconfiguring it, or just buy more memory.  Some
+(rather out of date) suggestions are in the file doc/PORTING from the
+GNU Chess source tree.
+
+<P>The following is from Nikhil Nair:
+<BLOCKQUOTE>
+It is perfectly possible to run gnuchess on an 8Mb system.  I would 
+suggest that you don't edit the source (though the defaults are the 
+definitions of ttblsz or something like that in src/ttable.h and 
+DEFETABS in src/gnuchess.h), but rather use the -C and -T command-line 
+options (which even work for gnuan, though not documented in the manpage).
+
+The defaults are `-C 18001 -T 150001' (for MS-DOS, -T 8001).  On my Linux 
+system, this uses just over 9Mb.  From memory, `-C 6001 -T 40001' uses 
+around 3Mb.  Fiddle with these and see what results you get.
+</BLOCKQUOTE>
+
+<P>Why does GNU Chess use so much memory?  The extra memory lets it keep large
+hash tables that speed up its search and make it play better, and a large
+on-line book that improves opening play.  If you have lots of memory you may
+want to reconfigure GNU Chess to use *more* than the default amount.
+
+<HR>
+<H2><A NAME="[D]">[D] XBoard and WinBoard</A></H2>
+<HR>
+<H3><A NAME="[D.1]">[D.1] What is XBoard?</A></H3>
+
+XBoard is a graphical user interface for chess.  It displays a
+chessboard on the screen, accepts moves made with the mouse, and loads
+and saves games in Portable Game Notation (PGN).  XBoard is free software.
+It serves as a front-end for many different chess services, including:
+
+<p><strong>Chess engines</strong> that will run on your machine and
+play a game against you or help you analyze, such as 
+GNU Chess (topic <A HREF="#[B.1]">[B.1]</A> above) and
+Crafty (topic <A HREF="#[F.3]">[F.3]</A> below).
+
+<p><strong>Chess servers</strong> on the Internet, where you can
+connect to play chess with people from all over the world, watch other
+users play, or just hang out and chat.
+
+<p><strong>Correspondence chess</strong> played by electronic
+mail. The cmail program (topic <A HREF="#[D.6]">[D.6]</A> below)
+automates the tasks of parsing email from your opponent, playing his
+moves out on your board, and mailing your reply move after you've
+chosen it.
+
+<p><strong>The Web</strong> and your own saved games. You can use
+XBoard as a helper application to view PGN games in your
+Web browser, or to load and save your own PGN files.
+
+<P>XBoard runs under Unix or Unix-compatible systems.  It requires the
+X Window System, version X11R4 or later.  There are also ports of
+XBoard to Microsoft Win32 (that is, Windows NT or Windows 95) and to
+the Amiga.  See topics <A HREF="#[D.2]">[D.2]</A> and <A
+HREF="#[D.3]">[D.3]</A> respectively.
+
+<HR>
+<H3><A NAME="[D.2]">[D.2] Is there an XBoard for Microsoft Windows?  What is WinBoard?  How do I install WinBoard?</A></H3>
+
+WinBoard is a port of XBoard to true Microsoft Win32 systems, such as Windows
+NT and Windows 95.  It uses the same back end chess code as XBoard, but the
+front end graphics code is a complete rewrite.  WinBoard is free software.
+
+<P>The WinBoard distribution includes a port of GNU Chess itself to Win32.
+The GNU Chess port is distributed in executable form, with instructions for
+rebuilding it from the standard GNU Chess sources (available separately).  You
+should have at least 16 to 24 MB of memory to run GNU Chess with WinBoard.
+
+<P>The WinBoard distribution also includes the ICC timestamp and FICS
+timeseal programs (topic <A HREF="#[D.12]">[D.12]</A>).
+
+<P>cmail (topic <A HREF="#[D.6]">[D.6]</A>) has not been ported to
+Win32.  All the other XBoard functions are included in WinBoard.
+
+<p>You install WinBoard as follows. Download the WinBoard package to
+your PC (see topic <A HREF="#[A.3]">[A.3]</A>).  It will be a file
+with a name like winboard-4_0_0.exe.  Double-click on this file
+in the Explorer or File Manager to run it. Follow the on-screen
+prompts.
+
+<HR>
+<H3><A NAME="[D.3]">[D.3] Is there an XBoard for the Amiga?  What is AmyBoard?</A></H3>
+
+AmyBoard is a port of XBoard to the Amiga, by Jochen Wiedmann.
+The distribution includes a port of GNU Chess.
+AmyBoard is free software.
+
+<p>The current version of AmyBoard is 330.5 (based on XBoard 3.3.0).
+No one is currently maintaining it.
+
+<P>System requirements:
+
+<UL>
+<LI>An Amiga (obviously :-), running OS 2.04 or later, 2Mb RAM or more.</LI>
+<LI>MUI 2.0 or later.</LI>
+<LI>Workbench or another screen with no less than 640x400 pixels (adjustable
+  with the MUI-Prefs); this restriction is just because we don't have
+  bitmaps with less than 40x40 pixels per square. If someone contributes
+  bitmaps with 20x20 or 20x25, they will work with any Hires mode.</LI>
+</UL>
+<P>
+If you would like to use an ICS, you need an Internet connection via either
+
+<UL>
+<LI>a telnet-like program, or</LI>
+<LI>a terminal program reading from stdin and writing to stdout.</LI>
+</UL>
+<P>
+AmyBoard is available in the Internet Chess Library (topic <A HREF="#[A.3]">[A.3]</A>).
+
+<HR>
+<H3><A NAME="[D.4]">[D.4] Is there an XBoard for the Macintosh?</A></H3>
+
+No.  But porting XBoard to the Mac should not be much harder than porting it
+to Win32 or the Amiga was.  I can't do it because I don't have a Mac, I don't
+know how to program Macs, and I don't have time.  If you do, feel free to give
+it a try!  Send mail to me, mann@pa.dec.com (Tim Mann), if you're working on
+this.
+
+<HR>
+<H3><A NAME="[D.5]">[D.5] Does XBoard run on VMS?</A></H3>
+
+No.  This port would probably be a lot easier than the Win32 and Amiga
+ports were, because VMS has the X Window system (under the name
+DECwindows) and is now POSIX compliant.  However, I don't know enough
+about VMS to do the port myself, and I don't have time.  If you do,
+give it a try!  Send mail to me, mann@pa.dec.com (Tim Mann), if you're
+working on this.
+
+<HR>
+<H3><A NAME="[D.6]">[D.6] What is cmail?</A></H3>
+
+cmail is a program that helps you play and keep track of electronic mail
+correspondence chess games using XBoard.  It is distributed with XBoard and
+has its own manual page.  cmail is free software.
+
+<HR>
+<H3><A NAME="[D.7]">[D.7] How do I build XBoard?  Do I need gcc?</A></H3>
+
+The first step to building XBoard is to get the distribution file.  See topic
+<A HREF="#[A.3]">[A.3]</A> for places you can ftp the software from.
+
+<P>Next, decide what directory tree you are going to install XBoard
+in.  The default is /usr/local, but you probably don't have write
+access to that directory unless you are a system administrator.  If
+you do, type the following to install it there:
+
+<PRE>
+    gzip -cd xboard-*.tar.gz | tar -xvf -
+    cd xboard-*/
+    configure
+    make
+    su
+    make install
+</PRE>
+
+If you want to install xboard in your personal home directory ($HOME/bin),
+type this:
+
+<PRE>
+    gzip -cd xboard-*.tar.gz | tar -xvf -
+    cd xboard-*/
+    configure --prefix=$HOME
+    make
+    make install
+</PRE>
+
+<P>If the first step above fails because you don't have gzip, see
+topic <A HREF="#[A.3]">[A.3]</A>, and ask a local Unix expert if you
+need more help.  If you have any problems with the last two steps,
+read the READ_ME and INSTALL files in the xboard-*/ directory.  You
+will also find this FAQ there.
+
+<P>You don't need to have gcc to build XBoard, and your C compiler
+doesn't have to be ANSI-compliant.
+
+<HR>
+<H3><A NAME="[D.8]">[D.8] Can I use XBoard to play a game of chess with another human?</A></H3>
+
+The only way for two humans on different machines to play chess in real time
+using XBoard is to use an Internet Chess Server as an intermediary.  That is,
+each player runs his own copy of XBoard, both of them log into an ICS, and
+they play a game there.  Two copies of XBoard cannot communicate with each
+other directly.
+
+<P>Instructions on how to get started with Internet chess are included
+with the XBoard distribution.  The network addresses included in the
+XBoard distribution may not always be current.  The oldest and largest
+ICS is the Internet Chess Club at chessclub.com, which now has a fee
+for registered use, but still allows free unregistered use.  There are
+also many newer sites with no fees, using the Free Internet Chess
+Server implementation (FICS).  Some current FICS sites are
+freechess.org (the most active) and eics.daimi.aau.dk.  On all these
+machines, the port number to use is 5000.
+
+<P>Note: If you don't have network connectivity to any ICS site, you
+can run your own server using the FICS code.  You can get a copy by
+anonymous ftp from the Internet Chess Library (topic <A
+HREF="#[A.3]">[A.3]</A>).  The code is changing rapidly, so send mail
+to chess@freechess.org and/or log into the FICS server at
+freechess.org and ask the administrators there for current
+information.
+
+<P>The cmail program included with XBoard lets you play email postal games with
+another human; see topic <A HREF="#[D.6]">[D.6]</A>.
+
+<P>Two humans can play chess on the same machine using one copy of XBoard in
+Edit Game mode, but the clocks don't run in this mode, so it's of limited
+usefulness.
+
+<P>See also topic <A HREF="#[F.2]">[F.2]</A>, Winsock Chess.
+
+<HR>
+<H3><A NAME="[D.9]">[D.9] Will WinBoard run on Windows 3.1?</A></H3>
+
+WinBoard does not run on Windows 3.1 or Windows for Workgroups 3.11,
+not even with the Win32s compatibility package.  The main problem is
+that Win32s does not have threads or real concurrent processes.  A
+port of WinBoard to Windows 3.1 is possible in theory, but it would be
+difficult and messy, and no one is going to do it.
+
+<P>WinBoard runs well on both Windows 95 and Windows NT.
+
+<HR>
+<H3><A NAME="[D.10]">[D.10] How do I use XBoard or WinBoard as an external viewer for PGN files
+  with my Web browser?</A></H3>
+
+1) On Unix systems:
+<P>
+- Add the following line to the file .mime.types in your home directory.
+(Create the file if it doesn't exist already.)
+<PRE>
+    application/x-chess-pgn    pgn
+</PRE>
+<P>
+- Add the following line to the file .mailcap in your home directory.
+(Create the file if it doesn't exist already.)
+<PRE>
+    application/x-chess-pgn; xboard -ncp -lgf %s
+</PRE>
+<P>
+- Exit from your Web browser and restart it.
+
+<P>2) On MS Windows systems:
+
+<P>The exact procedure depends on which Web browser you are using.  
+The current version of WinBoard automatically configures itself
+as your PGN viewer for local files, Netscape 4.x, and Internet Explorer.
+
+<p>In Netscape 3.x, go to Options / General Preferences / Helpers, click
+the button to make a new MIME type, and fill in the boxes:
+<PRE>
+  Mime type: application
+  Mime subtype: x-chess-pgn
+  Extension: pgn
+  Application command line: "C:\Program Files\WinBoard\WinBoard" -ncp -lgf "%1"
+</PRE>
+Change the pathname for WinBoard if you installed it in a different directory.
+
+<P>3) To confirm that your external viewer configuration is working,
+open the following URL and click on any of the game names shown:
+<A HREF=
+"http://www.research.digital.com/SRC/personal/Tim_Mann/chess.html#PGN"
+>http://www.research.digital.com/SRC/personal/Tim_Mann/chess.html#PGN</A>
+
+<HR>
+<H3><A NAME="[D.11]">[D.11] How do I use WinBoard as an external viewer for PGN files with the MS
+  Windows File Manager or Explorer?</A></H3>
+
+On Windows 95 and Windows NT 4.0, WinBoard does this automatically
+when you install it.
+For the File Manager on Windows NT 3.51, etc., select Associate from
+the File menu, enter "pgn" as the extension, and use the Browse button
+to find your copy of WinBoard and set up the association.
+
+<HR>
+<H3><A NAME="[D.12]">[D.12] How do I use ICC timestamp or FICS timeseal
+with XBoard?</A></H3>
+
+First, be sure that you can connect using XBoard <I>without</I>
+timestamp/timeseal.  Second, be sure that you can connect using
+timestamp/timeseal without XBoard.  See the help files on ICC and FICS
+or ask people online if you have problems.
+
+<P>If you are in a completely ordinary situation, where your machine
+is directly on the Internet and you can connect to ICC or FICS 
+without timestamp/timeseal using
+just the command "xboard -ics" or "xboard -ics -icshost freechess.org",
+change that command to one of the following:
+
+<PRE>
+    xboard -ics -icshost 207.99.5.190 -icshelper timestamp
+
+    xboard -ics -icshost 164.58.253.13 -icshelper timeseal
+</PRE>
+
+<p>If you have a firewall between your machine and the ICS, see topic
+<A HREF="#[D.19]">[D.19]</A>.
+
+<P>If you normally have to use the "/icscomm" command line option on
+xboard to log into a second machine, and then telnet to ICC or FICS
+from there, you are going to have to run the Unix version of timestamp
+or timeseal on the second machine.  (If the second machine is not
+running Unix, you are out of luck.)  Get the appropriate version of
+timestamp or timeseal onto the shell machine via FTP; see the help
+files on ICC and FICS for instructions.  Then simply run it when you
+would normally run telnet.  In this configuration you are not
+protected against lag between your PC and the shell machine, or for
+lag caused by heavy load on the shell machine itself from other users.
+
+<P>For further information on timestamp and timeseal, see the help
+files on ICC and FICS.
+
+<HR>
+<H3><A NAME="[D.13]">[D.13] How do I use ICC timestamp or FICS timeseal
+with WinBoard?</A></H3>
+
+<P>If you select an ICS from either the WinBoard Startup dialog or the
+Windows Start submenu that WinBoard installs, WinBoard automatically
+runs timestamp or timeseal if the ICS you chose is known to support it.
+
+<P>If you are constructing a WinBoard command line by hand, add the
+option "/icshelper timestamp" or "/icshelper timeseal" to the WinBoard
+command line to use timestamp or timeseal.  Both timestamp.exe and
+timeseal.exe are included in the WinBoard distribution.  They both
+function identically to the Unix versions, as documented in "help
+timestamp" on ICC and "help timeseal" on FICS.
+
+<p>If you have a firewall between your machine and the ICS, see topic
+<A HREF="#[D.19]">[D.19]</A>.
+
+<P>If you normally have to use the "/icscomm" command line option on
+WinBoard to log into a shell account, and then telnet to ICC or FICS
+from there, you are going to have to run the Unix version of timestamp
+or timeseal on the shell machine.  (If the shell account is not on a
+Unix machine, you are out of luck.)  Get the appropriate version of
+timestamp or timeseal onto the shell machine via FTP; see the help
+files on ICC and FICS for instructions.  Then simply run it when you
+would normally run telnet.  In this configuration you are not protected
+against lag between your PC and the shell machine, or for lag caused by
+heavy load on the shell machine itself from other users.
+
+<P>For further information on timestamp and timeseal, see the help
+files on ICC and FICS.
+
+<HR>
+<H3><A NAME="[D.14]">[D.14] How do I play bughouse with XBoard or WinBoard?
+</A></H3>
+
+XBoard and WinBoard have simple but effective bughouse support.
+Offboard piece holdings are shown in the board window's banner, and
+you drop offboard pieces using the right mouse button.  Press it over
+the destination square to pop up a menu of pieces.
+
+<P>XBoard and WinBoard can display only one board at a time, but you
+can observe your partner's game by running a second copy of the
+program and logging in as a guest.  (Unfortunately, this is not
+possible if you are using the /icscomm option.)  To observe your
+partner's games automatically, use the "follow" or "pfollow" ICS
+command; see the ICS online help for details.
+
+<HR>
+<H3><A NAME="[D.15]">[D.15] How can I scroll back in the WinBoard console?
+</A></H3>
+
+The current WinBoard release has consoles with scrollback!  Get it.
+
+<HR>
+<h3><a name="[D.16]">[D.16] What is Zippy?  How can I interface a 
+chess program to the Internet Chess Servers?</a></h3>
+
+Zippy is an interface that lets GNU Chess or Crafty act as a computer
+player on an Internet Chess Server.  Zippy is included in both the
+XBoard and WinBoard distributions.  It is implemented as a small
+amount of additional code within XBoard or WinBoard.  
+For documentation, see the file
+zippy.README, included in both distributions or available
+from my chess Web page,
+<A HREF=
+"http://www.research.digital.com/SRC/personal/Tim_Mann/chess.html"
+>http://www.research.digital.com/SRC/personal/Tim_Mann/chess.html</A>.
+The version of zippy.README on my Web page is often more up-to-date
+than those in the XBoard/WinBoard distributions.
+You'll also find a "biography" of Zippy and pointers to the original
+Zippy the Pinhead comic strips on my Web page.
+Please read zippy.README carefully before you ask me any questions about Zippy.
+
+<p>Using a computer to choose your moves on a chess server is
+considered cheating unless your account is on the computer (C) list.
+Read "help computer" on your favorite server for details on their
+policy.  Most of the servers have plenty of computers running now, so they
+will not be excited about having you run a new one unless you have
+written your own chess engine.  They don't really need yet another 
+Crafty or GNU Chess clone.
+
+<HR>
+<h3><a name="[D.17]">[D.17] How can I interface my own chess program
+to XBoard or WinBoard?</a></h3>
+
+This is a non-trivial task.  XBoard and WinBoard were not designed
+with a clean interface for talking to chess programs; they were
+written to work with an existing version of GNU Chess that expects to
+be talking to a person.  Your program has to emulate GNU Chess's
+rather idiosyncratic command structure to work with XBoard and
+WinBoard.  We are gradually cleaning up, improving, and documenting
+the interface as newer versions of XBoard and WinBoard come out,
+however.
+
+<p>For documentation, see the file engine-intf.txt, included in both
+distributions or available from my chess Web page, <A HREF=
+"http://www.research.digital.com/SRC/personal/Tim_Mann/chess.html"
+>http://www.research.digital.com/SRC/personal/Tim_Mann/chess.html</A>.
+The version of engine-intf.txt on my Web page is often more up-to-date
+than those in the XBoard/WinBoard distributions.
+
+<HR>
+<h3><a name="[D.18]">[D.18] How can I recompile WinBoard from source?</a></h3>
+
+The source code for WinBoard is available from the author's Web page,
+<A HREF=
+"http://www.research.digital.com/SRC/personal/Tim_Mann/chess.html"
+>http://www.research.digital.com/SRC/personal/Tim_Mann/chess.html</A>.
+
+<p>WinBoard is currently developed using Microsoft Visual C++ 5.0.  By
+far the easiest way to recompile it, and the only way that is really
+known to work, is to use MSVC++ 5.0.  You can build the program either
+from the MSVC++ GUI or from the command line using the nmake program
+supplied with MSVC++.
+
+<p>WinBoard is a Win32 application, so you definitely need a compiler
+and tool set that supports Win32.  In particular, DJGPP can't be used
+to build WinBoard.  DJGPP can build only 32-bit MSDOS programs; that
+is, programs that use a DOS extender to get a 32-bit address space and
+do not make any Windows calls.  It can't build Win32 programs.
+
+<p>Cygwin32 (see <a href= "http://www.cygnus.com/"
+>http://www.cygnus.com/</a>) is said to be able to build Win32 GUI
+apps, so perhaps it could be used to build WinBoard.  I don't know if
+anyone has tried this and gotten it to work.  The Makefile (and maybe
+other things) would most likely need changes.  It would be nice to do
+this conversion, so that the free WinBoard program could be built with
+free tools, but I can't afford the time.  Perhaps someone else will
+try.  Let me know if you do.
+
+<p>The WinBoard Makefile includes a rule for rebuilding parser.c from
+parser.l using the program "flex".  Flex is free GNU software,
+available from many sites around the Internet.  If you don't have a
+copy handy, and you don't need to modify parser.l, you can simply
+remove the rule from the Makefile.  The file parser.c is supplied with
+the WinBoard source distribution.
+
+<p>WinBoard executables for the DEC Alpha running Windows NT will be
+provided in the future, along with instructions for compiling your
+own.  For now, contact me if you want to do this.
+
+<HR>
+<H3><A NAME="[D.19]">[D.19] 
+How can I use XBoard or WinBoard to talk
+to an Internet Chess Server through a firewall or proxy?
+</A></H3>
+
+<p>There is no single answer to this question, because there are many
+different kinds of firewalls in use.  They work in various different
+ways and have various different security policies.  This answer can
+only provide hints.
+
+<p>Note that you can't access Internet Chess Servers through a Web proxy,
+because they are not a Web service.  You talk to them through a raw
+TCP connection, not an HTTP connection.  If you can only access the
+Web through a proxy, there may be a firewall that stops you from
+making direct TCP connections, but there may also be a way through it.
+Read on for hints, and contact your local system administrator if you
+need more information about your local configuration.
+
+<p>If you are using a non-SOCKS firewall, read the FIREWALLS section
+in your XBoard or WinBoard documentation (man page, info document, or
+Help file).  If you can telnet to a chess server in some way, then you
+can almost certainly connect to it with xboard/WinBoard, though in
+some cases you may not be able to run timestamp or timeseal.  The
+timestamp and timeseal protocols require a clean, 8-bit wide TCP
+connection from your machine to the ICS, which some firewalls do not
+provide.
+
+<p>If you have a SOCKS firewall and are using <strong>XBoard</strong>,
+you should be able to SOCKSify xboard and use it.  See <a
+href="http://www.socks.nec.com/">http://www.socks.nec.com/</a> for
+information about SOCKS and socksification.  However, if you do this,
+you can't use timestamp or timeseal; what you really need is a
+socksified version of timestamp or timeseal.  This is hard because the
+source code for timestamp and timeseal is proprietary; the folks
+running the chess servers don't give it out because that would make it
+too easy to cheat.  On some versions of Unix, you may be able to
+socksify a program that you don't have the source code to by running
+it with an appropriate dynamic library; see <a
+href="http://www.socks.nec.com/">http://www.socks.nec.com/</a>.  For
+others, you might be able to get a pre-built socksified version from
+the chess server administrators.  For timeseal versions, see <a
+href="ftp://ftp.freechess.org/pub/chess/timeseal/"
+>ftp://ftp.freechess.org/pub/chess/timeseal/</a>.  For timestamp
+versions, the directory would be <a
+href="ftp://ftp.chessclub.com/pub/icc/timestamp/"
+>ftp://ftp.chessclub.com/pub/icc/timestamp/</a>, but at this writing
+there don't seem to be any socksified timestamps there.  Once you have
+a socksified timestamp or timeseal, simply run it with a normal,
+non-socksified xboard in place of the standard timestamp or timeseal.
+
+<p>If you have a SOCKS firewall and you are using
+<strong>WinBoard</strong>, we now know how to make this configuration
+work, complete with timestamp or timeseal!
+
+<p>Start by getting SocksCap32.  This software is freely available
+from <a href="http://www.socks.nec.com/">http://www.socks.nec.com/</a>.
+Install it on your machine, read the documentation, and learn to use
+it.  You may find it useful with many other programs besides WinBoard.
+
+<p>Next, <strong>don't</strong> socksify WinBoard.  Socksifying
+WinBoard itself doesn't let you use it with timestamp or timeseal.
+For some reason I don't understand -- something strange that
+SocksCap32 does -- the socksified WinBoard runs but does nothing, and
+timestamp/timeseal runs all by itself in its own window.
+
+<p>Instead, use the following workaround.  Follow the instructions
+exactly; don't try to skip steps or simplify things.
+
+<p>First, make SocksCap32 application profiles for timestamp and
+timeseal.  Use the following command lines in the SocksCap32
+profiles. Name the first profile "timestamp" and the second
+"timeseal".
+
+<pre>
+  "c:\program files\winboard\timestamp.exe" chessclub.com 5000 -p 5000
+  "c:\program files\winboard\timeseal.exe" freechess.org 5000 -p 5000
+</pre>
+
+<p>Second, run timestamp or timeseal by itself, socksified, using its
+profile.  This will open an unneeded, black window that will not
+respond to typing.  Minimize it to the task bar and ignore it. It will
+go away when you exit from WinBoard.
+  
+<p>Next, run WinBoard using the following command line.  Make a shortcut
+or type this command into an MS-DOS Prompt box.  Don't run WinBoard
+itself socksified, just run it directly.
+
+<pre>
+  "c:\program files\winboard.exe" /ics /icshost=localhost /icsport=5000
+</pre>
+
+<p>After you get this working, you can try getting the timestamp window to
+auto-minimize by starting it from a shortcut instead of from the
+SocksCap32 control window. As it says in the SocksCap32 help file, put
+the following in the Target field of a shortcut's Properties page:
+<pre>
+  "c:\program files\sockscap32\sc32.exe" timestamp
+</pre>
+Then select "Run: Minimized" on the same page.  Do the same for timeseal.
+
+<p>Another method that can work is to use a .bat file to start both
+timestamp and WinBoard.  It would look something like this:
+
+<pre>
+  REM --
+  REM -- icc.bat
+  REM -- Start timestamp under SocksCap32 and use WinBoard to connect to it.
+  REM -- The string "timestamp" refers to a SocksCap32 profile for timestamp.
+  REM --  Do not change it to the filename of the timestamp program!
+  REM --
+  start /minimized "c:\program files\sockscap32\sc32.exe" timestamp
+  cd "c:\program files\winboard"
+  winboard /ics /icshost=localhost /icsport=5000
+</pre>
+
+<p>This workaround has a problem if you want to run two copies of
+WinBoard at once, talking to the same chess server twice (for
+bughouse) or to two different chess servers. If you need to do that,
+you will need to run a separate copy of timestamp with <i>a different
+port number</i> for each connection.  You'll need to make a second set of
+profile entries with a different value after the -p flag (say, 5001)
+and you'll need to change the WinBoard command line /icsport=5000 for
+the second WinBoard to match.
+
+<HR>
+<H3><A NAME="[D.20]">[D.20] 
+How can I use XBoard or WinBoard on chess.net with accuclock?
+</A></H3>
+
+<p>I believe chess.net provides a Win32 command-line version of
+accuclock that will work with WinBoard.  Please see the documentation
+on the chess.net server itself; don't ask the author of WinBoard.
+
+<p>I don't know whether chess.net provides versions of accuclock for
+Unix at this time.  Ask them.
+
+<HR> <H2><A NAME="[E]">[E] XBoard and WinBoard, bugs and
+problems</A></H2> <HR> <H3><A NAME="[E.1]">[E.1] I can't build XBoard
+because the X11/Xaw/...  include files are not found.  </A></H3>
+
+These are the header files for the Athena Widgets library, which XBoard uses
+heavily.  Some versions of Unix don't supply these files, but they are part of
+the standard X distribution, freely available from MIT.  
+
+<P>For general information on getting missing X sources, see the FAQ on
+comp.windows.x.  Note that you may be missing only the header files, or you
+may be missing the libraries themselves too.
+
+<P>HP-UX users are missing only the header files.  You can get them by
+anonymous FTP as follows.  (But first check with your system
+administrator to see if someone else at your site has already done
+this.)  Get the archive file /hpux9/X11R5/Core/Xaw-5.00.tar.gz (Xaw
+header files) via anonymous FTP from the site hpux.csc.liv.ac.uk
+(138.253.42.172), or one of the other official sites---Germany:
+hpux.ask.uni-karlsruhe.de (129.13.200.57), US: hpux.cae.wisc.edu
+(144.92.4.15), France: hpux.cict.fr (192.70.79.53) or Netherlands:
+hpux.ced.tudelft.nl (130.161.140.100). Unpack the archive using gzip
+and follow the instructions in its README and/or HPUX.Install files.
+Thanks to Richard Lloyd for this information.
+
+<P>If you have the Xaw header files installed in a different place
+than the other X11 headers, you may need to configure XBoard with an
+extra flag to help it find them.  For example, if yours are in
+/foo/bar/X11/Xaw, try this:
+
+<PRE>
+    rm config.cache
+    (setenv CFLAGS -I/foo/bar ; configure)
+</PRE>
+<P>
+Also see topic <A HREF="#[E.2]">[E.2]</A>.
+
+<HR>
+
+<H3><A NAME="[E.2]">[E.2] Configuring or building XBoard fails due to
+missing header files, missing libraries, or undefined symbols.
+</A></H3>
+
+Perhaps you have the X server and client programs installed on your
+machine, but not the X header files and link-time libraries.  If so,
+you can run existing X programs, but you cannot compile a new X
+program from source code.  In this case the XBoard configure script
+will fail and will tell you to look at this question in the FAQ.  Many
+Linux distributions put the headers and libraries in a separate
+package, which you might not have installed.  If you are using RedHat
+Linux, install the XFree86-devel package.  If you are using some other
+kind of Unix, ask your system administrator where to find the X header
+files and link-time libraries.  If this is not your problem, read on.
+
+<p>The configure script for XBoard looks for X libraries and header
+files in some common places.  Sometimes it fails: If yours are
+installed in an odd place, it may not find them at all.  If you have
+more than one version of X installed on your system, it may find the
+"wrong" one, or occasionally it may find libraries from one version
+and incompatible header files from another.  You can work around these
+problems by telling the configure script where the files are.  For
+example:
+
+<PRE>
+    configure --x-includes=/odd/place/include \
+              --x-libraries=/odd/place/lib
+</PRE>
+
+<P>The directory named in the argument to --x-includes must have a
+subdirectory "X11" that contains the actual .h files.  That is, if
+your X.h file has full pathname /odd/place/X11R6/include/X11/X.h, then
+you must give the argument --x-includes=/odd/place/X11R6/include.
+
+<P>Some linkers have bugs that cause bogus error messages when you try
+to link X programs.  The configure script includes a workaround for a
+bug of this kind that exists in some SunOS 4.x.x installations.  See
+the FAQ on comp.windows.x for more information about problems of this
+kind.
+
+<P>If all else fails, check whether anyone else at your site has been able to
+compile any X programs on your system.  Your X installation might be buggy.
+If so, the system administrator at your site might know how to fix or work
+around the problem.
+
+<P>Also see topic <A HREF="#[E.1]">[E.1]</A>.
+
+<HR><H3><A NAME="[E.3]">[E.3] I have problems using WinBoard on ICS
+with a modem.  I'm not running SLIP or PPP, but just dialing in to an
+ordinary login account ("shell account").</A></H3>
+
+Here are solutions to some common problems in this area.
+
+<P>Some people want to connect to ICS through HyperTerminal or some other
+terminal program first, then run WinBoard.  This is not how it works.
+WinBoard wants to talk directly with your modem, acting as a terminal program
+itself.  Start out with the modem "on hook" (not making a call).
+
+<P>Run WinBoard with a command line like this (adding more options if desired):
+
+<PRE>
+    WinBoard /ics /icscom com1
+</PRE>
+
+Use com2, com3, or com4 in place of com1 if your modem is connected to one of
+those ports.
+
+<P>After you start WinBoard, you may need to change some of the options in the
+Communications dialog (on the Options menu).  The dialog has the usual options
+for talking to modems: bits per second, bits per byte, parity, number of stop
+bits.  You will probably want to use Save Settings Now when you're done.
+
+<P>Next, type dialing commands to your modem in the text window that WinBoard
+creates.  You may need to turn off Local Line Editing on the Options menu
+while you are typing commands to your modem.  Turn it back on when you're
+done.  See the WinBoard Help file for instructions if you see your typing
+echoed an extra time after you hit Enter.
+
+<HR>
+<H3><A NAME="[E.4]">[E.4]
+I have problems using WinBoard on ICS with Windows 95 and SLIP
+or PPP.  When trying to start up, it gets the error "Address family
+not supported by protocol family" (or some equally strange message).
+</A></H3>
+
+WinBoard is a 32-bit application, but some Winsock (TCP/IP) implementations
+support only 16-bit applications.  You get a strange looking error message
+if you try to use a 32-bit application because
+there is no standard Winsock error code number
+for "32-bit application not supported."
+
+<P>Microsoft TCP/IP works with both 16-bit and
+32-bit applications, supports SLIP, PPP, Ethernet, etc., and is included
+with Windows 95.   
+If possible, I recommend that you uninstall
+whatever Winsock you are using and install Microsoft TCP/IP instead.
+For more information, see
+<A HREF=
+"http://walden.mo.net/~rymabry/95winfaq.html"
+>http://walden.mo.net/~rymabry/95winfaq.html (the Win95-L FAQ)</A>.
+
+<P>Trumpet Winsock 2.1 (and earlier) supports only 16-bit
+applications, and hence does not work with WinBoard.  But there is a
+beta-test release available that does support 32-bit applications.  
+I have not tried it with WinBoard, but it 
+should work.  See Trumpet's Web page
+<A HREF=
+"http://www.trumpet.com.au/wsk/winsock.htm"
+>http://www.trumpet.com.au/wsk/winsock.htm</A>
+for more information.
+
+<P>The 16-bit versions of America On-Line's software do not support
+32-bit Winsock applications.  Get the 32-bit version, which is called
+"AOL for Windows 95."
+
+<P>A few versions of Winsock may have bugs that prevent
+Windows timestamp/timeseal from working with them.  I'm not sure if
+such bugs exist in any versions that actually have 32-bit support,
+so this point might be moot.  Again, Microsoft TCP/IP is known to work.
+
+<HR><H3><A NAME="[E.5]">[E.5] When I try to run WinBoard, I get the
+message "Failed to start chess program gnuchesx on localhost: NO
+LANGFILE (file gnuchess.lang not found)".</A></H3>
+
+This problem should not occur with WinBoard 3.4.1 and later.
+It used to happen because some unzip programs (notably pkunzip) do not
+understand long file names, so they would unzip gnuchess.lang as gnuchess.lan
+and gnuchess.data as gnuchess.dat.
+I have changed the GNU Chess port included with WinBoard to
+use the shorter names.  However, if you want to recompile WinBoard,
+you still need to use an unzip that understands long file names, because
+some of the WinBoard source files still have long names.
+
+<HR>
+<H3><A NAME="[E.6]">[E.6] I want to use XBoard or WinBoard as an Internet
+Chess Server interface, but the ICS Client option is grayed out on the
+menu.</A></H3> 
+
+XBoard and WinBoard have three major modes that can't be changed from the
+menus: local chess engine mode,
+ICS mode, and standalone mode.
+
+<p>With XBoard, you have to set the mode using command-line options.
+Local chess engine mode is the default, -ics selects ICS mode, and
+-ncp ("no chess program") selects standalone mode.
+
+<p>With WinBoard, if you don't set the mode using command-line
+options, you get a dialog box asking which mode you want.  To bypass
+the dialog box, use -cp ("chess program") for local chess engine mode,
+or -ics or -ncp as with XBoard.  Also see topic <A HREF="#[E.7]">[E.7]</A>.
+
+<HR>
+<H3><A NAME="[E.7]">[E.7] How do I give command-line options to
+a Windows program like WinBoard?</A></H3>
+
+<P>There are many ways; pick your favorite:
+
+<P><UL>
+<LI>Type the command line into an MS-DOS Prompt box.  Example:
+"WinBoard -ics".  Starting Windows programs from an MS-DOS Prompt box
+works only on Windows 95 or Windows NT, but then, WinBoard itself
+works only on those systems.</LI>
+
+<LI>Make a Windows 95 shortcut for WinBoard.  You can do this by
+right-dragging WinBoard.exe to the desktop and selecting "Create
+Shortcut(s) Here" from the menu that appears.  Right-click on the
+shortcut, select Properties, and click the Shortcut tab.  The
+command-line text box is labelled "Target" instead of "Command line"
+just to confuse you.  Edit the text in this box, adding the command
+line options to the end.</LI>
+
+<LI>Choose Run from the Start menu, or File / Run from the Program
+Manager or File Manager, and type the command line into the dialog you
+get.  You may have to give WinBoard's full drivespec and filename if
+it is not in a directory on your search path.</LI>
+
+<LI>Make a Program Manager icon for WinBoard.  You can do this by
+dragging WinBoard.exe from the File Manager into the Program Manager,
+or by using File / New in the Program Manager.  Select the icon and
+choose File / Properties.  Edit the Command Line text box to add the
+command-line options to the end.</LI>
+</UL>
+
+<HR>
+<H3><A NAME="[E.8]">[E.8] When I try to log in to ICC using timestamp
+(or to FICS using timeseal) with XBoard, it accepts my handle, but 
+just beeps at me when I type my password.
+</A></H3> 
+
+This problem should not occur with XBoard 3.6.0 or later.  Let me know
+if you encounter it.
+
+<HR>
+<H3><A NAME="[E.9]">[E.9]
+When I exit from WinBoard after using it to play against GNU Chess
+or Crafty, the chess program keeps running in the background.
+</A></H3>
+
+<p>If you are using Crafty, be certain to get the version compiled for
+Win32 (wcrafty.exe), not the version compiled for MS-DOS (crafty.exe).
+Also, be sure you have the current version of WinBoard.  WinBoard
+3.4.1 and earlier had a bug that caused this problem to occur with all
+chess engines.
+
+<p>This problem is reported to still happen occasionally, for unknown
+reasons.  You can generally stop the rogue Crafty by pressing
+Ctrl+Alt+Del, selecting the Crafty process from the menu, and pressing
+the End Task button.
+
+<hr>
+<h3><a name="[E.10]">[E.10]
+When running WinBoard, I get the message
+"Error getting user name:
+The operation was not performed because user
+has not logged on to the network."
+</a></h3>
+
+This problem should not occur with WinBoard 3.6.0 or later.
+
+<hr>
+<h3><a name="[E.11]">[E.11]
+WinBoard crashes Windows 95!
+</a></h3>
+
+This problem is fixed in WinBoard 3.6.1 and later versions.  If you
+still see it in the current version of WinBoard, please report it.
+
+<p>Background: Versions of WinBoard prior to 3.6.1 sometimes crash
+Windows 95 (but not Windows NT) at the end of a game or when you use
+the Time Control dialog.  The crash occurs when WinBoard kills off a
+chess engine process and quickly starts a new one.  WinBoard 3.6.0
+does not exhibit the problem unless you give it the -xreuse
+(-reuseChessProgram False) flag.  WinBoard 3.6.1 and later fix the
+problem completely.
+
+
+<hr>
+<h3><a name="[E.12]">[E.12]
+Why do my ICS 
+opponents often get extra time after they make their moves?
+Why do I sometimes lose time off my clock after I make my move?
+</a></h3>
+
+If you are playing with the ICS incremental clock, both you and your
+opponent get a set amount of extra time after each move.
+
+<p>If your or your opponent has netlag, your opponent might appear to
+get extra time, especially if your opponent is using timestamp or
+timeseal.  The ICS charges each player who is using timestamp or
+timeseal only for the time between when the player received his
+opponent's move and the time he sent his own move.  Thus delays in
+network transmission do not count against either player.  But WinBoard
+counts down the display of your opponent's clock on your screen under
+the assumption that there is no netlag.  When his move comes in, if
+there was netlag, the ICS may not have really charged him for that
+much time, and WinBoard corrects the clock to what the ICS says it
+should read.
+
+<p>If you are not using timestamp or timeseal, you may appear to lose
+time off your clock at some point after you make your move.  In this
+case, the ICS charges you for the time between when it sent you your
+opponent's move and the time it received your move.  Thus delays in
+network transmission count against you.  WinBoard stops counting down
+the display of your clock on your screen (and starts your opponent's)
+when you make your move.  When the ICS echoes your move back to you, it
+may have charged you for more time than that, and WinBoard corrects
+the clocks to what the ICS says they should read.
+
+<p>See "help lag" and "help timestamp" or "help timeseal" on your ICS for
+more detailed information.
+
+<hr>
+<h3><a name="[E.13]">[E.13]
+I can't run WinBoard 4.0.x unless I delete the WinBoard.ini file each time!
+</a></h3>
+
+<p>Most people don't have this problem, but two or three people using
+Windows NT 4.0 with Service Pack 3 or 4 have reported it.  I have no
+idea what causes this problem.  Contrary to what was reported in a
+previous version of this FAQ, reinstalling the service pack after
+installing WinBoard does not seem to solve the problem.
+
+<hr>
+<h3><a name="[E.14]">[E.14]
+How do I turn pondering on and off from the WinBoard command line?
+</a></h3>
+
+The command line options are /ponder to turn pondering on, /xponder to
+turn it off.  This information was inadventently left out of the
+WinBoard 4.0.0 documentation.  It has been added in version 4.0.1.
+
+<HR>
+<H2><A NAME="[F]">[F] Crafty and other topics</A></H2>
+<HR>
+<H3><A NAME="[F.1]">[F.1] What is XChess?</A></H3>
+
+XChess is an older chessboard program that is no longer supported.  XChess was
+written for X version 10, and you may or may not be able to build and run it
+on an X11 system.
+
+<P>XChess has only one significant feature that is not present in XBoard: Two
+humans can play chess using XChess on different machines, without using the
+Internet Chess Server as an intermediary.  This feature is of interest only if
+you don't have network connectivity to the Internet Chess Server.
+
+<P>Note: There actually have been several different programs called "XChess" in
+circulation at various times.  The above describes one that was associated
+with GNU Chess.
+
+<HR>
+<H3><A NAME="[F.2]">[F.2] What is Winsock Chess?</A></H3>
+
+Winsock Chess is a program that lets two people play chess across a
+network.  It runs only under Microsoft Windows.  Some of the code in
+Winsock Chess is derived from GNU Chess, but it is not maintained by
+the GNU Chess team.  You can get a copy from the Internet Chess
+Library; see topic <A HREF="#[A.3]">[A.3]</A>.  For more information,
+contact its author, Donald Munro, ccahdm@beluga.upe.ac.za.
+
+<HR>
+<H3><A NAME="[F.3]">[F.3] What is Crafty?</A></H3>
+
+Crafty is a freely-available chess program written by Bob Hyatt.  
+Bob is the main author of the well-known chess program Cray
+Blitz.  Crafty is already a much better chess program than GNU Chess
+on many dimensions: it plays better, the code is commented and
+readable, and the author is actively working on improvements.
+
+<p>You can download Crafty from <a
+href="ftp://ftp.cis.uab.edu/pub/hyatt/"
+>ftp://ftp.cis.uab.edu/pub/hyatt/</a>.  Start by getting the <a
+href="ftp://ftp.cis.uab.edu/pub/hyatt/read.me" >read.me</a> file and
+reading it.  Among other things, this file contains instructions on
+how to install Crafty as a command-line application on your machine.
+
+<p>There is a Crafty mailing list hosted at
+<a href="http://www.jpunix.com/"
+>http://www.jpunix.com/</a>.
+To subscribe, send email to
+crafty-request@alpha.jpunix.com with the body of the message
+containing the line: 
+<pre>
+subscribe crafty
+</pre>
+
+<HR>
+<H3><A NAME="[F.4]">[F.4] How do I use Crafty with XBoard?</A></H3>
+
+<p>First, you need to get Crafty and install it as a command-line
+application on your machine.  See topic <A HREF="#[F.3]">[F.3]</A>.
+
+<p>To use Crafty with XBoard, give the -fcp
+parameter like this:
+<PRE>
+    xboard -fcp "crafty" -fd <I>crafty_directory</I>
+</PRE>
+Here <I>crafty_directory</I> is the directory where you installed Crafty.
+You can add more xboard options at the end of the command line.
+
+<p>Crafty 15.14 or later is required to work properly with XBoard
+4.0.0 or later.  We generally recommend using the latest versions of
+both XBoard and Crafty.
+
+<HR>
+<H3><A NAME="[F.5]">[F.5] How do I use Crafty with WinBoard?</A></H3>
+
+<p>First, you need to get Crafty and install it as a command-line
+application on your machine.  See topic <A HREF="#[F.3]">[F.3]</A>.
+You must use the version of Crafty compiled for Win32 (wcrafty*.exe),
+not the version compiled for MS-DOS (crafty*.exe), and it is best to
+use the latest version of Crafty with the latest version of WinBoard to
+make sure all features are compatible and function correctly.  You can
+install Crafty in any directory you like.
+
+<p>You also need to get WinBoard and install it in the normal way
+using its built-in installer.  You can do that either before or after
+you install Crafty.
+
+<p>After both Crafty and WinBoard are installed separately, follow the
+directions in the WinBoard Help file (included with WinBoard) for
+connecting new chess engines to WinBoard.
+
+<p>If you want to have Crafty act as an automated computer player on a
+chess server, see topic <A HREF="#[D.16]">[D.16]</A>.  Before you try
+to get that working, be sure you can play against Crafty locally,
+first without WinBoard, then with it.  Also be sure you can use
+WinBoard to play on the chess server yourself, without having Crafty
+connected to it.  You have to crawl before you can walk!
+
+<HR>
+** End of GNU Chess FAQ **
+</BODY></HTML>

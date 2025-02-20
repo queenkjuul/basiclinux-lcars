@@ -1,0 +1,155 @@
+!***********************************************************************
+! Application defaults for xfm.
+! Most of these are the defaults anyway, but they are listed here so you can
+! change them if necessary.
+!***********************************************************************
+
+! Search paths for icon files
+*bitmapPath: /usr/X11R6/lib/X11/xfm/bitmaps:/usr/include/X11/bitmaps
+*pixmapPath: /usr/X11R6/lib/X11/xfm/pixmaps:/usr/include/X11/pixmaps
+
+! Default applications file to be loaded at startup
+*applicationDataFile: ~/.xfm/Apps
+
+! Directory in which new application files are created
+*applicationDataDir: ~/.xfm
+
+! Clipboard for Cut/Copy/Paste operations in application window
+*applicationDataClip: ~/.xfm/.XfmClip
+
+! Configuration file (where the file types are specified)
+*configFile: ~/.xfm/xfmrc
+
+! Device configuration file (floppies and such)
+*devFile: ~/.xfm/xfmdev
+
+! Magic headers configuration file (files you recognize by their header)
+*magicFile: ~/.xfm/magic
+
+! Double click time in milliseconds
+*doubleClickTime:		300
+
+! Time interval in milliseconds for automatic folder updates (set to zero to
+! disable this feature)
+*updateInterval:		10000
+
+! Just two examples -- you should not need this
+!*BourneShells: AUTO
+!*BourneShells: /bin/sh, /usr/local/bin/bash
+
+!***********************************************************************
+! Preferences
+!***********************************************************************
+
+! Geometry for application and initial file manager windows
+Xfm.Geometry:			265x515+565+130
+Xfm.initGeometry:		515x345+5+130
+! Geometry for subsequent file windows
+Xfm.file window.Geometry:	515x345
+
+! If you do not want to go chasing dialog popups around the screen, but rather
+! have them in a fixed location, uncomment the following (recommended)
+*TransientShell.geometry: +210+295
+
+! The following removes borders from the main menu buttons (my own preference)
+*file window*button box.?.borderWidth: 0
+
+! NOTE: The background color of icons is determined from the Xfm.background
+! resource. Make sure that this resource is always given a value appropriate
+! for *both* application and file windows.
+
+! The background color for file and application windows
+*background: lightgray
+
+! The foreground color for icon toggles; this is also used when an icon toggle
+! is highlighted or marked
+!*viewport.icon box*Toggle.foreground: red
+
+! Use these only if you  have the 75dpi fonts. (recommended)
+*boldFont:			-adobe-helvetica-bold-r-*-*-12-*
+*iconFont:			-adobe-helvetica-medium-r-*-*-10-*
+*buttonFont:			-adobe-helvetica-medium-r-*-*-12-*
+*menuFont:			-adobe-helvetica-medium-r-*-*-12-*
+*labelFont:			-adobe-helvetica-medium-r-*-*-12-*
+*statusFont:			-adobe-helvetica-medium-r-*-*-10-*
+! This must be a fixed width font
+*cellFont:			fixed
+
+! Specify the sizes of the different icon toggles. The following values
+! are appropriate for the icons supplied with xfm.
+*appIconWidth: 72
+*appIconHeight: 60
+*fileIconWidth: 48
+*fileIconHeight: 40
+*treeIconWidth: 48
+*treeIconHeight: 32
+
+! Confirmation for various operations
+*confirmDeletes: 		true
+*confirmDeleteFolder: 		true
+*confirmCopies: 		true
+*confirmMoves: 			true
+*confirmOverwrite:		true
+*confirmQuit:			true
+
+! Echo actions on stderr (useful for debugging purposes)
+*echoActions:			false
+
+! Directory display in Text type
+*showOwner: 			true
+*showDate: 			true
+*showPermissions: 		true
+*showLength: 			true
+
+! The type of the first and subsequent file windows
+! valid values are Tree, Icons and Text
+*initialDisplayType:	 	Icons
+*defaultDisplayType: 		Icons
+
+! The type of sorting used by default
+! valid values are SortBy{Name,Size,Date}
+*defaultSortType: 		SortByName
+
+! The default editor to use
+*defaultEditor: 		exec emacs
+
+! The default viewer to use
+*defaultViewer: 		exec xless
+
+!***********************************************************************
+! Miscellaneous settings (see also FmMain.c)
+! Normally you won't have to change these.
+!***********************************************************************
+
+*Command.cursor: hand2
+*MenuButton.cursor: hand2
+*viewport.forceBars: true
+*popup form*bitmap.borderWidth : 0
+*popup form*label.borderWidth : 0
+*button box.orientation: horizontal
+*button box.borderWidth: 0
+*file window*viewport.borderWidth: 0
+*viewport.icon box*Label.borderWidth : 0
+*viewport.icon box.Command.borderWidth : 0
+*viewport.icon box.Form.borderWidth : 0
+*viewport.icon box*Toggle.borderWidth : 1
+*chmod*Label.borderWidth : 0
+*info*Label.borderWidth : 0
+*error*Label.borderWidth : 0
+*confirm*Label.borderWidth : 0
+*Text*translations : #override \n <Key>Return: no-op() \n <Key>Linefeed : no-op() \n Ctrl<Key>J : no-op() \n
+
+
+
+*Text*baseTranslations : #override \n <Key>Return: no-op() \n <Key>Linefeed : no-op() \n Ctrl<Key>J : no-op() \n
+
+
+
+
+
+
+
+
+
+
+

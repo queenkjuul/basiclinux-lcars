@@ -1,0 +1,166 @@
+README.linux.src for JDK 1.1.6, Version 1
+Steve Byrne  java-linux@java.blackdown.org
+5/18/98
+
+Building The Linux JDK From Source
+==================================
+
+This note describes the process that you need to go through to build the 
+JDK from the source distribution.  Please read through them all before
+starting to build.
+
+
+1) Obtain the JDK Source 
+------------------------
+
+The Sun Java Development Kit (JDK) source code is a product that's licensed
+from Sun Microsystems, Inc. to people interested in using it for non-commercial
+purposes and for porting it to new platforms (that's people like you).  
+You need to go to http://java.sun.com [if someone has the real URL handy I'd
+be glad to update this] and follow the links leading towards licensing of the
+source to the JDK.  
+
+Fill out the license information and send it in.  Within a short amount of time
+(typically a few days, currently), you'll get an email message telling you
+how and where to retrieve the sources from.  The particular information 
+you are given is only valid for a short amount of time, so you need to 
+promptly retrieve the source distribution once you have the information.
+
+2) Preparing the Build Environment
+----------------------------------
+
+You'll need to have sufficient disk space, sufficient memory (virtual or
+real), and both an existing JDK binary distribution (JRE is not enough) and
+GCC.  Let's look at what "sufficient" means for each of these.
+
+Disk space.  I just did a "du" on my build directory containing the complete
+results of the build, including the a freshly built complete JDK, JRE, RT, and
+I18N system.  A little over 158 meg.  Although it seems large, that's less than
+$16 worth of disk space at current prices.  You can get by with less;
+this is the upper bound.
+
+Memory (RAM).  I've built the system with as little as 20M RAM (with X
+running).  I don't recommend it, but it can be done.  The big issue is having
+enough virtual and physical memory available during compilation of some of the
+Java classes, particularly the I18N char to byte converters.  I think that 90M
+of total available memory is sufficient [please let me know if your mileage
+is different].  As much RAM as you can get helps; you'll seriously thrash while
+building the I18N char converters if you don't have enough (it'll still
+build, it'll just take longer).  
+
+JDK.  This for bootstrapping the system.  You'll need something recent.  See
+http://www.blackdown.org.  I recommend getting the Linux JDK 1.1.5 binaries and
+installing them, although you can build with the JDK 1.1.3 binaries (since
+you're reading this, you've probably been smart enough to follow my advice and
+get the 1.1.5 binaries -- good choice!).  The 1.1.3 binaries will work, but if
+you haven't provided enough memory for building, you'll get a crypting error
+about assertion failure in monitor_md.c and the build will halt (1.1.5 
+properly tells you that "hey dude, you're out of memory").  (BTW, I said
+"JRE isn't enough" and you may be wondering why: JRE does not include the
+Java compiler; without that, you can't build the Java compiler from the sources
+you've worked so hard to obtain).
+
+GCC.  You'll need it.  The exact version doesn't matter much, but get
+a version that's known to be realiable (I use 2.7.2.1).  
+
+Motif.  You can build the Linux JDK with either Motif or LessTif.  If you want
+to use Motif, you need to get a copy of 2.x.  You can get CDs from a
+variety of distributors.  Make sure you set it up in a standard place like
+/usr/X11R6/.   Or, you can get LessTif from http://www.lesstif.org (it'll point
+you to where the current version is).  We recommend that you get at least
+version 0.83 to do your build with.  Build LessTif according to its
+instructions, and set the ALT_MOTIF_DIR variable on the "make" command line to
+be where you have LessTif installed (i.e. the directory that contains the
+LessTif bin, lib, and include directories).  You can also set an environment
+variable called ALT_MOTIF_DIR in the same manner, and then you won't have to
+specify it on the "make" command line each time you build the JDK.
+
+3) Get the diffs
+----------------
+
+The stock JDK source distribution from Sun won't build on Linux.  You'll need
+to apply a patch (a set of diffs) to it before you can build.  
+
+Follow the Linux Java port links at http://www.blackdown.org to obtain the
+diffs for the JDK 1.1.5.   They're relatively small (~100 k compressed).
+
+4) Unpack the source distribution
+---------------------------------
+
+Untar the sources you obtained into the directory of your choosing.  You did
+remember to choose a directory on a file system with sufficient space,
+didn't you?  Good.  
+
+5) Fix the sources
+------------------
+
+We're not doing a build for Solaris.  Some of the top level directories in 
+the JDK source tree that you've unpacked have "solaris" in their names.
+This will never do.
+
+cd into the "build" directory.  Rename the "solaris" directory to be "genunix".
+cd up and over into the "src" directory.  Rename that "solaris" directory
+to also be called "genunix".  cd back up to the top directory (the
+one containing "build" and "src" as direct children).
+
+6) Apply the diffs
+------------------
+
+Make sure you're in the top level directory of the source distribution.  This
+directory should have "build" and "src" as immediate child directories.
+
+Do
+
+   patch -p1 < jdk1.1.5.diffs
+
+(if you retrieved the diffs as jdk1.1.5.diffs.gz do
+
+   zcat jdk1.1.5.diffs.gz | patch -p1
+)
+
+The patching process should flash by your eyes with a lot of "hunk succeeded"
+messages.  The patch should not fail.  If it does, stop.  You're life is 
+cursed, you will be unsuccessful in business, take up basket-weaving.
+
+7) Do the build!
+----------------
+
+cd into "build/genunix" and type "make".  Sit back.  Read a book.  Start
+looking at the source code.  Figure out how *you'd* add Socks V5 support
+to the JDK.  
+
+The build will take a while.  On my 166 Mhz @ JavaSoft, it would take about
+an hour or a little more.  On my new 300 Mhz @ home, it takes about
+(subjectively speaking) 30 minutes.  There will be times when it seems to
+be doing nothing, especially when compiling a lot of Java files.  Go out for
+a bagel while it compiles the byte to char converters ... this used to take
+4 hours alone on my 20M 66 Mhz DX/2 and is the longest, most boring part of
+the build.  
+
+It will build both the debug and the optimized versions of the runtime system;
+to build just one or the other say "make debug" or "make optimized".  
+
+The resulting binaries live in "build/bin".  You can invoke them directly
+from there for instant "yes I've built it and it works" gratification. 
+Yippee!!!
+
+To do a real, full build of the world like I do in preparation for a release,
+do "make DESTDIR=<somedir> appletviewer jre_only".  This builds the entire
+system (appletviewer is the target causes everything to be built) and the JRE
+system (which shows up in directories "build/jre", "build/rt", and
+"build/i18n".   The "DESTDIR" variable says where to put the resulting JDK;
+I often type "DESTDIR=`pwd`/../../jdk1.1.5 when building in the build/genunix
+directory, as this puts the results (but not JRE) into a directory called 
+"jdk1.1.5" that's a sibling of the top level "build" and "src" directories. 
+
+To set the name of the release, use "RELEASE=mySpecialRelease" as a parameter
+in  your "make" command line (please pick a better release name than I
+have here).  
+
+To completely erase the products of a build in preparation for doing a fresh
+build, do "make clobber".  
+
+That's it!  
+
+
+

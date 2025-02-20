@@ -1,0 +1,28 @@
+This package contains the Linux man pages for all chapters
+except 1, 6 and 8. Some more information is given in the
+`Announce' file.
+
+Install by copying to your favourite location.
+"make install" will just copy them to /usr/man/man[1-8].
+"make" will move the pages from this package that are older than
+the already installed ones to a subdirectory `not_installed',
+then remove old versions (compressed or not),
+compress the pages, and copy them to /usr/man/man[1-8].
+
+
+Note that you may have to remove preformatted pages.
+
+Note that sometimes these pages are duplicates of pages
+also distributed in other packages. This has been reported
+about passwd.5 and mailaddr.7. Be careful not to
+overwrite more up-to-date versions.
+Reports on further duplicates are welcome.
+Formerly present and now removed duplicates:
+ *_module.2, get_kernel_syms.2 (found in modutils-2.1.*),
+ exports.5 (found in nfs-server-2.2*),
+ fstab.5, nfs.5 (found in mount-2.7*).
+
+Copyrights: These man pages come under various copyrights.
+All are freely distributable when the nroff source is included.
+
+Send corrections and additions to aeb@cwi.nl .

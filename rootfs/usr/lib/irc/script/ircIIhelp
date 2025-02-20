@@ -1,0 +1,10 @@
+# The setup used by the ircIIhelp robot.
+# You might want to start an ircIIhelp if there is none online.
+#
+# This has been superceded by a C version which is much more
+# compact than an ircII client.
+#
+on ^msg * help $1-
+on ^help * notice $, $1-
+set help_window off
+set help_pager off

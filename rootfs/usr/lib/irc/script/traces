@@ -1,0 +1,73 @@
+#  /Trace replacement - Eric Prestemon (ecp2z@virginia.edu, Mar 23, 1992)
+#  Some simple aliases and on's to implement a single-line trace
+#  Lost is the timing of net delays, but also lost is the wasted
+#  space...just load these up at run time, and /trace'ing will
+#  never be the same.
+#  Note: Do not launch a new trace until the old one finishes. I don't
+#  even know what will happen, I just know it will be wrong. =)
+
+# The main alias
+alias TRACE ^assign _tn $0;^assign _tt Trace:$left($index(. $S)-1 $S);quote trace $0
+
+# Don't want to see that first one...
+on ^server_notice *LINK* comment
+
+# These 2 stick the first part of each server name on the path onto the
+#   end of _tt...(2.7 and 2.6 are handled, respectively)
+on ^200 * assign _tt $_tt-$left($index(. $0)-1 $0)
+on ^NOTICE "*.* *LINK*" assign _tt $_tt-$left($index(. $3)-1 $3)
+
+# The next few lines handle the messages from 2.6* servers
+on ^notice "*.* *OPER*" {
+	if ( [$6] )
+		{ assign _tx $6 }
+		{ assign _tx $5 }
+	if ( rmatch($left($index([ $_tx)-1 $_tx) $_tn) == 1 )
+		{ _trace_parse $0 $_tx * }
+		{ _trace_servb $* }
+	assign -_tx
+}
+
+on ^notice "*.* *USER*" {
+	if ( [$6] )
+		{ assign _tx $6 }
+		{ assign _tx $5 }
+	if ( rmatch($left($index([ $_tx)-1 $_tx) $_tn) == 1 )
+		{ _trace_parse $0 $_tx }
+		{ _trace_servb $* }
+	assign -_tx
+}
+on ^notice "%.% *SERV*" _trace_servb $*
+alias _trace_servb {
+	if ( rmatch($0 $_tn) == 1 )
+		{ echo $_tt-$0 }
+	assign -_tt
+	assign -_tr
+	assign _tn qwertyuipoadfg
+	echo $1-3 $5-
+}
+
+# These lines handle 2.7* servers, with their numeric messages
+on ^204 * {
+	if ( rmatch($left($index([ $3)-1 $3) $_tn) == 1 )
+		{ _trace_parse $0 $3 * }
+		{ _trace_serva $* }
+}
+on ^205 * {
+	if ( rmatch($left($index([ $3)-1 $3) $_tn) == 1 )
+		{ _trace_parse $0 $3 }
+		{ _trace_serva $* }
+}
+on ^206 * _trace_serva $*
+alias _trace_serva {
+	if ( rmatch($0 $_tn) == 1 )
+		{ echo $_tt-$0 }
+	assign -_tt
+	assign -_tr
+	assign _tn qwertyuiopzxc
+	echo *** $1 Class[$2] ==> $3-
+}
+
+# This is called at the end of the line, if it is a user or operator, to 
+#   echo the path, the full name of the final server, and the username.
+alias _trace_parse assign _tr -$left($index([ $1)-1 $1);echo $_tt-$0$_tr$2;assign _tn qwertuipzxc;assign -_tr;assign -_tt

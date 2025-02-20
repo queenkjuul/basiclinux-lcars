@@ -1,0 +1,5 @@
+/usr/bin/eznet down
+/bin/killall pppd >/dev/null 2>&1
+if ! ifconfig|grep 'ppp'; then echo "PPP is off."; fi
+/sbin/rmmod ppp && /sbin/insmod ppp >/dev/null 2>&1 
+

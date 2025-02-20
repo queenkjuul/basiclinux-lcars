@@ -1,0 +1,141 @@
+**********************************************************************
+* Announcing Version 1 of the  "Fuzzy PixMap" (or FBM) image library *
+**********************************************************************
+
+This package allows manipulation and conversion of a variety of color
+and black-and-white image formats.
+
+Philosophy
+
+    Each program can read any of the understood formats, and
+    can write any of the understood formats that make sense for
+    the image data.
+
+    Programs are designed around specific image operations (sizing,
+    scaling, retoning, halftoning, quantizing, etc.), rather than
+    simply converting from one format to another.  For example,
+    converting a 4bit color GIF file to a 1bit Sun rasterfile
+    takes the following operations:
+    
+        read GIF format
+        map color values to grayscale
+        adjust aspect ratio (1.2 --> 1.0)
+        scale image up to be visible (320x200 --> 640x480 or 1152x864)
+        optionally sharpen the image (edge enhancement)
+        optionally clean up "snow" in image (flip isolated pixels)
+        halftone (Blue noise, Floyd-Steinberg, Jarvis, Threshhold)
+        write Sun rasterfile format.
+
+    So there equivalent pipeline of fbm routines would be:
+    
+    clr2gray < foo.gif | fbnorm | fbext [ args ] | fbhalf [args] > foo.1bit
+    
+    That way you have maximum control over the resulting image size
+    and quality.
+
+Inputs the following file formats
+
+  o Sun rasterfiles	(1, 8, or 24 bits, color or grayscale)
+  o GIF files		(1 to 8 bits, color or grayscale)
+  o Amiga IFF files	(except HAM mode)
+  o PCX files		(b&w and color)
+  o PBM bitmaps		(P1 format only)
+  o Face files		(CMU format for 1bit files by Bennet Yee)
+  o FBM files		(my own format)
+  o Utah RLE files	(from the Utah Raster Toolkit)
+
+    (automatically determines input format, and uncompresses
+     files compressed using 'compress')
+
+Outputs the following formats
+
+  o Sun rasterfiles	(1, 8, or 24 bits, color or grayscale)
+  o FBM files		(my own format)
+  o GIF files		(mapped color only)
+  o Amiga IFF files	(except HAM mode)
+  o PBM			(1bit files only)
+  o Face format		(1bit files only)
+  o Utah RLE files	(from the Utah Raster Toolkit)
+
+With input converters for
+
+  o raw images (like Amiga Digi-View files)
+  o Targa		By Ian MacPhedran
+  o PIC			By Ian MacPhedran
+  o QRT			By Butler Hines
+  o Amiga HAM		By C. Harald Koch
+  o Tiff format		By Michael Mauldin, using Sam Lefflers tifflib
+  o UseNet FaceSaver	By Dan Sahlin
+  o Microtek Postscript	By Gary Sherwin
+
+With output converters for
+
+  o PostScript		(1bit or 8bit grayscale files only)
+  o Diablo graphics	(1bit files only)
+  o Targa		By Ian MacPhedran
+  o Tiff Format		(using Sam Lefflers tifflib)
+
+Operations
+
+  o Extract rectangle (optionally resizing and changing aspect ratio)
+  o Change density and contrast (color and grayscale)
+  o Rotate  90, 180, or 270 degrees
+  o Quantize 24 bit RGB images to 8..256 colors
+        Modified Heckbert median cut
+  o Halftone grayscale using
+        Ulichney's Blue Noise dithering
+        Floyd-Steinberg dithering
+        Jarvis's Constrained averaging
+        Threshholding
+  o Edge Sharpening by Digitial Laplacian (color or grayscale)
+  o Convert color to grayscale (or compute "gray" colormap
+        so grayscale images can be viewed on frame buffers)
+  o Compute histograms of grayscale images
+  o Sample 1bit images to convert to grayscale
+  o Clean stray pixels in bitmaps
+  o Do edge detection
+  o Reverse black and white (negative image)
+
+
+Status
+
+    Freely available for use, redistribution, incorporation into
+    other code.  Just don't remove the copyright notices or the
+    author(s) name(s) from any code.
+
+    Written in C for BSD and Mach Unix Systems.
+    Tested on Vaxes, Sun Workstations, IBM RTs, Pyramids, and NeXTs.
+    
+    Self contained.  Does not require Sun include files or library
+    routines to manipulate Sun rasters.  Does require tifflib for
+    Tiff support and Utah Raster Toolkit for RLE support.
+
+Availability
+
+    Anonymous FTP, Use exactly these steps:
+    
+    % ftp nl.cs.cmu.edu		(or ftp 128.2.222.56)
+    User: anonymous
+    Password: your-name
+    ftp> binary
+    ftp> cd /usr/mlm/ftp
+    ftp> get fbm.tar.Z
+    ftp> bye
+
+    An earlier version was posted to UseNet and is available in the UUNET
+    archives.  This version will also be posted to Usenet and included
+    in the uunet archives.
+
+Acknowledgements
+
+    GIF read support written by David Koblas.
+    GIF write support written by David Rowley.
+    Utah RLE Support written by Paul Milazzo.
+    Targa support by Ian MacPhedran.
+    Some IFF code by Jerry Morrison and Steve Shaw of Electronic Arts.
+    Edge detection and pixel cleaning by Gary Sherwin and Michael Mauldin.
+
+Michael L. Mauldin (Fuzzy)		School of Computer Science
+Research Associate			Center for Machine Translation
+ARPA: mlm@NL.CS.CMU.EDU			Carnegie Mellon University
+Phone: (412) 268-5293			Pittsburgh, PA  15213-3890

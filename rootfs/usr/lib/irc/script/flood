@@ -1,0 +1,6 @@
+# Activate flood protection
+on ^flood *
+on flood ^irciihelp
+on flood ^nickserv
+on flood ^noteserv
+on flood ^msgserv

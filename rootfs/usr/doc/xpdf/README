@@ -1,0 +1,360 @@
+xpdf
+====
+and: pdftops, pdftotext
+
+version 0.7a (beta)
+98-feb-22
+
+The xpdf, pdftops, and pdftotext software and documentation are
+copyright 1996-1998 Derek B. Noonburg.
+
+Email: derekn@aimnet.com
+WWW: http://www.aimnet.com/~derekn/xpdf/
+
+The PDF data structures, operators, and specification are
+copyright 1995 Adobe Systems Inc.
+
+
+What is xpdf?
+-------------
+
+Xpdf is a viewer for Portable Document Format (PDF) files.  (These are
+also sometimes also called 'Acrobat' files, from the name of Adobe's
+PDF software.)  Xpdf runs under the X Window System on UNIX, VMS, and
+OS/2.
+
+Xpdf is designed to be small and efficient.  It does not use the Motif
+or Xt libraries.  It uses standard X fonts.  Xpdf is quite usable on a
+486-66 PC running Linux.
+
+
+Compatibility
+-------------
+
+Xpdf is developed and tested on a Linux 2.0 x86 system.
+
+In addition, it has been compiled by others on Solaris, AIX, HP-UX,
+SCO UnixWare, Digital Unix, Irix, and numerous other Unix
+implementations, as well as VMS, and OS/2.  It should work on pretty
+much any system which runs X11 and has Unix-like libraries.  You'll
+need ANSI C++ and C compilers to compile it.
+
+If you compiled xpdf for a system not listed on the web page, please
+let me know.  If you're willing to make your binary available by ftp
+or on the web, I'll be happy to add a link from the xpdf web page.  I
+have decided not to host any binaries I didn't compile myself (for
+disk space and support reasons).
+
+If you can't get xpdf to compile on your system, send me email and
+I'll try to help.
+
+Ports of xpdf to the Acorn and Amiga have been made.  See the xpdf web
+page for links.
+
+
+Getting xpdf
+------------
+
+The latest version is available from:
+
+  http://www.aimnet.com/~derekn/xpdf/
+
+or:
+
+  ftp://ftp.aimnet.com/pub/users/derekn/xpdf/
+
+Source code and several precompiled executables are available.
+
+Announcements of new versions are posted to several newsgroups
+(comp.text.pdf, comp.os.linux.announce, and others) and emailed to a
+list of people.  If you'd like to receive email notification of new
+versions, just let me know.
+
+
+Running xpdf
+------------
+
+To run xpdf, simply type:
+
+  xpdf file.pdf
+
+To generate a PostScript file, hit the "print" button in xpdf, or run
+pdftops:
+
+  pdftops file.pdf
+
+To generate a plain text file, run pdftotext:
+
+  pdftotext file.pdf
+
+Command line options and many other details are described in the man
+pages (xpdf.1, pdftops.1, and pdftotext.1) and the VMS help files
+(xpdf.hlp, pdftops.hlp, and pdftotext.hlp).
+
+
+Fonts
+-----
+
+Xpdf uses X server fonts.  It requires the following fonts:
+
+* Courier: medium-r, bold-r, medium-o, and bold-o
+* Helvetica: medium-r, bold-r, medium-o, and bold-o
+* Times: medium-r, bold-r, medium-i, and bold-i
+* Symbol: medium-r
+* Zapf Dingbats: medium-r
+
+Most X installations should already have all of these fonts, except
+Zapf Dingbats.  You can install a Type 1 Zapf Dingbats font -- see the
+mkfontdir(1) man page for details.  Use this font descriptor in your
+fonts.scale file:
+
+    -itc-zapfdingbats-medium-r-normal--0-0-0-0-p-0-adobe-fontspecific
+
+You can get a Type 1 font file from the ghostscript 4.x distribution
+(look for d050000l.pfb).
+
+X servers, starting at R5, support font scaling.  Xpdf will
+automatically take advantage of this.  There are two types of scaling.
+The first type uses standard bitmap fonts: if a font doesn't exist in
+the requested size, the server will scale the bitmapped characters.
+This is reasonably fast, and the results are readable but not very
+pretty.  X servers can also handle true scalable, e.g., Type 1, fonts.
+(See the mkfontdir(1) man page for details on setting these up.)
+Scalable fonts are slower, especially since PDF documents tend to use
+lots of fonts, but they look much nicer.
+
+Some X servers also support font rotation.  Xpdf will use this feature
+if available.
+
+
+The Unisys LZW Patent
+---------------------
+
+Nearly all PDF files include data which has been compressed with the
+LZW compression algorithm.  Unfortunately, LZW is covered by a
+software patent which is owned by Unisys Corporation.  Unisys refuses
+to license this patent for PDF-related use in software such as xpdf
+which is released for free and which may be freely redistributed.
+(This is same algorithm which is used by GIF.  However, Unisys is not
+doing licensing for free PDF viwers in the same way as for free GIF
+viewers.)
+
+As a workaround, xpdf converts PDF-format LZW data to compress-format
+LZW data.  (The standard UNIX compress utility also uses LZW, but with
+a slightly different file format.)  This conversion does *not*
+decompress the data; it simply converts it to a different file format.
+Xpdf then calls uncompress to actually decompress the data.
+
+I have been told by several notable people that the LZW patent covers
+compression only, and does not cover decompression.  This seems pretty
+fuzzy to me, so I'm going to stick with my workaround, at least for
+now.
+
+For Unisys's slant on things (mostly regarding GIF), see
+<http://www.unisys.com/LeadStory/lzwterms.html> and
+<http://www.unisys.com/LeadStory/lzwfaq.html>.  These pages mention
+an email address for feedback.
+
+
+Compiling xpdf
+--------------
+
+Xpdf is written in C++ (with a little bit of C).  It should work with
+any ANSI-compliant C++ and C compilers.  The systems and compilers
+it's been tested with are listed on the xpdf web page.
+
+*** To compile xpdf for UNIX:
+
+* Run the configure script:
+
+    ./configure
+
+  This should produce a set of makefiles customized for your system.
+  The configure script accepts the following options (in addition to
+  the usual things accepted by autoconf configure scripts):
+
+    --enable-a4-paper
+        Switches the paper size for PostScript output (xpdf and
+        pdftops) to A4.  The default is Letter size.
+
+    --enable-no-text-select
+        With this option, xpdf will not copy text.  (This is only
+        useful on closed systems where the user can't get at the PDF
+        file directly.)
+
+    --with-gzip
+        Use gzip instead of uncompress.
+
+* Type 'make'.  This should build the executables:
+
+    xpdf/xpdf
+    pdftops/pdftops
+    pdftotext/pdftotext
+
+  You can also do 'make xpdf', etc., to compile just one of the
+  executables.
+
+* If desired, type 'make install' to install the binaries and man
+  pages.
+
+If the configure script doesn't work for some reason, the old
+Makefile.config and Makefiles are included (as Makefile.config.old,
+Makefile.old, and */Makefile.old).  But please let me
+(derekn@aimnet.com) know what went wrong, as I don't intend to support
+Makefile.config anymore.
+
+*** To compile xpdf for OS/2:
+
+Xpdf is known to run under OS/2 with the EMX runtime environment and
+XFree86.  The configure script has not been tested on OS/2, however.
+
+*** To compile xpdf for VMS:
+
+* There are two sets of scripts: vmscomp.com (for gcc on VAX) and
+  vmsdecccomp.com (for DEC C on Alpha).  There are four of each: in
+  the top-level directory, [.goo], [.ltk], and [.xpdf].  You may need
+  to edit these scripts as appropriate for your system.
+
+* The 'stddef.h' include file which comes with older versions of gcc
+  may be missing a definition for wchar_t.  In this case, add the
+  following lines:
+  -----
+  File GNU_CC:[INCLUDE]STDDEF.H;2
+   44   /* Wide characters, not yet supported by VAXCRTL [match VAXC's <stddef.
+   45   #if !defined(_WCHAR_T) && !defined(_WCHAR_T_)
+   46   typedef unsigned int wchar_t;
+   47   #endif
+   48   #define _WCHAR_T
+   49   #define _WCHAR_T_
+   50
+  -----
+
+* Type '@vmscomp' or '@vmsdecccomp' in the top-level directory.
+
+* The executables will be left in '[.xpdf]xpdf' and '[.xpdf]pdftops'.
+
+
+Distribution
+------------
+
+Xpdf may be distributed under the following conditions:
+
+1. This file ('README') is included, unmodified, in the distribution.
+
+2. The distribution includes:
+   a. all of the xpdf source code and documentation, unmodified; OR
+   b. one or more xpdf executables, compiled from the unmodified
+      source code, plus the associated documentation (UNIX man pages
+      or VMS help files); OR
+   c. both of the above.
+
+If you distribute xpdf, I would appreciate receiving a pointer (ftp
+site, BBS phone number, etc.) or a copy (disk, CD-ROM, etc.).
+
+Modified versions of xpdf or applications using some or all of the
+xpdf code (i.e., 'derivative works' under copyright law) may not be
+distributed without explicit permission.
+
+
+Bugs
+----
+
+This is a beta release of xpdf, and there are still a bunch of PDF
+features which I have yet to implement.
+
+At this point, the biggest problem is that embedded fonts are not
+handled correctly.
+
+If you find a bug in xpdf, i.e., if it prints an error message,
+crashes, or incorrectly displays a document, and you don't see that
+bug listed here, please send me email, with a pointer (URL, ftp site,
+etc.) to the PDF file.
+
+
+Acknowledgments
+---------------
+
+Thanks to:
+
+* Patrick Voigt for help with the remote server code.
+* Patrick Moreau for the VMS port.
+* David Boldt and Rick Rodgers for sample man pages.
+* Brendan Miller for the icon idea.
+* Olly Betts for help testing pdftotext.
+* Peter Ganten for the OS/2 port.
+* Michael Richmond for the Win32 port of pdftops and pdftotext.
+
+
+References
+----------
+
+Adobe Systems Inc., _Portable Document Format Reference Manual_.
+Addison-Wesley, 1993, ISBN 0-201-62628-4.
+[The printed manual for PDF version 1.0.]
+
+Adobe Systems Inc., _Portable Document Format Reference Manual_,
+Version 1.2.  November 12, 1996.
+[Updated manual for PDF 1.2.  Also includes the encryption spec.
+Available on the WWW as
+http://www.adobe.com/supportservice/devrelations/PDFS/TN/PDFSPEC.PDF .]
+
+Adobe Systems Inc., _PostScript Language Reference Manual_, 2nd ed.
+Addison-Wesley, 1990, ISBN 0-201-18127-4.
+[The official PostScript manual.]
+
+Adobe Systems Inc., _Supporting the DCT Filters in PostScript Level
+2_, Adobe Developer Support Technical Note #5116.  1992.
+[Description of the DCTDecode filter parameters.]
+
+Anonymous, RC4 source code.
+[This is the algorithm used to encrypt PDF files.  Available on
+various ftp sites, e.g., ftp://ftp.ox.ac.uk/pub/crypto/misc/rc4.tar.gz
+or ftp://idea.sec.dsi.unimi.it/pub/crypt/code/rc4.tar.gz .]
+
+CCITT, _Blue Book_, Volume VII Fascicle 3: "Terminal Equipment and
+Protocols for Telematic Services", Recommendations T.4 and T.6.
+[The official Group 3 and 4 fax standards.  These are available on the
+net (but misformatted) as
+ftp://ftp.uu.net/doc/standards/ccitt/1988/7_3_01.ps and 7_3_02.ps .]
+
+L. Peter Deutsch, "ZLIB Compressed Data Format Specification version
+3.3".  RFC 1950.
+[Information on the general format used in FlateDecode streams.]
+
+L. Peter Deutsch, "DEFLATE Compressed Data Format Specification
+version 1.3".  RFC 1951.
+[The definition of the compression algorithm used in FlateDecode
+streams.]
+
+Jim Flowers, "X Logical Font Description Conventions", Version 1.5, X
+Consortium Standard, X Version 11, Release 6.1.
+[The official specification of X font descriptors, including font
+transformation matrices.  Available on the net as
+ftp://ftp.x.org/pub/R6.1/xc/doc/hardcopy/XLFD/xlfd.PS.Z .]
+
+Foley, van Dam, Feiner, and Hughes, _Computer Graphics: Principles and
+Practice_, 2nd ed.  Addison-Wesley, 1990, ISBN 0-201-12110-7.
+[Colorspace conversion functions, Bezier spline math.]
+
+Robert L. Hummel, _Programmer's Technical Reference: Data and Fax
+Communications_.  Ziff-Davis Press, 1993, ISBN 1-56276-077-7.
+[CCITT Group 3 and 4 fax decoding.]
+
+Christoph Loeffler, Adriaan Ligtenberg, George S. Moschytz, "Practical
+Fast 1-D DCT Algorithms with 11 Multiplications".  IEEE Intl. Conf. on
+Acoustics, Speech & Signal Processing, 1989, 988-991.
+[The fast IDCT algorithm used in the DCTDecode filter.]
+
+R. Rivest, "The MD5 Message-Digest Algorithm".  RFC 1321.
+[MD5 is used in PDF document encryption.]
+
+Gregory K. Wallace, "The JPEG Still Picture Compression Standard".
+[Good description of the JPEG standard.  Available on the net as
+ftp://ftp.uu.net/graphics/jpeg/wallace.ps.gz .  Also published in
+CACM, April 1991, and submitted to IEEE Transactions on Consumer
+Electronics.]
+
+"ISO 8859-2 (Latin 2) Resources".
+[This is a web page with all sorts of useful Latin-2 character set and
+font information:
+http://sizif.mf.uni-lj.si/linux/cee/iso8859-2.html .]

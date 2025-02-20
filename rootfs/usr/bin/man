@@ -1,0 +1,7 @@
+#!/bin/sh
+cd /usr/man
+if [ -e $1.gz ] 
+  then  zless $1.gz
+  else  echo "No man entry for $1"
+fi
+

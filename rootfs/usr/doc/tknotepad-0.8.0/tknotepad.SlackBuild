@@ -1,0 +1,43 @@
+#!/bin/sh
+# DOWNLOAD=http://www.mindspring.com/~joeja/ftp/tknotepad-0.8.0.tar.gz
+# Set initial variables:
+CWD=`pwd`
+if [ "$TMP" = "" ]; then
+  TMP=/tmp
+fi
+PKG=$TMP/package-tknotepad
+
+if [ ! -d $TMP ]; then
+  mkdir -p $TMP # location to build the source
+fi
+if [ ! -d $PKG ]; then
+  mkdir -p $PKG # place for the package to be built
+fi
+
+echo "+=================+"
+echo "| tknotepad-0.8.0 |"
+echo "+=================+"
+cd $TMP
+tar xzvf $CWD/tknotepad-0.8.0.tar.gz
+cd tknotepad-0.8.0
+mkdir -p $PKG/usr/bin
+cat tknotepad gotoline.pth |\
+    sed 's/which wish/which wish8.6/' |
+    sed 's/set textFont -Adobe-Helvetica.*/set textFont 9x15/' \
+        >$PKG/usr/bin/tknotepad
+cat gotoline.pth newwin.pth >>$PKG/usr/bin/tknotepad
+chmod 755 $PKG/usr/bin/tknotepad
+mkdir -p $PKG/usr/doc/tknotepad-0.8.0
+cp $CWD/tknotepad.SlackBuild $PKG/usr/doc/tknotepad-0.8.0
+cp HOWTO-COMMAND-LINE-OPTIONS INSTALL KNOWNISSUES README license.txt \
+    $PKG/usr/doc/tknotepad-0.8.0/
+    
+# Build the package:
+cd $PKG
+tar czvf $TMP/tknotepad-0.8.0.tgz .
+
+# Clean up the extra stuff:
+if [ "$1" = "--cleanup" ]; then
+  rm -rf $TMP/tknotepad-0.8.0
+  rm -rf $PKG
+fi

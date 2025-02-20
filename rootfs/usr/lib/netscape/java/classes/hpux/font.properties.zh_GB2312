@@ -1,0 +1,336 @@
+# @(#)font.properties.zh_GB2312	1.4 97/08/05
+#
+#  Copyright (c) 1994-1996 by Sun Microsystems Inc
+#
+# AWT Simplified Chinese Font Properties for HP-UX (for JVM's running
+# in the zh_CN.hp15CN locale)
+
+# Note:  This file contains entries for use with outline fonts available
+# from the X Font Server.  However, since the X Font Server is not
+# configured by default on HP systems, the outline fonts referenced in
+# this file are commented out.  To use the outline fonts, uncomment the
+# lines containing -agfa-, and comment out the corresponding entry in the
+# same set.  This will be for the .0 font entries, such as serif.plain.0
+# and serif.bold.0.
+
+# Serif font definition
+#
+#serif.plain.0=-agfa-cgtimes-medium-r-normal--*-%d-*-*-p-*-iso8859-1
+serif.plain.0=-*-*times-medium-r-normal--*-%d-*-*-p-*-iso8859-1
+serif.1=-hp-song-medium-r-normal--*-%d-*-*-c-*-gb2312.1980-1
+serif.2=-urw-itc zapfdingbats-medium-r-normal--*-%d-*-*-p-*-sun-fontspecific
+serif.3=--symbol-medium-r-normal--*-%d-*-*-p-*-sun-fontspecific
+
+#serif.italic.0=-agfa-cgtimes-medium-i-normal--*-%d-*-*-p-*-iso8859-1
+serif.italic.0=-*-*times-medium-i-normal--*-%d-*-*-p-*-iso8859-1
+
+#serif.bold.0=-agfa-cgtimes-bold-r-normal--*-%d-*-*-p-*-iso8859-1
+serif.bold.0=-*-*times-bold-r-normal--*-%d-*-*-p-*-iso8859-1
+
+#serif.bolditalic.0=-agfa-cgtimes bolditalic-bold-i-normal--*-%d-*-*-p-*-iso8859-1
+serif.bolditalic.0=-*-*times-bold-i-normal--*-%d-*-*-p-*-iso8859-1
+
+
+# SansSerif font definition
+#
+#sansserif.plain.0=-agfa-univers-medium-r-normal--*-%d-*-*-p-*-iso8859-1
+sansserif.plain.0=-adobe-helvetica-medium-r-normal--*-%d-*-*-p-*-iso8859-1
+sansserif.1=-hp-song-medium-r-normal--*-%d-*-*-c-*-gb2312.1980-1
+sansserif.2=-urw-itc zapfdingbats-medium-r-normal--*-%d-*-*-p-*-sun-fontspecific
+sansserif.3=--symbol-medium-r-normal--*-%d-*-*-p-*-sun-fontspecific
+
+#sansserif.italic.0=-agfa-univers-medium-i-normal--*-%d-*-*-p-*-iso8859-1
+sansserif.italic.0=-adobe-helvetica-medium-o-normal--*-%d-*-*-p-*-iso8859-1
+
+#sansserif.bold.0=-agfa-univers-bold-r-normal--*-%d-*-*-p-*-iso8859-1
+sansserif.bold.0=-adobe-helvetica-bold-r-normal--*-%d-*-*-p-*-iso8859-1
+
+#sansserif.bolditalic.0=-agfa-univers-bold-i-normal--*-%d-*-*-p-*-iso8859-1
+sansserif.bolditalic.0=-adobe-helvetica-bold-o-normal--*-%d-*-*-p-*-iso8859-1
+
+
+# Monospaced font definition
+#
+#monospaced.plain.0=-agfa-courier-normal-r-normal-*-*-%d-*-*-m-*-iso8859-1
+monospaced.plain.0=-*-courier-medium-r-normal--*-%d-*-*-m-*-iso8859-1
+monospaced.1=-hp-song-medium-r-normal--*-%d-*-*-c-*-gb2312.1980-1
+monospaced.2=-urw-itc zapfdingbats-medium-r-normal--*-%d-*-*-p-*-sun-fontspecific
+monospaced.3=--symbol-medium-r-normal--*-%d-*-*-p-*-sun-fontspecific
+
+#monospaced.italic.0=-agfa-courier-normal-i-normal-*-*-%d-*-*-m-*-iso8859-1
+monospaced.italic.0=-adobe-courier-medium-o-normal--*-%d-*-*-m-*-iso8859-1
+
+#monospaced.bold.0=-agfa-courier-bold-r-normal-*-*-%d-*-*-m-*-iso8859-1
+monospaced.bold.0=-*-courier-bold-r-normal--*-%d-*-*-m-*-iso8859-1
+
+#monospaced.bolditalic.0=-agfa-courier-bold-i-normal-*-*-%d-*-*-m-*-iso8859-1
+monospaced.bolditalic.0=-adobe-courier-bold-o-normal--*-%d-*-*-m-*-iso8859-1
+
+
+# Dialog font definition
+#
+#dialog.plain.0=-agfa-universcondensed-medium-r-condensed--*-%d-*-*-p-*-iso8859-1
+dialog.plain.0=-b&h-lucida-medium-r-normal-sans-*-%d-*-*-p-*-iso8859-1
+dialog.1=-hp-song-medium-r-normal--*-%d-*-*-c-*-gb2312.1980-1
+dialog.2=-urw-itc zapfdingbats-medium-r-normal--*-%d-*-*-p-*-sun-fontspecific
+dialog.3=--symbol-medium-r-normal--*-%d-*-*-p-*-sun-fontspecific
+
+#dialog.italic.0=-agfa-universcondensed-medium-i-condensed--*-%d-*-*-p-*-iso8859-1
+dialog.italic.0=-b&h-lucida-medium-i-normal-sans-*-%d-*-*-p-*-iso8859-1
+
+#dialog.bold.0=-agfa-universcondensed-bold-r-condensed--*-%d-*-*-p-*-iso8859-1
+dialog.bold.0=-b&h-lucida-bold-r-normal-sans-*-%d-*-*-p-*-iso8859-1
+
+#dialog.bolditalic.0=-agfa-universcondensed bolditalic-bold-i-condensed--*-%d-*-*-p-*-iso8859-1
+dialog.bolditalic.0=-b&h-lucida-bold-i-normal-sans-*-%d-*-*-p-*-iso8859-1
+
+
+# DialogInput font definition
+#
+#dialoginput.plain.0=-agfa-univers-medium-r-normal--*-%d-*-*-p-*-iso8859-1
+dialoginput.plain.0=-b&h-lucidatypewriter-medium-r-normal-sans-*-%d-*-*-m-*-iso8859-1
+dialoginput.1=-hp-song-medium-r-normal--*-%d-*-*-c-*-gb2312.1980-1
+dialoginput.2=-urw-itc zapfdingbats-medium-r-normal--*-%d-*-*-p-*-sun-fontspecific
+dialoginput.3=--symbol-medium-r-normal--*-%d-*-*-p-*-sun-fontspecific
+
+#dialoginput.italic.0=-agfa-univers-medium-i-normal--*-%d-*-*-p-*-iso8859-1
+dialoginput.italic.0=-b&h-lucida-medium-i-normal-sans-*-%d-*-*-p-*-iso8859-1
+
+#dialoginput.bold.0=-agfa-univers-bold-r-normal--*-%d-*-*-p-*-iso8859-1
+dialoginput.bold.0=-b&h-lucidatypewriter-bold-r-normal-sans-*-%d-*-*-m-*-iso8859-1
+
+#dialoginput.bolditalic.0=-agfa-univers-bold-i-normal--*-%d-*-*-p-*-iso8859-1
+dialoginput.bolditalic.0=-b&h-lucida-bold-i-normal-sans-*-%d-*-*-p-*-iso8859-1
+
+
+# Fixed width font definition used by JWS to workaround JDK font size problem
+#
+#jwsfixedwidthfont.0=-hp-song-medium-r-normal--*-%d-*-*-c-*-iso646-irv
+jwsfixedwidthfont.0=-*-courier-medium-r-normal--*-%d-*-*-m-*-iso8859-1
+jwsfixedwidthfont.1=-hp-song-medium-r-normal--*-%d-*-*-c-*-gb2312.1980-1
+jwsfixedwidthfont.2=-urw-itc zapfdingbats-medium-r-normal--*-%d-*-*-p-*-sun-fontspecific
+jwsfixedwidthfont.3=--symbol-medium-r-normal--*-%d-*-*-p-*-sun-fontspecific
+
+
+# Default font definition
+#
+default.char=274f
+
+# name aliases
+#
+# alias.timesroman=serif
+# alias.helvetica=sansserif
+# alias.courier=monospaced
+
+# for backward compatibility
+#timesroman.plain.0=-agfa-cgtimes-medium-r-normal--*-%d-*-*-p-*-iso8859-1
+#timesroman.italic.0=-agfa-cgtimes-medium-i-normal--*-%d-*-*-p-*-iso8859-1
+#timesroman.bold.0=-agfa-cgtimes-bold-r-normal--*-%d-*-*-p-*-iso8859-1
+#timesroman.bolditalic.0=-agfa-cgtimes bolditalic-bold-i-normal--*-%d-*-*-p-*-iso8859-1
+timesroman.plain.0=-adobe-times-medium-r-normal--*-%d-*-*-p-*-iso8859-1
+timesroman.italic.0=-adobe-times-medium-i-normal--*-%d-*-*-p-*-iso8859-1
+timesroman.bold.0=-adobe-times-bold-r-normal--*-%d-*-*-p-*-iso8859-1
+timesroman.bolditalic.0=-adobe-times-bold-i-normal--*-%d-*-*-p-*-iso8859-1
+#
+#helvetica.plain.0=-agfa-univers-medium-r-normal--*-%d-*-*-p-*-iso8859-1
+#helvetica.italic.0=-agfa-univers-medium-i-normal--*-%d-*-*-p-*-iso8859-1
+#helvetica.bold.0=-agfa-univers-bold-r-normal--*-%d-*-*-p-*-iso8859-1
+#helvetica.bolditalic.0=-agfa-univers-bold-i-normal--*-%d-*-*-p-*-iso8859-1
+helvetica.plain.0=-adobe-helvetica-medium-r-normal--*-%d-*-*-p-*-iso8859-1
+helvetica.italic.0=-adobe-helvetica-medium-o-normal--*-%d-*-*-p-*-iso8859-1
+helvetica.bold.0=-adobe-helvetica-bold-r-normal--*-%d-*-*-p-*-iso8859-1
+helvetica.bolditalic.0=-adobe-helvetica-bold-o-normal--*-%d-*-*-p-*-iso8859-1
+#
+#courier.plain.0=-agfa-courier-normal-r-normal-*-*-%d-*-*-m-*-iso8859-1
+#courier.italic.0=-agfa-courier-normal-o-normal-*-*-%d-*-*-m-*-iso8859-1
+#courier.bold.0=-agfa-courier-bold-r-normal-*-*-%d-*-*-m-*-iso8859-1
+#courier.bolditalic.0=-agfa-courier-bold-i-normal-*-*-%d-*-*-m-*-iso8859-1
+courier.plain.0=-adobe-courier-medium-r-normal--*-%d-*-*-m-*-iso8859-1
+courier.italic.0=-adobe-courier-medium-o-normal--*-%d-*-*-m-*-iso8859-1
+courier.bold.0=-adobe-courier-bold-r-normal--*-%d-*-*-m-*-iso8859-1
+courier.bolditalic.0=-adobe-courier-bold-o-normal--*-%d-*-*-m-*-iso8859-1
+#
+zapfdingbats.0=-urw-itc zapfdingbats-medium-r-normal--*-%d-*-*-p-*-sun-fontspecific
+
+# Static FontCharset info.
+#
+# This information is used by the font which is not indexed by Unicode.
+# Such fonts can use their own subclass of FontCharset.
+#
+# This information can be overriden by describing more specific style.
+# For example
+#
+#  fontcharset.serif.plain.3=SpecialSymbols
+#  means serif.plain.3 font's index can be retrieved with the convert() method
+#  of instance of SpecialSymbols and what kind of characters serif.plain.3 font
+#  has can be judged with the isCovered() method of instance of SpecialSymbols.
+#
+fontcharset.serif.0=sun.io.CharToByte8859_1 
+fontcharset.serif.1=sun.io.CharToByteGB2312
+fontcharset.serif.2=sun.awt.motif.CharToByteX11Dingbats
+fontcharset.serif.3=sun.awt.CharToByteSymbol
+
+fontcharset.sansserif.0=sun.io.CharToByte8859_1
+fontcharset.sansserif.1=sun.io.CharToByteGB2312
+fontcharset.sansserif.2=sun.awt.motif.CharToByteX11Dingbats
+fontcharset.sansserif.3=sun.awt.CharToByteSymbol
+
+fontcharset.monospaced.0=sun.io.CharToByte8859_1
+fontcharset.monospaced.1=sun.io.CharToByteGB2312
+fontcharset.monospaced.2=sun.awt.motif.CharToByteX11Dingbats
+fontcharset.monospaced.3=sun.awt.CharToByteSymbol
+
+fontcharset.dialog.0=sun.io.CharToByte8859_1
+fontcharset.dialog.1=sun.io.CharToByteGB2312
+fontcharset.dialog.2=sun.awt.motif.CharToByteX11Dingbats
+fontcharset.dialog.3=sun.awt.CharToByteSymbol
+
+fontcharset.dialoginput.0=sun.io.CharToByte8859_1
+fontcharset.dialoginput.1=sun.io.CharToByteGB2312
+fontcharset.dialoginput.2=sun.awt.motif.CharToByteX11Dingbats
+fontcharset.dialoginput.3=sun.awt.CharToByteSymbol
+
+# font convertor for JWS private font
+fontcharset.jwsfixedwidthfont.0=sun.io.CharToByte8859_1
+fontcharset.jwsfixedwidthfont.1=sun.io.CharToByteGB2312
+fontcharset.jwsfixedwidthfont.2=sun.awt.motif.CharToByteX11Dingbats
+fontcharset.jwsfixedwidthfont.3=sun.awt.CharToByteSymbol
+
+# exclusion info.
+#
+# This information describe exclusion ranges for each fonts.
+#
+# 'exclusion.serif.plain.0' overrides 'exclusion.serif.0', and
+# 'exclusion.serif.0' overrides exclusion.0, and so on.
+#
+
+# XFontSet string
+# X11 only properties
+#
+
+#-agfa-cgtimes-medium-r-normal-*-*-%d-*-*-p-*-iso8859-1
+fontset.serif.plain=\
+-*-*times-medium-r-normal--*-%d-*-*-p-*-iso8859-1,\
+-hp-song-medium-r-normal--*-%d-*-*-c-*-gb2312.1980-1
+
+#-agfa-cgtimes-medium-i-normal--*-%d-*-*-p-*-iso8859-1
+fontset.serif.italic=\
+-*-*times-medium-i-normal--*-%d-*-*-p-*-iso8859-1,\
+-hp-song-medium-r-normal--*-%d-*-*-c-*-gb2312.1980-1
+
+#-agfa-cgtimes-bold-r-normal--*-%d-*-*-p-*-iso8859-1
+fontset.serif.bold=\
+-*-*times-bold-r-normal--*-%d-*-*-p-*-iso8859-1,\
+-hp-song-medium-r-normal--*-%d-*-*-c-*-gb2312.1980-1
+
+#-agfa-cgtimes bolditalic-bold-i-normal--*-%d-*-*-p-*-iso8859-1
+fontset.serif.bolditalic=\
+-*-*times-bold-i-normal--*-%d-*-*-p-*-iso8859-1,\
+-hp-song-medium-r-normal--*-%d-*-*-c-*-gb2312.1980-1
+
+#-agfa-univers-medium-i-normal--*-%d-*-*-p-*-iso8859-1
+fontset.sansserif.italic=\
+-adobe-helvetica-medium-o-normal--*-%d-*-*-p-*-iso8859-1,\
+-hp-song-medium-r-normal--*-%d-*-*-c-*-gb2312.1980-1
+ 
+#-agfa-univers-bold-r-normal--*-%d-*-*-p-*-iso8859-1
+fontset.sansserif.bold=\
+-adobe-helvetica-bold-o-normal--*-%d-*-*-p-*-iso8859-1,\
+-hp-song-medium-r-normal--*-%d-*-*-c-*-gb2312.1980-1
+ 
+#-agfa-univers-bold-i-normal--*-%d-*-*-p-*-iso8859-1
+fontset.sansserif.bolditalic=\
+-adobe-helvetica-bold-o-normal--*-%d-*-*-p-*-iso8859-1,\
+-hp-song-medium-r-normal--*-%d-*-*-c-*-gb2312.1980-1
+ 
+#-agfa-univers-medium-r-normal--*-%d-*-*-p-*-iso8859-1
+fontset.sansserif.plain=\
+-adobe-helvetica-medium-r-normal--*-%d-*-*-p-*-iso8859-1,\
+-hp-song-medium-r-normal--*-%d-*-*-c-*-gb2312.1980-1
+
+#-agfa-courier-normal-i-normal-*-*-%d-*-*-m-*-iso8859-1
+fontset.monospaced.italic=\
+-adobe-courier-medium-o-normal--*-%d-*-*-m-*-iso8859-1,\
+-hp-song-medium-r-normal--*-%d-*-*-c-*-gb2312.1980-1
+ 
+#-agfa-courier-bold-r-normal-*-*-%d-*-*-m-*-iso8859-1
+fontset.monospaced.bold=\
+-*-courier-bold-r-normal--*-%d-*-*-m-*-iso8859-1,\
+-hp-song-medium-r-normal--*-%d-*-*-c-*-gb2312.1980-1
+ 
+#-agfa-courier-bold-i-normal-*-*-%d-*-*-m-*-iso8859-1
+fontset.monospaced.bolditalic=\
+-adobe-courier-bold-o-normal--*-%d-*-*-m-*-iso8859-1,\
+-hp-song-medium-r-normal--*-%d-*-*-c-*-gb2312.1980-1
+ 
+#-agfa-courier-normal-r-normal-*-*-%d-*-*-m-*-iso8859-1
+fontset.monospaced.plain=\
+-*-courier-medium-r-normal--*-%d-*-*-m-*-iso8859-1,\
+-hp-song-medium-r-normal--*-%d-*-*-c-*-gb2312.1980-1
+ 
+#-agfa-universcondensed-medium-i-condensed--*-%d-*-*-p-*-iso8859-1
+fontset.dialog.italic=\
+-b&h-lucida-medium-i-normal-sans-*-%d-*-*-p-*-iso8859-1,\
+-hp-song-medium-r-normal--*-%d-*-*-c-*-gb2312.1980-1
+ 
+#-agfa-universcondensed-bold-r-condensed--*-%d-*-*-p-*-iso8859-1
+fontset.dialog.bold=\
+-b&h-lucida-bold-r-normal-sans-*-%d-*-*-p-*-iso8859-1,\
+-hp-song-medium-r-normal--*-%d-*-*-c-*-gb2312.1980-1
+ 
+#-agfa-universcondensed bolditalic-bold-i-condensed--*-%d-*-*-p-*-iso8859-1
+fontset.dialog.bolditalic=\
+-b&h-lucida-bold-i-normal-sans-*-%d-*-*-p-*-iso8859-1,\
+-hp-song-medium-r-normal--*-%d-*-*-c-*-gb2312.1980-1
+ 
+#-agfa-universcondensed-medium-r-condensed--*-%d-*-*-p-*-iso8859-1
+fontset.dialog.plain=\
+-b&h-lucida-medium-r-normal-sans-*-%d-*-*-p-*-iso8859-1,\
+-hp-song-medium-r-normal--*-%d-*-*-c-*-gb2312.1980-1
+ 
+#-agfa-univers-medium-i-normal--*-%d-*-*-p-*-iso8859-1
+fontset.dialoginput.italic=\
+-b&h-lucida-medium-i-normal-sans-*-%d-*-*-p-*-iso8859-1,\
+-hp-song-medium-r-normal--*-%d-*-*-c-*-gb2312.1980-1
+ 
+#-agfa-univers-bold-r-normal--*-%d-*-*-p-*-iso8859-1
+fontset.dialoginput.bold=\
+-b&h-lucidatypewriter-bold-r-normal-sans-*-%d-*-*-m-*-iso8859-1,\
+-hp-song-medium-r-normal--*-%d-*-*-c-*-gb2312.1980-1
+ 
+#-agfa-univers-bold-i-normal--*-%d-*-*-p-*-iso8859-1
+fontset.dialoginput.bolditalic=\
+-b&h-lucida-bold-i-normal-sans-*-%d-*-*-p-*-iso8859-1,\
+-hp-song-medium-r-normal--*-%d-*-*-c-*-gb2312.1980-1
+ 
+#-agfa-univers-medium-r-normal--*-%d-*-*-p-*-iso8859-1
+fontset.dialoginput.plain=\
+-b&h-lucidatypewriter-medium-r-normal-sans-*-%d-*-*-m-*-iso8859-1,\
+-hp-song-medium-r-normal--*-%d-*-*-c-*-gb2312.1980-1
+
+#
+#-agfa-cgtimes-medium-r-normal--*-%d-*-*-p-*-iso8859-1
+fontset.default=\
+-*-*times-medium-r-normal--*-%d-*-*-p-*-iso8859-1,\
+-hp-song-medium-r-normal--*-%d-*-*-c-*-gb2312.1980-1
+#
+
+#
+# Special font for JWS PCE
+fontset.jwsfixedwidthfont.italic=\
+-sun-song-medium-r-normal--*-%d-*-*-c-*-iso8859-1,\
+-hp-song-medium-r-normal--*-%d-*-*-c-*-gb2312.1980-1
+ 
+fontset.jwsfixedwidthfont.bold=\
+-sun-song-medium-r-normal--*-%d-*-*-c-*-iso8859-1,\
+-hp-song-medium-r-normal--*-%d-*-*-c-*-gb2312.1980-1
+
+ 
+fontset.jwsfixedwidthfont.bolditalic=\
+-sun-song-medium-r-normal--*-%d-*-*-c-*-iso8859-1,\
+-hp-song-medium-r-normal--*-%d-*-*-c-*-gb2312.1980-1
+
+fontset.jwsfixedwidthfont.plain=\
+-sun-song-medium-r-normal--*-%d-*-*-c-*-iso8859-1,\
+-hp-song-medium-r-normal--*-%d-*-*-c-*-gb2312.1980-1
+

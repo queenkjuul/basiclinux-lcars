@@ -1,0 +1,95 @@
+
+Sasteroids v1.3
+================
+
+sasteroids1.3-src.tar.gz	Source only distribution
+sasteroids1.3-bin.tar.gz	Binary only distribution
+
+Please see
+----------
+?-CHANGELOG		changes from previous versions.
+?-INSTALL		installation/compile instructions.
+?-PROBLEMS		help if trouble occurs.
+
+*************************************INTRO************************************
+
+	Sasteroids is an asteroids-like game, the whole point to shoot
+asteroids and an occasional enemy space ship.  Ok, so its not DOOM, but it
+can be amusing, and does use a few DOOM-like brown colors.  This started out
+as a direct port of xasteroids to run under svgalib (a wonderful super-vga
+graphics library by Harm Hanemaayer), but I then decided that 256 color
+bitmap graphics would be more fun, then rewrote it in C++, then added a
+high-score list, a title screen, changed the game alot, added new animation,
+scancode keyboard support, etc, anything to avoid school work.
+
+	Warning: I can't draw, so the asteroids look more like chunks of dog
+food.  Maybe this game should be called "Save the Planet from Killer Alpo",
+or something. (Note to Dave Farmer: Would it fit on the title screen? ;-)
+
+	The game uses 320x200 graphics in 256 colors.  I developed it using
+(most recently) svgalib v1.11.  svgalib can also be obtained from your
+favorite linux ftp site (eg, sunsite.unc.edu as svgalib???.tgz where ??? is
+the version number) and version 1.11 or greater is recommended to compile this
+game. 
+
+[NOTE FOR HACKERS: If svgalib supports your video cards extended modes, you
+can play with 256 color modes other than 320x200, look at lines 45-47 in the
+file 'Ui.c'. However, hi-res modes slow the game down. And don't use the
+BACKDROPS option in modes other than 320x200. ]
+
+	The program is written in C++.  I have made no attempt to make this
+program portable to any operating systems other than linux (I don't have
+access to any others, well, except SunOs :-).
+
+****************** NOTE: IF THE GAME SEEMS TO RUN TOO SLOW ******************
+
+NOTE: The following timing info only applies if there are no CPU intesive
+applications running concurrently.
+
+	If you press 't' while playing the game, you can toggle the bottom
+line between displaying your score/etc, and displaying the time it takes to
+generate 1 frame of animation on your computer.  The time is shown in usec
+(millionths of a second, probably accurate to within +/- 10,000 usec).
+
+	The time to generate 1 frame of animation depends on the speed of
+your computer, your video card (vlb?), how many objects are being moved
+around the screen, and whether you are using the BACKDROPS option.  Setting
+BACKDROPS=YES can add to the time required to generate 1 frame of animation.
+If you change the BACKDROPS setting, you must recompile/install (see the
+INSTALL guide for this.
+
+	Since by default, the game is set to 20 frames per second (FPS), 1
+frame should take 50,000 or less usec to generate/display.  On my 486DX2 66,
+with an ATI VLB Graphics Ultra Pro, I get about 11,000 usec at the beginning
+of a 'hard' level (press 3 when starting the game).  Since this is well
+below 50,000 I know I am getting 20 FPS, with time to spare. Note - due to
+the CPU cache on 486's, quiting the program then immediately re-running it
+can sometimes result in faster timings.
+
+	If the timing on your machine is above 50,000 the game can't
+generate 20 FPS on your machine. If you have performance probs with this
+game, please email me your computer hardware setup (CPU, math co-pro, video
+card, isa or vlb, etc) and the approximate timings in usec at the beginning
+of a skill level 3 game. (other timings, e.g. while your ship is exploding,
+are welcome too!)
+
+---------------------------------------------------------------------------
+Loads of thanks to the following who provided diffs, bug reports, advice:
+
+	Harm Hanemaaijer	(svgalib!!!)
+	Thomas Weber		(fixed point math)
+	John Remyn		(fonts/cf files/ideas/etc/etc/etc..)
+	Russel Marks		(rawkey library)
+	Joachim Klausner	(joystick support)
+	Vesa Ruokonen
+	Ben Lippolt
+	Aaron Moman
+---------------------------------------------------------------------------
+
+brad pitzel  June 2/94
+
+ideas, bugs, patches, better bitmaps, sounds, to pitzel@cs.sfu.ca
+(hey, even if you think the game sucks, let me know why)
+
+the Rheostatics rule.
+(when's that new album coming out??)

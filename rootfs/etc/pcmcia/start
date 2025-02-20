@@ -1,0 +1,7 @@
+#!/bin/sh
+insmod pcmcia_core
+insmod i82365
+insmod ds
+cardmgr -o
+
+

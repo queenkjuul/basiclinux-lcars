@@ -1,0 +1,7 @@
+*VT100.Translations: #override \
+              <Key>Delete:    string("\033[3~")
+*ttyModes: erase ^? 
+
+rxvt*cursorColor: Cyan
+rxvt*font: 9x15
+rxvt*background: Black

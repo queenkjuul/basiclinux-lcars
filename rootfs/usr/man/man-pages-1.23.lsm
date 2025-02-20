@@ -1,0 +1,15 @@
+Begin3
+Title:          Section 2, 3, 4, 5 and 7 man pages for Linux
+Version:        1.23
+Entered-date:   1999-03-29
+Description:    Over 700 man pages for Linux
+Keywords:       man pages
+Author:         several
+Maintained-by:  Andries E. Brouwer (aeb@cwi.nl)
+Primary-site:   ftp.win.tue.nl:/pub/linux-local/manpages
+                483k man-pages-1.23.tar.gz
+Alternate-site: ftp.xx.kernel.org /pub/linux/docs/manpages
+Alternate-site: tsx-11.mit.edu /pub/linux/docs/LDP
+Alternate-site: metalab.unc.edu /pub/Linux/docs/linux-doc-project/man-pages
+Copying-policy: several; all freely distributable if nroff source included
+End

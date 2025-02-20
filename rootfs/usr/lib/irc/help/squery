@@ -1,0 +1,10 @@
+! Copyright (c) 1997 Matthew Green.
+!
+! All rights reserved.  See the HELP IRCII COPYRIGHT file for more
+! information.
+!
+Usage: SQUERY <service> <query>
+  SQUERY sends <query> to service <service>
+
+See Also:
+  SERVLIST

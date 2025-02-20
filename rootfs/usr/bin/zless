@@ -1,0 +1,5 @@
+#!/bin/sh
+for args
+do
+    zcat $args | less
+done

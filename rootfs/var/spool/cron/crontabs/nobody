@@ -1,0 +1,2 @@
+# This updates the database for 'locate' every day:
+40 04 * * *       updatedb 1> /dev/null 2> /dev/null

@@ -1,0 +1,236 @@
+		XFM - The X File Manager (ver 1.2 beta)
+		----------------------------------------
+		       (c) Simon Marlow 1990-1993
+			simonm@dcs.glasgow.ac.uk
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published
+    by the Free Software Foundation; either version 1, or (at your option) 
+    any	later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+
+------------------------------------------------------------------------------
+1. Introduction
+
+This is a small file manager/program manager package written using the
+XToolkit.  It contains most of the features that you would expect in a
+file manager -- move around your directory tree in multiple windows,
+and move, copy or delete files with simple mouse operations. The
+integrated application manager allows you to load files into your
+favourite applications from the file manager by dragging icons.
+
+Consider this software a beta release - the last version was alpha
+(and contained at least one serious bug), but I am more confident that
+xfm is stable now.  This version has been in testing for quite a
+while, and will probably lose the 'beta' sticker before long, too.
+
+Comments are welcome - please send me bug-fixes and any suggestions
+you have for improving the program in any way (patches are also
+welcome, as is complete texinfo documentation :-). Oh yes, and if you
+have any nice icons, I'd certainly like to include them in the
+distribution.
+
+Installation is relatively straight forward. Section 1 contains a
+list of instructions to get you started right away, and sections 2-3
+have a more detailed explanation.
+
+-------------------------------------------------------------------------------
+1. QuickStart - for those of you who can't wait
+
+type the following:
+
+			xmkmf
+			make Makefiles
+			make all install
+			cat DEFAULTS >>~/.Xdefaults
+			xrdb ~/.Xdefaults
+			xfm
+
+This will start xfm with no applications configured. To use the
+configuration files and icons included in the package, read section 3.
+
+------------------------------------------------------------------------------
+2. Compilation
+
+I have included a minimal Imakefile, so there should be no problem
+with compilation on most machines. Take a look at the Imakefile, and
+edit it if you like. Then, simply make the Makefile by typing 'xmkmf',
+and make the Makefiles in the xfm and xfmc subdirectories by typing
+'make Makefiles'.  'make depend' will update the Makefiles with
+dependancy information, but this is not strictly necessary. To make
+the binaries, do a 'make'.
+
+If there are any changes to be made to the source to compile on other
+machines (these should be minor), please send me patches as I don't
+have the resources here to test these things. Xfm currently compiles
+cleanly on SunOS4.1, Ultrix (I think), Linux, and most POSIXish
+systems (all with gcc and X11R5). Xfm needs an ANSI C compiler -
+*please* don't send me patches to compile it on an older compiler,
+just get gcc.
+
+------------------------------------------------------------------------------
+3. Installation
+
+To install the binaries, do a 'make install'.  This will install xfm
+and xfmc in the default directory on your system.
+
+If you have a .Xdefaults file, you may want to concatenate the file
+DEFAULTS to it. This contains some defaults for xfm, to specify fonts
+and other things. These are the xfm-specific resources.  Some of them
+may be removed in future versions as I will make them settable from
+within xfm. All the Xtoolkit resources are also available.
+
+If you want to use your own icons (in the application manager) xfm
+needs to know where to find them. Include a line like
+
+*bitmapFilePath: /home/simon/bitmaps:/usr/include/X11/bitmaps
+
+in your .Xdefaults. A number of icons come with the standard X
+distribution (these are in /usr/include/X11/bitmaps). I've also
+included a few of mine in the directory user-bitmaps.
+
+Xfm uses its own data file (by default called ~/.xfmrc) to keep track
+of the icons you have installed in the application manager.  You
+shouldn't need to edit this file yourself, in fact xfm may get very
+confused if you do. I have included a small .xfmrc file (STARTUP) that
+you should rename and place in your home directory before starting xfm
+- this will give you a few applications to get started. Note that you
+will need the bitmap files in ./user-bitmaps available to use this
+setup.
+
+------------------------------------------------------------------------------
+4. Operation of the File Manager
+
+Most of it should be pretty obvious. Things that aren't obvious:
+
+o The left hand mouse button selects an item (and deselects all others in the
+  same window). The second button toggles the selected state of an item.
+
+o Clicking the right-hand mouse button when over an icon pops up a menu with
+  some operations that can be performed on that file.
+
+o You can open new windows by two methods:
+  (a) Drag (with button 1) a directory onto anywhere on the root window. Note
+      that this may not work if you have a picture on your background.
+  (b) Select one or more directories and press the 'open' button.
+
+o You cannot close the last window. To quit the program, use the 'quit' button
+  on the Application Manager window.
+
+o Drag with the left-hand button to another window (or another icon, in general
+  a valid destination will be highlighted with a border when the cursor is
+  over it) to move files from one directory to another. The second button used
+  in the same way will copy files.
+
+o Clicking on the arrows in Tree mode moves in that direction.
+
+o Double clicking on a directory in Icon mode moves into that
+  directory. To move up a level, either select 'Up' from the 'Move' menu,
+  or double click on the '..' icon.
+
+o Double clicking on an executable runs the program. Dragging files
+  onto an executable runs the program with the full pathnames of
+  the dragged files as arguments. (You can test this with 'echo').
+
+o Double clicking on normal files invokes the default editor
+  (specified in the defaultEditor resource) with the filename as an
+  argument.  The 'edit' option on the popup menu also performs the
+  same action.
+
+o To get detailed information on a file, use 'Info' on the
+  'Operations' menu.
+
+------------------------------------------------------------------------------
+5. Operation of the Application Manager
+
+o To install an application, either use the 'install' option on the
+  menu or drag an executable file over from a file window.
+
+o Double clicking on an application will start it by running the
+  command '$SHELL -c <command>' - this is so you can use various shell
+  thingies in the command line.
+
+o Dragging files over from a file window onto an application will
+  start it with the command '$SHELL -c <command> <file1> <file2> ...'
+  Most shells will then place <file1>, <file2> etc. into the variables
+  $0, $1 ... So for example if you wanted to load a file into emacs,
+  the command for the emacs application would be 'emacs $0', and you
+  could drag a file over from a file window onto the emacs icon to
+  have emacs come up with the file loaded.
+
+  Other useful applications to install this way are the printer (print
+  files by dragging onto the printer icon), a waste-paper basket 'rm
+  $*' (you'll need to make sure the windows are updated too -- see
+  Secction 6 below).
+
+o Icons that you specify must be in one of the directories specified
+  by the bitmapFilePath resource, and must be in standard X bitmap
+  format (use 'bitmap' to create or edit them).
+
+o To save the current set of applications to the resource file, use
+  the 'Save setup' option. To restore the application set from the 
+  resource file, use 'Load setup'
+
+------------------------------------------------------------------------------
+6. The program xfmc
+
+In this release, I've included a small program xfmc that will communicate with
+an xfm process running on the same display. There are two types of
+messages that can be sent: open new windows, or update existing ones. The
+syntax of the command is
+
+xfmc -o path ...
+xfmc -u path ...
+
+This means that you can finally have a real wastebasket in the application
+manager (by instructing xfm to update some windows using xfmc), and do other
+cool things like mount a floppy disk and have a window onto it open up
+automatically.
+
+It works by finding the xfm window (using a depth-first traversal of the
+window tree on the display), and sending it a sequence of XClientEvent
+messages. This works where xfm and xfmc are running on different machines,
+but is rather slow. A better method may be to use a socket in /tmp, although
+this would restrict xfm & xfmc to being on the same machine.
+
+------------------------------------------------------------------------------
+7. Bugs / Problems
+
+o Starting applications will start another copy of the shell. If you
+  don't like this, then prefix all your application commands with
+  'exec'. In a future version I might have xfm insert this for you.
+
+o There is no recursive copy routine currently - so copying
+  directories is not allowed. Sorry!
+  
+o It's a bit slow - this is a combination of having to stat all the files in
+  a directory, and then creating millions of widgets. A possible 
+  solution to this problem is to create my own widget class for the
+  icons. Maybe in a future version.
+
+o Anything else... please tell me, my email address is below.
+
+------------------------------------------------------------------------------
+ 
+Have fun!
+
+Simon Marlow
+simonm@dcs.glasgow.ac.uk
+
+
+
+ 
+
+
+
+ 
+
+

@@ -1,0 +1,38 @@
+### /BK BUG #1
+Ban that existed and was made by TheCowBoy:
+	*!*homo@*.isdn.online.no
+
+However, I did /bk asskicker and the following happened:
+	mode change [-o+ asskicker] on #xxx by _bk_
+	asskicker was kicked from #xxx
+
+After removing the ban, /bk worked perfectly:
+	mode change [-b *!*homo@*.isdn.online.no] on #xxx by _bk_
+	mode change [+b *!*@*.online.no] on #xxx by _bk_
+	asskicker was kicked from #xxx
+
+This is who I was trying to /bk and his user@host.
+Nick: asskicker Host: homo@bergen308.online.no
+
+### /BK BUG #2
+mode change [-o+b RainFall *!*fuckstali@*.UU.NET] on #xxx by _bk
+[RainFall] was kicked off #xxx by [_bk] [Get your terminology corrected.]
+[RainFall] [fuckstalin@Cust57.Max19.Seattle.WA.MS.UU.NET] has joined #xxx
+<arley> :))
+mode change [-b *!*fuckstali@*.UU.NET] on #xxx by TheCowboy
+
+Notice the length of the username on rainfall's address. BitchX ignored
+the last character of the full username. Who said this was a bug? ;p
+
+### Miscellaneous bug:
+^C 5 times on start up causes an unrequired message to appear:
+	Connecting to port 6667 of server efnet.telstra.net.au
+	BitchX-71alpha11 -- just do it.
+	[17:11:41] [~] #
+
+### Format modification:
+How about a title concerning the current channel with timestamp and
+removing altogether the channel field from each user. eg:
+    ::: Channel userlist for #BitchX at (12:00):
+    ::: [ Nickname ] [  level ] User@Hostname
+    ::: [ BarK0de  ] [ 90:2:2 ] gumbee@ewheat.org

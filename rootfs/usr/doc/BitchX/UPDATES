@@ -1,0 +1,1092 @@
+EPIC4pre2
+
+*** News 10/28/97 -- New flag to /xecho, /XECHO -R
+	This flag dumps a raw string to your terminal emulator.  It is
+	imperative to notice that the client does *no interpretation* of the
+	string.  It is dumped right to your terminal by the /xecho command,
+	so it never gets backed by your window/screen.  That means you should
+	really only use this to output strings that act as a state-change 
+	command to your terminal (eg, setting the xterm title bar, or doing
+	an unflash.)  If you output "modifying" codes (like setting colors or
+	attributes), it wont get to your window display and will be lost on
+	the next window redraw.
+
+*** News 10/27/97 -- New /set, /SET NO_FAIL_DISCONNECT (ON|OFF)     (nuke)
+	When this is set to ON, the client will NOT automatically terminate
+	your connection to the server if a write() fails.  This is most useful
+	for nuke and other people who have static ip's connected to routers
+	that retain packets while you are disconnected.  The default is OFF,
+	since for most people, a write() failure is a fatal condition.
+
+*** News 10/26/97 -- New built in commands, "break", "continue", "return"
+	These built in commands are used for controlling the flow of code
+	execution.  They work 99% like they would in C.  When youre in a 
+	"while" or "for" loop, the "continue" command will immediately
+	terminate the current loop and go back to the top (the 'for' command
+	will run the 'iteration' part as it does in C).  When you do a 
+	"break" command in "while" or "for", it immediately terminates the
+	loop entirely and moves to the next command after the "while" or "for".
+
+	The "return" command is used to immediately terminate execution of
+	an alias or on-event.  If an argument is specified, it is assigned to
+	the local variable FUNCTION_RETURN.  Those of you who use the old
+	"return" alias that just assigns to function_return will find that it
+	still works, but it wont terminate the execution of the current alias
+	or on (eg, you wont notice any changes.)  Youre encouraged to take 
+	advantage of the new functionality. =)
+
+*** News 10/26/97 -- "FUNCTION_RETURN" now a normal local variable.
+	When you make a function call, the "function_return" variable is now
+	instantiated as a regular local variable.  Previously, the
+	function_return variable was trapped for special treatment and was
+	a write-only value.  Now it is a read/write variable, so you can use
+	it just like any other variable.  The one exception to this is that
+	you may assign to FUNCTION_RETURN in aliases that are called from the
+	function that instantiated them (as opposed to other local variables
+	which are not honored in called aliases.)  This was done out of
+	neccesity to be compatable with scripts that presume that you may
+	assign to FUNCTION_RETURN and it will carry to the closest enclosing
+	function call.  Since FUNCTION_RETURN is stored on the calling stack,
+	the arbitrary limit of 128 nested function calls no longer exists.
+
+*** News 10/25/97 -- New Status bar expando -- %K
+	This expando will be displayed on the status bar if you are currently
+	in scrollback mode in that window.  Should be good for people who
+	forget. ;-)  What it actually displays is controlled by a set, 
+	/set status_scrollback.  The default is "(Scroll)"
+
+*** News 10/20/97 -- Greatly reduced CPU usage in pre0.30
+	Some profiling work showed some really monsterous CPU hogs.  With
+	a few minor, yet strategic changes, CPU usage for the testers has 
+	been reduced from 60% to 90% compared to pre0.28. (ive seen cpu usage
+	under 2:00 a day for someone on 10 channels running with all usermodes
+	active running clonebot-detection scripts.)
+
+*** News 10/20/97 -- New built in functions, $regcomp(), $regmatch(), etc.
+	There are four new built in functions that give you an interface
+	to the posix.2 "regex" pattern matching functionality:
+
+	$regcomp(<pattern>)
+		given a regex pattern, it will return a printable string
+		representation of the compiled pattern.  You must later pass
+		the return value of this function to $regfree() to avoid 
+		memory leaks.  The pattern is assumed to be case insensitive,
+		and cannot make use of any \(...\) subexpressions.
+
+	$regexec(<compiled> <string>)
+		given a compiled regular expression and some text, it will
+		return 0 if the string is matched by the compiled pattern,
+		or will return nonzero on error.  The return code can be
+		passed to $regerror() for specific information.  Of note, 
+		the return value '1' means the pattern didnt match.
+
+	$regerror(<error code> <compiled>)
+		given an error code and the compiled regular expression from
+		which it was generated, this gives you a human readable error
+		message.  If the error was from $regcomp(), then you can pass
+		the error code "-1", which will then be subtituted with the
+		last $regcomp() error code.  Otherwise, error code should be
+		the return value from $regexec().
+
+	$regfree(<compiled>)
+		given a compiled regular expression, this returns any resources
+		that were used by the regular expression.  If you fail to 
+		$regfree() everything you $regcomp(), then you will expose a
+		memory leak, and that wont be my fault. ;-)  You must not use
+		a compiled regular expression after you have called $regfree()
+		on it.  To do so will result in chaos.
+
+			
+*** News 10/20/97 -- New command line flag, -B
+	This does what the stock client's -b flag does.  It loads your .ircrc
+	file right at client startup time rather than waiting for the client
+	to connect to a server.
+
+*** News 10/20/97 -- New math operators << and >>.
+	These are the left-bitshift and right-bitshift operators.  Currently
+	they are only available in their binary forms.  There is no support
+	for <<= and >>=, as support for that would be problematic.  Since you
+	can just do the longhand assignment, their ommision is not a big deal.
+
+*** News 10/16/97 -- New built in functions, $fnexist(), $cexist()
+	These two functions return 1 if the given built in function, or
+	the given built in command, exist.  It returns 0 if they do not
+	exist.  The idea use for these is to provide an alias or function
+	that emulates the built in function/command youre looking for, if
+	theyre absent (as in older versions).  Of course, this is more of
+	a forward looking feature, as it wont help you on older releases. =)
+
+*** News 10/15/97 -- New /set, /SET STATUS_DOES_EXPANDOS (ON|OFF)
+	This /set controls whether or not any expandos (eg, $vars or $func()s)
+	in the status line should be expanded or left alone.  Please note that
+	this option is *very expensive*, and so you should not turn it on
+	unless you really do have expandoes in the status_format, and you 
+	really shouldnt put expandoes in the status_format if you can possibly
+	get away with it. ;-)
+
+*** News 10/15/97 -- New built in function, $currchans(server)
+	If you specify an argument, this function will return quoted words
+	containing a server refnum and a channel name.  The channels to be
+	returned are channels that are currently considered to be "current
+	channels" for some window that is connected to the specified server.
+	If you specify a server of -1, then $lastserver() is assumed.  If you
+	specify no arguments, then all current channels will be returned.
+	It is expected that this will be useful to determine if a given
+	channel on a given server is a current channel on *any* window. 
+	The return value of this function uses double quotes, so it is
+	suitable for use in /fe, or to pass to $rmatch().  Just remember to
+	glob against "* #chan" (with the quotes!) for any server.
+
+*** News 10/15/97 -- Change to /window (Colten)
+	If you specify a window refnum where /WINDOW excepts to find a command,
+	then that window will be used as the target window for any further
+	commands, *but*, that window will not be made the current window (as
+	it would if you had used REFNUM <refnum>).  This is useful for 
+	changing an attribute for a specific window but you dont want the
+	current window to change.  eg:
+
+			/window 2 double on
+
+*** News 10/15/97 -- Change to $myservers() (Colten)
+	If you pass any argument to $myservers(), then a list of refnums to
+	open servers will be returned.  The existing behavior of returning a
+	list of NAMES to open servers is retained if you pass no arguments.
+
+*** News 10/15/97 -- New built in function, $isconnected(refnum) (Colten)
+	This function returns 1 if the specified server is currently connected
+	(eg, you have been successfully registered).  If refnum is -1, then
+	from_server is assumed.
+
+*** News 10/08/97 -- New /window command, /WINDOW SCRATCH (ON|OFF)
+	This allows you to designate a window as being a "scratch" window.
+	A 'scratch' window is one that allows direct addressing, and it does
+	not scroll.  The support *just barely works*.  That means if you 
+	do anything i didnt expect, you probably will crash the client.
+	Let me know if you find any ways to confuse this so i can fix them.
+
+	To send text to a given line on a scratch window, use /xecho with
+	the -line flag:
+		/xecho -window <scratch refnum> -line <line number> text
+
+	/XECHO -LINE will whine at you if:
+	* If the window you specify is not a scratch window.
+	* You dont specify -window before you specify -line.
+	* If the line number you specify is out of range for the window.
+
+	Suggestions/observations:
+	* Scratch windows dont deal with being resized very gracefully.
+	  I suggest you do /WINDOW NEW SCRATCH ON FIXED ON  so that it cant be
+	  resized on you.  You should assume (at this time) that if the window
+	  gets resized, the contents are *undefined*.  That will probably be
+	  improved in the future.
+	* Scratch windows probably should not be attached to servers.  Use
+	  /WINDOW DISCON to make sure they are unbound.
+	* There is NO SCROLLBACK on scratch windows.  When you overwrite a 
+	  line, it is gone forever.
+	* If you "unscratch" a window, then it is implicitly /CLEARed.
+	  This to ensure that the status of the window after being returned
+	  to normal will be coherent.  The previous contents of the window
+	  will be retained in the scrollback buffer.
+	* If you do a normal /echo to a scratch window, it will use the line
+	  below the most previously output line.  When you reach the bottom
+	  of the window, it will go back to the top.
+
+*** News 10/08/97 -- New /window command, /WINDOW DISCON
+	This allows you to specify that a window is not to be bound to any
+	specified server.  That means the window will NEVER recieve output
+	from any qualified server event, unless you specifically use /xecho
+	to redirect output to that window.
+
+*** News 10/01/97 -- IMPORTANT! SEMANTIC CHANGES! IMPORTANT!
+	The $winchan() functions and $chanwin() functions have been reversed.
+	That is to say, $winchan() now takes a WINDOW REFNUM argument, and
+	$chanwin() takes a CHANNEL NAME argument.  This is the reverse of
+	what it has been before, and the change was done in order to keep the
+	semantics of built in functions coherent  (eg, $chan*() functions
+	always take a channel name, and $win*() functions always take a window
+	refnum.  A /set has been provided to let you have the old semantics.
+	     *** BUT PLEASE MAKE A PLAN TO CONVERT YOUR CODE TO THE ***
+	             *** NEW SEMANTICS. PLEASE PLEASE PLEASE. ***
+
+	To let you know if the new semantics or old semantics are in effect,
+	the new $info command, ``$info(w)'' command will return 1.  So add
+	something like this in your script to get compatability:
+			if (info(w) == 1) { set winchan_hack ON }
+
+	IMPORTANT!!!
+	The value of $info(w) will change to 2 (two) when this hack has been
+	phased out in some future version. *** PROGRAM DEFENSIVELY. ***  Plan 
+	to do something reasonable if $info(w) returns a value of 2. (This
+	means that the above /set is not available, and the new semantics are
+	irrevokably in place.)  I promise that the old semantics will not be
+	irrevokably phased out before EPIC4pre5, and that the old semantics
+	will most likely be phased out at the time of the production release
+	(EPIC4.000)  Please plan ahead for this.
+
+	If all of this ends up being unreasonably complicated or a burden,
+	then let me know, and i'll work something out with you.
+
+*** News 10/01/97 -- New /set, /SET WINCHAN_HACK
+	This is a *temporary* feature to help ease the transition for those
+	who have a substantial amount of code that depends on the semantics
+	of $winchan() being "backwards" (eg, that it takes a channel argument
+	rather than a window argument).  When this is turned on, $winchan()
+	and $chanwin() will have their "traditional", or "reverse" semantics.
+	When this is turned off, they will have their "modern", or "correct"
+	semantics.  THIS SHOULD NEVER BE TURNED ON UNLESS YOU REALLY NEED IT.
+	Please do NOT write new code with the old semantics, it will only
+	encourage the broken semantics.
+
+*** News 09/26/97 -- New /on, /ON REDIRECT
+	This hooks any time something is about to be redirected to someone.
+	If you hook this silently, the redirect will be suppressed.  This 
+	would then be useful to filter out stuff that you might not want
+	to have redirected.
+		$0  - the target to whom the text is about to be sent
+		$1- - the text itself.
+
+*** News 09/20/97 -- New function $servernick()
+	You give it a server refnum, it gives you your current nickname
+	on that server.  This function has been around a while, it just
+	never got documented.
+
+*** News 09/20/97 -- #define CONTROL_C_COLOR now in $info(o)
+	It is represented by the letter 'c'.
+
+*** News 09/20/97 -- New built in function $chanwin()  <THIS HAS BEEN CHANGED>
+	This is the reverse of $winchan().  You give it a window refnum or
+	name, and it gives you the current channel (if any) for that window.
+
+*** News 09/20/97 -- New built in function, $winnicklist() (Colten)
+	You pass it either a window refnum or a window name, and it returns
+	the nicks that are currently on the "nick list" for that window.
+	(See the help for /window add for info about the nick list).  If
+	you dont specify any arguments, the current window is presumed.
+
+*** News 09/20/97 -- New /set, /SET NO_CONTROL_LOG (Peter Evans)
+	When this is /set to on, the client will not output any nonprintable,
+	nonspace characters to the log file.  When off, it will have the old
+	behavior (dumping everything right to the log as it appears on the
+	screen.)
+
+*** News 09/20/97 -- New /on, /ON WINDOW_CREATE
+	When a window is created with /on window, then this new hook will
+	be activated.  You may assume that any "window" commands that you
+	specify in the body will work for the window being created.  This
+	is intended for setting "defaults" for windows, like so:
+
+		/on window_create * window double on
+
+*** News 09/18/97 -- Comprimise for /SET STATUS_MAIL
+	Because there has been some controversy over the inability to "get
+	rid of that damned colon" for %M in /set status_mail, i have agreed
+	to take it out.  However, for those of us who like to have 
+	/set mail 1, we wont be left with a "(Mail: )".  There is a new
+	script called 'setmail", that traps /set mail, and offers two new
+	/set's, /set mail_format1, and /set mail_format2, for controlling
+	how the mail should look like when /set mail 1 and /set mail 2
+	is engaged (respectively.)  I would just suggest that you load it
+	in your .ircrc (before you /set mail) and see what i mean.
+
+*** News 09/18/97 -- New error tracking feature
+	If an error occurs while you are loading a script, then the client
+	will tell you about where the error occured.  I say "about", because
+	the client doesnt actually try to run /load'ed commands until it 
+	reaches the next valid command, so the command that is in error is 
+	always the first one BEFORE the line stated.  As well, when you
+	attempt to /assign to an invalid variable, it will tell you what the
+	invalid variable name was, so you can hunt it down.
+
+*** News 09/16/97 -- New /set, /SET STATUS_NICK (|Rain|)
+	This is a control for how your nickname will appear in the status
+	bar.  Following convention, you may use %N in the /set to determine
+	where the nick should be placed.  The default is just %N by itself,
+	which yeilds the traditional behavior.
+
+*** News 09/11/97 -- New function $nohighlight()
+	This function will take any arbitrary input and will convert all of
+	the highlight characters (^B, ^V, ^_, ^O, ^C, and ^[) to a "printable"
+	format (in reverse).  This allows operators to find hidden attributes
+	in channel names that would otherwise be invisibly stripped.
+
+*** News 09/10/97 -- New function, $deuhc()  (Peter Evans)
+	This function will remove "*!" or "*!*@" from the front of the
+	specified pattern, if it is present.
+
+*** News 09/09/97 -- New /window argument, /WINDOW SKIP (ON|OFF)
+	You may now mark that a window should be 'skipped' when you are
+	moving to the NEXT_WINDOW or PREVIOUS_WINDOW.  The only way to
+	"land" on that window then is to use /WINDOW GOTO or such.  This
+	was intended to be used for windows that are not to recieve input,
+	such as your OpView window.
+
+*** News 09/09/97 -- New command, /SHOOK <type> <args>
+	This is a hokey name, i admit.  Anyone got a better name for it?
+
+	This function allows you to arbitrarily synthesize /on events with
+	your own arguments.  This is intended to retro-fit new problems onto
+	old solutions.  For example, you could do:
+
+		/on ^public "% &KILLS Received kill message *" {
+			shook KILL $2-
+		}
+
+	or something like that, to make your normal /on kill handlers to be
+	executed while youre on an ef2.9 server.  Or so is the idea.  Let
+	me know what you think of this, and if its broken, say so.  
+	**** BE WARNED ****
+	Code in on hooks that depend on side effects (like $userhost()
+	being set) will be *utterly confused* by these synthetic events, and
+	will probably get wildly incorrect results.  You yourself are 
+	responsible for making sure that this doesnt happen to you!
+
+*** News 09/09/97 -- New /window argument, /WINDOW FIXED (ON|OFF)
+	You may now "fix" a window as being a given size.  When a window is
+	"fixed", it will never be shrunk or grown when you shrink or grow
+	another window, and it is immune to /window balance.  You can still 
+	directly shrink or grow a fixed window.  The only exception to this 
+	is if all windows on a screen are fixed, and the screen is resized, 
+	the bottom window of the screen will be forcibly resized, although it
+	would still be "fixed". This was all done so that the OpView window 
+	can be set to 4 lines and it will stay that way unless you explicitly 
+	change it.
+
+*** News 09/09/97 -- New /set, /SET BANNER_EXPAND
+	If this is set to ON, then the contents of /SET BANNER will be
+	expanded ($-substitution will occur) before it is used.  If it is
+	OFF, then the value of /SET BANNER is used literally.
+
+*** News 09/05/97 -- Changes to how windows are resized
+	When you resize your display, then the proportion of window sizes
+	between the non-fixed windows will be retained.  That is to say,
+	if you had two windows, sizes X and 2X, and you change the screen
+	so that the first window has size Y, then the second window will have
+	about size 2Y.  When you rebalance your windows (with /window balance),
+	all the nonfixed windows will be set to approx.  the same size.
+	Fixed windows will not be touched. 
+
+*** News 09/05/97 -- Now friendlier with job control
+	If you want to suspend the client but are worried about it pinging
+	out, you should be able 'bg' the client now, and it wont stop due
+	to (tty output) or mangle your screen.  You will need to stop the
+	client (with 'kill -STOP %1') before you 'fg' it again, or the client
+	wont accept input.  This is not a bug, this is a job control problem.
+	This should satisfy anyone who still pines for 'ircserv' ;-)
+
+*** News 09/04/97 -- New /on, /ON DCC_LIST
+	Many people have asked for an easy way to reformat the DCC output.
+	So this new on will output the 8 most interesting capabilities.
+	Im open to adding new ones, just let me know.  The 'banner' of the
+	list is output with $0 being "Start" and the rest of the fields being
+	filler.
+		$0  - The type of DCC connection
+		$1  - "1" if encryption is on, "0" if its not  (future exp)
+		$2  - Nickname of the peer
+		$3  - Status of connection
+		$4  - $time() when connection established, 0 if not connected.
+		$5  - Size of the file transfer, 0 if not applicable
+		$6  - Number of bytes transfered, 0 if not connected
+		$7  - Description field (usually the full filename)
+
+*** News 09/04/97 -- Some new behavior for your display
+	A lot of the code that handles your display has been rewritten.
+	The most important changes are:  When you scroll backwards, you will
+	get the lines that actually appeared on your screen, not the lines in
+	your lastlog.  Those lines are output at the width they were split
+	for, and if your screen is a different size, they wont be re-split.
+	This is not a bug.  Do not report it as a bug.  When you are in
+	scroll mode, the screen will not automatically scroll for you if
+	the display reaches the end of the screen.  Instead, that stuff is
+	put into the hold buffer.  You can use the SCROLL_FORWARD key to go
+	forward a page *even into the hold buffer*, and all new output will
+	appear as long as that output doesnt make the screen scroll.  Use the
+	SCROLL_END key to go back to the "normal" scrolling behavior.
+	You cannot turn HOLD_MODE off if youre in scrollback mode.
+
+*** News 08/27/97 -- New /set, /SET CLOCK_FORMAT
+	This /set, if set, controls how the client should represent the
+	current time on your status bar, among other things.  Rather than
+	have the representation be hardcoded in the client, this will give
+	you the flexiblity to have the time displayed just however you want.
+	By default, this /set comes UNSET.  When this is unset, the more
+	traditional behavior of /set clock_24hour determines how the time
+	should appear.  If you /set clock_format, it *overrides* the setting
+	of /set clock_24hour.
+
+*** News 08/25/97 -- New built in functions, $substr() and $rsubstr()
+	These functions allow you to look for a string inside of another
+	string.  It takes two or more arguments, with the first argument
+	being the string to look for (use double quotes if it has spaces
+	in it) and the rest of the arguments being the words to look in.
+	(You dont need quotes for this arg.)  It returns -1 if the string
+	could not be found, or returns the offset (counting by zero) where
+	the string may be found in the source.  $rsubstr() looks backwards
+	from the end of the string rather than from the front.
+
+*** News 08/22/97 -- New flag to /XECHO, -B
+	The /XECHO -B flag instructs the client to prepend the current value
+	of BANNER_VAR before the line to be output.  This allows you to output
+	something with a banner without having to worry about BANNER_VAR.  If
+	you have have /set show_numerics ON and the hook happens to be a 
+	numeric hook, then the numeric will be output.
+
+*** News 08/20/97 -- Limits on /echo now removed
+	There have always been limitations to the size of lines being handled
+	for display.  Recent limits have been 2048 characters or 40 lines to 
+	the screen, and 20480 characters to the lastlog or to a log file.  
+	All of these limitations have now been eliminated, and any size line 
+	(within the confines of available memory) can be handled without 
+	excuses.
+
+*** News 08/19/97 -- Handling of ^C colors, new set, /SET CONTROL_C_COLORS
+	^C colors (eg, ``mIRC colors'') are now handled in the output stream.
+	Whether or not anything is done with them is controlled by a compile
+	time option (which is further controlled by a /set).  If you #define
+	CONTROL_C_COLORS, in config.h and you /set CONTROL_C_COLORS ON, then 
+	they will be parsed and converted into colors.  If you #undef it, 
+	then the value of the /set will not matter, colors will never be 
+	honored.  Sorry, but the "old" behavior of leaving them unchanged in 
+	the output stream is no longer available.  You either must honor them 
+	or you must have them filtered out.  (I doubt anyone will have a 
+	problem with this.)
+
+	By default, the #define is #undef'd, and the /set is turned off.
+	The defaults will never change in future releases unless there
+	is overwhelming public pressure to change them.
+
+*** News 08/17/97 -- New operator, #~ (prepend operator)
+	This is similar to the #= operator, which appends text to a variable.
+	This operator PREPENDS text to a given variable.
+
+*** News 08/17/97 -- New flag for /timer, -REPEAT
+	The /timer -REPEAT flag takes one argument, which is given to be
+	the number of times that the specified action should be repeated
+	(every specified interval).  The /timer -LIST flag reflects the
+	number of events left to be scheduled.
+
+*** News 08/17/97 -- New script, "MOTD"
+	This script re-implements client-side MOTD files.  It uses the two
+	below functions.  Its only provided for those of you who miss this
+	feature.
+
+*** News 08/15/97 -- New function $ftime()
+	This function returns to you the "mtime" of a given file (see stat(2))
+	In ordinary words, this was the last time that the file was modified.
+	It is the time that you see for an ordinary "ls -l" listing.  It is
+	returned in seconds since the epoch, so youll need to $strftime() or
+	$ctime() to convert it to human format.
+
+*** News 08/15/97 -- New function $irclib()
+	This function is only useful if you need to know where the IRCLIB
+	is.  An example of its use is the "motd" script.
+
+*** News 08/15/97 -- New function, $winbound()
+	This function takes one argument.  If the argument specified is the
+	name or refnum of a window, then the name of the channel bound to that
+	window (if any) is the return value.  If the argument specified is
+	the name of a channel, then the window refnum to which it is bound
+	(if any) is the return value.  In case of ambiguity (if you have a
+	window name that looks like a channel name), the window takes
+	precedence over the channel.
+
+*** News 08/08/97 -- Notify can now do userhost lookups automatically
+	Most people (everybody?) do a /userhost request in their 
+	/on notify_signons, and that has been distressing to many servers,
+	because when you connect there is a flurry of ISON and USERHOST traffic
+	and many people have gotten trapped in "flooder mode".  Some have 
+	tried, with limited success and much agony, to batch up userhost
+	requests to help.  In the interests of cutting down on client->server
+	traffic needed for NOTIFY events, the client can now automatically
+	fetch userhosts on your behalf.
+
+	To turn on this feature, /set NOTIFY_USERHOST_AUTOMATIC on.  When
+	this is ON, the client will dispatch userhost queries for everybody
+	who is 'triggered' for that minute.  It does intelligent batching,
+	so you wont be flooding the server as much.  This is ideal for when
+	you initially connect and your flurry of ISONs and USERHOSTs can
+	sometimes make the server hate you.  If this is OFF, then the 
+	traditional behavior applies as normal.
+
+	To accomidate this new feature, /on NOTIFY_SIGNON now takes two
+	arguments:  The new second argument is the userhost of the person
+	signing on.  If you have the automatic userhost feature turned off,
+	the second argument will be empty.
+
+*** News 08/08/97 -- New /set, /SET XTERM
+	You may now use this set to specify what "xterm" program you want
+	to use for /window create.  Note that this can be overriden by the
+	XTERM environment variable.  This was done on purpose, so that those
+	who have been setting the XTERM environment variable wont be suprised
+	by the /set's "default".
+
+*** News 08/08/97 -- New servcmd support (SQUERY, SERVLIST, WALLCHOP)
+	The client now natively recognizes the SQUERY, SERVLIST commands
+	from av2.9 servers, and the WALLCHOP command from u2.10 servers.
+	I didnt implement WALLCHOP in the same way as contributed, so I
+	might get yelled at and change the implementation soon. ;-)
+
+*** News 08/08/97 -- Can send multiple files with /dcc send
+	You may now specify more than one file with /dcc send nick <file>.
+	I guess thats useful in conjunction with $glob(*) or something.
+	Each request is sent out in a seperate PRIVMSG (obviously), so
+	you should be careful not to send out TOO many files at a time...
+
+*** News 08/08/97 -- New /on, /ON KILL
+	This should simplify a lot of people's lives.  When you recieve
+	one of those messages "*** Notice -- Recieved KILL message for ...",
+	/ON KILL will be hooked with the following arguments:
+		$0  - The server who sent the message (your server)
+		$1  - The hapless victim
+		$2  - The bastard who did the kill
+		$3  - The server path to the bastard
+		$4- - The reason for the kill
+
+*** News 08/04/97 -- New /on, /ON OPER_NOTICE
+	The server uses "sendto_ops" to send an notice to all operators.
+	The client now automatically deals with this.
+		$0  - the server that sent you the notice
+		$1- - the text of the message AFTER the *** Notice --- part.
+
+
+*** News 07/28/97 -- New built in function, $uhc()
+	$uhc() takes a single argument, which is a partially constructed
+	nick!user@host pattern, and returns a fully qualified nick!user@host
+	pattern.  That is to say, any parts that are missing are filled in.
+	This is a front end to cut_n_fix_glob(), which is the function that
+	"fills in" your arguments to /ignore, so this works identically as
+	the nick!user@host argument to /ignore.
+
+	$uhc(nick)		returns		nick!*@*
+	$uhc(user@host.com)	returns		*!user@host
+	$uhc(*.host.com)	returns		*!*@*.host.com
+
+
+*** News 07/28/97 -- New /SET, DO_NOTIFY_IMMEDIATELY
+	If this is set to ON, then when you do the /notify command, an
+	ISON will be immediately dispatched (the usual behavior.)  But if
+	this is set to OFF, then the ISON is not immediately performed, and
+	you will have to wait until the top of the next minute to see if 
+	the person is on.  This is intended to be used in your .ircrc, 
+	because some users have a zillion people on notify, and they end up
+	sending enough lines to the server when they connect that they activate
+	the server's flood control mechanism, then the server starts slowing
+	you down, and thats just a big hassle.
+
+*** News 07/28/97 -- New /SET, NOTIFY_INTERVAL
+	This one is a bit tricky.  The value of this set is taken to be
+	a suggestion about how frequently NOTIFY checks should be performed.
+	This does not ever make the client check at any time other than the
+	top of every minute, but it is possible to tweak this variable so
+	that some minutes will be skipped.  For most sane people, setting
+	this to be a multiple of 60 is advised.  Setting this to less than
+	60 does not make it check more frequently than once a minute.
+
+	/set notify_interval 60		yeilds the "customary" behavior
+	/set notify_interval 120	makes it only check every 2 minutes
+	/set notify_interval 150	makes it check only twice every 5 mins
+					at minutes 3 (180s) and 5 (300s).
+
+
+*** News 07/28/97 -- Two new /SETs, AUTO_REJOIN_DELAY and AUTO_RECONNET_DELAY
+	These two control the amount of time that must pass between when
+	you are kicked or killed, and the time that you attempt to rejoin
+	or reconnect.   Reconnect is probably not totaly intuitive, as it
+	attempts to bind the server to the current window *at the time that
+	the timer expires*, not the window that was disconnected from.
+	Arguably, this is a bug, and may be "fixed" in the future.  The 
+	implementation for these is kind of hairy.
+
+
+EPIC4pre1
+
+*** News 06/18/97 -- New feature, "CPU SAVER"
+	Some of you have asked me for a way to make ircII use less CPU
+	especially when you are idling and detached.  Every minute ircII
+	sends out your notify list, parses the replies, checks the clock,
+	updates your status line, and other various housekeeping duties.
+
+	But when youre detached, you dont really care if your notifies
+	dont get processed promptly every 60 seconds, you dont care if
+	the clock is accurate every moment, and you would prefer that
+	the client not go to the trouble of wasting CPU time just to
+	keep track.   This wont help if youre on busy channels, or
+	logging wallops, only if the only traffic youre getting are
+	the pings from the server.
+
+	There are several new sets:
+	/set CPU_SAVER_AFTER -	If you havent typed anything after
+				this many minutes, CPU saver mode activates.
+	/set CPU_SAVER_EVERY -	If cpu saver mode is on, the client will
+				only do housekeeping every this many minutes.
+	If either of these two are 0, then cpu saver mode cannot be
+	activated, and the "traditional" behavior will apply.
+
+	If youre interested in seeing when the client is in cpu saver
+	mode, there is a new status line expando, "%L".  There is also
+	a new /set, /SET STATUS_CPU_SAVER which determines how the %L
+	expando will look when it is activated (just like STATUS_MAIL)
+
+	There is also a new keybinding, "CPU_SAVER", which if bound to
+	a key will activate cpu saver mode without having to wait.
+
+	I did this on a whim, mostly because i havent done any features
+	in a long time that have required this many changes, and I wanted
+	to have some fun, so i just let loose with this and went berzerk
+	If i forgot some obscure feature with this, let me know! ;-)
+
+
+*** News 05/31/97 -- New environment variable honored, ``IRC_SERVERS_FILE''
+	Someone had suggested something close to this -- they wanted a 
+	way to specify a SERVERS_FILE as an absolute path rather than
+	having it in their irclib directory.  So you can now set this
+	environment variable to an absolute path where you would like the
+	client to get your server list from.  This overrides any
+	built in SERVERS_FILE setting, if appropriate.
+
+*** News 05/31/97 -- Semantic clarification for /TOPIC
+	Due to the confusion between the very common ``topic'' alias
+	and the built in TOPIC command syntax, I have expanded the
+	built in TOPIC command to do everything that everyone expects
+	TOPIC to do, towit:
+
+		/topic This is a topic		(set current channel topic)
+		/topic * This is a topic	(same thing)
+		/topic				(see topic on current chan)
+		/topic *			(same thing.)
+		/topic #chan This is atopic	(set topic on #chan)
+
+	I strongly advise you to throw away your /topic alias unless it
+	does something up and beyond this.  If it does, let me know, and
+	I can include its semantics in the client, if its reasonable.
+
+*** News 05/19/97 -- All new syntax for /IF
+	As if ircII wasnt becoming PERLish enough, ive modified the
+	/IF command to be more perl-like:  You may now use the 
+	"elsif" modifier to indicate a blocked if command, eg:
+
+		if (....) {
+			....
+		} elsif (...) {
+			....
+		} elsif (...) {
+			....
+		} else {
+			....
+		}
+
+	(The final "else" is optional.)  Note that the placement of
+	the "elsif" and "else" modifiers is critical:  They MUST be
+	on the same line as the closing } to which they modify, or the
+	/LOAD parser will get totaly confused and munge the whole
+	thing up.  This is a limitation that applies only to how
+	scripts are loaded -- sorry.
+
+*** News 05/09/97 -- New function added, $findw(word ...text ...)
+	This addresses the two most common complaints people have
+	about $[r]match():
+
+	1) This function returns the WORD NUMBER of the word
+	   in text, such that $word($findw(word .text.)  .text.)
+	   returns "word".  It returns -1 if word is not found.
+	2) This function does not do anything screwy about quoting
+	   or unquoting your input.  It just looks for the word,
+	   thats it.  No pattern matching, no frills, and its fast.
+
+*** News 05/09/97 -- Semantic weakness closed
+	There was a semantic weakness with respect to the word count
+	and strlen modifiers ($#var and $@var) such that if you did 
+	not provide a variable to modify, an unuseful value was returned.
+	Since this was likely to cause confusion, these cases are now
+	defined to implicitly assume $* as the default argument. eg:
+		$#   all by itself is now the same as $numwords($*)
+		$@   all by itself is now the same as $strlen($*)
+	These are *NOT* built in functions.  The # and @ characters
+	still are considered to be modifiers.  The weakness was that
+	these modifiers did not return meaningful values when a value to
+	modify was not provided:  This change stipulates a useful default.
+
+	In a seperate, but related topic, a change was also made to
+	the math parser to honor this change in that context.  That
+	is to say,   @ foo = #   now assigns to `foo' the number of
+	arguments in the current context.  NOTE THAT THIS IS NOT A
+	FUNDAMENTAL CHANGE!  We're just saying that the default value
+	for the # and @ modifiers is $*.  This is not a "function"!
+
+*** News 05/05/97 -- New flag to /WINDOW,  /WINDOW LASTLOG
+	/WINDOW LASTLOG lets you individually tweak the size of a 
+	window's lastlog.  This was introduced because this used to
+	be the default beahavior of /set lastlog, but now that /set
+	lastlog is a global action, we still need a way to do this...
+
+*** News 04/29/97 -- New /set, /SET QUIT_MESSAGE
+	This will be your default quit message.  If you do something
+	stupid, like unset this completely, the client's version will
+	be used as the default.  Of course, any argument you pass to
+	/quit or /signoff will override this /set.
+
+*** News 04/29/97 -- New /set, /SET DISPATCH_UNKNOWN_COMMAND
+	If you type a command that is not recognized by the client,
+	and youre one of those people who /never/ mistype a command,
+	then you can /set this to ON, and the client will dispatch any
+	otherwise unrecognized commands to the server.  Im sure your
+	server admin will love you if you do this.
+
+*** News 04/29/97 -- New built in function, $winchan() <THIS HAS BEEN CHANGED>
+	You give it a channel name, and an optional server name
+	or server refnum, and it tells you what window refnum that
+	channel belongs to. (Written by IceKarma)
+
+*** News 04/29/97 -- New flag to /lastlog, /lastlog -max
+	You can use /LASTLOG -MAX to specify the maximum number
+	of matches you want to display, regardless of any other
+	flags.  The default is no limit.  This was written by Sheik.
+
+*** News 04/29/97 -- New functionality to /stack,  /stack set
+	You can now do /STACK (PUSH|POP|LIST) SET just as you can
+	already with ALIAS/ASSIGN/ON.  This was written by Colten.
+
+*** News 04/21/97 -- New set, /SET BANNER
+	The /SET BANNER variable now controls what special banner will
+	be prepended to informational messages from the client.  Up until
+	now, the banner has been three stars ("***"), and many people dont
+	like that or want to be able to change it.  Now you can.
+
+*** News 04/21/97 -- New on, /ON SET
+	/ON SET is a way to extend the capabilities of the /set command.
+	The /ON SET hook is passed two or more arguments, with
+		$0  -- is the name of the variable to be set
+		$1- -- is the value the variable will be set to.
+
+	The main idea is the ability to offer /set variables that are
+	not built into the client, and execute ircII code to handle that
+	situation.  The other idea is the ability to suppliment or override 
+	a built-in set variable when it is changed.
+
+	If you hook /ON SET with the "SILENT" modifier ('^'), then the
+	default action (if any) will not be taken.  This may mean that
+	if the variable is not a built in variable, no error will be
+	output.  If the variable IS a built in variable, then the variable
+	will NOT be set after the fact.
+
+	There are two ways to get around this:  You can either hook the
+	/ON SET with the "quiet" modifier ('-'), or you can use the /set
+	command inside of the /on set body.  If you attempt to /set a 
+	variable that is already being parsed by /on set, you will NOT
+	be offered the /on again -- it will directly set the variable:
+
+	Example:
+		on ^set "exec_protection off" {
+			echo *** You cannot set EXEC_PROTECTION off!
+			set exec_protection on
+		}
+
+	Or:
+		on ^set "auto_rejoin_delay *" {
+			echo *** AUTO REJOIN delay set to [$1] seconds.
+			@ myscript.autorejoin.delay = [$1]
+		}
+
+	Then you could do:
+		/set auto_rejoin_delay 4
+
+
+*** News 04/17/97 -- $X now reflects your ``real'' userhost
+	When you connect to a server, the client asks the 
+	server what your userhost is, and then that value is
+	reflected in the $X variable.  Different server connections
+	may have different $X values.
+
+*** News 04/17/97 -- Changed semantics for USERHOST command
+	The userhost command will act the same as always, except
+	under the following  condition:
+
+	If you do /userhost <nick(s)> -cmd, and *every* nick so 
+	specified is on one of the channel(s) you are on (so that 
+	the client already has the userhost cached), then the -cmd 
+	code will be executed immediately, and the client will *NOT* 
+	ask the server for the userhost information.  You are 100% 
+	guaranteed still to get accurate information, you will just
+	get it without waiting for the server query!  The only caveat
+	is that the AWAY and OPER fields will be specified with the
+	false value.  If you currently use the /userhost command to
+	determine if a person is an operator, keep reading.
+
+	A new flag has been added to the USERHOST command, -direct.
+	The -direct flag forces the client to do a server query for
+	the specified nicknames, even if all of the nicknames are 
+	known to the client beforehand.  This can be used to get
+	accurate AWAY and OPER information.  This flag only makes sense
+	with the -cmd flag, since userhost caching does not happen
+	unless the -cmd flag is specified.
+
+*** News 04/10/97 -- Two new operators =~ and !~
+	The two operators are intended to be similar to the perl operators:
+	The lhs of the operator is expected to be a plaintext string, and
+	The rhs of the operator is expected to be a wildcard expression.
+	The operator returns a true value if the pattern matches the text,
+	and it returns the false value if it does not.
+
+	This is intended to be a low-cost alternative to the $match() and
+	$rmatch() built-in functions when the only thing you need to do is
+	see if a string is matched by a pattern.  If you need to select 
+	from more than one pattern, use $match() or $rmatch().
+
+*** News 04/07/97 -- Asynchronous code may use local variables
+	You may reference local variables in asynchronous code
+	provided that you follow the rules that have already been
+	laid down.  See the regress/kill script for more info.
+
+	1) You have to use /bless in the asynchronous code in order
+	   to have access to the underlying local variables.
+	2) You have to use /wait in the synchronous code in order to
+	   make sure the local variables dont go away.
+	3) Make sure you clean up your own messes.  Asynchronous code
+	   lying around, resulting in /bless calls when there is no 
+	   context for local variables is not a good thing.
+
+*** News 03/31/97 -- New argument to /WAIT command, ``for''
+	Yes, ``for'' without a hyphen.  This command guarantees that
+	the code given as the argument is executed synchronously.
+	That is to say, if the arguments, when executed, sent something
+	to the server, the command will not return until that request
+	has been completed (as if a wait had been done.)  But if the
+	code does not send a query to the server, no wait is executed,
+	and the command returns immediately after the code completes.
+
+	You can also mix and match ``wait for'' with regular ``wait''
+	calls and the client will be able to figure out what to do
+	without waiting extra more than it needs to.
+
+	And as always, using /wait or /wait for and /redirect at the 
+	same tims is a bad thing (tm), so dont do it.  The result is
+	undefined behavior (eg, what happens isnt my fault.)
+
+*** News 03/19/97 -- About the new who/ison (and soon userhost) queues.
+	The client now keeps a FIFO (queue) of who/ison/userhost queries
+	you make.  It is *critically* important that you do not confuse
+	these queues (due to the nature of these server queries, there is
+	no way to have any reasonable error recovery). 
+
+	The following behaviors are forbidden (but the client wont stop
+	you from doing them)
+
+	* Using /ON ^RAW_IRC to wedge the 303, 351, or 315 numerics.
+	  If you do this, the queues wont be properly flushed, anyone
+	  waiting on a proper reply wont be handled, and any further
+	  reqeusts will be thought to be previous queries, and all hell
+	  will break loose.
+	* Using /QUOTE to launch USERHOST, ISON, or WHO requests..
+	  If you do this, the client will whine at you when it gets
+	  unexpected replies and will eat the information.  If you launch
+	  another query before the invalid one finishes, all hell will
+	  break loose.
+
+	*** THERE IS NO WAY TO RECOVER IF YOU DO THESE THINGS ***
+	If youre stupid enough to do it, you get what you deserve.
+
+*** News 03/18/97 -- Expanded syntax for $userhost()
+	For your convenience, the $userhost() function now takes arguments:
+	You may specify one or more nicknames as arguments to the $userhost()
+	function, and the corresponding userhost(s) for the nick(s) specified
+	will be returned.  The string <UNKNOWN>@<UNKNOWN> will be inserted
+	for any nicknames whose userhost is not known.  The nickname(s)
+	speified *must* be people who are on channels you are also on for
+	the current server!  (See the second caveat)
+
+	* Caveat -- Because it can take time for the WHO query to complete
+	after you join a channel, there is no definite way to know if
+	$userhost() for a person on your channel will succeed or not.
+	You should probably be prepared to launch a /USERHOST query in
+	case of failure.  This deficiency may be altered or modified in
+	the future to block if an otherwise valid request is made while
+	a WHO query is still pending.
+
+	* Caveat -- This function will never be modified to launch a server 
+	query.  That means that this function will only ever recognize those 
+	nicknames that are common to channels you are on.  If you want to find 
+	the userhost for other users, you should use the /userhost command.
+	It is expected that the /userhost command will soon be able to
+	take advantage of the userhost caching (but it does not yet.)
+
+*** News 03/18/97 -- Expanded syntax for /who
+	For your convenience, the /who command now takes two new arguments:
+
+	-line {...}	The code inside the braces will be executed for each
+			line returned by the who query.  The arguments are
+			exactly the same as for the /on who hook, except that
+			this flag is *guaranteed* to override the default
+			/on who, and will also *go away* when the current who 
+			query is finished.
+
+	-end {...}	The code inside the braces will be executed at the
+			end of the who query, when the 315 numeric is parsed.
+			The arguments are:
+				$0 - server queried
+				$1 - body of the query
+			This is guaranteed to toverride the default /on 315,
+			and will also go away once the current who query is
+			completed.
+
+	These command bodies will be executed asynchronously, which means
+	that you must assume that the enclosing code scope will complete
+	before the code is ever executed (e.g., the same rules as for the
+	/userhost -cmd flag.) unless you use /wait.  You are encouraged
+	to not use /wait if you can figure a way around it.  Code that is
+	not concerned with being stricly backwards compatable with the
+	stock client is ***strongly encouraged*** to use these new flags.
+
+	Underlying this change is a new re-entrant WHO queue, which allows
+	you to launch more than one WHO query simultaneously.  No longer do
+	concurrent WHO requests have to wait for previous queries to complete,
+	and no longer (with the above flags) does the caller need to put the
+	WHO command in a /stack-/on-/wait wrapper.
+
+*** News 03/17/97 -- /on 312, /on 319 changes
+	All of the whois numerics: 311, 312, 313, 314, 317, 318, 319
+	now pass $0 as the server name and $1 as the target of the 
+	whois query.  All the rest of the arguments are passed as $2-.
+	Previously, some of these numerics passed the target as $1,
+	but not all of them.  I changed it this way for consistancy.
+
+*** News 03/17/97 -- New: /ON STATUS_UPDATE and $status()
+	/ON STATUS_UPDATE is hooked whenever any of the status lines
+	for any of the visible windows changes **and you are in dumb mode**:
+	   $0  is the refnum for the window whose status line has changed
+	   $1  is the status line in that window that has changed
+	   $2- is the actual status line for that window.
+
+	$status() can be used to fetch the current status line for any
+	visible window.  Invisible windows do not have their status lines
+	updated, so they may be inaccurate.  This problem may change in
+	the future.  Pass two arguments:
+	   $0  is the refnum for a window
+	   $1  is the status line
+
+*** News 03/02/97 -- Local variables can now span entire array tree
+	The syntax:
+		``local x.y.''
+	will define all variables in the subarray $x[y][...] to be
+	implicitly considered local variables.  That is to say, the
+	entire variable tree rooted at $x[y] is local to that scope.
+	This was requested by a user for compatability with another
+	client.  All local variables that are instantiated in this
+	manner have the same scope as the explicit declaration above.
+
+*** News 02/18/97 -- New built in variable, /SET CONNECT_TIMEOUT <seconds>
+	Set this to the number of seconds you want your connect()ions to	
+	block before they time out.  Note that this doesnt affect
+	connect()ions that are already in progress, only those that are
+	started after you set it.  The default is 30.
+
+*** News 01/30/97 -- Expanded syntax for /LOCAL, /STUB
+	You may now specify more than one name per command:  Each name
+	will be treated independantly of all others.  The names must be
+	seperated by a comma, and ***must not*** have any spaces between
+	the commas and the names (that is, all of the names must form one
+	logical word).  To declare both "foo" and "bar" as local vars,
+			/local foo,bar
+
+	You can do this to stub more than one alias/assign to the same
+	file, as well:
+			/stub foo,bar filename
+
+*** News 01/29/97 -- New command /BLESS
+	Currently this command ignores its arguments.  This may change
+	in the future, so you should not get in the habit of supplying
+	arguments to this function, for forwards compatability.
+
+	The ''BLESS'' command is used to allow an asynchronous scope to
+	access the local variables of the underlying synchronous context:
+
+		alias foobar {
+			local myvar $0
+			userhost $1- -cmd {
+				bless
+				echo $myvar -- $0!$3@$4
+			}
+			wait
+		}
+
+	Note that the use of 'bless' must be paired with an appropriate
+	call of ``wait'' in the synchronous context, or this wont work.
+
+*** News 01/27/97 -- New flag for /EXEC, -direct
+	Syntax:
+		/EXEC -direct <commands>
+
+	This simulates the effect that unsetting the SHELL variable
+	causes, that is, the command is executed directly, without
+	invoking a subshell.  This is appropriate for those who wish
+	to execute a command passing untrusted data as an argument:
+	With this flag, there would be no shell to interpret metacharacters,
+	thus cutting down on that ability to have an accidental back door.
+
+*** News 01/27/97 -- New command, /SETENV
+	Syntax:
+		/SETENV <var-name> <new-val>
+
+	Sets the process environment variable <var-name> to the value of
+	<new-val>.  This command is not neccesarily useful, nor is it 
+	always appropriate, but it is provided for completeness.  There
+	are several places in the code that can benefit from the ability
+	to change environment variables after startup (eg, TZ).  It also
+	allows you to set environment variables for /exec'd processes,
+	and it is also possible to really foul things up if you mangle
+	important environment variables such as DISPLAY and so on.
+
+*** News 01/24/97 -- New, /ON ODD_SERVER_STUFF
+	This is hooked whenever the server sends you something
+	that the client doesnt recognize.  This is usually when
+	you try to connect to a non ircd server, or you use some
+	extension that isnt yet supported.  You are strongly 
+	encouraged to use this interface to support new features
+	rather than using /on raw_irc because this hook is only
+	activated when something unexpected occurs (which is rare),
+	rather than for every incoming line, as raw_irc does.
+
+	$0  is the server that sent it to you, '*' if unknown
+	$1- is the unrecognized command and its arguments.
+
+*** News 01/22/97 -- /FE, /FOREACH use local variables now
+	The "control variables" for the /FE and /FOREACH command
+	now are local variables.  They will not disturb global variables,
+	but they will destroy any local variables you have by the same
+	name.  You dont have to explicitly declare the variables as local,
+	it is done automatically for you.  Note that the normal warnings 
+	for local variables still apply -- dont use any variable name that
+	is the same as a global variable you might want to use later in
+	the same alias/on. 
+
+*** News 01/18/97 -- Support for local variables
+	You may define a local variable with the following command:
+
+		LOCAL <varname> [<value>]
+
+	It mirrors the ASSIGN command.  Note that local variables act
+	in exactly the same way as normal variables, except you cannot
+	get rid of them.  You also do not (yet) have any way to get at
+	a global variable that has the same name as a local variable, so
+	choose wisely.  An example:
+
+		alias foobar
+		{
+			local b			(declare LOCAL var $b as []) 
+			assign a 4		(assigns 4 to GLOBAL $a)
+			local a 5		(assigns 5 to LOCAL $a)
+			eval echo $a		(outputs '5' -- local)
+			@ a = []		(clears LOCAL variable)
+			eval echo $a		(outputs '' -- local)
+		}
+
+	Restrictions:
+	* You cannot have local aliases -- only local variables
+	* You cannot save local variables.
+	* You cannot (yet) access a global variable with the same name
+	  as a local variable.
+
+	This support is EXPERIMENTAL and still has some development to go 
+	before it is mature.  
+
+
+[This file truncated for EPIC4pre1... the rest of it is available via
+ ftp at ftp.acronet.net]

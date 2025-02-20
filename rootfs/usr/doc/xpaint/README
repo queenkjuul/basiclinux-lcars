@@ -1,0 +1,77 @@
+Release notes for XPaint 2.4.9
+------------------------------
+
+NOTE: This version of XPaint is released and maintained by Torsten Martinsen
+(torsten@danbbs.dk). It is based on XPaint 2.1.1, which was written by
+David Koblas. Please do NOT send bug reports etc. to David Koblas.
+
+To compile this program, you will need:
+
+	- an ANSI C compiler (such as GCC),
+	- the Xpm library, version 3.4c or later
+
+To compile with support for TIFF images, you must have the TIFF library,
+version 3.2 or later. 
+
+To compile with support for JPEG images, you must have version 6 of the JPEG
+library from The Independent JPEG Group, released 2-Aug-95. Newer versions
+should also work.
+
+To compile with support for PNG images, you must have the PNG library, version
+1.0.88 or higher.
+
+The TIFF/JPEG/PNG libraries can be downloaded from
+ftp://ftp.uu.net/graphics/{tiff,jpeg,png}. 
+libpng requires zlib, which is also in the png subdirectory.
+
+XPaint is known to have been succesfully built on the following platforms:
+	- Linux 2.0.18, XFree86 3.1.2, GCC 2.7.2
+	- Solaris 2.4, 2.5
+	- SunOS 4.1, 4.1.4
+	- FreeBSD, NetBSD, BSD386
+	- DEC Alpha, native cc
+	- AIX
+
+Any feedback on problems is welcome, but remember to include the following in
+your bug report:
+	- The version number of XPaint
+	- The system you are using (e.g. 'Linux 1.3.14', 'Solaris 2.4')
+
+See 'INSTALL' for installation instructions.
+
+See 'Doc/CHANGES' for a list of changes relative to XPaint 2.1.1.
+
+See 'Doc/Operator.doc' for a description of XPaint internals.
+
+See 'Doc/sample.Xdefaults' for an example of setting resources for XPaint.
+
+See 'README.old' for the original README.
+
+See 'README.PNG' for notes on the PNG support.
+
+See 'TODO' for a list of possible improvements.
+
+See 'Doc/CREDITS' for a list of people who have contributed patches and bug
+reports.
+
+The most recent version of XPaint is always available from
+
+	http://www.danbbs.dk/~torsten/xpaint/index.html
+
+Thanks to the many beta testers who put up with the first buggy releases.
+
+
+KNOWN BUGS
+
+The 'Transparent Brush' tool does not work well on colour mapped visuals with
+256 colours. The reasons are:
+	1) It is too slow. This could perhaps be fixed.
+	2) All entries in the colour map are used up in rather quickly.
+	3) The limited number of colours give rise to round-off errors
+	   when computing the new pixel colours.
+
+Undo/Redo exhibits some weirdness in certain circumstances.
+
+Selecting a region enables the 'Last Filter' menu item.
+
+-Torsten Martinsen (torsten@danbbs.dk.dk), May 1997

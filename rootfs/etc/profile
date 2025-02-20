@@ -1,0 +1,22 @@
+export EDITOR="e3pi"
+export LESS="-M"
+export PATH="$PATH:/usr/X11R6/bin:/usr/local/bin:/usr/games:/usr/local/java/bin:."
+export HOME=/root
+export PS1='\w<\$>'
+export PS2='> '
+export ignoreeof=10
+umask 022
+alias dir='ls -Al'
+alias edit='e3pi'
+alias copy='cp'
+alias del='rm -i'
+alias ren='mv'
+alias d='links-0.95 .'
+alias links='links-0.95 /root/hotlist.html'
+alias cd..='cd ..'
+alias vi='e3vi'
+alias nano='e3pi'
+# Print a fortune cookie for login shells:
+echo
+fortune linuxcookie startrek
+echo

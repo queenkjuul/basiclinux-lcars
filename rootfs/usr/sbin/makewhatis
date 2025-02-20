@@ -1,0 +1,924 @@
+#!/usr/bin/perl
+
+# ======================================================================
+#
+# makewhatis
+#
+# Version 1.0h - 22-MAY-1998
+# (c) 1995,1996,1997,1998 Steve Bryant <steve@bork.bb.bawue.de>
+#
+#
+# Description:
+#
+#       This script creates the "whatis" files, used by apropos(1) and
+# man(1).  It requires gzip(1) or zcat(1) to be able to read compressed
+# files; this can be configured at the top of the code (below).  It will
+# also handle the /usr/man/preformat directory if your system has it
+# (you may have to uncomment the call to the preformat hack routine).
+# If you would rather have one global whatis file (like /usr/lib/whatis)
+# instead of having one whatis file per man directory, use the "-g"
+# option; you can also configure where this file should be (below).
+# (Note: HP-UX uses "/usr/share/lib/whatis".)
+#
+#
+# Background:
+#
+#       I wrote this because the one I had didn't work properly.  This
+# seems to be my usual reason for writing anything these days outside of
+# my job.  I could have just modified the other, but in re-writing from
+# scratch in Perl (instead of sh/awk/sed/sort/whatever), I managed to
+# drop the run-time down to a quarter of what it was before (nearly
+# 8 mins down to less than 2 on my box).
+#
+#       I've tested it as thoroughly as I can, but if it still doesn't
+# work, let me know and I'll fix it.  {8-]
+#
+#
+# Usage:
+#       makewhatis [-g] [-h] [-v] [-u] [-w] [manpath]
+#
+#
+# Copyright:
+#
+#       Permission is hereby given to redistribute this program and
+# accompanying manual page at no cost to the recipient (media fee
+# notwithstanding), providing it is distributed in its entirety.  It
+# may not be modified or be included in any commercial product without
+# the author's permission.
+#
+#
+# Warning:
+#       This program is provided "as-is", with no warranty whatsoever.
+# Use it entirely at your own risk.  The author may not be held
+# accountable for any damage this program might do.
+#
+#
+# History:
+#  07/95 1.0  - Initial version
+#  08/95 1.0a - Corrected preformat bug (apropos likes to read
+#               /usr/man/preformat/whatis as well so it seems !)
+#  01/96 1.0b - Modified RegExp so .SH "NAME" is recognised with quotes.
+#  05/96 1.0c - Fixed ".Nm" handling used in Berkeley pages.
+#  08/96 1.0d - Added option for using one global whatis file
+#               (eg: /usr/lib/whatis).
+#  09/96 1.0e - Added support for language dependant man paths.
+#  10/96 1.0f - Much improved (and optimised) nroff handling.
+#  03/97 1.0g - More nroff handling; waitpid() for cleaning up processes.
+#  05/98 1.0h - Case insensitivity added for ".SH" (so ".Sh" is now valid).
+#               Stopped deleting char in front of continuation hyphen.
+#               Yet more nroff matches !
+#
+# Credits (and thanks):
+#  Franz Schmausser <oin@mousel.mch.sni.de> for 1.0b.
+#  Phil Pennock <bear@dcs.warwick.ac.uk> for 1.0c.
+#  Frank Gockel <gockel@sent13.uni-duisburg.de> for 1.0h (matches).
+#  Jim Diamond <zsd@atl.sofkin.ca> for 1.0h (case/hyphen).
+#
+# ======================================================================
+
+
+# Configurable variables:
+
+$zcat             = "gzip -cd";         # Can be "zcat" if no gzip.
+$whatis_file      = "whatis";           # Relative to dirs in MANPATH
+$language         = "C";                # Default value if no $LANG
+$global_whatis    = "/usr/share/lib/whatis";  # For "-g" switch
+
+
+# General variables:
+
+$use_global       = undef;
+$update           = undef;
+$verbose          = undef;
+$manpath          = undef;
+$official_manpath = undef;
+%done_dirs        = ();
+
+
+umask 022;
+
+select( STDERR ); $| = 1;       # Unbuffers output on this stream
+select( STDOUT ); $| = 1;       # Leave STDOUT as the default !
+
+
+# Ensure the $PATH environment variable contains /bin and /usr/bin:
+
+$ENV{'PATH'} .= ":/bin:/usr/bin";
+
+
+# Process command line options
+
+while ( $arg = shift( @ARGV ) )
+{
+   # See if it starts with a dash
+
+   if ( $arg =~ /^-/ )
+   {
+      # A dash argument may have more than one letter following it,
+      # so we split the argument into an array of letters, remove the
+      # dash from it, and process what remains.
+
+      @letters = split( '', $arg );
+      shift( @letters );
+
+      foreach $_ ( @letters )
+      {
+         SWITCH:
+         {
+            /g/ && do
+            {
+               $use_global  = 1;
+               $whatis_file = $global_whatis;
+               last SWITCH;
+            };
+
+            /h/ && do
+            {
+               &print_help;
+               exit;
+            };
+
+            /u/ && do
+            {
+               $update = 1;
+               last SWITCH;
+            };
+
+            /v/ && do
+            {
+               $verbose = 1;
+               last SWITCH;
+            };
+
+            /w/ && do
+            {
+               next                # Don't bother including it twice
+                  if ( $official_manpath );
+
+               if ( $official_manpath = `man -w` )
+               {
+                  chomp $official_manpath;        # Remove \n from end
+
+                  $manpath .= ":"
+                     if ( $manpath );
+
+                  $manpath .= $official_manpath;
+               }
+               else
+               {
+                  warn "$0: can't execute 'man -w'\n";
+               }
+
+               last SWITCH;
+            };
+
+            /c/ && last SWITCH;     # Ignored on purpose
+
+
+            # Default case here:
+
+            die "$0: unknown option: $arg\n";
+         }
+      }
+   }
+   else
+   {
+      # Add the argument to the manpath (with colon if necessary).
+      $manpath .= ":"
+         if ( $manpath );
+
+      $manpath .= $arg;
+   }
+}
+
+
+# If the user hasn't specified a manpath or set the -w switch, then we
+# use the contents of the $MANPATH environment variable.
+
+$manpath = $ENV{'MANPATH'}
+   if ( !$manpath );
+
+
+# Check what language we want to generate for (this only takes effect
+# where "%L" appears in the MANPATH).  The environment variable LANG
+# is used, and if this is undefined, it the default value of "C" will be
+# used (as defined at the top of the code).
+
+$language = $ENV{'LANG'}
+   if ( defined( $ENV{'LANG'} ) );
+
+
+# If we're using one global file (and we're not updating it), then
+# we empty it now, and add to it as we go (otherwise it'd get
+# overwritten for each directory in the path).
+
+if ( $use_global && !$update )
+{
+   if ( open( WHATIS, ">$global_whatis" ) )
+   {
+      close( WHATIS );
+   }
+   else
+   {
+      die "$0: can't open $global_whatis: $!\n";
+   }
+}
+
+
+# Now, we cycle through each element in the manpath, and create a
+# whatis file for it.
+
+@elements = split( /:/, $manpath );
+foreach $directory ( @elements )
+{
+   &make_whatis( $directory );
+}
+
+
+
+# Now a little hack for /usr/man/preformat - comment this out if your
+# system simply uses the cat directories.
+#
+# NOTE:
+#       As of 1.0a we don't do this hacklet any more.  The code is
+# left in, in case you want to.  The reason is this: it seems that
+# "man -k" will actually look at /usr/man/preformat/whatis after
+# all.  This means we don't need the hack, and if we put it in,
+# things start appearing twice.
+#
+#       If you didn't have a preformat directory, it won't affect
+# you anyhow !
+
+#&do_preformat_hack
+#    if ( $manpath =~ /(^|:)\/usr\/man(\/preformat)?(:|$)/ );
+
+
+exit;
+
+
+
+# ======================================================================
+#
+# Subroutines
+#
+# ======================================================================
+
+
+# Print out a brief help message
+
+sub print_help
+{
+   print <<EOT;
+usage: makewhatis [-g] [-h] [-u] [-v] [-w] [manpath]
+options:
+   -g   use the global whatis DB file: $global_whatis
+   -h   print this help and exit.
+   -u   update whatis database with newer man pages only.
+   -v   verbose
+   -w   use `man -w` to obtain the manpath.  This may be used in
+        addition to a user-specified manpath; this is not supported on
+        all systems - see man(1).
+
+   If a manpath is specified, the the contents of that path will be
+processed.  If none is specified, then the contents of \$MANPATH will
+be processed unless the -w switch is set.
+EOT
+
+}
+
+
+
+# This routine processes the specified directory and creates (or updates)
+# the "whatis" file.
+
+sub make_whatis
+{
+   local ( $directory ) = @_;
+
+
+   # Do language substitution:
+
+   $directory =~ s/\%L/$language/g;
+
+
+   # See if we've already done this directory...
+
+   if ( $done_dirs{ $directory } )
+   {
+      warn "$0: already processed directory: $directory\n"
+         if ( $verbose );
+
+      return;
+   }
+   else
+   {
+      $done_dirs{ $directory } = 1;
+   }
+
+
+   # Make sure we can cd to the directory
+
+   if ( ! chdir( $directory ) )
+   {
+      warn "$0: can't chdir to $directory: $!\n";
+      return;
+   }
+
+
+   print "Processing directory: $directory\n"
+      if ( $verbose );
+
+
+   # Initialise the "whatis" array - all the entries are stored here and
+   # written out to file at the end.
+
+   %whatis = ();
+
+
+   # If this is only an update, the we load in the existing whatis file for
+   # modification - usually it would just be overwritten.
+
+   if ( $update || $use_global )
+   {
+      $whatis_mtime = 0;
+
+      if ( -e $whatis_file )
+      {
+         if ( open( WHATIS, "<$whatis_file" ) )
+         {
+            while ( $line = <WHATIS> )
+            {
+               chop $line;
+               $whatis{ $line } = 1;
+            }
+
+            close( WHATIS );
+
+            $whatis_mtime = &mtime( $whatis_file ); # No fail check
+         }
+         else
+         {
+            if ( $use_global )
+            {
+               warn "$0: can't open $whatis_file: $!\n";
+            }
+            else
+            {
+               warn "$0: can't open $directory/whatis: $!\n";
+            }
+
+            return;
+         }
+      }
+   }
+
+
+   # Now we have to loop through each of the subdirectories and process their
+   # contents.  Not all subdirectories will be processed - ones which match
+   # the pattern man[0-9a-z] will be processed as nroff/groff source manual
+   # pages, and cat[0-9a-z] directories will be processed as plain text
+   # manual pages.  When I can be bothered, I'll put in a bit that deals
+   # with [man|cat].[0-9a-z].Z (ie: specifically compressed directories).
+   # Subdirectories that are links are ignored.
+
+   if ( !opendir( CURRENT_DIR, "." ) )
+   {
+      warn "$0: can't read directory $directory: $!\n";
+      return;
+   }
+
+
+ SUBDIR:
+   while ( $subdir = readdir( CURRENT_DIR ) )
+   {
+      # Ignore links
+
+      next
+         if ( -l $subdir );
+
+
+      # Ignore non-man subdirs
+
+      next
+         if ( $subdir !~ /^(man|cat)[0-9a-z](\.Z)?$/ );
+
+
+      # Ignore non-directories
+
+      if ( ! -d $subdir )
+      {
+         warn "$0: $directory/$subdir is not a dirctory\n"
+            if ( $verbose );
+         next;
+      }
+
+
+      # If we're updating only, check whether the directory has a newer
+      # modification time than the whatis file.
+
+      next
+         if ( $update                               &&
+              ( &mtime( $subdir ) < $whatis_mtime )    );
+
+
+      print "Processing subdirectory: $subdir\n"
+         if ( $verbose );
+
+
+      # Set up some info about the subdir we're processing...
+
+      $section = substr( $subdir, 3, 1 );     # Assumes 1 char only
+      $type = "m";
+      $type = "c"
+         if ( substr( $subdir, 0, 3 ) eq "cat" );
+      $compressed_dir = undef;
+      $compressed_dir = 1
+         if ($subdir =~ /.Z$/);
+
+
+      # Process the files in the subdirectory...
+
+      if ( !opendir( SUBDIR, $subdir ) )
+      {
+         warn "$0: can't read directory $directory/$subdir: $!\n";
+         next;
+      }
+
+      FILE:
+      while ( $filename = readdir( SUBDIR ) )
+      {
+         # Ignore "." and ".."
+
+         next
+            if ( ( $filename eq "."  ) ||
+                 ( $filename eq ".." )    );
+
+
+         # If this is only an update, ignore files older that the
+         # whatis file.
+
+         next
+            if ( $update                                           &&
+                 ( &mtime( "$subdir/$filename" ) < $whatis_mtime )    );
+
+
+         # Work out what section this manpage thinks it's in.
+
+         @name_bits = split( /\./, $filename );
+         pop( @name_bits )                   # Remove 'Z' or 'gz' from end.
+            if ( $name_bits[ $#name_bits ] =~ /(Z|z|gz)/ );
+         $manpage_section = pop( @name_bits );
+
+
+         if ( substr( $manpage_section, 0, 1 ) ne $section ) # Wrong section
+         {
+            warn "$0: $directory/$subdir/$filename seems to be in the "
+               . "wrong section !\n";
+            next;
+         }
+
+
+         print "Adding: $filename\n"
+             if ( $verbose );
+
+
+         # Now we have to read the file (it may be compressed), and
+         # determine the "synopsis" of the man page (it may be pre-
+         # formatted).
+
+         if ( $compressed_dir               ||
+              ( $filename =~ /.(Z|z|gz)$/ )    )
+         {
+            unless ( $pid = open( MANPAGE, "$zcat $subdir/$filename|" ) )
+            {
+               warn "$0: can't open $directory/$subdir/$filename: $!\n";
+               next;
+            }
+         }
+         else
+         {
+            $pid = undef;
+            if ( !open( MANPAGE, "<$subdir/$filename" ) )
+            {
+               warn "$0: can't open $directory/$subdir/$filename: $!\n";
+               next;
+            }
+         }
+
+
+         # Get the NAME info from the manpage
+
+         if ( $type eq "m" )
+         {
+            $name = &process_source_page;
+         }
+         else
+         {
+            $name = &process_ascii_page;
+         }
+
+
+         # Close the file
+
+         if ( $pid )
+         {
+            kill 9, $pid;   # Avoids zcat/gzip complaining about broken pipes
+            waitpid( $pid, 0 ); # Reap the process we've just killed.
+         }
+
+         close( MANPAGE );
+
+
+         # Do some processing on the manpage info (if one was returned).
+
+         if ( $name )
+         {
+            $name =~ s/--/ - /;     # Change "--" to " - "
+            $name =~ s/:/ - /       # Change ":" to " - "
+               if ( $name !~ /-/ ); #  if they didn't use a dash
+            $name =~ s/-/ - /       # Fix old cat pages
+               if ( $name !~ / - / );
+            $name =~ tr/\t/ /;      # Change tabs to spaces
+            $name =~ s/\s+/ /g;     # Collapse whitespace
+            $name =~ s/^ //;        # Delete whitespace from start of line
+            $name =~ s/ $//;        # Delete whitespace from end of line
+            $name =~ s/ , /, /g;    # Fix comma spacing
+
+
+            # We now format the line - we split it into "name" and
+            # "description", and space them out nicely.
+
+            @name_bits = split( /\s+-\s+/, $name, 2 );
+
+            $name = "$name_bits[0] ($manpage_section) ";
+            while ( length( $name ) < 21 )
+            {
+               $name .= " ";
+            }
+
+            $name .= "- $name_bits[1]";
+
+            $whatis{ $name } = 1;
+         }
+         elsif ( $verbose )
+         {
+            warn "$0: no name for $directory/$subdir/$filename\n";
+         }
+      }
+
+      closedir( SUBDIR );
+   }
+
+
+   closedir( CURRENT_DIR );
+
+
+   # At this point, we have an array called %whatis which contains all
+   # the database entries.  These simply have to be sorted and written
+   # to the whatis file.
+
+   if ( ! open( WHATIS, ">$whatis_file" ) )
+   {
+      if ( $use_global )
+      {
+         warn "$0: can't open $whatis_file: $!\n";
+      }
+      else
+      {
+         warn "$0: can't open $directory/whatis: $!\n";
+      }
+
+      return undef;
+   }
+
+   foreach $name ( sort keys %whatis )
+   {
+      print WHATIS "$name\n";
+   }
+
+   close( WHATIS );
+}
+
+
+
+# This routine returns the modification time of the given filename,
+# or undefined if the stat fails.
+
+sub mtime
+{
+   local ( $filename ) = @_;
+
+   unless ( local( $mtime ) = ( stat( $filename ) )[9] )
+   {
+      warn "$0: can't stat $filename: $!\n";
+      return undef;
+   }
+
+   return $mtime;
+}
+
+
+
+# This routine processes a "source" manual page.
+# It looks for a section called "NAME", as denoted by the ".SH" keyword,
+# and returns the first line of this section (this section is usually only
+# one line long anyhow).
+# If no such section is found, it return undefined.
+
+sub process_source_page
+{
+   local ( $line, $name );     # Local variables
+
+
+   while ( $line = <MANPAGE> )
+   {
+      chop $line;             # Remove trailing \n
+
+      $line =~ s/^\s*//g;     # Remove whitespace from start of line
+      $line =~ tr/a-z/A-Z/;   # Convert to upper case
+
+
+      if ( $line =~ /^\.SH\s+[\"]?NAME/i ) # Found .SH NAME
+      {
+         $name = "";
+
+         while ( $line = <MANPAGE> ) # Read next line
+         {
+            chop $line;             # Remove trailing \n
+            $line =~ s/\\-/-/;      # Change "\-" to "-".
+            $line =~ s/^\s+//;      # Remove whitespace from start of line
+            $line =~ s/\s+$//;      # Remove whitespace from end of line
+
+
+            # If the line just read is the next section or is blank,
+            # then we're done and can return what we've found.
+
+            return $name
+               if ( ( $line eq "" )          ||
+                    ( $line =~ /^\.[sS][hsHS]/i )    );
+
+
+            # Is there are any more nroff commands, they must either
+            # be removed or interpreted; lines starting with a dot
+            # are nroff commands
+
+            if ( substr( $line, 0, 1 ) eq "." )
+            {
+               # Remove comments
+               $line =~ s/^[\.]+[\/\\]\".*//;
+
+               # Delete lines with these commands
+               $line =~ s/^\.([iI]X|PP|z[AZ]|X[ENSX]|ds).*$//;
+
+
+               # For Berkeley pages
+               $line =~ s/^\.Nm(.*)/$1 -/;
+
+
+               # Remove certain nroff commands from the line
+#               $line =~ s/^\.([IBC]|Tn|Li|Dq|Nd)//;
+
+               # Remove all other nroff commands
+               $line =~ s/^\.[A-Za-z]+//;
+            }
+
+
+            if ( $line =~ /\\/ )    # Inline commands
+            {
+               # Remove font settings and string interpolation
+
+               $line =~ s/\\[f\*]\(..//g;
+               $line =~ s/\\f.//g;
+               $line =~ s/\\\*.//g;
+
+
+               # Remove font sizings
+
+               $line =~ s/\\s(\'?)[+-]?\d+$1//g;
+               $line =~ s/\\s\(\d\d//g;
+
+
+               # Some interpretaions
+
+               $line =~ s/\\\(en/-/g;
+               $line =~ s/\\\(em/--/g;
+               $line =~ s/\\\(hy/-/g;
+               $line =~ s/\\\(ul/_/g;
+
+
+               $line =~ tr/\\//d;  # Delete any remaining backslashes
+            }
+
+
+            # Add a space on the end if the line's not blank, and
+            # if it doesn't end with a dash.
+
+            $line .= " "
+               if ( $line && ( $line !~ /\S-$/ ) );
+
+
+            # Add this line to the name, and delete hyphenation.
+
+            $name =~ s/\S-$//
+               if ( $line );
+            $name .= $line;
+         }
+
+
+         # If we reached the end of the file, return what we found;
+         # it may be undefined (which is ok).
+
+         return $line;
+      }
+   }
+
+
+   # Reached EOF
+
+   return undef;
+}
+
+
+
+# This routine processes a "cat" man-page, looking for the same as the above
+# routine.  However, we often have to contend with backspace characters in
+# these files, as they are used to do underlining and emboldening.
+
+sub process_ascii_page
+{
+   local ( $line, $name );     # Local variables
+
+
+   while ( $line = <MANPAGE> )
+   {
+      chop $line;             # Remove trailing \n
+
+      $line =~ s/^\s*//g;     # Remove whitespace from start of line
+      $line =~ s/.\010//g;    # Remove the "backspace effect"
+
+      if ( $line =~ /^NAME/ )
+      {
+         $name = "";
+
+         while ( $line = <MANPAGE> )
+         {
+            chop $line;
+            $line =~ s/.\010//g;    # Remove the "backspace effect"
+            $line =~ s/^\s*//;      # Remove whitespace from the start
+
+
+            # We keep going until we get a blank line
+
+            return $name
+               if ( $line eq "" );
+
+
+            # Add a space on the end if the line's not blank, and
+            # if it doesn't end with a dash.
+
+            $line .= " "
+               if ( $line && ( $line !~ /\S-$/ ) );
+
+
+            # Add this line to the name, and delete hyphenation.
+
+            $name =~ s/(\S)-$/$1/
+               if ( $line );
+            $name .= $line;
+         }
+
+
+         # Return what we've found
+
+         return $name;
+      }
+   }
+
+   return undef;
+}
+
+
+
+# A hack for the /usr/man/preformat directory found on many Linux systems.
+#
+# This directory doesn't usually have its own whatis database; the man
+# won't usually look there.  What this program does is to create a whatis
+# database for /usr/man/preformat, and then insert its contents into
+# /usr/man/whatis (or the global whatis file).  It doesn't delete
+# /usr/man/preformat/whatis so that future updates can be done more quickly.
+
+sub do_preformat_hack
+{
+   $directory = "/usr/man";
+   $subdir = "preformat";
+
+
+   # Firstly - is it there ?
+
+   if ( ! -d "$directory/$subdir" )
+   {
+      warn "$0: can't incorporate whatis database from /usr/man/preformat: "
+         . "no such directory\n"
+         if ( $verbose );
+   }
+
+
+   if ( ! chdir( $directory ) )
+   {
+      warn "$0: can't cd to $directory: $!\n"
+         if ( $verbose );    # This error will also appear earlier
+
+      return undef;
+   }
+
+
+   return undef
+      if ( ! -e "$subdir/whatis" );   # No whatis file
+
+
+   return undef
+      if ( ! -e $whatis_file );
+
+
+   # If we're in "update" mode, it isn't be necessary to go through
+   # with this routine...
+
+   return undef
+      if ( $update                                                 &&
+           ( &mtime( "$subdir/whatis" ) < &mtime( $whatis_file ) )    );
+
+
+   # Load the preformat whatis database into the %whatis array
+
+   if ( ! open( PREFORMAT, "<$subdir/whatis" ) )
+   {
+      warn "$0: can't open $directory/$subdir/whatis: $!\n";
+      return undef;
+   }
+
+   %whatis = ();
+
+   while ( $line = <PREFORMAT> )
+   {
+      chop $line;             # Remove trailing \n
+      $whatis{ $line } = 1;
+   }
+
+   close( PREFORMAT );
+
+
+   # Now we load in the main whatis database into the same array (which
+   # will eliminate duplicates).
+
+   if ( ! open( WHATIS, "<$whatis_file" ) )
+   {
+      if ( $use_global )
+      {
+         warn "$0: can't open $whatis_file: $!\n";
+      }
+      else
+      {
+         warn "$0: can't open $directory/whatis: $!\n";
+      }
+
+      return undef;
+   }
+
+   while( $line = <WHATIS> )
+   {
+      chop $line;             # Remove trailing \n
+      $whatis{ $line } = 1;
+   }
+
+   close( WHATIS );
+
+
+   # Now we sort the entries and write them out to the one file.
+
+   if ( ! open( WHATIS, ">$whatis_file" ) )
+   {
+      if ( $use_global )
+      {
+         warn "$0: can't open $whatis_file: $!\n";
+      }
+      else
+      {
+         warn "$0: can't open $directory/whatis: $!\n";
+      }
+
+      return undef;
+   }
+
+   foreach $line ( sort keys %whatis )
+   {
+      print WHATIS "$line\n";
+   }
+
+   close( WHATIS );
+}
+
+# ======================================================================
+#
+# End of file: makewhatis
+#
+# ======================================================================

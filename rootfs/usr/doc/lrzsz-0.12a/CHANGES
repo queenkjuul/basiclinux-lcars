@@ -1,0 +1,20 @@
+0.10 - 4-15-94
+--------------
+	Made a bunch of changes to the last public domain rzsz release to
+make progress reports look pretty under various communications packages. 
+Most mods are to lrz.c and lsz.c to give only a reasonable amount of
+information while a transfer occurs.  
+
+0.11 - 4-17-94
+--------------
+	Whoops.  Changed the location of 'rzlog' (the logfile) to /var/adm
+instead of /tmp to meet the requirements of the Linux FSSTD.  Also fixed the
+Makefile so it uses relative links we don't confuse oddly configured
+systems.  Included the GNU General Public License for convenience.
+
+To Do
+-----
+	Tk interface for progress reporting under X11.
+
+
+Matt Porter <porter+@osu.edu>

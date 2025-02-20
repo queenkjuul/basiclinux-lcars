@@ -1,0 +1,227 @@
+Changes from XPaint 2.4.8 to XPaint 2.4.9
+
+	- brushOp.c: Set numsymbols in XpmAttributes structure. Reported by
+	  Oliver Voigt <voigt@math.tu-berlin.de>.
+	- brushOp.c: Don't crash when using transparent brush or Smear on
+	  images where width and/or height is less than the dimensions of the
+	  brush. Reported by Paco Hope <bah6f@cs.virginia.edu>.
+	  Note that the results of the Smear tool on such images might not be
+	  what you expect. 
+	- Local.config: Don't hardcode CDEBUGFLAGS. Reported by Mikhail
+	  Teterin <mi@aldan.ziplink.net>.
+	- cutCopyPaste.c: Applied xword compatibility patch from Seth Alves
+	  <alve1182@cs.uidaho.edu>.  
+
+Changes from XPaint 2.4.7 to XPaint 2.4.8
+
+	- Patch from NIIBE Yutaka <gniibe@mri.co.jp> to handle workProc()
+	  correctly.
+	- If FILTERNEEDSSELECTION was defined, we got a SIGSEGV when running a
+	  filter. Reported by Sylvain Meunier <sns@sns.fr>.
+	- I have moved to a new ISP. Please use the new address for all
+	  correspondence. 
+
+Changes from XPaint 2.4.6 to XPaint 2.4.7
+
+	- Removed arbitrary limit on number of fonts that can be displayed in
+	  the font browser. Reported by Sumit Bose <bose@physik.TU-Berlin.DE>.
+	- Fixed FatBits cursor movement bug reported by	Hideaki Nishimura
+	  <nishimu@sdd.siznes.nec.co.jp>. 
+	- Fixed numbering screwup in definition of regionMenu[]. Thanks to
+	  Hideaki Nishimura <nishimu@sdd.siznes.nec.co.jp>. 
+	- operation.c: Fixed bug with XpmCreatePixmapFromData() call in
+	  OperationInit().
+	- xpm.h can now have an arbitrary location.
+
+Changes from XPaint 2.4.5 to XPaint 2.4.6
+
+	- Set Xpm 'closeness' attribute when creating toolbox icons.
+	  Submitted by Stefan Scharfenberg <stefan_s@mucsun.sps.mot.com>.
+	- Added Greg Roelofs' patches to the PNG code (no more debug
+	  messages).
+	- Fix for spurious 'out of space' message when saving GIF images.
+
+Changes from XPaint 2.4.4 to XPaint 2.4.5
+
+	- Fix for SetIconImage(): Check that XPM icon can be
+	  created. Submitted by Matthias Braun <browny@ise.fhg.de>.
+	- Added AIX compilation hint from Toralf Foerster
+	  <toralf.foerster@io-warnemuende.de>.
+	- Remove compiler warning in writePNG.c.
+	- Man page updated.
+	- Check that sufficient colors are available for toolbox icons.
+
+Changes from XPaint 2.4.3 to XPaint 2.4.4
+
+	- INSTALL: Included new patch from Webmaster Jim.
+	- rw/writeGIF.c: Check if we run out of space.
+	- No longer crash when using Polygon and Shape tools in FatBits
+	  popup. Thanks to jspath@mail.bcpl.lib.md.us (Webmaster Jim) for
+	  reporting this.
+
+Changes from XPaint 2.4.2 to XPaint 2.4.3
+
+	- PNG code: Don't exit() if no memory.
+
+Changes from XPaint 2.4.1 to XPaint 2.4.2
+
+	- Minor AIX portability fix from Lars-Owe Ivarsson
+	  <Lars-Owe.Ivarsson@its.uu.se>
+	- Fix for non-GCC compilers ({read,write}PNG.c) from Lars-Owe Ivarsson
+	  <Lars-Owe.Ivarsson@its.uu.se>
+
+Changes from XPaint 2.4 to XPaint 2.4.1
+
+	- Fix for the infamous 'crash-when-resizing' bug by Andreas
+	  Czechanowski <andreas@INS.uni-stuttgart.de>
+	- Fix for zero-size ellipse-shaped region by Andreas Czechanowski
+	  <andreas@INS.uni-stuttgart.de>
+	- Alpha and AIX portability fixes by Robert Patrick
+	  <Robert_Patrick@methi.ndim.edrc.cmu.edu>
+	- Small BSD portability fix from Chuck Robey <chuckr@Glue.umd.edu>.
+	- PNG support should actually work now.
+	- XPaint.ad and xpaint.man did not get built automatically; they do now.
+	- Help.txt had zero size - fixed.
+
+Changes from XPaint 2.3.1 to XPaint 2.4
+
+	Changes by me:
+	- minor changes to Imakefile etc.
+	Changes by Greg Roelofs <roe2@midway.uchicago.edu>:
+	- PNG support (mostly complete, except writing of alpha-channel files;
+	  both interlaced and non-interlaced supported; still has debug msgs)
+	- added noforce param to ImageCompress() for PNG, TIFF writing of 8-bit
+	  images even on truecolor display (formerly promoted to 24-bit)
+	- version number in main title bar and in usage screen (and in PNG
+          files as part of the "Software" tEXt field)
+	- XPaint.ad:  fixed default width and height to accommodate new buttons
+	- added new startup warning and new Help section about data loss;
+	  warning can be killed with -nowarn option
+	- minor grammar fixes, corrections to image-format descriptions in Help
+	- Imakefile:  strip trailing spaces out of Help.txt before further
+	  processing
+	- changed "xpm.h" to <X11/xpm.h>:  should always be in .../include/X11
+
+Changes from XPaint 2.3 to XPaint 2.3.1
+
+	- A TODO list is included.
+	- Yet another BSD portability fix from Chuck Robey <chuckr@Glue.umd.edu>.
+	- Suggestion from jspath@mail.bcpl.lib.md.us (Webmaster Jim) for what
+	  do to if you don't have certain fonts - added to INSTALL.
+	- New feature: You can now set the size of the solid/pattern squares
+	  in the palette by setting the 'XPaint.patternsize' resource.
+	  Requested by Warwick Allison <warwick@cs.uq.edu.au>.
+	- Error check in protocols.c.
+	- NetBSD portability fix by jspath@mail.bcpl.lib.md.us (Webmaster Jim).
+	- Fix for obsolete DEC compiler by envbvs@epb1.lbl.gov (Brian V. Smith).
+
+Changes from XPaint 2.2.1 to XPaint 2.3
+
+	- Solaris portability fixes by Gary Houston <ghouston@isor.vuw.ac.nz>
+	- BSD portability fixes by Chuck Robey <chuckr@Glue.umd.edu>
+	- SunOS portability fix by Michael Gordon <M.F.Gordon@ee.ed.ac.uk>
+	- SGI and HPUX portability fix by Gary Love <love@nrlmry.navy.mil>
+	- readJPEG.c and writeJPEG.c: Don't use METHODDEF, as suggested by
+	  Jean-Claude Giese <Jean-Claude.Giese@loria.fr> (apparently the
+	  definition of METHODDEF has changed in recent versions of the IJG
+	  JPEG library).
+	- New feature: If you define ERRORBEEP in Local.config, XPaint will
+	  beep if you try to make an undo/redo and no more undos/redos are
+	  possible.
+	- Bug fix: 'Image/Change Size' no longer clears the canvas.
+	- Bug fix: the zoomed brush cursor should work better now.
+
+Changes from XPaint 2.2 to XPaint 2.2.1
+
+	- Bug fix: again possible to load/save XPM images
+	- Zero undo levels works
+	- Bug fix: changing image size no longer crashes XPaint
+	- Bug fix: manual page included
+	- Bug fix: Local.config no longer contains absolute paths
+	- Bug fix: 'Add Pattern' and 'FatBits' no longer crashes XPaint
+
+Changes from XPaint 2.1.1 to XPaint 2.2
+
+
+1.  New features:
+
+1.1 Changed image processing functions (filters):
+	Filter commands uses whole canvas if no selection (#define
+	FILTERNEEDSSELECTION if you want the old behaviour)
+	'Smooth' filter now has variable mask size
+	'Oil Paint' filter now has variable mask size
+
+1.2 New image processing functions (filters):
+	'Add Noise'
+	'Blend'
+	'Despeckle'
+	'Directional Smooth'
+	'Normalize Contrast'
+	'Pixelize'
+	'Quantize Colors'
+	'Solarize'
+	'Spread'
+	'Repeat Last Filter' operation
+
+1.3 Changed operators:
+	Multiple undo and redo.
+	Fill operator takes color tolerance into account.
+	Draw centered boxes and ellipses that are not square.
+	Improved performance of Gaussian Spray.
+	Brush tool has 'Transparent' option which uses a soft-edged
+	brush (only works well on TrueColor visuals).
+	Brush cursor is the correct size when zooming.
+	Brush cursor in FatBits popup is the correct size.
+	Snap rounds instead of truncating (#define TRUNC_SNAP if you want the
+	old behaviour).
+
+1.4 Changed region functions:
+	Holding Shift down while moving a region constrains movement to
+	horizontal or vertical.
+	Holding Shift down while rotating a region constrains rotation to
+	multiples of 15 degrees.
+
+1.5 New region functions:
+	'Crop to Region' tool.
+	Cursor keys can be used to move region in 1 pixel steps.
+	Undo undoes region selection.
+
+1.6 New operators:
+	Select circle-shaped area.
+	Select polygon-shaped area.
+	Gradient fill (Conical, Square, Radial, Linear).
+	'Smear' tool.
+
+1.7 Miscellaneous new functions:
+	AutoCrop function - removes borders from an image.
+	'Revert' function.
+	Writing of JPEG files.
+
+1.8 Interface changes:
+
+	The 'Select Range' dialog now uses the color map of the current canvas. 
+	Therefore, it is no longer found in the toolbox, but in the palette
+	area (the 'Select Color Range' button).
+	New 40 x 40 icons. If you create a better set of icons, please let me
+	know.
+	'Region' menu split into 'Region' and 'Filter' menus, the latter for
+	image processing functions.
+	Busy cursor while saving.
+
+2  Fixed bugs:
+
+	Changing the image size no longer does funny things
+	to the fatbits cursor.
+	Changing the zoom on the canvas now resizes and
+	repositions the fatbits cursor.
+	FatBits cursor window changes size when changing zoom of canvas.
+	Problem with flipping region fixed.
+	In color picker, Enter now works in delta textwidgets.
+
+3  Source code changes:
+
+	Xpm and TIFF libraries no longer included in distribution.
+	Massive reformatting of all source files.
+	A couple of new source files.
+	Some unused code removed.
+	Toolbox uses Xpm icons exclusively.

@@ -1,0 +1,1 @@
+/* ==================================================================FILE:   Header.jsDESCR:  Header library file for Netscape Help implementation.NOTES:  ================================================================== *///top.SystemFrame.trace( "Header.js" )function onload(){   // Bind events to global event handlers.   top.bindDocEvts( document )}

@@ -1,0 +1,79 @@
+DavysBigKeyCaps font. 
+ 
+DavysKeyCaps is a font of characters meant to reproduce the "look" of keys on the IBM and Macintosh extended keyboards. It is intended primarily to aid in software documentation. The "big" version sacrifices geometric integrity for legibility at small sizes. In addition, all characters are drawn in all caps, rather than in an arbitrary mix. 
+ 
+To show any alphabetic key, press the uppercase letter of your choice. All the numeric and other shift keys (Such as $, shift-4) will also display the requisite keys. 
+ 
+LOWERCASE ALPHABETIC KEYS 
+ 
+The lowercase alphabetic characters in the font produce the following key images: 
+ 
+a - ALT 
+b - RETURN 
+c - CAPS LOCK (2 lines) 
+d - PRINT SCREEN (2 lines) 
+e - ENTER 
+f - INS 
+g - SCROLL LOCK (2 lines) 
+h - HOME 
+i - cursor up 
+j - cursor left 
+k - cursor down 
+l - cursor right 
+m - DELETE 
+n - BACKSPACE 
+o - OPTION 
+p - PAUSE 
+q - SHIFT 
+r - PAGE DOWN (2 lines) 
+s - ESC 
+t - TAB 
+u - END 
+v - CONTROL (the whole word -- "CTRL" is on another key) 
+w - HELP 
+x - the Macintosh "command" key or four-leaf clover 
+y - DEL 
+z - hollow apple 
+ 
+OTHER CHARACTERS 
+ 
+The following "option" keys on the Macintosh will produce the following key images (IBM PC users -- the ASCII code follows each description in parentheses). 
+ 
+opt-1 -- F1 (193) 
+opt-2 -- F2 (170) 
+opt-3 -- F3 (163) 
+opt-4 -- F4 (162) 
+opt-5 -- F5 (176) 
+opt-6 -- F6 (164) 
+opt-7 -- F7 (166) 
+opt-8 -- F8 (165) 
+opt-9 -- F9 (187) 
+opt-zero -- F10 (188) 
+opt-dash --F11 (208) 
+opt-equal sign -- F12 (173) 
+opt-[ -- F13 (210) 
+opt-] -- F14 (212) 
+opt-\ -- F15 (199) 
+shift-option C -- CTRL (130) 
+option-j -- PG DN (198) 
+option-k -- PG UP (251) 
+option-v -- NUM LOCK (2 lines) (195) 
+opt-d -- the nonfunctional delta key on Macintosh keyboards (182) 
+opt-x -- delete in front of insertion point key (197) 
+shift-option-zero -- zero on the numeric keypad -- wider than other keys (226) 
+shift-option-e -- enter key as on Macintosh numeric keypad (228) 
+option-c -- CLEAR (141) 
+option-space -- SPACEBAR (202) 
+shift-option zero -- zero on wide key as on Macintosh numeric keypad (243) 
+shift-option Z -- filled-in Apple 
+option-z -- Macintosh command key with both hollow Apple and cloverleaf (189) 
+option-s -- blank key (167) 
+option-r -- the DAVY key (168) 
+ 
+ 
+INFORMATION 
+ 
+DavysBigKeyCaps is distributed free of charge for personal use. You may keep your copy of DavysBigKeyCaps as long as you want, and you may distribute it freely, providing all the files in this archive are included. If you use DavysBigKeyCaps in the documentation for a commercial product, i.e., for a product for which money is charged, there are two stipulations: you should acknowledge the font in the publication, and you should make a donation of only $10 to Columbia University (make out a check to Columbia University and send to Cynthia Lemiesz, 703 Dodge Hall, Columbia University, New York, NY 10027 -- write "KeyCaps" on the check memo). The money goes to pay for performances of music written by Columbia University students. User groups and shareware/public domain software outlets may distribute this font without my expressed permission, providing all the files associated with the font are included. 
+ 
+DavysBigKeyCaps is a response to many letters complaining about the legibility of its predecessor. One scarecely realizes how seriously people take their key caps. Myself, I take mine with sugar and just a little milk, preferably preheated. DavysBigKeyCaps was produced on a Macintosh SE at Insect Bytes, a place with a wood stove, three cats, and carpeted stairs. Plus, there's a little swamp (they call them "wetlands" now) across the road where the insects live. 
+ 

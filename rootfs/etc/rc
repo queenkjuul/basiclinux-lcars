@@ -1,0 +1,57 @@
+#!/bin/sh
+PATH=/sbin:/usr/sbin:/bin:/usr/bin:/usr/games
+
+mount -avt nonfs
+hostname BasicLinux
+ifconfig lo 127.0.0.1
+route add -net 127.0.0.0 netmask 255.0.0.0 lo
+
+# check if user has disabled swap or fsck
+cat /proc/cmdline | grep -q norootverify && NOFSCK=true
+cat /proc/cmdline | grep -q swapoff && SWAPOFF=true
+
+# check both boot partition and hda1 for swapfile
+if test ! $SWAPOFF;then
+[ -e /DOS/baslin/swap.img ] && swapon /DOS/baslin/swap.img
+fi
+test $SWAPOFF || mount -t msdos /dev/hda1 /hda1 >/dev/null 2>&1 && [ -e /hda1/baslin/swap.img ] && swapon /hda1/swap.img
+
+sync
+
+test $NOFSCK || echo "Checking root filesystem"
+test $NOFSCK || e2fsck -pf /dev/loop0 2>/dev/null 
+test $NOFSCK || e2fsck -pf /etc/ttyS0.img >/dev/null 2>&1
+test $NOFSCK || e2fsck -pf /etc/ttyS1.img >/dev/null 2>&1
+test $NOFSCK || e2fsck -pf /etc/psaux.img >/dev/null 2>&1
+test $NOFSCK || e2fsck -pf /etc/usb.img >/dev/null 2>&1
+
+# You can run /usr/bin/usbhid manually to initialize USB HID (mouse+keyb)
+# optionally run modprobe usb-storage afterwards as well
+# or pass usbhid to kernel boot command
+cat /proc/cmdline | grep -q usbhid && USBHID=true
+[ $USBHID ] && /usr/bin/usbhid
+
+# IDE CD-ROM init can be run automatically with /usr/bin/ide-cd
+# or pass ide-cd to kernel boot command
+cat /proc/cmdline | grep -q ide-cd && IDECD=true
+[ $IDECD ] && /usr/bin/ide-cd
+
+##_ACTIVATE_CD_DRIVE_##
+# insmod cdrom
+# insmod ide-cd
+# insmod isofs
+
+####_ACTIVATE_PCMCIA_####
+# /etc/pcmcia/start
+
+###_ACTIVATE  ETHERNET_###
+###_SEE /ROOT/NETSETUP_###
+###_  FOR MORE INFO   _###
+#
+# ifconfig eth0 192.168.1.1
+
+##_ACTIVATE_PPP_##
+# insmod slhc
+# insmod ppp
+
+cat /etc/issue
