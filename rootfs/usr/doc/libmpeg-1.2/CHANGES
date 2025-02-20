@@ -1,0 +1,34 @@
+Version 1.0 - 29 July, 1994
+---------------------------
+
+Initial release
+
+
+Version 1.0.1 - 13 September, 1994
+----------------------------------
+* Some changes to the headers and Makefile for portability and
+  compatiblity (particularly with ImageMagick).
+
+
+Version 1.1 - 14 November, 1994
+-------------------------------
+* Added preprocessor directory FULL_COLOR_ONLY to make inclusion of
+  all dithering code (except 24-bit full colour) optional.
+* Cleaned up the ANSI/non-ANSI confusion, and made it explicit in the
+  README that you need an ANSI compiler to build the library itself
+  but not to merely use it.
+
+Version 1.2 - not released yet
+------------------------------
+* Added configure script for easy setup (including automatically
+  putting the HP-UX compiler in ANSI mode!)
+* Added documentation.
+* Cleaned up and fixed a few things so that (hopefully) all available
+  dithering modes are supported.  Note that a number of ditherings 
+  result in obviously wrong images, but they look the same as what
+  the original mpeg_play gave, so it's not my fault.  However, the 
+  ones that do work (ordered, gray, 2x2 have been verified) generally 
+  result in significant memory savings and faster decoding when compared
+  to full 24-bit colour.
+* Added PictureRate and BitRate fields to ImageDesc.
+

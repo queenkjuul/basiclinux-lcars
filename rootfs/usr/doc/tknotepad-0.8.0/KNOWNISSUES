@@ -1,0 +1,43 @@
+This file describes the 'bugs' or issues that are know in tknotepad as of 10/17/99.
+These are issues that I have found in Tcl/Tk. This is the behavior that they supply,
+and I am not even sure if it can be overridden.
+
+Please report all bugs to joeja@mindspring.com
+
+KNOWN ISSUES: 	
+
+	1) ) If you have 2 tknotepads running, and are cutting or coping between them
+	the selection will get lost after coping text in tknotepad then closed  that
+	tknotpad before pasting the text. This happens in other programs too. It
+	is an Tcl/Tk selection thing. Netscape has this bug, nedit has this bug. Once the 
+	program is closed, its selection is lost. This I believe is a legacy Motif
+	behavior. IE setting the clipboard and then deleteing the contents when the 
+	app is destroyed. This happens under windows also. This wont be fixed unless it 
+	is fixed in the tcl/tk code.
+
+	2) WORD WRAP only wraps the text in the widget, but it does not create 
+	'end of line' marks. It is more of a 'visual change' ONLY. vi does the same
+	thing. This wont be fixed, unless it is fixed in the base tcl/tk code.
+
+	3) Windows: The menuFont for windows is Sans Serif 8??. This is the default, and 
+	the -font option of Tcl/Tk does not work to set this for windows menu bar but 
+	the sub menues will take the -font option. I have reported this to scriptics.
+	It is a tcl/tk / window issue.
+
+	4) The popup menu is bound to buttons 2 and 3 this is because on some systems 
+	there is 3 button emulation, so the second button is actually the 3rd. Thus 
+	both the 2nd and 3rd buttons are bound to the popup for platform and system
+	compatability. 
+        You can select either one or the other if you wish by deleting one of the lines:
+	bind .textarea <Button-2> {showpopup}
+        bind .textarea <Button-3> {showpopup}
+
+	This will fix it.
+
+
+let me know what bugs you find or fix...........
+
+	email me: joeja@mindspring.com
+
+	Joseph Acosta
+

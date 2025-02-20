@@ -1,0 +1,18 @@
+You need to use GNUmake or my smake to compile on AIX
+
+Read the file README.compile before compiling.
+
+NOTE:	AIX seems to have a kernel bug in the mmap() part
+	that may cause kernel panics.
+
+If you observe this kernel panic, try to add a line:
+
+COPTS += -DUSE_USGSHM
+
+to the file cdrecord/Makefile
+
+or compile the package using:
+
+make COPTX=-DUSE_USGSHM
+
+It seems that SVrx style shared memory does not have this kernel bug

@@ -1,0 +1,8 @@
+#
+# rc.samba: Start the samba server
+#
+if [ -x /usr/sbin/smbd -a -x /usr/sbin/nmbd ]; then
+ echo "Starting Samba..."
+ /usr/sbin/smbd -D
+ /usr/sbin/nmbd -D
+fi

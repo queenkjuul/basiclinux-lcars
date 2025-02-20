@@ -1,0 +1,2284 @@
+/etc/auto.master (5) - Master Map for automounter
+/etc/init.d/autofs (8) - Control Script for automounter
+/etc/login.defs (5)  - Login configuration
+/var/yp/nicknames (5) - nickname translation table for NIS maps
+Compound (n)         - Create multi-line compound images.
+DEVINFO (5)          - device entry database
+Dislocate (1)        - disconnect and reconnect processes
+GDBM (3)             - The GNU database manager. Includes dbm and ndbm compatability. (Version .)
+GNU as (1)           - the portable GNU assembler.
+GPC (3)              - GTK Plug-in Convenience library
+Gimp (1)             - an image manipulation and paint program.
+Http (n)             - Client-side implementation of the HTTP/1.0 protocol.
+IMAPd (8c)           - Internet Message Access Protocol server
+IPOPd (8c)           - Post Office Protocol server
+MAKEDEV (8)          - create and maintain filesystem device entries
+MAKEDEV (8)          - create devices
+MAKEDEV.cfg (5)      - configuration for MAKEDEV(8)
+MAKEFLOPPIES (1)     - Creates the default floppy device nodes. '" t TQ $1 ..
+MIME (1)             - Multipurpose Internet Mail Extensions
+NcFTP (1)            - Internet file transfer program
+Netwatch (1)         - Ethernet Internet Protocol Monitor
+Pnews (1)            - a program for posting news articles
+QAccel (3qt)         - Handles keyboard accelerator keys
+QApplication (3qt)   - Manages the application event queue
+QArray (3qt)         - Template class that provides arrays of simple types
+QAsyncIO (3qt)       - Encapsulates I/O asynchronicity
+QBitArray (3qt)      - Array of bits
+QBitVal (3qt)        - Internal class, used with QBitArray
+QBitmap (3qt)        - Monochrome (1 bit depth) pixmaps
+QBoxLayout (3qt)     - Lines up child widgets horizontally or vertically
+QBrush (3qt)         - Defines the fill pattern of shapes drawn by a QPainter
+QBuffer (3qt)        - I/O device that operates on a QByteArray
+QButton (3qt)        - The abstract base class of button widgets, providing functionality common to buttons
+QButtonGroup (3qt)   - Organizes QButton widgets in a group
+QByteArray (3qt)     - Array of bytes
+QCache (3qt)         - Template class that provides a cache based on char* keys
+QCacheIterator (3qt) - Iterator for QCache collections
+QCheckBox (3qt)      - Check box with a text label
+QCheckListItem (3qt) - Implements checkable list view items
+QChildEvent (3qt)    - Event parameters for child widget events
+QClipboard (3qt)     - Access to the window system clipboard
+QCloseEvent (3qt)    - Parameters that describe a close event
+QCollection (3qt)    - The base class of all Qt collections
+QColor (3qt)         - Colors based on RGB
+QColorGroup (3qt)    - Group of widget colors
+QComboBox (3qt)      - Combined button and popup list
+QConnection (3qt)    - Internal class, used in the signal/slot mechanism
+QCursor (3qt)        - Mouse cursor with an arbitrary shape
+QCustomEvent (3qt)   - Support for custom events
+QDataPump (3qt)      - Moves data from a QDataSource to a QDataSink during event processing
+QDataSink (3qt)      - A QDataSink is an asynchronous consumer of data
+QDataSource (3qt)    - A QDataSource is an asynchronous producer of data
+QDataStream (3qt)    - Basic functions for serialization of binary data to a QIODevice
+QDate (3qt)          - Date functions
+QDateTime (3qt)      - Combines QDate and QTime into a single class
+QDialog (3qt)        - The base class of dialog windows
+QDict (3qt)          - Template class that provides a dictionary based on char* keys
+QDictIterator (3qt)  - Iterator for QDict collections
+QDir (3qt)           - Traverses directory structures and contents in a platform-independent way
+QDoubleValidator (3qt) - Range checking of floating-point numbers
+QDragMoveEvent (3qt) - Event sent as a drag-and-drop is in progress
+QDragObject (3qt)    - The QDragObject encapsulates MIME-based drag-and-drop interaction
+QDropEvent (3qt)     - Event sent when a drag-and-drop is completed
+QEvent (3qt)         - Base class of all event classes. Event objects contain event parameters
+QFile (3qt)          - I/O device that operates on files
+QFileDialog (3qt)    - The QFileDialog provides a dialog widget for inputting file names
+QFileIconProvider (3qt) - Icons for QFileDialog to use
+QFileInfo (3qt)      - System-independent file information
+QFocusData (3qt)     - Maintains the list of widgets which can take focus
+QFocusEvent (3qt)    - Event parameters for widget focus events
+QFont (3qt)          - Font used for drawing text
+QFontInfo (3qt)      - General information about fonts
+QFontMetrics (3qt)   - Font metrics information about fonts
+QFrame (3qt)         - The base class of widgets that have an (optional) frame
+QGArray (3qt)        - Internal class for implementing the QArray class
+QGCache (3qt)        - Internal class for implementing QCache and QIntCache
+QGCacheIterator (3qt) - An internal class for implementing QCacheIterator and QIntCacheIterator
+QGDict (3qt)         - Internal class for implementing QDict and QIntDict
+QGDictIterator (3qt) - An internal class for implementing QDictIterator and QIntDictIterator
+QGLContext (3qt)     - Encapsulates an OpenGL rendering context [Qt OpenGL Extension]
+QGLFormat (3qt)      - The display format of an OpenGL rendering context [Qt OpenGL Extension]
+QGLWidget (3qt)      - Widget for rendering OpenGL graphics [Qt OpenGL Extension]
+QGList (3qt)         - Internal class for implementing Qt collection classes
+QGListIterator (3qt) - The QGListIterator is an internal class for implementing QListIterator
+QGManager (3qt)      - One-dimensional geometry management
+QGridLayout (3qt)    - Lays out child widgets in a grid
+QGroupBox (3qt)      - Group box frame with a title
+QHBoxLayout (3qt)    - Lines up child widgets horizontally
+QHeader (3qt)        - Table header
+QIODevice (3qt)      - The base class of I/O devices
+QIODeviceSource (3qt) - A QIODeviceSource is a QDataSource that draws data from a QIODevice
+QIconSet (3qt)       - Set of icons (normal, disabled, various sizes) for e.g. buttons
+QImage (3qt)         - Hardware-independent pixmap representation with direct access to the pixel data
+QImageConsumer (3qt) - An abstraction used by QImageDecoder
+QImageDecoder (3qt)  - Incremental image decoder for all supported image formats
+QImageDrag (3qt)     - The QImageDrag provides a drag-and-drop object for tranferring images
+QImageFormat (3qt)   - Incremental image decoder for a specific image format
+QImageFormatType (3qt) - Factory that makes QImageFormat objects
+QImageIO (3qt)       - Parameters for loading and saving images
+QIntCache (3qt)      - Template class that provides a cache based on long keys
+QIntCacheIterator (3qt) - Iterator for QIntCache collections
+QIntDict (3qt)       - Template class that provides a dictionary based on long keys
+QIntDictIterator (3qt) - Iterator for QIntDict collections
+QIntValidator (3qt)  - Range checking of integers
+QKeyEvent (3qt)      - Parameters that describe a key event
+QLCDNumber (3qt)     - Displays a number with LCD-like digits
+QLNode (3qt)         - Internal class for the QList template collection
+QLabel (3qt)         - Displays a static text or pixmap
+QLayout (3qt)        - The base class of geometry specifiers
+QLineEdit (3qt)      - Simple line editor for inputting text
+QList (3qt)          - Template class that provides doubly linked lists
+QListBox (3qt)       - Single-column list of items that can be scrolled
+QListBoxItem (3qt)   - This is the base class of all list box items
+QListBoxPixmap (3qt) - List box items with a pixmap
+QListBoxText (3qt)   - List box items with text
+QListIterator (3qt)  - Iterator for QList collections
+QListView (3qt)      - Implements a list/tree view
+QListViewItem (3qt)  - Implements a list view item
+QMainWindow (3qt)    - Typical application window, with a menu bar, some tool bars and a status bar
+QMenuBar (3qt)       - Horizontal menu bar
+QMenuData (3qt)      - Base class for QMenuBar and QPopupMenu
+QMessageBox (3qt)    - Displays a brief message, an icon, and some buttons
+QMouseEvent (3qt)    - Parameters that describe a mouse event
+QMoveEvent (3qt)     - Event parameters for move events
+QMovie (3qt)         - Incrementally loads an animation or image, signalling as it progresses
+QMultiLineEdit (3qt) - Simple editor for inputting text
+QNPInstance (3qt)    - A QObject that is a Web-browser plugin [Qt NSPlugin Extension]
+QNPStream (3qt)      - A stream of data provided to a QNPInstance by the browser [Qt NSPlugin Extension]
+QNPWidget (3qt)      - A QWidget that is a Web-browser plugin window [Qt NSPlugin Extension]
+QNPlugin (3qt)       - The plugin central factory [Qt NSPlugin Extension]
+QObject (3qt)        - The base class of all Qt objects that can deal with signals, slots and events
+QPaintDevice (3qt)   - Of objects that can be painted
+QPaintDeviceMetrics (3qt) - Information about a paint device
+QPaintEvent (3qt)    - Event parameters for paint events
+QPainter (3qt)       - Paints on paint devices
+QPalette (3qt)       - Color groups for each widget state
+QPen (3qt)           - Defines how a QPainter should draw lines and outlines of shapes
+QPicture (3qt)       - Paint device that records and replays QPainter commands
+QPixmap (3qt)        - Off-screen pixel-based paint device
+QPixmapCache (3qt)   - Application-global cache for pixmaps
+QPoint (3qt)         - Defines a point in the plane
+QPointArray (3qt)    - Array of points
+QPointVal (3qt)      - Internal class, used with QPointArray
+QPopupMenu (3qt)     - Popup menu widget
+QPrintDialog (3qt)   - X-only dialog for specifying print-out details
+QPrinter (3qt)       - Paint device that prints graphics on a printer
+QProgressBar (3qt)   - Horizontal progress bar
+QProgressDialog (3qt) - Provides feedback on the progress of a slow operation
+QPtrDict (3qt)       - Template class that provides a dictionary based on void* keys
+QPtrDictIterator (3qt) - Iterator for QPtrDict collections
+QPushButton (3qt)    - Push button with a text or pixmap label
+QQueue (3qt)         - Template class that provides a queue
+QRadioButton (3qt)   - Radio button with a text label
+QRangeControl (3qt)  - Integer value within a range
+QRect (3qt)          - Defines a rectangle in the plane
+QRegExp (3qt)        - Pattern matching using regular expressions and wildcards
+QRegion (3qt)        - Clip region for a painter
+QResizeEvent (3qt)   - Event parameters for resize events
+QScrollBar (3qt)     - Vertical or horizontal scroll bar
+QScrollView (3qt)    - Scrolling area with on-demand scrollbars
+QSemiModal (3qt)     - The base class of semi-modal dialog windows
+QShared (3qt)        - The QShared struct is internally used for implementing shared classes
+QSignal (3qt)        - Can be used to send signals without parameters
+QSignalMapper (3qt)  - A QSignalMapper object bundles signals from identifiable senders
+QSize (3qt)          - Defines the size of a two-dimensional object
+QSlider (3qt)        - Vertical or horizontal slider
+QSocketNotifier (3qt) - Support for socket callbacks
+QSpinBox (3qt)       - Spin box widget, sometimes called up-down widget, little arrows widget or spin button
+QSplitter (3qt)      - QSplitter implements a splitter widget
+QStack (3qt)         - Template class that provides a stack
+QStatusBar (3qt)     - Horizontal bar suitable for presenting status messages
+QStoredDrag (3qt)    - Simple stored-value drag object for arbitrary MIME data
+QStrIList (3qt)      - Doubly linked list of char* with case insensitive compare
+QStrList (3qt)       - Doubly linked list of char*.
+QString (3qt)        - Abstraction of the classic C zero-terminated char array (char*)
+QTabBar (3qt)        - Tab bar, for use in e.g. tabbed dialogs
+QTabDialog (3qt)     - Stack of tabbed widgets
+QTableView (3qt)     - This is the abstract base class of all the table views
+QTextDrag (3qt)      - The QTextDrag provides a drag-and-drop object for transferring plain text
+QTextStream (3qt)    - Basic functions for reading and writing text using a QIODevice
+QTime (3qt)          - Time functions
+QTimer (3qt)         - Timer signals and single-shot timers
+QTimerEvent (3qt)    - Parameters that describe a timer event
+QToolBar (3qt)       - Simple tool bar
+QToolButton (3qt)    - Push button whose appearance has been tailored for use in a QToolBar
+QToolTip (3qt)       - Tool tips (sometimes called balloon help) for any widget or rectangular part of a widget
+QToolTipGroup (3qt)  - Collects tool tips into natural groups
+QUrlDrag (3qt)       - Provides for drag-and-drop of a list of file references
+QVBoxLayout (3qt)    - Lines up child widgets vertically
+QValidator (3qt)     - Validation of input text
+QWMatrix (3qt)       - 2D transformations of a coordinate system
+QWhatsThis (3qt)     - Simple description of any widget, e.g. answering the question "what's this?"
+QWidget (3qt)        - The base class of all user interface objects
+QWidgetStack (3qt)   - Stack of widgets, where the user can see only the top widget
+QWindow (3qt)        - Reserved for future extensions
+QXtApplication (3qt) - Allows mixing of Xt/Motif and Qt widgets [Qt Xt/Motif Extension]
+QXtWidget (3qt)      - Allows mixing of Xt/Motif and Qt widgets [Qt Xt/Motif Extension]
+Rnmail (1)           - a program for replying via mail
+Safe Base (n)        - A mechanism for creating and manipulating safe interpreters.
+Samba (7)            - A Windows SMB/CIFS fileserver for UNIX
+TEACHJOVE (1)        - learn how to use the JOVE editor
+TIFFClose (3t)       - close a previously opened TIFF file
+TIFFCurrentRow, TIFFCurrentStrip, TIFFCurrentTile, TIFFCurrentDirectory, TIFFLastDirectory, TIFFFileno, TIFFFileName, TIFFGetMode, TIFFIsTiled, TIFFIsByteSwapped, TIFFIsUpSampled, TIFFIsMSB2LSB (3t) - query routines
+TIFFDefaultStripSize, TIFFStripSize, TIFFVStripSize, TIFFComputeStrip, TIFFNumberOfStrips (3t) - strip-related utility routines
+TIFFError, TIFFSetErrorHandler (3t) - library error handling interface
+TIFFFindCODEC, TIFFRegisterCODEC, TIFFUnRegisterCODEC (3t) - codec-related utility routines
+TIFFFlush, TIFFFlushData (3t) - flush pending writes to an open TIFF file
+TIFFGetField, TIFFVGetField (3t) - get the value(s) of a tag in an open TIFF file
+TIFFOpen, TIFFFdOpen, TIFFClientOpen (3t) - open a TIFF file for reading or writing
+TIFFPrintDirectory (3t) - print a description of a TIFF directory
+TIFFRGBAImage (3t)   - read and decode an image into a raster
+TIFFReadBufferSetup, TIFFWriteBufferSetup (3t) - I/O buffering control routines
+TIFFReadDirectory (3t) - get the contents of the next directory in an open TIFF file
+TIFFReadEncodedStrip (3t) - read and decode a strip of data from an open TIFF file
+TIFFReadEncodedTile (3t) - read and decode a tile of data from an open TIFF file
+TIFFReadRGBAImage (3t) - read and decode an image into a fixed-format raster
+TIFFReadRawStrip (3t) - return the undecoded contents of a strip of data from an open TIFF file
+TIFFReadRawTile (3t) - return an undecoded tile of data from an open TIFF file
+TIFFReadScanline (3t) - read and decode a scanline of data from an open TIFF file
+TIFFReadTile (3t)    - read and decode a tile of data from an open TIFF file
+TIFFReverseBits, TIFFSwabShort, TIFFSwabLong, TIFFSwabArrayOfShort, TIFFSwabArrayOfLong (3t) - byte- and bit-swapping routines
+TIFFScanlineSize, TIFFRasterScanlineSize, (3t) - return the size of various items associated with an open TIFF file
+TIFFSetDirectory, TIFFSetSubDirectory (3t) - set the current directory for an open TIFF file
+TIFFSetField (3t)    - set the value(s) of a tag in a TIFF file open for writing
+TIFFTileSize, TIFFTileRowSize, TIFFVTileSize, TIFFDefaultTileSize, TIFFComputeTile, TIFFCheckTile, TIFFNumberOfTiles (3t) - tile-related utility routines
+TIFFWarning, TIFFSetWarningHandler (3t) - library warning interface
+TIFFWriteDirectory (3t) - write the current directory in an open TIFF file
+TIFFWriteRawStrip (3t) - write a strip of raw data to an open TIFF file
+TIFFWriteRawTile (3t) - write a tile of raw data to an open TIFF file
+TIFFWriteScanline (3t) - write a scanline to an open TIFF file
+TIFFWritedEncodedStrip (3t) - compress and write a strip of data to an open TIFF file
+TIFFWritedEncodedTile (3t) - compress and write a tile of data to an open TIFF file
+Tcl (n)              - Summary of Tcl language syntax.
+TclCommandWriting (3) - Writing C language extensions to Tcl. '
+TclX (n)             - Extended Tcl: Extended command set for Tcl '
+TclX_NewKeyedListObj, TclX_KeyedListGet, TclX_KeyedListSet, TclX_KeyedListDelete, TclX_KeyedListGetKeys (3) - Keyed list management routines.
+Tcl_AddObjErrorInfo, Tcl_AddErrorInfo, Tcl_SetErrorCode, Tcl_PosixError (3) - record information about errors
+Tcl_Alloc, Tcl_Free, Tcl_Realloc (3) - allocate or free heap memory
+Tcl_AllowExceptions (3) - allow all exceptions in next script evaluation
+Tcl_AppInit (3)      - perform application-specific initialization
+Tcl_AsyncCreate, Tcl_AsyncMark, Tcl_AsyncInvoke, Tcl_AsyncDelete (3) - handle asynchronous events
+Tcl_BackgroundError (3) - report Tcl error that occurred in background processing
+Tcl_Backslash (3)    - parse a backslash sequence
+Tcl_CallWhenDeleted, Tcl_DontCallWhenDeleted (3) - Arrange for callback when interpreter is deleted
+Tcl_CommandComplete (3) - Check for unmatched braces in a Tcl command
+Tcl_Concat (3)       - concatenate a collection of strings
+Tcl_CreateChannel, Tcl_GetChannelInstanceData, Tcl_GetChannelType, Tcl_GetChannelName, Tcl_GetChannelHandle, Tcl_GetChannelMode, Tcl_GetChannelBufferSize, Tcl_SetDefaultTranslation, Tcl_SetChannelBufferSize, Tcl_NotifyChannel, Tcl_BadChannelOption (3) - procedures for creating and manipulating channels
+Tcl_CreateChannelHandler, Tcl_DeleteChannelHandler (3) - call a procedure when a channel becomes readable or writable
+Tcl_CreateCloseHandler, Tcl_DeleteCloseHandler (3) - arrange for callbacks when channels are closed
+Tcl_CreateCommand (3) - implement new commands in C
+Tcl_CreateEventSource, Tcl_DeleteEventSource, Tcl_SetMaxBlockTime, Tcl_QueueEvent, Tcl_DeleteEvents, Tcl_WaitForEvent, Tcl_SetTimer, Tcl_ServiceAll, Tcl_ServiceEvent, Tcl_GetServiceMode, Tcl_SetServiceMode (3) - the event queue and notifier interfaces
+Tcl_CreateFileHandler, Tcl_DeleteFileHandler (3) - associate procedure callbacks with files or devices (Unix only)
+Tcl_CreateInterp, Tcl_DeleteInterp, Tcl_InterpDeleted (3) - create and delete Tcl command interpreters
+Tcl_CreateMathFunc (3) - Define a new math function for expressions
+Tcl_CreateObjCommand, Tcl_DeleteCommand, Tcl_DeleteCommandFromToken, Tcl_GetCommandInfo, Tcl_SetCommandInfo, Tcl_GetCommandName (3) - implement new commands in C
+Tcl_CreateTimerHandler, Tcl_DeleteTimerHandler (3) - call a procedure at a given time
+Tcl_CreateTrace, Tcl_DeleteTrace (3) - arrange for command execution to be traced
+Tcl_DStringInit, Tcl_DStringAppend, Tcl_DStringAppendElement, Tcl_DStringStartSublist, Tcl_DStringEndSublist, Tcl_DStringLength, Tcl_DStringValue, Tcl_DStringSetLength, Tcl_DStringFree, Tcl_DStringResult, Tcl_DStringGetResult (3) - manipulate dynamic strings
+Tcl_DetachPids, Tcl_ReapDetachedProcs (3) - manage child processes in background
+Tcl_DoOneEvent (3)   - wait for events and invoke event handlers
+Tcl_DoWhenIdle, Tcl_CancelIdleCall (3) - invoke a procedure when there are no pending events
+Tcl_Eval, Tcl_VarEval, Tcl_EvalFile, Tcl_GlobalEval (3) - execute Tcl commands
+Tcl_EvalObj, Tcl_GlobalEvalObj (3) - execute Tcl commands
+Tcl_Exit, Tcl_Finalize, Tcl_CreateExitHandler, Tcl_DeleteExitHandler (3) - end the application (and invoke exit handlers)
+Tcl_ExprLong, Tcl_ExprDouble, Tcl_ExprBoolean, Tcl_ExprString (3) - evaluate an expression
+Tcl_ExprLongObj, Tcl_ExprDoubleObj, Tcl_ExprBooleanObj, Tcl_ExprObj (3) - evaluate an expression
+Tcl_FindExecutable, Tcl_GetNameOfExecutable (3) - identify or return the name of the binary file containing the application
+Tcl_GetAssocData, Tcl_SetAssocData, Tcl_DeleteAssocData (3) - manage associations of string keys and user specified data with Tcl interpreters.
+Tcl_GetIndexFromObj (3) - lookup string in table of keywords
+Tcl_GetInt, Tcl_GetDouble, Tcl_GetBoolean (3) - convert from string to integer, double, or boolean
+Tcl_GetOpenFile (3)  - Get a standard IO File * handle from a channel. (Unix only)
+Tcl_GetStdChannel, Tcl_SetStdChannel (3) - procedures for retrieving and replacing the standard channels
+Tcl_HandleAlloc, Tcl_HandleFree, Tcl_HandleTblInit, Tcl_HandleTblRelease, Tcl_HandleTblUseCount Tcl_HandleWalk, Tcl_HandleXlate (3) - Dynamic, handle addressable tables.
+Tcl_InitHashTable, Tcl_DeleteHashTable, Tcl_CreateHashEntry, Tcl_DeleteHashEntry, Tcl_FindHashEntry, Tcl_GetHashValue, Tcl_SetHashValue, Tcl_GetHashKey, Tcl_FirstHashEntry, Tcl_NextHashEntry, Tcl_HashStats (3) - procedures to manage hash tables
+Tcl_Interp (3)       - client-visible fields of interpreter structures
+Tcl_IsSafe, Tcl_MakeSafe, Tcl_CreateSlave, Tcl_GetSlave, Tcl_GetMaster, Tcl_GetInterpPath, Tcl_CreateAlias, Tcl_CreateAliasObj, Tcl_GetAlias, Tcl_GetAliasObj, Tcl_ExposeCommand, Tcl_HideCommand (3) - manage multiple Tcl interpreters, aliases and hidden commands.
+Tcl_LinkVar, Tcl_UnlinkVar, Tcl_UpdateLinkedVar (3) - link Tcl variable to C variable
+Tcl_ListObjAppendList, Tcl_ListObjAppendElement, Tcl_NewListObj, Tcl_SetListObj, Tcl_ListObjGetElements, Tcl_ListObjLength, Tcl_ListObjIndex, Tcl_ListObjReplace (3) - manipulate Tcl objects as lists
+Tcl_Main (3)         - main program for Tcl-based applications
+Tcl_NewBooleanObj, Tcl_SetBooleanObj, Tcl_GetBooleanFromObj (3) - manipulate Tcl objects as boolean values
+Tcl_NewDoubleObj, Tcl_SetDoubleObj, Tcl_GetDoubleFromObj (3) - manipulate Tcl objects as floating-point values
+Tcl_NewIntObj, Tcl_NewLongObj, Tcl_SetIntObj, Tcl_SetLongObj, Tcl_GetIntFromObj, Tcl_GetLongFromObj (3) - manipulate Tcl objects as integers
+Tcl_NewObj, Tcl_DuplicateObj, Tcl_IncrRefCount, Tcl_DecrRefCount, Tcl_IsShared (3) - manipulate Tcl objects
+Tcl_NewStringObj, Tcl_SetStringObj, Tcl_GetStringFromObj, Tcl_AppendToObj, Tcl_AppendStringsToObj, Tcl_SetObjLength, TclConcatObj (3) - manipulate Tcl objects as strings
+Tcl_ObjSetVar2, Tcl_ObjGetVar2 (3) - manipulate Tcl variables
+Tcl_OpenFileChannel, Tcl_OpenCommandChannel, Tcl_MakeFileChannel, Tcl_GetChannel, Tcl_RegisterChannel, Tcl_UnregisterChannel, Tcl_Close, Tcl_Read, Tcl_Gets, Tcl_Write, Tcl_Flush, Tcl_Seek, Tcl_Tell, Tcl_Eof, Tcl_InputBlocked, Tcl_InputBuffered, Tcl_GetChannelOption, Tcl_SetChannelOption (3) - buffered I/O facilities using channels
+Tcl_OpenTcpClient, Tcl_MakeTcpClientChannel, Tcl_OpenTcpServer (3) - procedures to open channels using TCP sockets
+Tcl_PkgRequire, Tcl_PkgProvide (3) - package version control
+Tcl_Preserve, Tcl_Release, Tcl_EventuallyFree (3) - avoid freeing storage while it's being used
+Tcl_PrintDouble (3)  - Convert floating value to string
+Tcl_RecordAndEval (3) - save command on history list before evaluating
+Tcl_RecordAndEvalObj (3) - save command on history list before evaluating
+Tcl_RegExpMatch, Tcl_RegExpCompile, Tcl_RegExpExec, Tcl_RegExpRange (3) - Pattern matching with regular expressions
+Tcl_RegisterObjType, Tcl_GetObjType, Tcl_AppendAllObjTypes, Tcl_ConvertToType (3) - manipulate Tcl object types
+Tcl_SetErrno, Tcl_GetErrno (3) - manipulate errno to store and retrieve error codes
+Tcl_SetObjResult, Tcl_GetObjResult, Tcl_SetResult, Tcl_GetStringResult, Tcl_AppendResult, Tcl_AppendElement, Tcl_ResetResult (3) - manipulate Tcl result
+Tcl_SetRecursionLimit (3) - set maximum allowable nesting depth in interpreter
+Tcl_SetVar, Tcl_SetVar2, Tcl_GetVar, Tcl_GetVar2, Tcl_UnsetVar, Tcl_UnsetVar2 (3) - manipulate Tcl variables
+Tcl_Sleep (3)        - delay execution for a given number of milliseconds
+Tcl_SplitList, Tcl_Merge, Tcl_ScanElement, Tcl_ConvertElement (3) - manipulate Tcl lists
+Tcl_SplitPath, Tcl_JoinPath, Tcl_GetPathType (3) - manipulate platform-dependent file paths
+Tcl_StaticPackage (3) - make a statically linked package available via the load command
+Tcl_StringMatch (3)  - test whether a string matches a pattern
+Tcl_TraceVar, Tcl_TraceVar2, Tcl_UntraceVar, Tcl_UntraceVar2, Tcl_VarTraceInfo, Tcl_VarTraceInfo2 (3) - monitor accesses to a variable
+Tcl_TranslateFileName (3) - convert file name to native form and replace tilde with home directory
+Tcl_UpVar, Tcl_UpVar2 (3) - link one variable to another
+Tcl_WrongNumArgs (3) - generate standard error message for wrong number of arguments
+Tclx_Init, Tclxcmd_Init, TclX_Main, Tkx_Init, TkX_Main (3) - Extended Tcl initialization. '
+Tix Display Items ' ' (n) - 
+TixIntro (n)         - Introduction to the Tix widget set ' '
+Tk_CanvasPsY, Tk_CanvasPsBitmap, Tk_CanvasPsColor, Tk_CanvasPsFont, Tk_CanvasPsPath, Tk_CanvasPsStipple (3) - utility procedures for generating Postscript for canvases
+Tk_CanvasTextInfo (3) - additional information for managing text items in canvases
+Tk_CanvasTkwin, Tk_CanvasGetCoord, Tk_CanvasDrawableCoords, Tk_CanvasSetStippleOrigin, Tk_CanvasWindowCoords, Tk_CanvasEventuallyRedraw, Tk_CanvasTagsOption (3) - utility procedures for canvas type managers
+Tk_ClearSelection (3) - Deselect a selection
+Tk_ClipboardClear, Tk_ClipboardAppend (3) - Manage the clipboard
+Tk_ComputeTextLayout, Tk_FreeTextLayout, Tk_DrawTextLayout, Tk_UnderlineTextLayout, Tk_PointToChar, Tk_CharBbox, Tk_DistanceToTextLayout, Tk_IntersectTextLayout, Tk_TextLayoutToPostscript (3) - routines to measure and display single-font, multi-line, justified text.
+Tk_ConfigureWidget, Tk_Offset, Tk_ConfigureInfo, Tk_ConfigureValue, Tk_FreeOptions (3) - process configuration options for widgets
+Tk_ConfigureWindow, Tk_MoveWindow, Tk_ResizeWindow, Tk_MoveResizeWindow, Tk_SetWindowBorderWidth, Tk_ChangeWindowAttributes, Tk_SetWindowBackground, Tk_SetWindowBackgroundPixmap, Tk_SetWindowBorder, Tk_SetWindowBorderPixmap, Tk_SetWindowColormap, Tk_DefineCursor, Tk_UndefineCursor (3) - change window configuration or attributes
+Tk_CoordsToWindow (3) - Find window containing a point
+Tk_CreateBindingTable, Tk_DeleteBindingTable, Tk_CreateBinding, Tk_DeleteBinding, Tk_GetBinding, Tk_GetAllBindings, Tk_DeleteAllBindings, Tk_BindEvent (3) - invoke scripts in response to X events
+Tk_CreateErrorHandler, Tk_DeleteErrorHandler (3) - handle X protocol errors
+Tk_CreateEventHandler, Tk_DeleteEventHandler (3) - associate procedure callback with an X event
+Tk_CreateGenericHandler, Tk_DeleteGenericHandler (3) - associate procedure callback with all X events
+Tk_CreateImageType, Tk_GetImageMasterData (3) - define new kind of image
+Tk_CreateItemType, Tk_GetItemTypes (3) - define new kind of canvas item
+Tk_CreatePhotoImageFormat (3) - define new file format for photo images
+Tk_CreateSelHandler, Tk_DeleteSelHandler (3) - arrange to handle requests for a selection
+Tk_CreateWindow, Tk_CreateWindowFromPath, Tk_DestroyWindow, Tk_MakeWindowExist (3) - create or delete window
+Tk_DeleteImage (3)   - Destroy an image.
+Tk_DrawFocusHighlight (3) - draw the traversal highlight ring for a widget
+Tk_FindPhoto, Tk_PhotoPutBlock, Tk_PhotoPutZoomedBlock, Tk_PhotoGetImage, Tk_PhotoBlank, Tk_PhotoExpand, Tk_PhotoGetSize, Tk_PhotoSetSize (3) - manipulate the image data stored in a photo image.
+Tk_FontId, Tk_FontMetrics, Tk_PostscriptFontName (3) - accessor functions for fonts
+Tk_FreeXId (3)       - make X resource identifier available for reuse
+Tk_GeometryRequest, Tk_SetInternalBorder (3) - specify desired geometry or internal border for a window
+Tk_Get3DBorder, Tk_Draw3DRectangle, Tk_Fill3DRectangle, Tk_Draw3DPolygon, Tk_Fill3DPolygon, Tk_3DVerticalBevel, Tk_3DHorizontalBevel, Tk_SetBackgroundFromBorder, Tk_NameOf3DBorder, Tk_3DBorderColor, Tk_3DBorderGC, Tk_Free3DBorder (3) - draw borders with three-dimensional appearance
+Tk_GetAnchor, Tk_NameOfAnchor (3) - translate between strings and anchor positions
+Tk_GetBitmap, Tk_DefineBitmap, Tk_NameOfBitmap, Tk_SizeOfBitmap, Tk_FreeBitmap, Tk_GetBitmapFromData (3) - maintain database of single-plane pixmaps
+Tk_GetCapStyle, Tk_NameOfCapStyle (3) - translate between strings and cap styles
+Tk_GetColor, Tk_GetColorByValue, Tk_NameOfColor, Tk_FreeColor (3) - maintain database of colors
+Tk_GetColormap, Tk_FreeColormap (3) - allocate and free colormaps
+Tk_GetCursor, Tk_GetCursorFromData, Tk_NameOfCursor, Tk_FreeCursor (3) - maintain database of cursors
+Tk_GetFont, Tk_NameOfFont, Tk_FreeFont (3) - maintain database of fonts
+Tk_GetGC, Tk_FreeGC (3) - maintain database of read-only graphics contexts
+Tk_GetImage, Tk_RedrawImage, Tk_SizeOfImage, Tk_FreeImage (3) - use an image in a widget
+Tk_GetJoinStyle, Tk_NameOfJoinStyle (3) - translate between strings and join styles
+Tk_GetJustify, Tk_NameOfJustify (3) - translate between strings and justification styles
+Tk_GetOption (3)     - retrieve an option from the option database
+Tk_GetPixels, Tk_GetScreenMM (3) - translate between strings and screen units
+Tk_GetPixmap, Tk_FreePixmap (3) - allocate and free pixmaps
+Tk_GetRelief, Tk_NameOfRelief (3) - translate between strings and relief values
+Tk_GetRootCoords (3) - Compute root-window coordinates of window
+Tk_GetScrollInfo (3) - parse arguments for scrolling commands
+Tk_GetSelection (3)  - retrieve the contents of a selection
+Tk_GetUid, Tk_Uid (3) - convert from string to unique identifier
+Tk_GetVRootGeometry (3) - Get location and size of virtual root for window
+Tk_GetVisual (3)     - translate from string to visual
+Tk_HandleEvent (3)   - invoke event handlers for window system events
+Tk_IdToWindow (3)    - Find Tk's window information for an X window
+Tk_ImageChanged (3)  - notify widgets that image needs to be redrawn
+Tk_Init (3)          - add Tk to an interpreter and make a new Tk application.
+Tk_InternAtom, Tk_GetAtomName (3) - manage cache of X atoms
+Tk_Main (3)          - main program for Tk-based applications
+Tk_MainLoop (3)      - loop for events until all windows are deleted
+Tk_MainWindow (3)    - find the main window for an application
+Tk_MaintainGeometry, Tk_UnmaintainGeometry (3) - maintain geometry of one window relative to another
+Tk_ManageGeometry (3) - arrange to handle geometry requests for a window
+Tk_MapWindow, Tk_UnmapWindow (3) - map or unmap a window
+Tk_MeasureChars, Tk_TextWidth, Tk_DrawChars, Tk_UnderlineChars (3) - routines to measure and display simple single-line strings.
+Tk_MoveToplevelWindow (3) - Adjust the position of a top-level window
+Tk_Name, Tk_PathName, Tk_NameToWindow (3) - convert between names and window tokens
+Tk_NameOfImage (3)   - Return name of image.
+Tk_OwnSelection (3)  - make a window the owner of the primary selection
+Tk_ParseArgv (3)     - process command-line options
+Tk_QueueWindowEvent (3) - Add a window event to the Tcl event queue
+Tk_RestackWindow (3) - Change a window's position in the stacking order
+Tk_RestrictEvents (3) - filter and selectively delay X events
+Tk_SetAppName (3)    - Set the name of an application for ``send'' commands
+Tk_SetClass, Tk_Class (3) - set or retrieve a window's class
+Tk_SetGrid, Tk_UnsetGrid (3) - control the grid for interactive resizing
+Tk_SetWindowVisual (3) - change visual characteristics of window
+Tk_StrictMotif (3)   - Return value of tk_strictMotif variable
+Tk_WindowId, Tk_Parent, Tk_Display, Tk_DisplayName, Tk_ScreenNumber, Tk_Screen, Tk_X, Tk_Y, Tk_Width, Tk_Height, Tk_Changes, Tk_Attributes, Tk_IsMapped, Tk_IsTopLevel, Tk_ReqWidth, Tk_ReqHeight, Tk_InternalBorderWidth, Tk_Visual, Tk_Depth, Tk_Colormap (3) - retrieve information from Tk's local data structure
+UTF-8 (7)            - an ASCII compatible multibyte Unicode encoding
+Unicode (7)          - the unified 16-bit super character set
+Utils (n)            - Utility commands in Tix 4.0. ' ' '
+Wm (n)               - Tix's addition to the standard TK wm command. ' ' '
+Yacc (1)             - an LALR(1) parser generator
+_TIFFmalloc, c _TIFFrealloc, c _TIFFfree, c _TIFFmemset, c _TIFFmemcpy, c _TIFFmemcmp, c (3t) - memory management-related functions for use with TIFF files
+__clone (2)          - create a child process
+__setfpucw (3)       - set fpu control word on i386 architecture
+_exit (2)            - terminate the current process
+_llseek (2)          - reposition read/write file offset
+a2p (1)              - Awk to Perl translator
+ab (8)               - Apache HTTP server benchmarking tool
+abort (3)            - cause abnormal program termination
+abs (3)              - computes the absolute value of an integer.
+accel (6)            - tests the new style svgalib accelerator interface
+accept (2)           - accept a connection on a socket
+access (2)           - check user's permissions for a file
+acct (2)             - switch process accounting on or off
+acos (3)             - arc cosine function
+acosh (3)            - inverse hyperbolic cosine function
+active, active.times (5) - list of active Usenet newsgroups
+actsync, actsyncd (8) - synchronize newsgroups
+addch, waddch, mvaddch, mvwaddch, echochar, wechochar (3x) - add a character (with attributes) to a curses window, then advance the cursor
+addchstr, addchnstr, waddchstr, waddchnstr, mvaddchstr, mvaddchnstr, mvwaddchstr, mvwaddchnstr (3x) - add a string of characters (and attributes) to a curses window
+addftinfo (1)        - add information to troff font files for use with groff
+addr2line (1)        - convert addresses into file names and line numbers
+addstr, addnstr, waddstr, waddnstr, mvaddstr, mvaddnstr, mvwaddstr, mvwaddnstr (3x) - add a string of characters to a curses window and advance cursor
+adjtimex (2)         - tune kernel clock
+adventure (6)        - an exploration game
+aecho (1)            - send AppleTalk Echo Protocol packets to network hosts
+afmtodit (1)         - create font files for use with groff -Tps
+afpd (8)             - AppleTalk Filing Protocol daemon
+afs_syscall, break, ftime, gtty, lock, mpx, phys, prof, profil, stty, ulimit (2) - unimplemented system calls
+after (n)            - Execute a command after a time delay
+agetty (8)           - alternative Linux getty
+alarm (2)            - set an alarm clock for delivery of a signal
+aliases (5)          - aliases file for sendmail
+alloca (3)           - memory allocator
+ansi2knr (1)         - convert ANSI C to Kernighan & Ritchie C
+answer (1)           - phone message transcription system
+apachectl (8)        - Apache HTTP server control interface
+apm (1)              - query Advanced Power Management (APM) BIOS
+apmd (8)             - Advanced Power Management (APM) BIOS daemon
+append (n)           - Append to variable
+apropos (1)          - search the whatis database for strings
+apxs (8)             - APache eXtenSion tool
+ar (1)               - create, modify, and extract from archives.
+arch (1)             - print machine architecture
+archive (8)          - Usenet article archiver
+arithmetic (6)       - quiz on simple arithmetic
+arp (8)              - manipulate the system ARP cache
+array (n)            - Manipulate array variables
+ascii (7)            - the ASCII character set encoded in octal, decimal, and hexadecimal
+ascii-xfr (1)        - upload/download files using the ASCII protocol
+asctime, ctime, difftime, gmtime, localtime, mktime (3) - convert date and time to ASCII
+asctime, ctime, gmtime, localtime, mktime (3) - transform binary date and time to ASCII
+ash (1)              - a shell
+asin (3)             - arc sine function
+asinh (3)            - inverse hyperbolic sine function
+assert (3)           - Abort the program if assertion is false.
+at, batch, atq, atrm (1) - queue, examine or delete jobs for later execution
+atalk (4)            - AppleTalk protocol family
+atalk_aton (3)       - AppleTalk address parsing
+atalkd (8)           - AppleTalk RTMP, NBP, ZIP, and AEP manager
+atan (3)             - arc tangent function
+atan2 (3)            - arc tangent function of two variables
+atanh (3)            - inverse hyperbolic tangent function
+atc (6)              - air traffic controller game
+atexit (3)           - register a function to be called at normal program termination.
+atof (3)             - convert a string to a double.
+atoi (3)             - convert a string to an integer.
+atol (3)             - convert a string to a long integer.
+atrun (8)            - run jobs queued for later execution
+attroff, wattroff, attron, wattron, attrset, wattrset, standend, wstandend, standout, wstandout (3x) - curses character and window attribute control routines
+audiocompose (1)     - Compose an audio fragment for inclusion in a mail message
+audiosend (1)        - Send an audio email message
+autoexpect (1)       - generate an Expect script from watching a session
+autofs (5)           - Format of the automounter maps
+automount (8)        - configure mount points for autofs
+backgammon (6)       - the game of backgammon teachgammon - learn to play backgammon
+badblocks (8)        - search a device for bad blocks
+banner (6)           - print large banner on printer
+basename (1)         - strip directory and suffix from filenames
+bash (1)             - GNU Bourne-Again SHell
+bash, :, ., alias, bg, bind, break, builtin, bye, case, cd, command, continue, declare, dirs, echo, enable, eval, exec, exit, export, fc, fg, for, getopts, hash, help, history, if, jobs, kill, let, local, logout, popd, pushd, pwd, read, readonly, return, set, shift, source, suspend, test, times, trap, type, typeset, ulimit, umask, unalias, unset, until, wait, while (1) - bash built-in commands, see bash(1)
+batcher (8)          - article batching backend for InterNetNews
+battlestar (6)       - a tropical adventure game
+baudrate, erasechar, has_ic, has_il, killchar, longname, termattrs, termname (3x) - curses environment query routines
+bc (1)               - An arbitrary precision calculator language
+bcd, (6)             - ppt, - morse - "reformat input as punch cards, paper tape or morse code"
+bcmp (3)             - compare byte strings
+bcmp, bcopy, bzero, memccpy, memchr, memcmp, memcpy, memfrob, memmem, memmove, memset (3) - byte string operations
+bcopy (3)            - copy byte strings
+bdflush (2)          - start, flush, or tune buffer-dirty-flush daemon
+beep, flash (3x)     - curses bell and screen flash routines
+bell (n)             - Ring a display's bell
+bg_test (6)          - test the background mode of svgalib
+bgerror (n)          - Command invoked to process background errors
+biff (1)             - "be notified if mail arrives and who it is from"
+binary (n)           - Insert and extract fields from binary strings
+bind (2)             - bind a name to a socket
+bind (n)             - Arrange for X events to invoke Tcl scripts
+bindtags (n)         - Determine which bindings apply to a window, and order of evaluation
+bison (1)            - GNU Project parser generator (yacc replacement)
+bitmap (n)           - Images that display two colors
+bkgdset, wbkgdset, bkgd, wbkgd (3x) - curses window background manipulation routines .
+bootparam (7)        - Introduction to boot time parameters of the Linux kernel
+bootparamd (8)       - boot parameter server
+bootpd, bootpgw (8)  - Internet Boot Protocol server/gateway
+bootpef (8)          - BOOTP Extension File compiler
+bootptab (5)         - Internet Bootstrap Protocol server database
+bootptest (8)        - send BOOTP queries and print responses
+border, wborder, box, hline, whline, vline, wvline (3x) - create curses borders, horizontal and vertical lines
+bpe (1)              - examine and patch binary files
+break (n)            - Abort looping command
+brk, sbrk (2)        - change data segment size
+bsearch (3)          - binary search of a sorted array.
+btree (3)            - btree database access method
+buffchan (8)         - buffered file-writing backend for InterNetNews
+button (n)           - Create and manipulate button widgets
+bzero (3)            - write zeros to a byte string
+bzip2, bunzip2 (1)   - a block-sorting file compressor, v0.9.0 bzcat - decompresses files to stdout bzip2recover - recovers data from damaged bzip2 files
+c++filt (1)          - demangle C++ symbols
+c2ph, pstruct (1)    - Dump C structures as generated from cc -g -S stabs
+cacheflush (2)       - flush contents of instruction and/or data cache
+caesar, (6)          - rot13 - decrypt caesar cyphers
+cal (1)              - displays a calendar
+calloc, malloc, free, realloc (3) - Allocate and free dynamic memory
+canfield, (6)        - cfscores - the solitaire card game canfield
+canvas (n)           - Create and manipulate canvas widgets
+captoinfo (1m)       - convert a termcap description into a terminfo description
+case (n)             - Evaluate one of several scripts, depending on a given value
+cat (1)              - concatenate files and print on the standard output
+catch (n)            - Evaluate script and trap exceptional returns
+catgets (3)          - get message from a message catalog
+catopen, catclose (3) - open/close a message catalog
+cbreak, nocbreak, echo, noecho, halfdelay, intrflush, keypad, meta, nodelay, notimeout, raw, noraw, noqiflush, qiflush, timeout, wtimeout, typeahead (3x) - curses input options
+cbrt (3)             - cube root function
+cccp, cpp (1)        - The GNU C-Compatible Compiler Preprocessor.
+cd (n)               - Change working directory
+cdrecord (1)         - record audio or data Compact Discs from a master
+cdwrite (1)          - record audio or data Compact Discs
+ceil (3)             - smallest integral value not less than x
+cfdisk (8)           - Curses based disk partition table manipulator for Linux
+chage (1)            - change user password expiry information
+charmap (5)          - character symbols to define character encodings
+charsets (4)         - programmer's view of character sets and internationalization
+chattr (1)           - change file attributes on a Linux second extended file system
+chdir, fchdir (2)    - change working directory
+checkalias (1)       - check to see if an alias is defined.
+checkbutton (n)      - Create and manipulate checkbutton widgets
+chfn (1)             - change user name and information
+chgrp (1)            - change group ownership of files
+chmod (1)            - change access permissions of files
+chmod, fchmod (2)    - change permissions of a file
+chown (1)            - change file owner and group
+chown, fchown, lchown (2) - change ownership of a file
+chpasswd (8)         - update password file in batch
+chroot (1)           - run command or interactive shell with special root directory
+chroot (2)           - change root directory
+chroot (8)           - change root directory and execute a program there
+chsh (1)             - change login shell
+chvt (1)             - change foreground virtual terminal
+ci (1)               - check in RCS revisions
+cjpeg (1)            - compress an image file to a JPEG file
+ckalloc, memory, ckfree, Tcl_DisplayMemory, Tcl_InitMemory, Tcl_ValidateAllMemory (n) - Validated memory allocation interface.
+cksum (1)            - checksum and count the bytes in a file
+clear (1)            - clear terminal screen
+clearerr, feof, ferror, fileno (3) - check and reset stream status
+clearok, idlok, idcok immedok, leaveok, setscrreg, wsetscrreg, scrollok, nl, nonl (3x) - curses output options
+clientlib (3)        - NNTP clientlib part of InterNetNews library
+clipboard (n)        - Manipulate Tk clipboard
+clock (3)            - Determine processor time
+clock (8)            - manipulate the CMOS clock
+clock (8)            - query and set the hardware clock (RTC)
+clock (n)            - Obtain and manipulate time
+close (2)            - close a file descriptor
+close (n)            - Close an open channel.
+closedir (3)         - close a directory
+closelog, openlog, syslog (3) - send messages to the system logger
+cmp (1)              - compare two files
+co (1)               - check out RCS revisions
+col (1)              - filter reverse line feeds from input
+colcrt (1)           - filter nroff output for CRT previewing
+colrm (1)            - remove columns from a file
+column (1)           - columnate lists
+com_err (3)          - common error display routine
+comm (1)             - compare two sorted files line by line
+compile_et (1)       - error table compiler
+compress, uncompress, zcat (1) - compress and expand data
+comsat (8)           - biff server
+concat (n)           - Join lists together
+confstr (3)          - get configuration dependent string variables
+connect (2)          - initiate a connection on a socket
+console (4)          - console terminal and virtual consoles
+console ioctl (4)    - ioctl's for console terminal and virtual consoles
+console ioctl's (4)  - ioctl's for console terminal and virtual consoles
+console_codes (4)    - Linux console escape and control sequences
+continue (n)         - Skip to the next iteration of a loop
+control.ctl (5)      - specify handling of Usenet control messages
+convdate (1)         - convert time/date strings and numbers
+convfont (1)         - convert font files for svgalib
+copysign (3)         - copy sign of a number
+cos (3)              - cosine function
+cosh (3)             - hyperbolic cosine function
+countmail (6)        - be obnoxious about how much mail you have
+cp (1)               - copy files and directories
+cpio (1)             - copy files to and from archives
+create_module (2)    - create a loadable module entry
+cribbage (6)         - the card game cribbage
+crond (8)            - cron daemon (Dillon's Cron)
+crontab (1)          - manipulate per-user crontabs (Dillon's Cron)
+crosspost (8)        - create the links for cross posted articles
+crypt (3)            - password and data encryption
+cryptdir (1)         - encrypt/decrypt all files in a directory
+csplit (1)           - split a file into sections determined by context lines
+ctags (1)            - Generates "tags" and (optionally) "refs" files
+ctermid (3)          - get controlling terminal name
+ctlinnd (8)          - control the InterNetNews daemon
+ctrlaltdel (8)       - set the function of the Ctrl-Alt-Del combination
+cu (1)               - Call up another system
+cut (1)              - remove sections from each line of files
+cvtbatch (8)         - convert Usenet batch file to INN format
+cytune (8)           - Tune Cyclades driver parameters
+date (1)             - print or set the system date and time
+dbminit, fetch, store, dbmclose (3) - somewhat dbm-compatible database routines dbzfresh, dbzagain, dbzfetch, dbzstore - database routines dbzsync, dbzsize, dbzincore, dbzcancel, dbzdebug - database routines
+dbmmanage (1)        - Create and update user authentication files in DBM format
+dbopen (3)           - database access methods
+dc (1)               - an arbitrary precision calculator
+dd (1)               - convert and copy a file
+ddate (1)            - converts Gregorian dates to Discordian dates
+deallocvt (1)        - deallocate unused virtual consoles
+debugfs (8)          - ext2 file system debugger
+def_prog_mode, def_shell_mode, reset_prog_mode, reset_shell_mode, resetty, savetty, getsyx, setsyx, ripoffline, curs_set, napms (3x) - low-level xscurses routines
+delch, wdelch, mvdelch, mvwdelch (3x) - delete character under the cursor in a curses window
+delete_module (2)    - delete a loadable module entry
+deleteln, wdeleteln, insdelln, winsdelln, insertln, winsertln (3x) - delete and insert lines in a curses window
+depmod, modprobe (1) - handle loadable modules automatically
+destroy (n)          - Destroy one or more windows
+df (1)               - report filesystem disk space usage
+dhclient (8)         - Dynamic Host Configuration Protocol Client
+dhclient-script (8)  - DHCP client network configuration script
+dhclient.conf (5)    - DHCP client configuration file
+dhclient.leases (5)  - DHCP client lease database
+dhcpcd (8)           - DHCP client daemon
+dhcpd (8)            - Dynamic Host Configuration Protocol Server
+dhcpd.conf (5)       - dhcpd configuration file
+dhcpd.leases (5)     - DHCP client lease database
+dhcrelay (8)         - Dynamic Host Configuration Protocol Relay Agent
+diagnostics (1)      - Perl compiler pragma to force verbose warning diagnostics splain - standalone program to do the same thing
+dialog (1)           - display dialog boxes from shell scripts
+diff (1)             - find differences between two files
+diff3 (1)            - find differences between three files
+diffpp (1)           - pretty-print diff outputs with GNU enscript
+difftime (3)         - calculate time difference
+dig (1)              - send domain name query packets to name servers
+dip (8)              - handle dialup IP connections
+dircolors (1)        - Set color parameters for ls (1)
+dircolors (1)        - color setup for `ls'
+dirname (1)          - strip non-directory suffix from file name
+diskd (1)            - disk daemon; wait for disk to be inserted '" t TQ $1 ..
+diskseek, diskseekd (1) - disk seek daemon; simulates Messy Dos' drive cleaning effect '" t TQ $1 ..
+distrib.pats (5)     - default values for Usenet Distribution header
+div (3)              - computes the quotient and remainder of integer division
+djpeg (1)            - decompress a JPEG file to an image file
+dlclose, dlerror, dlopen, dlsym (3) - Programming interface to dynamic linking loader.
+dmesg (8)            - print or control the kernel ring buffer
+dnskeygen (1)        - generate and display public and private RSA keys for DNS
+dnsquery (1)         - query domain name servers using resolver
+dnssigner (1)        - add signatures to DNS zone files
+dpasswd (8)          - change dialup password
+drand48, erand48, lrand48, nrand48, mrand48, jrand48, srand48, seed48, lcong48 (3) - generate uniformly distributed pseudo-random numbers
+drem (3)             - floating-point remainder function
+du (1)               - estimate file space usage
+dumpe2fs (8)         - dump filesystem information
+dumpkeys (1)         - dump keyboard translation tables
+dumpreg (1)          - dump the state of the card as the svgalib chipset driver sees it.
+dup, dup2 (2)        - duplicate a file descriptor
+e2fsck (8)           - check a Linux second extended file system
+e2label (8)          - Change the label on an ext2 filesystem
+echo (1)             - display a line of text
+ecvt, fcvt (3)       - convert a floating-point number to a string.
+ed, red (1)          - text editor
+edquota (8)          - edit user quotas
+eject (1)            - eject removable media
+elm (1)              - an interactive mail system
+elmalias (1)         - expand and display Elm address aliases
+elvis (1)            - a clone of the ex/vi text editor
+elvprsv (1)          - Preserve the the modified version of a file after a crash.
+elvrec (1)           - Recover the modified version of a file after a crash
+emacs (1)            - GNU project Emacs
+enscript (1)         - convert text files to PostScript
+entry (n)            - Create and manipulate entry widgets
+env (1)              - run a program in a modified environment
+environ (5)          - user environment
+eof (n)              - Check for end of file condition on channel
+eqn (1)              - format equations for troff
+erase, werase, clear, wclear, clrtobot, wclrtobot, clrtoeol, wclrtoeol (3x) - clear all or part of a curses window
+erf, erfc (3)        - error function and complementary error function
+errno (3)            - number of last error
+error (n)            - Generate an error
+etags, ctags (1)     - generate tag file for Emacs, vi
+eval (n)             - Evaluate a Tcl script
+event (n)            - Miscellaneous event facilities: define virtual events and generate events
+eventtest (6)        - test the waitevent function of svgalib
+exec (n)             - Invoke subprocess(es)
+execl, execlp, execle, execv, execvp (3) - execute a file
+execve (2)           - execute program
+exit (3)             - cause normal program termination
+exit (n)             - End the application
+exp, log, log10, pow (3) - exponential, logarithmic and power functions
+expand (1)           - convert tabs to spaces
+expect (1)           - programmed dialogue with interactive programs, Version 5
+expectk (1)          - Expect with Tk support
+expire (8)           - Usenet article and history expiration program
+expire.ctl (5)       - control file for Usenet article expiration
+expireover (8)       - Expire entries from the news overview database
+expirerm (8)         - remove articles that have been expired.
+explodepkg (8)       - Extract the contents of a tar+GNUzip package (such as a Slackware software package) in the current directory.
+expm1, log1p (3)     - exponential minus 1, logarithm of 1 plus argument
+exports (5)          - NFS file systems being exported
+expr (1)             - evaluate expressions
+expr (n)             - Evaluate an expression
+extcompose (1)       - Compose a reference to external data for inclusion in a mail message
+fabs (3)             - absolute value of floating-point number
+faillog (5)          - Login failure logging file
+faillog (8)          - examine faillog and set login failure limits
+false (1)            - do nothing, unsuccessfully
+fastmail (1)         - quick batch mail interface to a single address
+fastrm (8)           - quickly remove a set of files
+faucet (1)           - a fixture for a BSD network pipe
+fblocked (n)         - Test whether the last input operation exhausted all available input
+fclose (3)           - close a stream
+fcntl (2)            - manipulate file descriptor
+fconfigure (n)       - Set and get options on a channel
+fcopy (n)            - Copy data from one channel to another.
+fd (4)               - floppy disk device
+fdatasync (2)        - synchronize a file's in-core data with that on disk
+fdformat (8)         - Low-level formats a floppy disk
+fdisk (8)            - Partition table manipulator for Linux
+fdmount (1)          - Floppy disk mount utility '" t TQ $1 ..
+fdrawcmd (1)         - send raw commands to the floppy disk controller '" t TQ $1 ..
+fetchmail (1)        - fetch mail from a POP, IMAP, or ETRN-capable server
+fflush (3)           - flush a stream
+ffs (3)              - find first bit set in a word
+fgetc, fgets, getc, getchar, gets, ungetc (3) - input of characters and strings
+fgetgrent (3)        - get group file entry
+fgetpos, fseek, fsetpos, ftell, rewind (3) - reposition a stream
+fgetpwent (3)        - get password file entry
+fieldread, fieldmake, fieldwrite, fieldfree (3) - field access package
+file (1)             - determine file type
+file (n)             - Manipulate file names and attributes
+filechan (8)         - file-writing backend for InterNetNews
+fileevent (n)        - Execute a script when a channel becomes readable or writable
+filename (n)         - File name conventions supported by Tcl commands
+filesystems (5)      - Linux filesystem types: minix, ext, ext2, xia, msdos, umsdos, vfat, proc, nfs, iso9660, hpfs, sysv, smb, ncpfs
+filter (1)           - filter incoming messages before adding to mailbox
+find (1)             - search for files in a directory hierarchy
+finger (1)           - user information lookup program
+fingerd (8)          - remote user information server
+fish (6)             - play ``Go Fish''
+fix132x43 (1)        - fix problems with certain (132 column) graphics modes dump the state of the card as the svgalib chipset driver sees it.
+fiz (1)              - analyze damaged zoo archive for data revovery
+flex (1)             - fast lexical analyzer generator
+flock (2)            - apply or remove an advisory lock on an open file
+floor (3)            - largest integral value not greater than x
+floppycontrol (1)    - floppy driver configuration utility '" t TQ $1 ..
+floppymeter (1)      - measure raw capacity and exact rotation speed of floppy drive '" t TQ $1 ..
+flush (n)            - Flush buffered output for a channel
+fmod (3)             - floating-point remainder function
+fmt (1)              - adjust line-length for paragraphs of text
+fnmatch (3)          - match filename or pathname
+focus (n)            - Manage the input focus
+fold (1)             - wrap each input line to fit in specified width
+font (n)             - Create and inspect fonts.
+fopen, fdopen, freopen (3) - stream open functions
+for (n)              - ``For'' loop
+foreach (n)          - Iterate over all elements in one or more lists
+fork, vfork (2)      - create a child process
+forktest (6)         - tests the vga_safety_fork() function.
+form_cursor (3x)     - position a form window cursor
+form_data - (3x)     - 
+form_driver (3x)     - command-processing loop of the form system
+form_field (3x)      - make and break connections between fields and forms
+form_field_attributes (3x) - color and attribute control for form fields
+form_field_buffer (3x) - field buffer control
+form_field_info (3x) - retrieve field characteristics
+form_field_just (3x) - retrieve field characteristics
+form_field_new (3x)  - create and destroy form fields
+form_field_opts (3x) - set and get field options
+form_field_userptr (3x) - associate application data with a form field
+form_field_validation (3x) - data type validation for fields
+form_fieldtype (3x)  - define validation-field types
+form_hook (3x)       - set hooks for automatic invocation by applications
+form_new (3x)        - create and destroy forms
+form_new_page (3x)   - form pagination functions
+form_opts (3x)       - set and get form options
+form_page (3x)       - set and get form page number
+form_post (3x)       - write or erase forms from associated subwindows
+form_requestname (3x) - handle printable form request names
+form_userptr (3x)    - associate application data with a form item
+form_win (3x)        - make and break form window and subwindow associations
+formail (1)          - mail (re)formatter
+format (n)           - Format a string in the style of sprintf
+fortune (6)          - print a random, hopefully interesting, adage
+fpathconf, pathconf (3) - get configuration values for files
+fputc, fputs, putc, putchar, puts (3) - output of characters and strings
+frame (n)            - Create and manipulate frame widgets
+fread, fwrite (3)    - binary stream input/output
+free (1)             - Display amount of free and used memory in the system
+frexp (3)            - convert floating-point number to fractional and integral components
+frm,nfrm (1)         - list from and subject of selected messages in mailbox or folder
+fromdos (1)          - convert DOS text file format to UNIX.
+fsck (8)             - check and repair a Linux file system
+fsck.minix (8)       - a file system consistency checker for Linux
+fstab (5)            - static information about the filesystems
+fsync (2)            - synchronize a file's complete in-core state with that on disk
+ftime (3)            - return date and time
+ftok (3)             - convert a pathname and a project identifier to a System V IPC key
+ftp (1)              - ARPANET file transfer program
+ftpaccess (5)        - ftpd configuration file
+ftpconversions (5)   - ftpd conversions database
+ftpcount (1)         - show current number of users for each class
+ftpd (8)             - DARPA Internet File Transfer Protocol server
+ftphosts (5)         - ftpd individual user host access file
+ftpshut (8)          - close down the ftp servers at a given time
+ftpwho (1)           - show current process information for each ftp user.
+ftw (3)              - file tree walk
+full (4)             - always full device
+fun (6)              - draw pixels accumulating in clusters
+funzip (1)           - filter for extracting from a ZIP archive in a pipe
+fuser (1)            - identify processes using files or sockets
+g++ (1)              - GNU project C++ Compiler
+g77 (1)              - GNU project Fortran Compiler (v0.5.24)
+game (6)             - 
+gawk (1)             - pattern scanning and processing language
+gcc, g++ (1)         - GNU project C and C++ Compiler (v2.7)
+gcvt (3)             - convert a floating-point number to a string.
+gdb (1)              - The GNU Debugger
+genksyms (8)         - generate symbol version information
+get_kernel_syms (2)  - retrieve exported kernel and module symbols
+getch, wgetch, mvgetch, mvwgetch, ungetch (3x) - get (or push back) characters from curses terminal keyboard
+getcwd, get_current_dir_name, getwd (3) - Get current working directory
+getdents (2)         - get directory entries
+getdirentries (3)    - get directory entries in a filesystem independent format
+getdomainname, setdomainname (2) - get/set domain name
+getdtablesize (2)    - get descriptor table size
+getenv (3)           - get an environment variable
+getfdprm (1)         - print the current format information '" t TQ $1 ..
+getfilename (1)      - Ask the user to name a file in a given format
+getgid, getegid (2)  - get group identity
+getgrent, setgrent, endgrent (3) - get group file entry
+getgrnam, getgrgid (3) - get group file entry
+getgroups, setgroups (2) - get/set list of supplementary group IDs
+gethostbyname, gethostbyaddr, sethostent, endhostent, herror, hstrerror (3) - get network host entry
+gethostid, sethostid (2) - get or set the unique identifier of the current host
+gethostname, sethostname (2) - get/set host name
+getitimer, setitimer (2) - get or set value of an interval timer
+getkeycodes (8)      - print kernel scancode-to-keycode mapping table
+getlist (1)          - get a list from an NNTP server
+getlogin, cuserid (3) - get user name
+getmntent, setmntent, addmntent, endmntent, hasmntopt (3) - get file system descriptor file entry
+getmouse, ungetmouse, mousemask (3x) - mouse interface through curses
+getnetent, getnetbyname, getnetbyaddr, setnetent, endnetent (3) - get network entry
+getopt (1)           - parse command options (enhanced)
+getopt (3)           - Parse command line options
+getpagesize (2)      - get system page size
+getpass (3)          - get a password
+getpeername (1)      - get information about this or that end of the socket's connection
+getpeername (2)      - get name of connected peer
+getpid, getppid (2)  - get process identification
+getpriority, setpriority (2) - get/set program scheduling priority
+getprotoent, getprotobyname, getprotobynumber, setprotoent, endprotoent (3) - get protocol entry
+getpw (3)            - Re-construct password line entry
+getpwent, setpwent, endpwent (3) - get password file entry
+getpwnam, getpwuid (3) - get password file entry
+getresuid, getresgid (2) - get real, effective and saved user or group ID
+getrlimit, getrusage, setrlimit (2) - get/set resource limits and usage
+gets (n)             - Read a line from a channel
+getservent, getservbyname, getservbyport, setservent, endservent (3) - get service entry
+getsid (2)           - get session ID
+getsockname (2)      - get socket name
+getsockopt, setsockopt (2) - get and set options on sockets
+getstr, wgetstr, mvgetstr, mvwgetstr, wgetnstr (3x) - accept character strings from curses terminal keyboard
+gettimeofday, settimeofday (2) - get / set time
+getty (1)            - sets terminal mode, speed, and line discipline
+gettydefs (5)        - speed and tty settings used by getty
+getuid, geteuid (2)  - get user identity
+getusershell, setusershell, endusershell (3) - get legal user shells
+getutent, getutid, getutline, pututline, setutent, endutent, utmpname (3) - access utmp file entries
+getw, putw (3)       - input and output of words (ints)
+getyx, getparyx, getbegyx, getmaxyx (3x) - get curses cursor and window coordinates
+getzones (1)         - list AppleTalk zone names
+gimptool (1)         - script to perform various Gimpy functions
+gl_allocatecontext (3) - allocate a graphics context
+gl_circle (3)        - draw a circle
+gl_clearscreen (3)   - clear the screen
+gl_colorfont (3)     - change the color of a font
+gl_compileboxmask (3) - compress a masked bitmap
+gl_compiledboxmasksize (3) - compute the size of a compiled masked box
+gl_copybox (3)       - copy a rectangular screen area
+gl_copyboxfromcontext (3) - copy rectangular area from another context
+gl_copyboxtocontext (3) - copy a rectangular area to another context
+gl_copyscreen (3)    - copy the screen contents of contexts
+gl_disableclipping (3) - disables clipping
+gl_enableclipping (3) - enables clipping
+gl_enablepageflipping (3) - enables automatic page flipping
+gl_expandfont (3)    - expand a packed pixel font
+gl_fillbox (3)       - fill a rectangular area
+gl_font8x8 (3)       - a packed 8x8 pixel font
+gl_freecontext (3)   - free a virtual screen
+gl_getbox (3)        - copy a rectangular pixmap from the screen to a buffer
+gl_getcontext, currentcontext (3) - get the current graphics contents.
+gl_getpalettecolor, gl_getpalettecolors, gl_getpalette (3) - read the color palette
+gl_getpixel (3)      - return the color of a pixel
+gl_getpixelrgb (3)   - store color components of a pixel
+gl_hline (3)         - draw a horizontal line
+gl_line (3)          - draw a line
+gl_printf (3)        - write formatted output in graphic mode
+gl_putbox (3)        - copy a pixmap to a rectangular area
+gl_putboxmask (3)    - copy a masked pixmap to a rectangular area
+gl_putboxmaskcompiled (3) - copy a compiled masked pixmap to a rectangular area
+gl_putboxpart (3)    - copy a partial pixmap to a rectangular area
+gl_rgbcolor (3)      - return pixel value corresponding to an rgb color
+gl_scalebox (3)      - scale a pixmap
+gl_setclippingwindow (3) - set the clipping window
+gl_setcontext (3)    - set a previously saved context
+gl_setcontextvga (3) - set the context to the physical screen
+gl_setcontextvgavirtual (3) - set the context to a virtual mode
+gl_setcontextvirtual (3) - define a virtual context
+gl_setcontextwidth, gl_setcontextheight (3) - set the dimension of a context
+gl_setdisplaystart (3) - set the start of the screen are displayed
+gl_setfont (3)       - set the text font to be used
+gl_setfontcolors (3) - set the font colors
+gl_setpalettecolor, gl_setpalettecolors, gl_setpalette (3) - set the color palette
+gl_setpixel, gl_setpixelrgb (3) - draw a pixel
+gl_setrgbpalette (3) - set a 256-color RGB palette
+gl_setscreenoffset (3) - set a memory offset for copyscreen
+gl_setwritemode (3)  - set the font writemode flags
+gl_striangle (3)     - draw a solid colored triangle
+gl_swtriangle (3)    - draw a solid pixmap mapped on a triangle
+gl_triangle (3)      - draw a triangle with interpolated colors
+gl_trisetcolorlookup, gl_trigetcolorlookup (3) - manages a color lookup table for shadowing
+gl_trisetdrawpoint (3) - set a triangle drawing function
+gl_write, gl_writen (3) - write a text string
+gl_wtriangle (3)     - draw a shadowed pixmap mapped on a triangle
+glib-config (1)      - script to get information about the installed version of GLib
+glob (7)             - Globbing pathnames
+glob (n)             - Return names of files that match patterns
+glob, globfree (3)   - find pathnames matching a pattern, free memory from glob()
+global (n)           - Access global variables
+gnuan (6)            - 
+gnuchess (6)         - Chess
+gnuplot (1)          - an interactive plotting program
+gomoku (6)           - game of 5 in a row
+gpasswd (1)          - administer the /etc/group file
+gpm (1)              - a cut and paste utility and mouse server for virtual consoles
+gpm-root (1)         - a default handler for gpm, used to draw menus on the root window
+gprof (1)            - display call graph profile data
+grab (n)             - Confine pointer and keyboard events to a window sub-tree
+grep, egrep, fgrep (1) - print lines matching a pattern
+grephistory (1)      - display file names from Usenet history file
+grid (n)             - Geometry manager that arranges widgets in a grid
+grodvi (1)           - convert groff output to TeX dvi format
+groff (1)            - front end for the groff document formatting system
+groff_char (7)       - groff character names
+groff_font (5)       - format of groff device and font description files
+groff_me (7)         - troff macros for formatting papers
+groff_mm (7)         - groff mm macros
+groff_ms (7)         - groff ms macros
+groff_out (5)        - groff intermediate output format
+grog (1)             - guess options for groff command
+grolj4 (1)           - groff driver for HP Laserjet 4 family
+grops (1)            - PostScript driver for groff
+grotty (1)           - groff driver for typewriter-like devices
+group (5)            - user group file
+groupadd (8)         - Create a new group
+groupdel (8)         - Delete a group
+groupmod (8)         - Modify a group
+groups (1)           - Display current group ID names
+grpck (8)            - verify integrity of group files
+gs (1)               - Aladdin Ghostscript interpreter/previewer
+gtk-config (1)       - script to get information about the installed version of GTK+
+gzexe (1)            - compress executable files in place
+gzip, gunzip, zcat (1) - compress or expand files
+h2ph (1)             - convert .h C header files to .ph Perl header files
+h2xs (1)             - convert .h C header files to Perl extensions
+halt, reboot, poweroff (8) - stop the system.
+hangman (6)          - Computer version of the game hangman
+hash (3)             - hash database access method
+hattrib (1)          - change HFS file or directory attributes
+hcd (1)              - change working HFS directory
+hcopy (1)            - copy files from or to an HFS volume
+hcreate, hdestroy, hsearch (3) - hash table management
+hd (4)               - MFM/IDE hard disk devices
+hdel (1)             - delete both forks of an HFS file
+hdir (1)             - display an HFS directory in long format
+hdparm (8)           - get/set hard disk parameters
+head (1)             - output the first part of files
+hexdump (1)          - ascii, decimal, hexadecimal, octal dump
+hformat (1)          - create a new HFS filesystem and make it current
+hfs (1)              - shell for manipulating HFS volumes
+hfssh (1)            - Tcl interpreter with HFS extensions
+hfsutils (1)         - tools for reading and writing Macintosh HFS volumes
+hier (7)             - Description of the file system hierarchy
+history (5)          - record of current and recently expired Usenet articles
+history (n)          - Manipulate the history list
+hls (1)              - list files in an HFS directory
+hmkdir (1)           - create a new HFS directory
+hmount (1)           - introduce a new HFS volume and make it current
+hose (1)             - the client end of a BSD network pipe
+host (1)             - look up host names using domain server
+hostid (1)           - set or print system's host id.
+hostname (1)         - show or set the system's host name domainname - show or set the system's NIS/YP domain name dnsdomainname - show the system's DNS domain name nisdomainname - show or set system's NIS/YP domain name ypdomainname - show or set the system's NIS/YP domain name
+hostname (7)         - host name resolution description
+hosts.nntp, hosts.nntp.nolimit (5) - list of hosts that feed NNTP news
+hosts_access (5)     - format of host access control files
+hosts_access, hosts_ctl, request_init, request_set (3) - access control library
+hosts_options (5)    - host access control language extensions
+hpftodit (1)         - create font description files for use with groff -Tlj4
+hpwd (1)             - print the full path to the current HFS working directory
+hrename (1)          - rename or move an HFS file or directory
+hrmdir (1)           - remove an empty HFS directory
+htdigest (1)         - Create and update user authentication files
+htonl, htons, ntohl, ntohs (3) - convert values between host and network byte order
+htpasswd (1)         - Create and update user authentication files
+httpd (8)            - Apache hypertext transfer protocol server
+humount (1)          - remove an HFS volume from the list of known volumes
+hunt (6)             - a multi-player multi-terminal game
+huntd (6)            - hunt daemon, back-end for hunt game
+hvol (1)             - display or change the current HFS volume
+hypot (3)            - Euclidean distance function
+id (1)               - Display current user and group ID names
+idecrypt (8)         - Decrypt tokens obtained from identd
+ident (1)            - identify RCS keyword strings in files
+identd, in.identd (8) - TCP/IP IDENT protocol server
+idle (2)             - make process 0 idle
+if (n)               - Execute scripts conditionally
+ifconfig (8)         - configure a network interface
+igawk (1)            - gawk with include files
+image (n)            - Create and manipulate images
+inch, winch, mvinch, mvwinch (3x) - get a character and attributes from a curses window
+inchstr, inchnstr, winchstr, winchnstr, mvinchstr, mvinchnstr, mvwinchstr, mvwinchnstr (3x) - get a string of characters (and attributes) from a curses window
+incr (n)             - Increment the value of a variable
+indent (1)           - changes the appearance of a C program by inserting or deleting whitespace.
+index, rindex (3)    - locate character in string
+indxbib (1)          - make inverted index for bibliographic databases
+inet_aton, inet_addr, inet_network, inet_ntoa, inet_makeaddr, inet_lnaof, inet_netof (3) - Internet address manipulation routines
+inetd (8)            - internet super-server
+inews (1)            - send a Usenet article to the local news server for distribution
+infnan (3)           - deal with infinite or not-a-number (NaN) result
+info (1)             - GNU's hypertext system
+info (n)             - Return information about the state of the Tcl interpreter
+infocmp (1m)         - compare or print out terminfo descriptions
+init, telinit (8)    - process control initialization
+init_module (2)      - initialize a loadable module entry
+initgroups (3)       - initialize the supplementary group access list
+initrd (4)           - boot loader initialized RAM disk
+initscr, newterm, endwin, isendwin, set_term, delscreen (3x) - curses screen initialization and manipulation routines
+initscript (5)       - script that executes inittab commands.
+inittab (5)          - format of the inittab file used by the sysv-compatible init process
+inn.conf (5)         - configuration data for InterNetNews programs
+inncheck (8)         - check inn configuration and database files.
+innconfval (1)       - get an InterNetNews configuration parameter
+innd, inndstart (8)  - InterNetNews daemon
+inndcomm (3)         - INND communication part of InterNetNews library
+innlog.pl (8)        - summarize innd and nnrpd log files.
+innstat (8)          - print snapshot of INN system
+innwatch (8)         - monitor innd.
+innwatch.ctl (5)     - control Usenet supervision by innwatch
+innxbatch (8)        - send xbatched Usenet articles to a remote NNTP server
+innxmit (8)          - send Usenet articles to a remote NNTP server
+insch, winsch, mvinsch, mvwinsch (3x) - insert a character before cursor in a curses window
+insmod (1)           - install loadable kernel module
+insque, remque (3)   - insert/remove an item from a queue
+insstr, insnstr, winsstr, winsnstr, mvinsstr, mvinsnstr, mvwinsstr, mvwinsnstr (3x) - insert string before cursor in a curses window
+install (1)          - copy files and set attributes
+installit (1)        - file/directory installation tool
+installpkg (8)       - install Slackware packages.
+instr, innstr, winstr, winnstr, mvinstr, mvinnstr, mvwinstr, mvwinnstr (3x) - get a string of characters from a curses window
+interp (n)           - Create and manipulate Tcl interpreters
+intro (1)            - Introduction to user commands
+intro (2)            - Introduction to system calls
+intro (3)            - Introduction to library functions
+intro (4)            - Introduction to special files
+intro (5)            - Introduction to file formats
+intro (6)            - Introduction to games
+intro (7)            - Introduction to miscellany section
+intro (8)            - Introduction to administration and privileged commands
+ioctl (2)            - control device
+ioperm (2)           - set port input/output permissions
+iopl (2)             - change I/O privilege level
+ipc (2)              - System V IPC system calls
+ipc (5)              - System V interprocess communication mechanisms
+ipchains (8)         - IP firewall administration
+ipchains-restore (8) - restore IP firewall chains from stdin
+ipchains-save (8)    - save IP firewall chains to stdout
+ipcs (8)             - provide information on ipc facilities
+ipfw (4)             - IP firewall
+ipfwadm (8)          - IP firewall and accounting administration
+ipfwadm-wrapper (8)  - IP firewall administration
+ipmasqadm (8)        - IP Masquerading additional modules administration
+ircII (1)            - interface to the Internet Relay Chat system
+ircd (8)             - The Internet Relay Chat Program Server
+isalnum, isalpha, isascii, isblank, iscntrl, isdigit, isgraph, islower, isprint, ispunct, isspace, isupper, isxdigit (3) - character classification routines
+isapnp (8)           - Configure ISA Plug-and-Play devices.
+isapnp.conf (5)      - File format used by isapnp.
+isatty (3)           - does this descriptor refer to a terminal
+isinf, isnan, finite (3) - test for infinity or not-a-number (NaN)
+iso_8859_1 (7)       - the ISO 8859-1 character set encoded in octal, decimal, and hexadecimal
+ispell (4)           - format of ispell dictionaries and affix files
+ispell, buildhash, munchlist, findaffix, tryaffix, icombine, ijoin (1) - Interactive spelling checking
+issue (5)            - pre-login message and identification file
+j0, j1, jn, y0, y1, yn (3) - Bessel functions
+joe (1)              - Joe's Own Editor
+join (1)             - join lines of two files on a common field
+join (n)             - Create a string by joining together list elements
+jove (1)             - an interactive display-oriented text editor
+joystick_close (3)   - close a joystick
+joystick_getaxis, joystick_getbutton (3) - query the current state of a joystick.
+joystick_getnumaxes, joystick_getnumbuttons (3) - query the capabilities of a joystick
+joystick_init (3)    - open a joystick
+joystick_sethandler, joystick_setdefaulthandler (3) - set the joystick event handler.
+joystick_update (3)  - query joysticks for status changes
+joytest (6)          - test the svgalib joystick package in text mode
+jpegtran (1)         - lossless transformation of JPEG files
+js (4)               - joystick device
+kbd_mode (1)         - report or set the keyboard mode
+kbdrate (8)          - reset the keyboard repeat rate and delay time
+kerneld (8)          - perform kernel action in user space (such as on-demand loading of modules)
+keyboard_clearstate (3) - reset the state of all keys when in raw keyboard mode
+keyboard_close (3)   - return the keyboard to normal operation from raw mode
+keyboard_getstate (3) - get a pointer to a buffer holding the state of all keys in raw keyboard mode
+keyboard_init, keyboard_init_return_fd (3) - initialize the keyboard to raw mode
+keyboard_keypressed (3) - check if a key is pressed when in raw keyboard mode
+keyboard_seteventhandler, keyboard_setdefaulteventhandler (3) - define an event handler for keyboard events in raw mode
+keyboard_translatekeys (3) - modify scancode mappings in raw keyboard mode
+keyboard_update, keyboard_waitforupdate (3) - process raw keyboard events
+keytables (5)        - keyboard table descriptions for loadkeys and dumpkeys
+keytest (6)          - tests the svgalib raw keyboard functions
+kibitz (1)           - allow two people to interact with one shell
+kill (1)             - report process status
+kill (2)             - send signal to a process
+killall (1)          - kill processes by name
+killall5 (8)         - send a signal to all processes.
+killpg (2)           - send signal to a process group
+killpg (3)           - send signal to all members of a process group.
+klogd (8)            - kernel log daemon.
+koules.svga (6)      - Action game for linux
+ksh (1)              - Public domain Korn shell
+ksyms (1)            - display exported kernel symbols.
+label (n)            - Create and manipulate label widgets
+labs (3)             - computes the absolute value of a long integer.
+lappend (n)          - Append list elements onto a variable
+last (1)             - indicate last logins by user or terminal
+lastlog (8)          - examine lastlog file
+ld (1)               - the GNU linker
+ld.so/ld-linux.so (8) - dynamic linker/loader
+ldconfig (8)         - determine run-time link bindings
+ldd (1)              - print shared library dependencies
+ldexp (3)            - multiply floating-point number by integral power of 2
+ldiv (3)             - computes the quotient and remainder of long integer division.
+less (1)             - opposite of more
+lesskey (1)          - specify key bindings for less
+lfind, lsearch (3)   - linear search of an array.
+lgamma (3)           - log gamma function
+libexpect (3)        - programmed dialogue with interactive programs - C functions
+libinn (3)           - InterNetNews library routines
+libpbm (3)           - functions to support portable bitmap programs
+libpgm (3)           - functions to support portable graymap programs
+libpng (3)           - Portable Network Graphics (PNG) Reference Library 1.0.3 - January 14, 1999
+libpng (3)           - Portable Network Graphics (PNG) Reference Library 1.0.3 - January 14, 1999 (private functions)
+libpnm (3)           - functions to support portable anymap programs
+libppm (3)           - functions to support portable pixmap programs
+library (n)          - standard library of Tcl procedures
+libtiff (3t)         - introduction to libtiff, a library for reading and writing TIFF files
+libvga.config, svgalibrc (5) - the svgalib configuration file
+lilo (8)             - install boot loader
+lilo.conf (5)        - configuration file for lilo
+limits (5)           - Resource limits definition
+lindex (n)           - Retrieve an element from a list
+link (2)             - make a new name for a file
+linsert (n)          - Insert elements into a list
+list (n)             - Create a list
+listalias (1)        - list user and system aliases
+listbox (n)          - Create and manipulate listbox widgets
+listen (2)           - listen for connections on a socket
+lkbib (1)            - search bibliographic databases
+llength (n)          - Count the number of elements in a list
+lmhosts (5)          - The Samba NetBIOS hosts file
+ln (1)               - make links between files
+load (n)             - Load machine code and initialize new commands.
+loadTk (n)           - Load Tk into a safe interpreter.
+loadkeys (1)         - load keyboard translation tables
+loadunimap (8)       - load the kernel unicode-to-font mapping table
+locale (5)           - Describes a locale definition file
+locale (7)           - Description of multi-language support
+localeconv (3)       - get numeric formatting information
+locate (1)           - list files in databases that match a pattern
+locatedb (5)         - front-compressed file name database
+lockfile (1)         - conditional semaphore-file creator
+logger (1)           - make entries in the system log
+login (1)            - Begin session on the system
+login.access (5)     - Login access control table
+logname (1)          - print user's login name
+logoutd (8)          - Enforce login time restrictions
+logresolve (8)       - resolve hostnames for IP-adresses in Apache logfiles
+longjmp, siglongjmp (3) - non-local jump to a saved stack context
+look (1)             - display lines beginning with a given string
+lookbib (1)          - search bibliographic databases
+losetup (8)          - set up and control loop devices
+lower (n)            - Change a window's position in the stacking order
+lp (4)               - line printer devices
+lpc (8)              - line printer control program
+lpd (8)              - line printer spooler daemon
+lpq (1)              - spool queue examination program
+lpr (1)              - off line print
+lprm (1)             - remove jobs from the line printer spooling queue
+lptest (1)           - generate lineprinter ripple pattern
+lrange (n)           - Return one or more adjacent elements from a list
+lreplace (n)         - Replace elements in a list with new elements
+ls, dir, vdir (1)    - list directory contents
+lsattr (1)           - list file attributes on a Linux second extended file system
+lsdev (8)            - display information about installed hardware
+lsearch (n)          - See if a list contains a particular element
+lseek (2)            - reposition read/write file offset
+lsmod (1)            - list loaded modules.
+lsort (n)            - Sort the elements of a list
+lspci (8)            - list all PCI devices
+mach32info (6)       - read out configuration information of a Mach32
+magic (4)            - file command's magic number file
+mail (1)             - send and receive mail
+mailaddr (7)         - mail addressing description
+mailcap (4)          - metamail capabilities file
+mailq (1)            - print the mail queue
+mailstats (8)        - display mail statistics
+mailto (1)           - Simple mutlimedia mail sending program
+mailto-hebrew (1)    - Run the mailto program to send Hebrew/English mail
+make (1)             - GNU make utility to maintain groups of programs
+make (1)             - maintain program dependencies
+make_codepage (1)    - Construct a codepage file for Samba
+makeactive (8)       - tool to recover Usenet active file.
+makeactive, makehistory, newsrequeue (8) - tools to recover Usenet databases
+makedbm (8)          - create or dump a ypserv database file
+makehistory (8)      - tools to recover Usenet history database.
+makemap (8)          - create database maps for sendmail
+makepkg (8)          - make Slackware packages.
+makewhatis (1)       - builds the whatis manual database
+man (1)              - format and display the on-line manual pages manpath - determine user's search path for man pages
+man (7)              - macros to format man pages
+man.conf (5)         - configuration data for man
+mapscrn (8)          - load screen output mapping table
+mattrib (1)          - change MSDOS file attribute flags '" t TQ $1 ..
+mbadblocks (1)       - tests a floppy disk, and marks the bad blocks in the FAT '" t TQ $1 ..
+mblen (3)            - determine the number of bytes in a character
+mbstowcs (3)         - convert a multibyte string to a wide character string.
+mbtowc (3)           - convert a multibyte character to a wide character.
+mc (1)               - Visual shell for Unix-like systems.
+mcd (1)              - change MSDOS directory '" t TQ $1 ..
+mcedit (1)           - Full featured terminal text editor for Unix-like systems.
+mcookie (1)          - generate magic cookies for xauth
+mcopy (1)            - copy MSDOS files to/from Unix '" t TQ $1 ..
+mcprint (3x)         - ship binary data to printer
+mcserv (8)           - Midnight Commander file server.
+md5sum (1)           - compute and check MD5 message digest
+mdadd, mdrun, mdstop, mdop (8) - command set to manage md devices.
+mdcreate (8)         - creates a mdtab entry
+mdel (1)             - delete an MSDOS file '" t TQ $1 ..
+mdir (1)             - display an MSDOS directory '" t TQ $1 ..
+mdtab (5)            - configuration file for md devices
+megatron, unhex, unbin, unsingle, hqx2bin, single2bin, macbinary (1) - Macintosh file format transformer
+mem, kmem, port (4)  - system memory, kernel memory and system ports
+memccpy (3)          - copy memory area
+memchr (3)           - scan memory for a character
+memcmp (3)           - compare memory areas
+memcpy (3)           - copy memory area
+memfrob (3)          - frobnicate (encrypt) a memory area
+memmem (3)           - locate a substring
+memmove (3)          - copy memory area
+memset (3)           - fill memory with a constant byte
+menu (n)             - Create and manipulate menu widgets
+menu_attributes (3x) - color and attribute control for menus
+menu_cursor (3x)     - position a menu's cursor
+menu_driver (3x)     - command-processing loop of the menu system
+menu_format (3x)     - set and get menu sizes
+menu_hook (3x)       - set hooks for automatic invocation by applications
+menu_items (3x)      - make and break connections between items and menus
+menu_mark (3x)       - get and set the menu mark string
+menu_new (3x)        - create and destroy menus
+menu_opts (3x)       - set and get menu options
+menu_pattern (3x)    - get and set a menu's pattern buffer
+menu_post (3x)       - write or erase menus from associated subwindows
+menu_requestname (3x) - handle printable menu request names
+menu_spacing (3x)    - Control spacing between menu items.
+menu_userptr (3x)    - associate application data with a menu item
+menu_win (3x)        - make and break menu window and subwindow associations
+menubutton (n)       - Create and manipulate menubutton widgets
+merge (1)            - three-way file merge
+mesg (1)             - display (do not display) messages from other users
+message (n)          - Create and manipulate message widgets
+messages (1)         - quick count of messages in mailbox or folder
+metamail (1)         - infrastructure for mailcap-based multimedia mail handling
+metasend (1)         - Crude interface for sending non-text mail
+mev (1)              - a program to report mouse events
+mformat (1)          - add an MSDOS filesystem to a low-level formatted floppy disk '" t TQ $1 ..
+mille (6)            - play Mille Bornes
+mimencode (1)        - Translate to and from mail-oriented encoding formats
+minicom (1)          - friendly serial communication program
+mitem_current (3x)   - set and get current_menu_item
+mitem_name (3x)      - get menu item name and description fields
+mitem_new (3x)       - create and destroy menu items
+mitem_opts (3x)      - set and get menu item options
+mitem_userptr (3x)   - associate application data with a menu item
+mitem_value (3x)     - set and get menu item values
+mitem_visible (3x)   - check visibility of a menu item
+mjoytest (6)         - test the svgalib joystick package in graphics mode
+mkdep (1)            - construct Makefile dependency list
+mkdir (1)            - make directories
+mkdir (2)            - create a directory
+mkdosfs (8)          - create a FAT file system under Linux
+mke2fs (8)           - create a Linux second extended file system
+mkfifo (1)           - make FIFOs (named pipes)
+mkfifo (3)           - make a FIFO special file (a named pipe)
+mkfs (8)             - build a Linux file system
+mkfs (8)             - make a Linux MINIX filesystem
+mkhybrid (8)         - create an hybrid ISO9660/JOLIET/HFS filesystem with optional Rock Ridge attributes.
+mkisofs (8)          - create a iso9660 filesystem with optional Rock Ridge attributes.
+mklost+found (8)     - create a lost+found directory on a mounted Linux second extended file system
+mknetid (8)          - generate data for netid map
+mknod (1)            - make block or character special files
+mknod (2)            - create a directory or special or ordinary file
+mkpasswd (1)         - generate new password, optionally apply it to a user
+mkpasswd (8)         - Update passwd and group database files
+mkstemp (3)          - create a unique temporary file
+mkswap (8)           - set up a Linux swap area
+mktemp (3)           - make a unique temporary file name
+mkxfs (8)            - make a xiafs file system
+mlabel (1)           - make an MSDOS volume label '" t TQ $1 ..
+mlock (2)            - disable paging for some parts of memory
+mlockall (2)         - disable paging for calling process
+mmap, munmap (2)     - map or unmap files or devices into memory
+mmd (1)              - make an MSDOS subdirectory '" t TQ $1 ..
+mmount (1)           - mount an MSDOS disk '" t TQ $1 ..
+mmove (1)            - move or rename an MSDOS file or subdirectory '" t TQ $1 ..
+moc (1)              - generate Qt meta object support code
+moderators (5)       - mail addresses for moderated Usenet newsgroups
+modf (3)             - extract signed integral and fractional values from floating-point number
+modify_ldt (2)       - get or set ldt
+modinfo (1)          - display information about a kernel module
+monop (6)            - Monopoly game
+more (1)             - file perusal filter for crt viewing
+motd (5)             - message of the day
+mount (8)            - mount a file system
+mount, umount (2)    - mount and unmount filesystems.
+mountd (8)           - NFS mount daemon
+mouse (4)            - serial mouse interface
+mouse_close (3)      - explicitly close a mouse
+mouse_getcaps (3)    - returns the capabilities of the mouse
+mouse_getposition_6d, mouse_setposition_6d, mouse_setrange_6d (3) - provide an interface to 3d mice
+mouse_getx, mouse_gety, mouse_getbutton (3) - query the mouse state
+mouse_init, mouse_init_return_fd (3) - specifically initialize a mouse
+mouse_seteventhandler, mouse_setdefaulteventhandler (3) - set a mouse event handler
+mouse_setposition (3) - set the current mouse position
+mouse_setscale (3)   - sets a mouse scale factor
+mouse_setwrap (3)    - set what happens at the mouse boundaries
+mouse_setxrange, mouse_setyrange (3) - define the boundaries for the mouse cursor
+mouse_update (3)     - updates the mouse state
+mouse_waitforupdate (3) - wait for an mouse update
+mousetest (6)        - tests the svgalib mouse driver
+move, wmove (3x)     - move curses window cursor
+mpool (3)            - shared memory buffer pool
+mprotect (2)         - control allowable accesses to a region of memory
+mrd (1)              - remove an MSDOS subdirectory '" t TQ $1 ..
+mremap (2)           - re-map a virtual memory address
+mren (1)             - rename an existing MSDOS file '" t TQ $1 ..
+msafer (7)           - groff -msafer macros
+msgctl (2)           - message control operations
+msgget (2)           - get a message queue identifier
+msgop (2)            - message operations
+msync (2)            - synchronize a file with a memory map
+mt (1)               - control magnetic tape drive operation
+mtools (1)           - utilities to access DOS disks in Unix.
+mtools (5)           - table of DOS devices
+mtoolstest (1)       - tests and displays the configuration '" t TQ $1 ..
+mtype (1)            - display contents of an MSDOS file '" t TQ $1 ..
+munlock (2)          - reenable paging for some parts of memory
+munlockall (2)       - reenable paging for calling process
+mv (1)               - move (rename) files
+mzip (1)             - change protection mode and eject disk on Zip/Jaz drive '" t TQ $1 ..
+named (8)            - Internet domain name server (DNS)
+named-xfer (8)       - ancillary agent for inbound zone transfers
+namei (1)            - follow a pathname until a terminal point is found
+namespace (n)        - create and manipulate contexts for commands and variables
+nanosleep (2)        - pause execution for a specified time
+nbp_name (3)         - NBP name parsing
+nbplkup, nbprgstr, nbpunrgstr (1) - access NBP database
+ncurses (3x)         - CRT screen handling and optimization package
+ndc (8)              - name daemon control interface
+netdate (8)          - set date and time by ARPA Internet RFC 868
+netgroup (5)         - specify network groups
+netpipes (1)         - a package to manipulate BSD TCP/IP stream sockets
+netstat (8)          - Display network connections, routing tables, interface statistics, masquerade connections and netlink messages
+newalias (1)         - install new elm aliases for user and/or system
+newaliases (1)       - rebuild the data base for the mail aliases file
+newgrp (1)           - Change group ID sg - Execute command as different group ID
+newmail,wnewmail (1) - programs to asynchronously notify of new mail
+newpad, subpad, prefresh, pnoutrefresh, pechochar (3x) - create and display curses pads
+news.daily (8)       - do regular Usenet system administration
+newsetup (1)         - a program to set up a .newsrc file
+newsfeeds (5)        - determine where Usenet articles get sent
+newsgroups (1)       - a program to list unsubscribed newsgroups.
+newslog (5)          - description of Usenet log files
+newsrequeue (8)      - tool to rewrite batchfiles.
+newusers (8)         - update and create new users in batch
+newwin, delwin, mvwin, subwin, derwin, mvderwin, dupwin, wsyncup, syncok, wcursyncup, wsyncdown (3x) - create curses windows
+nfs (5)              - nfs fstab format and options
+nfsd (8)             - NFS service daemon
+nfsservctl (2)       - syscall interface to kernel nfs daemon
+nice (1)             - run a program with modified scheduling priority
+nice (2)             - change process priority
+nl (1)               - number lines of files
+nlmconv (1)          - converts object code into an NLM
+nm (1)               - list symbols from object files.
+nmbd (8)             - NetBIOS name server to provide NetBIOS over IP naming services to clients
+nmblookup (1)        - NetBIOS over TCP/IP client used to lookup NetBIOS names
+nn (1)               - efficient net news interface (No News is good news)
+nnacct (1m)          - news accounting and access authorization (nn)
+nnadmin (1m)         - nn database administration
+nncheck (1)          - check for unread articles
+nngoback (1)         - make news articles unread on a day-by-day basis (nn)
+nngrab (1)           - news retrieval by keyword (nn)
+nngrep (1)           - grep for news group names (nn)
+nnmaster (8)         - nn database manager
+nnpost (1)           - post news articles (nn)
+nnrp.access (5)      - access file for on-campus NNTP sites
+nnrpd (8)            - NNTP server for on-campus hosts
+nnspew (8)           - subject database manager (nn)
+nnstats (1m)         - display nnmaster collection and expire statistics
+nntidy (1)           - tidy your personal .newsrc file
+nntpd (8)            - Network News Transfer Protocol server
+nntpget (1)          - get Usenet articles from a remote NNTP server
+nntpsend (8)         - send Usenet articles to remote site
+nntpsend.ctl (5)     - list of sites to feed via nntpsend
+nnusage (1m)         - display nn usage statistics
+nohup (1)            - run a command immune to hangups, with output to a non-tty
+nologin (5)          - prevent non-root users from log into the system
+none (2)             - list of all system calls
+none (2)             - undocumented system calls
+none (3)             - undocumented library functions
+nroff (1)            - emulate nroff command with groff
+nslookup (8)         - query Internet name servers interactively
+nsswitch.conf (5)    - System Databases and Name Service Switch configuration file
+null, zero (4)       - data sink
+number (6)           - convert Arabic numerals to English
+objcopy (1)          - copy and translate object files
+objdump (1)          - display information from object files.
+od (1)               - dump files in octal and other formats
+oldfstat, oldlstat, oldstat, oldolduname, olduname (2) - obsolete system calls
+on_exit (3)          - register a function to be called at normal program termination.
+open (n)             - Open a file-based or command pipeline channel
+open, creat (2)      - open and possibly create a file or device
+opendir (3)          - open a directory
+option (n)           - Add/retrieve window options to/from the option database
+options (n)          - Standard options supported by widgets
+outb, outw, outl, outsb, outsw, outsl (2) - port output inb, inw, inl, insb, insw, insl - port input outb_p, outw_p, outl_p, inb_p, inw_p, inl_p - paused I/O
+overchan (8)         - update the news overview database
+overlay, overwrite, copywin (3x) - overlay and manipulate overlapped curses windows
+overview.fmt (5)     - format of news overview database
+p2c (1)              - Pascal to C translator, version 1.20
+pac (8)              - printer/plotter accounting information
+pack (n)             - Obsolete syntax for packer geometry manager
+package (n)          - Facilities for package loading and version control
+panel (3x)           - panel stack extension for curses
+pap (8)              - download files to or communicate interactively with an AppleTalk network connected printer
+pap, papstatus (1)   - client interface to remote printers using Printer Access Protocol
+papd (8)             - AppleTalk print server daemon
+papstatus (8)        - get the status of an AppleTalk-connected printer
+parsedate (3)        - convert time and date string to number
+passmass (1)         - change password on multiple machines
+passwd (1)           - change user password
+passwd (5)           - password file
+passwd.nntp (5)      - passwords for connecting to remote NNTP servers
+paste (1)            - merge lines of files
+patch (1)            - apply a diff file to an original
+patch-metamail (1)   - Install a patch to the latest metamail release
+pathchk (1)          - check whether file names are valid or portable
+pause (2)            - wait for signal
+pbm (5)              - portable bitmap file format
+pcnfsd (8)           - (PC)NFS authentication and print request server
+pdf2dsc (1)          - generate a PS page list of a PDF document
+pdf2ps (1)           - Aladdin Ghostscript PDF to PostScript translator
+perl (1)             - Practical Extraction and Report Language
+perlLoL (1)          - Manipulating Lists of Lists in Perl
+perlXStut (1)        - Tutorial for XSUBs
+perlapio (1)         - perl's IO abstraction interface.
+perlbook (1)         - Perl book information
+perlbot (1)          - Bag'o Object Tricks (the BOT)
+perlbug (1)          - how to submit bug reports on Perl
+perlcall (1)         - Perl calling conventions from C
+perldata (1)         - Perl data types
+perldebug (1)        - Perl debugging
+perldelta (1)        - what's new for perl5.004
+perldelta (1)        - what's new for perl5.005
+perldiag (1)         - various Perl diagnostics
+perldoc (1)          - Look up Perl documentation in pod format.
+perldsc (1)          - Perl Data Structures Cookbook
+perlembed (1)        - how to embed perl in your C program
+perlfaq (1)          - frequently asked questions about Perl ($Date: 1999/01/08 05:54:52 $)
+perlfaq1 (1)         - General Questions About Perl ($Revision: 1.20 $, $Date: 1999/01/08 04:22:09 $)
+perlfaq2 (1)         - Obtaining and Learning about Perl ($Revision: 1.30 $, $Date: 1998/12/29 19:43:32 $)
+perlfaq3 (1)         - Programming Tools ($Revision: 1.33 $, $Date: 1998/12/29 20:12:12 $)
+perlfaq4 (1)         - Data Manipulation ($Revision: 1.40 $, $Date: 1999/01/08 04:26:39 $)
+perlfaq5 (1)         - Files and Formats ($Revision: 1.34 $, $Date: 1999/01/08 05:46:13 $)
+perlfaq6 (1)         - Regexps ($Revision: 1.25 $, $Date: 1999/01/08 04:50:47 $)
+perlfaq7 (1)         - Perl Language Issues ($Revision: 1.24 $, $Date: 1999/01/08 05:32:11 $)
+perlfaq8 (1)         - System Interaction ($Revision: 1.36 $, $Date: 1999/01/08 05:36:34 $)
+perlfaq9 (1)         - Networking ($Revision: 1.24 $, $Date: 1999/01/08 05:39:48 $)
+perlform (1)         - Perl formats
+perlfunc (1)         - Perl builtin functions
+perlguts (1)         - Perl's Internal Functions
+perlhist (1)         - the Perl history records
+perlipc (1)          - Perl interprocess communication (signals, fifos, pipes, safe subprocesses, sockets, and semaphores)
+perllocale (1)       - Perl locale handling (internationalization and localization)
+perlmod (1)          - Perl modules (packages and symbol tables)
+perlmodinstall (1)   - Installing CPAN Modules
+perlmodlib (1)       - constructing new Perl modules and finding existing ones
+perlobj (1)          - Perl objects
+perlop (1)           - Perl operators and precedence
+perlopentut (1)      - tutorial on opening things in Perl
+perlpod (1)          - plain old documentation
+perlport (1)         - Writing portable Perl
+perlre (1)           - Perl regular expressions
+perlref (1)          - Perl references and nested data structures
+perlreftut (1)       - Mark's very short tutorial about references
+perlrun (1)          - how to execute the Perl interpreter
+perlsec (1)          - Perl security
+perlstyle (1)        - Perl style guide
+perlsub (1)          - Perl subroutines
+perlsyn (1)          - Perl syntax
+perlthrtut (1)       - tutorial on threads in Perl
+perltie (1)          - how to hide an object class in a simple variable
+perltoc (1)          - perl documentation table of contents
+perltoot (1)         - Tom's object-oriented tutorial for perl
+perltrap (1)         - Perl traps for the unwary
+perlvar (1)          - Perl predefined variables
+perlxs (1)           - XS language reference manual
+perror (3)           - print a system error message
+personality (2)      - set the process execution domain
+pfbtops (1)          - translate a PostScript font in .pfb format to ASCII
+pgm (5)              - portable graymap file format
+phantasia (6)        - an interterminal fantasy game
+photo (n)            - Full-color images
+pic (1)              - compile pictures for troff or TeX
+pico (1)             - simple text editor in the style of the Pine Composer
+pid (n)              - Retrieve process id(s)
+pidof (8)            - find the process ID of a running program.
+pig (6)              - eformatray inputway asway Igpay Atinlay
+pilot (1)            - simple file system browser in the style of the Pine Composer
+pine (1)             - a Program for Internet News and Email
+ping (8)             - send ICMP ECHO_REQUEST packets to network hosts
+pipe (2)             - create pipe
+pixmap (n)           - Create color images from XPM files.
+pkg_mkIndex (n)      - Build an index for automatic loading of packages
+pkgtool (8)          - software package maintenance tool.
+pl2pm (1)            - Rough tool to translate Perl4 .pl files to Perl5 .pm modules.
+place (n)            - Geometry manager for fixed or rubber-sheet placement
+plane (6)            - draw a 3 dimensional plane
+pname (1)            - spreadsheet calculator
+png (5)              - Portable Network Graphics (PNG) format
+pnm (5)              - portable anymap file format
+pnpdump (8)          - Dump ISA Plug-And-Play devices resource information
+pod2html (1)         - convert .pod files to .html files
+pod2man (1)          - translate embedded Perl pod directives into man pages
+poll (2)             - wait for some event on a file descriptor
+pom (6)              - display the phase of the moon
+pop3d (8)            - remote maildrop access server
+popen, pclose (3)    - process I/O
+portmap (8)          - DARPA port to RPC program number mapper
+porttime (5)         - port access time file
+postprint (6)        - 
+powerd (8)           - monitor an UPS through serial line, tcp port or file.
+ppm (5)              - portable pixmap file format
+pr (1)               - convert text files for printing
+praliases (8)        - display system mail aliases
+prctl (2)            - operations on a process
+primes (6)           - generate primes
+printcap (5)         - printer capability data base
+printenv (1)         - print all or part of environment
+printf (1)           - format and print data
+printf, fprintf, sprintf, snprintf, vprintf, vfprintf, vsprintf, vsnprintf (3) - formatted output conversion
+printftest (6)       - tests the vgagl gl_printf function
+printmail (1)        - format mail in a readable fashion for printing
+printw, wprintw, mvprintw, mvwprintw, vwprintw (3x) - print formatted output in curses windows
+proc (5)             - process information pseudo-filesystem
+proc (n)             - Create a Tcl procedure
+procinfo (8)         - display system status gathered from /proc
+procmail (1)         - autonomous mail processor
+procmailex (5)       - procmail rcfile examples
+procmailrc (5)       - procmail rcfile
+procmailsc (5)       - procmail weighted scoring techique
+profil (3)           - execution time profile
+protocols (5)        - the protocols definition file
+prunehistory (8)     - remove file names from Usenet history file
+ps (1)               - report process status
+ps2ascii (1)         - Aladdin Ghostscript PostScript or PDF to ASCII translator
+ps2epsi (1)          - generate conforming postscript
+ps2pdf (1)           - Aladdin Ghostscript PostScript to PDF translator
+psbb (1)             - extract bounding box from PostScript document
+psf (8)              - PostScript filter
+psfaddtable (1)      - add a Unicode character table to a console font
+psfgettable (1)      - extract the embedded Unicode character table from a console font
+psfstriptable (1)    - remove the embedded Unicode character table from a console font
+psignal (3)          - print signal message
+psorder (1)          - PostScript pageorder filter
+pstree (1)           - display a tree of processes
+pthread_atfork (3)   - register handlers to be called at fork(2) time
+pthread_attr_init, pthread_attr_destroy, pthread_attr_setdetachstate, pthread_attr_getdetachstate, pthread_attr_setschedparam, pthread_attr_getschedparam, pthread_attr_setschedpolicy, pthread_attr_getschedpolicy, pthread_attr_setinheritsched, pthread_attr_getinheritsched, pthread_attr_setscope, pthread_attr_getscope (3) - thread creation attributes
+pthread_cancel, pthread_setcancelstate, pthread_setcanceltype, pthread_testcancel (3) - thread cancellation
+pthread_cleanup_push, pthread_cleanup_pop, pthread_cleanup_push_defer_np, pthread_cleanup_pop_restore_np (3) - install and remove cleanup handlers
+pthread_cond_init, pthread_cond_destroy, pthread_cond_signal, pthread_cond_broadcast, pthread_cond_wait, pthread_cond_timedwait (3) - operations on conditions
+pthread_condattr_init, pthread_condattr_destroy (3) - condition creation attributes
+pthread_create (3)   - create a new thread
+pthread_detach (3)   - put a running thread in the detached state
+pthread_equal (3)    - compare two thread identifiers
+pthread_exit (3)     - terminate the calling thread
+pthread_join (3)     - wait for termination of another thread
+pthread_key_create, pthread_key_delete, pthread_setspecific, pthread_getspecific (3) - management of thread-specific data
+pthread_kill_other_threads_np (3) - terminate all threads in program except calling thread
+pthread_mutex_init, pthread_mutex_lock, pthread_mutex_trylock, pthread_mutex_unlock, pthread_mutex_destroy (3) - operations on mutexes
+pthread_mutexattr_init, pthread_mutexattr_destroy, pthread_mutexattr_setkind_np, pthread_mutexattr_getkind_np (3) - mutex creation attributes
+pthread_once (3)     - once-only initialization
+pthread_self (3)     - return identifier of current thread
+pthread_setschedparam, pthread_getschedparam (3) - control thread scheduling parameters
+pthread_sigmask, pthread_kill, sigwait (3) - handling of signals in threads
+ptrace (2)           - process trace
+putenv (3)           - change or add an environment variable
+putpwent (3)         - write a password file entry
+puts (n)             - Write to a channel
+pwauth (3)           - administrator defined password authentication routines
+pwauth (8)           - administrator defined password authentication
+pwck (8)             - verify integrity of password files
+pwconv, pwunconv, grpconv, grpunconv (8) - convert to and from shadow passwords and groups.
+pwd (1)              - print name of current/working directory
+pwd (n)              - Return the current working directory
+pwupdate (8)         - updates passwd and shadow NIS map
+python (1)           - an interpreted, interactive, object-oriented programming language
+qio (3)              - quick I/O part of InterNetNews library
+qsort (3)            - sorts an array
+query_module (2)     - query the kernel for various bits pertaining to modules.
+quiz (6)             - random knowledge tests
+quota (1)            - display disk usage and limits
+quotacheck (8)       - scan a file system for disk usages
+quotactl (2)         - manipulate disk quotas
+quotaon, quotaoff (8) - turn file system quotas on and off
+radiobutton (n)      - Create and manipulate radiobutton widgets
+rain (6)             - animated raindrops display
+raise (3)            - send a signal to the current process
+raise (n)            - Change a window's position in the stacking order
+ram (4)              - ram disk device
+rand, srand (3)      - random number generator.
+random (6)           - random lines from a file or random numbers
+random, srandom, initstate, setstate (3) - random number generator.
+random, urandom (4)  - kernel random number source devices
+ranlib (1)           - generate index to archive.
+rarp (8)             - manipulate the system RARP table
+rcmd, (3)            - rresvport, - iruserok, - ruserok - routines for returning a stream to a remote command
+rcp (1)              - remote file copy
+rcs (1)              - change RCS file attributes
+rcsclean (1)         - clean up working files
+rcsdiff (1)          - compare RCS revisions
+rcsfile (5)          - format of RCS file
+rcsfreeze (1)        - freeze a configuration of sources checked in under RCS
+rcsintro (1)         - introduction to RCS commands
+rcsmerge (1)         - merge RCS revisions
+rdev (8)             - query/set image root device, swap device, RAM disk size, or video mode
+rdist (1)            - remote file distribution client program
+rdistd (1)           - remote file distribution server program
+rdjpgcom (1)         - display text comments from a JPEG file
+re_comp, re_exec (3) - BSD regex functions
+read (2)             - read from a file descriptor
+read (n)             - Read from a channel
+readdir (2)          - read directory entry
+readdir (3)          - read a directory
+readline (3)         - get a line from a user with editing
+readlink (2)         - read value of a symbolic link
+readmsg (1)          - extract messages from a mail folder
+readprofile (1)      - a tool to read kernel profiling information
+readv, writev (2)    - read or write a vector
+readv, writev (3)    - read or write data into multiple buffers
+realpath (3)         - returns the canonicalized absolute pathname.
+reboot (2)           - reboot or enable/disable Ctrl-Alt-Del
+recno (3)            - record number database access method
+recv, recvfrom, recvmsg (2) - receive a message from a socket
+ref (1)              - Display a C function header
+refer (1)            - preprocess bibliographic references for groff
+refresh, wrefresh, wnoutrefresh, doupdate, redrawwin, wredrawln (3x) - refresh curses windows and lines
+regcomp, regexec, regerror, regfree (3) - POSIX regex functions
+regex (7)            - POSIX 1003.2 regular expressions
+regexp (n)           - Match a regular expression against a string
+registry (n)         - Manipulate the Windows registry
+regsub (n)           - Perform substitutions based on regular expression pattern matching
+remove (3)           - delete a name and possibly the file it refers to
+removepkg (8)        - remove Slackware packages.
+rename (2)           - change the name or location of a file
+rename (n)           - Rename or delete a command
+renice (8)           - alter priority of running processes
+repquota (8)         - summarize quotas for a file system
+res_init, res_query, res_search, res_querydomain, res_mkquery, res_send, dn_comp, dn_expand (3) - resolver routines
+reset (1)            - reset the terminal
+resizecons (8)       - change kernel idea of the console size
+resizeterm (3x)      - change the curses terminal size .
+resolver (5)         - resolver configuration file
+resource (n)         - Manipulate Macintosh resources
+restorefont (1)      - save or restore the SVGA font for textmode.
+restorepalette (1)   - set the color palette for textmode.
+restoretextmode (1)  - save or restore the SVGA registers for textmode.
+return (n)           - Return from a procedure
+rev (1)              - reverse lines of a file
+revnetgroup (8)      - generate reverse netgroup data
+rewinddir (3)        - reset directory stream
+rexecd (8)           - remote execution server
+richtext (1)         - View a richtext document, typically a mail message
+rint (3)             - round to closest integer
+rlog (1)             - print log messages and other information about RCS files
+rlogin (1)           - remote login
+rlogind (8)          - remote login server
+rm (1)               - remove files or directories
+rmail (8)            - handle remote mail received via uucp
+rmdir (1)            - remove empty directories
+rmdir (2)            - delete a directory
+rmmod (1)            - unload loadable modules
+rmt (8)              - remote magtape protocol module
+rnews (1)            - receive news from a UUCP connection
+robots (6)           - fight off villainous robots
+rotatelogs (8)       - rotate Apache logs without having to kill the server
+route (8)            - show / manipulate the IP routing table
+routed (8)           - network routing daemon
+routed-query (8)     - querying remote machine running routed - for routing informations
+routed-trace (8)     - utility to switch trace logging on/off on routed running on remote machine
+rpc.rusersd (8)      - logged in users server
+rpc.rwalld (8)       - write messages to users currently logged in server
+rpc.yppasswdd (8)    - NIS password update daemon
+rpc.ypxfrd (8)       - NIS map transfer server
+rpcgen (1)           - an RPC protocol compiler
+rpcinfo (8)          - report RPC information
+rquota (3)           - implement quotas on remote machines
+rsh (1)              - remote shell
+rshd (8)             - remote shell server
+rsync (1)            - faster, flexible replacement for rcp
+rsyncd&.conf (5)     - configuration file for rsync server
+runlevel (8)         - find the current and previous system runlevel.
+runscript (1)        - script interpreter for minicom
+runx (1)             - try to overcome problems of Xfree96 restoring textmode using svgalib.
+rup (1)              - remote status display
+ruptime (1)          - show host status of local machines
+rusers (1)           - who is logged in to machines on local network
+rwall (1)            - send a message to users logged on a host
+rwho (1)             - who is logged in on local machines
+rwhod (8)            - system status server
+rx, rb, rz (1)       - XMODEM, YMODEM, ZMODEM (Batch) file receive
+s2p (1)              - Sed to Perl translator
+sail (6)             - multi-user wooden ships and iron men
+savetextmode, textmode (1) - save or restore the complete SVGA status for textmode.
+scale (n)            - Create and manipulate scale widgets
+scan (n)             - Parse string using conversion specifiers in the style of sscanf
+scandir, alphasort (3) - scan a directory for matching entries
+scanf, fscanf, sscanf, vscanf, vsscanf, vfscanf (3) - input format conversion
+scanlogs (8)         - summarize INN log files.
+scanlogs, writelog, innstat, tally.unwanted, tally.control, innlog.pl (8) - programs to manipulate or summarize INN log files.
+scanw, wscanw, mvscanw, mvwscanw, vwscanw (3x) - convert formatted input from a curses widow
+sched_get_priority_max, sched_get_priority_min (2) - get static priority range
+sched_rr_get_interval (2) - get the SCHED_RR interval for the named process
+sched_setparam, sched_getparam (2) - set and get scheduling parameters
+sched_setscheduler, sched_getscheduler (2) - set and get scheduling algorithm/parameters
+sched_yield (2)      - yield the processor
+scr_dump, scr_restore, scr_init, scr_set (3x) - read (write) a curses screen from (to) a file
+script (1)           - make typescript of terminal session
+scroll, srcl, wscrl (3x) - scroll a curses window
+scrollbar (n)        - Create and manipulate scrollbar widgets
+scrolltest (6)       - tests some scrolling algorithms with svgalib
+sd (4)               - Driver for SCSI Disk Drives
+sdiff (1)            - find differences between two files and merge interactively
+securetty (5)        - file which lists ttys from which root can log in
+sed (1)              - stream editor
+seejpeg (1)          - 
+seek (n)             - Change the access position for an open channel
+seekdir (3)          - set the position of the next readdir() call in the directory stream.
+select, FD_CLR, FD_ISSET, FD_SET, FD_ZERO (2) - synchronous I/O multiplexing
+selection (n)        - Manipulate the X selection
+sem_init, sem_wait, sem_trywait, sem_post, sem_getvalue, sem_destroy (3) - operations on semaphores
+semctl (2)           - semaphore control operations
+semget (2)           - get a semaphore set identifier
+semop (2)            - semaphore operations
+send (n)             - Execute a command in a different application
+send, sendto, sendmsg (2) - send a message from a socket
+send-pr (1)          - send problem report (PR) to a central support site
+sendmail (8)         - an electronic mail transport agent
+services (5)         - Internet network services list
+sessreg (1)          - manage utmp/wtmp entries for non-init clients
+set (n)              - Read and write variables
+setbuf, setbuffer, setlinebuf, setvbuf (3) - stream buffering operations
+setenv (3)           - change or add an environment variable
+setfdprm (1)         - sets user-provided floppy disk parameters '" t TQ $1 ..
+setfdprm (8)         - sets user-provided floppy disk parameters
+setfont (8)          - load EGA/VGA console screen font
+setfsgid (2)         - set group identity used for file system checks
+setfsuid (2)         - set user identity used for file system checks
+setgid (2)           - set group identity
+setjmp, sigsetjmp (3) - save stack context for non-local goto
+setkeycodes (8)      - load kernel scancode-to-keycode mapping table entries
+setleds (1)          - set the keyboard leds
+setlocale (3)        - set the current locale.
+setmclk (1)          - adjust the memory timing of certain Cirrus cards.
+setmetamode (1)      - define the keyboard meta key handling
+setpci (8)           - configure PCI devices
+setpgid, getpgid, setpgrp, getpgrp (2) - set/get process group
+setquota (8)         - set disk quotas
+setregid, setegid (2) - set real and / or effective group ID
+setresuid, setresgid (2) - set real, effective and saved user or group ID
+setreuid, seteuid (2) - set real and / or effective user ID
+setserial (8)        - get/set Linux serial port information
+setsid (2)           - creates a session and sets the process group ID
+setsid (8)           - run a program in a new session
+setterm (1)          - set terminal attributes
+setuid (2)           - set user identity
+setup (2)            - setup devices and file systems, mount root file system
+setup (8)            - Slackware system setup tool.
+setupterm, setterm, set_curterm, del_curterm, restartterm, tparm, tputs, putp, vidputs, vidattr, mvcur, tigetflag, tigetnum, tigetstr (3x) - curses interfaces to terminfo database
+sfdisk (8)           - Partition table manipulator for Linux
+shadow (3)           - encrypted password file routines
+shadow (5)           - encrypted password file
+shadowconfig (8)     - toggle shadow passwords on and off
+shar (1)             - create shell archives
+shells (5)           - pathnames of valid login shells
+shlock (1)           - create lock files for use in shell scripts
+shmctl (2)           - shared memory control
+shmget (2)           - allocates a shared memory segment
+shmop (2)            - shared memory operations
+showaudio (1)        - Play an audio email message
+showexternal (1)     - Fetch and display the body of a mail message that is included by reference
+showkey (1)          - examine the scan codes and keycodes sent by the keyboard
+showmount (8)        - show mount information for an NFS server
+shownonascii (1)     - View all or part of a mail message in a non-ASCII font
+showpartial (1)      - Fetch and display the body of a mail message that is included by reference
+showpicture (1)      - View an image received in the mail
+shrinkfile (1)       - shrink a file on a line boundary
+shutdown (2)         - shut down part of a full-duplex connection
+shutdown (8)         - bring the system down
+sigaction, sigprocmask, sigpending, sigsuspend (2) - POSIX signal handling functions.
+sigblock, siggetmask, sigsetmask, sigmask (2) - manipulate the signal mask
+sigemptyset, sigfillset, sigaddset, sigdelset, sigismember (3) - POSIX signal set operations.
+siginterrupt (3)     - allow signals to interrupt system calls
+signal (2)           - ANSI C signal handling
+signal (7)           - list of available signals
+sigpause (2)         - atomically release blocked signals and wait for interrupt
+sigreturn (2)        - return from signal handler and cleanup stack frame
+sigvec (2)           - BSD software signal facilities
+sin (3)              - sine function
+sinh (3)             - hyperbolic sine function
+size (1)             - list section sizes and total size.
+skill, snice (1)     - report process status
+slattach (8)         - attach a network interface to a serial line
+sleep (1)            - delay for a specified amount of time
+sleep (3)            - Sleep for the specified number of seconds
+sliceprint (1)       - slice documents with long lines.
+sliplogin (8)        - attach a serial line network interface
+slk_init, slk_set, slk_refresh, slk_noutrefresh, slk_label, slk_clear, slk_restore, slk_touch, slk_attron, slk_attrset, slk_attroff (3x) - curses soft label routines
+smb&.conf (5)        - The configuration file for the Samba suite
+smbclient (1)        - ftp-like client to access SMB/CIFS resources on servers
+smbd (8)             - server to provide SMB/CIFS services to clients
+smbmnt (8)           - mount smb file system
+smbmount (8)         - mount smb file system
+smbpasswd (5)        - The Samba encrypted password file
+smbpasswd (8)        - change a users SMB password
+smbrun (1)           - interface program between smbd and external programs
+smbstatus (1)        - report on current Samba connections
+smbtar (1)           - shell script for backing up SMB/CIFS shares directly to UNIX tape drives
+smbumount (8)        - umount for normal users
+smrsh (8)            - restricted shell for sendmail
+snake, (6)           - snscore - display chase game
+snprintf, vsnprintf (3) - formatted output conversion
+sockdown (1)         - shutdown(2) a socket
+socket (2)           - create an endpoint for communication
+socket (n)           - Open a TCP network connection
+socketcall (2)       - socket system calls
+socketpair (2)       - create a pair of connected sockets
+socklist (8)         - display list of open sockets
+soelim (1)           - interpret .so requests in groff input
+sort (1)             - sort lines of text files
+source (n)           - Evaluate a file or resource as a Tcl script
+sox (1)              - SOund eXchange : universal sound sample translator
+speedtest (6)        - tests the speed of memory access under svgalib
+spin (6)             - test a 6-dimension mouse or pointer device with svgalib
+split (1)            - split a file into pieces
+split (n)            - Split a string into a proper Tcl list
+splitmail (1)        - Split a large mail message into MIME-compliant partial messages
+splitvt (1)          - run two shells in a split window
+sq (1)               - squeeze a sorted word list unsq - unsqueeze a sorted word list
+sqrt (3)             - square root function
+st (4)               - SCSI tape device
+start_color, init_pair, init_color, has_colors, can_change_color, color_content, pair_content (3x) - curses color manipulation routines
+stat, fstat, lstat (2) - get file status
+states (1)           - awk alike text processing tool
+statfs, fstatfs (2)  - get file system statistics
+stdarg (3)           - variable argument lists
+stdin, (3)           - stdout, - stderr - standard I/O streams
+stdio (3)            - standard input/output library functions
+stime (2)            - set time
+stpcpy (3)           - copy a string returning a pointer to its end
+strace (1)           - trace system calls and signals
+strcasecmp, strcat, strchr, strcmp, strcoll, strcpy, strcspn, strdup, strfry, strlen, strncat, strncmp, strncpy, strncasecmp, strpbrk, strrchr, strsep, strspn, strstr, strtok, strxfrm, index, rindex (3) - string operations
+strcasecmp, strncasecmp (3) - compare two strings ignoring case
+strcat, strncat (3)  - concatenate two strings
+strchr, strrchr (3)  - locate character in string
+strcmp, strncmp (3)  - compare two strings
+strcoll (3)          - compare two strings using the current locale
+strcpy, strncpy (3)  - copy a string
+strdup (3)           - duplicate a string
+strerror (3)         - return string describing error code
+strfile, (8)         - unstr - "create a random access file for storing strings"
+strfry (3)           - randomize a string
+strftime (3)         - format date and time
+string (n)           - Manipulate strings
+strings (1)          - find printable strings in a file
+strings (1)          - print the strings of printable characters in files
+strip (1)            - Discard symbols from object files.
+strlen (3)           - calculate the length of a string
+strpbrk (3)          - search a string for any of a set of characters
+strptime (3)         - convert a string representation of time to a time tm structure
+strsep (3)           - extract token from string
+strsignal (3)        - return string describing signal
+strspn, strcspn (3)  - search a string for a set of characters
+strstr (3)           - locate a substring
+strtod (3)           - convert ASCII string to double
+strtok (3)           - extract token from string
+strtol (3)           - convert a string to a long integer.
+strtoul (3)          - convert a string to an unsigned long integer.
+strxfrm (3)          - string transformation
+stty (1)             - change and print terminal line settings
+su (1)               - Change user ID or become super-user
+suauth (5)           - Detailed su control file
+subst (1)            - substitute definitions into file(s)
+subst (n)            - Perform backslash, command, and variable substitutions
+sudo (8)             - execute a command as the superuser
+sudoers (5)          - list of which users may execute what as root
+suffixes (7)         - list of file suffixes
+sulogin (8)          - Single-user login
+sum (1)              - checksum and count the blocks in a file
+superformat (1)      - format floppies '" t TQ $1 ..
+svgakeymap (1)       - generates keymaps for svgalib
+svgalib (7)          - a low level graphics library for linux
+svgalib.chips (7)    - Information for Chips and Technologies Users
+svgalib.et4000, libvga.et4000 (7) - Information for Tseng ET4000 users
+svgalib.et6000, libvga.et6000 (7) - Information for Tseng ET6000 users
+svgalib.faq (7)      - frequently asked questions about svgalib
+svgalib.mach32 (7)   - Information on the Mach32 chipset driver
+swab (3)             - swap adjacent bytes
+swapon, swapoff (2)  - start/stop swapping to file/device
+swapon, swapoff (8)  - enable/disable devices and files for paging and swapping
+swat (8)             - swat - Samba Web Administration Tool
+switch (n)           - Evaluate one of several scripts, depending on a given value
+sx, sb, sz (1)       - XMODEM, YMODEM, ZMODEM file send
+symlink (2)          - make a new name for a file
+sync (2)             - commit buffer cache to disk.
+sync (8)             - flush Linux filesystem buffers
+sysconf (3)          - Get configuration information at runtime
+sysctl (2)           - read/write system parameters
+sysfs (2)            - get file system type information
+sysinfo (2)          - returns information on overall system statistics
+sysklogd (8)         - Linux system logging utilities.
+syslog (2)           - read and/or clear kernel message ring buffer; set console_loglevel
+syslog.conf (5)      - syslogd(8) configuration file
+system (3)           - execute a shell command
+tac (1)              - concatenate and print files in reverse
+tail (1)             - output the last part of files
+talk (1)             - talk to another user
+talkd (8)            - remote user communication server
+tally.control (8)    - keep track of newgroup creation and deletions.
+tally.unwanted (8)   - keep track of unwanted newsgroups.
+tan (3)              - tangent function
+tanh (3)             - hyperbolic tangent function
+tar (1)              - The GNU version of the tar archiving utility
+tbl (1)              - format tables for troff
+tclsh (1)            - Simple shell containing Tcl interpreter
+tclvars (n)          - Variables used by Tcl
+tcpd (8)             - access control facility for internet services
+tcpdchk (8)          - tcp wrapper configuration checker
+tcpdmatch (8)        - tcp wrapper oracle
+tcsh (1)             - C shell with file name completion and command line editing
+tee (1)              - read from standard input and write to standard output and files
+tell (n)             - Return current access position for an open channel
+telldir (3)          - return current location in directory stream.
+telnet (1)           - user interface to the TELNET protocol
+telnetd (8)          - DARPA telnet protocol server
+tempnam (3)          - create a name for a temporary file
+term (5)             - format of compiled term file.
+term (7)             - conventions for naming terminal types
+termcap (5)          - terminal capability database
+terminfo (5)         - terminal capability data base
+termios, tcgetattr, tcsetattr, tcsendbreak, tcdrain, tcflush, tcflow, cfmakeraw, cfgetospeed, cfgetispeed, cfsetispeed, cfsetospeed, tcgetpgrp, tcsetpgrp (3) - get and set terminal attributes, line control, get and set baud rate, get and set terminal foreground process group ID
+test (1)             - check file types and compare values
+testaccel (6)        - test the old style blitter functions and vga_ext_set()
+testgl (6)           - test the vgagl library
+testlinear (6)       - tests a linear frame buffer
+testparm (1)         - check an smb&.conf configuration file for internal correctness
+testprns (1)         - check printer name for validity with smbd
+text (n)             - Create and manipulate text widgets
+tfmtodit (1)         - create font files for use with groff -Tdvi
+tftp (1)             - trivial file transfer program
+tftpd (8)            - DARPA Trivial File Transfer Protocol server
+tgetent, tgetflag, tgetnum, tgetstr, tgoto, tputs (3x) - direct curses interface to the terminfo capability database
+threed (6)           - The svgalib 3d demo
+threedkit (7)        - a set of functions for 3D support.
+tic (1m)             - the terminfo entry-description compiler
+time (2)             - get time in seconds
+time (n)             - Time the execution of a script
+time2posix, posix2time (3) - convert seconds since the Epoch
+timed (8)            - time server daemon
+timedc (8)           - timed control program
+times (2)            - get process times
+tin, rtin, tind (1)  - A Usenet newsreader
+tix (n)              - Manipulate Tix internal state
+tixBalloon (n)       - Create and manipulate tixBalloon widgets
+tixButtonBox (n)     - Create and manipulate Tix ButtonBox widgets
+tixCheckList (n)     - Create and manipulate tixCheckList widgets
+tixComboBox (n)      - Create and manipulate tixComboBox widgets
+tixControl (n)       - Create and manipulate tixControl widgets
+tixDestroy (n)       - Destroy Tix Objects
+tixDirList (n)       - Create and manipulate tixDirList widgets
+tixDirSelectDialog (n) - Create and manipulate directory selection dialogs.
+tixDirTree (n)       - Create and manipulate tixDirTree widgets
+tixExFileSelectBox (n) - Create and manipulate tixExFileSelectBox widgets
+tixExFileSelectDialog (n) - Create and manipulate tixExFileSelectDialog widgets
+tixFileEntry (n)     - Create and manipulate tixFileEntry widgets
+tixFileSelectBox (n) - Create and manipulate Tix FileSelectBox widgets
+tixFileSelectDialog (n) - Create and manipulate tixFileSelectDialog widgets
+tixForm (n)          - Geometry manager based on attachment rules
+tixGetBoolean (n)    - Get the boolean value of a string.
+tixGetInt (n)        - Get the integer value of a string.
+tixGrid (n)          - Create and manipulate Tix Grid widgets
+tixHList (n)         - Create and manipulate Tix Hierarchial List widgets
+tixInputOnly (n)     - Create and manipulate TIX InputOnly widgets
+tixLabelEntry (n)    - Create and manipulate tixLabelEntry widgets
+tixLabelFrame (n)    - Create and manipulate tixLabelFrame widgets
+tixListNoteBook (n)  - Create and manipulate tixListNoteBook widgets
+tixMeter (n)         - Create and manipulate Tix Meter widgets
+tixMwm (n)           - Communicate with the Motif(tm) window manager.
+tixNBFrame (n)       - Create and manipulate Tix NoteBook Frame widgets
+tixNoteBook (n)      - Create and manipulate tixNoteBook widgets
+tixOptionMenu (n)    - Create and manipulate tixOptionMenu widgets
+tixPanedWindow (n)   - Create and manipulate tixPanedWindow widgets
+tixPopupMenu (n)     - Create and manipulate tixPopupMenu widgets
+tixScrolledHList (n) - Create and manipulate Tix ScrolledHList widgets
+tixScrolledListBox (n) - Create and manipulate Tix ScrolledListBox widgets
+tixScrolledText (n)  - Create and manipulate Tix ScrolledText widgets
+tixScrolledWindow (n) - Create and manipulate Tix ScrolledWindow widgets
+tixSelect (n)        - Create and manipulate tixSelect widgets
+tixStdButonBox (n)   - Create and manipulate Tix StdButonBox widgets
+tixTList (n)         - Create and manipulate Tix Tabular List widgets
+tixTree (n)          - Create and manipulate tixTree widgets
+tixwish (n)          - Windowing shell for interpreting Tix commands.
+tk (n)               - Manipulate Tk internal state
+tk_chooseColor (n)   - pops up a dialog box for the user to select a color.
+tk_dialog (n)        - Create modal dialog and wait for response
+tk_focusNext, tk_focusPrev, tk_focusFollowsMouse (n) - Utility procedures for managing the input focus.
+tk_getOpenFile, tk_getSaveFile (n) - pop up a dialog box for the user to select a file to open or save.
+tk_menuBar, tk_bindForTraversal (n) - Obsolete support for menu bars
+tk_messageBox (n)    - pops up a message window and waits for user response.
+tk_optionMenu (n)    - Create an option menubutton and its menu
+tk_popup (n)         - Post a popup menu
+tk_setPalette, tk_bisque (n) - Modify the Tk color palette
+tkerror (n)          - Command invoked to process background errors
+tknewsbiff (1)       - pop up a window when news appears
+tkvars (n)           - Variables used or set by Tk
+tkwait (n)           - Wait for variable to change or window to be destroyed
+tload (1)            - graphic representation of system load average
+tmpfile (3)          - create a temporary file
+tmpnam (3)           - create a name for a temporary file
+toascii (3)          - convert character to ASCII
+todos (1)            - convert UNIX text file format to DOS.
+toe (1m)             - table of (terminfo) entries
+top (1)              - display top CPU processes
+toplevel (n)         - Create and manipulate toplevel widgets
+touch (1)            - change file timestamps
+touchwin, touchline, untouchwin, wtouchln, is_linetouched, is_wintouched (3x) - curses refresh control routines
+toupper, tolower (3) - convert letter to upper or lower case
+tput (1)             - initialize a terminal or query terminfo database
+tr (1)               - translate or delete characters
+trace (n)            - Monitor variable accesses
+traceroute (8)       - print the route packets take to network host
+trek (6)             - trekkie game
+trn (1)              - threaded read news program
+troff (1)            - format documents
+true (1)             - do nothing, successfully
+truncate, ftruncate (2) - truncate a file to a specified length
+tsearch, tfind, tdelete, twalk (3) - manage a binary tree
+tset (1)             - terminal initialization
+tsort (1)            - topological sort of a directed graph
+tty (1)              - print the file name of the terminal connected to standard input
+tty (4)              - controlling terminal
+ttyname (3)          - return name of a terminal
+ttys (4)             - serial terminal lines
+ttysnoop (8)         - snoop on a user's tty
+ttytype (5)          - terminal device to default terminal type mapping
+tune2fs (8)          - adjust tunable filesystem parameters on second extended filesystems
+tunelp (8)           - set various parameters for the lp device
+tzfile (5)           - time zone information
+tzselect (8)         - select a time zone
+tzset (3)            - initialize time conversion information
+ul (1)               - do underlining
+ulimit (3)           - get and set user limits
+umask (2)            - set file creation mask
+umount (8)           - unmount file systems
+umssync (8)          - Synchronise Umsdos directory structure with MsDOS
+uname (1)            - print system information
+uname (2)            - get name and information about current kernel
+unbuffer (1)         - unbuffer output
+unctrl, keyname, filter, use_env, putwin, getwin, delay_output, flushinp (3x) - miscellaneous curses utility routines
+unexpand (1)         - convert spaces to tabs
+uniq (1)             - remove duplicate lines from a sorted file
+unknown (n)          - Handle attempts to use non-existent commands
+unlink (2)           - delete a name and possibly the file it refers to
+unset (n)            - Delete variables
+unshar (1)           - unpack a shar file
+unzip (1)            - list, test and extract compressed files in a ZIP archive
+unzipsfx (1)         - self-extracting stub for prepending to ZIP archives
+update (8)           - periodically flush filesystem buffers.
+update (n)           - Process pending events and idle callbacks
+updatedb (1)         - update a file name database
+updwtmp, logwtmp (3) - append an entry to the wtmp file
+upgradepkg (8)       - upgrade Slackware packages.
+uplevel (n)          - Execute a script in a different stack frame
+uptime (1)           - Tell how long the system has been running.
+upvar (n)            - Create link to variable in a different stack frame
+uselib (2)           - select shared library
+useradd (8)          - Create a new user or update default new user information
+userdel (8)          - Delete a user account and related files
+usermod (8)          - Modify a user account
+users (1)            - print the user names of users currently logged in to the current host
+usleep (3)           - suspend execution for interval of microseconds
+ustat (2)            - get file system statistics
+utime, utimes (2)    - change access and/or modification times of an inode
+utmp, wtmp (5)       - login records
+uucico (8)           - UUCP file transfer daemon
+uucp (1)             - Unix to Unix copy
+uuencode (1)         - encode a binary file uudecode - decode a file created by uuencode
+uuencode (5)         - format of an encoded uuencode file
+uustat (1)           - UUCP status inquiry and control
+uux (1)              - Remote command execution over UUCP
+uuxqt (8)            - UUCP execution daemon
+variable (n)         - create and initialize a namespace variable
+vcs, vcsa (4)        - virtual console memory
+vga_accel (3)        - calls the graphics accelerator
+vga_bitblt (3)       - copy pixmap on screen using an accelerator
+vga_blitwait (3)     - wait for any accelerator operation to finish
+vga_claimvideomemory (3) - declare the amount of video memory used
+vga_clear (3)        - clear the screen
+vga_copytoplanar16 (3) - copy linear pixmap into VGA 16 color mode video memory
+vga_copytoplanar256 (3) - copy linear pixmap into Mode X video memory
+vga_copytoplane (3)  - copy linear pixmap to some planes of VGA 16 color mode video memory
+vga_disabledriverreport (3) - makes svgalib not emit any startup messages
+vga_drawline (3)     - draw a line on the screen
+vga_drawpixel (3)    - draw a pixel on the screen
+vga_drawscanline (3) - draw a horizontal line of pixels
+vga_drawscansegment (3) - draw a horizontal line of pixels
+vga_dumpregs (3)     - dump the contents of the SVGA registers
+vga_ext_set (3)      - set and query several extended features
+vga_fillblt (3)      - file rectangular area in video memory with a single color
+vga_flip (3)         - toggle between text and graphics mode
+vga_getch (3)        - wait for a key
+vga_getcurrentchipset (3) - returns the current SVGA chipset
+vga_getcurrentmode (3) - returns the current video mode
+vga_getdefaultmode (3) - returns the default graphics mode number
+vga_getgraphmem (3)  - returns the address of the VGA memory
+vga_getkey (3)       - read a character from the keyboard without waiting
+vga_getmodeinfo (3)  - returns pointer to mode information structure for a mode
+vga_getmodename (3)  - return a name for the given video mode
+vga_getmodenumber (3) - return a number for the given video mode
+vga_getmonitortype (3) - returns the monitor type configured
+vga_getmousetype (3) - returns the mouse type configured
+vga_getpalette (3)   - get a color in the color lookup table
+vga_getpalvec (3)    - gets colors from the color lookup table
+vga_getpixel (3)     - get a pixels value from the screen
+vga_getscansegment (3) - get a list of consecutive pixel values
+vga_gettextfont, vga_puttextfont (3) - get/set the font used in text mode
+vga_gettextmoderegs, vga_settextmoderegs (3) - get/set the vga state used in text mode
+vga_getxdim, vga_getydim, vga_getcolors (3) - return the current screen resolution
+vga_hasmode (3)      - returns if a video mode is supported
+vga_hlinelistblt (3) - draw horizontal scan lines
+vga_imageblt (3)     - copy a rectangular pixmap from system memory to video memory
+vga_init (3)         - initialize svgalib library
+vga_lastmodenumber (3) - returns the last video mode number
+vga_lockvc (3)       - disables virtual console switching for safety
+vga_oktowrite (3)    - indicates whether the program has direct access to the SVGA
+vga_runinbackground (3) - enable running of the program while there is no VGA access
+vga_runinbackground_version (3) - returns the version of the current background support
+vga_safety_fork (3)  - start a parallel process to restore the console at a crash
+vga_screenoff, vga_screenon (3) - turn generation of the video signal on or off
+vga_setchipset (3)   - force chipset
+vga_setchipsetandfeatures (3) - force chipset and optional parameters
+vga_setcolor (3)     - set the current color
+vga_setdisplaystart (3) - set the display start address
+vga_setegacolor (3)  - set the current color
+vga_setflipchar (3)  - set the character causing a vga_flip()
+vga_setlinearaddressing (3) - switch to linear addressing mode
+vga_setlogicalwidth (3) - set the logical scanline width
+vga_setmode (3)      - sets a video mode
+vga_setmodeX (3)     - try to set Mode X-like memory organization
+vga_setmousesupport (3) - enable mouse support
+vga_setpage (3)      - set the 64K SVGA page number
+vga_setpalette (3)   - set a color in the color lookup table
+vga_setpalvec (3)    - sets colors in the color lookup table
+vga_setreadpage (3)  - set the 64K SVGA page number
+vga_setrgbcolor (3)  - set the current color
+vga_setwritepage (3) - set the 64K SVGA page number
+vga_unlockvc (3)     - re-enables virtual console switching
+vga_waitevent (3)    - wait for various I/O events
+vga_waitretrace (3)  - wait for vertical retrace.
+vga_white (3)        - return the color white in the current screen resolution
+vgagl (7)            - a fast framebuffer-level graphics library based ion svgalib
+vgatest (6)          - makes basic tests on any svgalib graphics mode
+vhangup (2)          - virtually hangup the current tty
+vim (1)              - Vi IMproved, a programmers text editor
+vipw, vigr (8)       - edit the password, group, shadow-password, or shadow-group file.
+visudo (8)           - edit the sudoers file
+vm86old, vm86 (2)    - enter virtual 8086 mode
+vmstat (8)           - Report virtual memory statistics
+vwait (n)            - Process events until a variable is written
+w (1)                - Show who is logged on and what they are doing.
+wait, waitpid (2)    - wait for process termination
+wait3, wait4 (2)     - wait for process termination, BSD style
+wall (1)             - write a message to users
+watch (1)            - watch a program with update intervals
+wavelan (4)          - AT&T GIS WaveLAN ISA device driver
+wc (1)               - print the number of bytes, words, and lines in files
+wcstombs (3)         - convert a wide character string to a multibyte character string.
+wctomb (3)           - convert a wide character to a multibyte character.
+wget (1)             - a utility to retrieve files from the World Wide Web
+whatis (1)           - search the whatis database for complete words.
+whereis (1)          - locate the binary, source, and manual page files for a command
+which (1)            - show full path of commands
+while (n)            - Execute script repeatedly as long as a condition is met
+who (1)              - show who is logged on
+whoami (1)           - print effective userid
+wildmat (3)          - perform shell-style wildcard matching
+winfo (n)            - Return window-related information
+wish (1)             - Simple windowing shell
+wm (n)               - Communicate with window manager
+wnewmail (1)         - daemon to asynchronously notify of new mail
+workbone (1)         - an interactive text-mode program for controlling and playing audio CD Roms under Linux.
+worm (6)             - Play the growing worm game
+worms (6)            - animate worms on a display terminal
+wrapdemo (6)         - demonstrates surface wrapping of pixmaps
+wresize (3x)         - resize a curses window .
+write (1)            - send a message to another user
+write (2)            - write to a file descriptor
+writed (8)           - remote write server
+writelog (8)         - add a entry to an INN log file.
+wrjpgcom (1)         - insert text comments into a JPEG file
+wump (6)             - hunt the wumpus in an underground cave
+xargs (1)            - build and execute command lines from standard input
+xdfcopy (1)          - Program to copy and format Xdf disks in Linux '" t TQ $1 ..
+xferlog (5)          - FTP server logfile
+xfsck (8)            - xiafs file system consistency check and repair
+xhfs (1)             - graphical interface for manipulating HFS volumes
+xkibitz (1)          - allow multiple people to interact in an xterm
+xsubpp (1)           - compiler to convert Perl XS code into C code
+xxd (1)              - make a hexdump or do the reverse.
+yes (1)              - output a string repeatedly until killed
+ypbind (8)           - NIS binding process
+ypcat (1)            - print values of all keys in a NIS database
+ypinit (8)           - NIS database install and build program
+ypmatch (1)          - print the values of one or more keys from a NIS map
+yppasswd, ypchfn, ypchsh (1) - change your password in the NIS database
+yppoll (8)           - return version and master server of a NIS map
+yppush (8)           - force propagation of changed NIS databases
+ypserv (8)           - NIS server
+ypserv.conf (5)      - configuration file for ypserv and rpc.ypxfrd
+ypset (8)            - bind ypbind to a particular NIS server
+ypwhich (1)          - return name of NIS server or map master
+ypxfr (8)            - transfer NIS database from remote server to local host
+ytalk (1)            - A multi-user chat program.
+zcmp, zdiff (1)      - compare compressed files
+zdump (8)            - time zone dumper
+zforce (1)           - force a '.gz' extension on all gzip files
+zgrep (1)            - search possibly compressed files for a regular expression
+zic (8)              - time zone compiler
+zip, zipcloak, zipnote, zipsplit (1) - package and compress (archive) files
+zipgrep (1)          - search files in a ZIP archive for lines matching a pattern
+zipinfo (1)          - list detailed information about a ZIP archive
+zmore (1)            - file perusal filter for crt viewing of compressed text
+znew (1)             - recompress .Z files to .gz files
+zoo (1)              - manipulate archives of files in compressed form
+zsh (1)              - the Z shell
+zshall (1)           - the Z shell meta-man page
+zshbuiltins (1)      - zsh built-in functions
+zshcompctl (1)       - zsh programmable completion
+zshexpn (1)          - zsh command and parameter expansion
+zshmisc (1)          - Everything and then some
+zshoptions (1)       - zsh options
+zshparam (1)         - zsh parameters
+zshzle (1)           - zsh command line editor

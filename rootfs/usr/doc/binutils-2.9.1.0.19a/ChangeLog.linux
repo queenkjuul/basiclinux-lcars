@@ -1,0 +1,13 @@
+Thu Sep 17 08:25:33 1998  H.J. Lu  (hjl@gnu.org)
+
+	* ylwrap: Handle case when input is in a directory.
+
+Fri Jul 31 21:32:54 1998  H.J. Lu  (hjl@gnu.org)
+
+	* Makefile.in (taz): Try "chmod -R og=u ." before 
+	"chmod og=u `find . -print`".
+
+Fri Jul 17 07:37:20 1998  H.J. Lu  (hjl@gnu.org)
+
+	* ylwrap: Don't use absolute path if the input is in the
+	current directory.

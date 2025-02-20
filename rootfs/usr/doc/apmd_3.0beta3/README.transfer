@@ -1,0 +1,30 @@
+Date: Sun, 26 Jul 1998 09:04:53 -0400
+Message-Id: <199807261304.JAA02109@mancer.cs.unc.edu>
+From: Rik Faith <faith@cs.unc.edu>
+To: Avery Pennarun <apenwarr@worldvisions.ca>
+Cc: Rik Faith <faith@cs.unc.edu>
+Subject: New maintainer for Linux apmd package
+
+-----BEGIN PGP SIGNED MESSAGE-----
+
+
+Avery Pennarun, currently the Debian apmd maintainer, has graciously agreed
+to take over general maintenance of the Linux apmd package.  Since the
+release of apmd-2.4, I have been extremely busy and have not been able to
+work on apmd as much as I would have liked.  Further, I do not expect to be
+able to pick up maintenance of apmd in the foreseeable future, so it is
+best for the Linux community that I officially transfer control of the
+package to Avery.
+
+
+-----BEGIN PGP SIGNATURE-----
+Version: 2.6.2
+Comment: Processed by Mailcrypt 3.4, an Emacs/PGP interface
+
+iQCVAwUBNbsl5wkpZvlFoM4xAQHNlgQAqORshKK5xWu4XLCdnAZOrr2c6ldS6MHv
+ZLJKuS+G1X1nrQFSTZeaLuRYh5hu6mMzVpwlN9dgZkzlj3KgDwK60fOXthdSOgWG
+wiHhRncydGEu+abZlnR4YPPIgRnEG7taSj35DanKV/IEVlNzGZlfRoPGWiJ560Br
+gTfuNrcEIxc=
+=pVNX
+-----END PGP SIGNATURE-----
+

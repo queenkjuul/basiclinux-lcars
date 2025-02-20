@@ -1,0 +1,86 @@
+<HTML>
+<HEAD>
+<TITLE>TkDesk User's Guide: Tips and Tricks </TITLE>
+</HEAD>
+<BODY>
+<A HREF="guide-8.html">Previous</A>
+Next
+<A HREF="guide.html#toc9">Table of Contents</A>
+<HR>
+<H2><A NAME="s9">9. Tips and Tricks </A></H2>
+
+
+<P>This section currently contains just one tip on how to combine TkDesk
+and XEmacs. If <B>you</B> have any procs or other stuff in your
+configuration file which you consider could be useful for others as
+well, or just think it's generally cool, please send me an email, so
+that I can add it to this section! Thanks!</P>
+
+<H2><A NAME="ss9.1">9.1 TkDesk and XEmacs </A></H2>
+
+
+<P>If you are using XEmacs 19.12 or later you can couple TkDesk and
+XEmacs quite closely together by adding the following proc 
+into any of your configuration files (I have it in
+&quot;Popups&quot;):</P>
+<P>
+<BLOCKQUOTE><CODE>
+<HR>
+<PRE>
+proc xemacs_load {what {where same}} {
+    switch $where {
+        &quot;same&quot; {
+            exec gnudoit -q (find-file \&quot;$what\&quot;)
+        }
+        &quot;other&quot; {
+            exec gnudoit -q (find-file-other-window \&quot;$what\&quot;)
+        }
+        &quot;frame&quot; {
+            exec gnudoit -q (find-file-other-frame \&quot;$what\&quot;)
+        }
+        &quot;scratch&quot; {
+            exec gnudoit -q (switch-to-buffer-other-frame \&quot;*scratch*\&quot;)
+        }
+    }
+}
+</PRE>
+<HR>
+</CODE></BLOCKQUOTE>
+</P>
+<P>And now my generic popup menu for files matching <CODE>*</CODE> reads:</P>
+<P>
+<BLOCKQUOTE><CODE>
+<HR>
+<PRE>
+    {{*} {
+        {{Edit} {dsk_edit %s}}
+        {{XEmacs} {xemacs_load %s}}
+        {{Other Window} {xemacs_load %s other}}
+        {{Other Frame} {xemacs_load %s frame}}
+        -
+        {{Print} {dsk_print %s}}
+    }}
+</PRE>
+<HR>
+</CODE></BLOCKQUOTE>
+</P>
+<P>This way you can load files from TkDesk into a running XEmacs! This
+assumes that you have the command <CODE>gnudoit</CODE> somewhere in your
+path, and have started the XEmacs server. This can be done by adding
+the following line to your <CODE>~/.emacs</CODE>:</P>
+<P>
+<BLOCKQUOTE><CODE>
+<PRE>
+(gnuserv-start)
+</PRE>
+</CODE></BLOCKQUOTE>
+</P>
+<P>Like that? Stay tuned for more...</P>
+
+
+<HR>
+<A HREF="guide-8.html">Previous</A>
+Next
+<A HREF="guide.html#toc9">Table of Contents</A>
+</BODY>
+</HTML>

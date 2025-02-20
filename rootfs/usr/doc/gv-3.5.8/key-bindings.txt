@@ -1,0 +1,95 @@
+=== Notation:
+
+s-X          means press "Shift"           and key "X"
+c-X          means press "Ctrl"            and key "X"
+sc-X         means press "Shift" or "Ctrl" and key "X"
+
+=== Miscellaneous keys:
+
+A            Toggle antialiasing on and off
+O            Open a new file
+Q            Quit gv
+R            Toggle gv's resizing behaviour
+I            Respect/Ignore document structuring
+W            Watch file / Don't watch file
+S            Save the marked pages
+sc-S         Save the current file
+P            Print the marked pages
+sc-P         Print the current file
+c-L          Redisplay the current page
+.            Redisplay the current page
+sc-.         Reopen the current file
+M            Mark the current page
+N            Unmark the current page
+
+=== Orientation:
+
+7            Orientation portrait
+8            Orientation landscape
+9            Orientation upside-down
+0            Orientation seascape
+
+=== Magnification:
+
+sc-6         Select the scale entry -6 relative to the scale 1.0
+sc-5         Select the scale entry -5 relative to the scale 1.0
+sc-4         Select the scale entry -4 relative to the scale 1.0
+sc-3         Select the scale entry -3 relative to the scale 1.0
+sc-2         Select the scale entry -2 relative to the scale 1.0
+sc-1         Select the scale entry -1 relative to the scale 1.0
+^            Select the scale 1.0 (for german keyboard layout)
+`            Select the scale 1.0
+1            Select the scale entry 1 relative to the scale 1.0
+2            Select the scale entry 2 relative to the scale 1.0
+3            Select the scale entry 3 relative to the scale 1.0
+4            Select the scale entry 4 relative to the scale 1.0
+5            Select the scale entry 5 relative to the scale 1.0
+6            Select the scale entry 6 relative to the scale 1.0
++            Select the next scale entry
+=            Select the next scale entry
+-            Select the previous scale entry
+
+=== Navigating:
+
+Arrow        Scroll in the direction of the arrow
+s-Up         Scroll columns up   or jump -1 pages
+s-Down       Scroll columns down or jump  1 pages
+s-Left       Scroll rows left    or jump -1 pages
+s-Right      Scroll rows right   or jump  1 pages
+c-Up         Jump -1 pages (to top/left corner)
+c-Down       Jump  1 pages (to top/left corner)
+c-Left       Jump -5 pages (to top/left corner)
+c-Right      Jump  5 pages (to top/left corner)
+
+D,X,Z,Y,C    Identical to arrow up,down,left,left,right
+V            Center the page
+sc-Space     Scroll columns up   or jump -1 pages
+Space        Scroll columns down or jump  1 pages
+
+BackSpace    Scroll columns up   or jump -1 pages
+Insert       Jump  -5 pages
+Delete       Jump   5 pages
+Home         Go to the first page
+End          Go to the last page
+Prior        Jump  -1 pages
+Next         Jump   1 pages
+
+Keypad 0-9   Highlight a page number
+Keypad -     Highlight previous page number
+Keypad +     Highlight next page number
+Keypad Enter Jump to the highlighted page
+
+c-Enter      Jump  -1 pages
+s-Enter      Jump  -1 pages
+Enter        Jump   1 pages
+B            Jump  -1 pages
+F            Jump   1 pages
+
+
+
+
+
+
+
+
+

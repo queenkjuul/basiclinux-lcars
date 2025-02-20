@@ -1,0 +1,247 @@
+<HTML>
+<HEAD>
+<TITLE>Security Topics</TITLE>
+<SCRIPT SRC="../../Topic.js" LANGUAGE="JavaScript1.2"></SCRIPT>
+<SCRIPT LANGUAGE = "JavaScript">
+loadSheet(navigator.platform, "content");
+</SCRIPT>
+</HEAD>
+
+<BODY BGCOLOR="#ffffff">
+
+<HR>
+<H1><A NAME="sec_info" TOCSTRING="Getting Security Information">Getting Security Information</A></H1>
+
+<HR>
+
+<H2><A NAME="HELP_SEC_INFO" INDEXSTRING="padlock icon^security^icons^servers" TOCSTRING="Viewing Information in the Security Window">Viewing Information in the Security Window</A></H2>
+
+<P>
+The Security Info window gives information about keeping items secure, including web pages and messages
+that you send and receive. It also has information about the
+current security status of a particular item when it is selected in a window. 
+</P>
+
+<P>
+You can go to the Security Info window only from a window with a padlock icon in the bottom-left corner. If the padlock is locked, the
+selected item or contents in a window and your connection are encrypted. (An encrypted item is scrambled so that no one between the sender's
+computer and your computer can read the message or the information.) Some messages include a signed digital certificate that verifies the sender. Messages can be encrypted or signed, or both. 
+</P>
+
+<P>
+<B>To open the Security Info window and choose a topic:</B> Click the padlock icon, or open the Communicator menu, choose Tools, then Security Info. You see security information about the window or a selected item in the window. You can select other topics. 
+</P>
+
+<P>
+<A NAME="HELP_SEC_INFO_WEB_PAGE"></A><B>To view security information about a web page:</B> Click the padlock icon while viewing a web site and Security Info will display the status of the web page.  To see additional information about the page, click Open Page Info (encrypted and unencrypted pages).  Click View Certificate (on encrypted pages only) to view the contents of the digital certificate.
+</P>
+
+
+
+<P>
+<A NAME="HELP_SEC_WARNING_CACHE"></A><B>Warning</B> After the Browser Window displays an encrypted page, your disk
+cache retains an unencrypted copy of the page. Anyone
+with access to your Netscape disk cache can view the contents of the
+page.
+</P>
+
+<P>
+<B>To view security information about a specific mail server or news server:</B> Click the padlock icon in the Messenger window and Security Info will display the status of the mail server connection.  Click the View button for more information about the identity of the message sender.
+</P>
+
+<P>
+<A NAME="HELP_SEC_INFO_INCOMING"></A><B>To view security about specific messages already received:</B> Select a mail or newsgroup message in the Messenger window. Click the padlock icon and Security Info will display the status of the message. If you select a newsgroup message, you also get security information about the news server. 
+</P>
+
+<P>
+See Troubleshooting if: <A HREF="nethelp:netscape/trouble:decrypt_message">you cannot decrypt a web page</A>, <A NAME="HELP_SEC_WARNING_TAMPERED"></A><A HREF="nethelp:netscape/trouble:tamper">you get a warning about possible message tampering</A>, <A NAME="HELP_SEC_WARNING_ENCRYPT"></A><A NAME="HELP_SEC_WARNING_FORWARDING"></A><A HREF="nethelp:netscape/trouble:cant_encrypt">you are having trouble sending an encrypted message or forwarding an encrypted message</A>.
+</P>
+
+
+<HR>
+<H1><A NAME="sec_setup" TOCSTRING="Setting up Security">Setting Up Security</A></H1>
+
+<HR>
+
+<H2><A NAME="HELP_SEC_CERTS_YOURS"></A><A NAME="sec_getcerts" INDEXSTRING="signatures^digital signatures^digital certificates^identity" TOCSTRING="Getting Securiy Certificates">Getting Security Certificates</A></H2>
+
+<P>
+A certificate is a unique digital ID that can be used to verify the identity of a person, web site, or JavaScript/Java Applet.  The certificate always includes a public key, the name of the entity it identifies, an expiration date, the name of the certificate authority (CA) that issued the certificate, the digital signature of the CA, and a serial number. These certificates use public key cryptography to sign and authenticate signatures and are protected by public and private key pairs linked by cryptographic algorithms.  These keys have the ability to encrypt and decrypt information.
+</P>
+
+<P>
+<B>To get more information about certificates:</B> Open the Security Info window by clicking the padlock icon, then select Certificates. 
+</P>
+
+<P>
+<B>To get your own certificates:</B> Open the Security Info window by clicking the padlock icon, select Certificates, then Yours. Scroll to the bottom of the window and click Get Certificate.  In response, Netscape Navigator connects you to a certificate authority (CA) that issues certificates. 
+</P>
+
+<P>If you use several computers, or switch computers, you must use the Import and Export features to transfer you certificates.  To use encryption, you must have your certificates on the computer that you are using.
+</P>
+
+
+<P>
+<B>To import your certificates from another computer:</B> Open the Security Info window by clicking the padlock icon, select Certificates, then Yours. Scroll to the bottom of the window and click Import a Certificate.  If you have not set up a password, you are urged to do it. Then choose the file that contains your certificate and click OK. 
+</P>
+
+<P>
+<B>To export your certificates:</B> Open the Security Info window by clicking the padlock icon, select Certificates, then Yours. Scroll to the bottom of the window and click Export.
+</P>
+
+
+<HR>
+<H2><A NAME="HELP_SEC_INFO_OUTGOING" INDEXSTRING="security^messages, sending^encryption^digital certificates^privacy" TOCSTRING="Sending Signed and Encrypted Messages">Sending Signed and Encrypted Messages</A></H2>
+
+<P>
+In a Composition window, click the padlock icon. The Security Info window displays information about whether you can encrypt or digitally sign this message. Follow the instructions for getting a recipient's certificate or checking the option to send yours.
+
+<P>
+See <A HREF="nethelp:netscape/trouble:cant_encrypt">Troubleshooting</A> if you are having problems encrypting or signing messages.
+</P>
+
+<HR>
+<H2><A NAME="HELP_SEC_CERTS_APPLETS"></A>
+<A NAME="HELP_SEC_CERTS_SITES"></A>
+<A NAME="HELP_SEC_CERTS_PEOPLE"></A>
+<A NAME="HELP_SEC_CERTS_ISSUERS" INDEXSTRING="security^certificates^digital certificates^privacy" TOCSTRING="Viewing, Editing, Verifying, and Deleting Certificates and Signers">Viewing, Editing, Verifying, and Deleting Certificates and Signers</A></H2>
+
+<P>
+<B>To view, verify, or delete your certificates:</B> Open the Security Info window by clicking the padlock icon, select Certificates, then Yours.  Choose a Certificate from the list then click View, Verify, or Delete.
+</P>
+
+<P> 
+<B>To view, edit, verify, or delete certificates sent to you in mail messages:</B> Open the Security Info window by clicking the padlock icon, select Certificates, then People.  Choose a certificate from the list, then click View/Edit, Verify, or Delete.  If you click View/Edit, you can view information about the certificate authority and change options about accepting the certificates that it issues or about sending messages to sites that it certifies. 
+</P>
+
+<P>
+<B>To edit, verify, or delete signers' certificates:</B> Open the Security Info window by clicking the padlock icon, select Certificates, then Signers.  Choose a certificate from the list, then click View/Edit, Verify, or Delete.  If you click Edit, you can view information about the certificate authority and change options about accepting the certificates that it issues or about sending messages to sites that it certifies. 
+</P>
+
+
+<HR>
+<H2><A NAME="HELP_SEC_PASS_UNSET" INDEXSTRING="digital certificates^security^password^privacy" TOCSTRING="Choosing a Password to Protect Your Certificates">Choosing a Password to Protect Your Certificates</A></H2>
+
+<P>
+You may need to use a password to prevent people with access to your computer from using your certificates without your knowledge.
+</P>
+
+<P>
+<B>To choose or change a password:</B> Open the Security Info window by clicking the padlock icon, then select Passwords.  Follow the directions in the window.  Click More Info for additional information about choosing a password. After you choose your password and click OK, you will be prompted to select an option that tells Communicator when to ask for your password. 
+<P>
+
+<P>
+<A NAME="HELP_SEC_PASS_SET"></A>If you forget your password or if someone else set it, go to <A HREF="nethelp:netscape/trouble:forgot_pass">Troubleshooting</A>.
+
+<HR>
+<H1><A NAME="sec_pref" TOCSTRING="Setting Security Preferences">Setting Security Preferences</A></H1>
+
+<HR>
+
+<H2><A NAME="HELP_SEC_PREFS_NAVIGATOR" INDEXSTRING="preferences, security^security^privacy^encryption" TOCSTRING="Setting Security Preferences for Browsing">Setting Security Preferences for Browsing</A></H2>
+
+<P>
+Netscape has warning options that alert you to possibly unsafe situations.  To configure these options, open the Security window by clicking the padlock icon, then select Navigator.
+</P>
+
+<P>
+Check the warnings you want displayed. It is a good idea to keep all these alerts as reminders. Here's why: 
+</P>
+
+
+<P>
+<B>Entering an encrypted site:</B> Because the pages are decrypted without your intervention, you may want to clean up or secure downloaded files upon completion of your session.
+</P>
+
+<P>
+<B>Leaving an encrypted site:</B> You may want to remove decrypted files left on your local drive.  Web pages are encrypted only during transmission.
+</P>
+
+<P>
+<A NAME="HELP_SEC_WARNING_MIXED"></A><B>Viewing a page with an encrypted/unencrypted mix:</B> If you feel that your system is not protected, you may not want to open this page.
+</P>
+
+<P>
+<B>Sending unencrypted information to a site:</B> This warning reminds you not to submit unencrypted forms or information through email.
+</P>
+
+<P>
+After you have checked the warnings you want to display, click the pop-up menu to choose what you want Navigator to do when a web site asks for your certificate. If you visit multiple web sites that require different types of certificate, choose Ask Every Time. Otherwise, choose Select Automatically. 
+</P>
+
+<P>
+<B>Warning:</B> Do not change the options or click the buttons for Advanced Security (SSL) Configuration unless you have specialized knowledge.
+</P>
+
+
+<HR>
+<H2><A NAME="HELP_SEC_PREFS_MESSENGER" INDEXSTRING="security^preferences, Messenger^encryption" TOCSTRING="Setting Security Preferences for Sending Messages">Setting Security Preferences for Sending Messages</A></H2>
+
+<P>
+<B>To set preferences for sending messages securely:</B> Open the Security Info window by clicking the padlock icon, the select Messenger.  Check the security measures you want followed. To encrypt messages, you must have a security certificate for the recipient. To sign messages, you must have your own certificate.
+</P>
+
+<P>
+<B>To choose or change the certificate to include with your messages:</B> Open the Security Info window by clicking the padlock icon, the select Messenger.  Select the certificate, if there's more than one. To make your certificate available on a directory so that anyone with access to it can send you encrypted messages, click Send Certificate to Directory and select a directory. 
+</P>
+
+<P>
+<B>Warning:</B> Do not click Select S/MIME Ciphers unless you understand S/MIME well.
+</P>
+
+<HR>
+<H2><A NAME="HELP_SEC_PREFS_APPLET" INDEXSTRING="applets^access, security^security^Java applets" TOCSTRING="Controlling Access of Java Applets and JavaScripts">Controlling Access of Java Applets and JavaScripts</A></H2>
+
+<P>
+<A NAME="HELP_SEC_JAVA_SECURITY"></A>You can try to verify the certificates of Java applets and JavaScripts by reviewing them. You change their access privileges and even delete a
+certificate to end automatic downloading of the signer's applets or scripts. If Communicator asks your approval to download an applet or script, see
+<A HREF="nethelp:netscape/trouble:java_alert">Troubleshooting</A> about what to do.
+</P>
+
+<P>
+<B>To review information in a Java applet or JavaScript certificate:</B> Open the Security Info window by clicking the padlock icon, the select Java/JavaScript.  Choose a certificate, and click View Certificate.
+</P>
+
+<P>
+<A NAME="HELP_SEC_TARGET_DETAILS"></A><B>To change access privileges:</B> Open the Security Info window by clicking the padlock icon, the select Java/JavaScript.  Select a certificate, and click Edit Privileges. The Java Security Target Details Dialog Box appears.  It provides detailed information about the kind of access a Java applet or JavaScript has or is requesting.  You can choose the privileges you want to grant for this session or future sessions.
+</P>
+
+<P>
+<B>To stop automatic access and require your approval:</B> Open the Security Info window by clicking the padlock icon, the select Java/JavaScript.  Select a certificate, and click Remove.
+</P>
+
+<HR>
+<H1><A NAME="sec_modules" TOCSTRING="Using Security Modules">Using Security Modules</A></H1>
+
+<HR>
+
+<H2><A NAME="HELP_SEC_CERTS_CRYPTOMODS" INDEXSTRING="cryptographic modules^smart cards^key access^security^encryption" TOCSTRING="Viewing and Editing Security Modules">Viewing and Editing Security Modules</A></H2>
+
+<P>
+Cryptographic Modules are loadable pieces of software that provide a function
+of cryptographic services, such as smart card support, specialized key-distribution schemes, and FIPS compliance.  
+</P>
+
+<P>
+<B>To view and edit security modules:</B> Open the Security Info window by clicking the padlock icon, then select Cryptographic Modules.  Choose a module, and click View/Edit.
+</P>
+
+<P>
+<B>To add a security module:</B> Open the Security Info window by clicking the padlock icon, then select Cryptographic Modules.  Click Add, and type a module name and path.
+</P>
+
+<P>
+<B>To delete a security module:</B> Open the Security Info window by clicking the padlock icon, then select Cryptographic Modules.  Select a module, and click Delete. You are asked to confirm the delete. Read the information carefully before you click OK.
+<P>
+
+<P>
+<B>To log out from the security modules:</B> Open the Security Info window by clicking the padlock icon, then select Cryptographic Modules.  Click Logout All.
+<P>
+
+<HR>
+<CENTER>September 24, 1998
+<HR SIZE=4>
+Copyright &copy; 1994-1998 Netscape Communications Corporation.
+</CENTER>
+</BODY>
+</HTML>

@@ -1,0 +1,4 @@
+# TAB becomes the META2 key here...
+#
+bind ^i meta2
+bind meta2-^i toggle_insert_mode

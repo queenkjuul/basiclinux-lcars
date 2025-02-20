@@ -1,0 +1,52 @@
+Welcome to the source of Arena beta-1c
+
+For copyright statements, see files in the subdirectories.
+
+The patches you pass back to us will become our property.
+But we're fairly nice people :-)
+
+If you want to offer a binary version of Arena to the public, you are
+free to do so. Send a mail to arena@w3.org and we are happy point to
+your port from our pages. We are no longer able to host externally
+compiled binaries.
+
+If you've ported Arena before, you should be able to reuse your
+setup. In this release, most #defines that were earlier given as
+complier options are now in Arena/Implementation/www.h. Change this
+file if you e.g. want to compile without jpeg support.
+
+The code has three main parts: the W3C reference library, the image
+libraries and the arena code:
+
+
+1) the W3C reference library code is known to compile on 11 unix
+platforms and should pose no major problems. The version of the
+library we are using in beta-1c is a derivative of 3.1pre1. For more
+info on the library, see
+
+  http://www.w3.org/pub/WWW/Library/Status.html
+
+Make sure the library is compiled with the "-DCALL_CLIENT_BUG" option.
+
+
+2) In Image, you will find three libraries:
+
+  jpeg libpng zlib
+
+These have not been changed by us and come with their own setup and
+legal restrictions. Compile them any way you want, just make sure
+Arena can see them at link time.
+
+3) the arena code is fairly lean/clean C/xlib. It compiles using gcc --
+with minor modifications -- on all 32 bit architectures we have tried
+it on. Also, ifdefs for the 64 bit alpha exist. To compile arena,
+create a directory structure similar to Arena/sun4-sol2 and modify the
+Makefiles accordingly.
+
+
+Dave Raggett (W3C/MIT/HP), 
+Hakon Lie (W3C/INRIA), 
+Henrik Frystyk Nielsen (W3C/MIT),
+Yves Lafon (W3C/INRIA)
+
+arena@w3.org    21-Dec-95

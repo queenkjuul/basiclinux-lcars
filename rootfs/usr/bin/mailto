@@ -1,0 +1,39 @@
+#!/bin/sh
+clear
+echo
+echo
+echo
+to=$1
+echo "SEND TO:  "$to  
+echo -n "SUBJECT:  "
+read subj
+e3pi /tmp/message
+clear
+echo
+echo "SEND TO:  "$to
+echo "SUBJECT:  "$subj
+echo
+echo
+echo "Ready to send?     (Yes)   Put this email in OUTBOX."
+echo
+echo "                    (No)   Do not put this email in OUTBOX."
+echo
+while true ; do
+  read REPLY
+  case $REPLY in  y|Y|Yes|yes|YES)
+    echo -n "From default@address " >> ~/mail/outbox
+    date +'%a %b %e %T %Y' >> ~/mail/outbox
+    echo "To: "$to >> ~/mail/outbox
+    echo "Subject: "$subj >> ~/mail/outbox
+    echo >> ~/mail/outbox
+    cat /tmp/message >> ~/mail/outbox
+    echo >> ~/mail/outbox
+    echo >> ~/mail/outbox
+    break ;;
+  n|N|No|no|NO)
+    break;;
+  esac
+done
+rm /tmp/message
+
+

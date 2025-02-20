@@ -1,0 +1,38 @@
+# the new `show away once' script,
+# matthew green, oct 1993.  i hate you
+# this script uses serial number 311
+# $Id: newaway,v 1.1 1994/01/17 08:30:58 mrgreen stable $
+# this script is public domain
+
+# this interfere's, but it really doesn't matter.
+
+^set show_away_once off
+alias n.o
+	if (SHOW_NUMERICS == [ON])
+		{@function_return = [$0]}
+		{@function_return = [***]}
+
+alias newaway.show
+{
+	@junk.nick = encode($tolower($0))
+	@junk.away = encode($tolower($1-))
+	if (newaway.nick[$junk.nick] == junk.away)
+	{
+		@function_return = 0
+	}
+	{
+		@function_return = 1
+		@newaway.nick[$junk.nick] = junk.away
+	}
+	if (0 != newaway.whois)
+	{
+		@function_return = 1
+	}
+	^assign -junk.nick
+	^assign -junk.away
+}
+
+on #-311 311 * @newaway.whois = 1
+on #-318 311 * @newaway.whois = 0
+
+on ^301 * if (newaway.show($*)) { echo $n.o($H) $0 is away: $1- }

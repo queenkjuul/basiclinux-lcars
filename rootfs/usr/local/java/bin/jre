@@ -1,0 +1,90 @@
+#!/bin/sh
+
+THREADS_TYPE=${THREADS_FLAG:-green}_threads
+export THREADS_TYPE
+
+progname=`basename $0`
+ARCH=`arch`
+
+case $1 in
+-native)
+    THREADS_TYPE=native_threads
+    shift
+    ;;
+-green)
+    THREADS_TYPE=green_threads
+    shift
+    ;;
+esac
+
+if [ -z "$JAVA_HOME" ]
+then
+    PRG=`type -p $0` >/dev/null 2>&1
+    # If PRG is a symlink, trace it to the real home directory
+
+    while [ -L "$PRG" ]
+    do
+	newprg=`expr "\`/bin/ls -l "$PRG"\`" : ".*$PRG -> \(.*\)"`
+	expr "$newprg" : / >/dev/null || newprg="`dirname $PRG`/$newprg"
+	PRG="$newprg"
+    done
+
+    JAVA_HOME=`dirname $PRG`/..
+    export JAVA_HOME
+fi
+
+if [ -z "$CLASSPATH" ]
+then
+    CLASSPATH=$JAVA_HOME/lib/rt.jar:$JAVA_HOME/lib/i18n.jar
+    CLASSPATH=$JAVA_HOME/classes:$JAVA_HOME/lib/classes.zip:$CLASSPATH
+    export CLASSPATH
+fi
+
+# Linux: verify libc and libdl versions are the intended ones
+binPath="${JAVA_HOME}/bin/${ARCH}/${THREADS_TYPE}"
+libPath="${JAVA_HOME}/lib/${ARCH}/${THREADS_TYPE}"
+
+# only do this if we're not in the JDK build environment
+
+if [ -z "${IN_JDK_BUILD}" ] 
+then
+    if [ -x ${JAVA_HOME}/bin/checkVersions ]
+    then
+        if ${JAVA_HOME}/bin/checkVersions jre
+	then
+	    # note the trailing colon is required!
+	    JDK_LIBS="${libPath}/linuxlibs:"
+	fi
+    else
+        echo "Warning: can't find ${JAVA_HOME}/bin/checkVersions, hope that's ok"
+    fi
+fi
+
+
+LD_LIBRARY_PATH="$JAVA_HOME/lib/${ARCH}/$THREADS_TYPE:${JDK_LIBS}$LD_LIBRARY_PATH"
+export LD_LIBRARY_PATH
+
+orig_progname="${progname}"
+if [ -n "$NS_JAVA" ]
+then
+    progname="${progname}_ns"
+elif [ -n "$DYN_JAVA" ]
+then
+    progname="${progname}_dyn"
+fi
+
+prog="$JAVA_HOME/bin/${ARCH}/${THREADS_TYPE}/${progname}"
+
+if [ -f "$prog" ]
+then
+    exec $DEBUG_PROG "$prog" $opts "$@"
+else
+    prog="$JAVA_HOME/bin/${ARCH}/${THREADS_TYPE}/${orig_progname}"
+    if [ -f "$prog" ]
+    then
+        exec $DEBUG_PROG "$prog" $opts "$@"
+    fi
+fi
+
+# was: 
+# exec $JAVA_HOME/bin/$ARCH/$THREADS_TYPE/$PROG "$@"

@@ -1,0 +1,52 @@
+This is GNU Libtool, a generic library support script.  Libtool hides
+the complexity of using shared libraries behind a consistent, portable
+interface.
+
+To use libtool, add the new generic library building commands to your
+Makefile, Makefile.in, or Makefile.am.  See the documentation for
+details.
+
+Libtool supports building static libraries on all platforms.
+
+Shared library support has been implemented for these platforms:
+  AIX 3.x (*-*-aix3*)
+  AIX 4.x (*-*-aix4*)
+  AmigaOS (*-*-amigaos*)
+  Digital/UNIX 3.x, 4.x, a.k.a. OSF/1 (*-*-osf3*, *-*-osf4*)
+  FreeBSD 2.x, 3.x (*-*-freebsd2*, *-*-freebsd3*)
+  GNU/Linux ELF (*-*-linux-gnu*, except aout, coff, and oldld)
+  HP-UX 9.x, 10.x (*-*-hpux9*, *-*-hpux10*) [see note]
+  IRIX 5.x, 6.x (*-*-irix5*, *-*-irix6*)
+  NetBSD 1.x (*-*-netbsd*)
+  OpenBSD 2.x (*-*-openbsd*)
+  OS/2 using EMX (*-*-os2*)
+  SCO OpenServer 5.x (*-*-sco3.2v5*)
+  Solaris 2.x (*-*-solaris2*)
+  SunOS 4.x, a.k.a. Solaris 1.x  (*-*-sunos4*)
+  UnixWare 2.x (*-*-sysv4.2uw2*)
+  UTS 4.x (*-*-uts4*)
+  All ELF targets that use both the GNU C compiler (gcc) and GNU ld
+
+NOTE: The vendor-distributed HP-UX sed(1) programs are horribly broken,
+and cannot handle libtool's requirements, so users may report unusual
+problems.  There is no workaround except to install a working sed
+(such as GNU sed) on these systems.
+
+Libtool's home page is:
+
+  http://www.profitpress.com/libtool/
+
+See the file NEWS for a description of recent changes to libtool.
+
+See the file INSTALL for instructions on how to build and install
+libtool.
+
+See the info node (libtool)Tested Platforms. (or the file
+doc/PLATFORMS) for a list of platforms that libtool shared library
+support was tested on.
+
+If you have any suggestions or bug reports, or you wish to port
+libtool to a new platform, please send electronic mail to the libtool
+mailing list <bug-libtool@gnu.org>.  Don't forget to mention the
+version of libtool that you are currently using (by typing `ltconfig
+--version').

@@ -1,0 +1,100 @@
+%deffont "bold" xfont "charter-bold-r"
+%deffont "mono" xfont "9x15"
+%deffont "graph" xfont "14x24"
+%tab 1 size 4, prefix " ", icon arc "red" 50
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%page
+%center, font "bold", size 6, fore "cyan"
+WELCOME to MagicPoint
+%left, size 4, bar "yellow"  
+
+MagicPoint is a presentation tool, similar to PowerPoint.
+Although it is small, it includes many useful features.
+You can change the 
+%cont, size 7
+font 
+%cont, size 12
+size.
+%size 4
+
+You can change the 
+%cont, fore "red"
+font 
+%cont, fore "yellow"
+color.
+%fore "cyan"
+
+You can do simple bar graphs:
+
+%font "graph", size 3, fore "gray"
+MISSISSIPPI_[[[[[[[[[[[]
+AMAZON______[[[[[[[[[[[[[[[[[[[[
+NILE________[[[[[[[[[[[[[[[[[[[[[
+____________{}}}}|}}}}|}}}}|}}}}|} 
+____________________2000______4000   miles 
+
+
+
+%fore "green", font "bold", size 4
+Click the mouse to move to the next page, or press one 
+of these keys:    
+%cont, fore "violet"
+SPACE    
+%cont, fore "yellow"
+ENTER    
+%cont, fore "cyan"
+DOWN-ARROW
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%page
+%font "bold", size 4
+
+MagicPoint also lets you to move backwards:
+
+	Press DEL key
+
+	Press UP-ARROW
+
+	Click right button of mouse
+%fore "green"
+
+
+Try one of those methods to go back to page 1.  
+Then return here.
+%pause
+
+
+
+%fore "cyan"
+You can also move between pages by clicking on a 
+special menu.  Press the 
+%cont, fore "white"
+CTRL 
+%cont, fore "cyan"
+key to see the menu.  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%page
+%font "bold", size 5
+
+You can include JPEGs in your MagicPoint pages:
+%center,image "/usr/share/images/earth.jpg"
+
+%pause
+
+
+%left
+Or draw on the screen using the mouse pen.
+%size 4
+	Press the 
+%cont, fore "white"
+X 
+%cont, fore "cyan"
+key to activate the mouse pen.
+	To draw, hold down the left mouse button.
+	To erase, press the 
+%cont, fore "white"	
+L 
+%cont, fore "cyan"	
+key.
+%fore "white", size 5
+
+Try it now.

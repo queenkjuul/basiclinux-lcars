@@ -1,0 +1,66 @@
+WARNING: Do not use 'mc' to extract the tar file!
+All mc versions before 4.0.14 cannot extract symbolic links correctly.
+
+Linux includes the gnu make program by default but it is called 'make' on linux.
+You will definitely need the shell script Gmake.linux to use gmake
+on a linux system.
+
+Install it as /usr/bin/Gmake with:
+
+cp Gmake.linux /usr/bin/Gmake
+
+Then compile the system by calling:
+
+/usr/bin/Gmake
+or ./Gmake.linux
+
+NOTES for S.u.S.E distributions: you must unset an environment variable
+called PROMPT_COMMAND
+It contains illegal values for a make file system.
+
+		I M P O R T A N T :
+
+If you have any problems to access a device on the SCSI bus, check your
+/dev/sg devices first. Your system should either only have /dev/sga...
+or /dev/sg0... The newer Linux kernel use /dev/sg0... so the actual
+SCSI transport code checks for /dev/sg0... first. Many Linux installations
+have too few /dev/sg* device nodes. This is because of the funny device 
+mapping. It may be possible that one SCSI device eats up 8 /dev/sg* entries.
+I recommend to have at least 20 /dev/sg* device nodes.
+
+In any case: first read the man page for hints how to specify the device.
+If nothing helps, first run e.g. cdrecord -scanbus. If this does not find
+your device, the problem is in your kernel or system installation.
+If scanning the bus finds the device, you are using the wrong device name.
+If nothing help try to call e.g. strace cdrecord 
+
+Linux SCSI hints:
+
+If you want to use the user SCSI library on a target that is connected
+to a SCSI hostadapter which is not the first, you need to apply a patch
+to your Linux kernel code. This patch is located in the file 
+
+Linux.scsi-patch
+
+Please chdir to /usr/src, call
+patch  < Linux.scsi-patch
+and re-compile and re-install your kernel.
+
+Linux kernels past 2.0.30 will probably already have this patch included.
+
+I recommend to use Linux 2.0.35 or later or Linux 2.1.115 or later.
+These versions of Linux will include ATAPI support in a way needed by cdrecord.
+Linux 2.1.115 or newer will in addition support the Parallel Port / ATAPI
+adapters found in some CD-R or CD-RW drives.
+
+IMPORTANT:
+
+-	In some architectures (at least on sparc / alpha / ppc) kernels prior
+	to 2.0.32 are not usable because the call to mlockall() kills cdrecord.
+
+-       You may need to edit /usr/src/linux/asm*/shmparam.h to allow at least 
+        4 MB of shared memory for your architecture by modifying SHMMAX
+	and re-compile/re-install Linux !
+	(note that Linux for Intel by default allows 16 MB) 
+
+Joerg

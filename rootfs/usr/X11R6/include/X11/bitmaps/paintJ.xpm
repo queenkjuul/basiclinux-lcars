@@ -1,0 +1,6 @@
+/* XPM */
+static char * paintJ_xpm[] = {
+"15 1 2 1",
+" 	c #000000000000 m black s B",
+".	c #FFFFFFFFFFFF m white s A",
+" . . . . . . . "};

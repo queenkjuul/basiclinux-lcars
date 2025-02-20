@@ -1,0 +1,24 @@
+/* XPM */
+static char *file_text[] = {
+	"16 16 3 1",
+	". c grey90   m white g4 grey90",
+	"b c black  m black g4 black",
+	"g c white m white g4 white",
+	"................",
+	"................",
+	".....bbbbbbbbbb.",
+	"....bgbgggggggb.",
+	"...bggbgggbbggb.",
+	"..bbbbbggbbbggb..",
+	"..bgggggbbbbggb.",
+	"..bggggbbgbbggb.",
+	"..bgggbbbbbbggb.",
+	"..bggbbgggbbggb.",
+	"..bgbbgggggbbgb.",
+	"..bgggggggggggb.",
+	"..bbbbbbbbbbbbb..",
+	"................",
+	"................",
+	"................",
+};	
+

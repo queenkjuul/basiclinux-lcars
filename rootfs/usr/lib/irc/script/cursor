@@ -1,0 +1,8 @@
+# works with cursor keys of many terminals...
+#
+bind meta1-[ meta2
+bind meta1-O meta2
+bind meta2-A backward_history
+bind meta2-B forward_history
+bind meta2-C forward_character
+bind meta2-D backward_character

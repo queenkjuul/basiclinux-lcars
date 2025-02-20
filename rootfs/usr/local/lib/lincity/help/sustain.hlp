@@ -1,0 +1,45 @@
+
+text -1 15 This window shows your progress
+text -1 25 towards sustainability.
+
+text -1 40 There are six coloured lines. When they
+text -1 50 *all* reach the right hand side of the
+text -1 60 window, you have a sustainable economy. See
+text -1 70 below for the years to complete each line.
+
+text -1 85 This is EXPERIMENTAL at the moment - it will
+text -1 95 need some more work before it is 'right'.
+
+text 100 120 The lines will grow when:-
+
+text 15 140 1. (orange) you are not digging any ore
+text 35 150 or coal, and are not dumping waste on a tip,
+
+text 15 165 2. (grey) you are not importing or exporting,
+
+text 15 180 3. (green) your money is stable or rising,
+text 35 190 this means you cannot build anything but
+text 35 200 the cheapest of areas,
+
+text 15 215 4. (blue) your population is stable to within
+text 35 225 2% of the value when the 180 year count
+text 35 235 started. If it goes outside of this band,
+text 35 245 the new population will be the new value and
+text 35 255 the year count will be set back to zero.
+text 35 265 Also, your population must be at least 5000,
+
+text 15 280 5. (yellow) your technology is increasing
+text 35 290 or falling by only a very small amount.
+text 35 300 If it falls by more than 1%, the year
+text 35 310 is set back to zero. Also, your tech level
+text 35 320 must be at least 50,
+
+text 15 335 6. (red) all areas that can catch fire have
+text 35 345 fire cover. The following areas do *not* have
+text 35 355 to have fire cover: monuments, oremines,
+text 35 365 power lines and rockets.
+ 
+text -1 380 Years - 1=180 2=180 3=60 4=60 5=120 6=60
+
+
+

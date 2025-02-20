@@ -1,0 +1,41 @@
+version 1.0:
+
+- first release
+
+version 1.1:
+
+- now handles case where device is a relative symbolic link
+- looks at $CDROM environment variable for default device
+- updated man page to reflect $CDROM environment variable
+- added more device nicknames
+- install using "install" instead of "cp" in Makefile
+- handles old kernels without CDROMEJECT_SW support
+- now includes file COPYING in distribution
+- thanks to Dick Streefland and Mark Lord for suggestions/patches
+
+version 1.2:
+- changes submitted by Doug L. Hoffman (hoffman@cs.unc.edu):
+  - fixes non null-terminated string bug
+  - uses system() to call umount(8) instead of umount system call
+
+version 1.3:
+- changes submitted by Ben Galliart (bgallia@luc.edu):
+  - added support for IDE/ATAPI CD-ROM changers using CDROMLOADFROMSLOT 
+    ioctl call
+- additional changes made at the suggestion of Markus Pilzecker 
+  (markus.pilzecker@rhein-neckar.netsurf.de)
+
+version 1.4:
+- changes submitted by Donnie Barnes (djb@redhat.com):
+  - support for ejecting floppy drives under Linux on the Sun/SPARC
+    platform
+- minor formatting and code changes
+- new author's e-mail address
+- added a few more nicknames
+
+version 1.5:
+- changes submitted by Donnie Barnes (djb@redhat.com):
+  - supports Zip and Jaz drives
+  - can now unmount multiple partitions
+- no longer need -f option in order for -u option to work
+- uses new CDROM_SELECT_DISC ioctl in favour of CDROMLOADFROMSLOT

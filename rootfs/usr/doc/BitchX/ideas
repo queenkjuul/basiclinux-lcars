@@ -1,0 +1,171 @@
+<Sheik>         struct  IgnoreStru *next;
+<Sheik>         char    *nick;
+<Sheik>         int     type;
+<Sheik>         int     dont;
+<Sheik>         int     high;
+<Sheik>         char    *nick_high;
+<Sheik>         char    *msg_high;
+<Sheik> }       Ignore;
+
+/cdcc close #N
+
+(Sheik) $getnicklist(channel user.pubflood) or something
+<Sheik> make a  fd_set list that will call a callback function.
+<Sheik> so we can make  /finger /nslookup   etc work without blocking.
+<Sheik> say("%s: Couldn't connect to anything... Waiting 15 seconds to try a
+<Sheik> AddCTimer(NULL, NULL, NULL, server, timed_nextserver, 15);
+<Sheik> reconnect_flag = 1;
+<Sheik> times++;
+
+<bk_> pana-sync: Could you create a command called /fbk which does the exact
+          same as /fk does but ban the user too.
+
+[MHacker(mhacker@stn-on1-43.netcom.ca)] wanna add: FORMAT_WHOIS_ADMIN as 309
+
+<_bk> remove mk and add nk :P
+<_bk>  /nk blah blah2 blah3
+<_bk> mk is like fk
+<panasync> mult
+<_bk> also, add /fbk
+<_bk> mult sounds lame
+<_bk> change it to nk
+<_bk> remove mk and rename mult to mk
+<_bk> add fbk
+
+
+<mmpp> It could be called /window save.  It would hold what channels you've
+          got in each window, so you could change servers and not have to
+          re-arrange.
+
+
+<Myrdraal> [panasync]: Someone earlier had an idea for specifying a DNS
+server when looking up with /nslookup
+
+
+[sh00p(shewp@snafu.north.wfu.edu)] i have a file called 'core'. what if i
+did
+          /dcc send panasync core shoops-core, and you would receive it as
+          shoops-core?
+
+
+BlackJac a never ignore list which accepts the same types as /ignore
+
+Rell> It would be a quick kludge too, in the code that recieves from the
+          server, add a bit of code to set a last_packet time to 0.  Then
+          you'd have your SIGTIMER event check up on it.
+
+
+
+[ogre(ogre@du41.con.ptd.net)] ok, well, uhm, bx by default displays u@h in
+          every /notice.. perhaps create a /set which would define a specific
+          set of nicknames as services.. and it wouldnt display the u@h on
+          each /notice.. ? (perhaps create *another* /on for it, on
+          notice_service or something maybe?)
+[ogre(ogre@du41.con.ptd.net)] right.. and the services nicknames (generally
+          ChanServ/NickServ/MemoServ/X/W/NoteOp/ChanOp/NickOP) can be
+	adjusted with a /set, in case of new service nicknames..
+
+
+[BlackJac(blackjac@jacobs.Geeks.ORG)] DCC list that'll autoget even if
+          dcc_autoget is off
+[BlackJac(blackjac@jacobs.Geeks.ORG)] Flood list that WON'T trigger fprot
+	even if fprot is on
+
+<[nutbar]> type lotsa crap in yer input buffer, and then hit ^U to delete it
+          all, then hit ^Y alot to paste it back, if you paste past the
+          buffer limit, bx freezes and then cores
+
+
+[DECkedout(~nate@x4ntc1.ntcnet.net)] ahh.. i see .. also, a word to making
+Bx a little better, incorporate this idea into a sort of new /list
+          command.. a command to get the contents of a /list, then a
+          /list_last or whatever the name to grep the file...
+
+<|By-Tor|> well how about a clients that returns all clients and bots
+returns all botnames or whom
+
+A filtered /stats L  /flline
+
+panasync,
+	I have a recommendation for you. /notify can be severely changed
+to look neat and present useful information about notified users. The
+following is an example of what I would like you to implement:
+
+Online Users:
+Nickname  User@Hostname		signed on	period	  last seen
+bk	  bk@blah.org		2 times		2h 2m 2s  now
+Offline users:
+Nickname  User@Hostname		signed on	period	  last seen
+pana	  pana@stinkz0r.org	never		none	  n/a
+tru	  tru@sex0r.org		3 times		6h 2m	  1h 20m 30s ago
+
+[BlackJac(blackjac@jacobs.Geeks.ORG)] SET HOURLY_TIMER ON/OFF
+[BlackJac(blackjac@jacobs.Geeks.ORG)] on #-timer 61476 ??:00?m echo $G The
+          time is now $Z\.
+
+<panasync> with the timer, channel, time to next, ummm what else
+<BlackJac> sends, received, packs offered
+<BlackJac> block size
+       ÕÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ[dcc transfer stats]ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¸
+       ³                                                                 ³
+       ³ÖÄ[xferd in]ÄÖ-[xferd out]Ä·Ä[total files]ÄÖÄ[active]Ä·Ä[limit]Ä·³
+       ³º  0.00bytes º    174.16Kb º             4 º        0 º       5 º³
+       ³ÓÄÄÄÄÄÄÄÄÄÄÄÄ½ÄÄÄÄÄÄÄÄÄÄÄÄÄÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½ÄÄÄÄÄÄÄÄÄÄÓÄÄÄÄÄÄÄÄÄ½³
+       ³                                                                 ³
+       ÖÄÄÄÄ[in stats]ÄÄÄÖÄÄÄ[out stats]ÄÄÄ·ÄÄÄÄÄÄÄÄÄÄ[toggles]ÄÄÄÄÄÄÄÄÄÄ·
+       º max:   0.00kb/s º max:   5.15kb/s º   autoget: Off   paths: Off º
+       º min:   0.00kb/s º min:   1.61kb/s º overwrite: Off   quiet: Off º
+       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
+<BlackJac> max sends
+<BlackJac> min speed
+
+<|By-Tor|> pana-dcc: i'd like to see a cdcc function that allows scripts to
+        retrieve (not necessarily set) the current CDCC information (i
+	dont care about a ircii ver, i just want a tcl one ;) as well as
+	better /set /wset /cset support for tcl
+
+[shade(shade@snafu.north.wfu.edu)] is there a function to change the binary
+          userlist info to something readable?
+
+<|By-Tor|> make a type of ignore that calls a function with like, the
+           nick/uhost of the person and depending on what the func returns
+it
+           either ignores or not
+
+[GodBoy(godboy@pbx.org)] is there a global scripting var that has the
+current
+                         network in it?
+
+[MHacker(mhacker@BitchX.com)] I got an idea :P
+<kopz_:#bitchx> anyone have a rxvt bin?
+[MHacker(mhacker@BitchX.com)] for /whokill, have it parse u@h
+<hop> the biggest project i have now is "fixing" the problem where an
+          invisible window cant be the "current" window.
+[MHacker(mhacker@BitchX.com)] instead of just host
+[MHacker(mhacker@BitchX.com)] k
+[MHacker(mhacker@BitchX.com)] /whokill -uh user@host
+
+<|By-Tor|> you can do 3 checks... first for ircii, then for tcl, then
+finally internal immediately'
+<|By-Tor|> but if its called with //, bypass all checks and go straight to
+           internal
+<|By-Tor|> making any ircii alias destructive over a tcl alias
+
+<DaRk_MaN_> pana-dcc: %| on the status bar should be empty unless there are
+            packs offered...eh?
+
+<shade> how about a modification to the $sar function to let you do this:
+          $sar(g/in1/out1/in2/out2/in3/out3/.../text)
+
+<[nutbar]> panasync: can you make an /on window_swap and also, a /window
+query <nick> thing ?
+[[nutbar](~nutbar@205.211.60.19)] along with /away hooks, like for your auto
+          away and stuff, so scripts can use your actual auto_away sets and
+          stuff to control their away system
+[[nutbar](~nutbar@205.211.60.19)] oh, and i meant to ask, how much does it
+          slow down bitchx's execution of an event when it has a hook,
+          compared to when it doesnt?
+
+
+[shade(shade@snafu.north.wfu.edu)] how about a $getcset(#channel value)
+          function?

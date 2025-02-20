@@ -1,0 +1,11 @@
+# If you don't want the output of a cron job mailed to you, you have to direct
+# any output to /dev/null.  We'll do this here since these jobs should run
+# properly on a newly installed system, but if they don't the average newbie
+# might get quite perplexed about getting strange mail every 5 minutes. :^)
+#
+# Run the 'atrun' program every 5 minutes
+# This runs anything that's due to run from 'at'. See man 'at' or 'atrun'.
+0,5,10,15,20,25,30,35,40,45,50,55 * * * *	/usr/lib/atrun 1> /dev/null 2> /dev/null
+# This touches a filename in the temp directory so that you can see cron is
+# working if the timestamp is current. Comment it out if it bugs you. :^)
+# * * * * *       touch /tmp/.crond_running

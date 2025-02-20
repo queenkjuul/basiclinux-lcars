@@ -1,0 +1,73 @@
+
+                       ABOUT THE TIX PROGRAMMING LIBRARY
+                                       
+   The Tix library is an extension to the Tk toolkit that contains over
+   40 new widgets for Tk. Features include: 
+   
+   A LOT of new widgets:
+          The Tix library has by far the greatest collection of widgets
+          for programming with Tcl/Tk. Highlights include: Hierarchical
+          Listbox, Directory List/Tree View, SpreadSheet, Tabular
+          Listbox, ComboBox, Motif style FileSelectBox, MS Windows style
+          FileSelectBox, PanedWindow, NoteBook, Spin Control widget ....
+          and many more. With these new widgets, your applications will
+          look great and interact with your users in intuitive ways.
+          
+   Rapid Prototyping New Widgets:
+          Tix comes with a complete Object-Oriented framework for
+          building new customed widgets using TCL exclusively. It
+          typically reduces the efforts of developing a new widget by a
+          factor of ten or more.
+          
+   XPM image suport:
+          This allows you to display color icons in XPM format. Supports
+          transparent background.
+          
+   Compound images:
+          A new image type called "compound" allows youto glue together a
+          bunch of bitmaps, images and text strings together to form a
+          bigger image. Then you can use this image with widgets that
+          support the -image option. For example, you can display a text
+          string string together with a bitmap, at the same time, inside
+          a TK button widget.
+          
+   Display Items and Display Styles:
+          Display items and display styles make it possible to display
+          visual information in many formats.
+          
+   Form geometry manager:
+          Works similarly to the Motif Form widget. You can specify
+          geometry constraints using attachment rules.
+          
+   Mwm window mamager support:
+          With the tixMwm command, you can communicate with the Motif
+          window manager "mwm"; you can add new items to the Motif system
+          menu and change the window manager decorations.
+          
+     _________________________________________________________________
+
+  WHAT VERSIONS OF TCL/TK DOES TIX SUPPORT?
+
+      Tix supports Tcl 7.4 through Tcl 8.0.
+
+     _________________________________________________________________
+
+  HOW DO I START?
+
+      Please read the files docs/UnixInst.html and docs/WinInst.html.
+
+     _________________________________________________________________
+   
+  GETTING MORE INFORMATION ABOUT TIX
+  
+      There is a mailing list for Tix. Please visit
+      http://www.findmail.com/list/tix/ for more info. You can also
+      post your questions about Tix on the comp.lang.tcl newsgroup.
+
+  AUTHOR
+
+      Tix was written by Ioi Lam (ioilam@yahoo.com). Ioi is no longer
+      able to provide technical sopport for Tix due to his limited
+      time and the fact that he has a job now. The Tix mailing list is
+      probably the best place to ask question about Tix.
+

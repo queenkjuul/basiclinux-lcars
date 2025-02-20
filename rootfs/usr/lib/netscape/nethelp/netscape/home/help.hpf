@@ -1,0 +1,19 @@
+; help.hpf
+; Auto-generated NetHelp project file
+
+Window-Name="Communicator Help"
+Window-Size="425,440"
+NetHelp-Version="2.0"
+<Frame_Group src = "../../NSHIfrm.htm" default_window = "">
+
+<ID_MAP>
+
+start_here = "home.htm#start_here" : target = "Topic"
+email = "home.htm#email" : target = "Topic"
+Composer = "home.htm#Composer" : target = "Topic"
+newsgroups = "home.htm#newsgroups" : target = "Topic"
+offline = "home.htm#offline" : target = "Topic"
+Security = "home.htm#Security" : target = "Topic"
+trouble = "home.htm#trouble" : target = "Topic"
+
+</ID_MAP>

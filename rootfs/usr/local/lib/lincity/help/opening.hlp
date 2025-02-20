@@ -1,0 +1,53 @@
+text -1 13 Welcome to LinCity
+
+text -1 42 To get started, build something like this:
+
+icon 60 60 resmedlow.csi
+icon 60 108 organic-farm.csi
+icon 76 156 market-med.csi
+
+icon 76 188 trackdr.csi
+icon 92 188 trackldr.csi
+icon 108 188 tracklr.csi
+icon 124 188 tracklr.csi
+icon 140 188 tracklr.csi
+icon 156 188 trackldr.csi
+icon 172 188 trackldr.csi
+icon 188 188 tracklr.csi
+icon 204 188 tracklr.csi
+icon 220 188 tracklr.csi
+icon 236 188 tracklr.csi
+icon 252 188 trackld.csi
+
+icon 236 156 market-med.csi
+icon 236 108 organic-farm.csi
+icon 236 60 resmedlow.csi
+
+icon 92 204 commune8.csi
+icon 76 204 trackur.csi
+icon 172 204 commune8.csi
+icon 156 204 trackur.csi
+icon 253 204 oremine2.csi
+
+icon 204 124 pottery4.csi
+
+tbutton 120 70 residential.hlp Residences
+tbutton 134 130 pottery.hlp Pottery
+tbutton 300 126 farm.hlp Farm
+tbutton 280 166 market.hlp Market
+tbutton 130 275 commune.hlp Communes
+tbutton 254 275 oremine.hlp Ore mine
+tbutton 10 190 track.hlp Tracks
+
+#text -1 295 Click in the boxes to find more about
+#text -1 305 a particular area.
+
+tcolour 226 80
+tbutton -1 305 openload.hlp === Load a built in or saved scene ===
+tbutton -1 325 return0 ====  Start - with random village ====
+tbutton -1 345 return1 ======  Start - with bare board ======
+tcolour -1 -1
+
+text -1 363 Right mouse button will often get you help
+#text -1 370 all sorts of help while playing.
+text -1 380 Enjoy the game - and good luck...

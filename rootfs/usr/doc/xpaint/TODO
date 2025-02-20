@@ -1,0 +1,51 @@
+This file contains suggestions for improvements that I don't currently have the
+time or inclination to add. If you succeed in doing it, I will add your
+changes to the next release.
+
+-Torsten
+
+----------------
+Suggested by jspath@mail.bcpl.lib.md.us (Webmaster Jim):
+
+The resize function now works.  So, how about two functions, one
+to add space, and one to expand the image?  The pixmap program has
+a "resize" function and a "rescale" function.
+
+----------------
+Suggested by Sherman Mui <moooster@uclink4.berkeley.edu>
+
+I'm not sure how difficult this change would be but the paint tool's behavior
+is slightly annoying. It would be nice if it behaved more like the pencil in
+that the brush strokes make connected lines instead of splotches if you move
+the mouse too fast.
+----------------
+Suggested by bfriesen@simple.dallas.tx.us (Bob Friesenhahn) and 
+Gustav "Gurre" Kalvesten <a94guska@ida.his.se> 
+
+Would it be possible to enhance Xpaint so that it installs its own
+colormap if there are not adequate colors available in the main
+colormap?
+----------------
+Suggested by Morgan Fletcher <morgan@hahaha.org>
+
+I would like to be able to apply the "None" color to
+pixmaps. I've got libXpm.so.3.4 on my system, and I really like transparent
+pixmaps. 
+I've tried loading images w/ a "None" color, then doing a "Lookup" on the
+transparent bits, hoping I'd get transparency added to my palette. Alas!
+
+[My thought on this problem: make a mask upon loading the pixmap, based on
+the transparent pixels. Then use this mask when the pixmap is saved. You will
+have to add a new member to the Image struct.]
+[Greg Roelofs' comment on this: the Image struct already contains a maskdata
+field.  However, it's really designed for full alpha masks, not simple binary
+transparency, and as far as I can tell, it's not editable anyway.  (Ideally
+the alpha mask should show up as a second window with just grayscale editing
+capabilities; it could be saved on its own, but when the asso- ciated "real"
+image is saved/exited, the alpha window is saved/exited at the same time.  Not
+a trivial change, however...)
+Simple transparency would be far easier to edit if it were indeed a 
+special "color" in the normal edit window.]
+----------------
+If allocating an undo buffer fails, reduce the number of undo levels as needed
+and notify the user that this has been done.

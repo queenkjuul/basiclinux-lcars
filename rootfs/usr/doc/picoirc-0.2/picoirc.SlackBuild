@@ -1,0 +1,33 @@
+#!/bin/sh
+# Set initial variables:
+CWD=`pwd`
+if [ "$TMP" = "" ]; then
+  TMP=/tmp
+fi
+PKG=$TMP/package-picoirc
+
+if [ ! -d $TMP ]; then
+  mkdir -p $TMP # location to build the source
+fi
+if [ ! -d $PKG ]; then
+  mkdir -p $PKG # place for the package to be built
+fi
+
+echo "+=============+"
+echo "| picoirc-0.2 |"
+echo "+=============+"
+mkdir -p $PKG/usr/bin
+cp $CWD/picoirc $PKG/usr/bin/
+chmod a+rx $PKG/usr/bin/picoirc
+mkdir -p $PKG/usr/doc/picoirc-0.2
+cp $CWD/picoirc.SlackBuild $PKG/usr/doc/picoirc-0.2
+    
+# Build the package:
+cd $PKG
+tar czvf $TMP/picoirc-0.2.tgz .
+
+# Clean up the extra stuff:
+if [ "$1" = "--cleanup" ]; then
+  rm -rf $TMP/picoirc-0.2
+  rm -rf $PKG
+fi

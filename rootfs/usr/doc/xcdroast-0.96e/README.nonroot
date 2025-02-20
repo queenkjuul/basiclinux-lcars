@@ -1,0 +1,110 @@
+
+X-CD-Roast 0.96e nonroot-mode by Till Kamppeter
+-----------------------------------------------
+
+After starting X-CD-Roast in nonroot-mode it can be used safely by non-root
+users.  Selecting of image partitions, and so having the possibility
+of deleting all the hard disks, is now only allowed to
+'root'. Non-root users have to overtake the image partitions and
+directories selected by 'root'. The 'HD-Setup' screen only appears if
+X-CD-Roast is started by 'root'. Unless a non-root user has modified
+his configuration, he gets the whole configuration of 'root', so after
+'root' has configured X-CD-Roast once noone is asked for doing the
+setup any more. So X-CD-Roast is very easy to use also for
+unexperienxed users.
+
+Now it is also not possible any more for non-root users to overwrite
+system files with the log file any more, to implement his own
+libraries (ln -s /usr/bin/tcsh ~/mkisofs; xcdroast -libdir ~) to get
+'root', or to read files into the CD image which he is not permitted
+to read (like the e-mail of his boss).
+
+
+Preparations: Set device file permissions
+-----------------------------------------
+  
+X-CD-Roast must run with root-permissions. Therefore you have to set
+the SUID bit. This can be done by
+
+	chmod +s /usr/local/bin/xcdroast
+
+(If you are using the RPM version the xcdroast is in /usr/bin/xcdroast.
+In this case you have to do: chmod +s /usr/bin/xcdroast)
+
+
+Because most CD accesses are running with 'root' as effective user ID
+only a few changes in the file permissions of the device files are
+necessary. The permissions shown here are the safest where X-CD-Roast
+works completely when it is started by non-root users, if you have
+also other CD-ROM utilities than X-CD-Roast, you have perhaps to give
+more permissions.
+ 
+In general, the CD-ROM devices (example for a machine with one SCSI
+CD-ROM drive (/dev/sr0, /dev/sg1, /dev/scd0) and one SCSI CD writer
+(/dev/sr1, /dev/sg2, /dev/scd1)) need read and write permissions for
+'root', which is the usual standard configuration:
+
+	chmod 600 /dev/sr0 /dev/sr1 /dev/sg1 /dev/sg2 /dev/scd0 /dev/scd1
+
+For the 'Quick Copy' facility, in addition, the device file /dev/sr0
+of the CD-ROM drive has to be world-readable:
+
+	chmod 644 /dev/sr0
+
+To make the soundcard accessible for all the users for playing audio
+tracks, the sound device permissions must be set:
+
+	chmod 622 /dev/dsp
+
+Also 
+  
+	chmod 666 /dev/dsp
+  
+is possible, but with these setting the user sitting at this machine
+must turn off or unplug the microphone when he does not use
+it. Otherwise everyone can listen to the conversation in his room
+through the network.
+
+
+The Image directory
+-------------------
+
+The best is, to have a seperately mounted partition so that users cannot
+fill up system or home directory partitions accidentally. It should be
+world-writable, but with the sticky bit set so that one can only
+delete ones own data:
+
+	chmod a+rwx,+t /usr/cd-image
+
+
+Configure X-CD-Roast for nonroot-Mode
+-------------------------------------
+
+Before non-root users can start X-CD-Roast, it has be started once by root to
+configure it ('Setup'-Button). Otherwise non-root users only get an error-
+message instead of the X-CD-Roast window. 
+You have to start it with "xcdroast -nonroot" to create the global config
+directory. If this directory exists 
+(usually /usr/local/lib/xcdroast-0.96e/nonroot.config) then all following
+starts of X-CD-Roast (no matter if the -nonroot option is given) automatically
+launch in the nonroot-mode. 
+If you want to run X-CD-Roast normally (e.g. because you are now back to
+a single-user-system) you have to remove that nonroot.config directory.
+
+The start-screen of X-CD-Roast displays whether you are in nonroot mode
+or not.
+
+Note also that the use of an image partition is not good for save
+non-root use, because the direct access to the partition can only done
+when 'mkisofs' runs as 'root' which gives the possibility to read all
+the data from the home directories of all the users. If the image is
+written into a file 'mkisofs' is automatically started only as the
+calling user. Another problem is the mounting and formatting of the
+partition when X-CD-Roast is started only SUID and not really by
+root. So if you want that users without root permissions can use
+X-CD-Roast, only set up an 'Imape Path' to the desired image
+directory, so that the image will be written as a file to there so
+that the file permission concept works.
+
+24.11.98 Thomas Niederreiter
+

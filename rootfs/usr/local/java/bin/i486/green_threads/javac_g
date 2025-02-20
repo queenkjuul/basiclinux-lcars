@@ -1,0 +1,20 @@
+#!/bin/sh
+#
+# source a script that extracts RUNTIME_ARGS and APP_ARGS
+#
+. `dirname $0`/.extract_args
+
+progname=java_g
+if [ -n "$NS_JAVA" ]
+then
+    progname="${progname}_ns"
+elif [ -n "$DYN_JAVA" ]
+then
+    progname="${progname}_dyn"
+fi
+
+#
+# Run the compiler
+#
+`dirname $0`/${progname} -ms8m $RUNTIME_ARGS -verbosegc sun.tools.javac.Main $APP_ARGS
+

@@ -1,0 +1,127 @@
+# The 'tabkey' script is needed as well for the proper operation of
+# updated for 2.2.2
+# this script   2-7-93
+alias Translate if ( A > [$0] ) {^assign CHAN $0} {^assign CHAN +$0}
+alias M MSG $*
+alias Q QUIT $()
+alias BEEP NOTICE $0 [Beep] $N has sent you a beep $()
+alias HERE WHO * $()
+alias ! EXEC $*
+alias DISPLAY LASTLOG $*
+alias FSET set $*
+alias SC MSG +$0 $1-
+alias BOOT KICK $C $*
+alias STATUS STATUS_$0
+bind ^W QUOTE_CHARACTER
+alias commands help load fnet $()
+alias GROUP translate $0;dochange
+alias dochange channel ${CHAN} $()
+set CLOCK OFF
+set CONTINUED_LINE       
+set SCROLL ON
+alias STATUS_r MODE $C +tin $()
+alias STATUS_p MODE $C -spi $()
+alias STATUS_H MODE $C +ptin $()
+alias STATUS_U MODE $C -pn $()
+alias STATUS_ MODE $()
+alias NORMAL MODE $C +t $()
+alias HUSH IF ( [$({HUSHED_$0})] == [Yes] ) {UNHUSH $0} {DOHUSH $0}
+alias DOHUSH ^IGNORE $0 ALL;^ASSIGN HUSHED_$0 Yes;echo [Hush] $0 added to hush list
+alias UNHUSH ^IGNORE $* NONE;^ASSIGN -HUSHED_$0;echo [Hush] $0 removed from hush list
+alias wargs if ( [.] == [$0] ) {names $C} {dowch $0}
+alias dowch translate $0;showw
+alias showw names ${CHAN} $()
+alias w if ( [$0] ) {wargs $0} {names}
+on ^TOPIC * echo [Status] $0 has changed the topic to "$1-"
+on ^MSG * echo <*$0*> $1-
+on ^KICK * doonkick $*
+on ^NOTICE * echo <@$0@> $1-
+on ^NOTICE "* [Beep] *" echo [Beep] $0 $3-
+on ^SEND_NOTICE * comment
+#
+# The following are channels which regularly exist and are in foreign
+# languages. Mask them out completely  - they cause the w list to be
+# too cluttered without telling you anything useful.
+#
+# which clogg up the names list.
+on ^NAMES #T.P.D comment
+on ^NAMES +Nippon comment
+on ^NAMES 42 comment
+on ^NAMES #NIPPON comment^
+on ^NAMES #* comment
+on ^NAMES #fj.* comment
+on ^SEND_NOTICE "* [Beep] *" echo beep $0
+on ^PUBLIC_NOTICE * echo <$0/$1> $2-
+on ^PUBLIC * echo <$0> $2-
+on ^WALL * echo <#$0#> $1-
+on ^INVITE * echo [RSVP] $0 has invited you to join group $1
+on ^NOTIFY_SIGNON * echo [Spy] $0 has signed on on channel $1-
+on ^NOTIFY_SIGNOFF * echo [Spy] $0 has signed off $1-
+on ^NOTIFY_CHANGE * echo [Spy] $0 has changed groups $1-
+on ^LEAVE * DO_LEAVE $*
+on ^JOIN * DO_JOIN $*
+alias DO_JOIN if ( [$0] == N ) {echo [Change] You are now in group $1} {echo [Status] $0 has entered the group}
+alias DOONKICK if ( [$0] == N ) {echo [Change] You have been forcibly removed from group $2 by $1} {echo [Status] $0 has been forcibly removed from group $2 by $1}
+alias DO_LEAVE if ( [$0] == N ) {comm} {echo [Status] $0 has left the group}
+on ^SIGNOFF * echo [Signoff] $0 has signed off
+on ^CONNECT * echo [Signon] Welcome to IRC $N
+on ^SEND_PUBLIC * echo $1-
+on ^NICKNAME * echo [Status] $0 has changed his or her nickname to $1
+on ^MODE * echo [Status] Group status modified \($2-\) by $0
+on ^MODE "* * +ti *" echo [Status] Group status changed to restricted by $0
+on ^MODE "* * -psi *" echo [Status] Group status changed to public by $0
+on ^MODE "* * +psti *" echo [Status] Group status changed to hidden by $0
+on ^MODE "* * +tin *" echo [Status] Group status changed to restricted by $0
+on ^MODE "* * -sipn *" echo [Status] Group status changed to public by $0
+on ^MODE "* * +pstin *" echo [Status] Group status changed to hidden by $0
+on ^MODE "* * -ps *" echo [Status] Group status no longer hidden by $0
+on ^MODE "* * +o *" echo [Status] $0 has given moderator status to $3-
+on ^MODE "* * -o *" echo [Status] $0 has removed moderator status from $3-
+alias PASS MODE $C +o $0
+set LASTLOG_LEVEL ALL -CRAP
+set HISTORY 20
+set LASTLOG 250
+# set MINIMUM_SERVERS 20
+#
+# This has been revised. Now, instead of rotating the list on tab,
+# it seeks through the list. If an entry is used, it is removed from
+# its old position and placed at the head of the list. Thus if you
+# are cutrrently talking to just two people, it cycles between them
+# without having to go back through the entire list.
+#
+# All this functionality is in the tabkey  script
+load tabkey
+
+alias NickServ msg NickServ@Service.de $*
+alias NoteServ msg NoteServ@Service.de $*
+# -- set SHOW_NUMERICS ON
+# 311 312 313 314 316 317 318 319 353 401 changed for 2.2.2 (server == $0)
+on ^481 * echo [Error] You are not moderator of this group
+on ^403 * echo [Error] There is no group $1
+on ^421 * comm
+on ^391 * echo [Info] Date at $0 is $2-
+on ^442 * echo [Error] $1 is not in this group
+on ^401 * echo [Error] $1: No such nickname
+on ^311 * echo [Info] $1 is $2@$3 \($5-) on group $4
+on ^312 * echo [Info] Connected to $1 \($2-)
+on ^317 * echo [Info] Last command: $2-6
+on ^314 * echo [Info] $1 was $2@$3 \($5-)
+on ^315 * echo [Info] Connected to $0 \($1-)
+on ^313 * echo [Info] $1 is an IRC god
+on ^316 * echo [Info] $0 is a group moderator
+on ^341 * echo [Invite] Invitation message sent to $0
+on ^331 * echo [Topic] The topic is $1-
+on ^324 * echo [Status] Group mode is $2-
+on ^324 "* +ti" echo [Status] Group mode is restricted
+on ^324 "* +t" echo [Status] Group mode is public
+on ^324 "* +psti" echo [Status] Group mode is hidden
+on ^324 "* +tin" echo [Status] Group mode is restricted
+on ^324 "* +tn" echo [Status] Group mode is public
+on ^324 "* +pstin" echo [Status] Group mode is hidden
+on ^406 * echo [Error] There was no $1
+on ^301 * echo [Info] $0 is away \($1-)
+on ^315 "* * End * WHO *" comment
+on ^473 * echo [Error] $1: You must have an invitation to enter a restricted group
+#
+ECHO [Status] You are using the IRC ForumNet compatibility options.
+ECHO [Status] Use commands to see the basic commands available

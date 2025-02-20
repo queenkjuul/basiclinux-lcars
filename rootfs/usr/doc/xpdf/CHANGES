@@ -1,0 +1,363 @@
+0.2 (95-dec-12)
+---------------
+First public release.
+
+
+0.3 (96-jan-13)
+---------------
+LZW patent workaround.
+Implemented inline images.
+Fixed (mostly) disjoint polygon fills.
+Added remote server stuff.
+Added page number on command line.
+Fixed problem with font encodings which caused character misalignment.
+Fixed inverted CCITT decoding and inverted image mask drawing.
+Now compiles under gcc 2.7.x (ignore those stupid 'unused parameter'
+  warnings).
+Many minor bug fixes and optimizations.
+
+
+0.4 (96-apr-24)
+---------------
+Implemented DCT filter.
+Implemented PostScript output; wrote pdftops program.
+Implemented links.
+Implemented font rotation -- I was wrong: X11R6 servers *do* support
+  font rotation (by specifying a matrix in place of a size).
+Added bindings for Home/End, Page Up/Down, arrow keys.
+Added initialZoom resource and -z option.
+Added geometry resource and -g option.
+Fixed image size off-by-one bug.
+Fixed bug where page content is reference to an array of streams.
+Cleaned up uninitialized variables which were causing random problems
+  on various platforms.
+Manually skip whitespace before calling atoi() for startxref.
+Replaced calls to XrmCombineFileDatabase() with calls to
+  XrmGetFileDatabase() and XrmMergeDatabases() so it will work under
+  older versions of X.
+Fixed problem with reading multiple xref tables in updated PDF files.
+Check for encryption and print appropriate error message.
+Rudimentary dithering of images.
+Fixed bug in CCITTFax filter (pass mode followed by horizontal mode).
+Optimized drawImage() and drawImageMask().
+Changed several things to ease porting:
+  - changed '__inline' to 'inline' (to adhere to the ANSI standard)
+  - surrounded interface/implementation pragmas with #ifdef _GNUC__
+  - got rid of empty array initializer lists
+  - moved Operator type definition from Gfx.cc to Gfx.h
+  - renamed String, uint, etc.
+  - ability to uncompress to file (NO_POPEN and USE_GZIP flags)
+  - added definitions of XK_Page_Up/Down and XPointer for old versions
+    of X
+For VMS port:
+  - use correct Xdefaults name for VMS, get rid of ltkGetHomeDir()
+  - added '#include <stddef.h>' before all X includes
+  - renamed files with multiple periods in their names
+Fixed window resizing infinite oscillation bug.
+Fixed problem with string-type (as opposed to stream-type) indexed
+  color space lookup tables (which are used in inline images).
+If an X font is not found, try smaller and then larger sizes (this is
+  useful for old or broken X servers which can't scale bitmap fonts).
+Added -rgb (color cube size) option.
+Various minor bug fixes.
+
+
+0.5 (96-may-23)
+---------------
+Fixed bug in LTKWindow which broke the remote server mode.
+Fixed PostScript output:
+  - doesn't seg fault if file is unwritable.
+  - incorrect DSC comment - need colon in '%%Page:'.
+  - use 'imagemask' command for masks.
+  - output filters in the correct order.
+  - Stream::isBinary() checks the next-to-bottom, not top, stream.
+  - if page width > height, rotate it 90 degrees.
+  - if page is larger than paper size, scale it down.
+Set default MediaBox to 8.5" x 11" to deal with non-compliant PDF
+  files which don't specify a MediaBox.
+Added DEBUG_MEM stuff in gmem.c and gmempp.cc.
+Fixed memory leaks:
+  - LTKWindow didn't delete the LTKBox.
+  - LinkAction needs a virtual destructor.
+Use $(RANLIB) variable in goo/Makefile and ltk/Makefile.
+Allocate image data after calling XCreateImage, using
+  image->bytes_per_line -- works in 24-bit mode now.
+DCTStream rounds width of rowBuf lines up to the next multiple of
+  mcuWidth, so last MCU doesn't run off end of buffer.
+Increase size of block (from 255 to 1024 bytes) read at end of file to
+  search for 'startxref'.
+Skip past garbage at start of file, look for '%PDF'.
+Moved more compiler options out of Makefiles into Makefile.config.
+Top-level Makefile uses '$(MAKE)' instead of 'make' for making
+  subdirectories.
+Space/PageDown/Next and Backspace/PageUp/Previous now moves to
+  next/previous page if already scrolled to bottom/top of current
+  page.
+
+
+0.5a (96-jul-09)
+----------------
+[not a public release]
+For PDF 1.2 (a.k.a. Amber, a.k.a. Acrobat 3) support:
+  - look for trailer after first xref instead of at end of file.
+Deal with font subsets by converting character names of the form
+  'Cnnnn' to the appropriate character from the standard encoding.
+Extract encoding from embedded Type 1 fonts.
+Kludge to fill one-pixel thick polygons.
+Changed X font encoding to use endash for hyphen (gets rid of too-long
+  hyphens).
+Handle Resources key in Pages dictionaries (needed for pstoedit
+  output).
+Fix comment handling in Parser (needed for pstoedit output).
+Move Bezier curve conversion from GfxState to XOutputDev; look at
+  flatness parameter in GfxState.
+Change all of the path functions in XOutputDev (stroke, fill, clip) to
+  use the same path transformation/conversion function.
+Rewrote PostScript output driver as a subclass of OutputDev; removed
+  duplicated code (ps_ functions) from Gfx.
+Fixed bug in xref code with small (< 1024 bytes) PDF files.
+Implemented BX/EX operators.
+Added PDFDoc class.
+
+
+0.6 (96-nov-12)
+---------------
+Add support for PostScript output to stdout (-) and to a command
+  (|lpr); added -ps option and psFile resource.
+Decryption is implemented but not included in the distribution due to
+  legal restrictions: the decryption algorithm is a trade secret of
+  RSA, Inc., and the U.S.A. still has bogus export controls on
+  cryptography software.
+Added .xpdfrc config file:
+  - Added fontmap parameter: user can map PDF font names to X fonts.
+  - Added fontpath parameter: search for Type 1 font if encoding is
+    not in PDF file.
+Incremental display: display is updated after every 200 commands.
+Added forward and backward by-10-page buttons.
+Links:
+  - Implement links with "Launch" actions that point to PDF files.
+  - Draw borders around links.
+  - Handle links with named destinations.
+  - GoToR links specify a page number instead of a page reference.
+Optimizations:
+  - Rewrote Stream to use buffering, and added lookChar() functions;
+    rewrote Lexer to take advantage of this.
+  - Use hash tables for name->code mapping in font encodings.
+  - Made XOutputDev::doCurve() iterative, changed /2 to *0.5, and
+    changed the flatness test.
+Added file name to window title.
+Implemented RunLength filter.
+Implemented forms.
+Convert ObjType to an enum.
+Changed isDict("Pages") to isDict() (in Catalog.cc) to deal with
+  incorrect PDF files.
+Changed color selection so that very pale colors don't map to white.
+Fixed bug in CCITTFax filter (multiple make-up codes).
+In GString::clear(): need to set length to 0 before calling resize().
+Base initial window size on first displayed page, not page 1; deal
+  correctly with rotated pages.
+Added ltkGetIntResource() and LTKApp::getIntResource().
+PostScript output fixes:
+  - Escape backslashes in strings.
+  - When doing ASCII85 encoding, keep both chars of EOF marker ('~>')
+    on same line.
+  - Add extra line '%-EOD-' after image data streams; call wrapper
+    functions for image and imagemask which look for this line -- this
+    should fix the 'too much data in stream' bug.
+  - Font tags can be reused for different fonts on different pages --
+    so use font object reference (number/generation) instead.
+Initialize character widths to zero (this caused crashes on OSF/1).
+Handle image masks which go outside of pixmap.
+Makefile.config changes:
+  - Remove -o in C++ compile rule.
+  - Add $(AR) variable.
+Code which read char widths from font dictionary read all but the last
+  width.
+Add 'return 0;' to main() in xpdf and pdftops.
+Allow fonts to use StandardEncoding.
+Convert man pages to VMS help files.
+
+0.7 (97-may-28)
+---------------
+Implemented FlateDecode filter (for PDF 1.2).
+Basic xref table reconstruction for damaged files
+New pdftotext program converts PDF to plain text.
+Implemented menus in LTK; added a menu to xpdf.
+Added open and save functions; allow xpdf to start without any PDF
+  file.
+Implemented text find.
+Implemented text select/copy.
+Change mouse cursor when it's over a link.
+Embed Type 1 fonts in PostScript output.
+Moved rotate functions to menu; added quit to menu.
+Fixed stroke color bug in PostScript output (was using fill color
+  instead of stroke color; this sometimes caused lines to be missing
+  (white) in PostScript output).
+Support Launch-type links -- pops up a dialog before executing
+  anything.  Expects the A (action) dictionary to contain a Unix
+  dictionary with F (file) and P (paremeter) keys just like the Win
+  dictionary.
+A moveto op all by itself should just be discarded, instead of
+  generating a subpath with one point (this was causing seg faults).
+Balanced parentheses in strings don't need to be escaped.
+Tj operator in PostScript prolog didn't check for zero when dividing
+  by length of string.
+Implemented selection in LTK; TextIn widgets support dragging/copy/
+  paste.
+Handle font subsets that use hex character codes.
+Added icon pixmap; added the XPMLIB and NO_XPM variables to
+  Makefile.config.
+Fixed subtle bug in use of horizontal scaling parameter (it affects
+  only the width of drawn characters, not positioning done in text
+  space).
+Memory testing (with DEBUG_MEM):
+  - gmalloc now fills memory blocks with garbage to catch unitialized
+    fields.
+  - gfree fills memory blocks with garbage to catch uses of freed
+    blocks.
+Handle image masks which go off the pixmap on the top and/or left.
+Fixed inline functions which had two return statements (to make the
+  HP, SCO, and other cfront-based compilers happy).
+Fixed bug which caused seg faults when following a link to a different
+  file (info in LinkGoto object was used after link was deleted by
+  loadFile).
+If page content is an array of streams, the streams are concatenated;
+  objects and commands can span multiple streams.
+If file open fails, try lower-casing and upper-casing the file name.
+Commands should end when lexer sees a '/' character.
+GString::append(char *, int) was broken.
+Changed LTKScrollingCanvas redraw to be more efficient: copy as much
+  as possible from window before copying from off-screen pixmap.
+Ignore gs (set extended graphics state) operator.
+Handle colorspaces (CalGray/RGB are treated as DeviceGray/RGB; the
+  weird colorspaces are not yet implemented).
+Named destinations (for links) can be strings as well as names; deal
+  with the names tree in the catalog.
+Clip to the page CropBox.
+Added '-q' to gzip options (to suppress warnings, in case user has -v
+  in GZIP env var).
+Added 'include Makefile.config' to top-level Makefile.
+Added INSTALL variable to Makefile.config; used in top-level
+  Makefile.
+Always initialize LinkDest left/bottom/top/right/zoom fields (bogus
+  floating point values were causing crashes on Alpha).
+Added Makefile.config options for Digital Unix (DEC compilers), HP-UX
+  (HP compilers), SCO Unix, and Evans & Sutherland ES/OS.
+Added flag to set stream mode in fopen call for VMS.
+Rewrote Link module.
+Pages with no contents shouldn't cause an error message.
+In PostScript output: pdfImM needs to set fill color before doing
+  imagemask.
+If font doesn't specify character widths, use widths from built-in
+  font, based on font flags.
+Fixed LTK scrollbar to delay before repeating and to control the
+  period between repeats.
+Removed window/widget copy() methods (they were untested and unused).
+Unknown filter types produce a single error message instead of a
+  stream of errors.
+Added a dummy target in top-level Makefile so making individual
+  executables (e.g., 'make pdftops') should now work.
+Added optional xpdf-flip.ltk with buttons on right side instead of
+  bottom of window.
+
+0.7a (98-feb-22)
+----------------
+Moved find command from menu to toolbar button ('f' key still works).
+Support TrueColor visuals.
+Added a -cmap option and a installCmap resource to install a private
+  colormap.
+Mouse button 2 pans the window.
+Selecting a URI link now executes a configurable command (from the
+  urlCommand resource).
+Added a "link info" display which shows the URL or file for the link
+  under the mouse.
+Don't draw (or convert to PostScript) text drawn in render modes 3 and
+  7 -- this is invisible text, used by Acrobat Capture; this text is
+  still passed to the TextPage object so that selection works.
+Recognize (and quietly ignore) marked content operators (BMC, BDC,
+  EMC, MP, DP).
+Recognize new color-setting operators (scn, SCN).
+Added A4_PAPER option.
+Embed external Type 1 font files (this currently only works with PFA
+  files).
+Added "-level1" option (in xpdf and pdftops) to generate Level 1
+  PostScript.
+Setup autoconf -- replaced Makefile.config.  Added SELECT_TAKES_INT
+  flag, and use configure to autodetect (for HP-UX).
+Fixed appendToPath() to behave reasonably when appending ".." to root
+  directory.
+Fixed array size in FlateStream::compHuffmanCodes() (was causing xpdf
+  to crash under OSF/1).
+ASCII85Stream, ASCIIHexStream, and DCTStream didn't check for EOF and
+  could run past the end of the stream in damaged files.
+Handle hex escapes (#xx) in names.  Still allow the name /# for
+  backward-compatibility.
+Check for NULL characters in encoding array in GfxFont.cc (was calling
+  strcmp() with NULL which crashed under Solaris).
+PageAttrs::PageAttrs() didn't initialize crop box boundaries.
+Changed uses of lookup() to lookupNF() in XRef.cc.
+Fixed type checking of operators which take a variable number of
+  args.
+Gfx::buildImageStream() doesn't need to check for parser (since I got
+  rid of the bogus array-of-command thing).
+XOutputFont matches on font reference instead of font tag (similar to
+  PSOutputDev fix).
+Fixed bug in position calculation for multi-char substitutions in
+  XOutputDev.
+Cleaned up local variables which hid class variables.
+Optimized variable length decoding in CCITTFaxStream.
+Set link border width to zero if Border dictionary entry is missing.
+Throw away zero-length strings in TextOutputDev -- they don't have
+  valid xMin/xMax values.
+Swapped order of XLIBS and XPMLIB in xpdf/Makefile.
+Deleted 'LTKApp::' in function declaration in LTKApp.h.
+Changed '(XKeyEvent *)&event' to '&event.xkey' in LTKApp.cc.
+Check that the link rectangle coordinates are in the correct order,
+  and swap if necessary.
+TextOutputDev didn't set text to NULL, which caused pdftotext to
+  segfault if it couldn't open it's output file.
+Fixed a hash table search bug in GfxFontEncoding::getCharCode().
+Cleaned up colorspace code: rewrote GfxColorSpace and added
+  GfxImageColorMap; cleaned up PSOutputDev::doImage.
+Handle named colorspaces in images.
+Correctly set the default color after a colorspace change.
+Old setcolor operators now set the colorspace.
+Fixed bug with uncompressed blocks in FlateStream.
+Fixed bug with fixed Huffman code table in FlateStream.
+Added hash table of X windows (for LTKWindow and LTKWidget) to LTKApp
+  and replaced calls to XQueryTree with hash table searches -- this
+  avoids a roundtrip to the server for each event and also fixes the
+  problem where XQueryTree crashed if the window no longer existed
+  (with leftover events from a destroyed window).  (Thanks to Yair
+  Lenga for the suggestion.)
+Create a new GC for selection -- xor black and white (instead of LTK
+  foreground and background).
+Fixed crash with blank lines in .xpdfrc.
+Allow spaces in font descriptors in fontmap lines in .xpdfrc.
+Check for bogus object number in XRef::fetch().
+Use MacRomanEncoding for TrueType fonts that don't specify an
+  encoding.
+Certain PDF generators apparently don't include FontDescriptors for
+  Arial, TimesNewRoman, and CourierNew -- set GfxFont flags
+  appropriately.
+Fixed a bug in width guessing in GfxFont -- sans serif and serif were
+  swapped.
+Rewrote XRef::readXRef() to avoid using a parser to read the xref
+  entries.
+Added NO_TEXT_SELECT option.
+Ignore APPn/COM/etc. markers in DCT streams.
+Replaced select() with XMultiplexInput() in LTKApp.cc for VMS.
+Handle WM_DELETE_WINDOW protocol -- if you ask the window manager to
+  delete the xpdf window, xpdf will exit cleanly; other
+  windows/dialogs are simply closed.
+Optimized DCT decoder; switched to integer arithmetic.
+The "/Type /Annots" field in an annotation dictionary is optional.
+Check for null nameTree in Catalog::findDest().
+In XOutputDev, search user font map before default font map.
+Added "normal" SETWIDTH parameter to all font descriptors in
+  XOutputDev (some systems have a narrow-width Helvetica font).
+Added FOPEN_READ_BIN and FOPEN_WRITE_BIN to support Win32.
+Added a hack which allows better font substitution for some Type 3
+  fonts.  Also allow character names of the form /nn and /nnn.
+Added <strings.h> and <bstring.h> to LTKApp.cc (needed by AIX and IRIX
+  for bzero() declaration for FD_ZERO).

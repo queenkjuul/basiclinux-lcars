@@ -1,0 +1,34 @@
+#! /bin/sh
+
+#-------------------------------------------------------------------------
+# xfm.install
+#
+# (c) Simon Marlow 1994
+#-------------------------------------------------------------------------
+
+if [ -d $HOME/.xfm ]; then
+	echo You already have a ~/.xfm directory, would you like it
+	echo -n 'replaced with the default configuration? [n] '
+	read ANS
+	if [ "$ANS" != "y" -a "$ANS" != "Y" ]; then
+		echo Aborting.
+		exit 1
+	fi
+	rm -rf $HOME/.xfm
+fi
+
+mkdir $HOME/.xfm && cp /var/X11R6/lib/xfm/dot.xfm/?* $HOME/.xfm
+
+if [ $? != 0 ]; then
+	echo Installation failed for some reason.  Please consult your
+	echo system administrator.
+	exit 1
+fi
+
+chmod u+w $HOME/.xfm/?*
+
+if [ ! -d $HOME/.trash ]; then
+	mkdir $HOME/.trash
+fi
+
+echo Default configuration files installed.

@@ -1,0 +1,23 @@
+--- linux/drivers/char/vt.c.org	Tue Mar  5 12:14:45 1996
++++ linux/drivers/char/vt.c	Tue Mar  5 18:53:13 1996
+@@ -160,12 +160,18 @@
+ {
+ 	static struct timer_list sound_timer = { NULL, NULL, 0, 0,
+ 						 kd_nosound };
+-
+ 	unsigned int count = 0;
++	char kdmsg[80];
++	extern int kerneld_send(int msgtype, int ret_size, int msgsz,
++		const char *text, const char *ret_val);
+ 
+ 	if (hz > 20 && hz < 32767)
+ 		count = 1193180 / hz;
+-	
++
++	sprintf(kdmsg, "%d %d %d", current->pid, count, ticks);
++	if (kerneld_send(300, 0, strlen(kdmsg), kdmsg, NULL) >= 0)
++		return;
++
+ 	cli();
+ 	del_timer(&sound_timer);
+ 	if (count) {

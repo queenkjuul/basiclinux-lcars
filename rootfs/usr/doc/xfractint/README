@@ -1,0 +1,93 @@
+Xfractint is the Unix port of fractint, which runs under X.
+Fractint is an IBM PC program to generate fractals, and was written by
+the the Stone Soup Group.  The Unix port was done by Ken Shirriff
+(shirriff@sprite.Berkeley.EDU).  Note: Xfractint is not as reliable as
+fractint and has several bugs.  Please send bug reports to Ken Shirriff.
+
+HOW TO RUN:
+
+If your distribution includes the directories xfmips, xfsparc, and xfalpha,
+you have the ready-to-run executables for the DECstation 5000, Sun Sparc,
+and Dec Alpha.
+To run, set the environment variable FRACTDIR to the appropriate directory:
+"setenv FRACTDIR /whatever/xfmips" (as appropriate),
+cd to the appropriate directory, and run "xfract".
+Note: you must have both the xfractint executable and the help file
+fractint.hlp.
+Note: If a filename ends in .Z, you must uncompress the file first,
+using the Unix "uncompress" command: "uncompress xfmips.Z".
+
+xfrun is a shar archive file containing colormap, formula, etc. files
+associated with xfractint.
+To use these files, copy xfrun to a convenient directory and unshar
+it with "sh xfrun".  This will unpack a bunch of files.  Then copy the
+appropriate version of "fractint.hlp" and "xfract" to this directory
+and then setenv FRACTDIR to this directory.
+
+HOW TO COMPILE:
+
+The source code is in xfsrc, which is a shar archive file.  Copy this file
+to a convenient directory and unshar it with "sh xfsrc".
+
+If you are compiling under SunOS, Ultrix, AIX, Linux, or HPUX, read the
+Makefile and uncomment the approprite lines.
+
+Then, to compile, do:
+make xfractint
+
+To find out what features are new in this version, look at the "versions" file.
+
+GETTING MORE FRACTAL FORMULAS:
+Dan Goldwater (daniel_goldwater@brown.edu) has a huge collection of .map,
+.par, etc. files called FracXtra.  You can obtain it under the name
+FRACXTR5.ZIP from various sites such as
+The Graphics Alternative BBS, 510-524-2780 or anonymous ftp to
+wuarchive.wustl.edu in /mirrors/msdos/graphics.
+
+NOTES ON POTENTIAL PROBLEMS:
+
+Important: if you report a bug, _please_ specify what version of xfractint
+you are using.
+
+Xfractint won't compile unless your compiler handles function prototypes.
+You have the best chance of compiling xfractint if you use gcc.  SunOS cc
+does not work.
+
+To check if your compiler handles prototypes, try compiling the following
+two line program:
+int foo(int bar);
+main() {}
+If you get line 1: syntax error at or near type word "int"
+then your compiler doesn't handle prototypes, so you won't be able to
+compile xfractint.  (One person managed to use "unproto" from
+comp.sources.misc volume 26 to strip out the prototypes, so the standard
+Sun compiler would work.  You can try this, but I'm not supporting it.)
+
+If you get "gcc: unrecognized option `-target'" when you compile, the
+problem is probably that you are using an old version of gcc (1.36).  You
+need a newer version.
+
+If xfractint hangs in the title screen, the problem is probably that your
+display cannot update fast enough for the scrolling.  The solution is to
+use the -slowdisplay flag.
+
+If you are using Openwindows and can't get xfractint to accept input, add
+to your .Xdefaults file:
+OpenWindows.FocusLenience:	True
+
+To use all 256 colors, use the -private flag, discussed in the man page.
+
+If you cannot view the GIFs that xfractint creates, the problem is that
+xfractint creates GIF89a format and your viewer probably only handles
+GIF87a format.  Run "xfractint gif87a=y" to produce GIF87a format.
+
+The program is a straight port from the IBM PC, and it thus uses the IBM style
+user interface.  See the man page for more details, and a description of
+what to use for ctrl-pageup, etc.
+
+DOCUMENTATION:
+
+Running "make makedoc" will create a file fractint.doc, which contains the
+online documentation in ascii form.
+
+See fractsrc.doc for copyright information on fractint.

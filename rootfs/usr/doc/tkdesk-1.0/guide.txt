@@ -1,0 +1,1272 @@
+  TkDesk User's Guide
+  Christian Bolik, Christian.Bolik@mainz.netsurf.de
+  Version 1.0b3, 25 September 1996
+
+  TkDesk is a graphical, highly configurable and powerful desktop man-
+  ager for UNIX and the X Window System.  This document is meant to be a
+  comprehensive guide to the functions, services and possibilities
+  offered by TkDesk.  (It may not be fully up to date with the current
+  version, but should be useful anyway.  Take a look at the CHANGES file
+  for latest news.)  A list of answers to frequently asked questions is
+  also included.  Please note that there is a TkDesk-page on the World
+  Wide Web at <http://people.mainz.netsurf.de/~bolik/tkdesk/>, as well
+  as a mailing list at majordomo@mrj.com (send a mail with the body
+  "subscribe tkdesk" to join).
+  ______________________________________________________________________
+
+  Table of Contents:
+
+  1.      Introduction
+
+  1.1.    Acknowledgments
+
+  1.2.    Using TkDesk's Help System
+
+  1.3.    Command Line Options
+
+  2.      The File Browser Window
+
+  2.1.    The Menu Bar
+
+  2.1.1.  TkDesk
+
+  2.1.2.  File
+
+  2.1.3.  Directories
+
+  2.1.4.  Commands
+
+  2.1.5.  Bookmarks
+
+  2.1.6.  Options
+
+  2.1.7.  Help
+
+  2.2.    The Button Bar
+
+  2.3.    The Path Entry
+
+  2.4.    The File Listboxes
+
+  2.4.1.  Handling of the Listboxes (Bindings)
+
+  2.5.    The Status Bar
+
+  3.      The File List Window
+
+  4.      File Operations
+
+  4.1.    File Information
+
+  4.2.    Copying, Moving and Deleting Files
+
+  4.3.    Finding Files
+
+  5.      The Application Bar
+
+  6.      The Built-in Editor
+
+  7.      Configuration of TkDesk
+
+  7.1.    AppBar
+
+  7.2.    ButtonBar
+
+  7.3.    Commands
+
+  7.4.    Directories
+
+  7.5.    FileTags
+
+  7.6.    Popups
+
+  7.7.    Sounds
+
+  7.8.    System
+
+  8.      Frequently Asked Questions
+
+  8.1.    How can I change the position of the application bar?
+
+  8.2.    Can I have transparent icons?
+
+  8.3.    How can I change the background colour of the icons and desk
+  items?
+
+  8.4.    How can I have a different set of desk items on each virtual
+  screen?
+
+  8.4.1.  FVWM and similar or derived window managers
+
+  8.4.2.  CDE window manager
+
+  8.5.    Binding to execute (export foo=bar; program;) doesn't work.
+
+  8.6.    Composing characters doesn't work in TkDesk's editor.
+
+  8.7.    I'd like TkDesk to do this and that. How can I achieve this?
+
+  8.8.    Is there a TkDesk mailing list?
+
+  8.9.    Where can I find out more about Tcl/Tk?
+
+  9.      Tips and Tricks
+
+  9.1.    TkDesk and XEmacs
+  ______________________________________________________________________
+
+  1.  Introduction
+
+  Please note: As of TkDesk 1.0b5, this guide unfortunately has become
+  slightly out of date.  To find out what has changed or been added
+  since this guide was written, please take a look at the change log
+  ("Help/Changes"), even if you're a first time user.
+
+  TkDesk is a graphical desktop manager for UNIX (especially Linux) and
+  the X Window System.   Compared with other file managers available, it
+  offers the most complete set of file operations and services, plus
+  gives the user the ability to configure most aspects of TkDesk in a
+  powerful way.  The reason for this is the use of Tcl/Tk as the
+  configuration and (for the greatest part of TkDesk) implementation
+  language.  TkDesk has been influenced by various other systems and
+  file managers: NeXT, for laying out the file browser windows, Apple
+  Finder, for the idea of file annotations and, (shock horror), Windows
+  95, for some other (of course minor and unimportant) inspirations.
+
+  This is a brief overview of the most prominent features of TkDesk:
+
+  o  Arbitrary number of automatically refreshed file browsers and file
+     list windows,
+
+  o  Configurable file-specific popup-menus,
+
+  o  Drag and drop,
+
+  o  Files and directories may also be dropped onto the root window,
+     a.k.a. desktop,
+
+  o  Configurable application bar, with several displays and cascaded
+     popup menus for each button, files can also be dropped here,
+
+  o  History of visited directories, opened files, executed commands,
+     and others, which is automatically saved to disk,
+
+  o  Find files through their annotation, name, contents, size or age,
+
+  o  Trash can for safe deletion of files and directories,
+
+  o  Calculation of disk usage for directory hierarchies,
+
+  o  All file operations (find, copy, disk usage, etc.) are carried out
+     in the background,
+
+  o  Traversal of directory hierarchies through recursive cascaded
+     menus,
+
+  o  Bookmarks, create menu entries for often used files/directories,
+
+  o  Comprehensive hypertextish online help,
+
+  o  Built-in multi-buffer and undo-capable editor,
+
+  o  Close coupling with Netscape for displaying HTML files or selected
+     URLs,
+
+  o  Sound support,
+
+  o  Powerful configuration of nearly all aspect of TkDesk through
+     Tcl/Tk, this also allows the Tcl-literate to extend TkDesk in
+     arbitrary ways,
+
+  o  Free of charge! But see the file COPYING, or menu entry
+     Help/License for information on usage and redistribution of TkDesk.
+
+  1.1.  Acknowledgments
+
+  TkDesk uses a number of other freely available packages without which
+  TkDesk would not have been possible.  I'd like to say many thanks to
+  the following people:
+
+  o  Chris Sterritt for setting up and managing the TkDesk mailing list
+     (at majordomo@mrj.com, send a mail with the body "subscribe tkdesk"
+     to join),
+
+  o  Ken Hornstein for his wonderful netscape-remote package,
+
+  o  Ioi Kim Lan for making an XPM image reader for Tk available,
+
+  o  George Howlett for his great BLT, of which parts are used by
+     TkDesk,
+
+  o  Michael McLennan for his massively useful [incr tcl],
+
+  o  John Ousterhout for Tcl/Tk, which is definitely the best thing
+     since sliced bread,
+
+  o  Greg Hankins and Matt Welsh for putting together the most wonderful
+     linuxdoc-sgml package,
+
+  o  and of course, Linus Torvalds whose Linux kind of changed my life,
+     really!
+
+  And a very big thank you to the growing TkDesk user community, which
+  provides me with a constant flow of bug reports (getting less now
+  :-)), suggestions for enhancements of TkDesk, and lots of motivation
+  and encouragement.
+
+  Special thanks to Chuck Robey for revising a previous version of this
+  guide.
+
+  1.2.  Using TkDesk's Help System
+
+  If you have Netscape running, TkDesk will use that for displaying this
+  User's Guide on-line.  Otherwise, to reduce overhead, TkDesk uses its
+  own, rather sophisticated help system.  It features hypertext links,
+  context sensitivity (which is not yet utilised by TkDesk) and full
+  text search.
+
+  The help window consists of three areas:
+
+  1. A listbox listing all the section headings.  A section can be
+     selected by pressing the left mouse button,
+
+  2. the text display, which contains the actual help text, and
+
+  3. a button "Back", which jumps back after a hypertext link has been
+     followed (see next paragraph), a button "Close" which closes the
+     help window, and a text entry.  In this entry a regular expression
+     can be entered (such as [Ff]eatures).  After hitting Return, the
+     whole help text is searched for this expression.  Pressing Return
+     again continues the search.
+
+  Text that is displayed blue in the help window is a hypertext link.
+  When the left mouse button is clicked over such a link the display
+  will automatically change to the referenced section.  One can jump
+  back by pressing the "Back" button described above.
+
+  The following keys are bound when the mouse pointer is inside the help
+  window:
+
+     Tab
+        Moves to the next section.
+
+     Shift-Tab
+        Moves to the previous section.
+     Control-Tab
+        Moves to the first section.
+
+     Control-Shift-Tab
+        Moves to the last section.
+
+     Up, Down
+        Scrolls one line up/down.
+
+     Page up, Page down
+        Scrolls one page up/down.
+
+     Control-Home
+        Jumps to start of help text.
+
+     Control-End
+        Jumps to end of help text.
+
+     Meta/Alt-b
+        Equivalent to pressing the "Back" button.
+
+     Meta/Alt-c, Escape
+        Equivalent to pressing the "Close" button.
+
+  1.3.  Command Line Options
+
+  Usually TkDesk is started simply by executing the command "tkdesk"
+  from the shell prompt or your X initialisation file.  The command line
+  options understood by TkDesk are the following:
+
+     -configdir dir
+        Reads the configuration from directory dir instead of ~/.tkdesk.
+
+     -default
+        Reads the default configuration of TkDesk instead of the user's
+        one in ~/.tkdesk.
+
+     -fvwm
+        TkDesk uses the icon window facility only if fvwm is the current
+        window manager.  Since other window managers may also support
+        icon windows, or TkDesk maybe unable to detect you're running
+        fvwm, this command line option forces TkDesk to use icon
+        windows.  The advantage of these is that they look nicer and
+        files can be dropped on them.
+
+     -iconic
+        Iconifies all file browser and file list windows created by
+        TkDesk during start-up.
+
+     -startdir dir
+        If this option is given, the first file browser will open with
+        directory dir.
+
+  For example, the command "tkdesk -fvwm -iconic" forces Tkdesk to use
+  icon windows and starts with all windows iconified.
+
+  2.  The File Browser Window
+
+  The file browser window is the largest window when TkDesk is started
+  for the first time.  It contains a menu bar, a button bar (for fast
+  access to the most often used file operations and other functions), an
+  entry field (displaying the current directory), a horizontal
+  scrollbar, a certain number of file listboxes (three by default), and
+  a status and information bar.
+
+  2.1.  The Menu Bar
+
+  The following sections describe the entries of the individual menus of
+  the file browser windows.
+
+  2.1.1.  TkDesk
+
+  The "TkDesk" menu contains the following entries:
+
+     New Browser...
+        Asks for a directory for which to open a new file browser
+        window.  If the directory is the empty string, the operation is
+        cancelled.
+
+     Clone Window
+        Creates a new file browser window with the same directory as the
+        current one (that is, the directory of the file browser from
+        which this menu entry was invoked).
+
+     Application Bar
+        Opens the application bar if it had been closed before, or
+        raises the application bar above all other windows.
+
+     Edit Config Files
+        This is a submenu from which individual or all configuration
+        files of TkDesk can be opened to modify them.
+
+     Reread Config Files
+        Another submenu whose entries reread individual or all
+        configuration files.
+
+     Auto Save
+        Here you can select which parts of TkDesk are automatically
+        saved periodically and when TkDesk exits.
+
+     Save All Now
+        Saves all parts of TkDesk's configuration no matter what the
+        settings in the previous submenu.
+
+     Close Window
+        Closes the file browser window.
+
+     Quit
+        Quits TkDesk if this is what the user really wishes.
+
+  2.1.2.  File
+
+  This menu provides all the usual file operations plus entries for
+  finding files.  The contained menu entries are:
+
+     Information
+        Opens a file information window for each currently selected
+        file.  This window, which can also be used to add annotations to
+        files, is described in section ``File Information''.
+
+     New File...
+        Asks for the name of a file which will be created in the current
+        directory of the file browser or list.
+
+     New Directory...
+        Asks for the name of a directory which will be created in the
+        current directory of the file browser or list.
+
+     Copy, Move, Link...
+        Opens a dialog box for copying, moving, linking, and symbolic
+        linking of files.  If the currently selected file is a tar
+        archive the dialog contains an extra button labeled "Untar".
+        This dialog window is described in more detail in section
+        ``Copying, Moving and Deleting Files''.
+
+     Rename...
+        For each selected file, TkDesk asks for a new name.  Before
+        actually renaming TkDesk checks for an existing file with the
+        same name.
+
+     Delete...
+        Opens a dialog to delete files.  The section ``Copying, Moving
+        and Deleting Files'' gives more details.
+
+     Print...
+        Asks for a command to print the currently selected files.  The
+        names of the selected files will be appended to the command.
+        The default command can be defined in the configuration file
+        "System".
+
+     Find Files...
+        Opens a dialog window which can be used to search for files,
+        using a variety of characteristics.  This dialog is described in
+        more detail in section ``Finding Files''.
+
+     Find Annotation...
+        Lets you search for files with a certain annotation.  More
+        details in section ``Finding Files''.
+
+     Copy To X Selection
+        Copies the complete names of all currently selected files (i.e.
+        including their paths) to the X clipboard.  They can then be
+        pasted into any other X application using the middle mouse
+        button.
+
+     Open Selected Files
+        For each currently selected file, the default action is
+        performed.
+
+  2.1.3.  Directories
+
+  The main purpose of this menu is to select directories which are to be
+  opened.  It also manages TkDesk's trash can.  The menu contains the
+  following entries:
+
+     Open...
+        Asks for a directory.  A new file list or file browser window
+        will be created, baesed on the setting of the "In Browser"
+        checkbutton.
+
+     New...
+        Asks for the name of a directory which will be created in the
+        current directory of the file browser or list.
+
+     Home Directory
+        Changes the directory of the window from which this entry is
+        invoked to the user's home directory.
+
+     Trees
+        Contains two cascaded submenus: "Home" and "Root".  The contents
+        of these submenus is dynamically generated and corresponds to
+        the directory hierarchy rooted either at the user's home
+        directory or at "/".  Selecting an entry from these submenus
+        changes the directory of the window to the selected directory.
+        Pressing Control at the same time opens a new window with this
+        directory.
+
+     Trash
+        Opens a file list window displaying the contents of the trash
+        can.  When this window is iconified and TkDesk uses icon windows
+        the icon can be used as a Mac-like trash can.
+
+     Empty Trash
+        Empties the trash can after confirmation from the user.
+
+  The remaining entries can be configured by the configuration file
+  Directories.  See section ``Configuration of TkDesk'' for details on
+  how to do this.   If one of these menu entries is invoked, the path of
+  the file browser will change to that directory.   If such an entry is
+  invoked while at the same time pressing the Control key, a new file
+  list window will be created (if the option "Always In Browser" is
+  selected a file browser window will be created), displaying the
+  contents of the selected directory.  This feature applies to all menus
+  that contain directory names!
+
+  2.1.4.  Commands
+
+  This menu provides entries to execute commands either once or
+  periodically, and provides some "job control".  Its entries are:
+
+     Execute...
+        Asks for a command to execute.  The button to the right of the
+        command entry contains a history of previously executed
+        commands.  Selecting one of these copies its name to the entry
+        widget.
+
+     Periodic Execution...
+        Opens a window which can be used to execute a command and watch
+        its output periodically.  If the "Don't execute" checkbutton is
+        selected, the execution is paused.
+
+     Job Control
+        Opens a window which allows to stop, terminate, kill etc.
+        processes which have been started by TkDesk.
+
+  The remaining entries can be defined in the configuration file
+  Commands.  See section ``Configuration of TkDesk'' for details on how
+  to do this.  If one of these menu entries is invoked, the
+  corresponding command will be executed.
+
+  2.1.5.  Bookmarks
+
+  This menu lets you create bookmarks for often used files and
+  directories.  To do this, select at least one file/directory and
+  invoke the "Add Bookmark" menu entry.  The name(s) of the selected
+  files and directories will now appear alphabetically sorted in the
+  "Bookmarks" menu.  You can remove any bookmark from the menu by
+  selecting its corresponding entry from the "Remove Bookmark" submenu.
+
+  The bookmarks you add will be automatically saved, if the "Bookmarks"
+  entry of the "Auto Save" submenu contained in the "TkDesk" menu is
+  selected (which is the default).
+
+  2.1.6.  Options
+
+  The Options menu lets you configure many aspects of TkDesk "on the
+  fly".  The entries are:
+
+     Add Icons
+        If selected, pretty little images will appear left of the file
+        names in the file listboxes.  This looks nice, but has currently
+        a major drawback: It is very slow.  For this reason this option
+        is by default deselected.
+
+     Show All Files
+        Whether to show files in the file lists whose name start with
+        ".".
+
+     Folders On Top
+        If selected (default) folders will always appear on top of the
+        file lists.
+
+     Append Type Char
+        Whether to append a file-type specific character to the file
+        names.  This is mainly intended for monochrome displays and is
+        then automagically selected.
+
+     Single Click (Dirs)
+        Lets you open directories with a single click of the left mouse
+        button.  Individual directories can still be selected by
+        pressing Control at the same time.
+
+     Always In Browser
+        If this option is selected, the "In Browser" checkbutton of the
+        "Open Directory" dialog will always be selected. Control-
+        Doubleclick on a directory will open a file browser instead of a
+        file list window.
+
+     Strip <your home directory>
+        If this is selected, and the current path of the browser is
+        somewhere under your home directory, the leftmost file listbox
+        will contain your home directory rather than the root directory.
+        This speeds up the display of directory hierarchies under your
+        home directory.
+
+     Overwrite Always
+        If this option is selected, TkDesk won't ask if the destination
+        file already exists when copying or moving files.
+
+     Really Delete
+        Relates to the deletion of files. If this option is selected,
+        the "Delete Files" dialog box will always have the "REALLY
+        delete" checkbutton selected by default.
+
+     Quick Drag'n'Drop
+        Normally when you drop files onto a file list, the copy dialog
+        appears. If this option is selected, dropped files will be moved
+        to the destination directory without further questions. If
+        Control is pressed during dropping, the files will be copied. If
+        the drop target is the trash can, TkDesk will ask if the files
+        are to be deleted "really".
+
+     Sort History
+        This option determines whether the history menus are to be
+        sorted alphabetically or not.
+
+     Use Sound
+        If you have sound working with TkDesk on your machine, you can
+        temporarily disable sound by selecting this option. Handy when
+        playing Audio CDROMs, for instance.
+
+     Dialogs at Pointer
+        If selected, TkDesk will always try to place new windows right
+        under the mouse pointer.
+
+     Number Of Listboxes
+        This relates to the number of listboxes in the file browser
+        window. Between 1 and 6 can be displayed, though 18 would
+        theoratically not be a problem.
+
+  The settings of these options are by default automatically saved.
+  This can be disabled by deselecting the "Options" entry of the
+  "TkDesk/Auto Save" submenu.
+
+  2.1.7.  Help
+
+  This menu tries to give you some help with using TkDesk.  It also
+  contains entries for displaying the list of FAQs, recently made
+  changes to TkDesk, and the license for using and distributing TkDesk,
+  as well as an option for activating or deactivating the balloon help.
+  The setting of the ballon help entry will be saved together with the
+  ones of the "Options" menu.
+
+  And then there is the most important menu entry of TkDesk: "About
+  TkDesk..." Make sure you invoke it at least once!
+
+  2.2.  The Button Bar
+
+  The button bar allows you fast access to more often used functions of
+  TkDesk, or other commands. When you place the mouse button over any of
+  these buttons, a small help window will appear telling you what this
+  button does (provided the "Balloon Help" option is activated).
+
+  The contents of this button bar can be defined via the configuration
+  file ButtonBar. See section ``Configuration of TkDesk'' and the
+  configuration file itself for details on how to do this.
+
+  2.3.  The Path Entry
+
+  This entry field displays the current path of the file browser or file
+  list. You can also type directly into this field to change the display
+  to another directory.  There is a sort of "auto-completion" available;
+  if you type only the first part of a directory's name and press
+  Control-Tab, its name will be automagically completed. That is,
+  provided there is no other directory starting with the same letters.
+
+  If you click the right mouse button over this field a popup menu
+  appears which lets you select any of the current directory's parent
+  directories.
+
+  The button to the right of the entry field contains a menu of the last
+  20 (default) directories you have visited. If you select one of these,
+  the current path of the browser will change to it. The "Control-trick"
+  described in section ``Directories'' works here as well!
+
+  2.4.  The File Listboxes
+
+  The main part of the file browser are the file listboxes.  Directories
+  are by default displayed in blue with a bold font, executable files in
+  red and bold, and regular files in black and a medium font.  These
+  settings can be configured via the System configuration file.  The
+  color and font of individual file types can be configured via the
+  FileTags configuration file.  See section ``Configuration of TkDesk''
+  for details on how to do this.
+
+  Every listbox contains a "long" listing of its directory.  You can
+  make the hidden parts visible by scrolling the listbox with the
+  horizontal scrollbar at its bottom border.  Every listbox also
+  contains a menu, which can be accessed by clicking on the listbox's
+  title.  It contains entries for:
+
+  o  Refreshing the listbox.  Although TkDesk refreshes all its file
+     lists every 5 seconds (default), sometimes you may want to have a
+     file listbox instantly updated.
+
+  o  Calculating the directory's disk usage, i.e. the number of bytes
+     occupied by that directory and all its subdirectories.  A window
+     will appear when this has been done, containing a sorted list of
+     all subdirectories and their individual disk usages.  If you
+     double-click on any of its entries, a new file list window will
+     appear displaying the directory's contents.
+
+  o  Executing a command in the listbox's directory. All the usual
+     %-shortcuts my be used (see section ``Configuration of TkDesk'').
+
+  o  Setting a mask for the listbox's display.  For example, you can
+     configure the listbox to only display files matching the pattern
+     *.gif.
+
+  o  Sorting the listbox's contents, either by Name, Size, Date,
+     Extension, or not at all.
+
+  o  Displaying all files, that is also those starting with a ".".
+
+  o  Inverting the listing.
+
+  o  Open a new file list window displaying the directory's contents.
+
+  This menubutton can also be used to drop files, as well as to drag the
+  directory displayed in the associated listbox to another target, e.g.
+  the root window.
+
+  2.4.1.  Handling of the Listboxes (Bindings)
+
+  The handling of the file lists is very similar to that of the NeXT
+  file manager: when you double click on a directory, the listbox right
+  to the current one will display this directory's contents.  You can
+  open a directory in this listbox, and the listbox right to this one
+  will display its contents.  This way you can browse through complete
+  directory hierarchies, while having instant access to the contents of
+  the complete directory tree. When the number of opened directories
+  exceeds the number of visible listboxes, you can scroll the listboxes
+  with the horizontal scrollbar which is located right above the file
+  lists.
+
+  Files are selected with the left mouse button.  A single click selects
+  a single file, deselecting all other files. If the Control key is
+  pressed simultaneously, the old selection will be retained. By
+  dragging the mouse pointer over a file list, while at the same time
+  pressing the left mouse button, a set of files can be selected.
+  Shift-doubleclick selects all files in that file list.  Holding down
+  the shift button extends the current selection unto that file ("range-
+  selection").
+
+  Note that if the option "Single Click (Dirs)" is set a single click on
+  a directory will open it. Then you need to use Control-Click to select
+  a single directory.
+
+  A double click performs the default action for the selected file.  For
+  directories that opens the directory, for executables it executes it,
+  and for files it invokes the first entry of the corresponding popup
+  menu (see below). If the Control key is pressed while double-clicking
+  a directory, a new file list or file browser window (depending on the
+  setting of the "Always In Browser" option) is created displaying the
+  contents of that directory.  For files, a dialog box will appear
+  asking for a command to execute on that file.
+
+  Files can be dragged by pressing the middle mouse button on any
+  selected file. If no file is selected, the clicked-on file will be
+  selected.  Files can be dropped by releasing the mouse button over any
+  other file listbox and the menubutton above them, over windows of the
+  built-in editor, over the application bar (if the corresponding button
+  has been configured to handle dropped files), over iconified file
+  browsers and file lists (only if TkDesk is in "fvwm-mode", see section
+  ``Command Line Options'') and in general over any other application
+  supporting the file protocol of the BLT package's drag and drop
+  implementation.  Valid drop targets can be identified by looking at
+  the window that is displayed while files are dragged: the window's
+  relief appears raised if over a valid target, flat if not.
+
+  The right mouse button is used in the file listboxes to access the
+  file-specific popup menu. Every popup menu contains a submenu, labeled
+  with the file's name, which contains entries for the most common file
+  operations. The remaining entries of the menu can be configured via
+  the configuration file Popups. See section ``Configuration of TkDesk''
+  for details on how to do this.
+
+  2.5.  The Status Bar
+
+  The status bar is located at the bottom edge of file browser windows.
+  It displays either
+
+  o  the current state of TkDesk,
+
+  o  details of the currently selected file, or
+
+  o  number and summed size of currently selected files.
+
+  3.  The File List Window
+
+  The file list window is basically a more compact version of the file
+  browser window.  It displays only one listbox, which results in the
+  fact that the contents of opened directories are always displayed in
+  the same listbox, and it doesn't have a status bar.  Its advantage is
+  that it is more quickly created than a file browser window and
+  occupies less space on your screen.  My usual setup is that I have one
+  file browser and lots of file lists opened.
+
+  The menu bar of the file list windows is also more compact, but allows
+  access to all menus of the file browser through submenus of the
+  "Others" menu.  This menu contains one additional entry to open a file
+  browser window displaying this file list's directory.
+
+  4.  File Operations
+
+  4.1.  File Information
+
+  The "File Information" window displays detailed information about a
+  file. It can also be used to change the owner or access-permissions of
+  a file. In addition, an annotation to a file can be added here.
+
+  The following information is displayed:
+
+     Path
+        The path of the file.
+
+     Size
+        The size of the file in bytes.
+
+     Modified
+        When the file was last modified. By clicking on the button
+        displaying the date file can be "touched", ie. their
+        modification timestamp will be set to the current time.
+
+     Owner
+        Displays the owner of the file. By clicking the button
+        displaying the owner, the owner can be changed to another user.
+
+     Group
+        Displays the group ownership of the file. By clicking the button
+        displaying the group's name, the group can be changed.
+
+     Mode
+        Here the access permissions are displayed in "ls -l" style. The
+        first three button correspond to the rights of the owner (r: may
+        read, w: may write, x: may execute or open the directory), the
+        second three buttons to the rights of the group, and the last
+        three buttons to every one else's rights. The "x" button are
+        special in that they cycle through four settings: x for
+        executable, s for set user/group id and executable, S for set id
+        only, and - for not executable. If the settings any of these
+        buttons is changed, the "Change Mode" button at the bottom edge
+        of the window must be clicked to actually change the file's
+        permissions.
+
+     Links
+        Number of (hard) links to this file.
+
+     Type
+        Tries to give some information about the file's contents. TkDesk
+        uses the shell command file for this.
+
+  In the "Annotation" text field you can enter any remarks about the
+  file. This annotation will be saved when the "Close" button is
+  pressed. If the window displays information about a file an additional
+  button labeled "Disk Usage" is provided, which calculates the disk
+  usage of the hierarchy rooted at that directory. The entries of the
+  "Disk Usage" window can be double-clicked to open new file list
+  windows.
+
+  4.2.  Copying, Moving and Deleting Files
+
+  These functions can be accessed from the "File" menu.  There is one
+  dialog for copying, moving and linking files, one dialog for renaming
+  files (which does nothing else than moving the file to its new name),
+  and one dialog for deleting files.
+
+  The "Rename" dialog is very straight-forward and probably does not
+  need further explanation.  The "Copy etc." dialog contains the obvious
+  source and destination entry fields, plus a checkbutton labeled "all
+  selected files".  If more than one file is selected and this
+  checkbutton is checked (default) the operation will be applied on all
+  selected files.  If it is not checked, each file will be handled
+  individually.  The "Skip" button can then be used for skipping
+  individual files.
+
+  The "Delete" dialog also contains this checkbutton, plus a checkbutton
+  labeled "REALLY delete".  If this checkbutton is checked, the files
+  will not be moved to the trash can but will be really and finally
+  deleted!!  The default setting of this checkbutton can be set from the
+  "Options" menu.
+
+  4.3.  Finding Files
+
+  The "File" menu contains two entries for finding files: "Find
+  Files..." and "Find Annotation...". Files can be annotated through
+  their "Info" dialog (accessible from the "File" menu or from their
+  popup menu), see section ``File Information''.
+
+  "Find Annotation" enables you to look for an annotated file whose
+  annotation matches a certain regular expression (which can be as
+  simple as an ordinary string).
+
+  "Find Files" lets you look for files (or rather: let's you instruct
+  TkDesk to look for files) whose name match a certain pattern, which
+  are of a certain type (such as directory), which contain a certain
+  string, which are smaller or bigger than a certain number of kilobytes
+  or which are younger/older than a certain date.  All fields which are
+  not left blank in this dialog will be combined with a logical AND.
+  This dialog is currently the only one utilizing the balloon help
+  capability of TkDesk, so for now I would like to refer you to this.
+  For instance, if you want to know how to enter the file size you're
+  looking for, place the mouse pointer over the "Size" entry field
+  without moving it for a few seconds.
+
+  Both "Find" dialogs display their results in the same file listboxes
+  that are used by the file list and browser windows, so the same
+  bindings described in section ``Handling of the Listboxes (Bindings)''
+  apply here as well!
+
+  5.  The Application Bar
+
+  TkDesk provides you with an application bar for fast access to your
+  favorite applications, commands, directories etc., plus displays for
+  the current date and time, system load, and the status of your
+  mailbox.  It consists of an arbitrary number of buttons.  Each button
+  (also the aforementioned displays) contains a popup menu which can be
+  accessed by pressing the right mouse button over any of them.  If you
+  single-click the left mouse button over such a button, the first
+  (active) entry from the corresponding popup menu will be invoked.
+
+  The first button (displaying a comet) could be called TkDesk's "Start
+  Button", although I would prefer "Take-off Button" ;-).  Its popup
+  menu contains entries for accessing TkDesk's most often used
+  functions, such as executing a command or opening a file list or
+  browser window, plus submenus for your bookmarks, the files you most
+  recently opened, and the directories you've last visited. The next
+  entry is a submenu labeled "Application Bar". Here you can configure
+  all aspects of the application bar, especially its position and
+  orientation.  See my answer to the MFAQ ``How can I change the
+  position of the application bar?'' for more.  The last entry labeled
+  "Configuration" contains another submenu which gives you fast access
+  to TkDesk's configuration files.
+
+  The remaining two entries allow you to configure the application bar
+  and TkDesk to your heart's content. See section ``Configuration of
+  TkDesk'' for details on how to do this.
+
+  The second button with the question mark gives you access to this
+  guide to TkDesk, and lets you view manual pages, also making use of a
+  running TkMan (which is a hypertextified manual pager which is to be
+  highly recommended). This button also allows you to drop executables
+  on it to automatically display their manual page, if they have got
+  one.
+
+  All the other buttons can be configured by you! See section
+  ``Configuration of TkDesk'' for details on how to do this.
+
+  6.  The Built-in Editor
+
+  The built-in editor of TkDesk is meant to be a simple ASCII editor for
+  editing files smaller than, say, 500kB. A single editor window can
+  handle an arbitrary number of buffers each of which contains another
+  file. Files can either be loaded through the "File" menu of the editor
+  or by simply dropping one or more files on the text field of the
+  editor window from one of the file listboxes.
+
+  An editor window contains the following menus in its menu bar:
+
+     File
+        Contains entries to load, save, and print files, and to close
+        the current buffer, current window, or all windows.
+
+     Edit
+        The first entry provides access to the editor's "Undo"
+        functionality. Note that the undo buffer may contain a maximum
+        of 500 events. This menu also contains entries for managing
+        TkDesk's own text clipboard. Also provides entries to search for
+        text (regular expressions), replace text, or find the next
+        occurence of the currently selected text. The entry
+        "HyperSearch" is a special form of search: all matching lines
+        are displayed in a file listbox. If one of its entries is
+        clicked on, the editor automatically displays that line at the
+        top of the text field. This can be useful for jumping to
+        headings, function definitions etc. Oh yes, and the regular
+        expressions entered here are also saved with the other
+        histories.
+
+     Options
+        The "Auto Indent" option determines whether the cursor is
+        automatically indented after hitting Return. If the "Send to
+        Netscape" option is set, the current file will be loaded by
+        (maybe a running) Netscape each time it is saved. Useful when
+        editing HTML files. The "Font..." option lets you select a font
+        by making use of the xfontsel program, which is pretty standard
+        on X systems, I think.  TkDesk might provide its own font
+        selector at one time though.
+
+     Buffers
+        Lists the buffers of the editor window. Buffers can be selected
+        from this menu.
+
+     TkDesk
+        This menu is only available when editing one of TkDesk's
+        configuration files. It lets you save the file and reload it
+        into TkDesk by selecting the corresponding menu entry or
+        pressing F5, or exactly the same plus closing the buffer by
+        invoking the next entry or pressing F6. This way configuration
+        files can very quickly be edited and reloaded into TkDesk.
+
+  The text area provides all the more common Motif- and Emacs-like key-
+  bindings (including Control-Space for selecting an area of the text).
+  Maybe it should be mentioned that Control-C/X/V do not work on the X
+  selection but on TkDesk's own clipboard. Use the middle mouse button
+  to paste from the X selection into TkDesk or from TkDesk into another
+  application.
+
+  Marks can be set with Control-[1-9], and be jumped to with
+  Alt/Meta-[1-9]. You can always jump back with Control-0.
+
+  7.  Configuration of TkDesk
+
+  Currently, TkDesk can be configured only by editing ASCII files.  This
+  is not necessarily a drawback, because this way you can add complex
+  Tcl/Tk procedures to the configuration files, but if you don't know
+  Tcl/Tk you would probably prefer a dialog-based configuration.  This
+  should be implemented in a future release of TkDesk.
+
+  If you don't know Tcl/Tk: don't despair!  For the biggest part of
+  TkDesk's configuration files it is absolutely not necessary for you to
+  know how to program in Tcl/Tk, since you just have to modify values or
+  extend the examples I have provided. And to those who want to exploit
+  all of the power available by using Tcl/Tk as TkDesk's configuration
+  language, have a look at the answer to FAQ ``Where can I find out more
+  about Tcl/Tk?''.
+
+  The configuration files can be accessed from the TkDesk menu via the
+  entry Edit Config Files, or from the "Configuration" submenu of the
+  popup menu of the application bar's first button (I should really call
+  this the "comet-button" or something similar).  The built-in editor
+  will then appear with the selected configuration file(s) already
+  loaded.  Each configuration file contains rather detailed comments on
+  what the individual settings are for, and how they can be modified.
+  Well, at least they contain examples, which can guide your
+  modification attempts.  Once you have modified the configuration file,
+  you can save it and reload it into TkDesk making use of the entries of
+  the editor's "TkDesk" menu described in section ``The Built-in
+  Editor''. Use F5 to save the file and reload it into TkDesk, and F6 to
+  do the same but additionally close the configuration file.
+
+  The following sections briefly describe what the individual
+  configuration files are used for by TkDesk, and what settings can be
+  defined by them.
+
+  As already mentioned, each configuration file contains directions on
+  how to modify its definitions.  The general advice is: just look at
+  the example definitions, because these make things clearer than lots
+  of explanations can. And don't be shy, but experiment! It's easier
+  than you might think, really!
+
+  7.1.  AppBar
+
+  This configuration file lets you define all aspects of the application
+  bar (apart from its geometry, use the entries of the submenu
+  "Application Bar" of the comet-button's popup menu for this). This is
+  what you can define here:
+
+  o  If the application bar should be managed by the window manager just
+     as an ordinary window. I don't like this, so this is disabled by
+     default :-).
+
+  o  The maximum number of buttons in a column (vertical layout) or row
+     (horizontal layout). Yes, the application bar can contain several
+     columns or rows!
+
+  o  The fonts to use for the time and date display.
+
+  o  The actual button definitions, ie. which image to display, and the
+     entries of the (possibly cascaded) popup menu. See the "AppBar"
+     file itself for the syntax used. TkDesk comes with a rich set of
+     b/w XBM and colour XPM images, these are located in the images
+     subdirectory of TKDesk's library directory. You can find out where
+     this is by looking at the fifth line of the tkdesk script.
+
+  7.2.  ButtonBar
+
+  This file defines the contents and appearance of the Button Bar, which
+  is displayed underneath the menu bar of TkDesk's file browser or file
+  list windows. Both button bars are configured independently from one
+  another.
+
+  7.3.  Commands
+
+  In this file you can define entries which will be added to TkDesk's
+  "Command" menu, for example to uncompress all selected files or do
+  whatever you can possibly imagine.
+
+  7.4.  Directories
+
+  Here you can define entries and cascaded submenus of directories which
+  will be added to TkDesk's "Directories" menu. More details are
+  contained in the "Directories" file itself.
+
+  You can also define a list of directories whose parent directories are
+  not to be displayed in file browser windows, as is usually the case
+  with your home directory. This can speed up display of directories
+  underneath an AFS directory, for instance.
+
+  Another list lets you define action that are to be performed when a
+  specific directory is opened. This can be used for example to auto-
+  mount floppy and CDROM drives.
+
+  7.5.  FileTags
+
+  Contains definitions for color and font of specific file types, that
+  will be used in TkDesk's file lists. Also the icons displayed when the
+  "Add Icons" option is selected are configured here, as well as the
+  icons used for the desk items, i.e. files and directories which have
+  been dropped on the root window.
+
+  7.6.  Popups
+
+  The popup menus that appear when the right mouse button is clicked
+  over a file or directory are defined here. There are individual
+  definitions for the popup menus of directories, executables, and of
+  other files.
+
+  7.7.  Sounds
+
+  Here the command to be used for playing sounds can be defined, as well
+  as the sound files which are to be played at certain events.  TkDesk
+  comes with a few VOC sound files which are located in the sounds
+  subdirectory of TkDesk's library directory. You can find out where
+  this is by looking at the fifth line of the tkdesk script.
+
+  7.8.  System
+
+  All the more "basic" features of TkDesk can be configured here. These
+  are:
+
+  o  Colours to be used by TkDesk,
+
+  o  Fonts to be used by TkDesk,
+
+  o  Default geometry of file listboxes,
+
+  o  Definitions of shell command which are used by TkDesk to copy,
+     move, delete etc. files. These should be fine as they are in most
+     cases.
+
+  o  The default command for printing,
+
+  o  Which editor to use, plus settings for the built-in editor,
+
+  o  Periods for automatic refreshing of the file lists and saving of
+     TkDesk's configuration,
+
+  o  Maximum number of entries in history menus,
+
+  o  If TkDesk should ask for confirmation when the user wants to quit
+     TkDesk,
+
+  o  If TkDesk should allow the menus to be "tearoff-able",
+
+  o  The paths in which TkDesk will look for images and sounds used in
+     the configuration files,
+
+  o  Icons to use for file list and browser windows, and for the help
+     window,
+
+  o  And if TkDesk should try to emulate Motif as closely as possible.
+
+  And that's it! Well, for the moment at least...
+
+  8.  Frequently Asked Questions
+
+  This section is intended to give answers to the most frequently asked
+  questions about TkDesk.  This file is derived from the emails I'm
+  receiving, so if you think something is missing just tell me about it
+  (zzhibol@rrzn-user.uni-hannover.de).
+
+  8.1.  How can I change the position of the application bar?
+
+  You can drag the application bar around simply by holding down the
+  Alt- or Meta-key and simultaneously pressing the left mouse button
+  over the application bar. You can also invoke the "Move..." entry from
+  the comet button's popup menu to do the same without having to press
+  Alt/Meta.
+
+  Since version 1.0b1 the configuration file "AppBar" sets also a
+  variable named tkdesk(appbar,wm_managed) which can be used to have the
+  apllication bar managed by the window manager, although this is
+  usually not necessary.
+
+  8.2.  Can I have transparent icons?
+
+  No, but have a look at the answer to the next question.
+
+  8.3.  How can I change the background colour of the icons and desk
+  items?
+
+  The background colour of icons used when the window manager iconifies
+  a window can be set in the configuration file "System". The variable
+  you are looking for is tkdesk(color,icon_background). By setting this
+  variable to the same colour as your root window you can achieve the
+  effect of transparent icons. You can define the colour either as a
+  normal name (such as "grey", "blue") or in the form #rrggbb.
+
+  8.4.  How can I have a different set of desk items on each virtual
+  screen?
+
+  8.4.1.  FVWM and similar or derived window managers
+
+  First, you have to set the variable tkdesk(desk_items,wm_managed) in
+  the System config file to 1.  Then you have to configure fvwm to not
+  decorate windows of class dsk_DeskItem. For instance:
+
+       Style "dsk_DeskItem"    NoTitle, NoHandles, WindowListSkip, BorderWidth 0
+
+  8.4.2.  CDE window manager
+
+  As for FVWM, you first have to set the variable
+  tkdesk(desk_items,wm_managed) in the System config file to 1.  To tell
+  the CDE window manager (dtwm) to not decorate desk items you have to
+  add the following line to either the file Dtwm or .Xdefaults in your
+  home directory, and then restart dtwm:
+
+       Dtwm*dsk_DeskItem*clientDecoration:  none
+
+  8.5.  Binding to execute (export foo=bar; program;) doesn't work.
+
+  Yes, this is a bit tricky. What you need to do is the following:
+
+       dsk_exec sh -c {export foo=bar; program}
+
+  8.6.  Composing characters doesn't work in TkDesk's editor.
+
+  Currently you have to edit the file cb_tools/bindings.tcl in TkDesk's
+  library directory to make this work.  Locate the two lines containing
+  the word "XKB"; all you need to do is to comment out the following
+  lines by prepending a '#'.
+
+  8.7.  I'd like TkDesk to do this and that. How can I achieve this?
+
+  The first place to start are the various configuration files of
+  TkDesk.  These can be accessed either by the "TkDesk/Edit Config
+  Files" menu of the file browser windows, or by the "Configuration"
+  submenu of the popup menu of the very first button of the application
+  bar of TkDesk.  :-)
+
+  Since TkDesk uses Tcl as the language for its configuration, and these
+  configuration files are simply "source"ed, you could add any sort of
+  Tcl proc for instance to the configuration file "System". This proc
+  would then be available in every other configuration file as well.
+  With the set of commands provided by TkDesk, which are listed e.g.  in
+  the configuration file "Popups", TkDesk provides a very powerful
+  platform for the user who knows Tcl.
+
+  8.8.  Is there a TkDesk mailing list?
+
+  Yes! Thanks to Chris Sterritt, there is a mailing list dedicated to
+  TkDesk at mrj.com.  Just send a mail to majordomo@mrj.com with an
+  empty subject line and "subscribe tkdesk" as the message body. Please
+  join!
+
+  8.9.  Where can I find out more about Tcl/Tk?
+
+  The official Tcl/Tk homepage is at
+   <http://www.sunlabs.com/research/tcl>.  The Tcl/Tk FAQs and lots of
+  user-contributed software can be obtained from
+  <ftp://ftp.neosoft.com/pub/tcl>.  There is also a newsgroup dedicated
+  to Tcl/Tk: comp.lang.tcl.
+
+  9.  Tips and Tricks
+
+  This section currently contains just one tip on how to combine TkDesk
+  and XEmacs. If you have any procs or other stuff in your configuration
+  file which you consider could be useful for others as well, or just
+  think it's generally cool, please send me an email, so that I can add
+  it to this section! Thanks!
+
+  9.1.  TkDesk and XEmacs
+
+  If you are using XEmacs 19.12 or later you can couple TkDesk and
+  XEmacs quite closely together by adding the following proc into any of
+  your configuration files (I have it in "Popups"):
+
+  ______________________________________________________________________
+  proc xemacs_load {what {where same}} {
+      switch $where {
+          "same" {
+              exec gnudoit -q (find-file \"$what\")
+          }
+          "other" {
+              exec gnudoit -q (find-file-other-window \"$what\")
+          }
+          "frame" {
+              exec gnudoit -q (find-file-other-frame \"$what\")
+          }
+          "scratch" {
+              exec gnudoit -q (switch-to-buffer-other-frame \"*scratch*\")
+          }
+      }
+  }
+  ______________________________________________________________________
+
+  And now my generic popup menu for files matching * reads:
+
+       ______________________________________________________________________
+           {{*} {
+               {{Edit} {dsk_edit %s}}
+               {{XEmacs} {xemacs_load %s}}
+               {{Other Window} {xemacs_load %s other}}
+               {{Other Frame} {xemacs_load %s frame}}
+               -
+               {{Print} {dsk_print %s}}
+           }}
+       ______________________________________________________________________
+
+  This way you can load files from TkDesk into a running XEmacs! This
+  assumes that you have the command gnudoit somewhere in your path, and
+  have started the XEmacs server. This can be done by adding the
+  following line to your ~/.emacs:
+
+       (gnuserv-start)
+
+  Like that? Stay tuned for more...
+

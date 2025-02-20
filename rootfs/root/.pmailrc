@@ -1,0 +1,10 @@
+bakbox ~/mail/sent
+postpone ~/mail/outbox
+timeout 90
+headmask 
+#        Substitute your details below
+#--------------------------------------------#
+fetch    pop.actix.com:::1::jsmith:q3zw2rt   # server:::1::user:password 
+smtp     mail.actix.com                      # server 
+reply-to jsmith@actix.com                    # your address
+

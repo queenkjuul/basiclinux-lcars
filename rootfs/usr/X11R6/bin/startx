@@ -1,0 +1,89 @@
+#!/bin/sh
+
+mode=`cat /proc/mounts | grep "/dev/root /" | cut -d " " -f 4`
+[ $mode = ro ] && READONLY=true
+
+# if Xconfig not writable, we're in LiveCD, so prompt for settings
+if test ! $READONLY && test -w /etc/Xconfig && test -z $NOSAVEX;then
+echo "found writable config"
+set -- `cat /etc/Xconfig`
+umount /dev 2>/dev/null
+mount -o loop /etc/$2.img /dev
+export WM=$4
+echo "Starting X at $1 with $2 $3-button mouse using $4"
+echo "if config is wrong, delete /etc/Xconfig or run with NOSAVEX=true"
+xinit -- /usr/X11/bin/Xvesa -screen $1 -$3button -terminate
+exit
+exit
+fi
+
+# need to be able to write to /tmp. if read-only, replace with ramdisk
+test $READONLY && mke2fs -b 1024 -i 1024 -m 0 /dev/ram1 64 
+test $READONLY && mount /dev/ram1 /tmp
+test $READONLY && export XAUTHORITY=/tmp/Xauthority
+
+screen=
+mouse=
+buttons=
+wm=
+
+echo ""
+echo "Enter your desired screen mode"
+echo "Examples:"
+echo "640x480x4"
+echo "640x480x16"
+echo "800x600x32"
+echo "uses 640x480x16 if left blank"
+echo ""
+read screen
+
+test -z $screen && screen=640x480x16
+
+echo ""
+echo "Enter your mouse interface"
+echo "Examples:"
+echo "psaux (PS/2)"
+echo "ttyS0 (COM1)"
+echo "ttyS1 (COM2)"
+echo "usb (USB drivers must already be installed)"
+echo "must be one of psaux, ttyS0, ttyS1, usb, with matching capitalization"
+echo "uses psaux if left blank"
+echo ""
+read mouse
+
+test -z "$mouse" && mouse=psaux
+umount /dev 2>/dev/null
+test $READONLY && mount -o loop /etc/$mouse.img /dev 2>/dev/null
+test ! $READONLY && ln -s /dev/$mouse /dev/mouse
+
+echo "Enter your number of mouse buttons"
+echo "Examples:"
+echo "2"
+echo "3"
+echo "assumes 2 if left blank"
+echo ""
+read buttons
+
+test -z $buttons && buttons=2
+
+echo "Enter your window manager"
+echo ""
+echo "Examples:"
+echo "jwm"
+echo "icewm"
+echo "Uses icewm if blank"
+read wm
+
+test -z $wm || export WM=$wm
+test -z $WM && export WM=icewm
+
+#set -- `cat /etc/Xconfig`
+
+echo "Starting X at "$screen" with "$mouse $buttons"-button mouse and "$WM" desktop"
+echo "Press Enter to continue or control+C to exit"
+read _
+test -z $NOSAVEX && test ! $READONLY && echo $screen > /etc/Xconfig
+test -z $NOSAVEX && test ! $READONLY && test -w /etc/Xconfig && echo $mouse >> /etc/Xconfig
+test -z $NOSAVEX && test ! $READONLY && test -w /etc/Xconfig && echo $buttons >> /etc/Xconfig
+test -z $NOSAVEX && test ! $READONLY && test -w /etc/Xconfig && echo $WM >> /etc/Xconfig
+XAUTHORITY=$XAUTHORITY xinit -- /usr/X11/bin/Xvesa -screen $screen -"$buttons"button -terminate 

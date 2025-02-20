@@ -1,0 +1,45 @@
+#!/bin/sh 
+until [ $answer = "5" ]  ; do
+clear
+module=`lsmod |grep lp`
+echo
+echo
+echo
+echo
+echo "           1.  Start new document."
+echo
+echo "           2.  Reload previous document."
+echo
+if [ ! "$module" ]
+then echo "           3.  Install printer module."
+else echo "           4.  Print document."
+fi
+echo
+echo "           5.  Exit."
+echo
+echo
+echo -n "Select one of the above numbers: "
+read answer
+case $answer in 
+
+1)  #-------- compose new ---------#
+mv /tmp/document /tmp/document.backup
+e3pi /tmp/document
+;;
+2)  #--------- reload old ---------#
+e3pi /tmp/document
+;;
+3)  #------- install module -------#  
+insmod parport
+insmod parport_pc
+insmod lp
+;; 
+4)  #----------- print ------------#
+device=`dmesg |grep lp |tail -n1 |cut -b1-3`
+cat /tmp/document |dos2unix -d >/dev/$device
+;;
+esac
+done
+
+
+   

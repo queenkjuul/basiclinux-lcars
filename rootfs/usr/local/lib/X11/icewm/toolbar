@@ -1,0 +1,3 @@
+# prog ppp-on x /usr/sbin/ppp-on
+# prog Netscape netscape netscape
+# prog ppp-off x /usr/sbin/ppp-off

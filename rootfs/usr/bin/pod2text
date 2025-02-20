@@ -1,0 +1,12 @@
+#!/usr/bin/perl
+    eval 'exec /usr/bin/perl -S $0 ${1+"$@"}'
+	if $running_under_some_shell;
+
+use Pod::Text;
+
+if(@ARGV) {
+	pod2text($ARGV[0]);
+} else {
+	pod2text("<&STDIN");
+}
+

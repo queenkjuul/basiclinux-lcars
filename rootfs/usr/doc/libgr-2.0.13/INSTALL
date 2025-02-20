@@ -1,0 +1,13 @@
+Targets:
+	make most - builds archive and shared libs.
+	make install - install archive and shared libs, also install
+	  header files.
+	make everything - builds libs and apps
+	make install_m - install man pages
+	make install_everything - installs libs, headers, manpages, and apps
+
+
+To change build variables (like optimization) edit the file
+Make.Rules.
+
+(Neal.Becker@comsat.com)

@@ -1,0 +1,56 @@
+#!/bin/sh
+clear
+echo
+echo
+echo
+echo
+echo
+echo
+echo "    Before you begin this installation, you must:"
+echo
+echo "        (1)  prepare a Linux partition"  
+echo
+echo "        (2)  use mke2fs to put a filesystem on that partition"
+echo
+echo "        (3)  mount the partition on /hd" 
+echo
+echo
+echo
+echo
+echo -n "Are you ready to start the installation? "
+  read REPLY 
+  case $REPLY in n|no)
+    exit
+  esac
+echo
+ls /hd | grep -q lost+found
+case $? in 0);; 
+  *) echo "Sorry, I can not find an ext2 partition on /hd."
+     exit
+esac
+ls /hd | grep -q i 
+case $? in 0)
+  echo "Sorry, the partition on /hd is not empty."
+  exit
+esac
+for i in /bin /dev /etc /home /lib /root /sbin /usr /var ; do
+  cp -a "$i" /hd
+  echo -n "."
+done
+for i in fd hd mnt proc tmp ; do
+  mkdir /hd/$i
+done
+cd /hd/etc
+set -- `mount|grep '/hd '`
+echo "$1   /       ext2   defaults  1  1" >fstab
+echo "/dev/fd0    /fd     msdos  noauto    0  0" >>fstab
+echo "none        /proc   proc   defaults  0  0" >>fstab 	
+cat /etc/rc|sed "s=/dev/loop0=$1="|grep -v swapon|grep -v sync>rc
+cd ; umount /hd
+echo "loadlin zimage root=$1 rw " >/DOS/baslin/hd.bat
+echo
+echo
+echo "TRANSFER COMPLETE"  
+echo "~~~~~~~~~~~~~~~~~"
+echo "To boot your new partition, execute HD.BAT instead of BOOT.BAT"
+echo

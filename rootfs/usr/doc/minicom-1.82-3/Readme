@@ -1,0 +1,56 @@
+			=== README ===
+
+Quick instructions for installing:
+
+1. Change to the minicom-1.82/src directory (where minicom-1.82 should be
+   the directory where this file was unpacked)
+2. make
+3. make install    (this should be done as root, or if you are logged in as
+		   somebody else, do "su -c 'make install'")
+4. as root, do 'minicom -s' to enter the configuration mode. Check all the
+   settings, change what should be changed on your system, and choose
+   'Save setup as dfl' from the configuration menu to save the changed
+   settings as system defaults.
+   Edit /etc/minicom.users, adding the usernames which should be allowed
+   to use minicom.
+
+Now you should have minicom comiled, installed and ready to use.
+
+For more information, have a look at the next files:
+
+Install		- How to install Minicom
+doc/Locales	- Information of the string localization feature
+doc/Macros	- Notes on color & macro additions
+doc/ChangeLog	- Does not necessarily interest you if you are a new user.
+		  If you have used older versions of minicom, here you can
+		  see what has changed lately. The newest things are at
+		  the end of the file.
+doc/Porting	- How to port minicom to new architectures.
+		  In the future, this can probably be done more easily with
+		  the autoconf facility.
+man/minicom.1	- Manual for 'minicom' itself.
+man/runscript.1	- Manual page for the "runscript" script interpreter.
+src/Makefile	- Configurable Makefile
+
+Directories:
+demos/		- Demo's for the 'runscript' program.
+src/		- Minicom source
+src/po		- Text strings for national languages
+terminfo/	- Terminfo entry for minicom on Linux console
+termcap/	- New termcap entries (better!)
+doc/		- Some documentation.
+linux/		- Binaries for the utilities I don't have sources for
+tables/		- Predefined character conversion tables
+
+Www:
+For information about the newest version, what has changed since 
+the previous version, and sometimes possibly the newest beta version 
+(if there is one available), look at 
+http://www.clinet.fi/~walker/minicom.html
+
+If you want to use minicom with network-modem software, have a look
+at "modem-0.1b", sunsite:/pub/Linux/apps/comm/modem-0.1b.tar.gz by
+Merijn de Jonge <mdejonge@fwi.uva.nl>.
+
+miquels@cistron.nl
+walker@clinet.fi

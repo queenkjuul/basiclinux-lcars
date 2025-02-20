@@ -1,0 +1,140 @@
+#! /bin/sh
+#
+#     @(#)java_wrapper.sh	1.33 97/10/16
+#
+#===================================================================
+# THIS SCRIPT AND JAVA WILL NOT RUN UNDER SUNOS4.X, AKA SOLARIS 1.X.  
+#===================================================================
+
+# Set up default variable values if not supplied by the user.
+# MODIFIED FOR USE WITH BASICLINUX 3.5 LIVECD
+
+# busybox type doesnt work here
+# PRG=`type $0` >/dev/null 2>&1
+# If PRG is a symlink, trace it to the real home directory
+
+#while [ -L "$PRG" ]
+#do
+#    newprg=`expr "\`/bin/ls -l "$PRG"\`" : ".*$PRG -> \(.*\)"`
+#    expr "$newprg" : / >/dev/null || newprg="`dirname $PRG`/$newprg"
+#    PRG="$newprg"
+#done
+
+J_HOME=/usr/local/java
+progname=`basename $0`
+ARCH=`arch`
+
+# The default THREADS_TYPE is "green_threads".  To change the default change
+# the setting of the DEFAULT_THREADS_FLAG variable.  The only valid values 
+# of that variable are 'green' and 'native'. 
+# 
+# This introduces a dependency of this wrapper on the policy used to do builds.
+# e.g. the usage of the name "green_threads" here is dependent on the build
+# scripts which use the same name. Since this is somewhat analogous to the
+# wrapper already depending on the build scripts putting the executable in
+# a specific place (JAVA_HOME/bin/${ARCH}), the new dependency does not
+# seem all that bad.
+
+DEFAULT_THREADS_FLAG=green
+
+if [ "${THREADS_FLAG:-${DEFAULT_THREADS_FLAG}}" = native ]
+then 
+    THREADS_TYPE=native_threads
+else
+    THREADS_TYPE=green_threads
+fi
+export THREADS_TYPE
+#echo "Using executables built for $THREADS_TYPE"
+
+#
+# If -native or -green is the first argument, override threads type
+# based on that. Also, remove it from $@, because this is an argument
+# _only_ to this wrapper. This is an alternative to setting
+# THREADS_FLAG on Solaris.
+#
+if [ "$1" = "-native" -o "$1" = "-green" ]; then
+    if [ "$1" = "-native" ]; then
+      THREADS_TYPE=native_threads
+    else
+      THREADS_TYPE=green_threads
+    fi
+    shift 1
+fi
+
+if [ -z "$JAVA_HOME" ] ; then
+    export JAVA_HOME
+    JAVA_HOME=$J_HOME
+fi
+
+#
+# For some programs like appletviewer, it is important that "." not be
+# in the classpath by default (unless the user set the CLASSPATH
+# explicitly). Applications that fit in this list are ones that load
+# classes through a ClassLoader, where classes coming off . will end
+# up being system classes. For now we know of only appletviewer.
+#
+NO_DOT_LIST="appletviewer"
+DEFAULT_CLASSPATH="."
+for excluded in ${NO_DOT_LIST}; do
+    if [ ${excluded} = ${progname} ]; then
+        DEFAULT_CLASSPATH="";
+    fi
+done
+
+CLASSPATH="${CLASSPATH:-${DEFAULT_CLASSPATH}}"
+if [ -z "${CLASSPATH}" ] ; then
+    CLASSPATH="$JAVA_HOME/classes:$JAVA_HOME/lib/classes.jar:$JAVA_HOME/lib/rt.jar:$JAVA_HOME/lib/i18n.jar:$JAVA_HOME/lib/classes.zip"
+else
+    CLASSPATH="$CLASSPATH:$JAVA_HOME/classes:$JAVA_HOME/lib/classes.jar:$JAVA_HOME/lib/rt.jar:$JAVA_HOME/lib/i18n.jar:$JAVA_HOME/lib/classes.zip"
+fi
+
+export CLASSPATH
+
+# Linux: deal with ensuring that the correct versions of libc and libdl are
+# the ones that java will use
+binPath="${JAVA_HOME}/bin/${ARCH}/${THREADS_TYPE}"
+libPath="${JAVA_HOME}/lib/${ARCH}/${THREADS_TYPE}"
+
+# only do this if we're not in the JDK build environment
+if [ -z "${IN_JDK_BUILD}" ] 
+then
+    if [ -x ${JAVA_HOME}/bin/checkVersions ]
+    then
+        if ${JAVA_HOME}/bin/checkVersions java
+	then
+	    # note the trailing colon is required!
+	    JDK_LIBS="${libPath}/linuxlibs:"
+	fi
+    else
+        echo "Warning: can't find ${JAVA_HOME}/bin/checkVersions, hope that's ok"
+    fi
+fi
+
+LD_LIBRARY_PATH="$JAVA_HOME/lib/${ARCH}/$THREADS_TYPE:${JDK_LIBS}$LD_LIBRARY_PATH"
+export LD_LIBRARY_PATH
+
+      
+orig_progname="${progname}"
+if [ -n "$NS_JAVA" ]
+then
+    progname="${progname}_ns"
+elif [ -n "$DYN_JAVA" ]
+then
+    progname="${progname}_dyn"
+fi
+
+prog=$JAVA_HOME/bin/${ARCH}/${THREADS_TYPE}/${progname}
+
+if [ -f $prog ]
+then
+    exec $DEBUG_PROG $prog $opts "$@"
+else
+    prog=$JAVA_HOME/bin/${ARCH}/${THREADS_TYPE}/${orig_progname}
+    if [ -f $prog ]
+    then
+        exec $DEBUG_PROG $prog $opts "$@"
+    fi
+fi
+    
+echo >&2 "$progname was not found in ${prog}"
+exit 1

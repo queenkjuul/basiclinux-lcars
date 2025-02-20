@@ -1,0 +1,123 @@
+This file describes how to install tknotepad under windows 95/98 and under Linux:
+
+It is assumed that Tcl 8.0 and tk8.0 or greater have been already installed on your system. These 
+libraries are failry standard on most linux distributions (Slackware 3.4 or later RH5.0 or later).
+   
+You can obtain the Tcl/Tk libraries from http://www.scriptics.com . As of the time of this writing they 
+are free.
+
+Read the installation of Tcl/Tk for your operating system, as that is beyond the scope of this 
+document.
+
+
+Line numbering:
+---------------
+
+patch name = linenum.pth
+
+As of version 0.6.9 a special added patch is included for those who want line numbering.
+This is a 'bonus' or 'addition' that I have no intention of making part of the standard 
+distribution so deal with it :-). It is a port of code in one of my other editors.
+It simple adds an entry to the bottom of the window, and puts the line number and column 
+number in the widget. To use this code simply add it to the end of the tknotepad script.
+The code is not perfect yet, as it makes the text widget a little wider, but it does not 
+add to much overhead to the program.
+
+Also as of 0.7.8 it includes a modified message in the lower left corner
+so that when the text is modified it will indicat that it is modified.
+
+Eventually I may have scripts for adding this code both for Windows and *NIX but for now if
+you want this feature it must be added manually.
+
+
+Goto to Line nunmber:
+---------------------
+
+patch name gotoline.pth
+
+As of version 0.7.0 there has been added a patch that will add a goto line number menu option 
+to the search menu. If this is to be applied with the line numbering patch it shoudl be added 
+after the line numbering patch so that when you goto a line it will display the correct line
+number. If this is going to be added without the line number patch then it just gets added to 
+the end of the tknotepad script.
+
+
+A popup menu:
+-------------
+
+patchname = popup.pth
+
+This patch is now completed but not working the way I expected. It is bound to both Button 2 
+and Button 3, and should be just Button 2. This is a tcl/tk X Windows issue thou.
+It shows the Edit popup menu however, and works for me so I am happy with it.
+
+
+New window:
+---------------
+
+patch name = newwin.pth
+
+This patch adds a menu item to the File menu that will launch a new menu.
+This patch may not work on Windows or Mac.
+
+INSTALLING:
+
+UNIX:
+--------------
+
+Installing the tarball under Linux (this should work for other UNIXes also but has not been tested)
+----------------------------------------------------------------------------------------------------------------------
+1) gunzip and untar the file I use the following command 
+
+# tar -zxvf tknotepad-0.7.0.tar.gz 
+	
+2) There is now an install.sh script for unix. If you want ALL the patches and chances are
+you do, then it will apply them all in the correct order.
+
+Do 
+    chmod 755 install.sh i
+
+and then run it 
+
+./install.sh
+
+3) cd to the tknotepad-0.7.0 directory and make sure the permissons are set to 755, 
+then copy tknotepad to /usr/local/bin/ or somewhere else that is in your path. 
+
+#cp tkn+ /usr/local/bin/tknotepad
+
+NOTE: You will need root access to copy to /usr/local/bin, if you do not have root 
+access you can put in your home directory, and run it from there. 
+
+4) You may need to make a symbolic link from your version of wish (i.e. wish8.0) to wish. 
+You can do so with the following command:
+
+	ln -s wish8.0 wish	
+	
+NOTE: You will need root access to do this. The other option is to change the first line in the 
+tknotepad script FROM: 
+
+	#!/usr/local/bin/wish -f
+
+TO:
+
+	#!/usr/local/bin/wish8.0 -f
+
+this is assuming that you have version 8.0 of wish, if you have another version then instead of  
+wish8.0 put wishx.x where x.x is the version number of Tk that you have.
+
+5) To run make sure you are running X-windows then in an xterm type tknotepad &
+
+
+Installing Under Windows 95/98/NT etc 
+----------------------------------------------------------------------------------------------------------------------------
+1) Winzip should have been used to extract this and it should have created a directory. This program now comes 
+with a batch script to run under Windows 95/98/NT, called tknote.bat. The batch script has one line, shown below.
+
+	"C:\Program Files\Tcl\bin\wish80" tknotepad
+
+Edit the path to point to the location of your version of wish (in this case wish8.0). Then run the script. 
+tknote.bat startup script.
+
+
+Please send any questions or comments about this file to joeja@mindspring.com

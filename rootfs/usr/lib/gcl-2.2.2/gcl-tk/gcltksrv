@@ -1,0 +1,31 @@
+#!/bin/sh
+# where to find bitmaps,
+# and the class bindings in /usr/local/lib/tk/tk.tcl
+GCL_TK_DIR=/usr/lib/gcl-2.2.2/gcl-tk
+TK_XLIB_DIR=/usr/X11R6/lib
+if [ -d ${TK_XLIB_DIR} ] ; then
+  export LD_LIBRARY_PATH
+  LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:${TK_XLIB_DIR}
+fi  
+
+#check to see if TK_LIBRARY set in users environment ok..
+if [ -f ${TK_LIBRARY}/tk.tcl ] ;then true;
+else 
+TK_LIBRARY=/usr/lib/tk4.1
+  if [ -f ${TK_LIBRARY}/tk.tcl ] ;then export TK_LIBRARY ; fi
+export TK_LIBRARY
+fi
+if [ -f ${TCL_LIBRARY}/init.tcl ] ;then true;
+else 
+TCL_LIBRARY=/usr/local/lib/tcl
+ if [ -f ${TCL_LIBRARY}/init.tcl ] ; then export TCL_LIBRARY ; fi
+fi
+if [ $# -ge 4 ] ;then
+DISPLAY=$4 ;
+export DISPLAY;
+fi
+exec ${GCL_TK_DIR}/gcltkaux $1 $2 $3
+
+
+
+

@@ -1,0 +1,1295 @@
+                             README
+
+                    Java(tm) Development Kit
+                     JDK(tm) 1.1.7 Software
+
+-----------------------------------------------------------------------
+CONTENTS
+
+  Overview of the Java Development Kit
+    - Introduction
+    - Purpose
+    - Version Compatibility
+    - Bug Fixes
+    - What the JDK Software Contains
+    - Where to Find More Information
+    - Submitting Comments
+    - Reporting Bugs and Requesting Features
+    - JavaBeans(tm) and the Beans Development Kit
+
+  Installing and Running the JDK Software
+    - Installation Notes
+    - Windows
+      - Running JDK Tools in Microsoft Windows
+      - Microsoft Windows PATH and CLASSPATH
+      - Using the JIT Compiler
+      - Microsoft Windows Installation Troubleshooting
+      - Possible Problems with Winsock
+    - Solaris
+      - Running JDK Tools in Solaris
+      - Solaris PATH and CLASSPATH
+      - Solaris Installation Troubleshooting
+    - Running Applets with the AppletViewer
+    - Debugging Programs with the Debugger
+    - Java Plug-in Compatibility
+
+  Class Load Hook
+    - Configuring a Class Load Hook
+    - The Class Load Hook API
+
+  Euro Support
+    - Encodings and Euro Support
+    - Locales and Euro Support
+
+  Data Transfer Problems on Windows
+
+  Deploying Java Applications
+    - Runtime Environment
+    - Installation
+
+
+=======================================================================
+                  OVERVIEW OF THE JAVA DEVELOPMENT KIT
+=======================================================================
+
+-----------------------------------------------------------------------
+INTRODUCTION
+-----------------------------------------------------------------------
+This is version 1.1.7 of the Java Development Kit.  The Java 
+Development Kit is a development environment for writing applets 
+and applications that conform to the Java 1.1 Core API.  Its compiler 
+and other tools are run from a shell and have no GUI interface. This 
+version includes improvements in functionality, performance, and 
+quality over version 1.0.2 of the Java platform, and includes bug fixes 
+since version 1.1.6.
+
+This is a maintenance release.  Changes made to the JDK software since 
+the first 1.1 beta release are in the file named CHANGES.
+
+Because there are no API changes in maintenance releases, we continue 
+to refer to this platform as the Java platform 1.1 (rather than 1.1.7).   
+While bugs have been fixed in version 1.1.7, the platform hasn't 
+changed.
+
+Although this is a maintenance release, the Win32 version of the Java 
+Development Kit includes a significant performance enhancement. A 
+production-quality version of Symantec JIT bytecode compiler is included. 
+This is the same JIT previously packaged as an early-access product in 
+the Win32 Performance Pack. Because the JIT is now included in the JDK 
+software, the Performance Pack has been discontinued.
+
+The Symantec JIT compiler is copyrighted (c), 1996-1998, by Symantec 
+Corporation. All rights reserved.
+
+In the Win32 version, all JDK tools use the JIT by default.
+To disable the JIT, see "Using the JIT," below.
+    
+The Java platform 1.1 offers new capabilities:  Internationalization, 
+signed applets, JAR file format, AWT (window toolkit) enhancements, 
+JavaBeans(tm) component model, networking enhancements, Math package for 
+large numbers, Remote Method Invocation (RMI), Reflection, database 
+connectivity (JDBC), new Java Native Interface, Object Serialization, 
+Inner Classes, and performance enhancements.
+
+For further description of these features, see the "New Feature 
+Summary" in the JDK documentation.
+
+As part of our ongoing effort to improve the quality of the JDK 
+software, we will continue to fix bugs and develop new features. In 
+order to help us prioritize our bug-fixing effort, please submit any 
+bugs you find as soon as possible, using the procedure described in 
+the "Reporting Bugs" section below.
+
+The Java Development Kit is a product of Sun Microsystems, Inc.  
+JavaSoft(tm), an operating company of Sun Microsystems, develops the 
+JDK software.
+
+
+-----------------------------------------------------------------------
+PURPOSE
+-----------------------------------------------------------------------
+The JDK software allows you to:
+
+      - Develop applets that will run in browsers supporting the
+        Java platform 1.1.
+
+      - Develop applications.  Applications run without the
+        need for a browser. (HotJava itself is written in the Java 
+        programming language.)
+
+
+-----------------------------------------------------------------------
+VERSION COMPATIBILITY
+-----------------------------------------------------------------------
+In general, any applet or application that ran in version 1.0.2 of the 
+Java Development Kit should run correctly in version 1.1.7.  A failure 
+to do so is a bug, except for a small number of cases where 
+compatibility has had to be broken to close potential security holes or 
+fix implementation or design bugs.  
+
+Of course, applets that depend on any new 1.1 APIs will not work on 
+any browsers that support only 1.0.2, such as Internet Explorer 3.0 and 
+Netscape 3.0.  However, in general, applets relying only on APIs 
+defined in 1.0.2 (but compiled with the JDK 1.1 compiler) will run on 
+1.0.2 browsers.  This "downwards" compatibility has not been 
+extensively tested and cannot be guaranteed. 
+
+For more details, see the document on compatibility at:
+
+   http://java.sun.com/products/jdk/1.1/compatibility.html
+
+If you find any such incompatibilities that are not listed on the
+Compatibility web page, please report them to us as noted below
+under "Reporting Bugs," and mention that they are compatibility
+bugs.  Compatibility is critically important to us, and a cornerstone
+of the promise: Write Once, Run Anywhere(tm).
+
+-----------------------------------------------------------------------
+BUG FIXES
+-----------------------------------------------------------------------
+As with any release, we will continue vigorously testing and debugging 
+the JDK software.  If we uncover any important bugs, we will post them 
+on the Java Developer Connection(sm) web site at:
+
+   http://java.sun.com/jdc/bugParade/index.html
+
+As always, your comments and bug reports are important to making 
+future releases successful.  We will use your feedback to help plan 
+future releases.  Please report bugs, request features and submit 
+comments using the procedure noted below in the sections "Submitting 
+Comments" and "Reporting Bugs and Requesting Features". 
+
+
+-----------------------------------------------------------------------
+WHAT THE JDK SOFTWARE CONTAINS
+-----------------------------------------------------------------------
+
+RUNTIME ----------------------------------------------------------
+
+    - Core Classes (classes.zip)
+            DO NOT UNZIP THIS FILE!  It must remain zipped for the
+            compiler and interpreter to access the class files
+            within it properly.  This file contains all of the
+            the compiled .class files for the platform.
+
+SOURCE FILES -----------------------------------------------------
+
+    - Source Files for Public Classes 
+            (src.zip file or src directory)
+            This is the set of source files used to create the
+            classes included in the core classes classes.zip 
+            file (above).  These source files are provided for 
+            information purposes only, to help developers learn
+            and use the Java programming language.  They do not 
+            include the private java.* classes or the sun.* 
+            classes, and therefore cannot be compiled into a 
+            complete classes.zip file.
+
+            Do not modify these classes;  instead, create subclasses
+            and override where you need to. These classes are 
+            documented in the API Reference documentation, which is 
+            generated by javadoc.  
+
+            How this is installed depends on the platform:
+
+             - On Windows, these are automatically unzipped for you
+               during installation.
+
+             - On Solaris, you must unzip the src.zip file yourself.
+               You can get a free copy of the correct version
+               of unzip in source form (which you must compile) from:
+
+               http://www.cdrom.com/pub/infozip/zlib/
+
+               or 
+
+               ftp://ftp.cdrom.com/pub/infozip/zlib/
+
+	       or
+
+	       ftp://ftp.uu.net/pub/archiving/zip/UNIX/SUN/
+              
+TOOLS ------------------------------------------------------------
+
+    - Java Compiler (javac)
+            Compiles programs written in the Java programming language
+            into bytecodes.
+
+    - Java Interpreter (java)
+            Executes Java bytecodes.  In other words, it runs 
+            programs written in the Java programming language.
+
+    - Jave Runtime Interpreter (jre)
+	    Similar to the Java Interpreter (java), but intended for 
+	    end users who do not require all the development-related 
+            options available with the java tool.
+
+    - Java AppletViewer (appletviewer)
+            Used for testing and running applets.
+
+    - Java Debugger (jdb)
+            Helps you find bugs in programs.
+
+    - Class File Disassembler (javap)
+            Disassembles compiled files and prints out a
+            representation of the bytecodes.
+
+    - Java Documentation Generator (javadoc)
+            Parses the declarations and documentation comments in
+            a set of source files and produces a set of HTML pages
+            describing the public and protected classes, interfaces,
+            constructors, methods, and fields. Also produces
+            a class hierarchy and an index of all members.
+
+    - C Header and Stub File Generator (javah)
+            For attaching native methods to code written in the 
+            Java programming language.
+
+    - Java Archive Tool (jar)
+            Combines many class files and other resources
+            into a single jar file.
+
+    - Digital Signing Tool (javakey)
+            Manages entities, including their keys, certificates,
+            and the trust associated with them.
+
+    - Native-To-ASCII Converter (native2ascii)
+            Converts a native encoding file to an ascii
+            file that includes the \udddd Unicode notation.
+
+    - Java RMI Stub Converter (rmic)
+            Generates objects from the names of compiled classes
+            that contain remote object implementations.
+
+    - Java Remote Object Registry (rmiregistry)
+            Creates and starts a remote object registry on the
+            specified port of the current host.
+
+    - Serial Version Command (serialver)
+            Returns the serialVersionUID for one or more classes
+            in a form suitable for copying into an evolving class.
+
+    - AWT 1.1 Conversion Tool (updateAWT)
+            Included with the JDK AWT documentation,
+            rather than in the bin directory.
+            Updates deprecated 1.0 AWT names to new 1.1 AWT
+            names (for Sun Solaris and UNIX systems, or Windows
+            systems with the MKS toolkit).
+
+    - Various C libraries and include files
+
+JAVA DOCUMENTATION AND DEMOS ------------------------------------------
+
+    - demo directory
+            awt-1.1         AWT demos
+            i18n            Internationalization demos
+
+            Animator        General-purpose animator
+            ArcTest         Test arc drawing and filling
+            BarChart        Simple bar-chart applet
+            Blink           Blinking, multicolored text
+            CardTest        Test card layout manager
+            Clock           Analog clock
+            DitherTest      Test image dithering
+            DrawTest        Draw points and lines
+            Fractal         Fractal figures
+            GraphLayout     Graph layout by iterated relaxation
+            GraphicsTest    Test graphics operations
+            ImageMap        Live-feedback image map
+            JumpingBox      Catch the jumping box
+            MoleculeViewer  Three-dimensional chemical model viewer
+            NervousText     Nervous text
+            SimpleGraph     Draw a simple graph
+            SortDemo        Animated sorting algorithms
+            SpreadSheet     Simple spreadsheet
+            TicTacToe       Tic-tac-toe game
+            WireFrame       Three-dimensional wire-frame model viewer
+
+      RMI demos are available in the separately-downloadable 
+      JDK documentation.  See the entry "Demonstration Applets
+      and Applications" in the JDK documentation table of 
+      contents for access.
+
+    - README
+            This file you are currently reading
+
+    - CHANGES
+            Changes made in the beta and final releases
+
+    - COPYRIGHT
+            Copyright notice for the JDK software
+
+    - LICENSE
+            License agreement for the JDK software
+
+NOTE: The JDK software does NOT include a Web browser.  To obtain the 
+HotJava(tm) Browser, see the HotJava Browser web page:
+
+      http://java.sun.com/products/hotjava/
+
+
+-----------------------------------------------------------------------
+WHERE TO FIND MORE INFORMATION
+-----------------------------------------------------------------------
+This README file and the accompanying CHANGES, LICENSE, COPYRIGHT 
+files, demo directory, and source code (src.zip) are the only
+"documentation" included in this JDK software bundle. You can browse
+the JDK software documentation by visiting the JavaSoft web site, or
+you can download the JDK Software 1.1.7 Documentation Bundle from:
+
+          http://java.sun.com/products/jdk/1.1/
+
+The JDK Software 1.1.7 Documentation Bundle includes:
+
+     - Release Notes
+     - API Reference
+     - Guide to New Features
+     - Additional Demo Programs
+     - Demo Overview Page
+     - Tools Documentation
+
+The Documentation Bundle is designed to be extracted into the JDK
+software installation directory. If you download the ZIP archive
+version, be sure to preserve the file path names when you extract the
+files from the archive. (With pkunzip, specify the -d option.)
+
+If you are new to the Java programming language, you will want to
+browse or download the Java Tutorial at:
+
+	http://java.sun.com/docs/books/tutorial/
+
+For a comprehensive list of online documents, go to the JavaSoft
+Documentation page at:
+
+	http://java.sun.com/docs/
+
+-----------------------------------------------------------------------
+SUBMITTING COMMENTS
+-----------------------------------------------------------------------
+We are very interested in receiving your comments and suggestions as 
+early as possible.  
+
+If you have a specific feature request or bug to report, please 
+refer to the next section for how to submit it. Send other comments 
+and informal suggestions directly to us at our JavaSoft email addresses 
+at Sun, which are listed at:
+
+     http://java.sun.com/mail/
+
+Here is a summary of what is on this web page:
+
+ - Technical Help - Sun does not provide free technical help.
+   See the above web page for some places to obtain help with your
+   programming problems.
+
+ - JavaSoft Email Addresses - The following are our most current
+   email addresses as of this release.  Use these for sending 
+   comments and informal suggestions. 
+
+      java-intl@java.sun.com                   Internationalization
+      java-awt@java.sun.com                    AWT package
+      java-security@java.sun.com               Security package
+      java-io@java.sun.com                     IO package
+      java-net@java.sun.com                    Net package
+      jdbc@wombat.eng.sun.com                  JDBC package
+      jdbc-odbc@wombat.eng.sun.com             JDBC-ODBC bridge
+      java-beans@java.sun.com                  Beans package
+      reflection-comments@worthy.eng.sun.com   Reflection package
+      jni@java.sun.com                         Java Native Interface
+      javadoc@sun.com			       Javadoc Tool
+
+   If your comment does not fall into any of those categories,
+   please send it to:
+
+      jdk-comments@java.sun.com                General comments
+
+   While we are not able to respond individually to each comment,
+   we do review all comments.
+
+
+-----------------------------------------------------------------------
+REPORTING BUGS AND REQUESTING FEATURES
+-----------------------------------------------------------------------
+To report bugs or feature requests, go to this web page:
+
+     http://java.sun.com/cgi-bin/bugreport.cgi
+
+This gives you instructions for checking if your bug is a duplicate
+by allowing you to look in our known bugs list.  This also gives
+instructions for how to submit bugs and request features.
+
+When submitting a bug, be sure you include the version number of
+the JDK software you are running.  You can get the version number of 
+the JDK software by executing:
+
+    java -version
+
+
+-----------------------------------------------------------------------
+JAVABEANS(tm) AND THE BEANS DEVELOPMENT KIT
+-----------------------------------------------------------------------
+A version of the Beans Development Kit (BDK) is also available for 
+immediate download from JavaSoft.  BDK includes specific tools and 
+support for JavaBeans developers such as the BeanBox test containers
+and example beans. See:
+
+    http://java.sun.com/beans/bdk_download.html
+
+We will continue to ship the BDK in addition to the JDK software.  
+Updates to the BDK, tools, and general JavaBeans information 
+will be posted on a regular basis to the JavaBeans web site:
+
+     http://java.sun.com/beans
+
+
+
+=======================================================================
+                INSTALLING AND RUNNING THE JDK SOFTWARE
+=======================================================================
+
+-----------------------------------------------------------------------
+INSTALLATION NOTES
+-----------------------------------------------------------------------
+    
+    IMPORTANT: Please make sure you understand the Copyright
+    and License information (in the files named COPYRIGHT and 
+    LICENSE) before installing this release.
+    
+The JDK 1.1.7 software and documentation are available in two separate
+downloadable compressed files, called "bundles".  They need to be 
+downloaded separately into the same directory and unpacked as follows 
+for the few html links between them to work.
+
+Here are the abbreviated instructions.  (The installation procedure 
+is different on different platforms, so these instructions are 
+quite general.)
+
+  1. Go to the download page for the Java Development Kit and download 
+     the software and documentation separately:
+
+        http://java.sun.com/products/jdk/1.1/
+
+  2. Follow the installation instructions for your particular 
+     platform at:
+
+      http://java.sun.com/products/jdk/1.1/installation-solaris2.html
+
+        OR
+
+      http://java.sun.com/products/jdk/1.1/installation-win32-x86.html
+
+  3. Unpack the software and documentation bundles according to the
+     instructions on the web page given in step 2.  You should end up
+     with the directory structure shown below.
+
+  4. Set the PATH and CLASSPATH for Windows or Solaris as
+     described in the section that follows.
+
+  5. Use a web browser to go to your new, local JDK documentation
+     table of contents by opening the "index.html" file in the "docs" 
+     directory:  jdk1.1/docs/index.html
+
+
+                           jdk1.1.7
+    _________________________|_____________________________________
+   |      |         |      |      |   |     |     |    |    |      |
+README CHANGES COPYRIGHT LICENSE bin lib include demo src docs index.html
+                                  |   |     |     |    |    |
+                                                            |
+                               _____________________________|_____
+                              |       |        |       |          |
+                             api  tooldocs relnotes  guide    index.html
+                              |       |        |       |
+  
+
+   The "src" directory shown above originally appears as a "src.zip"
+   file in the Solaris installation, which you must manually unzip.
+   On Windows, the installer automatically unzips it for you.
+
+
+-----------------------------------------------------------------------
+RUNNING JDK TOOLS IN MICROSOFT WINDOWS
+-----------------------------------------------------------------------
+After installing the JDK software, you start a tool by typing its
+name into the DOS window with a filename as an argument.  None of
+the main JDK tools are Windows programs with GUI interfaces -- they
+are all run from the DOS command line.  (For example, if you 
+double-click on the compiler "javac" icon, it will briefly open and 
+immediately close a DOS window, because that is not the proper way to 
+run it.)
+
+You can specify the path to a tool either by typing the path in 
+front of the tool each time, or by adding the path to the startup file 
+(autoexec.bat).  For example, if the JDK software is installed at 
+C:\jdk1.1.7, to run the compiler on a file myfile.java, go to a DOS 
+shell and execute this:
+
+    Type:  C:\jdk1.1.7\bin\javac myfile.java
+
+     -or- 
+
+    Add    C:\jdk1.1.7\bin to your path statement
+    Type:  javac myfile.java
+
+See the next section about setting the PATH and CLASSPATH variables.
+
+-----------------------------------------------------------------------
+MICROSOFT WINDOWS PATH and CLASSPATH
+-----------------------------------------------------------------------
+The CLASSPATH is not required, but if it is set, it will need to be
+unset.  You may want to update the "path" variable for convenience.
+
+     Developing in both versions 1.0.2 and 1.1.7 - If you want 
+     to develop in both versions 1.0.2 and 1.1.7, you must
+     set CLASSPATH (and PATH) separately for each one.  
+     To run both versions simultaneously, you can run 
+     each one from its own DOS window.  If you are running 
+     only one at a time, you can write a batch script to
+     switch the value of CLASSPATH (and PATH). 
+
+     Windows NT only - If you are using Windows NT, it is  
+     preferable to make the following environment variable  
+     changes in the Control Panel. Start the Control Panel,  
+     select System, then edit the environment variables. 
+
+  1. PATH -  Add the absolute path of the "jdk1.1.7\bin" 
+     directory to your PATH statement as follows. 
+
+     The PATH statement enables Windows to find the executables 
+     (javac, java, javadoc, etc.) from any current directory.
+
+     To find out the current value of your PATH, at the
+     DOS prompt type:
+
+         C:\> path
+
+     To change the PATH, open the AUTOEXEC.BAT file and make the
+     change to the PATH statement. To edit the AUTOEXEC.BAT
+     file in Windows 95: 
+
+       i. Start a text editor by choosing "Start", "Programs", 
+          "Accessories", and choosing WordPad or NotePad. 
+      ii. Choose Open from the File menu and type "c:\autoexec.bat" 
+          for the filename This will open the file for editing. 
+     iii. Look for the PATH statement. Notice that the PATH statement
+          is a series of directories separated by semi-colons (;).  
+          Windows looks for programs in the PATH directories in order,
+          from left to right. Look for other versions in the PATH.
+          There should only be one path to a classes.zip file.
+          When in doubt, put the java directory at the end of 
+          the path statement. For example, in the following PATH
+          statement, we have added the java directory at the end: 
+
+           PATH C:\WINDOWS;C:\WINDOWS\COMMAND;C:\;C:\DOS;C:\JDK1.1.7\BIN 
+
+     To make the path take effect, execute the following:
+
+           C:\> autoexec.bat
+
+
+  2. CLASSPATH Environment Variable - If you follow the default 
+     installation, you do not need to set CLASSPATH, because the
+     tools automatically set it for you.  If your CLASSPATH has 
+     not previously been set, you can skip this step.
+
+     UNSETTING CLASSPATH
+
+       If you have previously set the CLASSPATH and want to
+       unset it, you normally need to change the current value
+       (at the command line) and the startup value (in a startup
+       file or script).  For example, to see if it is currently 
+       set, type:
+
+          % set
+
+       This lists all of the environment variables.  CLASSPATH
+       will not appear if it is not set.
+
+       If it is set, you can unset the current value by setting
+       it to no value:
+
+          % set CLASSPATH=
+
+       Also open your startup file (autoexec.bat) or script and 
+       remove the path to the Java platform classes from the 
+       CLASSPATH environment variable, if you want the change to 
+       be permanent.
+
+     WHAT CLASSPATH DOES
+
+       The CLASSPATH tells the Java virtual machine and other  
+       applications (which are located in the "jdk1.1.7\bin" 
+       directory) where to find the class libraries, such as 
+       classes.zip file (which is in the lib directory).  
+       By default, the java tools temporarily append the 
+       following to whatever CLASSPATH you have explicitly 
+       set in your startup file:
+
+       .;[bin]\..\classes;[bin]\..\lib\classes.zip
+
+       where [bin] is substituted by the absolute path to the   
+       jdk1.1\bin directory.  Therefore, if you keep the bin and  
+       lib directories at the same directory level (that is, if 
+       they have a common parent directory), the executables 
+       will find the classes.  You need to set the CLASSPATH only 
+       if you move classes.zip or want to load a different library 
+       (such as one you develop).  
+
+     Refer to the Windows Installation Troubleshooting section below 
+     if you have problems running the JDK software.
+
+
+-----------------------------------------------------------------------
+USING THE JIT COMPILER
+-----------------------------------------------------------------------
+The Win32 Just In Time (JIT) bytecode compiler converts virtual
+machine bytecodes to native instructions before execution. This can
+cause some delay in program startup and class file loading, but can
+also reduce overall program execution time by a factor of ten.
+
+In the Win32 version of the Java Development Kit, the JIT is part of 
+the JDK software and is invoked by default. To disable the JIT, pass 
+the -nojit option to the launcher tool:
+
+    java -nojit MyClass
+    jre -nojit MyClass
+
+Some JDK tools, such as appletviewer, run by invoking a launcher. To
+use these tools without the JIT, uses the -J option to pass the -nojit
+option to the launcher:
+
+    appletviewer -J-nojit mypage.html
+
+With the java tool, setting JAVA_COMPILER also affects JIT usage. The
+jre tool ignores JAVA_COMPILER. Both tools also use the java.compiler
+property to determine JIT usage. See the appropriate tool
+documentation.
+
+-----------------------------------------------------------------------
+MICROSOFT WINDOWS INSTALLATION TROUBLESHOOTING
+-----------------------------------------------------------------------
+Here are four troubleshooting tips for Microsoft Windows.
+
+   * If you see the following error message 
+
+        net.socketException: errno = 10047
+
+        -or-
+
+        Unsupported version of Windows Socket API
+
+     check which TCP/IP drivers you have installed. The AppletViewer
+     supports only the Microsoft TCP/IP drivers included with 
+     Windows 95. If you are using third-party drivers (e.g., 
+     Trumpet Winsock), you'll need to change over to the native
+     Microsoft TCP/IP drivers if you want to load applets over the
+     network. 
+
+   * If the AppletViewer does not load applets then you might
+     try the following: 
+
+      1. set HOMEDRIVE=c:
+         set HOMEPATH=\
+         and restart the AppletViewer (in the same DOS box) 
+
+      2. set HOME=c:\
+         and restart the AppletViewer (in the same DOS box) 
+
+     If none of these work, try: 
+
+         java -verbose sun.applet.AppletViewer
+
+     This lists the classes that are being loaded. From this output, 
+     you can determine which class the AppletViewer is trying to 
+     load and where it's trying to load it from. Check to make sure
+     that the class exists and is not corrupted in some way. 
+
+   * Error Message: "Exception in thread NULL"
+     or "Unable to initialize threads: cannot find class 
+     java/lang/Thread" (yes, with forward slashes)
+
+     If you are getting one of these fatal error messages 
+     when running java, javac, or appetviewer, you should check 
+     your CLASSPATH environment variable. It may list 
+     "c:\java" or the "classes" directory from an older 
+     release.  You can either unset the CLASSPATH variable, 
+     or set it to include only the latest version of the Java 
+     platform class library.  For example: 
+
+        C:\> set CLASSPATH=.;C:\jdk1.1.7\lib\classes.zip
+
+     This will make sure that you are using the correct classes 
+     for this release.
+
+   * Cannot close AppletViewer copyright window (Windows 95 only)
+     In Microsoft Windows 95, the launch bar may partially cover
+     the AppletViewer copyright notice window Accept and Reject 
+     buttons. If this happens, you can move the Windows 95
+     launch bar to the side of the desktop to allow access to 
+     the copyright window Accept and Reject buttons.
+
+-----------------------------------------------------------------------
+POSSIBLE PROBLEMS WITH WINSOCK
+-----------------------------------------------------------------------
+When installing the JDK software on a Windows 95 system, the installer 
+will check to see if Winsock 2 is installed on the system. Winsock 2 is 
+the most recent version of the networking layer (Winsock) for Windows 
+and is published by Microsoft. If Winsock 2 isn't installed, the 
+installer will offer to install it.
+
+Winsock 2 is advertised as being fully backward compatible with
+Winsock 1.1, its predecessor. Occasionally, however, some Windows
+configurations seem be adversely affected after installing Winsock 2. 
+Problems that have been reported include networking programs (such
+as news and mail readers, browsers, etc) that stop working or even
+start crashing.
+
+If this happens on your system, you should remove Winsock 2 from your
+system. This is a simple, three-step procedure:
+
+1. go to C:\Windows\WS2BAKUP directory
+2. run the WS2BAKUP.BAT script
+3. reboot your machine
+
+Even without Winsock 2, the JDK software will continue to work properly. 
+In heavy multi-tasked network applications, such as servers, Winsock 1.1
+bugs may manifest themselves. Most other applications will be
+unaffected. We recommend that you upgrade to Winsock 2 as soon as
+possible.
+
+-----------------------------------------------------------------------
+RUNNING JDK TOOLS IN SOLARIS
+-----------------------------------------------------------------------
+After installing the JDK software, you start a tool by typing its
+name into a shell window with a filename as an argument.  You can 
+specify the path to a tool either by typing the path in front of 
+the tool each time, or by adding the path to the startup file.  
+For example, if the JDK software is installed at /usr/local/jdk1.1.7, 
+to run the complier on a file myfile.java, go to a shell and execute:
+
+    Type:  /usr/local/jdk1.1.7/bin/javac myfile.java
+
+     -or- 
+
+    Add  /usr/local/jdk1.1.7/bin to your path statement 
+    Type:  javac myfile.java
+
+The path and CLASSPATH variables are not required, but it is helpful 
+to know more about them.  See the next section about setting these 
+variables.
+
+
+-----------------------------------------------------------------------
+SOLARIS PATH and CLASSPATH
+-----------------------------------------------------------------------
+The CLASSPATH is not required, but if it is set, it will need to be 
+unset.  You may want to update the "path" variable for convenience.
+
+     NOTE - If you want to develop in both version 1.0.2 and 
+     version 1.1.7, you must set CLASSPATH (and path) separately
+     for each one.  To run both versions simultaneously, you 
+     can run each one from its own shell window.  If you are
+     running only one at a time, you can write a batch script 
+     to switch the value of CLASSPATH (and PATH). 
+
+  1. Path Variable -  Add the absolute path of the "jdk1.1.7/bin"
+     directory to your Unix path variable, as follows.  
+
+     The path variable enables Solaris to find the executables 
+     (javac, java, javadoc, etc.) from any current directory.
+     To find out if the path is currently set for any java tools,
+     execute:
+
+        % which java
+
+     This will print the path to java, if it can find it.
+
+     If you use the C shell (csh), you can set the path in 
+     your startup file (~/.cshrc) as follows, for example:
+
+        set path=($path /usr/local/jdk1.1.7/bin)
+
+     Then load the startup file and verify that the path 
+     is set by repeating the "which" command above:
+
+        % source ~/.cshrc
+        % which java
+
+  2. CLASSPATH Environment Variable - If you follow the default 
+     installation, you do not need to set CLASSPATH, because the
+     shell scripts automatically set it for you.    If your CLASSPATH 
+     has not previously been set, you can skip this step.
+
+
+     If you want to develop in both 1.0.2 and 1.1.7, you must set 
+     CLASSPATH separately for each one.  To run both simultaneously, 
+     run each one in its own DOS window.  If you are running only one 
+     at a time, you can write a batch script to switch the value of 
+     CLASSPATH. 
+
+     UNSETTING CLASSPATH
+
+       If you have previously set the CLASSPATH and want to
+       unset it, you normally need to change the current value
+       (at the command line) and the startup value (in a startup
+       file or script).  For example, to see if it is currently 
+       set, type:
+
+          % echo $CLASSPATH
+
+       If it is set, you can unset the current value by typing:
+
+          % unsetenv CLASSPATH
+
+       Also open your startup file (~/.cshrc) or script and 
+       remove the path to the JDK classes from the CLASSPATH 
+       environment variable if you want the change to be 
+       permanent.
+
+     WHAT CLASSPATH DOES
+
+       The CLASSPATH tells the Java virtual machine and other 
+       applications (which are located in the "jdk1.1.7/bin" directory) 
+       where to find the class libraries, such as classes.zip file  
+       (which is in the lib directory).  By default, the java tools 
+       temporarily append the following to whatever CLASSPATH 
+       you have explicitly set in your startup file:
+
+       .:[bin]/../classes:[bin]/../lib/classes.zip
+
+       where [bin] is substituted by the absolute path to the 
+       jdk1.1/bin directory.  Therefore, if you keep the bin and 
+       lib directories at the same directory level (that is, if
+       they have a common parent directory), the executables
+       will find the classes.  You need to set the CLASSPATH only 
+       if you move classes.zip or want to load a different library
+       (such as one you develop).  
+
+     Refer to the Solaris Installation Troubleshooting section below 
+     if you have problems running the JDK software.
+
+-----------------------------------------------------------------------
+SOLARIS INSTALLATION TROUBLESHOOTING
+-----------------------------------------------------------------------
+   * Error Message: "Exception in thread NULL"
+     or "Unable to initialize threads: cannot find class java/lang/Thread"
+
+     If you are getting one of these fatal error messages 
+     when running java, javac, or appetviewer, you should check 
+     your CLASSPATH environment variable. It may list 
+     "java" or the "classes" directory from an older 
+     release.  You can either unset the CLASSPATH variable, 
+     or set it to include only the latest version of the Java platform 
+     class library.  For example: 
+
+     % setenv CLASSPATH .:/usr/local/jdk1.1.7/lib/classes.zip
+
+     This will ensure that you are using the correct classes for 
+     this release.
+
+
+-----------------------------------------------------------------------
+RUNNING APPLETS WITH THE APPLETVIEWER
+-----------------------------------------------------------------------
+AppletViewer allows you to run one or more applets that are called by 
+reference in a web page (HTML file) using the APPLET tag.  The
+AppletViewer finds the APPLET tags in the HTML file and runs the 
+applets (in separate windows) as specified by the tags.
+
+AppletViewer is for viewing applets.  It cannot display an entire 
+web page that contains many HTML tags.  It parses only the APPLET 
+tag and no other HTML on the web page.
+  
+To run an applet with appletviewer, you go to a command line for 
+your operating system and run appletviewer, passing in the filename 
+or URL of the web page as its argument. 
+_______
+SOLARIS
+
+  Here is an example of how to invoke AppletViewer on a file-based
+  web page in Solaris.  First change to the "jdk1.1.7" directory.  
+  Then execute:
+
+  bin/appletviewer demo/GraphLayout/example1.html
+
+  Here is an example of how to invoke AppletViewer on a URL-based
+  web page in Solaris. Execute:
+
+  bin/appletviewer http://java.sun.com/applets/NervousText/example1.html
+_______
+WINDOWS
+  Here is an example of how to invoke AppletViewer on a file-based
+  web page in Windows.  Go to a DOS prompt, change to the "jdk1.1.7" 
+  directory and then execute:
+
+  bin\appletviewer demo\GraphLayout\example1.html
+
+  Here is an example of how to invoke AppletViewer on a URL-based
+  web page in Windows. Execute:
+
+  bin\appletviewer http://java.sun.com/applets/NervousText/example1.html
+
+___________________________
+INNER CLASSES AND JAR FILES
+
+Many users have reported problems using appletviewer to run applets
+when the applet classes are located in a JAR file. The applet class
+throws an IllegalAccessError when trying to access its own inner class.
+The same applet runs without error when all the class files are located
+on the file system.
+
+This error occurs because the main applet class and the applet inner
+class have different class loaders. This can happen when the JAR file
+and the original class files are located in the same directory. It can
+also happen when the same JAR file is passed to appletviewer twice:
+once as an ARCHIVE attribute in an APPLET tag, and again in the class
+path. In both cases, the applet class loader loads the applet class,
+while the system class loader loads the inner class.
+
+When running an applet from a JAR file, make sure that the classes
+files are only available in the JAR file, and that the JAR file is not
+in the class path.
+
+This problem only occurs on the Java 1.1 platform. On the Java 1.2
+platform, improvements in the class loading mechanism avoid this
+problem.
+
+
+-----------------------------------------------------------------------
+DEBUGGING PROGRAMS WITH THE DEBUGGER (JDB)
+-----------------------------------------------------------------------
+You can debug applets using the -debug option of appletviewer.
+When debugging applets, it's best to invoke appletviewer from
+the directory that contains the applet's HTML file.  For example,
+on Solaris:
+
+     cd demo/TicTacToe
+     ../../bin/appletviewer -debug example1.html
+
+On the PC:
+
+     cd demo\TicTacToe
+     ..\..\bin\appletviewer -debug example1.html
+
+You can find documentation on the debugger and its API at:
+
+     http://java.sun.com/products/jdk/1.1/debugging/
+
+-----------------------------------------------------------------------
+JAVA PLUG-IN COMPATIBILITY
+-----------------------------------------------------------------------
+Certain bug fixes had to be removed from 1.1.7. (See bug 4138263.) As a
+result, Java Plug-in 1.1.1 will not work with JDK 1.1.7 or JRE 1.1.7. A
+new release, Java Plug-in 1.1.2, will be compatible with JDK 1.1.7 and
+JRE 1.1.7. This Java Plug-in release will be available shortly after
+the JDK 1.1.7 release. For that reason, Java Plug-in 1.1.1, which
+includes JRE 1.1.6, will not be updated to include 1.1.7. For more
+information, see the Java Plug-in overview at
+
+    http://java.sun.com/products/plugin/
+
+
+=======================================================================
+			    CLASS LOAD HOOK
+=======================================================================
+
+The 1.1.7 release supports use of a class load hook, a native-code
+function called when each class is loaded. A class load hook can
+modify the class data to include profiling or debugging information.
+This feature was requested by development tool vendors. 
+
+Support for a class load hook is a temporary feature and is subject to
+change. Class load hook support is not part of the Java platform
+specification and will not be available in any 1.2 version of the JDK
+software. JDK 1.2 software includes profiling and debugging features
+that are more powerful and general.
+
+-----------------------------------------------------------------------
+Configuring a Class Load Hook
+-----------------------------------------------------------------------
+
+If the environment variable _CLASSLOAD_HOOK is set, its value should be
+the basename of a native code library.  For example, if the value of
+_CLASSLOAD_HOOK is "myhook", the runtime looks for a Windows library
+called myhook.dll or a Solaris library called myhook.so. The location
+of the library depends on the system platform:
+
+    * On Windows, the runtime looks in the bin directory of the JDK
+      installation, then in each directory in the PATH environment
+      variable.
+
+    * On Solaris, the runtime look in the lib directory of the JDK
+      installation, then in each directory in the LD_LIBRARY_PATH
+      environment variable.
+
+
+-----------------------------------------------------------------------
+The Class Load Hook API
+-----------------------------------------------------------------------
+
+The class load hook library must export the following function:
+
+    typedef struct {
+	unsigned char *class_data;
+	int            class_data_len;
+	unsigned char *new_class_data;
+	int            new_class_data_len;
+	void *       (*malloc_f)(int);
+    } classload_event;
+
+    void ClassLoadHook(classload_event *);
+
+The runtime calls ClassLoadHook() after it obtains the class file data
+but before it constructs the in-memory class representation.
+ClassLoadHook() is passed the existing class file data (via class_data
+and class_data_len), and a pointer to a memory allocation function (via
+malloc_f). ClassLoadHook() should use the memory allocation function to
+create a new buffer for the modified class file data and return it via
+new_class_data and new_class_data_len. If ClassLoadHook() chooses not
+to modify a class, it should set new_class_data to NULL.
+
+The runtime is responsible for deallocating the modified class file
+data buffer.
+
+
+=======================================================================
+			     EURO SUPPORT
+=======================================================================
+
+This release includes support for the new European Union currency, the
+euro. Changes include:
+
+    * Unicode support is upgraded from version 2.0.14 to version 2.1.2.
+    * Existing character encodings have changed and new encodings have
+      been added.
+    * New locales have been added.
+
+The addition of euro support will not affect existing code, except for
+character conversion code that relies on changed encodings. No APIs
+were changed.
+
+For information on the euro, see the euro web site at
+
+    http://europa.eu.int/euro/
+
+
+-----------------------------------------------------------------------
+ENCODINGS AND EURO SUPPORT
+-----------------------------------------------------------------------
+
+The following encodings were modified to support the euro currency
+character. Code point 0x88 was modified on Cp1251, code point 0x80 on
+all the other encodings. These code points were previously unused.
+
+    Cp874  -- Windows Thai
+    Cp1250 -- Windows Eastern European
+    Cp1251 -- Windows Cyrillic
+    Cp1252 -- Windows Latin-1
+    Cp1253 -- Windows Greek
+    Cp1254 -- Windows Turkish
+    Cp1255 -- Windows Hebrew
+    Cp1256 -- Windows Arabic
+    Cp1257 -- Windows Baltic
+    Cp1258 -- Windows Vietnamese
+
+There are also 12 new encodings. Of special interest is ISO8859_15.
+This encoding supports ISO 8859-15, a character set standard not yet
+approved. ISO 8859-15 is ISO 8859-1 with various changes, including
+accented French and Finish characters and the euro currency symbol. ISO
+8859-15 is also known as Latin 9, Latin 0, and IBM 923.
+
+Before JDK 1.1.7, the default encoding under Windows for Western
+European locales was ISO8859_1. Starting with 1.1.7, the default
+encoding for Western European Locales under Windows is Cp1252.
+
+For a list of supported encodings see:
+
+http://java.sun.com/products/jdk/1.1/docs/guide/intl/encoding.doc.html
+
+
+-----------------------------------------------------------------------
+LOCALES AND EURO SUPPORT
+-----------------------------------------------------------------------
+
+No existing locale resources have been modified for the euro. Instead,
+new variant locale resources are provided for each country adopting the
+euro. Previously, there were no Luxembourg locale resources. In this
+release, Luxembourg gets both base and euro variant locales.
+
+For a list of supported locales see:
+
+http://java.sun.com/products/jdk/1.1/docs/guide/intl/locale.doc.html
+
+Since the Java 1.1 platform specification is frozen, no API was added
+to find the euro variant of a non-euro locale. The following example
+code locates the euro variant of a non-euro locale. This example
+assumes that only the locale resources provided with the JDK are
+available. A more general solution would be much more complicated. 
+
+    if (source.getVariant().indexOf("EURO") >= 0)
+	newLocale = source;
+    else
+	newLocale = new Locale(source.getLanguage(),
+	    source.getCountry(),
+	    source.getVariant().length() > 0 ?
+		(source.getVariant() + "_EURO") :
+		"EURO");
+
+
+
+
+=======================================================================
+		   DATA TRANSFER PROBLEMS ON WINDOWS
+=======================================================================
+
+A bug in the data transfer API (4032895) prevents most objects from
+being copied to the Win32 clipboard. A common workaround is to convert
+objects to a String representation, since String objects are not
+affected by this bug.
+
+One popular technique for converting an object to a string is to write
+the object into a ByteArrayOutputStream and convert the stream to a
+String with toString(). String.getBytes() reverses the process.
+
+There is a potential problem with this kind of byte/character
+conversion. Both toString() and getBytes() rely on a locale-specific
+character encoder to translate byte values to and from Unicode
+character values. Not all encoders assume a one-to-one relationship
+between byte values and character values. To ensure a reliable
+translation, do not rely on the default locale encoder. Explicitly
+specify an encoder that uses a reversible translation, such as
+ISO8859_1. Do this by passing the encoder name to toString() and
+getBytes():
+
+    aString = aStream.toString("ISO8859_1");
+    aByteArray = aString.getBytes("ISO8859_1");
+
+In previous releases, the need to use a reversible encoding was not
+apparent to most programmers. ISO8859_1 was the default encoder for
+western locales on both Solaris and Win32. A program's dependence on
+ISO8859_1 might not be apparent if the program was not tested under a
+non-western locale. 
+
+Starting with 1.1.7, JDK software running on Win32 machines uses Cp1252
+(Windows Latin-1) as the default encoding for western locales. Cp1252
+does not implement a reversible byte/character translation. It may
+appear to some programmers that 1.1.7 introduces an incompatibiity. The
+real problem is a programming technique that unintentionally relies on
+the features of specific locales.
+
+
+=======================================================================
+		      DEPLOYING JAVA APPLICATIONS
+=======================================================================
+
+A Java application, unlike a Java applet, cannot rely on a web browser
+for installation and runtime services. When you deploy a Java
+application, your software bundle will probably consist of the
+following parts:
+
+      * Your own class, resource, and data files.
+
+      * A runtime environment.
+
+      * An installation procedure or program.
+
+The first item, you already have, of course. The remainder of this
+section covers the other two items.
+
+-----------------------------------------------------------------------
+RUNTIME ENVIRONMENT
+-----------------------------------------------------------------------
+To run your application, a user needs a Java virtual machine, the Java
+platform core classes, and various support programs and files. This
+collection of software is known as a runtime environment.
+
+The JDK software serves as a runtime environment. However, you probably
+can't assume your users have the JDK software installed, and your JDK
+software license doesn't allow you to redistribute JDK software files.
+
+JavaSoft provides a free, redistributable runtime environment called
+the Java Runtime Environment. Versions of this are are available for
+all platforms that run the JDK software. The Java Runtime Environment
+Version 1.1.7 is available for download at: 
+
+    http://java.sun.com/products/jdk/1.1/jre/
+
+The Win32 versions comes with a built-in installation program suitable
+for end-users. Solaris versions require the developer to provide
+installation support.
+
+The Java Runtime Environment for Win32 is available both with and
+without international support. The non-international version is much
+smaller, but is suitable only for English-speaking users. 
+
+JavaSoft is not the only supplier of runtime software for Java
+programs. If you use a third-party runtime, you should make sure it is
+fully compatible with the Java Runtime Environment.
+
+For information on third-party runtime environments, see:
+
+    http://java.sun.com/cgi-bin/java-ports.cgi
+
+
+-----------------------------------------------------------------------
+INSTALLATION
+-----------------------------------------------------------------------
+The final step in the deployment process occurs when the software is
+installed on individual user system. Installation consists of copying
+software onto the user's system, then configuring the user's system to
+support that software.
+
+This step includes installing and configuring the runtime environment.
+If you use the Java Runtime Environment, you must make sure that your
+installation procedure never overwrites an existing installation,
+unless the existing Java Runtime Environment is an older version.
+
+The Win32 version of the Java Runtime Environment is distributed as a
+self-installing executable. A simple way to redistribute the Java
+Runtime Environment is to include this executable in your software
+bundle. You can then have your installation program run the executable,
+or simply instruct the user to install the Java Runtime Environment
+before installing the rest of your bundle.
+
+The Win32 installation program records program information in the
+Windows Registry. This registry information includes the software
+version, which you should compare with the Java Runtime Environment
+version in your software bundle. For more information, refer to the the
+Java Runtime Environment Notes for Developers at:
+
+    http://java.sun.com/products/jdk/1.1/runtime.html
+
+A more sophisticated approach is to install the Java Runtime
+Environment on your own system, then copy the files you need into your
+own installation set. If you choose this approach, you must include all
+files described as "required" in the Java Runtime Environment README.
+The Java Runtime Environment software can only be redistributed if all
+"required" files are included. See the LICENSE file for specifics.
+
+If you use this approach, do not try to emulate the installation steps
+performed by the Java Runtime Environment installer. You might "break"
+an existing Java Runtime Environment installation by missing a new or
+undocumented installation step. Instead, you should include the Java
+Runtime Environment files in your own application directory. In effect,
+your application has its own "private" copy of the Java Runtime
+Environment.
+
+If your application uses the networking classes, it may not run
+reliably under Winsock 1.1. (See "Possible Problems with Winsock,"
+under "Installing and Running the JDK Software," above.) If your
+networking application must support Windows 95, which comes with
+Winsock 1.1, you will want to include a Winsock 2.0 install in your
+installation procedure. (Windows NT 4.0 and Windows 98 come with
+Winsock 2.0.) To provide Winsock 2.0, you need the Microsoft Windows
+Sockets 2.0 Software Development Kit. This free software can be
+downloaded from the following addresses:
+
+    http://www.microsoft.com/win32dev/netwrk/winsock2/ws295sdk.html
+    http://www.microsoft.com/windows95/info/ws2.htm
+    ftp://ftp.microsoft.com/bussys/WinSock/winsock2/
+
+-----------------------------------------------------------------------
+Copyright © 1996, 1997, 1998 Sun Microsystems, Inc.
+901 San Antonio Rd., Palo Alto, CA 94303 USA
+All rights reserved.
+

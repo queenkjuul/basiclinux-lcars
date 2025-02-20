@@ -1,0 +1,49 @@
+Subject: ANNOUNCE: xpdf 0.7a - a PDF viewer for X
+
+
+I've just released a new version of xpdf, my Portable Document Format
+(PDF) viewer for X.
+
+Xpdf runs under the X Window System on Unix, VMS, and OS/2.
+
+!!! Please note my new email/web/ftp addresses. !!!
+
+This is primiarily a bug fix release.  The most noticeable changes
+are:
+
+* Moved find command from menu to toolbar button.
+* Support TrueColor visuals and private colormaps.
+* Mouse button 2 pans the window.
+* Selecting a URI link now executes a configurable command (e.g.,
+  telling a browser to open a web page).
+* Added a "link info" display which shows the URL or file for the link
+  under the mouse.
+* Fixed double-draw text problem with Acrobat Capture output.
+* Recognize all PDF 1.2 operators.
+* Added option for A4 paper (for PostScript output).
+* External Type 1 font files are now embedded.
+* Added option to generate Level 1 PostScript.
+* Now uses an autoconf script (instead of the kludgey
+  Makefile.config).
+* Lots of other little things (see the `CHANGES' file) 
+
+I'm particularly interested in feedback on the new configure script,
+since I've only tested it on my own system.
+
+I have decryption code, but I'm not releasing it until I figure out
+how to get around the U.S. export restrictions.
+
+Source (C++ and C) is available, and it should be fairly easy to
+compile for UNIX, VMS, or OS/2.
+
+More information, source code, and precompiled binaries are at:
+
+  http://www.aimnet.com/~derekn/xpdf/
+  ftp://ftp.aimnet.com/pub/users/derekn/xpdf/
+
+Source and Linux binaries are on sunsite.unc.edu, currently in
+/pub/Linux/Incoming but they will be moved to:
+
+  ftp://sunsite.unc.edu/pub/Linux/apps/graphics/viewers/X
+
+- Derek

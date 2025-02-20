@@ -1,0 +1,40 @@
+# @(#)$Id: oldping,v 1.2 1994/09/03 14:38:22 mrg stable $
+# PINGRELAY Script ------------------------------- [ Usage: /ping <nick> ] ---
+# Stores time of ping in message itself instead of in a single local variable.
+#
+# Original Idea: Robey POINTER     (Robey@IRC - robey@wright.sarc.msstate.edu)
+# Inspiration:   Klaus ZEUGE              (sojge@IRC - sojge@Minsk.DoCS.UU.SE)
+#                Nicolas PIOCH         (Nap@IRC - pioch@poly.polytechnique.fr)
+# Last revision: Ian FRECHETTE       (Daemon@IRC - frechett@spot.Colorado.EDU)
+# Collaboration: Peter HELLMONDS (snoopy@IRC - hellmond@phoenix.Princeton.EDU)
+# ----------------------------------------------------------------------------
+# CONVERTED for ircII2.2pre6
+
+# Launch time is piggybacked on the PING RELAY request and sent out to the net.
+# (The echo *** PING ... line can be taken out, it's just for your information.)
+
+# NOTICE NOTICE NOTICE   the ping alias is now called OPING
+
+eval echo *** Notice:  The ping alias has been changed to OPING
+eval echo *** ircII2.2 and beyond have a built in PING command
+
+^alias OPING {
+	@ ping.tmp = 0
+	while ([$($ping.tmp)])
+	{
+		ctcp $($ping.tmp) ERRMSG PING RELAY $TIME()
+		echo *** PING to $($ping.tmp) launched \( $STIME($TIME()) \)
+		@ ping.tmp = ping.tmp + 1
+	}
+}
+
+# When the PING RELAY comes back, print the time difference (now-launch time)
+
+^on ^ctcp_reply "* ERRMSG PING RELAY *" {
+        echo *** PONG Time to $0: ${time()-[$4]} seconds.
+}
+
+# To be warned that you're being pinged, uncomment the following line:
+^on ^ctcp "* ERRMSG PING RELAY *" echo *** PING Received a relay ping from $0
+# end of script: PINGRELAY
+

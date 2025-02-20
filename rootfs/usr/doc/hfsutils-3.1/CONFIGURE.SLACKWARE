@@ -1,0 +1,1 @@
+CFLAGS=-O2 ./configure --prefix=/usr --with-tcl --with-tk --enable-devlibs

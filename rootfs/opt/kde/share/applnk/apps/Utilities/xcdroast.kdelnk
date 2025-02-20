@@ -1,0 +1,14 @@
+# KDE Config File
+[KDE Desktop Entry]
+WmCommand=
+BinaryPattern=
+Name=XCDRoast
+MiniIcon=
+Protocols=
+MimeType=
+Comment=CD-R/RW burning utility
+Exec=xcdroast
+TerminalOptions=
+Path=
+Type=Application
+Terminal=0

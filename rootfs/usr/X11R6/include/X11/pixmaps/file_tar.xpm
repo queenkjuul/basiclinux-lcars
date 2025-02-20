@@ -1,0 +1,23 @@
+/* XPM */
+static char *file_tar[] = {
+	"16 16 3 1",
+	". c grey90   m white g4 grey90",
+	"b c black  m black g4 black",
+	"g c white m white g4 white",
+	"................",
+	"................",
+	"bbbbbbbbbb......",
+	"bgggggggbgb.....",
+	"bggbbbbbbbbbb...",
+	"bggbgggggggbgb..",
+	"bggbgggggggbggb.",
+	"bggbgggggggbbbbb",
+	"bggbgggggggggggb",
+	"bggbgggggggggggb",
+	"bggbgggggggggggb",
+	"bbbbgggggggggggb",
+	"...bgggggggggggb",
+	"...bbbbbbbbbbbbb",
+	"................",
+	"................",
+};

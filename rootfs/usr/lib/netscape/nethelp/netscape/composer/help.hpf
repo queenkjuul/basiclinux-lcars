@@ -1,0 +1,41 @@
+; help.hpf
+; Auto-generated NetHelp project file
+
+Window-Name="Communicator Help"
+Window-Size="425,440"
+NetHelp-Version="2.0"
+<Frame_Group src = "../../NSHIfrm.htm" default_window = "">
+
+<ID_MAP>
+
+create_document = "comp.htm#create_document" : target = "Topic"
+SPELL_CHECK = "comp.htm#SPELL_CHECK" : target = "Topic"
+EDIT_DICTIONARY = "comp.htm#EDIT_DICTIONARY" : target = "Topic"
+browse_new_page = "comp.htm#browse_new_page" : target = "Topic"
+PROPERTIES_PARAGRAPH = "comp.htm#PROPERTIES_PARAGRAPH" : target = "Topic"
+PROPERTIES_CHARACTER = "comp.htm#PROPERTIES_CHARACTER" : target = "Topic"
+PROPERTIES_HRULE = "comp.htm#PROPERTIES_HRULE" : target = "Topic"
+HTML_TAG = "comp.htm#HTML_TAG" : target = "Topic"
+EXTRA_HTML = "comp.htm#EXTRA_HTML" : target = "Topic"
+Inserting_a_table = "comp.htm#Inserting_a_table" : target = "Topic"
+addtable = "comp.htm#addtable" : target = "Topic"
+Setting_table_properties = "comp.htm#Setting_table_properties" : target = "Topic"
+TABLE_PROPERTIES = "comp.htm#TABLE_PROPERTIES" : target = "Topic"
+select_table = "comp.htm#select_table" : target = "Topic"
+Insert_an_image = "comp.htm#Insert_an_image" : target = "Topic"
+PROPERTIES_IMAGE = "comp.htm#PROPERTIES_IMAGE" : target = "Topic"
+PROPERTIES_IMAGE_ALT = "comp.htm#PROPERTIES_IMAGE_ALT" : target = "Topic"
+IMAGE_CONVERSION = "comp.htm#IMAGE_CONVERSION" : target = "Topic"
+DOCUMENT_PROPERTIES_GENERAL = "comp.htm#DOCUMENT_PROPERTIES_GENERAL" : target = "Topic"
+DOCUMENT_PROPERTIES_APPEARANCE = "comp.htm#DOCUMENT_PROPERTIES_APPEARANCE" : target = "Topic"
+DOCUMENT_PROPERTIES_ADVANCED = "comp.htm#DOCUMENT_PROPERTIES_ADVANCED" : target = "Topic"
+PROPERTIES_TARGET = "comp.htm#PROPERTIES_TARGET" : target = "Topic"
+creating_links = "comp.htm#creating_links" : target = "Topic"
+PROPERTIES_LINK = "comp.htm#PROPERTIES_LINK" : target = "Topic"
+Linking_images = "comp.htm#Linking_images" : target = "Topic"
+PUBLISH_FILES = "comp.htm#PUBLISH_FILES" : target = "Topic"
+COMPOSER_PLUGINS = "comp.htm#COMPOSER_PLUGINS" : target = "Topic"
+PREFERENCES_EDITOR_GENERAL = "comp.htm#PREFERENCES_EDITOR_GENERAL" : target = "Topic"
+PREFERENCES_EDITOR_PUBLISH = "comp.htm#PREFERENCES_EDITOR_PUBLISH" : target = "Topic"
+
+</ID_MAP>

@@ -1,0 +1,157 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--
+FILE:   NSHIfrm.htm
+DESCR:  Frameset file for Netscape Help implementation.
+NOTES:  
+-->
+
+<HTML>
+
+<HEAD>
+
+<TITLE>NetHelp</TITLE>
+
+<SCRIPT LANGUAGE = "JavaScript1.2">
+
+// Assertions.
+var NULL_URL = "ASSERTION FAILED: Null Help URL"
+
+var TRACE = false
+
+function trace( msg )
+{
+   if ( TRACE ) java.lang.System.out.println( "NSHIfrm: " + msg )
+}
+
+// Persistent data to maintain state when documents reload on resize. 
+var aPersistentData = new Array
+
+var helpTopic       = ""      // URL to load.
+var helpHandlerName = ""      // System-specified onhelp handler.
+var bTopLoaded      = false
+
+// Bind frameset drag/drop event to handler.
+window.ondragdrop = dragDropEvt
+
+/*
+DESCR:   Binds documents to global event handlers.
+PARAMS:  
+RETURNS: 
+NOTES:   
+*/
+function bindDocEvts( docObj )
+{
+   docObj.captureEvents( Event.MOUSEDOWN )  // | Event.KEYDOWN )
+   docObj.onmousedown = mouseDownEvt
+   //docObj.onkeydown = keyDownEvt
+}
+
+/*
+DESCR:   Global event handler.
+PARAMS:  
+RETURNS: 
+NOTES:   
+*/
+function mouseDownEvt( evt )
+{
+   //alert( "mouseDownEvt()" )
+
+   // Block right click events to block potentially destabilizing local menus.
+   if ( evt.which == 3 ) {
+      return false
+   }
+
+   return true
+}
+
+/*
+DESCR:   Global event handler.
+PARAMS:  
+RETURNS: 
+NOTES:   
+*/
+function dragDropEvt( evt )
+{
+   // Block potentially destabilizing URL loading.
+   return false
+}
+
+/*
+DESCR:   Sets system handler for Help events.
+PARAMS:  name  The handler.
+RETURNS: 
+NOTES:   
+*/
+function setOnhelpHandler( name )
+{
+   //alert( "setOnhelpHandler()" )
+   //trace( "onhelp handler binded" )
+
+   helpHandlerName = name
+   callHelp()
+}
+
+/*
+DESCR:   JS event raised on request for a NetHelp topic.
+PARAMS:  evt  The standard event object. evt.which contains the fully
+              qualified Help URL.
+RETURNS: 
+NOTES:   
+*/
+function onhelp( evt )
+{
+   //alert( "onhelp()" )
+   //alert( evt.which )
+   //trace( "onhelp" )
+
+   helpTopic = evt.which
+   if ( !( helpTopic != "" ) ) alert( NULL_URL )
+
+   callHelp()
+}
+
+function onload()
+{
+   //alert("frameset onload")
+   //trace( "onload" )
+
+   bTopLoaded = true
+   callHelp()
+}
+
+/*
+DESCR:   Calls system Help handler when all conditions are met.
+PARAMS:  
+RETURNS: 
+NOTES:   
+*/
+function callHelp()
+{
+   if ( bTopLoaded && ( helpTopic != "" ) && ( helpHandlerName != "" ) ) {
+      eval( "top.SystemFrame." + helpHandlerName + "( helpTopic )" )
+   }
+}
+
+</SCRIPT>
+
+</HEAD>
+
+<!-- Frameset for Help implementation. Load the system document to put it motion. -->
+	<FRAMESET COLS = "140, *" BORDER = 0>
+		<FRAMESET ROWS = "0,65,*" BORDER = 0>
+			<FRAME SRC = "System.htm" SCROLLING = no NORESIZE MARGINHEIGHT = 0 MARGINWIDTH = 0 NAME = "SystemFrame" FRAMEBORDER="NO">
+			<FRAME SRC = "Blank.htm" SCROLLING = no NORESIZE MARGINHEIGHT = 0 MARGINWIDTH = 0 NAME = "ToolUIFrame" FRAMEBORDER="NO">
+			<FRAME SRC = "Blank.htm" SCROLLING = no NORESIZE MARGINHEIGHT = 0 MARGINWIDTH = 0 NAME = "ToolFrame" FRAMEBORDER="NO">
+		</FRAMESET>
+		<FRAMESET ROWS = "*, 40"  BORDER = 0>
+	<!--    ÇFRAME SRC = "Blank.htm" SCROLLING = no NORESIZE MARGINHEIGHT = 0 MARGINWIDTH = 0 NAME = "HeaderFrame" FRAMEBORDER="NO"È -->
+			<FRAME SRC = "NoJSerr.htm" NORESIZE MARGINHEIGHT = 10 MARGINWIDTH = 10 NAME = "TopicFrame" FRAMEBORDER="NO">
+			<FRAMESET COLS = "*, 200" BORDER = 0>
+				<FRAME SRC = "Blank.htm" SCROLLING = no NORESIZE MARGINHEIGHT = 0 MARGINWIDTH = 0 NAME = "StatusFrame" BGCOLOR="DD0000" FRAMEBORDER="NO">
+				<FRAME SRC = "Blank.htm" SCROLLING = no NORESIZE MARGINHEIGHT = 0 MARGINWIDTH = 0 NAME = "NavFrame" BGCOLOR="DD0000" FRAMEBORDER="NO">
+			</FRAMESET>
+		</FRAMESET>		
+	</FRAMESET>
+
+</HTML>
+

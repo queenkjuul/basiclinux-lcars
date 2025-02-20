@@ -1,0 +1,59 @@
+This is version 1.7 of my generic, front-end for fsck and mkfs.  This
+little utility takes the guess-work out of trying to remember the
+often cryptic name for a particular file system-specific utility.  In
+most cases, you can simply type 'fsck /dev/xyz' without regard to the
+file system type.  Mkfs is similarly supported, but is (IMO) of
+dubious value.  When invoked as fsck, it also supports a 'check all'
+option.
+
+The fs-specific programs are expected to be named fsprog.fstype, where
+fsprog is the root program name (fsck or mkfs) and fstype is the type
+of the file system.  For example, the minix file system checker should
+be called fsck.minix and the extended file system builder should be
+called mkfs.ext.  This naming convention was adopted because it allows
+new file system types to be supported without having to recompile the
+front-end.
+
+Fs-specific programs are searched for in /etc/fs first, then in /etc
+and finally in the directories listed in the PATH enviroment variable.
+To help reduce some of the clutter in /etc, /etc/fs is the recommended
+location for fs-specific programs.
+
+IMPORTANT NOTE:  You should rename your current utilities to follow
+the new naming convention *before* installing this utility.  If you
+don't, you will overwrite your minix file system programs.
+
+If you would like to see this utility become standard in the Linux
+community, please drop a note to your favorite package or file system
+maintainer asking them to use the new naming convention in their next
+release.
+
+Changes from version 1.6 to 1.7
+
+	Changed -V option to cause verbose output.  Using -V
+	more than once results in the same output but inhibits
+	execution of fs-specific programs (i.e. debug mode).
+
+	Look for file system-specific programs in /etc/fs first,
+	then in /etc and finally in the user's PATH.  Use this
+	to reduce some of the clutter in /etc.
+
+	Ignore ISO9660 file systems when checking all systems.
+
+	Allow file systems to be specified with either the device
+	name or the mount point.
+
+	Return meaningful exit codes.  See the manual pages for
+	details.
+
+Changes from version 1.0 to 1.6 (most by Fred N. van Kempen,
+waltje@uwalt.nl.mugnet.org)
+
+	Changed -F option to -t to be consistent with mount(8).
+
+	Added -A (check all) option for fsck(8).
+
+	Allow "blocks" parameter to be omitted for mkfs(8).
+
+David Engel
+david@ods.com

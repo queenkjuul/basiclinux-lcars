@@ -1,0 +1,14 @@
+# This is an example showing the use of /wait to get the output from a process and use it.
+on ^exec thing assign thing $1
+on ^exec_exit thing 
+alias _log ^set logfile IrcLog.$thing
+alias log.process {
+	exec -name thing uptime
+	wait %thing
+	_log
+}
+alias log {
+	if ( [$0] == [on] )
+		{ ^log.process }
+	set log $0
+}

@@ -1,0 +1,44 @@
+; help.hpf
+; Auto-generated NetHelp project file
+
+Window-Name="Communicator Help"
+Window-Size="425,440"
+NetHelp-Version="2.0"
+<Frame_Group src = "../../NSHIfrm.htm" default_window = "">
+
+<ID_MAP>
+
+dns_entry = "trouble.htm#dns_entry" : target = "Topic"
+peer_reset = "trouble.htm#peer_reset" : target = "Topic"
+not_implemented = "trouble.htm#not_implemented" : target = "Topic"
+server_error = "trouble.htm#server_error" : target = "Topic"
+network_traffic = "trouble.htm#network_traffic" : target = "Topic"
+access_denied = "trouble.htm#access_denied" : target = "Topic"
+delete_failed = "trouble.htm#delete_failed" : target = "Topic"
+no_news = "trouble.htm#no_news" : target = "Topic"
+power_plant = "trouble.htm#power_plant" : target = "Topic"
+address_book = "trouble.htm#address_book" : target = "Topic"
+trouble_common_AIM = "trouble.htm#trouble_common_AIM" : target = "Topic"
+trouble_common_alpha = "trouble.htm#trouble_common_alpha" : target = "Topic"
+trouble_common_clearloc = "trouble.htm#trouble_common_clearloc" : target = "Topic"
+trouble_find_nav = "trouble.htm#trouble_find_nav" : target = "Topic"
+trouble_cache = "trouble.htm#trouble_cache" : target = "Topic"
+trouble_navigate = "trouble.htm#trouble_navigate" : target = "Topic"
+trouble_stuck = "trouble.htm#trouble_stuck" : target = "Topic"
+forgot_pass = "trouble.htm#forgot_pass" : target = "Topic"
+cant_encrypt = "trouble.htm#cant_encrypt" : target = "Topic"
+HELP_SEC_WARNING_FORWARDING = "trouble.htm#HELP_SEC_WARNING_FORWARDING" : target = "Topic"
+decrypt_message = "trouble.htm#decrypt_message" : target = "Topic"
+tamper = "trouble.htm#tamper" : target = "Topic"
+java_alert = "trouble.htm#java_alert" : target = "Topic"
+trouble_mail_notify = "trouble.htm#trouble_mail_notify" : target = "Topic"
+trouble_switch = "trouble.htm#trouble_switch" : target = "Topic"
+trouble_start_window = "trouble.htm#trouble_start_window" : target = "Topic"
+trouble_email_noshow = "trouble.htm#trouble_email_noshow" : target = "Topic"
+trouble_no_news2 = "trouble.htm#trouble_no_news2" : target = "Topic"
+trouble_usr_passwd = "trouble.htm#trouble_usr_passwd" : target = "Topic"
+trouble_mail_wzrd = "trouble.htm#trouble_mail_wzrd" : target = "Topic"
+trouble_dialup_messg = "trouble.htm#trouble_dialup_messg" : target = "Topic"
+trouble_news = "trouble.htm#trouble_news" : target = "Topic"
+
+</ID_MAP>

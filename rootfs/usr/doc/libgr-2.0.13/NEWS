@@ -1,0 +1,46 @@
+Version 2.0.13
+
+* png updated to 1.0.96
+
+Version 2.0.12
+
+* pbm, pgm, ppm, pnm updated to netpbm 1 March 94.
+* Now all netpbm programs are included!
+* pngtopnm/pnmtopng added.
+* Modified to build under bash-2.0.
+* Modified to build under glibc-2.0 (linux).
+	
+Version 2.0.9
+
+* jpeg-v6a
+* libpng is installed as 1.0.89, the previous 1.0.2 was a mistake.  Sorry.
+
+Version 2.0.8
+
+* zlib update to 1.0.2
+* png updated to 0.89c
+* added -D_BSD_SOURCE for linux to be compatible with XFree86 (this
+  solves a problem first noticed with xemacs-19.14 which uses
+  -D_BSD_SOURCE because XFree86 does.  Maybe we should all drop
+  this flag?  The problem is that setjump changes because of this 
+  flag.)
+
+==>> NOTE: the shared lib version numbers on zlib have gone down!
+Sorry.  This will confuse ldconfig.  The easiest fix is to just remove
+the old libs.  Better move them somewhere else or rename them just in
+case you later find they're needed.
+
+Version 2.0.5
+
+* jpeg updated to v6
+* new targets for installing some apps (only jpeg has apps so far)
+* new targets for installing man pages
+
+Version 2.0.3
+
+* Makefiles are cleaned up.  Now archive libs are built without -fpic,
+and both shared and archive libs are built with more optimization.
+
+* Header files are also installed by make install.
+
+

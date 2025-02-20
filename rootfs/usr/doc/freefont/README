@@ -1,0 +1,66 @@
+
+Collection of Free ATM Fonts
+----------------------------
+
+This is a collection of 79 freely available fonts. All of them were found in
+the CICA archives for Windows.
+
+Some of them are missing special characters, some only contain capitals,
+some contain special alphabets. Be careful and check!
+
+The collection was motivated by the lack of good fonts for Linux especially X11
+and ghostscript. Scaled bitmaps look really ugly!
+
+Installation for X11
+--------------------
+
+1. Change to /usr/X11/lib/fonts
+
+2. untar the archive freefont-0.10.tar.gz
+
+3. Give the following commands to make X11 accept the new fonts
+
+  xset fp+ /usr/X11/lib/fonts/freefont
+  xset fp rehash
+
+4. The fonts are available under X11.
+Check them out by running "xfontsel" for example.
+
+5. Cleanup. You might erase all licenses in
+/usr/X11/lib/fonts/freefont with
+   rm *.license *.tgz
+but it would be better to have a look at them first...
+
+Installation for Ghostscript
+----------------------------
+1. Change to /usr/lib/ghostscript
+
+2. Save the file "Fontmap"
+e.g.
+   cp Fontmap Fontmap.old
+
+3. copy the new Fontmap from the archive.
+If you have installed it already in X11 do
+   cp /usr/X11/lib/fonts/freefont/Fontmap .
+
+4. Copy necessary fonts to the ghostscript font directory
+   (or use links.)
+
+   cp /usr/X11/lib/fonts/freefont/tempo*pfb font
+   cp /usr/X11/lib/fonts/freefont/baskvl*pfb font
+
+5. Try it out. Groff -Tps should now produce better loocking documents although
+the fonts do not exactly fit. You might want to tune some more. Replace some
+more fonts with Type 1 ones to get a better output.
+
+
+Collection done by:
+  Christoph Lameter, March 22, 1995 clameter@waterf.org
+
+If you have any corrections please tell me! Especially if I missed the
+copyright on one. Some fonts I found did not have a discernable copyright
+and I assumed that it was ok to distribute them.
+
+I have included the licenses/instructions with each font.
+read <font>.license to find out more about a font.
+

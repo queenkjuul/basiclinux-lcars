@@ -1,0 +1,204 @@
+Mon Nov 30 19:26:33 1998  Andrew Macleod <amacleod@cygnus.com>
+
+	* config/tc-ppc.c (ppc_vbyte): New function. 
+	(md_pseudo_table): Use it for "vbyte".
+
+1998-11-15  Philip Blundell  <philb@gnu.org>
+
+	* config/tc-arm.h (obj_fix_adjustable): Don't define.  Suggested
+ 	by Pat Beirne and Scott Bambrough.
+
+Sat Oct  3 19:35:47 1998  Philip Blundell  <philb@gnu.org>
+
+	* config/tc-arm.h [TE_LINUX]: Define ARM_BI_ENDIAN.
+	* config/tc-arm.c: Pass the ELF backend the same flag bits as
+	used for COFF.
+
+Thu Nov  4 03:23:59 1998  Ralf Baechle  <ralf@gnu.org>
+
+	* config/tc-mips.c (macro): Only emit a BFD_RELOC_MIPS_LITERAL
+	when the symbol is in the .lit section.  Required for a.out
+	support.
+	(mips_ip): Fix %HI, %hi and %lo operators.
+
+Sun Sep 27 10:52:52 1998  Robert Andrew Dale <rob@nb.net>
+
+	* config/tc-i386.c, config/tc-i386.h: Add support for AMD
+	3DNow!.
+
+Wed Sep 23 10:21:17 1998  "Brad M. Garcia" <bgarcia@fore.com>
+
+	* configure.in (i[3456]86-*-vxworks*): New target.
+	(mips*-*-vxworks*: New target.
+
+	* configure: regenerated.
+
+Sat Sep  5 17:39:01 1998  Ian Lance Taylor <ian@cygnus.com>
+
+	* ehopt.c (eh_frame_reset): Check for the end of the CIE/FDE. 
+
+Tue Jul 28 08:20:00 1998  H.J. Lu  (hjl@gnu.org)
+
+	* config/tc-i386.c (md_assemble): Don't output
+	WORD_PREFIX_OPCODE if have_data_size_prefix is
+	set from seen_data_size_prefix.
+
+Wed Jul 22 08:01:26 1998  Maciej W. Rozycki <macro@ds2.pg.gda.pl>
+
+	* Makefile.am (install): Remove file only if we will install
+	it.
+
+	* Makefile.in: Regenerated.
+
+Mon Jun 29 08:09:02 1998  H.J. Lu  (hjl@gnu.org)
+
+	* Makefile.in: Regenerated with automake 1.3.
+
+Fri Jun 26 19:09:01 1998  Philip Blundell  <philb@gnu.org>
+
+	* config/tc-arm.c (md_apply_fix3): If building for ELF, cancel out
+	the spurious addition of the section address to relocs.
+
+	* write.c (fixup_segment): Amend change of May 12 to apply for all
+	ARM targets, not just ELF. 
+
+Sat Jun  6 16:51:46 1998  Philip Blundell  <Philip.Blundell@pobox.com>
+
+	* config/obj-elf.c (obj_elf_section): Make `%' a synonym for `@'.
+
+Wed May 27 09:07:22 1998  Ian Lance Taylor <ian@cygnus.com>
+
+	* read.c (s_org): Call md_flush_pending_output if it is
+	defined.
+
+Tue May 26 21:05:00 1998  H.J. Lu  (hjl@gnu.org)
+
+	* config/tc-i386.c (md_assemble): Fix a 16bit addressing typo.
+
+Sat May 23 13:36:29 1998  Philip Blundell  <Philip.Blundell@pobox.com>
+ 
+	* app.c (do_scrub_chars): When building for an ARM/ELF target,
+	inhibit the interpretation of @ as a comment character within a
+	.symver directive.
+
+Tue May 12 18:49:53 1998  Philip Blundell  <philb@gnu.org>
+
+	* write.c (fixup_segment): If using ARM and ELF, don't add the
+	symbol value in again during a relocation.
+
+	* config/tc-arm.c (tc_gen_reloc): Don't put the address of the
+	reloc in the addend field for non-pcrel relocs.
+	(md_apply_fix3): Always emit BFD_RELOC_32 and BFD_RELOC_RVA, not
+	only when pcrel or done.
+
+Tue Apr 28 09:38:33 1998  H.J. Lu  (hjl@gnu.org)
+
+	* config/tc-i386.c (md_assemble): Issue a warning if the
+	JumpAbsolute bit doesn't match.
+	From Alan Modra <alan@spri.levels.unisa.edu.au>:
+	Fix the default address mode checking for push/lcall/ljmp.
+
+Tue Apr 28 06:30:08 1998  Alan Modra <alan@spri.levels.unisa.edu.au>
+
+	* config/tc-i386.c (md_assemble): Fix 16-bit jump.
+
+Mon Apr 27 17:41:38 1998  H.J. Lu  (hjl@gnu.org)
+
+	* config/tc-i386.c (md_assemble): Fix the address mode checking
+	for push/lcall/ljmp.
+
+Fri Apr 24 19:18:26 1998  H.J. Lu  (hjl@gnu.org)
+
+	* config/tc-i386.c (md_assemble): Check if the JumpAbsolute bit
+	in operand matches.
+	(BFD_RELOC_16, BFD_RELOC_16_PCREL): Defined as 0 if
+	BFD_ASSEMBLER is not defined.
+	Check for default address mode for push/lcall/ljmp.
+
+	* config/tc-i386.h (PREFIX_SEPERATOR): Changed to '\\'.
+
+Tue Apr 23 07:46:37 1998  Martynas Kunigelis  <kunimart@pit.ktu.lt>
+
+	* config/tc-i386.h (Prefix): New opcode modifier.
+	
+	* config/tc-i386.c (md_assemble): Check more carefully before 
+	emitting WORD_PREFIX_OPCODE. Ignore "addr16" and "data16" 
+	prefixes in 16 bit mode, as well as "addr32" and "data32" 
+	in 32 bit mode. Support 16 bit memory adressing and 16 bit 
+	offsets for calls and jumps, as well as intersegment calls 
+	and jumps. Support 16 bit base/index registers.
+	
+	* config/tc-i386.c (i386_operand): Allow 16 bit base/index 
+	registers.
+
+Mon Apr 27 19:47:23 1998  Philip Blundell  <philb@gnu.org>
+
+	* config/tc-arm.h (tc_fix_adjustable): New macro; ensure that
+	global objects keep their symbol names.
+	(GLOBAL_OFFSET_TABLE_NAME): Add extra leading underscore for ELF.
+	* config/tc-arm.c (line_separator_chars): Set to ";" for Linux.
+	Support extended syntax for ELF.
+	Patch from Pat Beirne <patb@corelcomputer.com>
+
+Sat Apr 18 16:12:53 1998  Philip Blundell  <Philip.Blundell@pobox.com>
+
+	* config/obj-aout.c (obj_aout_type): Be more liberal about
+	syntax of .type.  Support '%' syntax used by ARM systems.
+	* config/obj-elf.c (obj_elf_type): Likewise.
+
+	* config/tc-arm.c (md_pseudo_table): Delete `weak' and `type' and 
+	let obj-* handle them.  Call cons() directly for .word.
+	(s_weak): Delete now-unused function.
+	(s_type): Likewise.
+	(s_cons): Likewise.
+
+	* config/tc-arm.c (parse_cons_expression_arm): Delete function.
+  	This should be fixed properly in the compiler.
+
+	(TC_PARSE_CONS_EXPRESSION): Delete definition.
+	* config/tc-arm.h (TC_PARSE_CONS_EXPRESSION): Likewise.
+
+Mon Apr 13 07:21:26 1998  H.J. Lu  (hjl@gnu.org)
+
+	* config/tc-i386.c (md_assemble): Emit WORD_PREFIX_OPCODE only
+	when there is an ambiguity or there is an explicit opcode
+	suffix.
+
+Mon Apr  6 08:05:01 1998  H.J. Lu  (hjl@gnu.org)
+
+	* as.c (show_usage): Call binutils_bug_report ().
+	* gasp.c (show_usage): Likewise.
+
+Fri Mar 27 23:58:47 1998  H.J. Lu  (hjl@gnu.org)
+
+	* config/tc-i386.h (ByteOperand, DWordOperand, DWordOperand,
+	OperandSizeMask): New.
+
+	* config/tc-i386.c (md_assemble): Emit WORD_PREFIX_OPCODE only
+	when there is an ambiguity. Check xxxOperand against
+	xxx_OPCODE_SUFFIX when matching the template. Don't invent
+	an opcode suffix if it is not needed.
+
+Thu Dec 25 23:48:54 1997  Philip Blundell  <Philip.Blundell@pobox.com>
+
+	* configure.in (arm-*-netbsd, arm-*-elf, arm-*-linux*): New 
+	targets.
+	(arm-*-riscix): Remove duplicate entry.
+	* config/tc-arm.h: add support for NetBSD/arm and PIC code
+	generation.  Patch by Mark Brinicombe <mark@causality.com> and Rob
+	Black <rob@causality.com>.
+	* config/tc-arm.c: likewise.
+	* configure: Regenerated.
+
+Thu Jun 12 02:51:12 1997  Philip Blundell  <Philip.Blundell@pobox.com>
+
+	* config/tc-arm.c: make '$' a synonym for '#'.
+
+Sat May  3 12:11:43 1997  Philip Blundell  <pjb27@cam.ac.uk>
+
+	From Russell King <rmk92@ecs.soton.ac.uk>:
+	* config/tc-arm.c: allow ';' to separate lines under Linux.
+	* config/tc-arm.h: add support for Linux/ARM.
+	* configure.in: likewise.
+
+	* configure: regenerated.

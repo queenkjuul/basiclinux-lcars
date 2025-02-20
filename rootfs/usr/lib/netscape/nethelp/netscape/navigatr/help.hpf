@@ -1,0 +1,46 @@
+; help.hpf
+; Auto-generated NetHelp project file
+
+Window-Name="Communicator Help"
+Window-Size="425,440"
+NetHelp-Version="2.0"
+<Frame_Group src = "../../NSHIfrm.htm" default_window = "">
+
+<ID_MAP>
+
+nav_view = "nav.htm#nav_view" : target = "Topic"
+nav_openpage = "nav.htm#nav_openpage" : target = "Topic"
+nav_retrace = "nav.htm#nav_retrace" : target = "Topic"
+nav_histsearch = "nav.htm#nav_histsearch" : target = "Topic"
+nav_checksec = "nav.htm#nav_checksec" : target = "Topic"
+nav_checktec = "nav.htm#nav_checktec" : target = "Topic"
+nav_search = "nav.htm#nav_search" : target = "Topic"
+nav_bcreate = "nav.htm#nav_bcreate" : target = "Topic"
+nav_bshort = "nav.htm#nav_bshort" : target = "Topic"
+nav_borg = "nav.htm#nav_borg" : target = "Topic"
+nav_bsearch = "nav.htm#nav_bsearch" : target = "Topic"
+nav_bmulti = "nav.htm#nav_bmulti" : target = "Topic"
+nav_bfresh = "nav.htm#nav_bfresh" : target = "Topic"
+nav_copy = "nav.htm#nav_copy" : target = "Topic"
+nav_save = "nav.htm#nav_save" : target = "Topic"
+nav_print = "nav.htm#nav_print" : target = "Topic"
+nav_tool = "nav.htm#nav_tool" : target = "Topic"
+nav_compbar = "nav.htm#nav_compbar" : target = "Topic"
+nav_font = "nav.htm#nav_font" : target = "Topic"
+nav_color = "nav.htm#nav_color" : target = "Topic"
+nav_component = "nav.htm#nav_component" : target = "Topic"
+nav_home = "nav.htm#nav_home" : target = "Topic"
+nav_track = "nav.htm#nav_track" : target = "Topic"
+nav_lang = "nav.htm#nav_lang" : target = "Topic"
+nav_helper = "nav.htm#nav_helper" : target = "Topic"
+nav_smartbrowse = "nav.htm#nav_smartbrowse" : target = "Topic"
+nav_autoload = "nav.htm#nav_autoload" : target = "Topic"
+nav_cook = "nav.htm#nav_cook" : target = "Topic"
+nav_cache = "nav.htm#nav_cache" : target = "Topic"
+nav_smartup = "nav.htm#nav_smartup" : target = "Topic"
+nav_prox = "nav.htm#nav_prox" : target = "Topic"
+nav_roam_intro = "nav.htm#nav_roam_intro" : target = "Topic"
+nav_roam_profile = "nav.htm#nav_roam_profile" : target = "Topic"
+nav_roam_files = "nav.htm#nav_roam_files" : target = "Topic"
+
+</ID_MAP>

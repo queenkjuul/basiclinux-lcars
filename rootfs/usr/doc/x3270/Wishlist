@@ -1,0 +1,17 @@
+The x3270 Wish List
+
+Here is a list of some of the more interesting suggestions and requests made
+for x3270. You may also take this as a list of functions that are definitely
+not in this version of x3270.
+
+There is no guarantee that anyone is actively working on these, but feel free
+to yourself...
+
+   *  Support for the rest of the extended attributes: field outlining,
+     extended validation, etc.
+   *  Support for GDDM bit-mapped graphics.
+   *  Printer support, i.e., telling the host there is a printer attached to
+     your 3270 and doing something intelligent with the output.
+   *  Support for the IBM IND$FILE file-transfer potocol.
+   *  Data-entry assists like local columnar tabs, automatic line wrap, etc.
+   *  Support for the TN3270E protocol.

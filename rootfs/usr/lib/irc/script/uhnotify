@@ -1,0 +1,67 @@
+# new userhost notify script.  matthew green (mrg@mame.mu.oz.au)
+# $Id: uhnotify,v 1.5 1994/07/25 15:08:31 mrg stable $
+# this is public domain.
+
+# first, we check to see how smart we can be.  newer ircii's can
+# handle multiple nicks with userhost -cmd's.
+
+if (V < 19931229)
+{
+	on ^notify_signon * userhost $$0 -cmd userhost_notify $$$$*
+}
+{
+	on ^notify_signon * userhost_notify_cache $$0
+}
+
+@userhost_notify_count = 0
+
+# how to display the notify signon
+alias userhost_notify if ([$3] != [<UNKNOWN>]) { xecho -level crap *** Signon by $0 \($3@$4\) detected }
+
+
+# what this does, is first check if userhost() has anything useful,
+# and if so, use that, and display it.  the it checks to see if
+# the userhost look up cache is full (5 elements), and if so it
+# runs the cache.  else it adds the nick to the cache, and puts
+# a time to run the cache (default 10 seconds).
+
+alias userhost_notify_cache
+{
+	if ([] == userhost())
+	{
+		@userhost_notify_count = userhost_notify_count + 1
+		if (userhost_notify_list == [])
+		{
+			timer 10 uncache_notify
+			@userhost_notify_list = [$0]
+		}
+		{
+			@userhost_notify_list = userhost_notify_list ## [ $0]
+			if (5 == userhost_notify_count)
+			{
+				uncache_notify
+			}
+		}
+	}
+	{
+		@uhn.userhost = userhost()
+		@uhn.user = left($index(@ $uhn.userhost) $uhn.userhost)
+		@uhn.host = mid(${index(@ $uhn.userhost) + 1} 999 $uhn.userhost)
+		userhost_notify $0 dummy dummy $uhn.user $uhn.host
+		assign -uhn.userhost
+		assign -uhn.user
+		assign -uhn.host
+	}
+}
+
+# if the cache isn't null, it sends the userhost -cmd away with the
+# full cache, and resets the right bits.
+alias uncache_notify
+{
+	if ([] != userhost_notify_list)
+	{
+		userhost $userhost_notify_list -cmd userhost_notify $$*
+		^assign -userhost_notify_list
+		@userhost_notify_count = 0
+	}
+}

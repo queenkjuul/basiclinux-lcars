@@ -1,0 +1,4 @@
+#define background_width 4
+#define background_height 4
+static unsigned char background_bits[] = {
+   0xfe, 0xfd, 0xf7, 0xfb};

@@ -1,0 +1,44 @@
+
+This version of X-CD-Roast includes the CDParanoia patch by
+Adrian Knoth <adi@erfurt.thur.de>.
+I reworked the patch heavily to intergrate it more nicely in X-CD-Roast.
+
+
+X-CD-Roast itself doesn't support as much CD-Readers to read tracks
+from Audio-CDs as CDParanoia does. So when you have trouble to get
+correct audio-tracks via X-CD-Roast you can try to use CDParanoia
+instead.
+
+First you have to download and install CD-Paranoia:
+
+	http://www.mit.edu/afs/sipb/user/xiphmont/cdparanoia/
+
+
+Then start X-CD-Roast in CDParanoia mode:
+
+	xcdroast -usecdparanoia 
+
+If this is the first start in CDParanoia-mode X-CD-Roast will write a
+sample configuration file in your config-directory. 
+You have then edit this file manually to reflect the changes that are needed
+for your configuration. (This config-file should be self-explaining)
+
+The next time X-CD-Roast will use CDParanoia instead of the built-in readcdda.
+As a result of this, the progressbar won't work any longer and you can't
+play any audio-tracks to the soundcard. Also the Read-Speed-Option and all
+Offset-Options will be ignored. 
+(Thats because this mode is experimental - a cleaner implementation will
+follow)
+
+In nonroot-Mode only root can change the CDParanoia config. All users
+automatically will use the config created by root.
+
+Note: When you use CDParanoia to read audio-tracks from ATAPI-Devices
+      its not necessary to install the ATAPI-SCSI-Emulation in the 
+      kernel, which is needed to use ATAPI-CD-Writers. But if you do use
+      the SCSI-Emulation you can try the standard-X-CD-Roast Audio-Read-Mode
+      "ATAPI" or also the SCSI-Setting for CDParanoia. 
+
+Good luck and lots of thanx to Adrian Knoth,
+
+25.11.98 Thomas Niederreiter	

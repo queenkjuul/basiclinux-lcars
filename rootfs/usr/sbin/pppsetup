@@ -1,0 +1,18 @@
+#!/bin/sh 
+insmod slhc
+insmod ppp
+
+e3pi /var/eznet/eznet.conf
+e3pi /etc/resolv.conf
+
+clear
+echo -n "[40;36;1m"
+echo "---------------------------------------------------------"
+echo "ppp-on      dials your ISP and establishes PPP connection"
+echo "links       starts browser"   
+echo "ppp-off     terminates PPP connection"
+echo "---------------------------------------------------------"
+echo "[0m"
+
+
+   

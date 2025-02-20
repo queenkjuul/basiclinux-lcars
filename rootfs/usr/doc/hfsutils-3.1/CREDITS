@@ -1,0 +1,44 @@
+
+hfsutils - tools for reading and writing Macintosh HFS volumes
+Copyright (C) 1996, 1997 Robert Leslie
+
+$Id: CREDITS,v 1.5 1997/10/15 20:50:05 rob Exp $
+
+===============================================================================
+
+Author: Robert Leslie <rob@mars.org>
+
+The HFS globbing code was inspired by similar code to perform filename
+globbing in Tcl by John Ousterhout.
+
+The code to perform BinHex encoding/decoding is based on the definition of
+BinHex 4.0 as written by Peter N Lewis.
+
+The code for `hls' is loosely based on the GNU implementation of `ls'.
+
+Thanks to the following people for their support and various contributions to
+this project:
+
+  Howard Bergstrom <bergy@vnet.ibm.com>
+  Marcus Better <f96-bet@nada.kth.se>
+  Cees de Groot <C.deGroot@inter.nl.net>
+  Andy Fyfe <andy@hyperparallel.com>
+  Paul H. Hargrove <hargrove@sccm.Stanford.EDU>
+  George Hoffman <geh@be.com>
+  Jack Howarth <howarth@nitro.med.uc.edu>
+  Geoff Hulten <ghulten@ccs.neu.edu>
+  Richard C.S. Kinne <kinnerc@snymorva.cs.snymor.edu>
+  Marc Lebas <marc-lebas@calvanet.calvacom.fr>
+  Clifford T. Matthews <ctm@ardi.com>
+  Markus Mayer <may@inflab.tuwien.ac.at>
+  Andrew Ross <andrew.ross@acm.org>
+  Nick Stephen <stephen@gr.osf.org>
+  Ray Van Tassle <rayvt@comm.mot.com>
+  Thomas B. White <tbwhite@hookup.net>
+
+And thanks of course to the engineers of the truly fascinating HFS filesystem
+for giving me a challenge. May your extents overflow file never become so
+fragmented that you cannot locate its own extents.
+
+===============================================================================
+

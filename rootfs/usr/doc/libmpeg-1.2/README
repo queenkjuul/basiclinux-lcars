@@ -1,0 +1,172 @@
+			   The MPEG Library
+
+		     Version 1.2 - 17 October, 1995
+
+MPEG decoding engine (c) 1992 The Regents of the University of California
+Front end (c) 1994-95 Gregory P. Ward (greg@bic.mni.mcgill.ca)
+
+The MPEG Library is a collection of C routines to decode MPEG movies
+and dither them in a variety of colour schemes.  Most of the code in
+the library comes directly from the Berkely MPEG player, an
+X11-specific implementation that works fine, but suffers from minimal
+documentation and a lack of modularity.  A front end to the Berkeley
+decoding engine was developed by Greg Ward at the Montreal
+Neurological Institute in May/June 1994 to facilitate the development
+of an MPEG player specifically for Silicon Graphics workstations; the
+decoding engine together with the MNI front end constitute the MPEG
+Library.
+
+
+AVAILABILITY
+============
+
+Both the above-mentioned SGI-specific MPEG player (glmpeg_play) and
+the MPEG Library itself are available from ftp.mni.mcgill.ca, in
+/pub/mpeg.  Several other MPEG-related goodies are gathered here as
+well, in particular the MPEG encoder/decoder from the Portable Video
+Research Group at Stanford University.
+
+The original Berkeley decoder is available via anonymous ftp from
+mm-ftp.cs.berkeley.edu, in the directory /pub/multimedia/mpeg/play.
+
+
+BUILDING THE LIBRARY
+====================
+
+New with version 1.2 -- a configure script!  This should remove most
+of the problems people have had, as well as the headache of editing
+the Makefile.  In the most general case, all you have to do is:
+
+    ./configure
+    make
+
+However, if you are building the library exclusively to use with
+ImageMagick, you can save a bit of code size (about 60k on most RISC
+platforms by my experience) by omitting most of the fancy dithering
+methods supplied with the library.  In this case, just run
+"./configure --disable-dither", and you will build a reduced version
+of the library.  This is not necessary to compile or link successfully
+-- it'll just save a little space.
+
+Also, if you plan to link with the HDF library, or with the
+Independent JPEG Group's JPEG library, there is a bit of code overlap
+with the MPEG Library.  If you configure the MPEG Library with
+"./configure --disable-jpeg", then the redundant code will not be
+included in the MPEG Library, making an error-free link possible.
+Note however that this will result in a crippled version of the MPEG
+Library -- it will *not* link successfully unless you also link with
+the JPEG or HDF libraries.  If you need the MPEG Library for both HDF
+and non-HDF (or JPEG and non-JPEG) applications, I'm afraid you'll
+need to keep two copies of the MPEG Library on hand.  (Sorry.)
+
+Also, you can *not* build the library itself with a non-ANSI compiler.
+The configure script makes a good attempt to find an ANSI compiler: on
+SGI platforms, it uses `cc'; on HP-UX platforms, it uses `cc -Aa'; on
+all other platforms, it looks for gcc.  If gcc isn't found, it uses
+the native C compiler (cc) but first makes sure that cc is fairly
+ANSI-ish.  If not, it dies -- you'll need to get gcc for your platform
+in order to build the library.
+
+However, it is possible to build programs that *use* the library with
+a non-ANSI compiler, as the header file mpeg.h has the requisite
+kludges that allow it be compiled with either ANSI or non-ANSI
+compilers.
+
+Anyone who has problems configuring or compiling the MPEG Library, or
+linking it with other software should contact me
+(greg@bic.mni.mcgill.ca).
+
+
+HOW TO USE THE LIBRARY
+======================
+
+There is a short but (hopefully) complete document in the "doc/"
+subdirectory of the MPEG Library distribution.  This is supplied in
+both PostScript form and as LaTeX 2e source.  If you have any problems
+with the documentation, please let me know -- this is a first draft,
+and I'm open to suggestions on how to improve it.
+
+
+EXAMPLES AND TESTING
+====================
+
+For a very simple MPEG player that uses the SGI Graphics Library to
+display frames, take a look at easympeg.c, included in the "extras/"
+subdirectory of this distribution.  (If you configured and built the
+library on an SGI platform, easympeg should have been automatically
+built for you.)  Even if you don't have an SGI, the source code can be
+instructive -- the calls to GL functions are not too intrusive, and
+not too hard to figure out either.
+
+There is also a simple, portable program to test the Library:
+extras/mpegtest.c.  It is similar in structure to easympeg, with any
+display-related code removed, and with the addition of code to time
+the playback and to compute simple image checksums.  The timing code
+may be of interest (eg. to answer questions such as "Can I achieve a
+playback rate of X on platform Y?" or "How much faster will playback
+be if I dither to shades of gray instead of full 24-bit colour?"), and
+the checksum code provides a way to ensure that the library returns
+identical results across platforms.  Run "mpegtest <mpegfile>" to just
+get timing information on the MPEG in <mpegfile>; add the "-checksum"
+option to get checksum information; add "-dither <mode>" to try out
+various dithering modes.  The possible values of <mode> are: "hybrid",
+"hybrid2", "fs4", "fs2", "fs2fast", "2x2", "gray", "fullcolor",
+"none", "ordered", "mono", "mono_threshold", "ordered2", and
+"mbordered".
+
+A tiny MPEG stream, test.mpg, is included with the distribution.  You
+can try mpegtest and easympeg on it, but there are some known
+problems: easympeg tends to dump core on this file, and mpegtest
+doesn't always return the same checksums across different platforms.
+Hopefully, future releases will address whatever bugs underly these
+problems!
+
+I have also written glmpeg_play, a full-fledged MPEG player for SGI
+platfoms (with frame-buffering, interactive controls, dynamic zooming,
+etc.).  It is available via anonymous ftp as explained above.
+
+
+ACKNOWLEDGEMENTS
+================
+
+Thanks to John Cristy for making the MPEG Library an optional add-on
+to ImageMagick, providing me with more free publicity (and lots of
+traffic on our ftp site!) than I could have imagined, and for
+suggesting some important fixes early on.  Also to Magnus Heldestat
+for providing patches to speed up full-colour dithering; and to Andrew
+Kuchling for extensive testing of beta versions of 1.2 on a variety of
+Unix platforms.
+
+
+COMPLETE LACK OF WARRANTY
+=========================
+
+This software is supplied without even the faintest shred of assurance
+that it works in its entirety.  
+
+Copyright (c) 1994-95 by Gregory P. Ward.
+All rights reserved.
+
+This file is part of the MNI front end of the Berkeley MPEG decoder.
+
+Permission to use, copy, modify, and distribute this software and its
+documentation for any purpose, without fee, and without written agreement is
+hereby granted, provided that the above copyright notice and the following
+two paragraphs appear in all copies of this software.
+
+IN NO EVENT SHALL THE AUTHOR BE LIABLE TO ANY PARTY FOR DIRECT,
+INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES ARISING OUT
+OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN IF THE
+UNIVERSITY OF CALIFORNIA HAS BEEN ADVISED OF THE POSSIBILITY OF
+SUCH DAMAGE.
+
+THE AUTHOR SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING, BUT
+NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
+FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER
+IS ON AN "AS IS" BASIS, AND THE AUTHOR HAS NO OBLIGATION TO PROVIDE
+MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.  
+
+Please drop me a line if you use the MPEG Library, either successfully
+or not.  And if you use it unsuccessfully and find a nice, easy fix,
+do please let me know about it!  My email address is
+greg@bic.mni.mcgill.ca.

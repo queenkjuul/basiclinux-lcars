@@ -1,0 +1,235 @@
+Changes since 0.94 
+------------------
+21.5.96: getcdtoc is using now an ioctl to get the toc instead of using
+         raw scsi-calls 
+23.5.96: Corrected a bug in the select-image-partition-menu when you are
+	 using tix4.0.3 or above.
+         Added some points the the README-file.
+	 Fixed display of read-errors in read-image-display.
+25.5.96: Changed checkcd to work with an ioctl instead of raw-scsi-calls.
+	 Several fixes to get around some changes in tix-versions greater
+	 than 4.0.3.
+	 Set "eject"-default in write-menues to "on".
+27.5.96: Changed "mydd" and "mycmp" to set read-ahead to zero when reading
+	 the last few blocks of a CD. This fixed the read-errors at end of
+	 a CD.
+
+Changes since 0.94a
+-------------------
+01.6.96: Rewrote readcdda to use the ioctl to get the TOC of the CD.
+	 Hope this fixes some problems..
+	 Typo in MkCopy.tk that caused to break HP support fixed.
+	 Fixed some errors when using certain Tix-versions.
+07.6.96: New compile-time define to fix some strange errors with
+	 readcdda for some persons.
+13.6.96: Working again with Tix4.0b3 as included in RedHat-Distributions.
+	 Warn user when /dev/sr-devices are missing.
+
+Changes since 0.94b
+-------------------
+18.6.96: Included "syscheck"-script to check hardware (and make bugreports
+	 easier)
+03.7.96: A lot of grammatically fixes in the README-file and new information.
+08.7.96: Fixed bug that caused an interruption while writing when using
+	 a Yamaha-Writer
+	 Build in some system-checks to make error-hunting easier.
+
+Changes since 0.95
+------------------
+01.11.96: Small fix to "syscheck"-script.
+	  Fixed bugs in getpartsize.c, scsiinq.c and readcdda.c.
+
+
+Changes since 0.95a
+-------------------
+29.12.96: Fix to some minor bugs.
+	  Usage of cdwrite-2.1 for Sony and Plasmon-Support
+	  Added a few vendor strings to readcdda to read audio-tracks
+	  from more drives. 
+	  Audio-Read from SONY is not implemented yet... 
+01.01.97: Fix Audio-Write for Sony
+05.01.97: Implemented Audio-Read-Speed-Select for Philips/HP/... and Yamaha
+	  Try to use different Speed-Settings when you have problems with
+	  the Audio-Quality.
+	  Added a statically linked binary of tcl/tk/tix. NO NEED TO
+	  INSTALL TCL/TK/TIX ANYMORE!
+12.01.97: Merged Sony-Eject Code from David Gates
+18.01.97: Screwed up merging...Sony should work again.
+	  Optical Devices are also SCSI-Disks -> Thanx to Don Russell
+23.01.97: Fixed mount-behavior when the image-partition is changed when
+	  already mounted.
+	  Added Error-Message when no SCSI-Devices were found.
+29.01.97: Added Audio-Sony-Support from David Gates
+
+Changes since 0.95b
+-------------------
+02.03.97: Removed explicit PLASMON 4220 Support and switched back
+	  to normal cdwrite with SONY-Patches.
+	  (Use Philips-Mode for the plasmon 4220)
+	  Add RICOH-Support to readcdda. (May work or not)
+12.03.97: Fix error when using an unknown partition-id.
+	  Log all command-strings of external spawned processes
+	  (helps debugging).
+	  Added icon when windows are iconified. (You can also use
+	  the color-icon icons/xcdricon.xpm when your window-manager
+	  supports it)
+18.03.97: Include new mkisofs-1.10.
+
+Changes since 0.95c
+-------------------
+29.05.97: Completely rewritten GUI, tons of new features, mkisofs-1.11
+	  included. Readcdda enhanced - should now work with all available
+	  SCSI-CD-ROMs. IDE-Support for HDs and CD-Roms. Supports up 64
+	  SCSI-Devices and 8 IDE-Devices. Allows Creation of Images on
+	  any path you like! An extra image-partition is NO long necessary!
+	  Uses now MSDOS-conform filenames for images and audiofiles.
+ 	  And lots more! 
+
+05.06.97: Now able to run without a CD-Rom or CD-Writer (Useful if
+	  only want to master something).
+
+11.06.97: Added Button-Highlighting. Fixed Audio-Read-Mode-Selection.	
+
+Changes since 0.96
+------------------
+19.07.97: No longer uses the charter-font. Use "install" instead of
+          "cp" at "make install". Allow optical scsi-devices as image-
+	  devices.
+20.07.97: Image-Size calculation now very precise. Quick-Copy now warns
+	  when you try to copy a ISO/Mac-HFS-CD. Allow changing of write-
+	  speed in all write-menus. 
+26.07.97: Added a new Makefile-Option to create a dynamically linked
+	  xcdroast-binary. Some updates of the documentation.
+
+Changes since 0.96a
+-------------------
+27.08.97: Fix titlescreen-font problem, audio-info displayed contents
+          of data-cdrom, fix "extra characters after close-quote"
+          error in the setup. Fix "Select All" for CD-Extra.
+28.08.97: Fix read last audio-track on CD-Extra.
+	  Added option to listen to the audio-tracks while recording them.
+29.08.97: Added option to save window-positions on the desktop.
+30.08.97: Show now track-sizes when copying an ISO/HFS-CD, double-click
+          on data-track in cd-information-window shows cd-contents.
+31.08.97: Prepared some of the source-code for a linux-alpha-port.
+          I need some assistance with that.
+
+Changes since 0.96b
+-------------------
+11.10.97: Use now cdrecord as write-program: First steps implemented.
+          Dont show disclaimer at each startup, if not wanted so.
+	  Fix audio-play windows autoplacement.
+12.10.97: Add Eject-CD button and Delete-Images Button in Copy-Data-Menu.
+          Show errors even in small-process-view window.
+	  cdrecord support for data-cd done.
+17.10.97: chown all files generated by XCDRoast to the real uid and gid.
+	  New Audio-Swap-Option for cdrecord. cdrecord-support fully 
+	  implemented now. Audioread from TEAC-Drives should work now.
+	  Made Mountcode more intelligent, detects busy mountpoints.
+18.10.97: Include the new mkisofs-1.11.1.
+          Release of beta1.
+25.10.97: Mixed-Mode-Tracksize calculation fixed. Added Debug-switch.
+29.10.97: Upgrade to Tcl/Tk 8.0.  Release of beta2.
+31.10.97: Added more debug-output.  Release of beta3.
+07.11.97: Fixed cdrecord install script. Fix Verify-Data-Track -> It accessed
+	  the Data-Read-Device instead of the Audio-Read-Device.
+	  Fixed IDE-CDROM lock problem. Cleanup Makefile.
+08.11.97: Rewrote subprocess handling, cdrecord-wont-write-bug seems to
+	  be fixed now. Added a mini-icon in the lib/logo directory.
+	  Added experimental audio-read-speed-select for SCSI-3/MMC-Drives.
+	  Release of beta4.
+06.12.97: Included ET80b2 into X-CD-Roast distribution.
+	  Warn user when he tries to copy a mixed-mode CD with copy-data-CD.
+	  Fix write speed select with zero speed. New compile options
+	  for playcdda...perhaps this will help some people.
+
+Changes since 0.96c
+-------------------
+20.12.97: Base partition-code on sfdisk 3.06, fix bug when device-name
+	  contained ",[ or ]. Make readcdda and playcdda working with
+	  glibc again. Included cdrecord-1.6a7.
+21.12.97: Wrote configure-script to make compiliation easier. Detect if
+          sg-module is loaded. Warn user when the cdrecord-scsipatch
+	  is not installed and more than one scsi-host is present. 
+	  Let setup check if the user-entered paths are valid.
+	  Some minor fixes here and there....
+	  Release of Beta1	
+25.12.97: Allow to set the library-directory of xcdroast from
+	  the configure-script. Rewrite of configure-script.
+27.12.97: Updated documentation. Minor fixes.
+01.03.98: Started again to work on X-CD-Roast. Included cdrecord-1.6a11
+	  and mkisofs-1.12b2. Added Joliet-Support. Various minor fixes.
+03.03.98: Added Delete-Image to Master-Menu. Fix image-path-control in
+	  Setup. Fix generic-scsi-module detection. Included new
+	  icons by Tomi Sarvela <ts@@hartwall.fi>. Updated README.Compile
+08.03.98: Fixed mkisofs-error. Support for cdrecord reload-medium-message.
+	  Experimental support to write .wav and .au audio-files.
+	  Small fixes.
+	  Release of Beta4
+18.04.98: Include final cdrecord-1.6 and mkisofs-1.12b3.
+	  Some code cleanups (should compile fine on alpha now).
+09.05.98: fix Ricoh MP2600S audio-byte-order and Philips Omniwriter 
+	  read audio support. (thanx to Ondrej Popp <ondrej@geocities.com>)
+	  BuildRoot-RPM support by Jon Klaren <jklaren@qualcomm.com>
+
+Changes since 0.96d
+-------------------
+
+          --> changes from non-root-patch by Till Kamppeter <--
+
+09.09.98: Make possible the safe usage of X-CD-Roast by nonroot users. If
+          the caller is not root, he cannot enter the 'HD-Setup' screen,
+          so he cannot delete hard disks by selecting wrong partitions. This
+          part of the configuration he overtakes of root's configuration. He
+          also cannot define image-partitions by editing the config file 
+          directly, his personal settings here are ignored. He only can choose
+          out of the image partitions defined by root on the 'Master Image'
+          screen. Because paths for the image files were already ignored before
+          it is impossible for the user to write the image into a system
+          directory or even overwrite system files.
+          It is also easier to get started for an unexperienced user, because
+          a non-root user without own configuration file automatically 
+          overtakes root's configuration, and so need not to configure 
+          X-CD-Roast at the first start.
+03.10.98: Improved the security for non-root usage. Disabled the command line
+          options '-libdir' and '-configdir' for non-root users, and switched
+          to the effective user ID 'root' only for CD access, so the user 
+          only can make CD images of data which he is permitted to read and
+          he cannot overwrite system files with the log file.
+08.11.98: Moved root's configuration file to the library directory of xcdroast
+          (default: /usr/local/lib/xcdroast-0.96d/config). So if the home 
+          directory of root (normally /root) is desired to be not readable for
+          normal users the non-root X-CD-Roast works anyway.
+
+          --> end of changes from non-root-patch by Till Kamppeter <--
+
+21.11.98: After a long, long break I decided to add the most useful patches
+	  and bugfixes I received so far. No really new features in this
+	  release, but the use of the new cdrecord-1.6.1 and the fixes
+	  seemed to make it worth. 
+	  Included cdrecord-1.6.1 and mkisofs-1.12b4.
+	  Include tkpriv-error-patch from Mark Burton <markb@ordern.com>.
+	  Include suse-aware configure-script by Michael Gernoth 
+	  <michael.gernoth@fen.baynet.de>
+	  Fix zombie-processes of playcdda leftover by play-track
+	  Try to fix the 99% verify-problem. Please report if there are
+	  still any problems.
+	  Add experimental patch use use cdparanoia as audio reader by
+	  Adrian Knoth <adi@erfurt.thur.de>
+	  (activate with "-usecdparanoia path" switch).
+	  Load-Bug concerning mastertype.def fixed.
+	  Fix problem when the $-char was used in a scsi-id-string.
+22.11.98: Included non-root-patch by Till Kamppeter 
+          <till.kamppeter@theo.phy.uni-bayreuth.de>.
+          Start X-CD-Roast as root once with the -nonroot switch to
+	  activate that mode (See README.nonroot).
+23.11.98: Included ATAPI-Patch for readcdda by Deti Fliegl <deti@gmx.de>.
+          (Set Audio-Read-Mode to "ATAPI" in the Setup)
+25.11.98: New configure-option "--nosuse" to allow to use self-compiled
+	  tcl/tk/tix-libs even on a SuSE-System. 
+	  Remove "Save Process-Output"-Options in nonroot-mode. It may
+	  be possible that these can allow overwriting of system-files.
+	  Reworked the CDParanoia-Support. Much nicer now.
+	  Try to fix the "X Error of failed request:  BadWindow (invalid 
+	  Window parameter)"-Error when selecting a Image-Partition in the
+	  Setup. (This is a TCL-Error - don't know what to do about it)

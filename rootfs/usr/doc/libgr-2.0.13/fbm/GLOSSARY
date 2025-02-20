@@ -1,0 +1,21 @@
+bitmap	An image composed of binary pixels (black & white)
+
+grayscale
+	An image composed of gray levels (using 2 to 8 bits, usually
+	8 bits).  May be mapped or unmapped.
+
+RGB, 24bit
+	An image which contains 3 8bit values of red, green, and
+	blue for each pixel.  They are by definition unmapped.
+
+mapped image, mapped color image
+	A mapped image contains a single plane of values, 1 to 8 bits
+	(usually 8, although 4-7 are also found), and a colormap
+	which has three vectors of color values for red, green and
+	blue.
+
+unmapped image
+	Either 8 bit grayscale or 24bit (RGB) color.
+	The unmap
+
+	

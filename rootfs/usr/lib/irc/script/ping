@@ -1,0 +1,7 @@
+# the ping alias is obsolete
+
+eval echo *** Ping aliases and ONs are obsolete.  The ircII2.2 client
+eval echo *** has a PING command built in.  Use it instead.  Encourage
+eval echo *** your friends to upgrade their clients.
+eval echo *** To load the old ping script  /load oldping
+eval echo *** the name of the alias has changed to OPING as well

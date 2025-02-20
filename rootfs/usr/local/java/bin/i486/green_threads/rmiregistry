@@ -1,0 +1,24 @@
+#!/bin/sh
+
+#
+# source a script that extracts RUNTIME_ARGS and APP_ARGS
+#
+. `dirname $0`/.extract_args
+
+if [ -n "$NS_JAVA" ]
+then
+    progsuffix=_ns
+elif [ -n "$DYN_JAVA" ]
+then
+    progsuffix=_dyn
+fi
+
+#
+# Run the registry
+#
+if [ -f `dirname $0`/java ]
+then
+  `dirname $0`/java$progsuffix $RUNTIME_ARGS sun.rmi.registry.RegistryImpl $APP_ARGS
+else
+  `dirname $0`/jre$progsuffix $RUNTIME_ARGS sun.rmi.registry.RegistryImpl $APP_ARGS
+fi

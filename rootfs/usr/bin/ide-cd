@@ -1,0 +1,5 @@
+#!/bin/sh
+
+modprobe cdrom
+modprobe isofs
+modprobe ide-cd

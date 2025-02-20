@@ -1,0 +1,9 @@
+! Copyright (c) 1990-1997  Michael Sandrof, Troy Rollo, Matthew Green,
+! and other ircII contributors.
+!
+! All rights reserved.  See the HELP IRCII COPYRIGHT file for more
+! information.
+!
+Usage: NOTE COUNT [&<passwd>] [+|-flags] [#<ID>] <nick!username@host>
+  Displays the number of messages sent from your nick and username. See
+  HELP LS for more info. See HELP FLAG for more info about flag setting.

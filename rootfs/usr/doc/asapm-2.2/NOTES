@@ -1,0 +1,28 @@
+For all:
+	I cannot check if the nice feature
+	that shows the time left until the total
+	discharge works properly because it is
+	not supported by my apmd. 
+	Let me know if something goes wrong.
+
+For FreeBSD users:
+	I cannot check if all the features
+	work correctly. All I 've got is Linux.
+	Let me know if something goes wrong.
+
+About reactions to power events:
+	You can execute lots of stuff in asapm as
+	reactions to the APM events. Try not to 
+	exaggerate. For example, you can run hdparm
+	utility but read the documentation - there
+	is a danger of wiping your disk if you 
+	specify incorrect parameters!
+	I implemented just a few possible reactions
+	out of many. I only needed to suspend my
+	computer when the power goes too low (I
+	happened to leave my computer running on
+	the battery and go to sleep :-( already)
+	so consider I overdid what I wanted. If you
+	feel inclined you can extend the reactions
+	almost endlessly.
+

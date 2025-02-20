@@ -1,0 +1,75 @@
+!
+! XXgdb 1.08 Application defaults file with NEW_INTERFACE
+! (derived from Xdbx 2.1 app-defaults)
+
+*background: 				snow1
+*foreground: 				black
+*fileWindow*background:			snow2
+*messageWindow.background:		snow2
+*commandWindow.background: 		snow2
+*Scrollbar.foreground: 			black
+
+XDbx.geometry:				+0+0
+*allowShellResize:			True
+*borderWidth:				1
+*font:					fixed
+*vpane.width:                      	550
+*fileWindow*font:     			variable
+*fileLabel.width:     			500
+*lineLabel.width:     			50
+*sourceShell.geometry:          	550x260+0+380
+*sourceForm.top:                   	ChainTop
+*sourceForm.bottom:                	ChainBottom
+*sourceForm.left:                  	ChainLeft
+*sourceForm.right:                 	ChainRight
+*sourceForm.fromVert:              	fileWindow
+*sourceWindow.width:               	558
+*sourceWindow.height:              	220
+*sourceWindow.leftMargin:          	35
+*sourceWindow.scrollHorizontal:		whenNeeded
+*sourceWindow.translations:		#override \n\
+	<Btn1Down>:     SelectStart() SelectWord() \n\
+	Shift<Btn1Up>:  Update(warp) SelectEnd() PrintSelection() \n\
+	<Btn1Up>:       Update(warp) SelectEnd() \n\
+	<Key>Down:      next-line() Update()\n\
+	<Key>Up:        previous-line() Update() \n\
+	Ctrl<Key>L:     redraw-display() Update() \n\
+	Ctrl<Key>N:     next-line() Update() \n\
+	Ctrl<Key>P:     previous-line() Update() \n\
+	Ctrl<Key>V:     next-page() Update() \n\
+	Ctrl<Key>Z:     scroll-one-line-up() Update() \n\
+	Meta<Key>V:     previous-page() Update() \n\
+	Meta<Key>Z:     scroll-one-line-down() Update() \n\
+	:Meta<Key>\>:   end-of-file() Update() \n\
+	:Meta<Key>]:    forward-paragraph() Update() \n\
+	:Meta<Key>[:    backward-paragraph() Update()
+*messageWindow*font:  			variable
+*messageWindow.min:  			30
+*messageWindow.max:  			30
+*dialogWindow.preferredPaneSize:	240
+*dialogWindow.resizeToPreferred:	True
+*dialogWindow.translations:		#override \n\
+	<Btn1Down>:     SelectStart() SelectWord() \n\
+	Shift<Btn1Up>:  SelectEnd() PrintSelection() \n\
+	<Btn1Up>:       SelectEnd() \n
+*commandShell.geometry:            	190x370+590+0
+*commandWindow.hSpace:			6
+*commandWindow.vSpace:			6
+*Command.height:                   	20
+*Command.width:                    	80
+*List.columnSpacing:               	10
+*displayShell.geometry:            	+590+450
+*displayWindow.top:                	ChainTop
+*displayWindow.bottom:             	ChainBottom
+*displayWindow.left:               	ChainLeft
+*displayWindow.right:              	ChainRight
+*displayWindow.width:              	300
+*displayWindow.height:             	100
+*displayWindow.scrollVertical:		whenNeeded
+*displayWindow.scrollHorizontal:	whenNeeded
+*displayWindow.translations:		#override \n\
+	<Btn1Down>:             SelectStart() SelectWord() \n\
+	Shift<Btn1Up>:          SelectEnd() PrintSelection() \n\
+	<Btn1Up>:               SelectEnd() \n
+*popup*showGrip:  			False
+*bindings:                         	emacs

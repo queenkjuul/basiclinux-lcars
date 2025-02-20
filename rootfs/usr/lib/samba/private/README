@@ -1,0 +1,11 @@
+
+For instructions on setting up your smbpasswd file, see:
+
+/usr/doc/samba-2.0.3/docs/textdocs/ENCRYPTION.txt
+
+If you're having trouble connecting from Win95 and Win98 clients, you might
+need to edit to client registry to use plain text passwords.  See this
+file for details:
+
+/usr/doc/samba-2.0.3/docs/textdocs/Win95.txt
+

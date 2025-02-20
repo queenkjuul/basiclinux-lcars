@@ -1,0 +1,7 @@
+# This is the file for the customizable popupmenu
+
+XTerm:xterm -sb -title xterm -e /bin/ksh:1
+Compress:gzip %s:0
+Uncompress:gunzip %s:0
+Show File:xmore %s:0
+Edit File:xedit %s:1

@@ -1,0 +1,18 @@
+Sun Apr 21 16:25:43 1996
+
+This is a completely re-written apmd for Linux.  It will work with 1.3.58
+kernels, which have a new format for /proc/apm, and with older kernels.  I
+have severely limited time to work on APM -- please do *NOT* send me mail
+about how to use these utilities with older kernels.  If you want to use
+these utilities with a production kernel, please wait until 2.0.x comes out
+-- since we are in a code freeze, it is only a waste of time to
+use these utilities or the APM patches with 1.2.x.
+
+If you have bug reports, please include patches which fix them -- chances
+are that I will not be able to produce your specific bug on my system.
+
+apm is a stand-alone utility which prints the /proc/apm information in a
+nice format.
+
+xapmd is a little X utility that provides a bar graph of the battery
+status.

@@ -1,0 +1,45 @@
+*asm:
+%{V} %{v:%{!V:-V}} %{Qy:} %{!Qn:-Qy} %{n} %{T} %{Ym,*} %{Yd,*} %{Wa,*:%*}
+
+*asm_final:
+%{pipe:-}
+
+*cpp:
+%(cpp_cpu) %[cpp_cpu] %{fPIC:-D__PIC__ -D__pic__} %{fpic:-D__PIC__ -D__pic__} %{posix:-D_POSIX_SOURCE} %{pthread:-D_REENTRANT}
+
+*cc1:
+
+
+*cc1plus:
+
+
+*endfile:
+%{!shared:crtend.o%s} %{shared:crtendS.o%s} crtn.o%s
+
+*link:
+-m elf_i386 %{shared:-shared}   %{!shared:     %{!ibcs:       %{!static: 	%{rdynamic:-export-dynamic} 	%{!dynamic-linker:-dynamic-linker /lib/ld-linux.so.2}} 	%{static:-static}}}
+
+*lib:
+%{!shared: %{mieee-fp:-lieee} %{pthread:-lpthread} 	%{profile:-lc_p} %{!profile: -lc}}
+
+*libgcc:
+-lgcc
+
+*startfile:
+%{!shared:      %{pg:gcrt1.o%s} %{!pg:%{p:gcrt1.o%s} %{!p:crt1.o%s}}}   crti.o%s %{!shared:crtbegin.o%s} %{shared:crtbeginS.o%s}
+
+*switches_need_spaces:
+
+
+*signed_char:
+%{funsigned-char:-D__CHAR_UNSIGNED__}
+
+*predefines:
+-D__ELF__ -Dunix -Di386 -Dlinux -Asystem(unix) -Asystem(posix) -Acpu(i386) -Amachine(i386)
+
+*cross_compile:
+0
+
+*multilib:
+. ;
+

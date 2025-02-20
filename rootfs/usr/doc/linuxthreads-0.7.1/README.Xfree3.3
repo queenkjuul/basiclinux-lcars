@@ -1,0 +1,48 @@
+From: Wolfram Gloger <wmglo@dent.med.uni-muenchen.de>
+Subject: Announce: thread-aware (_not_ thread-safe) X libs for ix86-linux-libc5
+Newsgroups: comp.programming.threads
+Date: 09 Jun 1997 15:18:24 +0200
+Organization: [posted via] Leibniz-Rechenzentrum, Muenchen (Germany)
+Path: lrz-muenchen.de!not-for-mail
+Lines: 30
+Sender: wmglo@md.dent.med.uni-muenchen.de
+Distribution: world
+Message-ID: <u43eqrsyn3.fsf@md.dent.med.uni-muenchen.de>
+NNTP-Posting-Host: md.dent.med.uni-muenchen.de
+X-Newsreader: Gnus v5.3/Emacs 19.34
+Xref: lrz-muenchen.de comp.programming.threads:5093
+
+In response to several requests (see e.g. the `LinuxThreads and
+XFree86-3.3' subject), I have made the following available:
+
+ftp://ftp.dent.med.uni-muenchen.de/pub/wmglo/XFree86-3.3-libs.README
+ftp://ftp.dent.med.uni-muenchen.de/pub/wmglo/XFree86-3.3-libs.tar.gz
+
+If you want to perform X calls from multiple threads concurrently,
+these libraries are _not_ for you.  In that case, please consider
+switching to glibc-2.0 and using the XFree86-3.3 binaries for that
+configuration.  However, if all you need is X11 libraries that can be
+used with LinuxThreads, for applications that make X calls from one
+thread at a time only, these libraries should work.  (They work fine
+for me, but of course I cannot make any guarantees.)  They are also
+completely backward compatible in my experience, i.e. all applications
+linked against the standard versions of the libraries should work just
+fine.
+
+These are all the libraries installed by XFree86-3.3, compiled on a
+i586-linux2.0.30 system, using the following tools:
+
+o GNU binutils-2.8.1.0.1
+o GNU gcc-2.7.2.1 (standard, no pentium optimization) with '-m486
+  -malign-loops=2 -malign-jumps=2 -malign-functions=2 -O2'
+o Linux libc-5.4.23
+
+They have been compiled with the standard options, except putting
+`-D_REENTRANT' next to `-D_POSIX_SOURCE' in linux.cf.
+----
+
+Regards,
+Wolfram.
+-- 
+`Surf the sea, not double-u three...'
+wmglo@dent.med.uni-muenchen.de

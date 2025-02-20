@@ -1,0 +1,15 @@
+! Copyright (c) 1990-1997  Michael Sandrof, Troy Rollo, Matthew Green,
+! and other ircII contributors.
+!
+! All rights reserved.  See the HELP IRCII COPYRIGHT file for more
+! information.
+!
+Usage: DCC TALK <user>[@<host>]
+  DCC TALK initiates a talk connection to the user at the named host,
+  or responds to one initiated by that user if one exists. Messages
+  are sent across a DCC TALK connection with DCC TMSG or MSG @user
+
+See Also:
+  DCC CHAT
+  DCC TMSG
+  MSG

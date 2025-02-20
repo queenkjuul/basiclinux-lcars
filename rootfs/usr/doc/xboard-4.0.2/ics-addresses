@@ -1,0 +1,68 @@
+Last modified on Fri Jan  1 20:38:48 PST 1999 by mann
+
+Internet Chess Servers
+----------------------
+
+Internet Chess Servers (ICS's) can usually be found on several of the machines
+listed below.  Within each group the most popular sites are listed first.  If
+you connect to a site and find very few people logged in, try another.
+
+The number immediately after each name is the "port number."  If you are
+connecting to the server using xboard, 5000 is the default port number.  If you
+need to specify a different port number, do so with the -icsport option to
+xboard.  The number in the second column is the numeric IP address, again
+followed by the port number.  You can use the numeric IP address in place of
+the name if your system has problems looking up the name.  Warning: the numeric
+IP address for a name can change from time to time.
+
+Commercial servers:
+  chessclub.com 5000            207.99.5.190  5000    Internet Chess Club
+  chess.net 5000                204.167.98.30 5000   Chess Net
+
+Main free server: 
+  freechess.org 5000            164.58.253.13 5000   Free Internet Chess Server
+  (formerly fics.onenet.net)
+
+Regional and specialized free servers:
+  chess.unix-ag.uni-kl.de 5000  131.246.89.4 5000    Germany
+  chess.eerie.fr 5000           146.19.2.4 5000      France
+  chess.etud.insa-tlse.fr 5000  193.50.229.238 5000  France
+  primrose.warwick.ac.uk 5000   137.205.192.26 5000  United Kingdom
+  dics.dds.nl 5000              194.109.20.8 5000    The Netherlands
+  eics.daimi.aau.dk 5000        130.225.18.157 5000  Denmark
+  fly.cc.fer.hr 7890            161.53.70.130 7890   Croatia
+  chess.mds.mdh.se 5000         130.238.251.208 5000 Sweden
+  chess.mds.mdh.se 5555         130.238.251.208 5555 Wild-only server
+  ics.interdomain.net.au 5000   203.17.167.4 5000    Australia
+  fics.infcom.it 5000           194.91.6.2 5000      Italy
+
+
+Chess FTP Servers
+-----------------
+
+To use an FTP server, type the command "ftp XXX" (where XXX is one of
+the machine names listed below), type "anonymous" as your login name,
+and type your email address as the password.  For further help, read
+the messages the FTP server prints, use the "help" command inside ftp,
+or read the documentation for the ftp program on your system.
+
+ftp.freechess.org         164.58.253.13   Internet Chess Library (ICL)
+ftp.chessclub.com         204.171.44.50   Small archive maintained by ICC
+ftp.pitt.edu              136.142.188.73  Files from Fido under /group/chess
+ftp.cc.umanitoba.ca       130.179.16.23   Int'l Email Chess Group under /iecg
+
+
+Chess World Wide Web pages
+--------------------------
+
+To use any of these, you need a World Wide Web browser.  Use the "Open
+URL" or "Open Location" function on one of these names.  Most of them
+have pointers to additional chess pages as well.
+
+http://www.research.digital.com/SRC/personal/Tim_Mann/chess.html
+http://www.freechess.org/chess/
+http://www.traveller.com/chess/
+http://www.ub.uit.no/chess/
+http://www.brad.ac.uk/~mdcrowth/chess.html
+http://www.hooked.net/users/chesswks/cwu.html
+http://www.chessclub.com/

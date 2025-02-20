@@ -1,0 +1,59 @@
+Cdrecord allows you to create multi-session CD's with all
+supported drives. Cdrecord comes with a hacked mkisofs
+that allows you to that on Solaris too, by using my scg driver
+to read the old session from the CD-Recorder.
+
+If you want to create a CD+, you have to test if it works to mount it
+on your UNIX flavour. I never tested this before because
+Solaris will not mount a CD+ (from my kmowledge) and I have no access to Linux
+with SCSI.
+
+According to www.cd-info.com, a CD+ is a CD with two sessions.
+The first session is an audio session, the second session a data
+session.
+
+Creating a CD+ is first writing an audio session in 
+multi session mode (cdrecord -multi -audio file1 ....)
+and then writing a data session.
+
+To do this you need to create an ISO-9660 file system that starts
+not at sector 0. With the current mkisofs, you must use a trick:
+
+
+First create an empty ISO-9660 image by calling:
+
+mkisofs -R -o iso.img empty_dir
+
+empty_dir should be an empty directory.
+
+Now call cdrecord -msinfo for your pepared multi-session audio CD.
+
+you will get something like 0,12345
+
+now call mkisofs:
+
+mkisofs -o fs.raw -C 0,12345 -M iso.img real_root_directory_for_new_cd
+
+replace 0,12345 with your actual cdrecord -msinfo output.
+
+the image in fs.raw may now be written with cdrecord as second session.
+
+See my README.multi for more info on how to create multi session CD's
+
+
+The procedure again in short form:
+
+	cdrecord -multi -audio audio_tracks ....
+
+	mkdir empty
+
+	mkisofs -R -o empty.raw empty
+
+	cdrecord -msinfo ....
+	(output is e.g. 0,12345)
+
+	mkisofs -R -o cd_plus.raw -C 0,12345 -M empty.raw root_dir_of_fs
+
+	cdrecord -data cd_plus.raw
+
+Jörg

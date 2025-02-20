@@ -1,0 +1,19 @@
+#!/bin/sh
+
+case $1 in nm) m=`date +%m`
+               y=`date +%Y`
+               let m=m+1
+               [ $m = 13 ] && m=1 && let y=y+1
+               export m=$m 
+               export y=$y
+               /usr/X11/bin/rxvt -g 21x8 +sb -T "" -bg SteelBlue -cr SteelBlue -fg white -font 9x15 -e sh -c 'cal $m $y|grep [S123];read r'
+               ;;
+            y) /usr/X11/bin/rxvt -g 66x38 +sb -T "" -bg SteelBlue -cr SteelBlue -fg white -font -bitstream-charter-bold-r-normal--9-0-0-0-p-0-iso8859-1 -e sh -c 'cal -y;read r'
+               ;; 
+           ny) y=`date +%Y`
+               let y=y+1
+               export y=$y
+               /usr/X11/bin/rxvt -g 66x38 +sb -T "" -bg SteelBlue -cr SteelBlue -fg white -font -bitstream-charter-bold-r-normal--9-0-0-0-p-0-iso8859-1 -e sh -c 'cal -y $y;read r'
+               ;;
+            *) /usr/X11/bin/rxvt -g 21x8 +sb -T "" -bg SteelBlue -cr SteelBlue -fg white -font 9x15 -e sh -c 'cal|grep [S123]|sed "2,9s/`date +%e`$/`setterm -reverse``date +%e``setterm -default`/"|sed "2,9s/`date +%e` /`setterm -reverse``date +%e``setterm -default` /";read r'
+esac

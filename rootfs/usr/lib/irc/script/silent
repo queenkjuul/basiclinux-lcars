@@ -1,0 +1,13 @@
+# This is necessary when you join crowded channels like #report...
+# All the join,leave,quit,nick and mode change messages do not appear
+# on the screen, unless you have %U somewhere in your STATUS_FORMAT,
+# then the changes will be displayed in your status line, which is
+# a lot less annoying and distracting.  ;-)
+
+on ^join * set status_user Join: $0 \($1\)
+on ^leave * set status_user Leave: $0 \($1\)
+on ^signoff * set status_user Signoff: $*
+on ^nick * set status_user Nick: $0 now $1
+on ^mode * set status_user Mode: $*
+# on ^topic * set status_user Topic by $0: $1-
+# lynx91

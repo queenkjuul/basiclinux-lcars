@@ -1,0 +1,27 @@
+#!/bin/sh
+
+#
+# Check for properties
+#
+if [ ! -r "$JAVA_HOME/lib/serialver.properties" ] ; then
+    echo "Could not read properties file: $JAVA_HOME/lib/serialver.properties" 1>&2 
+    exit 1
+fi
+
+#
+# source a script that extracts RUNTIME_ARGS and APP_ARGS
+#
+. `dirname $0`/.extract_args
+
+if [ -n "$NS_JAVA" ]
+then
+    progsuffix=_ns
+elif [ -n "$DYN_JAVA" ]
+then
+    progsuffix=_dyn
+fi
+
+#
+# Run the serial version UID utility
+#
+`dirname $0`/java$progsuffix -ms8m $RUNTIME_ARGS sun.tools.serialver.SerialVer $APP_ARGS

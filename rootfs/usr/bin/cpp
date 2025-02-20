@@ -1,0 +1,4 @@
+#!/bin/bash -
+for i in /usr/lib/gcc-lib/i*86*linux*/*/cpp; do
+  exec "$i" "$@"
+done

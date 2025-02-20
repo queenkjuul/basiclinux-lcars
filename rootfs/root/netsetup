@@ -1,0 +1,33 @@
+#-------- ETHERNET (using NE2000 network card) --------------------------
+# insmod 8390                 ###  needed for ne, ne2k-pci, wd, smc-ultra
+#
+# insmod ne io=0x320          ###  for ISA card: needs address (eg 320)
+# insmod ne2k-pci             ###  for PCI card: does not need address 
+#
+# udhcpc                      ###  if DHCP server is on network
+# ifconfig eth0 192.168.1.1   ###  if no DHCP server is on network 
+#------------------------------------------------------------------------
+
+#-------- ETHERNET (using EEPRO100 network card) -----------------
+# insmod eepro100
+# udhcpc                      ###  if DHCP server is on network
+# ifconfig eth0 192.168.1.1   ###  if no DHCP server is on network 
+#-----------------------------------------------------------------
+
+#----------- NULL MODEM CABLE (serial laplink) -------------------------  
+# insmod slhc
+# insmod ppp
+# pppd /dev/ttyS0 115200 clark:lois crtscts local   ###  COM 1 computer1
+#           ttyS1                                   ###  COM 2
+#                        lois:clark                 ###        computer2
+#-----------------------------------------------------------------------
+
+#------------- PLIP CABLE (parallel laplink) ----------------------------
+# insmod parport
+# insmod parport_pc
+# echo 7 > /proc/parport/0/irq                        ###  set IRQ (eg 7) 
+# insmod plip                                         
+# ifconfig plip0 192.168.1.1 pointopoint 192.168.1.2  ###  computer1
+#                192.168.1.2             192.168.1.1  ###  computer2
+#------------------------------------------------------------------------
+

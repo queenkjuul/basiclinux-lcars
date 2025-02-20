@@ -1,0 +1,303 @@
+
+Apr 1994  Albert Graef (ag@muwiinfa.geschichte.uni-mainz.de)
+
+	Release 1.3 with many bug fixes and enhancements, too numerous to list
+	them all. The most important user-visible changes are listed below, in
+	no particular order.
+
+	* Fixed bugs in drag and drop operations.
+
+	* Applications are launched in the user's home directory if no files
+	are specified, and in the directory containing the selected files
+	otherwise.
+
+	* Resources are now contained in the Xfm application defaults file,
+	to be installed in /usr/lib/X11/app-defaults.
+
+	* A bunch of additional resources for controlling existing and new xfm
+	operations; see the Xfm applications default file for details.
+
+	* Check for geometry resource for popups. This allows you to display
+	dialog popups in a fixed place, instead of having to chase them
+	around the screen.
+
+	* Avoid unecessary folder updates in Move/Copy/Delete operations.
+
+	* Check for identical source and target in move and copy operations.
+
+	* Added an Abort button to the confirmation popup, which allows
+	you to kill an operation (like Move, Delete) which may prompt you
+	for more than one confirmation.
+
+	* Confirmation for exiting xfm (configurable with the confirmQuit
+	resource).
+
+	* Made the -filemgr option work.
+
+	* Prevent applications from locking up xfm with keyboard input. This
+	bug was discovered by my four years old son Sebastian when he played
+	around with the mouse. ;-)
+
+	* Added overwrite confirmation for the move operation.
+
+	* Added confirmation for removing applications in the applications
+	window.
+
+	* Added a status line to the file window which displays number of
+	files and total byte size for the displayed directory and selection.
+
+	* Distinguish between directories and other files in the file window
+	popup menu.
+
+	* Added a semaphore to prevent the automatic folder updates from
+	breaking xfm.
+
+	* Disabled the xfmc stuff. It will possibly be reintegrated in a
+	future release. Trashcans and opening windows on floppy devices
+	can now be realized easily without xfmc. In fact, the applications
+	file distributed with xfm contains examples on how to do this.
+
+	* Added support for color icons in XPM format.
+
+	* Added support for user-defined file types.
+
+	* Distinguish between push and drop actions for launching applications.
+
+	* Allow all types of files to be installed on the application panel,
+	with proper action settings depending on the file type.
+
+	* Allow actions to prompt for parameters before launching an
+	application.
+
+	* Changed the format of the xfm applications files (which is now named
+	~/.xfm-apps by default) and added configuration files for file types
+	(~/.xfmrc) and devices (~/.xfmdev).
+
+	* Added an autosave feature for application files.
+
+	* Reorganized menus and actions. The file window now has three menus
+	(File, Folder and View), and the application menu is accessible as
+	a popup by pressing the right mouse button in the application window.
+	Pressing the button on an application invokes a popup menu with
+	operations for this application, similar to the file window popup.
+	This menu contains two new operations for moving and copying
+	applications to the bottom of the applications window.
+
+	* Added support for recursive copying and deletion operations. An
+	extra confirmation resource allows you to be prompted before the
+	contents of a directory is removed, in addition to the usual
+	delete confirmations.
+
+	* New operations: move/copy a file or a collection of files to a
+	specified target (which may be an existing directory). The move
+	operation replaces the rename operation in the previous release.
+	I also added operations to create a new and empty file, to create
+	symbolic links, and to empty the current directory (delete all items
+	in it).
+
+	* Added an operation to open a new file window from the application
+	window, and allow the last file window to be closed.
+
+	* Made the application and file windows respond to WM_DELETE_WINDOW
+	messages.
+
+	* The selection operations now only include . or .. in the selection
+	when specified explitly. I also added a Remove button to the
+	selections popup which allows you to remove the specified files
+	from the selection. The pattern matcher now also understands
+	ranges of characters such as [a-z].
+
+	* Added a collection of color icons, and edited existing bitmaps for
+	cursors, directories, files, etc. Also designed some icons myself,
+	like xfm_appmgr.xpm. Hope you like them. :-)
+
+	* Added a LOAD action to the application manager which allows you to
+	load different application files simply by double-clicking on the
+	corresponding icon. In effect, this provides support for different
+	application groups in the application manager. There is still only
+	one applications window, though. :-(
+
+	* Added support for auto-mounting and -unmounting of special file
+	systems such as floppies. See the man page for details.
+
+	* Double-clicking on the directory name label in a file window now
+	updates the directory display. This is for those of you who are too
+	impatient to wait for the automatic folder update to perform its
+	task. It is also useful on some special file systems which do not
+	always change the time stamp when updating a directory. (I noticed
+	this under the msdos file system of Linux.)
+
+	* Added a man page. Quick and dirty job, but it hopefully provides
+	all necessary information. In any case, it is better than nothing. ;-)
+
+	* And a plethora of smaller bug fixes (for which I probably
+	introduced some new ;-).
+
+Wed Mar 17 00:00:05 1993  system admin  (root@rachel)
+
+	* Updated the README file, included a MANIFEST, and released
+	version 1.2.
+
+	* Cleaned up the source, placing xfm and xfmc in subdirectories
+	with a top-level Imakefile that knows which things to make.  It
+	should still be possible to make in each subdirectory seperately.
+
+Tue Mar 16 19:37:43 1993  system admin  (root@rachel)
+
+	* Placed xfm under the GNU General Public License, added a
+	copyright message to files that didn't have one.
+
+	* Lots of minor cleanups and cosmetic changes.  Now compiles with
+	virtually no warnings with -Wall -Wno-parentheses.
+
+	* Added an initialDisplayType resource, since there are differing
+	opinions as to whether the first window should be of the same type
+	as subsequent ones.
+
+	* Incorporated numerous patches from Dave Safford 
+	(dave.safford@edu.tamu.sc) including the following: a timeout that
+	updates windows when they have changed (by checking the
+	timestamp), icons have different names (so they can be assigned
+	colours), an edit option for the popup menu, and an option to hide
+	files beginning with a '.'.  Also added some new options to
+	DEFAULTS to give some colour to the icons, and display the
+	application manager on the left of the screen.
+
+Sat Mar  6 23:38:23 1993  system admin  (root@rachel)
+
+	* Added defaultEditor resource.  This is the name of a
+	program to be executed when a normal file is double-clicked on.
+
+Fri Mar  5 23:19:05 1993  system admin  (root@rachel)
+
+	* Fixed a major memory leak (failing to free the FileRecs on
+	updating a window).  Added function freeFileList() to FmDirs.
+	Added some hooks for the debugging malloc library, included when
+	DEBUG_MALLOC is defined. (ver 1.1h).
+
+Sun Dec  6 16:48:16 GMT 1992
+
+  * Made some minor cleanups, changed the README file, tested it for about
+    20 secs, and released it to a few alpha testers (ver 1.1g).
+
+Fri Oct 16 15:25:42 BST 1992
+  
+  * New function: newFileWindow in FmFw.c. Replaces a common sequence of lines
+    when opening a new file window.
+
+  * Added some checking that the chdir function actually succeeded in
+    createFileWindow() - it was failing sometimes when responding to
+    messages from the client.
+
+  * fileOpenButtonCb() now pops up windows by the cursor only if it was called
+    from FmFwActions.c.
+
+  * Uncommented a line from fileCloseCb() that caused an error in older versions
+    of the X toolkit - the widgets could not be destoryed. Xfm should now use
+    a lot less memory as this was a major memory leak.
+
+  * Fixed some bugs in the communications module. There are still problems due
+    to the event handler being called recursively - this is mainly a problem
+    with the error handler which dispatches more events while waiting for the
+    user to press 'ok'.
+
+Thu Oct 15 15:44:33 BST 1992
+  
+  * Removed the function clearUpdateMarks(), and incorporated it into 
+    intUpdate().
+
+  * Finally completed the communications module so that arbitrary length
+    messages can be sent from the client. It seems to work, but I'm a bit
+    dubious.
+
+Wed Oct 14 12:54:37 BST 1992
+
+  * Removed special translations for labels, it messed up the click-drag stuff
+    (ie. if you dragged on to a label, xfm got all confused).
+
+  * Finally fixed the problem with symbolic links to non-existent files. 
+    Now, you get the directory displayed, and the offending icon(s) are greyed
+    out, although they can still be used. You should still get a warning when
+    this is happening.
+
+  * I'm getting some strange behaviour, that results in error() being called
+    recursively. For now I just ignore any subsequent errors, but I suspect
+    this is a bug in the toolkit/server.
+
+  * Removed the freeing of the bitmaps and cursors on exit. This is done by
+    the server anyway (apparently).
+
+  * improved the communications module somewhat - it now uses atoms for the two
+    message types, to avoid problems with other messages. Still need to allow
+    arbitrary length messages. Also - I'm getting an error when using the
+    client from another machine.
+
+Tue Oct 13 11:54:18 BST 1992
+
+  * added sys/types.h before sys/stat.h in Fm.h. Removed sys/stat.h from some
+    files since it is included in Fm.h anyway. This patch is required for
+    Ultrix (apparently), and System V I think.
+
+Mon Oct 12 14:06:05 BST 1992
+
+  * Probably missed out a few more.
+
+  * Fixed fnSub() in FmDirs.c - It was failing due to overlapping areas being
+    handled incorrectly by strcpy, to the effect that if HOME was shorter than
+    the name of the resource file, it crashed. Thanks to Peter Williams for 
+    this one.
+
+  * Fixed FmDelete.c so that it deletes symbolic links properly.
+
+Sat Sep 26 15:20:08 BST 1992
+
+  * I've missed a few out here...
+    Added support to handle the ClientMessage event, and either open a new
+    window or update some of the existing ones. A small program called xfmc
+    to send these signals is included. Currently very hacky, needs some work.
+
+  * Added a signal handler for SIGCHLD that just calls waitpid(), this clears
+    up the zombie processes generated by the application manager.
+
+  * Patched in a fix for FmFw.c, when the text display is used and there exists
+    a file owned by a user that has no entry in the password file, then it core
+    dumped. Thanks to hkarhune@hydra.helsinki.fi for this one.
+
+  * Action fileBeginDrag is now called when leaving the window with the button
+    pressed. This solves problems with double clicking (you weren't allowed to
+    move the mouse between clicks).
+
+  * Added a floating menu activated by the third button with all the single 
+    file operations on it. The operations menu now has only delete and mkdir 
+    options. I think it's nicer this way.
+
+  * Scrapped FmIcons.c for now. Looking for a more general solution.
+
+Sat Sep 12 19:35:50 BST 1992
+
+  * Added support for user defined icons in file windows: FmIcons.c. A new
+    resource is added (iconMappings).
+
+  * Cursors are now opaque (looks nicer :-)
+
+  * Cursor changes to a no-entry symbol when over a directory that you
+    do not have write access to.
+
+  * New function abortXfm() in FmErrors.c for terminal errors during startup.
+
+Thu Sep 10 17:05:49 BST 1992 simonm (simonm@dcs.glasgow.ac.uk)
+
+  * This file added.
+
+  * Moved the 'move' operation to button 1 (press+move to initiate)
+
+  * Added the select operation, put it on button 1. Button 1 now selects the
+    file that the mouse is on, and deselects all others. Move defaults to
+    select if the mouse doesn't move anywhere usefull.
+
+  * Relegated the old toggle operation to button 2.
+
+  * Added the ability to drag directories onto the root window to open them
+
+  * Modified popupByCursor so that windows are not created half off the
+    screen, modulo messing around by the window manager.

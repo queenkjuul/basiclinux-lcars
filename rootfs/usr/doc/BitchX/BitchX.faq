@@ -1,0 +1,461 @@
+                                                                  ,
+                                           .                     ,$
+                 .                                              ,$'
+                                           .        .          ,$'
+                 :      ,g$p,              .         $,       ,$'
+               y&$       `"` .,.           $&y       `$,     ,$'
+               $$$     o oooy$$$yoo o      $$$        `$,   ,$' -acidjazz
+         .     $$$%yyyp, gyp`$$$'gyyyyyyp, $$$yyyyp,   `$, ,$'     .
+       . yxxxx $$$"`"$$$ $$$ $$$ $y$"`"$$$ $$$"`"$$$ xxx`$,$'xxxxxxy .
+         $     $$7   l$$ $$$ $$$ $$7   """ $$7   ly$     .$'       $
+         $     $$b   dy$ $$$ $y$ $$b   $$$ $$b   d$$    ,$`$,      $
+       . $xxxx $$$uuu$$$ $$$ $$$ $$$uuu$$$ $$$   $$$ x ,$'x`$, xxxx$ .
+         .           """ """ """       """       """  ,$'   `$,    .
+           B i t c h    -      X     [ F   A   Q ]   ,$'     `$,
+                                                     $'       `$,
+[BitchX FAQ v. 1.5.4 by Xavier & IceBreak...........'..........`$,.............]
+[Based on original FAQ by IceBreak and sh00p....................`$,............]
+                                                                   `
+[Foreword...................................................................0.0]
+The latest BitchX version at the time of writing this FAQ is BitchX-71p3, and
+BitchX 72-a5(non stable). If you have ideas or comments, read the section
+5.1 about how to contact the authors.
+
+[Table of Contents..........................................................0.0]
+
+1.0	BitchX - General Stuff
+	1.1 	What is BitchX?
+	1.2 	Where can I get it?
+	1.3 	What are the system requirements to run BitchX?
+	1.4 	What OS'es does BitchX work on:wq
+	1.5 	Installing BitchX with source
+	1.6 	Installing BitchX with binaries
+	1.7 	Other files
+	1.8 	BitchX scripts
+
+2.0	Useful Features
+	2.1 	ircII Windowing - hidden windows
+	2.2	ircII Windowing - multiple visible windows
+	2.2 	CDCC/XDCC
+	2.4 	Using BitchX XWindows
+
+3.0	Questions asked in #BitchX
+	3.1	What is bxglobal, and where do I get it?
+	3.2	What is .bitchxrc and .ircrc, and how are they different?
+	3.3	What are the color codes in BitchX?  How do I use them?
+	3.4	How do I script in BitchX?  How do I find out what arguments
+		should go to which function or command?
+	3.5	I've heard rumors that BitchX has backdoors!
+	3.6	What are the environment variables I can set before starting
+		BitchX?
+	3.7	Can I spoof my host with BitchX?  I've seen people use
+		BitchX to change their hostname before!
+
+4.0	Miscellaneous
+	3.1 	Contacting
+	3.2 	Where the hell did sh00p go?
+	3.3 	Revisions
+
+5.0	Credits
+
+[General Information........................................................1.0]
+
+	1.1 What is BitchX?
+
+BitchX is a VERY heavily modified ircII client.  It includes many 
+things such as built in CDCC (XDCC) offering, built in flood protection, etc.
+It is easier to script things in BitchX because unlike plain, vanilla
+ircII, half the script does not have to be devoted to changing the appearance 
+of ircII.  It also includes many other new features, such as port scanning,
+a CD player, a mail client, etc.
+
+	1.2 Where can I get it?
+
+BitchX has many FTP and WWW sites devoted to it, but sadly, most of
+them are not stable enough to be listed.  At the time of this writing, BitchX
+71-p3 (stable) and 72-a5 (not stable) have been released and sites that are 
+up right now are:
+
+	ftp://ftp.bitchx.com
+	ftp.uk.logics.com://pub/irc/clients/BitchX/
+	ftp://aurora.bridges.edu
+	ftp://bitchx.stuph.org
+        www.hiatt.ml.org/bitchx
+	www.sasknet.com/~pionh
+	ftp://fixed.underworld.net
+	ftp://squid.newwave.net /pub/irc/clients/
+
+The source file name is called ircii-pana-xx.tar.gz and the binary is
+BitchX-xxxx.gz . If the ftp or www sites are not working, you best chance is
+to go to the irc and join #BitchX on EFnet, and do /ctcp #bitchx cdcc list.
+
+	1.3 What are the system requirements to run BitchX?
+
+You need about 1 megabyte free on a system with a UNIX OS.  Your terminal
+program should support ANSI if you want BitchX to show color and high
+ascii if you want the display to work exactly right.  If you run
+Linux or Win95/NT, don't bother.  For Linux, you should only worry about disk
+space and configuring your external devices (/dev/audio, etc) and network
+stuff.  For Win95/NT, BitchX will probably crash at times no matter what you
+do, as it is in a VERY experimental stage.   Don't worry about it.
+
+	1.4 What OS'es does BitchX work on?
+	
+BitchX now works with almost all UNIX OS's and Windows 32-bit. 
+Here is the list of OSes that BitchX is reported to work on:
+	Windows 95/NT
+	BSDI 2.0/2.1/3.0
+	SunOS 4.1.4, 5.3, 5.4, 5.5, 5.5.1
+	Linux (All)
+	IRIX
+	HP-UX 9.x/10.x
+	OSF/1 (DEC Alpha)
+	FreeBSD 2.x
+	DEC Unix
+	Ultrix
+	AIX
+	IRIX
+
+If you need binaries for those OS, just go to the FTP sites, or ask in
+#BitchX for them. If your operating system is not listed, chances are that
+the source will compile, or that some person has a binary avilable. Usually
+get your binary from people that have ops in #BitchX, since they are more
+likely to be trojan/backdoor free.
+
+	1.5 Installing BitchX with source
+	
+Download the source file, ircii-pana-xx-xx.tar.gz, and do this:
+	gzip -d ircii-pana-xx-xx.tar.gz
+	tar xvf ircii-pana-xx-xx.tar.gz
+	cd ./BitchX
+	more INSTALLATION (Specific OS problems, etc...)
+	make 
+	make install (only if you are root - to install for system)
+
+	1.6 Installing BitchX binaries.
+	All you really need is the BitchX binary, you might want some of 
+the files in Section 1.7 though.
+
+	1.7 Other files
+
+Here is a list of other files that BitchX has:
+BitchX.reasons - Random kick messages, for /kick without a reason.
+BitchX.quit - Random quit messages, for doing /quit without an argument.
+BitchX.help - The help file for BitchX (/bhelp).
+you may also put the ircII help files, then /set HELP_PATH to their directory.
+all the BitchX files go to the ~/.BitchX directory.
+ircii-x.xhelp.tar.gz - ircII base help files.
+
+	1.8 BitchX scripts
+
+Most of the BitchX specific scripts can be found in the ./BitchX/CubicZ
+directory. If you want the latest version of a script, come to #BitchX, and
+do /ctcp #bitchx cdcc list, most of the script authors will usually be
+offering theirs.
+
+[Useful Featuress...........................................................2.0]
+
+	2.1 ircII Windowing - hidden windows
+
+Okay, first of all, I personally do not know anything about the split windowing
+functions in BitchX/ircII. I think (notice this is my opinion) that split
+screens are somewhat pointless and uncomfortable, although there are a few
+real life situations that may warrant it.
+
+Instead, I use hidden windows, which are really neat if I do say so myself.
+To get started, let's try something easy. Go to #BitchX on EFNet. Type
+/window new hide and you should not really notice anything. BitchX has
+created a new window for you, and that window, hereafter referred to as (2)
+is hidden. To switch to it, press ^[-2. It's that simple. You will notice
+that it only has one status bar, but this can be corrected by executing the
+following in window 2:
+
+/window double on
+/window split on
+
+Now you are ready to go, it's as easy as that. There are somewhat unlimited
+options with this type of windowing.  I will go through them one by one:
+
+Multiple Channels, Same Server: Simply type /j #channel in window 2. To
+switch back to #bitchx in window 1, press ^[-1
+
+Besides doing multiple channels and keeping them separate, you can also use
+these multiple hidden windows, your new friends, to organize your IRC life
+in these ways:
+
+        /q <nick> in a window will make that window a dedicated query window
+                  to <nick>
+
+        /m =<nick> in a window will make that window a dedicated dcc chat
+                  window to <nick>
+
+        If you simply create a new window and dont do anything, it will
+        automatically show things like /whois info and other normal /msg's
+        in that window.
+
+        You can even do multiple server connections to different IRC servers
+        in one BitchX session. To do this,
+        type /server +irc.server.name in the window you want it to be in.
+
+        Note: If for example, you have window 1 and 2 on EFnet, and window 3
+        on Undernet, and you create window 4 and join a channel, it will
+        join that channel on Undernet.
+
+Now you know the basics of ircII windowing.  More work will be done on
+BitchX's windowing, hopefully.  Only one more thing you need to know, how
+do I get rid of them?
+
+        To kill a window, use /window kill.
+        To kill a window on a different server,
+        use /server -server.name.here and then /window kill.
+
+	2.2 ircII Windowing - multiple visible windows
+
+Tired of the single-window approach to IRCing? Well then, master the 
+windowing commands built into BitchX (and trusty ol' ircII, as well).
+
+With the windowing commands, you can create as many windows as will fit 
+on your screen, and assign each to a channel, assign one to receive all 
+your /msg's (or even script something to create auto-query-windows when
+someone /msg's you, like in mIRC, or some such).
+
+Here are the standard ircII windowing commands available (/help window)
+
+ADD            BACK           BALANCE        BIND
+CHANNEL        CREATE         DELETE         GOTO
+GROW           HIDE           HIDE_OTHERS    HOLD_MODE
+KILL           KILL_OTHERS    LASTLOG_LEVEL  LEVEL
+LIST           LOG            LOGFILE        MOVE
+NAME           NEW            NEXT           NOTIFY
+NOTIFY_LEVEL   NUMBER         POP            PREVIOUS
+PROMPT         PUSH           REFNUM         REMOVE
+SCROLL         SERVER         SHOW           SHRINK
+STACK          SWAP           UNBIND         WINDOW
+
+
+The way to use these are to bind them to particular keys.. I like to make
+^W a meta character (/bind ^W meta2_character), and then use the NEW,
+SHRINK, GROW, with 2 key strokes, like ^W n for a new window, ^W s to do a
+SHRINK, etc. 
+
+
+BitchX already has some of these binds built in. (/bhelp window)
+
+   [window shortcuts]:
+     ^W- - Shrinks current window 1 line
+     ^W+ - Grows current window 1 line
+     ^Wm - Moves current window down 1 line
+     ^Wl - Lists current windows
+     ^Wk - Kills current window
+     ^Wh - Hides current window
+     ^Wb - Balances window sizes
+     ^Wn - Swaps to next window
+     ^Wp - Swaps to previous window
+      /# - Shows window number (1-4)
+
+
+Of course, there doesn't appear to be one to actually create the windows, 
+so what I'd do is a "/bind meta2-c window new".
+
+So, you're up with one window going.
+
+hit ^W-c, and bingo, your screen is chopped in half... You can tell which 
+window is the "current" window by the ^^^^^^^ in regular BitchX. With 
+some scripts, it may be harder to tell which one is current (usually can 
+be determined by which window the usermode appears on, or on your input 
+prompt, which may be the channel name)
+
+Ok, now you're ready to /join in the new window... The next most 
+valuable command is the NEXT_WINDOW, which I have bound to ^O, of course, 
+its personal preference... Make it an easy to hit key because you'll be 
+toggling like a bitch, once you have several windows up...
+
+To Shrink, or Grow, ^W- or ^W+... It's really quite simple once you got 
+it down.
+
+Another handy feature, is to actually have each window connect to a
+different server! The way to do this is get into an empty window, and do
+"/window server irc.blah.com"... This way, you can be on EFnet, Undernet, 
+Dalnet, etc., etc., all with the same client.
+
+
+	2.3 CDCC/XDCC
+
+	BitchX offers built in support for public file offering called CDCC.
+As this is not what is normally used by mIRC & ircII scripts, which for the
+most part use XDCC, BitchX will recognize XDCC requests as CDCC requests.
+/CDCC <command> will give you a list of options.  In BitchX, /CDCC without
+an argument will give you a list of arguments/commands you can use.
+
+
+	2.4 Using BitchX with XWindows
+
+	Lately, there have been a lot of requests for help with getting 
+color and function keys working in XWindows in the channel.  Before you
+ask for help in the channel, please make sure that you have obtained
+the xterm variant called rxvt, and the font vga11x19.  These should be
+readily obtainable from sunsite.unc.edu or one of its mirrors.  If you
+fail to find it there, try http://torgo.ml.org/las, the Linux Archive
+Search.  When you start rxvt, run it with the options "-bg black -fg white
+-fn vga11x19".  If you do not have vga11x19, get it!  Meanwhile, use 
+the font vga as a substitute.  If function keys don't work, you may need
+to add this to ~/.bitchxrc:
+
+/bind meta3-1 chelp
+/bind meta3-2 CHANNEL_CHOPS
+/bind meta3-3 CHANNEL_NONOPS
+/bind meta3-4 CDCC_PLIST
+/bind meta3-5 DCC_PLIST
+/bind meta3-6 DCC_STATS
+
+	Those are the default BitchX function key bindings and should
+work as such.  
+
+
+[Commonly Asked Questions in EFNet #BitchX..................................3.0]
+
+	3.1 What is bxglobal, and where do I get it?
+	Unless you are root, you won't have to worry about bxglobal.  BitchX
+runs fine without it.  What is it?  Nothing more than a global .bitchxrc
+
+	3.2 What is .bitchxrc and .ircrc, and how are they different?
+
+	.bitchxrc and .ircrc are both variants of the same thing, a file
+loaded up by BitchX automatically.  What are the differences?
+
+	.ircrc - this is loaded by all ircII clients, only put stuff
+		that will work with base ircII scripting here.  Also,
+		this is loaded upon connecting to a server.
+	.bitchxrc - this file is loaded as soon as BitchX starts.  Put all
+		BitchX-specific scripting here.
+
+	3.3 What are the color codes in BitchX?  How do I use them?
+%K - Dark Gray				%k - black
+%G - bold green				%g - dark green
+%Y - yellow				%y - brown
+%C - bold cyan				%c - cyan
+%B - bold blue				%b - blue
+%P and %M - bold purple/magenta		%p and %m - and purple/magenta
+%R - bold red				%r - red
+
+%n - null color (will nullify colors before it)
+%0 %1 %2 %3 %4 %5 %6 %7 %8 %9	- background colors
+%F flashing foreground
+%U underline text.
+
+To set color in formatting and status (/set FORMAT_* and /set STATUS_*), you
+don't need to do anything special.  To use colors in echo, say, etc., try using
+/eval (say/echo/etc) $cparse(%Xtext%n) and so forth.
+
+	3.4  How do I script in BitchX?  How do I find out what arguments
+		should go to which function or command?
+	To script, you should have at least some experience using the client
+so you know how things SHOULD react, etc, etc.  There is no designated 
+"guide" to scripting, just look at the scripts that come with the BitchX
+source, or ircII scripts that you already have/can get.  
+
+On the second question. First of all, try looking in BitchX.help (/bhelp).  
+If it's not in there, try the base ircII help file. Also, look in scripts
+and see if you can try figure out the syntax/arguments a particular command 
+should have. Check and see whether it is a script defined function.  Try 
+reading the script to see whether it is defined in there.  If you're lazy to
+do that you might try /loading the script and comparing the /loaded scripts
+output with that of typing it in at the command prompt. (/eval echo 
+$func(args) and /command).  If it's definitely an "undocumented feature",
+e.g. you can't find out what its' use is, ask in the channel, someone
+may be able to help.
+
+	3.5  I've heard rumors that BitchX has backdoors!
+	The person who started that rumor was some fool Undernet ircop
+who didn't know what he was talking about posting on bugtraq.  The complete
+article is available in #BitchX from lurker (/ctcp lurker CDCC LIST).   
+The part that concerns BitchX is quoted here:
+
+"Bitchx has a number of "backdoors" and is widely denigrated as a
+pestilence on Unix related channels on Undernet IRC network. I haven't
+dealt with the pimpz IRC script, but the spelling alone raises my hackles
+as an Undernet IRC server operator/admin with long experience in dealing
+with abuse scripts." -- Alan Brown, Undernet Oper (alan@MANAWATU.GEN.NZ)
+
+	First off, he is talking about something which he has no knowledge
+of.  BitchX is a program, not a script, and there are no bugs/backdoors in
+it other than the accidental bugs a normal program that is under development
+would have.  
+	Secondly, I doubt greatly that it's safe to trust the judgement of
+someone who gives programs a snap judgement on the name of it alone.  It's
+obvious from the phrasing of the article that he thinks BitchX is a script,
+not a program, and from that we can surmise that he has not even tried it. 
+	The only "backdoors" in BitchX are those of a program under constant
+development and revision -- bugs may turn up, but they are fixed as soon as
+they are discovered.  
+
+	3.6 What are the environment variables I can set before starting 
+		BitchX?
+	Assuming you are using the bash shell, this is how you would do it:
+
+bash:~$ setenv VARIABLE="value"
+
+	Variable 	Value
+	IRCSERVERS	- "server:port server2:port2 server3:port3" 
+	IRCNICK		- "nickname"
+	IRC_HOST	- "virtual hostname here" (see sec. 3.7 for details)
+
+There are a few others, they will be added as the FAQ continues to grow and
+improve.
+
+	3.7	Can I spoof my host with BitchX?  I've seen people use
+		BitchX to change their hostname before!
+
+	No.  BitchX is NOT a spoofer.  To spoof your hostname, you need
+external programs.  Please don't ask how to do this in #BitchX, you will at
+the very least be ignored, as spoofing is illegal as well as lame.
+	BitchX can be used to utilize virtual hosts (multiple hostnames 
+registered to the same machine), so that you can decide what hostname you would
+like to use.  This is not spoofing, because the virtual host is already 
+registered to your machine.  The way to do this would be to set an environment
+variable called IRC_HOST before you start BitchX.  For example, if I were using
+the bash shell on computer.com, which also had an alias called data.org, I
+would do this:
+
+bash:~$ setenv IRC_HOST="data.org"
+bash:~$ BitchX MyNick irc.server.com
+
+When I connect to the server, I would then /WHOIS MyNick, I should then show up
+as user@data.org, instead of user@computer.com.
+
+[Miscellaneous..............................................................4.0]
+
+	4.1 Contacting
+
+For more information about this FAQ, and for comments, you can talk to
+IceBreak(ice_break@hotmail.com) or Xavier (xavier@sedated.net) on IRC.
+
+If you want information about BitchX, you can talk to the author panasync
+(edwac@sk.sympatico.ca) on irc, or join #BitchX on EFnet, and ask your
+question.
+
+	4.2 Where the hell did sh00p go?
+
+sh00p is on vacation, he'll work on the FAQ a bit when he comes back.
+
+	4.3 Revisions
+6/11/97		- Fixed grammar & punctuation.  Fixed spelling errors.
+		Added Yngve's section on ircII window manipulation.
+		Added questions asked on #BitchX section. v1.5.4.
+		Changed the look of the FAQ again.
+6/8/97		- v1.5.0 came out.  Rush job, quickly formatted and
+		checked for errors.  Some overlooked.  Changed the
+		"look" of the FAQ.
+??/??/??	- BitchX FAQ v1.0.0 by IceBreak and sh00p came out.
+
+[Credits....................................................................5.0]
+
+Contributors to this FAQ:
+	panasync	(edwac@sk.sympatico.ca) <- kick ass client, man
+	Xavier		(xavier@sedated.net) <- the new guy
+	IceBreak	(ice_break@hotmail.com) <- original FAQ and new one
+	sh00p		(shupijr5@wfu.edu) <- where the hell are you man? 
+	Yngve		(yngwie@glock.triax.com) <- ircII windowing
+	#BitchX EFNet   <- keep being a great place to chill in, guys
+
+[EOF........................................................................EOF]

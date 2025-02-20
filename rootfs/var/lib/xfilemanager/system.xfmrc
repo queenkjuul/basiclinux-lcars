@@ -1,0 +1,66 @@
+# This file contains all filetypedefinitions
+
+#
+# Some Pictures and their prefixes
+#
+xv %s&:.gif,.GIF:file_pix.xpm:Picture (GIF)
+xv %s&:.jpg,.JPG:file_pix.xpm:Picture (JPEG)
+xv %s&:.pbm,.PBM:file_pix.xpm:Picture (Portable Bitmap)
+xv %s&:.ppm,.PPM:file_pix.xpm:Picture (Protable Pixmap)
+xv %s&:.pgm,.PGM:file_pix.xpm:Picture (Protable Graymap)
+xv %s&:.xbm,.XBM,.BM,.bm:file_pix.xpm:Picture (X11 Bitmap)
+vort2ppm %s | xv -&:.pix,.PIX:file_pix.xpm:Picture (Vort)
+sxpm %s&:.xpm,.XPM:file_pix.xpm:Picture (XPM)
+putimage -i %s&:.vff,.VFF,.viff,.VIFF:file_pix.xpm:Picture (Viff)
+
+#
+# Some text-files
+#
+groff -man %s > /tmp/tt.man; ghostview /tmp/tt.man&:.man,.ms:file_text.xpm:Rofffile
+ghostview %s&:.ps:file_dvi.xpm:Postscriptfile
+xdvi %s&:.dvi:file_dvi.xpm:DVI File
+xmore %s&:.doc,.txt:file_text.xpm:Plain Text
+
+#
+# Other files
+#
+xmore %s&:.z,.Z,.gz:file_compressed.xpm:Compressed File
+xmore %s&:.F:file_compressed.xpm:Freezed File
+/bin/true &:.zip,.ZIP:file_compressed.xpm:Zip-Archive
+xmore %s&:.tex:file_text.xpm:TeX Document
+
+#
+# Some common endings of source-files
+#
+xmore %s&:.c,.cc,.c++:file_source.xpm:C Source
+xmore %s&:.h:file_source.xpm:Include File
+xmore %s&:.f,.f77:file_source.xpm:F77 Source
+
+#
+# Binary endings
+#
+xmore %s&:.o:file_bin.xpm:Object File
+xmore %s&:.a:file_bin.xpm:Library
+
+#
+# If you are a fan of movie, you will like this
+#
+xterm -geometry 40x25 -e xdl -r 6 %s&:.dl:file_movie.xpm:DL Animation
+xflick %s&:.fli:file_movie.xpm:FLI Animation
+mpeg_play -loop %s&:.mpg:file_movie.xpm:MPEG Animation
+xgrasp %s&:.gl:file_movie.xpm:GL Animation
+
+#
+# A nice textool and it's output
+#
+xfig %s&:.fig:file_graph.xpm:XFig Graphic
+
+#
+# A nice game, isn't it
+#
+x11conq &:xconq.save:tank.xpm:Conqueror Save File
+
+#
+# Bad things at least
+#
+rm %s:core:file_core.xpm:Core Dump

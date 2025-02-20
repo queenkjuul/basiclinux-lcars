@@ -1,0 +1,27 @@
+/* XPM */
+static char *file_core[] = {
+	"16 16 6 1",
+	". c grey90   m white g4 grey90",
+	"b c black  m black g4 black",
+	"g c white m white g4 white",
+	"r c red   m black g4 grey70",
+	"y c yellow m white g4 grey90",
+	"h c brown m black g4 grey30",
+	"...........r....",
+	".........ry.....",
+	".......ryyr.....",
+	".........ryhh...",
+	".............h..",
+	"......bbbb...h..",
+	".....bbbbbb...h.",
+	"....bbbbbbbb..h.",
+	"....bgbbbbbbhh..",
+	"....bgbbbbbb....",
+	"....bbgbbbbb....",
+	".....bbggbb.....",
+	"......bbbb......",
+	"................",
+	"................",
+	"................",
+};	
+

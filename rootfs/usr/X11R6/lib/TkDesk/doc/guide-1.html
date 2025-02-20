@@ -1,0 +1,178 @@
+<HTML>
+<HEAD>
+<TITLE>TkDesk User's Guide: Introduction </TITLE>
+</HEAD>
+<BODY>
+Previous
+<A HREF="guide-2.html">Next</A>
+<A HREF="guide.html#toc1">Table of Contents</A>
+<HR>
+<H2><A NAME="s1">1. Introduction </A></H2>
+
+
+<P><B>Please note:</B> As of TkDesk 1.0b5, this guide unfortunately has
+become slightly out of date.  To find out what has changed or been
+added since this guide was written, please take a look at the change
+log (&quot;Help/Changes&quot;), even if you're a first time user.</P>
+<P>TkDesk is a graphical desktop manager for UNIX (especially Linux) and the X
+Window System.   Compared with other file managers available, it offers the
+most complete set of file operations and services, plus gives the user
+the ability to configure most aspects of TkDesk in a powerful
+way.  The reason for this is the use of Tcl/Tk as the configuration and
+(for the greatest part of TkDesk) implementation
+language.  TkDesk has been influenced by various other systems and file
+managers: NeXT, for laying out the file browser windows,
+Apple Finder, for the idea of file annotations and, (shock horror),
+Windows 95, for some other (of course minor and unimportant) inspirations.</P>
+<P>This is a brief overview of the most prominent features of TkDesk:</P>
+<P>
+<UL>
+<LI> Arbitrary number of automatically refreshed file browsers and
+file list windows,</LI>
+<LI> Configurable file-specific popup-menus,</LI>
+<LI> Drag and drop,</LI>
+<LI> Files and directories may also be dropped onto the root window,
+a.k.a. desktop,</LI>
+<LI> Configurable application bar, with several displays and
+cascaded popup menus for
+each button, files can also be dropped here,</LI>
+<LI> History of visited directories, opened files, executed commands,
+and others, which is automatically saved to disk,</LI>
+<LI> Find files through their annotation, name, contents, size or age,</LI>
+<LI> Trash can for safe deletion of files and directories,</LI>
+<LI> Calculation of disk usage for directory hierarchies,</LI>
+<LI> All file operations (find, copy, disk usage, etc.) are carried out in
+the background,</LI>
+<LI> Traversal of directory hierarchies through recursive cascaded menus,</LI>
+<LI> Bookmarks, create menu entries for often used files/directories,</LI>
+<LI> Comprehensive hypertextish online help,</LI>
+<LI> Built-in multi-buffer and undo-capable editor,</LI>
+<LI> Close coupling with Netscape for displaying HTML files or
+selected URLs,</LI>
+<LI> Sound support,</LI>
+<LI> Powerful configuration of nearly all aspect of TkDesk through
+Tcl/Tk, this also allows the Tcl-literate to extend TkDesk in
+arbitrary ways,</LI>
+<LI> Free of charge! But see the file <CODE>COPYING</CODE>, or menu
+entry <CODE>Help/License</CODE> for
+information on usage and redistribution of TkDesk.</LI>
+</UL>
+</P>
+
+<H2><A NAME="ss1.1">1.1 Acknowledgments </A></H2>
+
+
+<P>TkDesk uses a number of other freely available packages without which
+TkDesk would not have been possible.  I'd like to say many thanks to
+the following people:</P>
+<P>
+<UL>
+<LI> Chris Sterritt for setting up and managing the TkDesk mailing list
+(at
+<CODE>
+<A HREF="mailto:majordomo@mrj.com">majordomo@mrj.com</A></CODE>,
+send a mail with the body &quot;subscribe tkdesk&quot; to join),</LI>
+<LI> Ken Hornstein for his wonderful netscape-remote package,</LI>
+<LI> Ioi Kim Lan for making an XPM image reader for Tk available,</LI>
+<LI> George Howlett for his great BLT, of which parts are used by TkDesk,</LI>
+<LI> Michael McLennan for his massively useful <CODE>[incr tcl]</CODE>,</LI>
+<LI> John Ousterhout for Tcl/Tk, which is definitely the best thing
+since sliced bread,</LI>
+<LI> Greg Hankins and Matt Welsh for putting together the most
+wonderful linuxdoc-sgml package,</LI>
+<LI> and of course, Linus Torvalds whose Linux kind of changed my
+life, really!</LI>
+</UL>
+</P>
+<P>And a very big thank you to the growing TkDesk user community,
+which provides me with a constant flow of bug reports (getting less
+now <CODE>:-)</CODE>), suggestions for enhancements of TkDesk, and lots of
+motivation and encouragement.</P>
+<P>Special thanks to Chuck Robey for revising a previous version of
+this guide.</P>
+
+
+
+<H2><A NAME="ss1.2">1.2 Using TkDesk's Help System </A></H2>
+
+
+<P>If you have Netscape running, TkDesk will use that for displaying
+this User's Guide on-line.  Otherwise, to reduce overhead, TkDesk
+uses its own, rather sophisticated help system.  It features
+hypertext links, context sensitivity (which is not yet utilised by
+TkDesk) and full text search. </P>
+<P>The help window consists of three areas:</P>
+<P>
+<OL>
+<LI> A listbox listing all the section headings.  A section can be
+selected by pressing the left mouse button,</LI>
+<LI> the text display, which contains the actual help text, and</LI>
+<LI> a button &quot;Back&quot;, which jumps back after a hypertext
+link has been followed (see next paragraph), a button
+&quot;Close&quot; which closes the help window, and a text entry.  In
+this entry a regular expression can be entered (such as
+<CODE>[Ff]eatures</CODE>).  After hitting <CODE>Return</CODE>, the whole help
+text is searched for this expression.  Pressing <CODE>Return</CODE> again
+continues the search.</LI>
+</OL>
+</P>
+<P>Text that is displayed blue in the help window is a hypertext
+link.  When the left mouse button is clicked over such a link the
+display will automatically change to the referenced section.  One can
+jump back by pressing the &quot;Back&quot; button described above.</P>
+<P>The following keys are bound when the mouse pointer is inside the help
+window:</P>
+<P>
+<DL>
+<DT><B><CODE>Tab</CODE></B><DD><P>Moves to the next section.</P>
+<DT><B><CODE>Shift-Tab</CODE></B><DD><P>Moves to the previous section.</P>
+<DT><B><CODE>Control-Tab</CODE></B><DD><P>Moves to the first section.</P>
+<DT><B><CODE>Control-Shift-Tab</CODE></B><DD><P>Moves to the last section.</P>
+<DT><B><CODE>Up, Down</CODE></B><DD><P>Scrolls one line up/down.</P>
+<DT><B><CODE>Page up, Page down</CODE></B><DD><P>Scrolls one page up/down.</P>
+<DT><B><CODE>Control-Home</CODE></B><DD><P>Jumps to start of help text.</P>
+<DT><B><CODE>Control-End</CODE></B><DD><P>Jumps to end of help text.</P>
+<DT><B><CODE>Meta/Alt-b</CODE></B><DD><P>Equivalent to pressing the
+&quot;Back&quot; button.</P>
+<DT><B><CODE>Meta/Alt-c, Escape</CODE></B><DD><P>Equivalent to pressing the
+&quot;Close&quot; button.</P>
+</DL>
+</P>
+
+
+<H2><A NAME="cmdopts"></A> <A NAME="ss1.3">1.3 Command Line Options </A></H2>
+
+
+<P>Usually TkDesk is started simply by executing the command
+&quot;<CODE>tkdesk</CODE>&quot; from the shell prompt or your X
+initialisation file.  The command line options understood by TkDesk are
+the following:</P>
+<P>
+<DL>
+<DT><B>-configdir <I>dir</I></B><DD><P>Reads the configuration from
+directory <I>dir</I> instead of <CODE>~/.tkdesk</CODE>.</P>
+<DT><B>-default</B><DD><P>Reads the default configuration of TkDesk 
+instead of the user's one in <CODE>~/.tkdesk</CODE>.</P>
+<DT><B>-fvwm</B><DD><P>TkDesk uses the icon window facility only if fvwm is
+the current window manager.  Since other window managers may also
+support icon windows, or TkDesk maybe unable to detect you're running
+fvwm, this command line option forces TkDesk to use icon windows.  The
+advantage of these is that they look nicer and files can be dropped on
+them.</P>
+<DT><B>-iconic</B><DD><P>Iconifies all file browser and file list windows
+created by TkDesk during start-up.</P>
+<DT><B>-startdir <I>dir</I></B><DD><P>If this option is given,
+the first file browser will open with directory <I>dir</I>.</P>
+</DL>
+</P>
+<P>For example, the command &quot;<CODE>tkdesk -fvwm -iconic</CODE>&quot;
+forces Tkdesk to use icon windows and starts with all windows iconified.</P>
+
+
+
+<HR>
+Previous
+<A HREF="guide-2.html">Next</A>
+<A HREF="guide.html#toc1">Table of Contents</A>
+</BODY>
+</HTML>

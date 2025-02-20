@@ -1,0 +1,27 @@
+--- linux/drivers/char/console.c.org	Sat Jan  6 10:46:04 1996
++++ linux/drivers/char/console.c	Tue Jan  9 04:55:49 1996
+@@ -96,6 +96,7 @@
+ #ifdef CONFIG_APM
+ #include <linux/apm_bios.h>
+ #endif
++#include <linux/kerneld.h>
+ 
+ #include <asm/io.h>
+ #include <asm/system.h>
+@@ -2115,6 +2116,8 @@
+ 
+ 	if(!nopowersave)
+ 	    vesa_blank();
++
++	kerneld_blanker(1);
+ }
+ 
+ void do_unblank_screen(void)
+@@ -2130,6 +2133,7 @@
+ 
+ 	if (!console_blanked)
+ 		return;
++	kerneld_blanker(0);
+ 	if (!vc_cons_allocated(fg_console)) {
+ 		/* impossible */
+ 		printk("unblank_screen: tty %d not allocated ??\n", fg_console+1);

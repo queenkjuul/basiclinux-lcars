@@ -1,0 +1,74 @@
+/*========================================================================
+*
+* Name - README.2_4
+*
+* Version:	1.8
+*
+* ccsid:	@(#)README.2_4	1.8 - 08/16/95 08:16:29
+* from: 	ccs/s.README.2_4
+* date: 	11/07/95 11:31:39
+*
+* Description: Notes on release 2.4
+*
+*========================================================================
+
+This release adds the following features:
+
+  * PPM output format.  This is a format used in the Portable Bitmap package.
+
+  * -borders option is now split into -frame and -borders.  The -frame
+    option controls window frames, such as Motif window managers add, while
+    the -borders option controls actual window borders.
+  
+  * -colorwin option for specifying a window id to grab a colormap from
+    for color processing.
+  
+  * -offset option for grabbing a specific area inside the selected window
+
+  * Names can be used instead of window ID numbers in the -id and -colorwin
+    options.
+
+  * xgrab windows are now small enough to fit on 640x480 PC displays
+
+  * changes required for Cray computers
+  
+  * modules have been broken out into more normal ".c" files
+
+  * VMS build files for xgrabsc
+  
+  * Open Windows make script for Solaris
+  
+
+
+This release also fixes the following bugs:
+
+  * XWD Z-pixmap output of dithered images failed due to incorrect bitmap_pad
+
+  * postscript output now puts all variables and procedures into a
+    temporary dictionary so encapsulated postscript output does not
+    interfere with application definitions and does not leave anything
+    on the stack.
+
+  * some systems require a control-d character at the end of postscript
+    files.  An option has been added to config.h to control this.
+  
+  * Too many people wanted to use xgrabxm with Motif 1.1.x.  All that was
+    needed was a string-to-widget converter so I've added one.
+  
+  * xgrabxm.c and xgrabxaw.c failed to link on some systems due to a
+    unresolved symbol (isspace()).
+  
+  * xgrabsc used the wrong color map on some systems.  The program is now
+    a little smarter about choosing colormaps, and there is also a new
+    option in config.h to make xgrabsc always use the default colormap.
+  
+  * the new -coords option had a bad type declaration for x,y,w,h that
+    caused xgrabsc to dump core.  This has been fixed by using XParseGeometry.
+
+  * compiler warnings on systems with ANSI compilers (most systems nowadays)
+  
+  * makefile looks for xrdb in wrong directory
+  
+  * newer releases of X hide some internals that xgrabsc needs, causing
+    compilation errors
+

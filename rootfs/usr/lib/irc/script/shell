@@ -1,0 +1,24 @@
+# This sets up a shell in an IRCII window.  
+# You start it by executing /SHELL.  If creates a window and 
+# runs the shell in it, all command from that window go to 
+# the shell.  Executing subsequent /SHELL commands makes
+# the shell window the current window.  
+#
+eval assign IRCFLUSH $LIBRARY_PATH/$ARCHITECTURE/flush
+assign shell_flag 0
+on ^exec_exit shell {
+	^window refnum shell kill
+	^assign shell_flag 0
+}
+on ^window_kill shell {
+	^exec -kill %shell
+	^assign shell_flag 0
+}
+
+alias shell if (shell_flag) {^window show shell} {^call_shell}
+alias call_shell {
+	window new name shell
+	exec -name shell -window exec $ircflush $SHELL
+	^query %shell
+	assign shell_flag 1
+}

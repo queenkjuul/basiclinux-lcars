@@ -1,0 +1,21 @@
+#!/bin/sh
+
+#
+# This script extract -J-xxx args which are args to the runtime from
+# the actual arguments to the tool. 
+#
+# It places the results in the variables RUNTIME_ARGS and
+# APP_ARGS. Target scripts should *source* this extraction script.
+#
+
+RUNTIME_ARGS=""
+APP_ARGS=""
+for a in "$@"
+do
+    if ja=`expr "$a" : '-J\(..*\)'`
+    then 
+	  RUNTIME_ARGS="$RUNTIME_ARGS $ja"
+    else 
+	APP_ARGS="$APP_ARGS $a"
+    fi
+done

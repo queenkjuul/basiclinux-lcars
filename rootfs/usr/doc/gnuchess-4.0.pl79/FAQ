@@ -1,0 +1,416 @@
+From: mann@pa.dec.com (Tim Mann)
+Newsgroups: gnu.chess,rec.games.chess.computer,alt.chess.ics,alt.answers,rec.answers,news.answers
+Subject: FAQ -- GNU Chess and XBoard Frequently Asked Questions
+Followup-To: gnu.chess
+Reply-To: bug-gnu-chess@prep.ai.mit.edu
+Approved: news-answers-request@MIT.EDU
+Summary: Answers to frequently asked questions in the gnu.chess
+  newsgroup, covering the chess-playing program GNU Chess, the chess
+  interfaces XBoard and WinBoard, and other chess topics.
+
+Archive-name: games/chess/gnu-faq
+Version: $Id: FAQ.html,v 1.105 1998/09/18 01:59:42 mann Exp $
+Posting-frequency: monthly
+GNU Chess and XBoard:
+Frequently Asked Questions
+Here is the list of frequently asked questions and answers for the gnu.chess newsgroup, covering the chess-playing program GNU Chess, the chess interfaces XBoard and WinBoard, and a few other chess topics. In addition to the plain text version that is posted to the newsgroups, a hyperlinked version of this FAQ is available on the Web through the page http://www.research.digital.com/SRC/personal/Tim_Mann/chess.html.
+--------------------------------------------------------------------------------
+ 
+Outline
+[A] Introduction and hot topics 
+[B] GNU Chess 
+[C] GNU Chess, bugs and problems 
+[D] XBoard and WinBoard 
+[E] XBoard and WinBoard, bugs and problems 
+[F] Crafty and other topics 
+
+--------------------------------------------------------------------------------
+
+Detailed contents
+[A] Introduction and hot topics 
+[A.1] What are the gnu.chess newsgroup and info-gnu-chess mailing list for? 
+[A.2] How do I subscribe or unsubscribe? 
+[A.3] Where can I get chess information and chess software? 
+[A.4] What are the current version numbers for GNU Chess, XBoard, etc.? 
+[A.5] Who is working on this project? 
+[A.6] How do I report bugs, offer help, etc.? 
+[B] GNU Chess 
+[B.1] What is GNU Chess? 
+[B.2] What is GNU Chess's rating? 
+[B.3] Does GNU Chess run on a PC under DOS (or Windows, or OS/2)? 
+[B.4] Does GNU Chess run on an Amiga? 
+[B.5] Does GNU Chess run on a Macintosh? 
+[B.6] Does GNU Chess run on VMS? 
+[B.7] Does GNU Chess run on the Acorn Archimedes? 
+[B.8] Does GNU Chess run on Atari computers? 
+[B.9] How do I build GNU Chess? Do I have to have gcc? 
+[C] GNU Chess, bugs and problems 
+[C.1] XBoard tells me "Error: first chess program (gnuchessx) exited unexpectedly". 
+[C.2] GNU Chess lets its flag fall a move or two before the time control. 
+[C.3] GNU Chess freezes after it gets out of its opening book. 
+[C.4] GNU Chess sometimes tells me that a legal move is illegal. 
+[C.5] GNU Chess crashes when I try to compile and run it on the DEC Alpha. 
+[C.6] Running (or building) GNU Chess fails with a message about FIONREAD. 
+[C.7] GNU Chess runs way too slow and makes my disk seek wildly. 
+[D] XBoard and WinBoard 
+[D.1] What is XBoard? 
+[D.2] Is there an XBoard for Microsoft Windows? What is WinBoard? How do I install WinBoard? 
+[D.3] Is there an XBoard for the Amiga? What is AmyBoard? 
+[D.4] Is there an XBoard for the Macintosh? 
+[D.5] Does XBoard run on VMS? 
+[D.6] What is cmail? 
+[D.7] How do I build XBoard? Do I have to have gcc? 
+[D.8] Can I use XBoard to play a game of chess with another human? 
+[D.9] Will WinBoard run on Windows 3.1? 
+[D.10] How do I use XBoard or WinBoard as an external viewer for PGN files with my Web browser? 
+[D.11] How do I use WinBoard as an external viewer for PGN files with the MS Windows File Manager or Explorer? 
+[D.12] How do I use ICC timestamp or FICS timeseal with XBoard? 
+[D.13] How do I use ICC timestamp or FICS timeseal with WinBoard? 
+[D.14] How do I play bughouse with XBoard or WinBoard? 
+[D.15] How can I scroll back in the WinBoard console? 
+[D.16] What is Zippy? How can I interface a chess program to the Internet Chess Servers? 
+[D.17] How can I interface my own chess program to XBoard or WinBoard? 
+[D.18] How can I recompile WinBoard from source? 
+[E] XBoard and WinBoard, bugs and problems 
+[E.1] I can't build XBoard because the X11/Xaw/... include files are not found. 
+[E.2] Configuring or building XBoard fails due to missing header files, missing libraries, or undefined symbols. 
+[E.3] I have problems using WinBoard on ICS with a modem. I'm not running SLIP or PPP, but just dialing in to an ordinary login account ("shell account"). 
+[E.4] I have problems using WinBoard on ICS with Windows 95 and SLIP or PPP. When trying to start up, it gets the error "Address family not supported by protocol family" (or some equally strange message). 
+[E.5] When I try to run WinBoard, I get the message "Failed to start chess program gnuchesx on localhost: NO LANGFILE (file gnuchess.lang not found)". 
+[E.6] I want to use XBoard or WinBoard as an Internet Chess Server interface, but the ICS Client option is grayed out on the menu. 
+[E.7] How do I give command-line options to a Windows program like WinBoard? 
+[E.8] When I try to log in to ICC using timestamp (or to FICS using timeseal) with XBoard, it accepts my handle, but just beeps at me when I type my password. 
+[E.9] When I exit from WinBoard after using it to play against GNU Chess or Crafty, the chess program keeps running in the background. 
+[E.10] When running WinBoard, I get the message "Error getting user name: The operation being requested was not performed because user has not logged on to the network." 
+[E.11] WinBoard crashes Windows 95! 
+[E.12] Why do my ICS opponents often get extra time after they make their moves? Why do I sometimes lose time off my clock after I make my move? 
+[F] Crafty and other topics 
+[F.1] What is XChess? 
+[F.2] What is Winsock Chess? 
+[F.3] What is Crafty? 
+[F.4] How do I use Crafty with XBoard? 
+[F.5] How do I use Crafty with WinBoard? 
+
+--------------------------------------------------------------------------------
+
+[A] Introduction and hot topics
+
+--------------------------------------------------------------------------------
+
+[A.1] What are the gnu.chess newsgroup and info-gnu-chess mailing list for?
+The newsgroup gnu.chess and the mailing list info-gnu-chess@prep.ai.mit.edu are for the discussion of GNU Chess, XBoard, and related free chess software. 
+gnu.chess and info-gnu-chess are not for general chess or computer chess discussion. You won't be flamed if you post such messages here, but you will find more information in other places. See topic [A.3] below. 
+
+PLEASE DO NOT try to start or play chess games by posting messages to gnu.chess. Instead, read the rec.games.chess FAQ (see topic [A.3]) to learn about the IECG, the IECC, and other groups that you can join to find opponents, and send one or more of them email to join. 
+
+The newsgroup and mailing list are gatewayed bidirectionally; that is, any article posted on the newsgroup is automatically forwarded to the mailing list, and any mail sent to the list is automatically forwarded to the newsgroup. 
+
+
+--------------------------------------------------------------------------------
+
+[A.2] How do I subscribe or unsubscribe?
+The simplest way is to either choose to read gnu.chess in your newsreader, or choose not to. 
+If you want to be added to or deleted from the mailing list, mail to info-gnu-chess-request@prep.ai.mit.edu (not to the list or newsgroup itself). 
+
+
+--------------------------------------------------------------------------------
+
+[A.3] Where can I get chess information and chess software?
+As a shortcut to most things mentioned in this FAQ, try my Chess Web page, http://www.research.digital.com/SRC/personal/Tim_Mann/chess.html. My Web page is the best place to get the latest versions of XBoard and WinBoard and the most up-to-date version of this FAQ. 
+For general news and information about chess, try the newsgroup hierarchy rec.games.chess.*, especially the groups rec.games.chess.misc and rec.games.chess.computer. Both of the latter groups have very informative FAQs maintained by Steve Pribut; look for them on the newsgroups or at http://www.clark.net/pub/pribut/chess.html. 
+
+Like other GNU software, you can get GNU Chess and XBoard by anonymous FTP from ftp://prep.ai.mit.edu/pub/gnu/ and its many mirror sites. Look for files matching the patterns gnuchess-*.gz and xboard-*.gz. The .gz suffix indicates the files were compressed with gzip. You can get gzip from prep.ai.mit.edu also. The GNU FTP sites generally carry Unix-compatible versions of GNU software only, so you won't find WinBoard there; get it from my Web page (above) or from the Internet Chess Library (next paragraph). 
+
+For other chess software, try the Internet Chess Library. Use anonymous FTP to connect to ftp.freechess.org, or go to the Web page http://www.freechess.org/. You can get chess software, game collections, the FAQ file for rec.games.chess, and other chess-related material there, in the directory pub/chess. The FTP server can automatically decompress files for you as you download them, useful if you don't have gzip. 
+
+Here is a sample anonymous ftp session. Some of the ftp server's responses are abbreviated, but all the commands you must type are included. 
+
+% ftp prep.ai.mit.edu
+Connected to prep.ai.mit.edu
+Name: anonymous
+Password: your-email-address@your-site
+ftp> binary
+200 Type set to I.
+ftp> cd /pub/gnu
+250 CWD command successful.
+ftp> dir gnuchess-*.gz
+-rw-r--r-- 1 14910 wheel 1512181 May 20 00:52 gnuchess-4.0.pl77.tar.gz
+ftp> get gnuchess-4.0.pl77.tar.gz
+150 BINARY connection for gnuchess-4.0.pl77.tar.gz (1512181 bytes).
+226 Transfer complete.
+ftp> dir xboard-*.gz
+-rw-r--r-- 1 14910 wheel  393119 May 20 00:25 xboard-4.0.0.tar.gz
+ftp> get xboard-4.0.0.tar.gz
+150 BINARY connection for xboard-4.0.0.tar.gz (393119 bytes).
+226 Transfer complete.
+ftp> quit
+
+--------------------------------------------------------------------------------
+
+[A.4] What are the current version numbers for GNU Chess, XBoard, etc.?
+At this writing, the current version numbers are: 
+GNU Chess 4.0.77 
+GNU Chess 4.14 for Windows 
+GNU Chess Mac 4.0b5 
+XBoard 4.0.0 
+WinBoard 4.0.0 
+
+--------------------------------------------------------------------------------
+
+[A.5] Who is working on this project?
+Stuart Cracraft is the GNU Chess project coordinator. Currently no one seems to be working on the GNU Chess engine itself. Conor McCarthy is responsible for GNU Chess 4.xx for Windows. Tim Mann maintains this FAQ and is the lead developer on XBoard and WinBoard, but he has little time to spend on the project. Evan Welsh, the author of cmail, is not actively working on it but does fix bugs when they are reported.
+--------------------------------------------------------------------------------
+ 
+[A.6] How do I report bugs, offer help, etc.?
+Any time you want to report a possible bug in GNU Chess, XBoard, etc., we need to know exactly what you did, and exactly what error (or other) messages you got. 
+If you are using Unix, run the "script" program, run XBoard with the -debug flag (if you get as far as running it), do whatever is necessary to reproduce the problem, type "exit" to the shell, and mail us the resulting typescript file. We also need to know what hardware/operating system combination you are using. The command "uname -a" will usually tell you this; include its output in your typescript. 
+
+If you are using MS Windows, run WinBoard with the -debug flag, and send us a copy of the WinBoard.debug file. If you aren't sure how to add command-line flags to WinBoard, you can hit Ctrl+Alt+F12 to create a WinBoard.debug file after WinBoard starts, but that is not as good, because a few messages that would have been printed at the start are lost. 
+
+Either way, please send us the exact text of the commands you typed and the output you got, not just your recollection of approximately what they were. The messages may seem meaningless to you, but they are very meaningful to us and essential for diagnosing problems. 
+
+You should be able to contact all the members of the project by sending mail to bug-gnu-chess@prep.ai.mit.edu. If you don't trust this list, you can send mail about XBoard, WinBoard, or the FAQ to mann@pa.dec.com (Tim Mann); mail about cmail to R.E.Welsh@quadstone.co.uk (Evan Welsh). Comments that are of interest to all users of the software should be posted to the gnu.chess newsgroup. 
+
+
+--------------------------------------------------------------------------------
+
+[B] GNU Chess
+
+--------------------------------------------------------------------------------
+
+[B.1] What is GNU Chess?
+GNU Chess is a free chess-playing program developed as part of the GNU project of the Free Software Foundation (FSF). 
+GNU Chess is a communal chess program. Contributors donate their time and effort in order to make it a stronger, better, sleeker program. Contributions take many forms: interfaces to high-resolution displays, opening book treatises, speedups of the underlying algorithms, additions of extra heuristics. These contributions are then distributed to the large user-base so that all may enjoy the fruits of our labor. 
+
+GNU Chess is intended to run under Unix or Unix-compatible systems. It is written in C and should be portable to other systems. 
+
+For a test drive, try WebChess, a World Wide Web interface to GNU Chess provided by DJ Delorie. The URL is http://www.delorie.com/game-room/chess/. 
+
+
+--------------------------------------------------------------------------------
+
+[B.2] What is GNU Chess's rating?
+It would be irresponsible to answer this question with a number, without first explaining a few things about ratings. 
+The ratings that are commonly given for computer chess players are less meaningful than they may seem. Most computer chess players (including GNU Chess) do not play in tournaments against humans, or do so only rarely, so they do not have official ratings from FIDE, USCF, or other chess organizations. 
+
+Some people have methods for rating chess programs approximately by giving them a set of problems to work on and seeing how they do, or by having them play tournaments against each other. Any rating number produced by such means should be taken with a grain of salt; it may be only a rough approximation to the rating the program would achieve in over-the-board tournament competition against humans. The chess skills required for solving problems or playing against other computers are not necessarily the same as those required for play against humans. Also, of course, tournaments among computers can rate the computers only relative to one another, not relative to humans. Some of the computers need to be rated by other means to give the ratings a basis to start from. 
+
+Compared with human players, computer players are strong tactically but weak strategically, and are much better at blitz chess than at slow chess. These differences make it more difficult to assign a meaningful rating too. 
+
+Several computers do play regularly on the Internet chess servers and have achieved ratings there. These ratings have the advantage of being based on many games. On the other hand, ICS ratings are only roughly comparable to USCF or FIDE ratings. Many players have ICS ratings that are hundreds of points higher or lower than their USCF or FIDE ratings. 
+
+Finally, unlike dedicated chess machines, or PC chess programs that run on only a few different models of Intel processors, GNU Chess runs on many different kinds of CPU at many different speeds. Thus its strength depends on how fast a machine you run it on and how much optimization your C compiler does. Some people have formulas for estimating how a computer player's rating varies on faster or slower machines---see the rec.games.chess FAQ for more information---but these need to be taken with a grain of salt too. 
+
+All that said, here are some numbers. 
+
+- On the Internet Chess Club, a copy of GNU Chess running on an SGI Onyx R4400 under the handle MaxII once achieved a blitz rating of over 2500 and a standard rating of over 2300. Current ICC and FICS ratings for computers using GNU Chess tend to be a good deal lower. 
+
+- Wolfgang Gabriel ran the Bednorz-Toennissen Test BT2630 with GNU Chess 4.0 pl74 on a 60 MHz Pentium with 16 MB of RAM. The test gave an estimated rating of 2213. He also ran Fritz-2 on the same hardware and got an estimated rating of 2311. 
+
+
+--------------------------------------------------------------------------------
+
+[B.3] Does GNU Chess run on a PC under DOS (or Windows, or OS/2)?
+Yes. There are several versions available. 
+WinBoard provides a graphical user interface to GNU Chess that runs on Windows 95 and Windows NT. See topic [D.2]. The WinBoard distribution includes a GNU Chess executable for the Intel architecture, plus instructions and patches (when necessary) for recompiling GNU Chess from the official sources, available separately. 
+
+GNU Chess 4.xx for Windows bundles GNU Chess and a custom graphical interface into a single program. Unlike WinBoard, it runs on Windows 3.1 if you have the Win32s compatibility package installed (available free from Microsoft). You can get GNU Chess 4.xx for Windows from ftp://prep.ai.mit.edu/pub/gnu/, filename currently gnuchessPC-4.14.zip. The distribution includes complete sources and an Intel executable. If you need Win32s, you can get it from ftp://ftp.microsoft.com/Softlib/MSLFILES/PW1118.EXE. 
+
+The standard GNU Chess 4.0 distribution can be compiled for MS-DOS, and will run under Windows in a DOS box, but with no graphical interface. Depending on what patchlevel of GNU Chess you get and what C compiler you have, you may need to make minor source changes to get it to compile. Some precompiled versions are available in the Internet Chess Library; the most recent at this writing is: ftp://ftp.freechess.org/pub/chess/DOS/gch4077.zip. 
+
+Here is a listing of GNU Chess files for the PC in the Internet Chess Library (topic [A.3]). They are scattered among the directories /pub/chess/Win3, /pub/chess/DOS, and (don't forget) /pub/chess/DOS/OLD-STUFF. This listing may be outdated; see the library itself to look for additions. 
+
+MS-DOS:
+  gch4077.zip       497874  GNU Chess 4.0.pl77 for MS-DOS; needs 386 or better.
+  gnu40-62.exe     1323260  Probably GNU Chess 4.0.pl62 for MS-DOS
+  gnu40dos.exe T    317072  GNU Chess 4.0pl60 by Free Software Foundation
+                         -  compiled for DOS, executables only
+  gnu40src.exe      307786  GNU Chess 4.0pl60 by Free Software Foundation
+                         -  sources only
+  gnuchs31.exe T    270559  GNU Chess 3.1 by Free Software Foundation
+                         -  compiled for DOS, sources and executables
+  gnuchs40.exe T    355494  GNU Chess 4.0pl60 by Free Software Foundation
+                         -  compiled for 80386er, executables only
+
+Windows:
+  chess321.exe W  M 238185  GNU Chess 3.21 ported by Daryl K. Baker
+
+OS/2:
+  gpl65os2.zip      677824  gnuchess-4.0.pl65 compiled for os2.
+  gc-os2-m.zip      578032  gnuchess 4.0 for os2 with mouse support.
+  gnu40os2.zip     1303602  Executables for running gnuchess 4.0 pl62
+                         -  under OS/2. 
+  pmchs.exe    W  M  92004  OS/2 PM Chess 1.01 (GNU Chess 3.1 Windows by
+                         -  Daryl K. Baker) port to OS/2 by Kent Cedola
+  pmchssrc.exe      110279  OS/2 PM Chess 1.01 (GNU Chess 3.1 Windows by
+                         -  Daryl K. Baker) sources only
+Porting GNU software to PCs is not a major focus of the GNU project, and these ports are not supported by the FSF. Contact the people who did the ports if you have questions or problems. 
+
+
+--------------------------------------------------------------------------------
+
+[B.4] Does GNU Chess run on an Amiga?
+There are at least three ports of GNU Chess to the Amiga. As with the PC ports, these ports are not supported by the FSF; contact the people who did the ports if you have problems or questions. 
+The AmyBoard port (probably the best) is discussed in topic [D.3]. 
+
+UChess and AmigaGnuChess are available in the Internet Chess Library (topic [A.3]), in the directory /pub/chess/Amiga. UChess is the newer of the two. 
+
+-r--r--r--  1 chess    chess   204025 Mar 31  1993 AmigaGnuChess.lha
+-r--r--r--  1 chess    chess    10122 Mar 31  1993 AmigaGnuChess.readme
+
+-r--r--r--  1 chess    chess   705327 May  7 10:28 UChess283.lha
+-r--r--r--  1 chess    chess    21478 May  7 10:26 UChess283.readme
+-r--r--r--  1 chess    chess   199387 May  7 10:27 UChess283Patch.lha
+-r--r--r--  1 chess    chess    21589 May  7 10:26 UChess283Patch.readme
+
+--------------------------------------------------------------------------------
+
+[B.5] Does GNU Chess run on a Macintosh?
+There is a port of GNU Chess 4.0 to the Macintosh. It's available from the Internet Chess Library (topic [A.3]) under /pub/chess/Macintosh or /pub/chess/uploads/Macintosh, in the following files: 
+    GnuChessMac40b5.hqx  - executable binary
+    GCMsource40b5.hqx    - source
+As with the PC ports, the Macintosh port is not supported by the Free Software Foundation. If you have questions or problems, contact Dan Oetting, oetting@gldfs.cr.usgs.gov. 
+If you have the old Mac port of GNU Chess 3.0, be sure to get 4.0 instead. GNU Chess has come a long way since version 3.0! 
+
+
+--------------------------------------------------------------------------------
+
+[B.6] Does GNU Chess run on VMS?
+An old VAX VMS version is available at ada.cenaath.cena.dgac.fr in the [.VMS] directory: 
+Directory CENA10:[ANONYMOUS.VMS]
+
+GNUCHESS.ZIP;1                     307  21-MAR-1994 18:42:05.13
+It's only a character cell version for VT100, VT200, etc. terminals. Thanks to Patrick Moreau for this information.
+--------------------------------------------------------------------------------
+ 
+[B.7] Does GNU Chess run on the Acorn Archimedes?
+Steve Dicks (steve@starswan.demon.co.uk) tells us: 
+You might like to know that I have recently successfully completed a port of GNU Chess 4.0.pl75 to the Acorn Archimedes, and I have written my own graphical front-end to it called ArcBoard (current version 0.05). It is currently available from ftp://ftp.demon.co.uk/pub/archimedes/games/. 
+
+--------------------------------------------------------------------------------
+
+[B.8] Does GNU Chess run on Atari computers?
+Yves Debilloez (101361.2061@CompuServe.COM or yde@ficsgrp.com) tells us: 
+There is a version of GNU chess for Atari available. It can be downloaded from my homepage: http://ourworld.compuserve.com/homepages/yves_debilloez/homepage.htm. 
+
+--------------------------------------------------------------------------------
+
+[B.9] How do I build GNU Chess? Do I need gcc?
+The first step to building GNU Chess is to get the distribution file and unpack it. See topic [A.3] for places you can ftp the distribution from. 
+To unpack the gnuchess distribution, gnuchess-*.tar.gz, put it into a new, empty directory, cd there, and give this Unix command: 
+
+    gzip -cd gnuchess-*.tar.gz | tar -xvf -
+If this command fails because you don't have gzip, see topic [A.3], and ask a local Unix expert if you need more help. 
+The above command will unpack all the files into a new directory. Next, cd into this new directory. 
+
+Decide what directory tree you are going to install GNU Chess in. The default is /usr/local. If you have write access to this directory tree, make sure that it contains subdirectories bin, lib, and man. (If you must "su" to get write access to /usr/local, you don't need to do so until just before the "make install" below.) Type the following: 
+
+    configure
+    make
+    make install
+If you are going to install GNU Chess under your home directory for personal use, do this instead: 
+    mkdir $HOME/bin $HOME/lib $HOME/man
+    configure --prefix=$HOME
+    make
+    make install
+If you have problems or special requirements, see the files README, INSTALL, Makefile.in, and configure.in for more information. 
+You don't need to have gcc to build GNU Chess. However, GNU Chess is written in ANSI C. If you have only an old K&R C compiler, be sure you have the current patchlevel of GNU Chess, and get "unproto" by: 
+
+Wietse Venema
+wietse@wzv.win.tue.nl
+Mathematics and Computing Science
+Eindhoven University of Technology
+The Netherlands 
+
+It was released in comp.sources.misc Vol 27 with patches in vol 28 and vol 38. Among other places, it can be found on unix.hensa.ac.uk in pub/uunet/usenet/comp.sources.misc/volume27/unproto. 
+
+Compile it and copy the cpp it produces into the gnuchess src directory before you type "make" there. 
+
+
+--------------------------------------------------------------------------------
+
+[C] GNU Chess, bugs and problems
+
+--------------------------------------------------------------------------------
+
+[C.1] XBoard tells me "Error: first chess program (gnuchessx) exited unexpectedly".
+Try running XBoard again with the "-debug" flag on the command line. This will print out all the messages received from GNU Chess. 
+If you see this problem as soon as GNU Chess starts up, most likely GNU Chess is exiting with an error message. If you see the message "NO LANGFILE", it means that you did not install GNU Chess correctly, and it is unable to find the file gnuchess.lang. Make sure that you defined LIBDIR in the gnuchess Makefile, and that gnuchess.lang is in that directory. If gnuchess.lang is not there, you probably didn't type "make install" in the gnuchess src directory; you must do this to install gnuchess.lang (and the gnuchess book). If you defined LIBDIR to something that is not an absolute pathname (that is, to something that does not start with a "/"), GNU Chess will work only if you run it from the GNU Chess "src" directory where you built it. 
+
+If the problem happens while GNU Chess is running, you may have hit a GNU Chess bug. There used to be a bug that could corrupt the stack and cause the program to exit, sometimes with a nonsensical message first, sometimes with no message. It was especially evident on Linux. We believe this bug is fixed in GNU Chess 4.0.pl77. 
+
+
+--------------------------------------------------------------------------------
+
+[C.2] GNU Chess lets its flag fall a move or two before the time control. 
+GNU Chess is known to be a bit too aggressive in using its clock time and sometimes lets its flag fall. Some bugs that caused this symptom have been fixed, but more work on the problem may be needed.
+--------------------------------------------------------------------------------
+ 
+[C.3] GNU Chess freezes after it gets out of its opening book. 
+a) First, be sure you have the latest versions of GNU Chess (and XBoard or WinBoard, if you are using them); see topic [A.4] above. Several different bugs that could cause this symptom existed in old versions but have been fixed in the latest ones. 
+b) Another possibility is that you have a persistent transposition table (hashfile) that has been corrupted. Look in the LIBDIR directory you defined in the GNU Chess Makefile, and if you find a file named gnuchess.hash there, remove it. Do not use the hashfile if you are running multiple copies of GNU Chess at the same time (for instance, with Two Machines mode in XBoard). In fact, it is probably best not to use the hashfile under any circumstances. 
+
+
+--------------------------------------------------------------------------------
+
+[C.4] GNU Chess sometimes tells me that a legal move is illegal. 
+See topic [C.3]; the same answer applies.
+--------------------------------------------------------------------------------
+ 
+[C.5] GNU Chess crashes when I try to compile and run it on the DEC Alpha.
+Get the latest version of GNU Chess. Some bugs that showed up only on the Alpha are fixed in version 4.0 patchlevel 73 and later. If you still have problems, try compiling with the -migrate flag or the -O1 flag. Some older versions of the Alpha C compiler have optimizer bugs that affect GNU Chess.
+--------------------------------------------------------------------------------
+ 
+[C.6] Running (or building) GNU Chess fails with a message about FIONREAD. 
+The message looks something like this: 
+    FIONREAD: Operation not supported on socket
+    You probably have a non-ANSI ioctl.h; see README. -1 45 4004787f
+If you are using gcc to compile, the solution to this error message is usually to go to the GNU Chess Makefile, find the line that starts "CFLAGS=" (with no # character in front of it), and append the flag "-traditional-cpp" to the end of the line. Then do 
+
+    rm dspcom*.o gnuan.o
+    make
+    make install
+to rebuild gnuchess. 
+If you aren't using gcc, we don't really understand why this should happen, but we do have a brute-force workaround: You can simply disable the gnuchess feature that uses FIONREAD. Find all the places in dspcom.c (and gnuan.c) where the line "#ifdef FIONREAD" occurs. Change each of them to "#ifdef NOTDEF". Then recompile gnuchess. 
+
+With this code disabled, if you tell gnuchess to think on your time ("hard" mode), you will have to type ^C to make it stop thinking when you want to make your move. The current version of XBoard does this automatically, so disabling the code has no effect on XBoard. 
+
+
+--------------------------------------------------------------------------------
+
+[C.7] GNU Chess runs way too slow and makes my disk seek wildly.
+This happens if you don't have enough real memory (RAM) to run GNU Chess. You may need 16MB or more. You can reduce GNU Chess's memory requirements by reconfiguring it, or just buy more memory. Some (rather out of date) suggestions are in the file doc/PORTING from the GNU Chess source tree. 
+The following is from Nikhil Nair: 
+
+It is perfectly possible to run gnuchess on an 8Mb system. I would suggest that you don't edit the source (though the defaults are the definitions of ttblsz or something like that in src/ttable.h and DEFETABS in src/gnuchess.h), but rather use the -C and -T command-line options (which even work for gnuan, though not documented in the manpage). The defaults are `-C 18001 -T 150001' (for MS-DOS, -T 8001). On my Linux system, this uses just over 9Mb. From memory, `-C 6001 -T 40001' uses around 3Mb. Fiddle with these and see what results you get. 
+Why does GNU Chess use so much memory? The extra memory lets it keep large hash tables that speed up its search and make it play better, and a large on-line book that improves opening play. If you have lots of memory you may want to reconfigure GNU Chess to use *more* than the default amount. 
+
+
+--------------------------------------------------------------------------------
+
+[D] XBoard and WinBoard
+
+--------------------------------------------------------------------------------
+
+[D.1] What is XBoard?
+XBoard is a graphical user interface for chess. It displays a chessboard on the screen, accepts moves made with the mouse, and loads and saves games in Portable Game Notation (PGN). XBoard is free software. It serves as a front-end for many different chess services, including: 
+Chess engines that will run on your machine and play a game against you or help you analyze, such as GNU Chess (topic [B.1] above) and Crafty (topic [F.3] below). 
+
+Chess servers on the Internet, where you can connect to play chess with people from all over the world, watch other users play, or just hang out and chat. 
+
+Correspondence chess played by electronic mail. The cmail program (topic [D.6] below) automates the tasks of parsing email from your opponent, playing his moves out on your board, and mailing your reply move after you've chosen it. 
+
+The Web and your own saved games. You can use XBoard as a helper application to view PGN games in your Web browser, or to load and save your own PGN files. 
+
+XBoard runs under Unix or Unix-compatible systems. It requires the X Window System, version X11R4 or later. There are also ports of XBoard to Microsoft Win32 (that is, Windows NT or Windows 95) and to the Amiga. See topics [D.2] and [D.3] respectively. 
+
+
+--------------------------------------------------------------------------------
+
+[D.2] Is there an XBoard for Microsoft Windows? What is WinBoard? How do I install WinBoard?
+WinBoard is a port of XBoard to true Microsoft Win32 systems, such as Windows NT and Windows 95. It uses the same back end chess code as XBoard, but the front end graphics code is a complete rewrite. WinBoard is free software. 
+The WinBoard distribution includes a port of GNU Chess itself to Win32. The GNU Chess port is distributed in executable form, with instructions for rebuilding it from the standard GNU Chess sources (available separately). You should have at least 16 to 24 MB of memory to run GNU Chess with WinBoard. 
+
+The WinBoard distribution also includes the ICC timestamp and FICS timeseal programs (topic [D.12]). 
+
+cmail (topic [D.6])

@@ -1,0 +1,451 @@
+<HTML>
+<HEAD>
+
+   <TITLE>Troubleshooting</TITLE>
+
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0Gold (Win95; I) [Netscape]">
+
+   <META NAME="author" CONTENT="Emily Ricketts">
+
+<SCRIPT SRC = "../../Topic.js" LANGUAGE = "JavaScript1.2"></SCRIPT>
+
+<SCRIPT LANGUAGE = "JavaScript">
+loadSheet(navigator.platform, "content");
+</SCRIPT>
+
+</HEAD>
+
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#0000FF">
+
+
+
+<!-- Troubleshooting Topics
+Errors During Browsing
+Security
+Navigator
+Messenger
+Smart Update
+ -->
+
+
+<HR>
+<H1><A NAME="trouble_errormsg" TOCSTRING="Error Message Guide">Error Message Guide</A></H1>
+
+<HR>
+<H2><A NAME="dns_entry" INDEXSTRING="DNS^No DNS entry^server error^error messages" TOCSTRING="Server does not have a DNS entry">Server does not have a DNS entry</A></H2>
+
+<P>DNS stands for the Domain Name System that governs how a computer looks up a server name so that it can connect to a web site.</P>
+
+<P><B>If the problem is intermittent, this may be the reason:</B>
+
+<UL>
+	<LI>The URL is wrong. Check for spelling, punctuation, and capitalization errors, then try again.</LI>
+	
+	<LI>Your network is down. Try the URL again.  If it still does not work, contact your network administrator.</LI>
+
+	<LI>The network is busy.  Try connecting during less busy hours.</LI>
+	
+	<LI>The web server that you are trying to connect to is down or not working correctly.  Contact the server administrator.</LI>
+</UL>
+
+<P><B>If the problem is constant, this may be the reason:</B></P>
+
+<UL>
+	<LI>The dial-up connection is not set up correctly or the computer has not dialed in. Check the connection between your modem, dialer software, and service provider.</LI>
+	
+	<LI>The TCP/IP networking software is not set up correctly. Ask your network administrator for the correct configuration.</LI>
+
+	<LI>You are behind a firewall that doesn't allow you to connect to some web servers. Check with your network administrator.</LI>
+</UL>
+
+<P><B>If the problem occurs in mail or newsgroups:</B></P>
+
+<UL>
+	<LI>The names of your mail and newsgroup servers in your Netscape Preferences might be incorrect. Ask your network administrator or service provider for the correct server names. </LI>
+</UL>
+
+<HR>
+<H2><A NAME="peer_reset" INDEXSTRING="connection reset error^error messages" TOCSTRING="Connection reset by peer">Connection reset by peer</A></H2>
+
+<P>The remote host reset your connection.  Clicking Reload usually solves the problem.</P>
+
+<HR>
+<H2><A NAME="not_implemented" INDEXSTRING="not implemented error^error messages" TOCSTRING="Not implemented">Not implemented</A></H2>
+
+<P>This error indicates a problem with the web page. Contact the webmaster of the page.</P>
+
+<HR>
+<H2><A NAME="server_error" INDEXSTRING="server error^error messages" TOCSTRING="Server error">Server error</A></H2>
+
+<P>Check the URL for spelling, punctuation, and capitalization errors and try again. If the error still occurs, the web server that you are trying to connect to is down or not working correctly.  Try again later or contact the server's administrator.</P>
+
+<HR>
+<H2><A NAME="network_traffic" INDEXSTRING="server error^too much network traffic error^error messages" TOCSTRING="Too much network traffic">Too much network traffic</A></H2>
+
+<P>Usually this error means that too many people are accessing the web site. Try again during off-peak hours, such as the early morning.  Also try clearing your disk cache:</P>
+
+<OL TYPE="1" START="1">
+	<LI>Open the Edit menu and choose Preferences.</LI>
+	<LI>Open the Advanced group and click the Cache category.</LI>
+	<LI>Click Clear Disk Cache.</LI>
+</OL>
+
+<HR>
+<H2><A NAME="access_denied" INDEXSTRING="404 access denied^error messages" TOCSTRING="404 Access denied">404 Access denied</A></H2>
+
+<P>This error means either that file permissions are incorrect or that your access is restricted. If you should have access, contact the author of the web page.</P>
+
+<HR>
+<H2><A NAME="delete_failed" INDEXSTRING="disk quota" TOCSTRING="Disk Quota Exceeded (in Mail)">Disk quota exceeded (in Mail)</A></H2>
+
+This error message occurs when you attempt to delete a message and the Trash is too full.  To delete the message you can:
+
+<UL>
+	<LI>Open the File menu in Messenger and choose "Empty Trash on (local mail)."  After the Trash is emptied, you will be able to delete the message.</LI>
+
+<P></P>
+
+	<LI>Press the Shift-Delete keys to delete the message without moving it to the Trash.
+</UL>
+
+
+
+<HR>
+<H2><A NAME="no_news" INDEXSTRING="can't read newsgroups error^server error^error messages" TOCSTRING="Can't read newsgroups">Can't read newsgroups</A></H2>
+
+<P>The mail and newsgroup server names are incorrect. Find out the correct server names.  Ask your network administrators or check with your service provider.</P>
+
+<P>
+See also:<BR>
+
+<A HREF="nethelp:netscape/messengr:MAILSERVER_PROPERTY_GENERAL">Mail Server Property Panel
+</A>
+</P>
+
+<HR>
+<H2><A NAME="power_plant" INDEXSTRING="PowerPlant error" TOCSTRING="PowerPlant not installed (Mac OS)">PowerPlant not installed (Mac OS)</A></H2>
+
+<P>This error is related to memory.  Check Communicator memory:</P>
+
+<OL TYPE="1" START="1">
+	<LI>Click the Communicator icon.</LI>
+	<LI>From the File menu, choose Get Info.</LI>
+	<LI>Increase Preferred Size by at least 2000K.</LI>
+</OL>
+
+<P>If the problem persists, check your system memory:</p>
+
+<UL>
+	<LI>Go to the Memory control panel and turn on virtual memory.</LI>
+	
+	<LI>Go to the Memory control panel and increase the Disk Cache size to 32K per 1MB of RAM.</LI>
+	
+</UL>
+
+<HR>
+<H2><A NAME="address_book" INDEXSTRING="address books^error messages^command could not be completed" TOCSTRING="Unknown error in Address book (Mac OS)">Unknown error in Address book (Mac OS)</A></H2>
+
+<P>You should see the message "Command could not be completed because an unknown error occurred" when you try to add an entry to your address book.  This error indicates a problem with your Netscape Preferences.  You need to discard the current preferences:</P>
+
+<OL TYPE="1" START="1">
+	<LI>From the System Folder, open Preferences.</LI>
+	<LI>Open Netscape Users.</LI>
+	<LI>Drag Netscape Preferences to the Trash.</LI>
+	<LI>Empty Trash.</LI>
+</OL>
+
+<HR>
+<H1><A NAME="trouble_navigator" TOCSTRING="Common Problems">Common Problems</A></H1>
+
+<HR>
+<H2><A NAME="trouble_common_AIM" INDEXSTRING="AIM^AOL Instant Messenger" TOCSTRING="How can I disable AOL Instant Messenger?">How can I disable AOL Instant Messenger?</A></H2>
+
+<P>
+To avoid receiving AOL Instant Messenger Registration or Sign On prompts, click the Setup button on the AIM sign-on screen. Select the Misc tab, then uncheck Start AIM when Windows Starts.  
+</P>
+
+<HR>
+<H2><A NAME="trouble_common_alpha" INDEXSTRING="bookmarks" TOCSTRING="Why can't I alphabetize my bookmarks">Why can't I alphabetize my bookmarks?</A></H2>
+
+<P>
+There is no automatic alphabetization for bookmarks.  To rearrange the bookmarks by hand, go to Bookmarks and choose Edit Bookmarks.  Then go to the View menu and choose By Name.  You can now rearrange by dragging any bookmark, folder,  or separator.  You can also set up folders within your bookmarks by opening the File menu and choosing New Folder.
+</P>
+<P>
+See Also:<BR>
+<A HREF="nethelp:netscape/navigatr:nav_borg">Organizing Your Bookmarks</A>
+</P>
+
+<HR>
+<H2><A NAME="trouble_common_clearloc" INDEXSTRING="addresses^URLs^Netsite field" TOCSTRING="How can I clear the Location  (Netsite) drop-down list of web sites (Windows only)?">How can I clear the Location (Netsite) drop-down list of web sites (Windows only)?</A></H2>
+
+<P>
+When you type a  URL in the Location (Netsite) field, the name of the corresponding page is added to a drop-down list below the field.  To see this list, click the arrow at the right end of the field. 
+</P>
+
+<P>
+To clear this list:
+</P>
+<OL TYPE="1" START="1">
+	<LI>Open the Edit menu and choose Preferences.
+	<LI>Click the Navigator category.
+	<LI>Find the Location Bar History at the bottom of the window.  Click the Clear Location Bar button.
+	<LI>Click OK.
+</OL>
+
+<P>
+If you don't want a page to appear on this list, avoid typing the URL in the Location field.  Instead, open the File menu and choose Open Page.  Then type the URL in the dialog box.
+</P>
+
+
+<HR>
+<H2><A NAME="trouble_find_nav" INDEXSTRING="windows, Navigator" TOCSTRING="I can't find the Navigator window">I can't find the Navigator window</A></H2>
+
+<P>
+If you're not sure you are in Navigator, click the Navigator icon (a ship's steering wheel) in the component bar. You can also choose Navigator from the Communicator menu.
+</P>
+
+<HR>
+<H2><A NAME="trouble_cache" INDEXSTRING="cache settings^memory cache^preferences, Navigator" TOCSTRING="How do I clear the disk cache?">How do I clear the disk cache?</A></H2>
+
+<P>
+Because the cache holds the contents of all the pages that you have visited during the session, it can get full quickly.  You need to clear the cache regularly to increase Navigator performance:
+</P>
+
+<OL>
+	<LI>Open the Edit menu and choose Preferences.
+	<LI>Click the Advanced category and select Cache.
+	<LI>Click the Clear Disk Cache button and the Clear Memory Cache button.
+	<LI>Click OK.
+</OL>
+
+
+<HR>
+<H2><A NAME="trouble_navigate" INDEXSTRING="navigating^keyboard" TOCSTRING="Can I navigate without using a mouse?">Can I navigate without using a mouse?</A></H2>
+
+<P>
+You can use keyboard equivalents for the Back and Forward buttons.  Back: press Alt-left arrow (Command-left arrow on Mac OS).  Forward: press Alt-right arrow (Command-right arrow on Mac OS).
+</P>
+
+<HR>
+<H2><A NAME="trouble_stuck" INDEXSTRING="Back button^navigating" TOCSTRING="I'm stuck on a page: the Back button isn't working">I'm stuck on a page: the Back button isn't working</A></H2>
+
+<P>
+Some pages contain code that prevents you from using the Back button.  To go back, open the Go menu and select the listing that has a 1 next to it.
+</P>
+
+
+
+<HR>
+<H1><A NAME="trouble_security" TOCSTRING="Security and Warnings">Security and Warnings</A></H1>
+
+<HR>
+<H2><A NAME="forgot_pass" INDEXSTRING="security^password" TOCSTRING="I forgot my password (somone else set my password)">I forgot my password (somone else set my password)</A></H2>
+
+<P>Your computer has password-protected
+certificates for your user name. You cannot set a new password unless you
+know your existing password.</P>
+
+<P>If someone set up your account for you, obtain your password
+from that person.</P>
+
+<H4>If you forget your password</H4>
+
+<P>If you forget your password, you cannot access your
+certificates or decrypt new or saved messages. Your certificate issuer cannot give
+you a replacement certificate, so you must obtain new certificates. </P>
+
+<H3>Suggestions:</H3>
+
+<UL>
+
+<LI>If your password doesn't work, make sure that you have not pressed the Caps Lock key.</LI>
+
+<P></P>
+
+<LI>Let your correspondents know that they may need to resend
+important information.</LI>
+
+</UL>
+
+<HR>
+<H2><A NAME="cant_encrypt" INDEXSTRING="encryption^digital signatures^error messages^Signers panel" TOCSTRING="Why can't I encrypt a message or add my digital signature?">Why can't I encrypt a message or add my digital signature?</A></H2>
+
+<UL>
+	<LI>You cannot encrypt or digitally sign messages on any computer but the one to which your certificates were issued.  If you are using a different computer, contact your certificate issuer and obtain a new certificate for that computer. Alternatively, you can use export and import certificate features, available through the Security Info window.</LI>
+
+	<LI>Check your address list.  You cannot encrypt your message if even one recipient has failed to distribute a valid certificate.</LI>
+
+	<LI>Check your own certificates and update them with their signers. You cannot add your digital signature unless you have a valid certificate.</LI>
+
+	<LI>Update recipient certificates.  To update certificates collected from others, use the Certificates panel.  Under Certificates, click people.  You can also use the Signers panel to update your recipients' certificates.  Your recipients may all have valid certificates but may not have distributed them recently.  Signers can update all certificates of the types they distribute, and do so upon request.</LI>
+</UL>
+
+<HR>
+<H2><A NAME="HELP_SEC_WARNING_FORWARDING" INDEXSTRING="forwarding messages^messages, sending^email, sending^mail, sending^security^encryption" TOCSTRING="Why can't I forward a decrypted Message?">Why can't I forward a decrypted message?</A></H2>
+
+<P>If you attempt to forward a decrypted message without first encrypting
+it, Messenger reminds you to encrypt it.</P>
+
+<HR>
+<H2><A NAME="decrypt_message" INDEXSTRING="email, reading^mail, reading^messages, reading^decrypting messages^decrypting pages^digital certificates^error messages" TOCSTRING="Why can't I decrypt a message or page?">Why can't I decrypt a message or page?</A></H2>
+
+<UL>
+	<LI>You cannot decrypt messages on any computer but the one to which your certificates were issued. If you are using another computer, contact your certificate issuer and obtain a new certificate for the computer you are now using.  To decrypt the page, you must use your original computer, or use the certificate export and import features of the Security Info window.</LI>
+
+	<LI>Update your personal certificate. If you are using the computer to which your expired certificate was issued, contact the certificate issuer.  Then you can regenerate a valid private key and after that decrypt the web page.</LI>
+</UL>
+
+
+
+<HR>
+<H2>
+<A NAME="tamper" INDEXSTRING="message tampering" TOCSTRING="What does Possible Message Tampering mean?">What does Possible Message Tampering mean?</A></H2>
+
+<P>You see warnings about message tampering only when an incoming message
+has been altered in some way after it was sent. Alteration of the original
+message content can mean corruption due to mishandling or interception
+and forgery.</P>
+
+<H3>Suggestions:</H3>
+
+<P>Return the tampered message to its sender. Tell the sender you are having problems with his or her encrypted or signed messages.</P>
+
+<P>Contact your system administrator or help desk. Report the incident
+and inquire about established procedures.</P>
+
+<HR>
+<H2>
+<A NAME="java_alert" INDEXSTRING="applets^access, security^Java applets^Java^security^customization^preferences, security^settings, security" TOCSTRING="What do I do when I see a Java download alert?">What do I do when I see a Java download alert?</A></H2>
+
+<P>
+A signed Java applet is not downloaded until you approve a security certificate that identifies the sender.  Signed JavaScript is also not executed without your approval.  You are also asked for approval if the JavaScript or a Java applet appears to compromise security.  
+</P>
+
+<P>
+The alert allows you to choose one of these options:
+</P>
+
+<UL>
+	<LI><B>View Certificate:</B> Allows you to view the details of the digital certificate, including information about the individual or organization distributing the Java applet or JavaScript.
+
+<P></P>
+
+	<LI><B>Details:</B> Gives you more information about the request.  Select the action from the list and click Details.  The Java Security Target Details Dialog Box will appear.
+
+<P></P>
+
+	<LI><B>Grant:</B> Grants the specific access for one Communicator session.  To grant this access again for the same distributor, check "Remember this decision" before you click Grant.
+<P></P>
+
+	<LI><B>Deny:</B> Denies the access, and the Java applet or JavaScript is not downloaded.
+</UL>	
+
+
+
+
+
+
+<HR>
+<H1><A NAME="trouble_messenger" TOCSTRING="Messenger Problems">Messenger Problems</A></H1>
+
+<HR>
+<H2><A NAME="trouble_mail_notify" INDEXSTRING="new mail alert^mail, receiving^email, receiving^messages, receiving" TOCSTRING="How do I know when I have new mail?">How do I know when I have new mail?</A></H2>
+
+<P>
+A green arrow over the Inbox icon on the component bar indicates that you have new mail. 
+</P>
+
+<P>
+If you are using Windows 95 or later version, you can use a program called Netscape Mail Notification.  To activate Netscape Mail Notification:
+</P>
+
+<OL>
+	<LI>Click the Start button on Windows, select Programs, then Netscape Communicator, then Utilities.
+
+	<LI>Select Netscape Mail Notification.
+</OL>
+
+<P>
+You will now see a letter icon on the right side of your Windows task bar.  When new mail arrives, you hear an alert sound,  and a check appears on the icon.  To customize the options on this feature, right-click on the icon and select Options.
+</P>
+
+
+<HR>
+<H2><A NAME="trouble_switch" INDEXSTRING="convert mail" TOCSTRING="How do I convert from a different mail system (like Eudora or Outlook Express) to Netscape Messenger?">How do I convert from a different mail system (like Eudora or Outlook Express) to Netscape Messenger?</A></H2>
+
+<P>
+You can convert your mail by using an Import feature in Netscape Messenger:
+</P>
+
+<OL>
+	<LI>Open Netscape Messenger.
+	<LI>Go to the File menu and select Import.  You will then be guided through the process.
+</OL>
+
+
+
+<HR>
+<H2><A NAME="trouble_start_window" INDEXSTRING="startup^preferences, Messenger^mail, receiving^email, receiving^messages, receiving" TOCSTRING="How do I make Netscape start up with a mail window instead of the browser window?">How do I make Netscape start up with a mail window instead of the browser window?</A></H2>
+
+<OL>
+	<LI>Click the Edit menu, then select Preferences.  
+
+	<LI>Click the Appearance category.  Under "On startup, launch," select the component you want to see at startup.
+</OL>
+
+
+<HR>
+<H2><A NAME="trouble_email_noshow" INDEXSTRING="bcc^email, sending^mail, sending^messages, sending^addressing messages" TOCSTRING="How do I send email without showing the recipient's addresses or name in the header?">How do I send email without showing a recipient's addresses or name in the header?</A></H2>
+
+<P>
+Use the bcc (blind carbon copy) field.  All email addresses that you put in the bcc field are hidden from recipients you enter in the To and cc fields. You must always put at least one address in the To field for this to work, even if it is your own email address.  
+</P>
+
+<P>
+The bcc field is accessible through the To pull-down menu.
+</P>
+
+<P>
+See Also:<BR>
+<A HREF="nethelp:netscape/messengr:ADDRESSING_MESSAGE">Addressing a Message</A>
+</P>
+
+<HR>
+<H2><A NAME="trouble_no_news2" INDEXSTRING="newsgroup server^servers, newsgroup" TOCSTRING="Why can't I read newsgroups?">Why can't I read newsgroups?</A></H2>
+
+<P>The mail and newsgroup server names are probably incorrect. Ask your network administrator or service provider for the correct server names. Otherwise, problems may exist with the newsgroup server.</P>
+
+<HR>
+<H2><A NAME="trouble_usr_passwd" INDEXSTRING="servers, mail^mail servers^username^password^account information" TOCSTRING="Why is Messenger asking for my user name and password?">Why is Messenger asking for my user name and password?</A></H2>
+
+<P>To access your mail server, you may need to enter your user name and password. If you don't know them, review your account information provided by your site or Internet service provider. Account information customarily contains user name and password information, as well as host names and port numbers.</P>
+
+<HR>
+<H2><A NAME="trouble_mail_wzrd" INDEXSTRING="Mail &amp; Newsgroups set-up screen" TOCSTRING="Why do I see the Mail &amp; Newsgroups set-up screen when I open my Inbox or click Get Msg?">Why do I see the Mail &amp; Newsgroups set-up screen when I open my Inbox or click Get Msg?</A></H2>
+
+<P>If the Mail &amp; Newsgroups set-up screen (Windows and Mac OS only) appears when you try to get mail, you need to set required Mail &amp; Newsgroups preferences.  Use the set-up screen to set these preferences or set them manually by opening the Edit menu and choosing Preferences.  Then select the Mail &amp; Newsgroups category.</P>
+
+<HR>
+<H2><A NAME="trouble_dialup_messg" INDEXSTRING="updating^email, receiving^messages, receiving^mail, receiving^connection problems" TOCSTRING="Why can't I get new messages over my Dial-up connection?">Why can't I get new messages over my Dial-up connection?</A></H2>
+
+<P>Your connection may be down.  If you cannot establish a connection: ensure that your PPP and TCP/IP software is configured correctly, and that your ISP account is configured for PPP access. Your ISP representative should be able to help you configure your network software.</P>
+
+<HR>
+<H2><A NAME="trouble_news" INDEXSTRING="servers, newsgroup^newsgroup server^newsgroup access problems^preferences, newsgroups" TOCSTRING="Newsgroup Troubles">Newsgroup Troubles</A></H2>
+
+<P>Before you can display the name of your primary newsgroup server, you must set your Newsgroup Servers preferences. If they are not set, the Mail &amp; Newsgroups set-up window (Windows only), or the Groups Server panel of the Preferences dialog box comes up automatically. Use the Mail &amp; Newsgroups set-up screen or the Newsgroup Servers Preferences panel to set required preferences.</P>
+
+<P>If an invalid newsgroup server name appears for your primary server in the list of servers, provide the correct server name by using the Newsgroup Servers Preferences panel (open the Edit menu and choose Preferences, and then select the Mail &amp; Newsgroups category).</P>
+
+<P>If an invalid newsgroup server name appears for a server that is not your primary server, use the Newsgroup Server Properties dialog box to correct the name of the server.</P>
+
+<P>If you can't access a server using a dial-up connection with autoconnect, check your network software, such as PPP and TCP/IP, and modem settings to see if they're correctly configured to access the server's site. Enable configurations for the server's site, then try opening the server.</P>
+
+
+<CENTER>September 24, 1998
+<HR SIZE=4>
+Copyright &copy; 1994-1998 Netscape Communications Corporation.
+</CENTER>
+</BODY>
+</HTML>
+

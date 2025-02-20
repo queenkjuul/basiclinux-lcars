@@ -1,0 +1,199 @@
+# Some misc functions..  for 2.2 and beyond.
+# by: Ian Frechette  (frechett@spot.colorado.edu)
+# Wed Aug 18 00:26:53 MDT 1993
+@ RCS.functions = [$$Header: /local/cvs/ircii/script/functions,v 1.2 1994/07/30 18:22:03 mrg stable $$]
+
+
+# ircII scripting note.  @ var = <expression> is used a lot. One case
+# where it is not feasible to use  the @ var = othervar or @ var = funct()
+# format is when the $(stuff) construct is needed.  In that case you
+# must surround it with [].  e.g.   @ blah = [$($0)]   will assign
+# to 'blah' the contents of the variable named in arg 0.
+
+# 
+# reverse a string fed to it.  The first argument is the width of the
+# field in which to right justify the reversed text
+# $reverse(65 one two three) returns.. 
+#                                                          eerht owt eno
+# if 0 is given as the width it's reversed and output left justified
+alias reverse {
+	^assign -rev.result
+	@ rev.ind = 0
+	@ rev.str = [$1-]
+	while (mid($rev.ind 1 $rev.str)!=[])
+	{
+		@ rev.result = mid($rev.ind 1 $rev.str) ## rev.result
+		@ rev.ind = rev.ind + 1
+	}
+	# This right justifies to a field with of $0.  
+	# strip out the format() function if you don't want it formatted.
+	@ function_return = format($0 $rev.result)
+}
+
+# These have been updated to handle multiple words.
+# format and lformat differ from $[-num]var and $[num]var in that
+# They don't chop off the string if it is too long.
+alias format {
+	@ IRCII.word = [$1-]
+	if (@IRCII.word < [$0]) 
+		{ @ function_return = [$([-$0]IRCII.word)] } 
+		{ @ function_return = IRCII.word } 
+}
+
+alias lformat {
+	@ IRCII.word = [$1-]
+	if (@IRCII.word < [$0]) 
+		{ @ function_return = [$([$0]IRCII.word)] } 
+		{ @ function_return = IRCII.word } 
+}
+
+# Center text within a given width.   center(width text)
+# "$center(10 one)"   returns "   one"
+# this might not make sense at first, but it saves alot of cursor travel
+# not writing all the spaces on the right side.
+alias center {
+	@ IRCII.word = [$1-]
+	@ IRCII.wordl = @IRCII.word
+	@ IRCII.width = [$0]
+	if (IRCII.wordl > IRCII.width)
+		{ @ function_return = ircII.word }
+		{ @ function_return = [$([${(IRCII.width - ircII.wordl)/2}])] ## IRCII.word }
+}
+
+# This is the huge beastly CPU expensive search and replace funnction 
+# written entirely in ircII script language.
+# $sandr(search pat/replace pat/words)
+# the search and replace patterns can contain spaces or any other chars
+# with the exeption of '/'.
+alias sandr {
+	@ sr.src = left($index(/ $*) $*)
+	@ sr.rep = mid(${index(/ $*) +1} ${rindex(/ $*) - index(/ $*) +1} $*)
+	@ sr.word = mid(${rindex(/ $*) + 1} 512 $*)
+	@ sr.srcl = @sr.src
+	@ sr.wordl = @sr.word
+	@ sr.cnt1 = 0
+	@ sr.cnt2 = 0
+	@ sr.lmark = 0
+	@ sr.gotit = 0
+	^assign -sr.fstring
+	while (sr.cnt1 < sr.wordl)
+	{
+		@ sr.scnt1 = sr.cnt1
+		while ((mid($sr.cnt1 1 $sr.word) == mid($sr.cnt2 1 $sr.src)) && (sr.cnt2 < sr.srcl))
+		{
+			if (sr.cnt2 == sr.srcl - 1)
+			{
+				@ sr.gotit = 1
+			}
+			@ sr.cnt1 = sr.cnt1 + 1
+			@ sr.cnt2 = sr.cnt2 + 1
+		}
+		@ sr.cnt2 = 0
+		if (sr.gotit)
+		{
+			@ sr.fstring = sr.fstring ## mid($sr.lmark ${sr.scnt1 - sr.lmark} $sr.word) ## sr.rep
+			@ sr.gotit = 0
+			@ sr.lmark = sr.cnt1
+		}
+		{
+			@ sr.cnt1 = sr.cnt1 +1
+		}
+	}
+	@ sr.fstring = sr.fstring ## mid($sr.lmark 512 $sr.word)
+	@ function_return = sr.fstring
+}
+
+# The perfect complement to the $word() function.  
+# $notword(index words)  returns words minus the indexed word. 
+# the special handling of nw.sep is to deal with the cases when 
+# the index points to the first or last word.
+alias notword {
+    if ([$0] > 0)
+    {
+	if (([$0] > 1) && ([$0] < rmatch($~ $1-)))
+		{ @ nw.sep = [ ] }
+		{ @ nw.sep = [] }
+		
+	@ function_return = [$(1-${[$0]-1})] ## nw.sep ## [$(${[$0]+1}-)]
+    }
+    {
+        @ function_return = [$1-]
+    }
+    ^assign -nw.sep
+}
+
+# If you want to look an array.. Type /show <arrayname>
+# Lists keys and contents
+^alias show {
+  if ( [$($0)] )
+  {
+    echo $0 $($0)
+  }
+  foreach $0 ii
+  {
+    show $0.$ii
+  }
+  ^assign -ii
+}
+
+
+# push an item onto the head of a list
+# this only takes the name of the list instead of the variable itself. 
+# examples.
+# /push list Item
+# or     if (push(list Item)) { echo push sucessful } { echo push failed }
+# echo $list returns 'Item'
+alias push {
+	if (![$1])
+	{ @function_return = 0 }
+	{ eval @ $0 = [$1- $($0)];@function_return = 1}
+}
+	
+# pop an item off a list.  Specified with $pop(listname)
+# note there is no $ in front of listname.
+# examples.
+# /eval echo $pop(list)         returns 'Item' and the list is shortened
+# push List2 $pop(List1)        moves first item from List1 to List2
+alias pop {
+	@function_return = word(0 $($0))
+	eval @ $0 = notword(1 $($0))
+}
+
+# pluck a word from a list.
+# eg. $blah == "one two three four five"
+# $pluck(blah three)     returns "one two four five"
+alias pluck {
+	@ function_return = notword($match($1 $($0)) $($0))
+}
+
+alias remove {
+	@ rem.tmp = [$($0)]
+	while (rmatch($1 ${rem.tmp = pluck(rem.tmp $1)})) {#}
+	@ function_return = rem.tmp
+}
+
+
+# This alias sorts flat lists case insenstive
+# IT can be easily changed to sort case sensitive by removing the
+# $toupper() call.
+# operation..    $sort(list or words here)   will return a string with
+# the list of words sorted in ascending order.
+# to sort in reverse order
+alias sort {
+	@ sort.tmp = [$*]
+	while (sort.word = pop(sort.tmp)) {
+		eval @ sort.str.$encode($toupper($sort.word)) = sort.word
+	}
+	@ sort.sep = []
+	foreach sort.str ii {
+		# sort ascending
+		@ sort.tmp = sort.tmp ## sort.sep ## sort.str[$ii]
+		# sort decending
+		# push sort.tmp sort.str[$ii]
+		^assign -sort.str[$ii]
+		@ sort.sep = [ ]
+	}
+	@ function_return = sort.tmp
+	^assign -sort.sep
+	^assign -sort.tmp
+}

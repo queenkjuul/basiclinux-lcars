@@ -1,0 +1,24 @@
+# Bytewurm and lynx 91,2
+#
+alias .nickserve msg nickserv@service.de
+alias .noteserve msg noteserv@service.de
+alias .identify ^.nickserve identify $PASSWD
+alias .whois .nickserve whois
+alias .list .noteserve list
+alias .msg .noteserve msg
+alias .tell .noteserve tell
+alias .read .noteserve read
+alias .query .noteserve query
+alias .away .noteserve away
+alias .delete .noteserve delete
+alias .await .noteserve waitfor
+# alias .waitfor .await
+on -notice "nickserv Password mismatch. *" {
+	echo ** Wrong password, please re-/assign PASSWD
+}
+on -notice "noteserv *Please authenticate*" {
+	echo ** Hint: Do /.IDENTIFY, then send the message again
+}
+if (PASSWD) {
+    .identify
+}

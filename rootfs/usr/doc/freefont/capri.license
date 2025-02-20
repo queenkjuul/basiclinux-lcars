@@ -1,0 +1,46 @@
+The font CAPRI is similar to SINALOA, and has the following files: 
+                        CAPRI.WFN  - Corel Draw format 
+                        CAPRI.AFM  - Adobe type 1 format 
+                        CAPRI.PFB  - Adobe type 1 format 
+                        CAPRI.PFM  - Adobe type 1 format 
+ 
+ 
+TO INSTALL COREL FORMAT: 
+ 
+1.      Copy the file CAPRI.WFN to your corel directory, and using your 
+        word processor add the following to your WIN.INI file - under the 
+        heading [CorelDrwFonts]: 
+                        CAPRI=1 CAPRI.WFN 0 
+        The WIN.INI file can be found in the WINDOWS directory. 
+ 
+ 
+2.      For Corel 2.0 users you will have to modify the CORELDRW.INI which 
+        can be found in the Corel Draw directory. 
+ 
+ 
+IMPORTANT - Be sure and save the modified WIN.INI or CORELDRW.INI files using 
+            the ASCII option with your word processor. 
+ 
+    ***   IT'S A WISE PRACTICE TO MAKE A BACK UP OF YOUR ORIGINAL FILES   *** 
+                            BEFORE MODIFICATION. 
+ 
+ 
+        For the rest of you, I'm assuming you all know how to use and install  
+the Adobe Type 1 format files for your particular application.  I'm assuming 
+this because I only know how to install it for my applications.  
+ With that said I wish you all good luck. 
+ 
+        This font was created with Corel Draw 2.0, therefore the kerning 
+information is not complete.  I have been slowly correcting that situation, and  
+if you send me $15.00 , I will mail you another copy of the font with the 
+problem corrected, as well as ANOTHER FONT. 
+ 
+George Ciesek 
+P.O. Box 27030 
+1910 Sooke Road 
+Victoria, B.C. 
+Canada 
+V9B 5S4 
+ 
+Compuserve ID - 72540,1502 
+

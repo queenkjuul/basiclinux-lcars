@@ -1,0 +1,74 @@
+
+             Installation for Minicom 1.79 - 1.82.
+
+
+Edit the Makefile to choose your C-compiler and CFLAGS. Entries
+for a lot of systems are already defined, you only have to
+uncomment them. Also define where your binaries go and where you want
+the configuration files to be placed.
+
+The default configuration is to compile for Linux, and to install it in
+/usr/bin and /etc.
+
+Now you may edit "config.h". Reasonable defaults for some systems are
+already filled in, and changes will probably not be needed.  Most of the
+system defaults defined here can also be changed by running minicom as root
+with the -s option, so there should not be much need to edit config.h
+(unless you are adding some new features to the program :-)
+
+If everything is allright, you can type "make" and "minicom",
+and "runscript" will be compiled. Ignore any warnings you might
+see; I couldn't keep the source generic and at the same time
+get all compilers to shut up (Linux and Coherent compilers don't
+give warnings; the BSD 2.3.3 gcc does).
+If you have gotten this far, it is time to install the executables.
+
+if you trust the installation procedure (I do!) you can just type
+'make install' as root. If you insist on installing manually:
+
+1. Copy "minicom" to a bin directory (eg /usr/bin).  
+   chown it to root and install it set-uid (chmod 4755 minicom, NOT
+   recommended) or make your modem device (/dev/ttyS1 or something like
+   that) world writable (chmod a+rw /dev/ttyS1), or give rw permissions to
+   the group owning the device (chmod g+rw /dev/ttyS1) and join all users
+   that you allow to use minicom to that group.
+2. Copy "runscript" to the same "bin" directory.
+3. Copy "xminicom" to this directory too. It's a little shell
+   script that puts up an xterm with minicom in it.
+4. Copy "keyserv" to the LIB directory defined in the Makefile.
+   (If you have a system with the select() system call, you won't
+    have the 'keyserv' binary anymore !).
+   Don't install "runscript" and/or "keyserv" setuid root!
+5. Edit the "minicom.users" file (in the directory as defined in
+   "Makefile") to add users who may use minicom. If you don't
+   install "minicom.users" everybody may use minicom!
+6  Minicom has been installed.
+
+X/Y/Z modem.
+
+Minicom works with zmodem version that use stdin/stdout for
+communication with the modems. Newer zmodem versions don't do this,
+AND they are copyrighted
+
+Fortunately there is a free PD zmodem now, based on one of the older (PD)
+zmodem sources. This one is called "lrzsz". It may be included in this
+package, or it might already be on your system; otherwise you can find it
+on the net by searching for lrzsz with "archie".
+
+Configuration.
+
+Probably some defaults are not good enough for your system.
+So type (still as root) "minicom -s". This will not initialize
+minicom but takes you directly into the configuration menu. 
+After you have it configured, remember to select "Save setup as dfl" from
+the configuration menu to save the settings as system defaults.
+See the minicom manual page for details.
+
+Graphics with terminfo (ncurses).
+
+If you want minicom to use the ANSI or IBM-PC character set,
+check the following directories and read the README files:
+
+terminfo/  if you're on a terminfo system (Debian Linux, sysv)
+termcap/   if you're on a termcap system.
+

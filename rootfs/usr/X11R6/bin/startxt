@@ -1,0 +1,10 @@
+#!/bin/sh
+#[ -e /dev/mouse ] || Xsetup
+
+
+set -- `cat /etc/Xconfig`
+umount /dev >/dev/null 2>&1
+mount -o loop /etc/$2.img /dev >/dev/null 2>&1
+export WM=$4
+exec Xvesa -screen $1 -$3button -ac 
+

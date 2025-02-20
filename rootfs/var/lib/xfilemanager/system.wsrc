@@ -1,0 +1,12 @@
+6 11 316 0 250 503
+File Viewer:xmore:51 104:xmore.xpm:1 0 1
+Editor:xedit:51 173:xedit.xpm:1 0 1
+News:xrn:180 354:news.xbm:0 0 0
+Mailtool:xmail:49 36:mail.xpm:0 0 0
+WaisQ:xwaisq:127 29::0 0 0
+XV:xv:177 30:file_pix.xpm:1 1 1
+Compress:gzip:51 351:compressor.xbm:1 1 1
+Uncompress:gunzip:51 270:decompressor.xbm:1 1 1
+XFig:xfig:179 100:xdesigner.xpm:1 0 1
+Xterm:xterm -sb:176 166:xterm.xpm:0 0 0
+XConqueror:xconq -e 4 -M 100 100:178 230:xconq.xpm:0 0 0

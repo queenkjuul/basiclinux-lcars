@@ -1,0 +1,417 @@
+### -------------------------------------------------------------------------
+###
+###  Popups (TkDesk Configuration File)
+###
+###  This file defines the file-specific popup-menus that are accessed
+###  by pressing the right mouse button in any of TkDesk's file lists.
+###  Also the popup menu of the "Copy" dialog is defined here.
+###
+###  *** Press F5 to save changes and reload this file into TkDesk, 
+###  *** F6 to do the same plus to close this window.
+###
+### -------------------------------------------------------------------------
+
+### In this file four Tcl lists are defined: One for directories, one for
+### executables and one for all other files.  The fourth defines the
+### popup menu contained in the "Copy, Move, Link" dialog.
+
+### Definition of Popup-Menus:
+### The Popup-Menus are defined by the elements of a Tcl list.
+### (In the following I try to explain its structure, although it will
+### probably best to just have a look at the example definition below.)
+### Each element of the list is again a Tcl list, whose first element
+### contains a list of "glob" patterns. If a file matches any of these
+### patterns, this entry will be used for its popup menu. The second
+### element defines the entries of the popup menu, by a set of (usually)
+### 2-element lists. The first element is the entry's label, while the
+### second contains a Tcl script to execute when this menu entry is
+### invoked. Cascaded menus are currently not possible.
+### The first menu entry of each popup menu defines the default action,
+### which will be invoked when a matching file is double-clicked.
+###
+### TkDesk commands that can be used in the list definition:
+### (Only the most common ones are listed here. For a complete overview
+### and a detailed explanation refer to the User's Guide.)
+###
+### dsk_exec cmd ...   : Executes shell command cmd in background.
+### dsk_path_exec path cmd ... : Execute cmd in path.
+### dsk_view cmd ...   : Executes cmd, displays output in Editor window.
+### dsk_open_dir path  : Opens a new file list for directory path.
+### dsk_open_browser path    : Opens a new file browser for directory path.
+### dsk_edit file      : Edits file.
+### dsk_print file     : Prints file.
+### dsk_cd path        : Changes directory of browser to path.
+### dsk_du path        : Displays disk usage of directory path.
+### dsk_periodic cmd seconds : Executes cmd every x seconds.
+### dsk_confirm text script  : Executes script when confirmation was positive.
+### dsk_read_string label script  : Executes script when entered string is
+###                      not empty. "label" will be displayed in the dialog.
+### dsk_sound id       : Plays sound id (defined in config-file Sounds). 
+### dsk_cbhelp file regexp   : Invokes TkDesk's help system on file.
+### dsk_ask_exec       : Asks for a command to execute.
+### dsk_ask_dir        : Asks for a directory to open.
+### dsk_save_config    : Saves window layout, history, bookmarks etc.
+### dsk_exit ?ask?     : Quits TkDesk. "ask" may be one 1 or 0.
+###
+### Abbreviations that will be replaced with file names etc.:
+###
+### %s : Full pathname of the first selected file.
+### %f : Its filename only.
+### %b : "Basename": just the filename without extension.
+### %d : Its directory only.
+### %B : Same as %A, but will be replaced with "" if no files are selected.
+### %A : List containing full pathnames of all selected resp. dropped files.
+### %D : Directory of last "active" viewer.
+### %x : Current X selection.
+###
+### The very first Button provides access to a few functions of TkDesk,
+### like history menus, configuration menu etc. Its labels are mostly
+### "internally reserved" keywords.
+### The second button is only defined by the magic word "date" which inserts
+### TkDesk's date display at that place into the AB.
+###
+
+### Definition of Popup-Menus for Directories:
+### (You should better not change the first, i.e. default entry...!)
+
+set tkdesk(popup,directories) {
+    {{RCS} {
+        {{Check Out...} {jdb_rcs_co %d}}
+        {{Open} {dsk_cd %s}}
+	{{New Window} {dsk_open_dir %s}}
+	{{New Browser} {dsk_open_browser %s}}
+	-
+	{{Disk Usage} {dsk_du %s}}
+	{{Start XTerm here} {
+	    cd %s
+	    exec xterm &
+	    cd ~  ;# this is the standard workdir of TkDesk
+	}}
+	{{Make tar.gz} {dsk_exec tar cf - -C %d %f | gzip >%s.tar.gz}}	
+    }}
+    {{*} {
+	{{Open} {dsk_cd %s}}
+	{{New Window} {dsk_open_dir %s}}
+	{{New Browser} {dsk_open_browser %s}}
+	-
+	{{Find...} {dsk_find_files -path %s}}
+	{{Disk Usage} {dsk_du %s}}
+	{{Start XTerm here} {
+	    cd %s
+	    exec xterm &
+	    cd ~  ;# this is the standard workdir of TkDesk
+	}}
+	{{Make tar.gz} {dsk_exec tar cf - -C %d %f | gzip >%s.tar.gz}}	
+	{{Which rpm} {dsk_view rpm -qfli %s}}
+    }}
+}
+
+### Definition of Popup-Menus for Executables:
+### (If the label of one of the entries is "Edit" it will only be added to the
+### menu if the executable is script, ie. the first two characters are #!. 
+### If you want an "Edit" entry for all executables just change "Edit" to 
+### anything else, e.g. "Do Edit" or "Edit the file!".)
+
+set tkdesk(popup,executables) {
+    {{*.class} {
+	{{Execute in Xterm} {dsk_exec xterm -sb -T %f -n %f -e pauseme java %b}}
+    	{{Execute} {dsk_exec java %b}}
+	{{View Output} {dsk_view java %b}}
+    }}
+    {{{*.tcl} {*.tk}} {
+	{{Source} {source %s}}
+	{{Execute} {dsk_exec %s}}
+	{{Execute in Xterm} {dsk_exec xterm -sb -T %f -n %f -e pauseme %s}}
+	{{View Output} {dsk_view %s}}
+	-
+	{{Edit} {dsk_edit %s}}
+    }}
+    {{*} {
+	{{Execute} {dsk_exec %s}}
+	{{Execute in Xterm} {dsk_exec xterm -sb -T %f -n %f -e pauseme %s}}
+	{{View Output} {dsk_view %s}}
+	-
+	{{Edit} {dsk_edit %s}}
+	{{Strip} {dsk_exec strip %s}}
+	{{Libraries} {dsk_view ldd %s}}
+	{{Which rpm} {dsk_view rpm -qfli %s}}
+    }}
+}
+
+###
+### Definition of Popup-Menus for "Regular" (and other) Files:
+
+set tkdesk(popup,regulars) {
+    {{{*-HOWTO} {*-HOWTO.gz}} {
+    	{{View (cbhelp)} {dsk_cbhelp %s howto}}
+    	{{Edit} {dsk_edit %s}}
+    }}
+    {{{Makefile} {Gmakefile} {makefile}} {
+        {{Make...} {
+	    dsk_read_string {Make Target:} {
+		dsk_exec xterm -sb -geom 80x15 -T "make $dsk_read_string" -e pauseme make -f %s $dsk_read_string
+	    }
+        }}
+        {{Make Default} {
+	    dsk_exec xterm -sb -geom 80x15 -T "make" -e pauseme make -f %s
+        }}
+	-
+	{{Edit} {dsk_edit %s}}
+	{{XEmacs} {xemacs_load %s}}
+	{{Other Window} {xemacs_load %s other}}
+	{{Other Frame} {xemacs_load %s frame}}
+	-
+        {{Check In... (RCS)} {jdb_rcs_ci %s}}
+	{{Print...} {dsk_print %s}}
+    }}
+    {{{*.a} {*.o} {*.sl}} {
+    	{{List Symbols} {dsk_view nm %s}}
+    	{{List Matches...} {
+    	    dsk_read_string {List Symbols Matching (RegExp):} {
+    	    	dsk_view nm %s | grep $dsk_read_string
+    	    }
+    	}}
+    }}
+    {{{*.c} {*.h} {*.cpp} {*.tcl}} {
+	{{Edit} {dsk_edit %s}}
+	{{XEmacs} {xemacs_load %s}}
+	{{Other Window} {xemacs_load %s other}}
+	{{Other Frame} {xemacs_load %s frame}}
+	-
+        {{Check In... (RCS)} {jdb_rcs_ci %s}}
+	{{Print} {dsk_print %s}}
+    }}
+    {{*.class} {
+	{{Execute in Xterm} {dsk_exec xterm -sb -T %f -n %f -e pauseme java %b}}
+    	{{Execute} {dsk_exec java %b}}
+	{{View Output} {dsk_view java %b}}
+    }}
+    {{{*.diff} {*.patch}} {
+    	{{Apply here } {dsk_exec xterm -sb -T "patch <%S" -n patch -e pauseme sh -c "patch <%s"}}
+    	{{Edit/View} {dsk_edit %s}}
+    	{{Print} {dsk_print %s}}
+    }}
+    {{{*.diff.gz} {*.patch.gz}} {
+    	{{Apply here } {dsk_exec xterm -sb -T "patch <%S" -n patch -e pauseme sh -c "gzip -cd %s | patch"}}
+    	{{Edit/View} {dsk_edit %s}}
+    }}
+    {{*.dvi} {
+    	{{View} {dsk_exec xdvi -paper a4 -s 3 %s}}
+    	{{Print} {dsk_print %s}}
+    	{{-> Postscript } {dsk_exec dvips %s}}
+    }}
+    {{{*.gif} {*.jpg} {*.jpeg} {*.pcx} {*.p?m} {*.rle}} {
+	{{View (xv)} {dsk_exec xv %s}}
+      	{{Background (tiled)} {dsk_exec xv -root -quit %s}}
+      	{{Background (expand)} {dsk_exec xv -root -max -smooth -quit %s}}
+    }}
+    {{{*.html} {*.htm}} {
+    	{{Netscape (new window)} {dsk_netscape file %s window}}
+	{{Netscape (reuse window)} {dsk_netscape file %s}}
+    	{{Lynx} {dsk_exec xterm -e lynx %s}}
+	{-}
+    	{{Edit} {dsk_edit %s}}
+	{{XEmacs} {xemacs_load %s}}
+	{{Other Window} {xemacs_load %s other}}
+	{{Other Frame} {xemacs_load %s frame}}
+    }}
+    {{*.java} {
+      	{{Edit} {dsk_edit %s}}
+      	{{Compile} {dsk_exec xterm -sb -geom 80x15 -T "javac %f" -e pauseme javac %s}}
+      	-
+      	{{Print} {dsk_exec groff -Tps -mandoc %s | $tkdesk(cmd,print)}}
+    }} 
+    {{{*.man} {*.[1-8n]}} {
+      	{{View} {dsk_view groff -Tascii -mandoc %s | col -b}}
+      	{{Edit} {dsk_edit %s}}
+      	{{Print (Postscript)} {dsk_exec groff -Tps -mandoc %s | $tkdesk(cmd,print)}}
+    }}
+    {{{*.mov} {*.avi}} {
+        {{View} {dsk_exec xanim %s}}
+    }}
+    {{{*.mpg} {*.mpeg}} {
+	{{View} {dsk_exec mpeg_play %s 2>/dev/null}}
+	{{View (big)} {dsk_exec mpeg_play -dither 2x2 %s 2>/dev/null}}
+	{{View (gray)} {dsk_exec mpeg_play -dither gray %s 2>/dev/null}}
+    }}
+    {{{*.ps} {*.eps}} {
+    	{{View (ghostview)} {dsk_exec ghostview -a4 -magstep 1 %s}}
+    	{{Print} {dsk_print %s}}
+      	{{Edit} {dsk_edit %s}}
+    }}
+    {{*.pdf} {
+    	{{View (acroread)} {dsk_exec acroread %s}}
+      	{{Edit} {dsk_edit %s}}
+    }}
+    {{{*.ps.gz} {*.ps.Z}} {
+    	{{View (ghostview)} {
+	     dsk_exec gzip -cd %s | ghostview -a4 -magstep 1 -
+	}}
+    	{{Print} {dsk_exec gzip -cd %s | $tkdesk(cmd,print)}}
+	-
+	{{Uncompress} {dsk_exec gzip -d %s}}
+    }}
+    {{*.rpm} {
+       {{Query} {dsk_view rpm -qip %s}}
+       {{File List} {dsk_view rpm -qlp %s}}
+       {{Full Query} {dsk_view rpm -qiRlp %s}}
+       {{Install} {dsk_view rpm -U %s}}
+       -
+       {{Test} {dsk_view rpm -i --test %s 2>&1 && echo 'Test Successful'}} 
+    }}
+    {{*.tar} {
+      	{{List Contents} {dsk_view tar tvf %s}}
+      	{{Short Listing} {dsk_view tar tf %s}}
+	-
+      	{{Extract} {dsk_exec tar xf %s}}
+      	{{Extract to /} {dsk_exec tar xf %s -C /}}
+      	{{Extract to /usr/tmp} {dsk_exec tar xf %s -C /usr/tmp}}
+    }}
+    {{{*.tar.z} {*.tar.Z} {*.taz} {*.t.Z}} {
+      	{{List Contents} {dsk_view gzip -cd %s | tar tvf -}}
+      	{{Short Listing} {dsk_view gzip -cd %s | tar tf -}}
+	-
+      	{{Extract} {dsk_exec gzip -cd %s | tar xf -}}
+      	{{Extract to /} {dsk_exec gzip -cd %s | tar xf - -C /}}
+      	{{Extract to /usr/tmp} {dsk_exec gzip -cd %s | tar xf - -C /usr/tmp}}
+    }}
+    {{{*.tar.gz} {*.tgz}} {
+      	{{List Contents} {dsk_view gzip -cd %s | tar tvf -}}
+      	{{Short Listing} {dsk_view gzip -cd %s | tar tf -}}
+	{{Uncompressed Size } {dsk_view gzip -l %s}}
+	-
+      	{{Extract} {dsk_exec gzip -cd %s | tar xf -}}
+      	{{Extract to /} {dsk_exec gzip -cd %s | tar xf - -C /}}
+      	{{Extract to /usr/tmp} {dsk_exec gzip -cd %s | tar xf - -C /usr/tmp}}
+    }}
+    {{*.url} {
+    	{{Netscape (new window)} {dsk_netscape url [exec cat %s] window}}
+	{{Netscape (reuse window)} {dsk_netscape url [exec cat %s]}}
+    	{{Lynx} {dsk_exec xterm -e lynx [string trimleft [exec cat %s] file:]}}
+	{-}
+    	{{Edit} {dsk_edit %s}}
+    }}
+    {{{*.voc} {*.wav} {*.au}} {
+    	{{Play } {
+	    if {[info exists tkdesk(soundcmd)]} {
+		if {$tkdesk(soundcmd) != ""} {
+		    eval exec [format $tkdesk(soundcmd) %s]
+		}
+	    } else {
+		cb_alert {Don't know how to play a sound. Edit the "Sounds" config file to tell me how.}
+	    }
+	}}
+    }}
+    {{*.xbm} {
+	{{View (xv)} {dsk_exec xv %s}}
+	{{Edit (bitmap)} {dsk_exec bitmap %s}}
+	{{Edit ASCII} {dsk_edit %s}}
+    }}
+    {{*.xpm} {
+	{{View (sxpm)} {dsk_exec sxpm %s}}
+	{{View (xv)} {dsk_exec xv %s}}
+	{{Edit (pixmap)} {dsk_exec pixmap -filename %s}}
+	{{Edit ASCII} {dsk_edit %s}}
+    }}
+    {{{*.z} {*.Z}} {
+	{{Edit} {dsk_edit %s}}
+	{{Uncompress} {dsk_exec gzip -d %s}}
+    }}
+    {{*.gz} {
+	{{Edit} {dsk_edit %s}}
+	{{Uncompressed Size } {dsk_view gzip -l %s}}
+	-
+	{{Uncompress} {dsk_exec gzip -d %s}}
+    }}
+    {{*} {
+	{{Edit} {dsk_edit %s}}
+	{{XEmacs} {xemacs_load %s}}
+	{{Other Window} {xemacs_load %s other}}
+	{{Other Frame} {xemacs_load %s frame}}
+	-
+	{{Open Directory} {dsk_open_dir %d}}
+	{{Print...} {dsk_print %s}}
+	{{Mail to...} {dsk_mail %s}}
+	{{Which rpm} {dsk_view rpm -qfli %s}}
+    }}
+}
+
+
+### (fileops,popup):
+### Defines the popup menu of the "Copy, Move, Link" dialog.
+### For this list, the following shortcuts are available in addition
+### to the "usual" ones (see top of this file):
+###
+### %S : Selected files or file entered in the "File" entry field
+### %T : File/directory entered in the "Destination" entry field.
+
+set tkdesk(fileops,popup) {
+    {{Link (symbolic)} {
+	dsk_exec $tkdesk(cmd,symln) %S %T
+    }}
+    {{Link (hard)} {
+    	dsk_exec $tkdesk(cmd,ln) %S %T
+    }}
+    {{Untar} {
+	dsk_bgexec {gzip -cd %S | tar xf - -C %T} {Untaring %f...}
+    }}
+    {{Diff} {
+	dsk_view diff -bc %S %T
+    }}
+    {{Patch} {
+	dsk_path_exec %T xterm -sb -T "patch <%S" -n patch -e pauseme sh -c "patch <%S"
+    }}
+    {{Concatenate} {
+	dsk_exec cat %S >%T
+    }}
+}
+
+
+# ---------------------------------------------------------------------------
+# xemacs_load what ?where?
+# An improved proc provided by Erez Strauss (erez@newplaces.com) to
+# communicate with a running XEmacs.  For this to work you need to put the
+# lines:
+# (gnuserv-start)
+# (require 'ange-ftp)
+# into your ~/.emacs.  The second line allows for FTP through XEmacs.
+# $what is the file that is to be loaded, $where may be: same, other, frame.
+
+proc xemacs_load {what {where same}} {
+
+    catch {auto_reset}        
+    if ![dsk_auto_execok "gnudoit"] {
+        dsk_errbell
+        cb_error "Couldn't find gnudoit.  Maybe you don't have XEmacs installed?"
+        return
+    }
+    
+    switch $where {
+        "same" {
+            set func find-file
+            # exec gnudoit -q (find-file \"$what\")
+        }
+        "other" {
+            set func find-file-other-window
+            # exec gnudoit -q (find-file-other-window \"$what\")
+        }
+        "frame" {
+            set func find-file-other-frame
+            # exec gnudoit -q (find-file-other-frame \"$what\")
+        }
+        "scratch" {
+            set func switch-to-buffer-other-frame
+            set what {*scratch*}
+            # exec gnudoit -q (switch-to-buffer-other-frame \"*scratch*\")
+        }
+    }
+    set err [catch { exec gnudoit -q ($func \"$what\") }]
+    if $err {
+        if {[cb_yesno "XEmacs is not yet running on your display. Start it now
+	?"] == 0} {
+            # start new xemacs
+            eval dsk_exec xemacs $what
+        }
+    }
+}
+

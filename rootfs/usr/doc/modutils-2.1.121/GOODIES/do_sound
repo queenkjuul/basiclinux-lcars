@@ -1,0 +1,13 @@
+#!/bin/sh
+# If you allow the echo to execute, you might be able to easier distinguish
+# between different apps, especially if you are running X
+#echo $* >> /tmp/sndlog
+
+# This works for me when running X: xbiff differed from the others...
+if [ $3 = "13" ]
+then
+	cat /usr/lib/sounds/tada.au > /dev/audio
+else
+	cat /usr/lib/sounds/ding.au > /dev/audio
+fi
+# Hint: I swiped some .wav from W****** and used sox to create *.au from them...

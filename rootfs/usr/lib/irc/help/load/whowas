@@ -1,0 +1,9 @@
+! Copyright (c) 1990-1997  Michael Sandrof, Troy Rollo, Matthew Green,
+! and other ircII contributors.
+!
+! All rights reserved.  See the HELP IRCII COPYRIGHT file for more
+! information.
+!
+Usage: LOAD whowas
+  Reduces the recursive whowas 'feature' of the server into a single 
+  response. 

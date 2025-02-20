@@ -1,0 +1,93 @@
+# Sample .ircrc script, from the IRCprimer v1.1
+# -------------------------------------------------------------------
+#    IRCII sample configuration file  (~/.ircrc)  (Nicolas Pioch)
+# -------------------------------------------------------------------
+# The aim of this file is to shorten all useful commands to 1 letter.
+
+^set DISPLAY off
+set NOVICE off
+set INPUT_ALIASES off
+set AUTO_WHOWAS on
+set SHOW_CHANNEL_NAMES on
+set SHOW_AWAY_ONCE on
+
+# Speeds up ircII display 2 times
+set SCROLL_LINES 2
+
+# Put Hack notices down under
+# Get rid of stupid 2.6 server messages "*** Nick: Channel not found"
+on ^SERVER_NOTICE "% \*\*\* Notice -- Hack: *" set status_user Hack: $5-
+on ^403 *
+
+# Modified killpath script from YeggMan
+ALIAS kpath ECHO ### Last received KILL for $nkp.path
+ASSIGN nkp.path <empty>
+ALIAS nkp.msg ECHO ### $Z -- KILL by $1 for $0 $2-
+ALIAS nkp.idx ^ASSIGN FUNCTION_RETURN $({[$RINDEX(! $0)] + 1})
+ALIAS nkp.srv ^ASSIGN FUNCTION_RETURN $INDEX(. $MID($nkp.idx($0) 512 $0))
+ON ^SERVER_NOTICE "% \*\*\* Notice -- Received KILL*" {
+        IF ( nkp.srv($12) > -1 )
+            { nkp.msg $8 $10 }
+            { nkp.msg $8 $10 $13- }
+        ^ASSIGN nkp.path $8-
+}
+
+# Function to strip the less significant part of an internet hostname
+alias userdomain {
+  @ function_return = LEFT($INDEX(@ $0) $0)##[@]##MID(${1+INDEX(. $0)} 99 $0)
+}
+
+# Who is that ?
+on ^msg * echo *$0!$userdomain($userhost())* $1-
+
+# /w [<nickname>]                        get info on someone
+# /q [<nickname>]                        query someone
+# /m  <nickname> <text>                  send a message
+# /n  <nickname> <text>                  send a notice
+# /r <text>                              reply to last message I got
+# /a <text>                              followup on my last message
+
+alias w whois
+alias q query
+alias m msg
+alias n notice
+alias r msg $,
+alias a msg $.
+
+# /j <channel>                           join a channel
+# /l <channel>                           list people in a channel
+# /ll                                    list in the current channel
+# /i <nickname> [<channel>]              invite someone
+# /hop                                   leave the current channel
+
+alias j join
+alias l who
+alias ll who *
+alias i invite
+alias hop part $C
+
+# /o <nickname> [<nickname> <nickname>]  give channel op status
+# /d <nickname> [<nickname> <nickname>]  remove channel op status
+# /k <nickname>                          kick someone
+# /mo [+|-]<modechars>                   change current channel mode
+
+alias o mode $C +ooo
+alias d mode $C -ooo
+alias k kick $C
+alias mo mode $C
+
+# the "wrong person" alias! /oops <nickname> to resend message to
+alias oops {
+        ^assign _whoops $B
+        msg $. Whooops ! Please ignore, that wasn't meant for you.
+        msg $0 $_whoops
+}
+
+alias unset set -$*
+alias unalias alias -$*
+alias NickServ msg NickServ@Service.de
+alias NoteServ msg NoteServ@Service.de
+
+^set DISPLAY on
+
+# -------------------------------------------------------------------

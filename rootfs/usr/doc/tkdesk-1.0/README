@@ -1,0 +1,93 @@
+	
+README                        TkDesk 1.0                        26.02.1998
+--------------------------------------------------------------------------
+
+       TkDesk - a Desktop and File Manager for UNIX's running X11
+
+       
+Changes since 1.0b5:
+
+   This is a pre-release of the "final" TkDesk 1.0.  It should be much
+   more stable and more easily to install on non-Linux system than b5.
+   There aren't any "big" new features in this release, this is mainly
+   a bug-fix and clean-things-up release.  Once I get enough positive
+   feedback from people using this release (which could also be lack
+   of negative feedback), I'll officially announce the "real" 1.0 release.
+   For this purpose, I'd appreciate it if you could test this release
+   as thoroughly as you can and let me know of any bugs that may still
+   be in there.
+
+   Please also take a look at the change log ("Help"/"Changes"),
+   especially for new configuration possibilities!
+
+      
+What is TkDesk?
+
+   TkDesk is a graphical desktop and file manager for several brands
+   of UNIX (such as Linux) and the X Window System.  It offers a very
+   rich set of file operations and services, and gives the user the
+   ability to configure most aspects of TkDesk in a powerful way.  The
+   reason for this is the use of Tcl/Tk as the configuration and (for
+   the biggest part of TkDesk) implementation language.
+
+   TkDesk has been influenced by various other systems and file managers:
+   NeXT, for laying out the file browser windows, Apple Finder, for the
+   idea of file annotations and, (shock horror), Windows 95, for some
+   other (of course minor and unimportant ;-)) inspirations.
+ 
+   This is a brief overview of the most prominent features of TkDesk:
+ 
+   o Arbitrary number of automatically refreshed file browsers and file
+     list windows,
+   o Configurable file-specific popup-menus,
+   o Drag and drop,
+   o Files and directories may also be dropped onto the root window,
+   o Configurable application bar, with several displays and cascadable
+     popup menus for each button, files can also be dropped here,
+   o History of visited directories, opened files, executed commands
+     and many other things, which is automatically saved to disk,
+   o Find files through their annotation, name, contents, size or age,
+   o Trash can for safe "deletion" of files and directories,
+   o Calculation of disk usage for directory hierarchies,
+   o All file operations (find, copy, disk usage, etc.) are carried out
+     in the background,
+   o Traversal of directory hierarchies through recursive cascaded menus,
+   o Bookmarks, create menu entries for often used files/directories,
+   o Comprehensive hypertextish online help (slightly out of date in this
+     release...),
+   o Built-in multi-buffer editor, providing virtually unlimited undo,
+   o Remote control of Netscape and XEmacs,
+   o Sound support,
+   o Powerful on-the-fly configuration of nearly all aspects of TkDesk
+     using Tcl/Tk, allowing for unlimited extensibility,
+   o Free of charge! But see the file COPYING, or menu entry
+     Help/License for information on usage and redistribution of TkDesk.
+
+How do I install TkDesk?
+
+   See the file INSTALL for instructions on how to install TkDesk.
+   Usually the steps are: Install Tcl/Tk if you still don't have it,
+   and then run "./configure", "make", and "make install".
+
+Is there a Web page for TkDesk?
+
+   Yes, please take a look at:
+   http://people.mainz.netsurf.de/~bolik/tkdesk/
+
+   Latest bug fixes, new versions and (in the future) binaries will be
+   available first from there, or from the TkDesk mailing list.
+
+Oh, there is a mailing list for TkDesk?
+
+   Yes there is (thanks again to Chris Sterritt for running this list!).
+   To subscribe, please send an email to majordomo@mrj.com with an empty
+   subject, and the body "subscribe tkdesk".  There is also an archive
+   of this list available on the web at
+   http://www.findmail.com/listsaver/tkdesk
+   
+   
+Hope you enjoy TkDesk!
+
+     Christian  (Christian.Bolik@mainz.netsurf.de)
+
+

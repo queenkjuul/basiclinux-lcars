@@ -1,0 +1,48 @@
+#!/bin/sh 
+while :; do
+clear
+echo
+echo
+echo
+echo
+echo -e "        (\033[1m1\033[m)  Configure POP3 and SMTP servers"
+echo
+echo -e "        (\033[1m2\033[m)  ---------------ppp-on-----------------"
+echo
+echo -e "        (\033[1m3\033[m)  Fetch messages from POP server (press \033[1mK\033[m to keep on server)"
+echo
+echo -e "        (\033[1m4\033[m)  Send messages from outbox to SMTP server"
+echo
+echo -e "        (\033[1m5\033[m)  ---------------ppp-off----------------"
+echo
+echo -e "        (\033[1m6\033[m)  Read and write messages  (press \033[1mH\033[m for help)"
+echo
+echo -e "        (\033[1mQ\033[m)  QUIT"
+echo
+echo
+echo -n "Select one of the above: "
+read answer
+case $answer in 
+1) e3pi  ~/.pmailrc
+;; 
+2) ppp-on ; sleep 1
+;;
+3) pmail -dd -f ~/mail/inbox
+;;
+3k|3K|k|K) pmail -df -f ~/mail/inbox
+;;
+4) pmail -o ~/mail/outbox  
+;;
+5) ppp-off ; sleep 3 
+;;
+6) readmail ~/mail/inbox 
+;;
+h|H|6h|6H) clear; man readmail 
+;;
+7|Q|q) break;;
+esac
+done
+
+
+
+   

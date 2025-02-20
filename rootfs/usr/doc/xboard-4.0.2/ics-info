@@ -1,0 +1,122 @@
+
+                       The Internet Chess Server
+
+   John Chanak (MataPato), William Kish (router), Daniel Sleator (Darooha)
+                      Carnegie Mellon University
+
+	      Address updates 7/10/96 by Tim Mann (mann)
+
+
+Introduction.
+
+The Internet Chess Server (ICS) is a system that allows people from
+all over the world to play chess, watch others playing, and converse.
+The communication medium through which this takes place is known as
+the Internet -- a communications network connecting computers at
+thousands of universities, corporations, and government sites around
+the world.  The ICS is the place where anyone with an account on an
+internet-connected computer can play chess.  The number of people with
+such access is well over a million, and is growing rapidly.
+
+What's it like?
+
+Of course access to the ICS is through a computer screen, keyboard,
+and perhaps mouse.  But a more apt description of the way it feels is
+like a big party.  Some people play chess intensely, while others mill
+around watching the games, conversing with their old friends, and
+making new ones.  The party-like atmosphere really keeps people coming
+back -- it has been described by many as an addiction (but not one
+that you want to break!).
+
+Who's on the ICS?
+
+Though the majority of players are from the United States, a
+significant percentage is from Europe.  (Of course the balance changes
+as a function of the time of day.)  There are also many players from
+Israel, Australia, Singapore, and Japan.
+
+The strength (that is, skill at chess) of the players varies as widely
+as their geographical locations.  Playing strengths range from
+beginner to International Master, and every so often a Grand Master
+drops in and adds some excitement.  The ICS provides an Elo-style
+rating system which automatically computes a rating for each player
+based on his or her performance against others.  These rating points
+are coveted by most players, and motivate them to play as well as they
+can.
+
+Many computers play on the ICS.  Deep Thought -- the world's best
+chess computer -- drops by occasionally, as do several commercial
+programs like Fritz II, Chess Genius, MChess Pro, and ChessMaster
+4000.  There is even a research project whose program plays on the ICS
+and learns from its mistakes.
+ 
+Statistics.
+
+There are over 4000 registered players on the ICS.  During the late
+afternoon, there will typically be 90 people connected, and roughly 25
+games in progress.  Because of the wide range of time zones, the
+number of players rarely goes below 20.
+
+A large number of games are played on the ICS, most of them short (less
+than 20 minutes total time).  For many months there have consistently
+been more than a thousand games played per day.  The current average
+is over fifteen hundred.
+
+Although all games on the ICS are timed, the tyranny of the clock is
+ameliorated by an innovative incremental clock system.  The players
+select a time increment which will be added to a player's clock after
+each move.  The vast majority of games on the ICS are played with this
+incremental clock system.
+
+How do I connect?
+
+The best way to find out what it's all about is to try it yourself.
+If you have access to electronic mail, then it's very likely that you
+can connect to the ICS.  On most systems, the command to do this is:
+
+        telnet chessclub.com 5000
+
+or if you have xboard:
+
+	xboard -ics -icshost chessclub.com
+
+The ICS has moved quite often in its history, and there are currently
+several ICS's running.  The chessclub.com site is a pay server called
+the Internet Chess Club, but guests can still log in free and use most
+of its features.  See the file "ics.addresses" in the xboard
+distribution for the addresses of other servers, including free
+servers.
+
+Once you've connected, the ICS will ask you to log into the server.
+Use any name you like.  If the system says the name is registered and
+asks you for a password, pick a different name and try again.  After
+you're in, type "help intro1" to see the first of several help files
+that explain what's going on.  To avoid distractions while you're
+trying to read the help files, you may want to issue the command "set
+shout 0".  Do a "set shout 1" later if you want to hear the general
+conversation on the server.
+
+There are a number of interfaces available that run on various
+platforms (NeXT, X Windows, PC, Macintosh, Amiga, etc).  These give
+you a pretty board display, and allow you to enter your moves with a
+mouse.  Type "help interfaces" for a listing.
+
+History and credits.
+
+Michael Moore (of the University of Utah) and Richard Nash recognized
+the potential for such a server, and programmed the first version of
+the ICS.  It came on-line in early 1992.  John Chanak, William Kish,
+and Aaron Putnam moved the server to a host machine at Carnegie Mellon
+University (CMU) in the fall of 1992, and took over its operation.
+The program has since been rewritten by Daniel Sleator.  In 1993 a
+European ICS was established in Denmark.  Later the North American ICS
+was moved to the Massachusetts Institute of Technology (MIT), then to
+the University of California at Santa Barbara, then to the University
+of Oklahoma, then to the Oklahoma Board of Regents, and most recently 
+to Telerama (Luce McQuillin Corp.).
+
+Many others have helped in the creation and operation of the ICS.  The
+following individuals deserve special thanks: Tony Acero, Shirish
+Chinchalkar, Dima Dakhnovsky, Aviv Friedman, Peter Jansen, Dannie
+Kjeldgaard, Tim Mann, Pappu L. N. Murthy, Chris Petroff, and Stanley
+Yamane.

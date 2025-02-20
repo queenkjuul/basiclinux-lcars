@@ -1,0 +1,12 @@
+bind meta2-f type  *fauch*
+bind meta2-g type  *grins*
+bind meta2-G type  *gaehn*
+bind meta2-k type  *kicher*
+bind meta2-l type  *lach*
+bind meta2-M parse say moin $:!
+bind meta2-R parse say rehi $:!
+bind meta2-s type  *seufz*
+bind meta2-S type  *schmoll*
+bind meta2-T parse say tach $:!
+bind meta2-t type  *troest*
+# lynx91

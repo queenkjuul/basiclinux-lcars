@@ -1,0 +1,42 @@
+/* XPM */
+static char *xlogo[] = {
+/* width height ncolors chars_per_pixel */
+"    32    32       3          1",
+/* colors */
+"  c grey90	m white	g4 grey90",
+"b c black	m black	g4 black",
+"c c lightblue	m white g4 grey80",
+/* pixels */
+"                                 ",
+"                                 ",
+" bbbbbbbbb                  bbbb ",
+" bccccccccb                bcccb ",
+"  bccccccccb              bcccb  ",
+"   bccccccccb            bcccb   ",
+"    bccccccccb          bcccb    ",
+"     bccccccccb        bcccb     ",
+"      bccccccccb      bcccb      ",
+"       bccccccccb    bcccb       ",
+"        bccccccccb  bcccb        ",
+"         bccccccccbbcccb         ",
+"          bccccccccbccb          ",
+"           bccccccccbb           ",
+"           bbccccccccb           ",
+"          bcbbccccccccb          ",
+"         bcccbbccccccccb         ",
+"        bcccb  bccccccccb        ",
+"       bcccb    bccccccccb       ",
+"      bcccb      bccccccccb      ",
+"     bcccb        bccccccccb     ",
+"    bcccb          bccccccccb    ",
+"   bcccb            bccccccccb   ",
+"  bcccb              bccccccccb  ",
+" bcccb                bccccccccb ",
+" bbbb                  bbbbbbbbb ",
+"                                 ",
+"                                 ",
+"                                 ",
+"                                 ",
+"                                 ",
+"                                 "
+};

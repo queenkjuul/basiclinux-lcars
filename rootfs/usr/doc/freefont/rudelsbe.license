@@ -1,0 +1,9 @@
+Rudelsberg is a Type 1 PostScript font which will work with Adobe Type Manager version 1.2 or higher and will print with hints on any PostScript printer.  The font is in the Art Nouveau vein (turn of the century Germany in this case) and may be thought of as a second cousin to Adobe's Arnold Boecklin font, in that the lower case letters are a little similar, although the upper case characters lack the swashes of Adobe's font.
+
+Rudelsberg contains the full set of upper- and lower-case characters, numbers, and some punctuation, but no diacritics (I don't do windows either).  It contains a generous set of kerning pairs, as well. In addition, an alternate shape for "s" appears in the option-s slot and optional shapes for upper-case characters V,T,I,D,H,J and X are available in the option-shift slots for the same characters.  On a 300-dpi PostScript output device I don't recommend sizes smaller than 12 points for Rudelsberg.
+
+Instructions for installing Rudelsberg may be garnered from other locations.  We're all grownups here.
+
+Rudelsberg is © 1990 by David Rakowski, Alle Rechte Vorhalten.  It is distributed free.  You may also distribute it freely, providing all four files you got in this archive are part of the package, unaltered.  If you want to show your appreciation for this great deal, send a postcard of something black to Victoria Salter, 703 Dodge Hall, Columbia University, New York, NY 10027 and write simply, in the message space, "Something black."
+
+Rudelsberg is distributed free as a public service of Bug-Bytes (formerly I'll-Byte-Manhattan and Bytes-From-The-Redwoods).

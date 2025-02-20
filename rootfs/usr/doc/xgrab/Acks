@@ -1,0 +1,41 @@
+/*========================================================================
+*
+* Name - Acks
+*
+* Version:	1.12
+*
+* ccsid:	@(#)Acks	1.12 - 08/16/95 08:16:26
+* from: 	ccs/s.Acks
+* date: 	11/07/95 11:31:39
+*
+* Description: Thanks to the people listed below for their help in this
+*              project
+*
+*========================================================================
+
+
+    Yves Arrouye for Encapsulated Postscript Preview (EPSI), page
+    configuration contributions and many bug fixes.  Yves has contributed
+    a great deal to this project.
+
+    George Ferguson for ad2c.sed and help in getting rid of title bars
+
+    David Lawrence for the memcpy() and memset() functions
+
+    Alan Kent for help with 4-plane problems, encapsulated postscript
+    suggestions, and for testing the patch kit
+
+    Brian C. Smith for YIQ greyscale and Floyd-Steinberg algorithms
+
+    Johan Garpendal for the initial color-postscript work
+
+    Martin Birgmeier for the initial virtual window manager support
+
+    Vasco Lopes Paulo for his suggestion for the post-selection sleep
+    option.
+
+    Hal R. Brand for binary Postscript output
+
+    Matt Freedman for the "-coords" selection style
+
+    Scott McCoy for help in porting to OSF/1 on the Alpha

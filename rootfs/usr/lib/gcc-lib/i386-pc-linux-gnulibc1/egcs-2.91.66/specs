@@ -1,0 +1,78 @@
+*asm:
+%{v:-V} %{Qy:} %{!Qn:-Qy} %{n} %{T} %{Ym,*} %{Yd,*} %{Wa,*:%*}
+
+*asm_final:
+%|
+
+*cpp:
+%(cpp_cpu) %{fPIC:-D__PIC__ -D__pic__} %{fpic:-D__PIC__ -D__pic__} %{posix:-D_POSIX_SOURCE}
+
+*cc1:
+%(cc1_cpu) %{profile:-p}
+
+*cc1plus:
+
+
+*endfile:
+%{!shared:crtend.o%s} %{shared:crtendS.o%s} crtn.o%s
+
+*link:
+-m elf_i386 %{shared:-shared}   %{!shared:     %{!ibcs:       %{!static: 	%{rdynamic:-export-dynamic} 	%{!dynamic-linker:-dynamic-linker /lib/ld-linux.so.1}} 	%{static:-static}}}
+
+*lib:
+%{!shared: %{p:-lgmon} %{pg:-lgmon} %{profile:-lgmon -lc_p}      %{!profile:%{!ggdb:-lc} %{ggdb:-lg}}}
+
+*libgcc:
+-lgcc
+
+*startfile:
+%{!shared:      %{pg:gcrt1.o%s} %{!pg:%{p:gcrt1.o%s} 		       %{!p:%{profile:gcrt1.o%s} 			 %{!profile:crt1.o%s}}}}    crti.o%s %{!shared:crtbegin.o%s} %{shared:crtbeginS.o%s}
+
+*switches_need_spaces:
+
+
+*signed_char:
+%{funsigned-char:-D__CHAR_UNSIGNED__}
+
+*predefines:
+-D__ELF__ -Dunix -Di386 -D__i386__ -Dlinux -Asystem(posix)
+
+*cross_compile:
+0
+
+*version:
+egcs-2.91.66
+
+*multilib:
+. ;
+
+*multilib_defaults:
+
+
+*multilib_extra:
+
+
+*multilib_matches:
+
+
+*linker:
+collect2
+
+*cpp_486:
+%{!ansi:-Di486} -D__i486 -D__i486__
+
+*cpp_586:
+%{!ansi:-Di586 -Dpentium} 	-D__i586 -D__i586__ -D__pentium -D__pentium__
+
+*cpp_686:
+%{!ansi:-Di686 -Dpentiumpro} 	-D__i686 -D__i686__ -D__pentiumpro -D__pentiumpro__
+
+*cpp_cpu_default:
+
+
+*cpp_cpu:
+-Asystem(unix) -Acpu(i386) -Amachine(i386) %{!ansi:-Di386} -D__i386 -D__i386__ %{mcpu=i486:%(cpp_486)} %{m486:%(cpp_486)} %{mpentium:%(cpp_586)} %{mcpu=pentium:%(cpp_586)} %{mpentiumpro:%(cpp_686)} %{mcpu=pentiumpro:%(cpp_686)} %{!mcpu*:%{!m486:%{!mpentium*:%(cpp_cpu_default)}}}
+
+*cc1_cpu:
+%{!mcpu*: %{m386:-mcpu=i386 -march=i386} %{mno-486:-mcpu=i386 -march=i386} %{m486:-mcpu=i486 -march=i486} %{mno-386:-mcpu=i486 -march=i486} %{mno-pentium:-mcpu=i486 -march=i486} %{mpentium:-mcpu=pentium} %{mno-pentiumpro:-mcpu=pentium} %{mpentiumpro:-mcpu=pentiumpro}}
+

@@ -1,0 +1,62 @@
+Problems?
+
+Note: If this file doesn't help, or you fix a problem not mentioned in here,
+please email me.
+
+==============================================================================
+Problem compiling: <linux/joystick.h> not found
+
+	You do not have the joystick kit installed, so you cannot compile
+the game with joystick support. Look for the line in the Makefile that looks
+like this:
+
+FEATURES = -DJOYSTICK (..maybe other stuff, maybe not..)
+
+..and remove the -DJOYSTICK part, so that you have
+
+FEATURES = (..maybe other stuff..)
+
+==============================================================================
+Problem compiling: strange "ios" errors in HiScore.c
+
+Your C++ libraries (libg++) are old and need to be updated. You can obtain
+the latest libraries from many linux ftp sites, e.g. sunsite.unc.edu in the
+/pub/Linux/GCC directory. Always read the directions carefully when
+upgrading libraries!  If you don't feel up to this, use the pre-compiled
+statically linked version of sasteroids.
+
+==============================================================================
+Problem compiling:  internal compiler errors
+
+Your version of gcc is old.  Gcc 2.4.5 (and others) will die with internal
+errors trying to compile sasteroids. Upgrade to gcc 2.5.8 or greater. Make
+sure you install all the g++ stuff too, since sasteroids is written in C++.
+
+==============================================================================
+Problem running sasteroids:  "svgalib: Cannot get I/O permissions."
+
+To run sasteroids, you either have to be root, or the binary has to be
+owned by root, and be flagged setuid.  
+
+If you 'make install' as root, this will be done for you.  By default, make
+install puts the sasteroids binary in /usr/games.  Normal users need to run
+the /usr/games binary, and not the binary compiled in the sasteroids source
+directory.
+
+==============================================================================
+Problem: You can play one game, but trying to play a second game puts you back to
+the title screen, and you have to quit the program and restart to play
+again.
+
+This is caused by a really simple bug in early svgalib keyboard handling.
+Install svgalib 1.11 or greater.  If you compiled sasteroids statically
+linked (by default, this does not happen), you will need to recompile
+sasteroids after upgrading svgalib.
+
+If you did not change the static/dynamic link settings in the sasteroids
+makefile, then simply upgrading your version of svgalib solves the problem.
+
+==============================================================================
+
+--brad
+pitzel@cs.sfu.ca

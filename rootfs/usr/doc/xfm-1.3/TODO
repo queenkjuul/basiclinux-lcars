@@ -1,0 +1,24 @@
+
+ * Add an 'auto' window contents feature - tree style for directories containing
+   only subdirectories, icon style otherwise.
+
+ * Add a user definable menu to the application manager.
+
+ * Write some proper documentation.
+
+ * Add Chmod on multiple files / recursively.
+
+ * Add a help feature.
+
+ * Add a find feature.
+
+ * Add a special icon widget.
+
+ * Write a routine to generate more general dialog boxes.
+
+ * Reintegrate the xfmc stuff.
+
+ * Replace the pattern matching code for file selections with a `real' regexp
+   matcher (e.g. the RegExp module from the Free Widget Library?).
+
+ * Add support for multiple application windows.

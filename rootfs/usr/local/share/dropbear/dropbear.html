@@ -1,0 +1,162 @@
+Content-type: text/html
+
+<HTML><HEAD><TITLE>Manpage of dropbear</TITLE>
+</HEAD><BODY>
+<H1>dropbear</H1>
+Section: Maintenance Commands (8)<BR><A HREF="#index">Index</A>
+<A HREF="http://localhost/cgi-bin/man/man2html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+dropbear - lightweight SSH2 server
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<B>dropbear</B>
+
+[-FEmwsgjki] [-b
+<I>banner</I>] [-d
+
+<I>dsskey</I>] [-r
+
+<I>rsakey</I>] [-p
+
+<I>port</I>]
+
+<A NAME="lbAD">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+<B>dropbear</B>
+
+is a SSH 2 server designed to be small enough to be used in small memory
+environments, while still being functional and secure enough for general use.
+<A NAME="lbAE">&nbsp;</A>
+<H2>OPTIONS</H2>
+
+<DL COMPACT>
+<DT><B>-b </B><I>banner</I>
+
+<DD>
+bannerfile.
+Display the contents of the file
+<I>banner</I>
+
+before user login (default: none).
+<DT><B>-d </B><I>dsskey</I>
+
+<DD>
+dsskeyfile.
+Use the contents of the file
+<I>dsskey</I>
+
+for the dss host key (default: /etc/dropbear/dropbear_dss_host_key).
+This file is generated with
+<B><A HREF="http://localhost/cgi-bin/man/man2html?8+dropbearkey">dropbearkey</A></B>(8).
+
+<DT><B>-r </B><I>rsakey</I>
+
+<DD>
+rsakeyfile.
+Use the contents of the file
+<I>rsakey</I>
+
+for the rsa host key (default: /etc/dropbear/dropbear_rsa_host_key).
+This file is generated with
+<B><A HREF="http://localhost/cgi-bin/man/man2html?8+dropbearkey">dropbearkey</A></B>(8).
+
+<DT><B>-F</B>
+
+<DD>
+Don't fork into background.
+<DT><B>-E</B>
+
+<DD>
+Log to standard error rather than syslog.
+<DT><B>-m</B>
+
+<DD>
+Don't display the message of the day on login.
+<DT><B>-w</B>
+
+<DD>
+Disallow root logins.
+<DT><B>-s</B>
+
+<DD>
+Disable password logins.
+<DT><B>-g</B>
+
+<DD>
+Disable password logins for root.
+<DT><B>-j</B>
+
+<DD>
+Disable local port forwarding.
+<DT><B>-k</B>
+
+<DD>
+Disable remote port forwarding.
+<DT><B>-p </B><I>[address:]port</I>
+
+<DD>
+Listen on specified 
+<I>address</I>
+
+and TCP
+<I>port.</I>
+
+If just a port is given listen
+on all addresses.
+up to 10 can be specified (default 22 if none specified).
+<DT><B>-i</B>
+
+<DD>
+Service program mode.
+Use this option to run
+<B>dropbear</B>
+
+under TCP/IP servers like inetd, tcpsvd, or tcpserver.
+In program mode the -F option is implied, and -p options are ignored.
+<DT><B>-P </B><I>pidfile</I>
+
+<DD>
+Specify a pidfile to create when running as a daemon. If not specified, the 
+default is /var/run/dropbear.pid
+<DT><B>-a</B>
+
+<DD>
+Allow remote hosts to connect to forwarded ports.
+</DL>
+<A NAME="lbAF">&nbsp;</A>
+<H2>AUTHOR</H2>
+
+Matt Johnston (<A HREF="mailto:matt@ucc.asn.au">matt@ucc.asn.au</A>).
+<BR>
+
+Gerrit Pape (<A HREF="mailto:pape@smarden.org">pape@smarden.org</A>) wrote this manual page.
+<A NAME="lbAG">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<A HREF="http://localhost/cgi-bin/man/man2html?8+dropbearkey">dropbearkey</A>(8), <A HREF="http://localhost/cgi-bin/man/man2html?1+dbclient">dbclient</A>(1)
+
+<A HREF="http://matt.ucc.asn.au/dropbear/dropbear.html">http://matt.ucc.asn.au/dropbear/dropbear.html</A>
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAE">OPTIONS</A><DD>
+<DT><A HREF="#lbAF">AUTHOR</A><DD>
+<DT><A HREF="#lbAG">SEE ALSO</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="http://localhost/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 09:50:40 GMT, March 24, 2008
+</BODY>
+</HTML>

@@ -1,0 +1,11 @@
+#!/bin/sh
+modprobe input
+modprobe mousedev
+modprobe keybdev
+modprobe usbcore
+modprobe usb-uhci
+modprobe usb-ohci
+modprobe uhci
+modprobe hid
+modprobe usbkbd
+modprobe usbmouse

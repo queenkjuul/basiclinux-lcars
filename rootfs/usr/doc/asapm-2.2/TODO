@@ -1,0 +1,10 @@
+The following things may be done (and again may be not ;-)
+in the future:
+      - use the Shape extension to create
+	an alternative asapm without the
+	background pixmap
+
+      - find out if it is possible to use
+	some signals or events from X11
+	instead of making a stupid while(1)
+

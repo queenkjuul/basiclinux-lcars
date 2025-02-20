@@ -1,0 +1,32 @@
+; help.hpf
+; Auto-generated NetHelp project file
+
+Window-Name="Communicator Help"
+Window-Size="425,440"
+NetHelp-Version="2.0"
+<Frame_Group src = "../../NSHIfrm.htm" default_window = "">
+
+<ID_MAP>
+
+opening_groups_server = "news.htm#opening_groups_server" : target = "Topic"
+SUBSCRIBE_LIST_ALL = "news.htm#SUBSCRIBE_LIST_ALL" : target = "Topic"
+SUBSCRIBE_SEARCH = "news.htm#SUBSCRIBE_SEARCH" : target = "Topic"
+SUBSCRIBE_LIST_NEW = "news.htm#SUBSCRIBE_LIST_NEW" : target = "Topic"
+UNSUBSCRIBE = "news.htm#UNSUBSCRIBE" : target = "Topic"
+DOWNLOADING_NEW = "news.htm#DOWNLOADING_NEW" : target = "Topic"
+NEWS_DISCUSSION_GENERAL = "news.htm#NEWS_DISCUSSION_GENERAL" : target = "Topic"
+NEWS_DISCUSSION_DOWNLOAD = "news.htm#NEWS_DISCUSSION_DOWNLOAD" : target = "Topic"
+NEWS_DISCUSSION_DISKSPACE = "news.htm#NEWS_DISCUSSION_DISKSPACE" : target = "Topic"
+about_posting = "news.htm#about_posting" : target = "Topic"
+REPLYING = "news.htm#REPLYING" : target = "Topic"
+ADD_SERVER = "news.htm#ADD_SERVER" : target = "Topic"
+DISCUSSION_HOST_PROPERTIES = "news.htm#DISCUSSION_HOST_PROPERTIES" : target = "Topic"
+off_work = "news.htm#off_work" : target = "Topic"
+OFFLINE_INTRO = "news.htm#OFFLINE_INTRO" : target = "Topic"
+DOWNLOAD_MESSAGES = "news.htm#DOWNLOAD_MESSAGES" : target = "Topic"
+MAILNEWS_SYNCHRONIZE = "news.htm#MAILNEWS_SYNCHRONIZE" : target = "Topic"
+MAILNEWS_SELECT_ITEMS = "news.htm#MAILNEWS_SELECT_ITEMS" : target = "Topic"
+PREFERENCES_OFFLINE = "news.htm#PREFERENCES_OFFLINE" : target = "Topic"
+PREFERENCES_OFFLINE_GROUPS = "news.htm#PREFERENCES_OFFLINE_GROUPS" : target = "Topic"
+
+</ID_MAP>

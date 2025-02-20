@@ -1,0 +1,153 @@
+Content-type: text/html
+
+<HTML><HEAD><TITLE>Manpage of dbclient</TITLE>
+</HEAD><BODY>
+<H1>dbclient</H1>
+Section: User Commands  (1)<BR><A HREF="#index">Index</A>
+<A HREF="http://localhost/cgi-bin/man/man2html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+dbclient - lightweight SSH2 client
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<B>dbclient</B>
+
+[-Tt] [-p
+<I>port</I>] [-i
+
+<I>id</I>] [-L
+
+<I>l</I>:<I>h</I>:<I>r</I>] [-R
+
+<I>l</I>:<I>h</I>:<I>r</I>] [-l
+
+<I>user</I>]
+
+<I>host</I>
+
+<A NAME="lbAD">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+<B>dbclient</B>
+
+is a SSH 2 client designed to be small enough to be used in small memory
+environments, while still being functional and secure enough for general use.
+<A NAME="lbAE">&nbsp;</A>
+<H2>OPTIONS</H2>
+
+<DL COMPACT>
+<DT><B>-p </B><I>port</I>
+
+<DD>
+Remote port.
+Connect to port
+<I>port</I>
+
+on the remote host.
+Default is 22.
+<DT><B>-i </B><I>idfile</I>
+
+<DD>
+Identity file.
+Read the identity from file
+<I>idfile</I>
+
+(multiple allowed).
+<DT><B>-L </B><I>listenport</I>:<I>host</I>:<I>port</I>
+
+<DD>
+Local port forwarding.
+Forward the port
+<I>listenport</I>
+
+on the local host through the SSH connection to port
+<I>port</I>
+
+on the host
+<I>host</I>.
+
+<DT><B>-R </B><I>listenport</I>:<I>host</I>:<I>port</I>
+
+<DD>
+Remote port forwarding.
+Forward the port
+<I>listenport</I>
+
+on the remote host through the SSH connection to port
+<I>port</I>
+
+on the host
+<I>host</I>.
+
+<DT><B>-l </B><I>user</I>
+
+<DD>
+Username.
+Login as
+<I>user</I>
+
+on the remote host.
+<DT><B>-t</B>
+
+<DD>
+Allocate a pty.
+<DT><B>-T</B>
+
+<DD>
+Don't allocate a pty.
+<DT><B>-N</B>
+
+<DD>
+Don't request a remote shell or run any commands. Any command arguments are ignored.
+<DT><B>-f</B>
+
+<DD>
+Fork into the background after authentication. A command argument (or -N) is required.
+This is useful when using password authentication.
+<DT><B>-g</B>
+
+<DD>
+Allow non-local hosts to connect to forwarded ports. Applies to -L and -R
+forwarded ports, though remote connections to -R forwarded ports may be limited
+by the ssh server.
+<DT><B>-y</B>
+
+<DD>
+Always accept hostkeys if they are unknown. If a hostkey mismatch occurs the
+connection will abort as normal.
+</DL>
+<A NAME="lbAF">&nbsp;</A>
+<H2>AUTHOR</H2>
+
+Matt Johnston (<A HREF="mailto:matt@ucc.asn.au">matt@ucc.asn.au</A>).
+<BR>
+
+Gerrit Pape (<A HREF="mailto:pape@smarden.org">pape@smarden.org</A>) wrote this manual page.
+<A NAME="lbAG">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<A HREF="http://localhost/cgi-bin/man/man2html?8+dropbear">dropbear</A>(8), <A HREF="http://localhost/cgi-bin/man/man2html?8+dropbearkey">dropbearkey</A>(8)
+
+<A HREF="http://matt.ucc.asn.au/dropbear/dropbear.html">http://matt.ucc.asn.au/dropbear/dropbear.html</A>
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAE">OPTIONS</A><DD>
+<DT><A HREF="#lbAF">AUTHOR</A><DD>
+<DT><A HREF="#lbAG">SEE ALSO</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="http://localhost/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 10:13:02 GMT, March 24, 2008
+</BODY>
+</HTML>

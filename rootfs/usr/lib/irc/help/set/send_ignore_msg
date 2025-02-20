@@ -1,0 +1,10 @@
+! Copyright (c) 1990-1997  Michael Sandrof, Troy Rollo, Matthew Green,
+! and other ircII contributors.
+!
+! All rights reserved.  See the HELP IRCII COPYRIGHT file for more
+! information.
+!
+Usage: SET SEND_IGNORE_MSG [ON|OFF|TOGGLE]
+  When OFF, prevents the sending of "You are being ignored"
+  messages when you IGNORE someone.  When ON, these messages are
+  sent when then IGNORE is initiated for PRIVATE or ALL messages.
