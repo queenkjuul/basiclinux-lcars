@@ -1,0 +1,6 @@
+[submodule "slackware/slackware-4.0"]
+	path = slackware/slackware-4.0
+	url = git@github.com:queenkuul/slackware-4.0.git
+[submodule "slackware/slackware-9.0"]
+	path = slackware/slackware-9.0
+	url = git@github.com:queenkuul/slackware-9.0.git
