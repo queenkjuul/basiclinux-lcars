@@ -1,0 +1,70 @@
+<HTML>
+<Head>
+<Title>How to Replace Xvesa</Title>
+<META NAME="keywords" CONTENT="Linux for laptops, laptop Linux, 386, 486, low, RAM, memory, Powerpoint, Power Point, footprint, resource, compact, small, tiny, mini, PCMCIA, pocket, retro, old, Xvesa, Castlemaze, microcom, swm, links browser">
+</Head>
+<BODY BGCOLOR="#cccccc" TEXT="#000000" link="#0000cc">
+<FONT size=5>
+<HR>
+<center>
+<big> 
+<B>How&nbsp; to&nbsp; Replace&nbsp; Xvesa&nbsp; &nbsp; </B>
+</big></center> 
+<HR>
+<BR>
+Xvesa is used by BasicLinux to create a graphical interface (GUI). &nbsp;It is small, flexible, and simple to configure. &nbsp;However, Xvesa is not perfect: it doesn't work on some PCs. &nbsp;If you have one of those PCs, and you want a GUI, you will have to replace Xvesa with the appropriate Xserver from Slackware 4.0.
+<P>
+There is another reason you might want to replace Xvesa: &nbsp;it has a limited range of color depths. &nbsp;  Xvesa happily does 16-color VGA (depth=4) and 32768-color SVGA (depth=15), but it can't do anything in between. &nbsp;In particular, Xvesa does not have a 256-color mode (depth=8).
+<P>
+Some old laptops have a maximum color depth of 8.  &nbsp;The best display for those laptops is 256 colors, but Xvesa can't do that. &nbsp;Instead it displays just 16 colors on those laptops. &nbsp;This is a significant issue because some graphical software (like AbiWord and Links 2) does not work in 16 colors.
+<P>
+If you need more than 16 colors (and your hardware is not capable of  displaying 32768 colors), you should replace Xvesa with the appropriate Xserver from Slackware 4.0.
+<P>
+<BR>
+<B><U>Step 1</b>: &nbsp; Select the correct Xserver for your hardware</u>
+<P>
+In the <B>/slakware/x1</B> directory of <A HREF="slack.htm">Slackware 4.0</A>, you will find a dozen different Xserver packages. &nbsp;Find the one that matches your video card:
+<P>
+<table border=1 cellpadding=6>
+<tr><th>x8514.tgz <td>IBM 8514 
+<tr><th>x3dl.tgz  <td>GLINT 500TX with IBM RGB526 RAMDAC, GLINT MX with IBM RGB526 and IBM RGB640 RAMDAC, Permedia with IBM RGB526 RAMDAC, Permedia 2 (classic, 2a, 2v).
+<tr><th>xagx.tgz  <td>IIT AGX-016, AGX-015, AGX-014, XGA-2, XGA-1 and AGX-010
+<tr><th>xi128.tgz <td>Number Nine Imagine 128 (series I and II)
+<tr><th>xma32.tgz <td>Mach32.
+<tr><th>xma64.tgz <td>Mach 64, 3D Rage, 3D Rage II, 3D Rage IIC, 3D Rage II+DVD, Rage Pro, and Rage LT Pro.       
+<tr><th>xma8.tgz  <td>Mach8                                 
+<tr><th>xp9k.tgz  <td>Diamond Viper VLB, Diamond Viper PCI, Orchid P9000, STAR 2000, and other P9000 cards. &nbsp;The Viper Pro and other P9100 and P9130 cards do <B>not</B> use xp9k.tgz (use xsvga.tgz instead).
+<tr><th>xs3.tgz   <td>S3 chipsets: 911, 924, 801/805, 928, 732 (Trio32), 764, 765, 775, 785 (Trio64*), 864, 868, 964, 968 and M65 (Aurora64V+).
+<tr><th>xs3v.tgz  <td>S3 ViRGE (86C325), ViRGE/DX (86C375), ViRGE/GX (86C385) and the ViRGE/VX (86C988). &nbsp;<font color=blue>xsvga.tgz may also work with these chips (try it first).
+<tr><th>xw32.tgz  <td>w32, w32i, w32p, et6000. &nbsp;<font color=blue>xsvga.tgz may also work with these chips (try it first). 
+<tr><th bgcolor=white>xsvga.tgz <td bgcolor=white>Trident, Cirrus, and other SVGA cards not listed above.    
+<tr><th>xvg16.tgz <td>This provides generic 16-color VGA. It is slower than Xvesa and should only be used when Xvesa malfunctions on your hardware.  
+<tr><th>xmono.tgz <td>Hercules monochrome.
+</table>
+<P> 
+If in doubt, try the <B>xsvga.tgz</B> package. &nbsp;It works with the majority of video cards.
+<P>
+<BR>
+<B><U>Step 2</b>: &nbsp; Install the Xserver package</u>
+<P>
+Use the <B>pkg</B> command to install the Xserver. &nbsp;You also need to install the <B>no-xvesa.tgz</B> package from the <A HREF="add-ons/index.htm">BL3 add-ons</a>. &nbsp;It provides some additional files needed to run an Xserver (instead of Xvesa).
+<P>
+&nbsp; &nbsp; &nbsp; &nbsp; pkg no-xvesa.tgz <BR>
+&nbsp; &nbsp; &nbsp; &nbsp; pkg <font color=red>xsvga.tgz</font><BR>
+<P>
+The <font color=red>xsvga.tgz</font> is just an example. &nbsp;Substitute the name of the appropriate Xserver package.
+<P>
+<BR>
+<B><U>Step 3</b>: &nbsp; Configure the Xserver</u>
+<P> 
+The Xserver configuration file is <B>/etc/XF86Config</B>. &nbsp;You can edit it directly, or you can execute <B>xf86config</B> to configure your Xserver from scratch.
+<P>
+The default XF86Config is fairly generic and might work for you without amendment. &nbsp;It assumes you have a PS/2 mouse, sets a color depth of 8 (256 colors) and uses common settings for HoriSync and VertRefresh. &nbsp;You may need to modify those, especially for a laptop.
+
+</BODY>
+</HTML>
+
+
+
+
+

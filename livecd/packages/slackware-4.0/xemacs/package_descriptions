@@ -1,0 +1,24 @@
+xemacs:   xemacs-20.4.
+xemacs:
+xemacs:   XEmacs is a version of Emacs for the X Window System, compatible with
+xemacs:   and containing many improvements over GNU Emacs, written by Richard
+xemacs:   Stallman of the Free Software Foundation.  It was originally based on
+xemacs:   an early release of GNU Emacs Version 19, and has tracked subsequent
+xemacs:   releases of GNU Emacs as they have become available.
+xemacs:
+xemacs:
+xemacs:
+xemacs:
+
+xemule:   xemacs-20.4-mule.
+xemule:
+xemule:   XEmacs is a version of Emacs for the X Window System.  This version of
+xemule:   XEmacs was compiled with MULE (MULtilingual Enhancement) support.  It
+xemule:   can handle not only ASCII characters (7 bits) and ISO Latin-1 (8 bits)
+xemule:   but also Japanese, Chinese, Korean (16 bits) coded in the ISO2022
+xemule:   standard and its variants (e.g. EUC, Compound Text).  For Chinese
+xemule:   there is support for both GB and Big5.  In addition, Thai (based on
+xemule:   TIS620), Vietnamese (based on VISCII and VSCII), Arabic, and Ethiopic
+xemule:   are also supported.  Some languages require fonts from intlfonts-1.1.
+xemule:
+

@@ -1,0 +1,21 @@
+========
+glidesdk
+========
+
+Contents:  Glide 2.x Software Development Kit
+
+If you plan on developing software that uses Glide, or if you plan on
+recompiling the Mesa libraries, you should install this package. It
+includes header files for Glide, as well as useful documentation and
+source code.
+
+(1) Become root.
+
+(2) Install the package:
+
+       hostname:~# installpkg glidesdk.tgz
+
+(3) Done!
+
+-David Cantrell
+ david@slackware.com

@@ -1,0 +1,36 @@
+==========================================================================
+This is a Slackware Linux repackaged version of Glide. It was put together
+by David Cantrell (david@slackware.com) with sources obtained from
+
+        http://glide.xxedgexx.com/3DfxRPMS.html
+
+Please refer to the original Glide license file that accompanies each vg*
+package. It is in /usr/doc/Glide2
+==========================================================================
+
+This directory contains packages for adding 3Dfx support to Slackware. All
+of the packages in this directory can be installed using the "installpkg"
+command. Refer to the man page for installpkg for more information.
+
+Each package has it's own readme file with specific instructions for
+installing it.
+
+So what packages do you need to install? Here's a table of what's what:
+
+  -----------------------------------------------------------------
+   PACKAGE      | DESCRIPTION
+  -----------------------------------------------------------------
+   vg-libs.tgz  | for Voodoo Graphics based boards
+   v2-libs.tgz  | for Voodoo 2 based boards
+   vr-libs.tgz  | for Voodoo Rush based boars
+   glidesdk.tgz | Only if you plan on compiling software to use
+                | the Glide rasterization library
+   xvr.tgz      | replacement XF86_SVGA server that supports the
+                | Voodoo Rush chipset
+   xvrlibs.tgz  | replacement libraries needed to use xvr.tgz
+  -----------------------------------------------------------------
+
+Good luck!
+
+-David Cantrell
+ david@slackware.com
