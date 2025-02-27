@@ -1,0 +1,83 @@
+<html>
+<head><script type="text/javascript" src="https://web-static.archive.org/_static/js/bundle-playback.js?v=7YQSqjSh" charset="utf-8"></script>
+<script type="text/javascript" src="https://web-static.archive.org/_static/js/wombat.js?v=txqj7nKC" charset="utf-8"></script>
+<script>window.RufflePlayer=window.RufflePlayer||{};window.RufflePlayer.config={"autoplay":"on","unmuteOverlay":"hidden"};</script>
+<script type="text/javascript" src="https://web-static.archive.org/_static/js/ruffle/ruffle.js"></script>
+<script type="text/javascript">
+    __wm.init("https://web.archive.org/web");
+  __wm.wombat("http://www.volny.cz:80/basiclinux2/bas-add.htm","20040525011626","https://web.archive.org/","web","https://web-static.archive.org/_static/",
+	      "1085447786");
+</script>
+<link rel="stylesheet" type="text/css" href="https://web-static.archive.org/_static/css/banner-styles.css?v=p7PEIJWi" />
+<link rel="stylesheet" type="text/css" href="https://web-static.archive.org/_static/css/iconochive.css?v=3PDvdIFv" />
+<!-- End Wayback Rewrite JS Include -->
+
+<title>Adding new packages BasicLinux</title>
+</head>
+<body text="#000000" bgcolor="#CCCCCC" link="#0000CC">
+<center>
+<hr><b><font size="+1">How &nbsp; to&nbsp; add&nbsp; new&nbsp; packages&nbsp; to&nbsp; BasicLinux &nbsp; </font></b>
+<hr></center>
+<p><br>
+BasicLinux 2 is compatible with Slackware 7.1, so you should be able to install any package from there using the package manager (which is included in the BasicLinux HD installation). &nbsp;Execute <b>pkgtool</b> for a menu-driven routine, or use <b>installpkg</b> to install a package directly. &nbsp;Both methods register the package in the manager's database.
+<p>
+Slackware 7.1 packages are relatively small. &nbsp;They provide components, not self-contained applications. &nbsp;In most cases, you will need to install several related packages to get what you want. &nbsp; Here are some examples.
+<p>
+<font color="#990000"><u>Adding manpages to BasicLinux</u></font>
+<br>
+This requires five packages (and fills 8mb of HD space).  &nbsp;First, you need the manpages and the man command -- that's two packages.  &nbsp;Groff is used to decifer the manpages and less is used to display them, so that's two more.  &nbsp;Groff needs a special library -- that's five.<p>
+<table>
+<tr><td>installpkg man.tgz</td><td>##&nbsp; a9</td>
+<tr><td>installpkg manpages.tgz &nbsp; &nbsp; </td><td>##&nbsp; ap1</td>
+<tr><td>installpkg groff.tgz</td><td>##&nbsp; ap1</td>
+<tr><td>installpkg less.tgz</td><td>##&nbsp; a7</td>
+<tr><td>installpkg cxxlibs.tgz</td><td>##&nbsp; a3</td>
+</table>
+<p><br>
+<font color="#990000"><u>Adding Midnight Commander to BasicLinux</u></font>
+<br>
+This requires two packages (and fills 6mb of HD space). &nbsp;The first package contains Midnight Commander and the second contains libraries required by Midnight Commander.<p>
+<table>
+<tr><td>installpkg mc.tgz</td><td>##&nbsp; ap1</td>
+<tr><td>installpkg elflibs.tgz &nbsp; &nbsp; </td><td>##&nbsp; a4</td>
+</table>
+<p><br>
+<font color="#990000"><u>Adding a C compiler to BasicLinux</u></font>
+<br>
+This requires a minimum of five packages (which fill 120mb of HD space). &nbsp;Most of this space is filled by the glibc2 library, which is <u>much</u> larger than the old libc5 library (used in BasicLinux 1.8).<p> 
+<table>
+<tr><td>installpkg binutils.tgz</td><td>##&nbsp; d1</td>
+<tr><td>installpkg egcs.tgz</td><td>##&nbsp; d1</td>
+<tr><td>installpkg glibc.tgz</td><td>##&nbsp; d1</td>
+<tr><td>installpkg gmake.tgzd1</td><td>##&nbsp; d1</td>
+<tr><td>installpkg linuxinc.tgz &nbsp; &nbsp; </td><td>##&nbsp; d1</td>
+</table>
+<br>
+To compile a Linux kernel, two further packages are required (which fill an additional 74mb of HD space). &nbsp;The first is the kernel source and the second is an assember to make the boot sector.<p>
+<table>
+<tr><td>installpkg lx2216.tgz &nbsp; &nbsp;</td><td>##&nbsp; k1</td>
+<tr><td>installpkg bin86.tgz</td><td>##&nbsp; d1</td>
+</table>
+<p>
+</body>
+</html>
+<!--
+     FILE ARCHIVED ON 01:16:26 May 25, 2004 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 08:22:40 Feb 27, 2025.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  captures_list: 0.496
+  exclusion.robots: 0.018
+  exclusion.robots.policy: 0.008
+  esindex: 0.01
+  cdx.remote: 11.416
+  LoadShardBlock: 146.719 (3)
+  PetaboxLoader3.datanode: 99.208 (4)
+  PetaboxLoader3.resolve: 152.248 (2)
+  load_resource: 127.091
+-->
