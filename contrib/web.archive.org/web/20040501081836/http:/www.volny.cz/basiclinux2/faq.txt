@@ -1,0 +1,721 @@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+> BasicLinux does not work on my system.  It starts to boot and then 
+> crashes.
+
+BasicLinux needs two things to boot:  DOS and 8mb RAM.  Make sure that 
+you are running in pure DOS.  Make sure that you have at least 8mb RAM 
+and that *all* of your RAM is good.  
+
+It is not uncommon for old PCs to have faulty or mismatched RAM modules.  
+Just because DOS is OK does not mean the RAM is OK (sometimes DOS is able 
+to run with bad RAM modules).  Linux is *very* intolerant of bad RAM.  If 
+you have problems with Linux crashing, you should run a thorough RAM test.  
+The automatic power-on RAM test is not thorough -- do not trust it.  You 
+need a proper RAM tester, like the the one at:    
+-------------------------
+http://www.memtest86.com/
+-------------------------
+Something else that might crash Linux is an overclocked CPU or an aggressive 
+CMOS setting.  Sometimes people try to speed up their systems by pushing the 
+hardware to the limit.  If this has been overdone, Linux may crash (even 
+though DOS does not).
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+> Can I use add-ons from BasicLinux 1.8 in BasicLinux 2.0?
+
+No.  BasicLinux 2.0 uses a completely different set of libraries.
+BasicLinux 1.8 used very old libraries (libc5) and all its add-ons 
+were compiled for those libraries.  BasicLinux 2.0 uses glibc 2.1.   
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+> I have a 486sx and would really like to run BasicLinux 2.0.  Is 
+> there any way to do this?
+
+Yes, but you will need to get a new kernel from Slackware 7.1.  The
+BasicLinux kernel is called "zimage" and you will find it on your DOS 
+partition (where you boot BasicLinux).  Replace it with an appropriate 
+Slackware kernel.
+
+If you have 8mb RAM, you should use the low-mem kernel from Slackware 7.1.
+You will find it in the  /kernels/lowmem.i  directory.  It is called zimage
+(same as the BasicLinux kernel).  Simply copy it over the old zimage and
+boot BasicLinux.
+
+The low-mem zimage is not a very good kernel.  In order to make it small, 
+Slackware left out several features.  In particular, it is unable to do
+networking.  However, there is no choice -- the low-mem zimage is the only 
+kernel that can run the BasicLinux ramdisk on a 486sx with 8mb RAM.
+
+If you have more than 8mb RAM, you should use a more capable kernel.  The 
+standard Slackware IDE kernel is probably best.  You will find it in the  
+/kernels/bare.i  directory.  It is a bzimage.  Copy it to the DOS directory 
+where you boot BasicLinux.  Since the BasicLinux boot routine is expecting 
+a zimage, you will need to edit BOOT.BAT (with a DOS editor) and change 
+zimage to bzimage.
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+> Central European phone lines do not have a dial tone.  
+> So we need to use ATX3DT instead of ATDT.  Can this 
+> be implemented in pppsetup?
+
+Yes.  Add the following line to the main config file:
+------------
+0 init1 ATX3
+------------
+This works for any modem init string (like ATM0L0 to turn off
+the modem speaker).
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+> What are the Linux names for my drives?
+
+The following will print the details of your HD partitions:
+--------
+fdisk -l
+--------
+
+> I have a drive C:
+
+Your C: drive is probably the first partition on /dev/hda.
+The Linux name for that partition is /dev/hda1
+
+> and a CDrom drive (D:) 
+
+Probaby /dev/hdb  (no number because CDroms aren't partitioned).
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+>  When I use "pr", it says it doesn't recognize that command.
+
+BasicLinux does not include a print daemon (although one can be added
+from Slackware 7.1).  BasicLinux prints text by sending it directly to 
+the printer port.  That is what wp does.
+
+> How do I print a file?
+
+The simpest way is to copy the file to /tmp/document (the name of the 
+current wp document).  Then run wp and print the document.
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+> With the word processor in Basiclinux, how to save those 
+> files as .txt, and then put them onto a floppy?
+
+When you have finished editing the document, exit the wordprocessor 
+and do this:
+--------------------------
+cd /tmp                   # goes to where document is stored
+ren document newname.txt  # renames document
+mount /dev/fd0  /mnt      # put floppy in drive first!
+copy newname.txt  /mnt    # copies file from HD to FD
+umount /mnt               # do this BEFORE removing floppy
+--------------------------
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+> in the /etc directory there seemed to be a bunch of 
+> configuration files.  Are there specs somewhere which can 
+> tell my what, how and why I would want to change in these?
+
+Here are a few to get you started:
+--------------------------------------------------------------
+rc       system startup file (for ramdrive BasicLinux)
+rc.d     system startup files (for HD version)
+profile  shell startup file
+fstab    table of filesystems automatically mounted at startup
+passwd   user data for login
+issue    text that gets printed on screen at login
+--------------------------------------------------------------
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+> DOS took me only a short time to get on to, the Linux CLI has 
+> been much more difficult, the command line seems longwinded and 
+> roundabout to do even simple things compared to DOS
+
+The Linux CLI is more difficult to master because it has so 
+many different options and so many ways of doing things.  
+However, for simple stuff, it parallels DOS pretty well.
+
+DOS                            Linux
+----------------------------------------------------
+cd \tmp                        cd /tmp
+cd ..                          cd ..
+copy xxxx \tmp                 cp xxxx /tmp
+move xxxx \tmp                 mv xxxx /tmp
+del xxxx                       rm xxxx
+deltree xxxx                   rm -r xxxx
+mkdir xxxx                     mkdir xxxx
+rmdir xxxx                     rmdir xxxx
+dir /w                         ls
+dir                            ls -l
+dir | more                     ls -l | more 
+xxxx  (to execute xxxx)        xxxx
+type xxxx                      cat xxxx
+CTRL-C                         CTRL-C
+------------------------------------------------------
+
+> I've also found it difficult to find a book or information that 
+> I can understand, 
+
+Have you looked in your public/university library?  When I started
+out, I found several beginners books on Linux in my public library.
+I got them all out and read the first few chapters of each.  I
+found that I usually got lost around chapter three, and it really
+helped to stop reading that book and start again with a new one.
+
+> BasicLinux so far being my best teacher.
+
+BasicLinux was designed to be a smaller, simpler Linux that could 
+be used and (eventually) understood by new users (particularly 
+users with some DOS experience).  A lot of stuff has been left 
+out; however, I tried to keep all the core tools and functionality.  
+Most of the lessons in the beginners books can be practiced in 
+BasicLinux.
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+> Was wondering if there was a way to see again all that 
+> info at bootup?
+
+Enter the following:
+------------
+dmesg | more
+------------
+The only reason 'more' is there is to stop it scrolling off
+the screen.
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+> Is it possible to increase the size of the BasicLinux ramdisk?
+
+The size of the ramdisk is fixed at 4mb.  However, if you have 16mb RAM 
+or more, BasicLinux automatically gives you a second 4mb ramdisk (mounted
+at /tmp).  This additional space is only available in the /tmp directory 
+(and any subdirectories below it).  To see the space available on your 
+system, do 'df'
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+> I boot BasicLinux on my "D:" drive in a "blinux" directory.  
+> How can I mount this drive from BasicLinux?  I tried 
+> "mount /dev/hda1 /hd" changing various parameters (like hda2) 
+> for the d: drive, but it didn't work. 
+
+You are on the right track, but first we need to figure out exactly where 
+the D: drive is (physically) located.  /dev/hda is the primary master IDE 
+drive.  C: is usually the first partition of this drive (/dev/hda1).  If D: 
+is on the same HD as C:, it will also start with /dev/hda.  However, if D: 
+is on a different HD, it will start with something else.  For example, if D: 
+is on the primary slave HD, its Linux name will start with /dev/hdb.
+
+The simplest way to figure this out is to boot BasicLinux and do this:
+--------
+fdisk -l
+--------
+This will show you all occupied partitions.  /dev/hda1 is probably C:.  
+Can you figure out which one is D: ?   For example, if it appears that 
+D: is /dev/hda5, mount that and have a look:
+--------------------
+mount /dev/hda5 /hd
+dir /hd
+--------------------
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+> I am trying to install BasicLinux to HD.  I downloaded the listed
+> packages from a Slackware 7.1 mirror.  The installation routine 
+> finds all the packages but it does not install them.  Instead I
+> get error messages.  What's wrong?
+
+The packages might have been altered when you downloaded them.  Perhaps 
+they were truncated or perhaps the server downloaded in ascii (rather 
+than binary) or perhaps your client automatically decompressed them.  
+Check the sizes of the the packages.  They should be as follows:
+----------------------
+a2/bin       1,029,260
+a2/e2fsprog    261,848
+a3/gzip         52,484
+a4/fileutls    414,358
+a6/grep        202,451
+a6/hdsetup     141,626
+a6/ldso        199,847
+a13/tar        302,427
+---------------------
+
+If the sizes are correct, use md5sum (in BasicLinux) to check the 
+integrity of  the files.  You should get:
+----------------------------------------------
+0efec464fd245ff472b293932ec97e87  bin.tgz
+45c5f6c74b69a5df602f23a6f5b92c4d  e2fsprog.tgz
+fff2175e6b3e2751ff34f43872cb785d  gzip.tgz
+e7dd3fa72e5a01d4d3955996cd328db2  fileutls.tgz
+56a7c6b1d54181032fd3a97f0970bc7e  grep.tgz
+a6cff493e87d77e1ee1da038af3975b4  hdsetup.tgz
+f4a08daddf4d68c3613e6d1e19884922  ldso.tgz
+f157a0726914dddab346a22b455ccd68  tar.tgz
+----------------------------------------------
+
+(Thanks to Krzysztof for providing this information.)
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+> I don't want to re-partition my HD.  Is there a UMSDOS version of 
+> BasicLinux?
+
+Is is not difficult to make a UMSDOS version.  However, I do not recommend 
+it.  UMSDOS has many disadvantages.  In particular, it is significantly 
+slower.  For example, I made a UMSDOS version of BasicLinux 1.7 and put 
+it on drive C:.  On the second partition of the same drive, I did a 
+standard HD installation of BasicLinux 1.7.  The UMSDOS version took 43 
+seconds to run a test program.  The standard version took 28 seconds to 
+run the same program.  
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+> I can't login to BasicLinux from another computer. 
+
+BasicLinux includes several network clients, but no servers.  
+Only servers can accept logins from other systems. 
+
+> When i try to telnet my BasicLinux system, it says 
+> something like "could not connect"
+
+BasicLinux has a telnet client, so you are able to telnet *to* other 
+systems (as long as they are running telnet servers).  However, without 
+a telnet server, BasicLinux cannot accept telnet logins *from* other 
+systems.
+ 
+The solution to your problem is to install the server package from 
+Slackware 7.1
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+> I don't seem to have the "pkg" command.  
+
+The pkg command was used in BasicLinux 1 to install Slackware packages.  
+BasicLinux 2 does not use this method.  Instead, it uses the standard 
+package manager from Slackware 7.1 (which is installed automatically 
+when you put BasicLinux on its own HD partition).  With the Slackware 
+package manager, you can install individual packages using "installpkg" 
+(which acts like the old BasicLinux "pkg") or you can run "pkgtool" for 
+a menu-driven routine that installs/displays/removes packages.
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+> I am using BasicLinux on an IBM Thinkpad 360CS.  Everything
+> seems to be working OK except for the floppy disk.
+
+Most Thinkpads have an "inverted floppy drive change line" 
+(why IBM did it this way, I don't know).  To fix it, add:
+---------------
+floppy=thinkpad
+---------------
+to the loadlin line in boot.bat  (in your DOS directory)   
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+> My computer has a network card.  How do I connect BasicLinux 
+> to the network.
+
+Step 1 - install the driver for the network card
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+First, you need the appropriate module (driver).  The most common type 
+of network card is ne2000 and its module (ne) has been included in 
+BasicLinux.  There are also modules for ne2k-pci, wd, smc-ultra, tlan, 
+3c509, 3c59x, ewrk3 and eepro100 network cards.  If you have a different 
+type of network card, you will need to download the appropriate module 
+from the /modules directory of Slackware 7.1.  
+
+Once you have the module, you use the 'insmod' command to install 
+it.  For example, with an ne2000 card at address 0x320, you use 
+these two insmod commands:
+----------------------
+insmod 8390
+insmod ne io=0x320
+----------------------
+The 8390 is a helper module used by ne, ne2k-pci, wd and smc-ultra.
+If you insmod ne without 8390, it will complain.
+
+Step 2 - initialize the network connection
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+--------------------------
+ifconfig eth0 192.168.1.17
+--------------------------
+This assumes 192.168.1.17 is the network address of this computer.  
+
+Step 3 (optional) - define the default route
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+--------------------------------
+route add default gw 192.168.1.1
+--------------------------------
+This assumes that 192.168.1.1 is your gateway to the internet (or other
+external network).  Any address not in the 192.168.1.x range will be sent 
+to the default gateway.
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+> I set up a 32mb swap partition on /dev/hda2.  Do I have to format 
+> it or what?
+
+----------------
+mkswap /dev/hda2   # this formats the swap partition 
+swapon /dev/hda2   # this turns it on
+----------------
+You can check that swap is working by doing 'free'.  Your 32mb should 
+be listed on the Swap line.
+
+If you are running BasicLinux on its own HD partition, you can list 
+the swap partition in /etc/fstab: 
+------------------------------------------------
+/dev/hda2     swap     swap     defaults   0   0
+------------------------------------------------
+Then, swap will be turned on automatically at system startup and you
+will never have to do the swapon command again.
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+>  When I type "mount -t iso9660 -o ro /dev/optcd0 /h" 
+>  it says ...
+>  mount: the kernel does not recognize /dev/optcd0 
+
+What kind of CDrom drive do you have?  Most are ATAPI and simply plug 
+into an IDE cable.  Try this:
+---------------
+dmesg | grep hd
+---------------
+Does one of the lines show an ATAPI CDrom drive?
+
+On my system, I get this:
+-----------------------------------
+hdc: WPI CDS-32X, ATAPI CDROM drive
+-----------------------------------
+
+To mount my CDrom drive, I do this:
+------------------------------
+mount -t iso9660 /dev/hdc /mnt
+------------------------------
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+> If I mount a partition on the HD, say hdc1, while running
+> BasicLinux out of hdc5 partition, can I then store files on 
+> hdc1 partition up to the capacity of the partition? 
+
+Yes.  The 'df' command will show you how much space is available 
+on each partition.
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+> Why is it that when I do 'ppp-on' I sometimes get:
+> "Sorry, PPP is not supported in this kernel"
+
+That's the message you get when the ppp module has not
+been activated.
+
+> and then I did pppsetup, but only selected #4 (exit), 
+> but then ppp-on worked. 
+
+Because pppsetup automatically activates the ppp module for you.
+
+> Am I doing something wrong or is it some problem with BL?
+
+The ppp module can be activated automatically by putting it in 
+the startup script.  Edit /etc/rc.d/rc.S and remove the # sign
+from last two lines:
+-------------
+# insmod slhc
+# insmod ppp
+-------------
+If there are any other modules that you want activated at 
+startup, you can add them there.
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+> Can I use packages from other Slackware distributions?
+
+Most of the packages in 7.0, 8.0 and 8.1 will work.  
+The earlier Slackwares will not work.
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+> I'm trying to get 1024x768x65536 at an 85Hz vertical
+> refresh rate. The graphics card I'm using is an ATI 3D
+> Rage Pro. What Xserver do I use with this card?
+
+Here are the Xservers available in Slackware 7.1:
+-------------------------------------------------------------
+xvg16    generic 16-color VGA
+x8514    IBM8514
+x3dl     GLINT 500TX, GLINT MX, Permedia, Permedia 2
+xagx     AGX-016, AGX-015, AGX-014, XGA-2
+xi128    Number Nine Imagine 128
+xma32    Mach32
+xma64    Rage: 3D, II, IIC, II+DVD, Pro, LT Pro
+xma8     Mach8
+xmono    mono VGA, Hercules mono, HGC1280
+xp9k     Diamond Viper, Orchid P9000, STAR 2000
+xs3      Trio32, Trio64*, Aurora64V+, and most other S3 cards
+xs3v     ViRGE, ViRGE/DX, ViRGE/GX, ViRGE/VX
+xw32     w32, w32i, w32p, et6000 
+xsvga    Trident, Cirrus, and other SVGA cards not listed above
+---------------------------------------------------------------
+
+So, it looks like you need the xma64 Xserver.  
+You will find it in /slakware/x1/
+--------------------
+installpkg xma64.tgz
+--------------------
+You must use the installpkg command (or the pkgtool menu) to install 
+it.  Otherwise it will not be initialized.
+
+> How do I set up the resolution, color modes and refresh rate?
+
+Execute xf86config.  
+
+Configuring a hi-res Xserver is complicated.  You can easily make 
+a mistake.  If startx produces a sick screen, press CTRL-ALT-BACKSPACE 
+and run xf86config again to correct the mistake.
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+> How can I add support for foreign languages to BasicLinux?
+
+Adding support for foreign language can be divided into:
+
+1. changing font and keyboard layout to proper one.
+2. setting linux to show messages in proper language.
+3. adding support for other programs like mc.
+4. adding manpages in required language
+
+As for Console:
+===============
+1. changing font and keyboard layout to proper one.
+
+Check and put if required your font into
+/usr/lib/kbd/consolefonts (BL1)
+/usr/share/kbd/consolefonts (BL2)
+
+and keyboard
+/usr/lib/kbd/keymaps (BL1)
+/usr/share/kbd/keymaps (BL2)
+
+Now tell linux to use required font and keyboard map:
+(suppose we want to do Polish for BL1)
+----------------------------------------------
+setfont /usr/lib/kbd/consolefonts/iso02grf.psf
+loadkeys /usr/lib/kbd/keymaps/pl02.map 
+----------------------------------------------
+
+I think in BL2 you might have to use 'consolechars" 
+instead of 'setfont'
+
+Test if it works:  try `pico`
+QUESTION: "It works in pico but not under pure command line!"
+ANSWER:   Put in ~/.inputrc the following:
+--------------------
+set meta-flag on
+set convert-meta off
+set output-meta on
+set input-meta on
+---------------------
+
+2. setting linux to show messages in proper language.
+
+For example, to do Polish, edit /etc/profile (or: ~/.profile)
+and put # before `export LC_ALL=POSIX` and add below:
+------------------------
+export LANG=pl
+export LC_ALL=pl_PL
+export LESSCHARSET=latin1
+-------------------------
+
+3. adding support for other programs like mc.
+
+In mc set in Options -> Display Bits -> ISO 8859-1 and 
+Full 8 bits input, and Full 8 bits output.
+
+
+4. adding manpages in required language
+
+If you have manpages in your language (from SLackware), 
+you are lucky. If not, you have to download it from somewhere
+(look for "localized man pages" on WWW in your country).
+
+Structure of downloaded file is something like:
+\usr\man\pl_PL\man1
+\usr\man\pl_PL\man2 
+...
+
+Now you have to config man (/etc/man.config or /usr/lib/man.conf)
+
+Check if `-T` in
+
+NROFF          /usr/bin/groff -S -Tascii -mandoc
+
+is set properly.
+
+For example for Polish I have to change it to:
+
+NROFF           /usr/bin/groff -S -Tlatin1 -mandoc
+
+You may want hyphenation patterns for your language.
+The simplest way is just to take them from TeX. :)  
+Copy  /usr/lib/texmf/tex/generic/hyphen/plhyph.tex  
+to  /usr/share/groff/tmac/hyphen.pl
+
+Now set macros in /usr/share/groff/tmac/troffrc
+Change the following lines:
+
+.\" Set the hyphenation language to `us'.
+.do hla us
+.\" Load hyphenation patterns from `hyphen.us' (in tmac directory).
+.do hpf hyphen.us
+
+to: 
+
+.\" Set the hyphenation language to `pl'.
+.do hla pl
+.\" Load hyphenation patterns from `hyphen.pl' (in tmac directory).
+.do hpf hyphen.pl
+
+
+Now back to /etc/profile and change:
+
+export MANPATH=/usr/local/man:/usr/man:/usr/X11R6/man
+
+to:
+
+export MANPATH=/usr/man/pl_Pl:/usr/local/man:/usr/man:/usr/X11R6/man
+
+Then re-login for the changes to take effect.
+
+(Thanks to Chris for providing this information.)
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+> I would like to install a better mail reader, but my PC is
+> too old to run X.  Is there a good mail reader for the CLI?
+
+I suggest you try Pine.  The package is in /slakware/n8
+
+To set up Pine 4.21 as a pop/IMAP "checker," i.e., as a utility 
+for manipulating messages on the server (e.g., viewing and deleting 
+them there), the simplest way is to select "s" (setup), then "c" 
+(configure) from the main menu.  At the "inbox-path" entry add 
+the following (note the curly brackets!): 
+-----------------------------------------------------
+{your.pop-orimapserver.addy/user=youruname/pop3}INBOX
+----------------------------------------------------- 
+If the server is IMAP, put "IMAP" in place of "pop3" in the example 
+entry.  Save the configuration (exiting will prompt you to save your 
+changes).  When you start Pine, or when you navigate to the INBOX 
+while Pine is running, you will be prompted for your password.  Pine 
+then downloads a list of messages on the server and lets you view or 
+delete them, respond to or save them locally (one at a time in this 
+scheme).  The password is saved as long as Pine remains open, so it 
+will only need to be entered again if you close and then restart the 
+program.
+
+If you have several pop/IMAP accounts, the best way to set up Pine 
+will be to enable incoming folders (i.e., by adding a check mark to 
+the appropriate entry in the configuration menu).  You can then create 
+local folders that point to each pop/IMAP account.  They open similarly 
+to the INBOX entry discussed above: navigate to the folder in question 
+and press enter.  This setup is, of course, a bit more complex, but 
+there is plenty of material available on the web for configuring Pine 
+to do this.  The incoming folder entries follow the same format as the 
+example given for inbox-path above.
+
+If you want Pine to act as a sort of pseudo-MRA (mail retrieval agent), 
+do the following.  These directions assume that you have Pine set up 
+with the inbox-path pointing to your pop3 server.  At the main menu
+press "s" (setup) then "c" (configuration).  Scroll down to the entry
+"enable-aggregate-command-set" and place a check mark at that entry.  
+Save the configuration.  When Pine has loaded and displayed a list of 
+all your messages on the server press the ";" key (semicolon), then 
+the "a" key (for select all), then the "a" key again (for apply), and 
+finally the "s" key (for save).  Pine will then ask to which local 
+folder you want to save the messages listed (default is the "saved-
+messages" folder).  Hit enter to save them there.  Pine automatically 
+marks the messages for deletion from the server.  Hit "x" to delete 
+them right away, or when you quit Pine, it will confirm if you want 
+to delete the messages (if this bothers you, the confirmation can be 
+disabled under configuration).
+
+Go to www.ii.com/internet/messaging/pine/ for plenty of further 
+information on configuring Pine.
+
+(Thanks to James for providing this information.)
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+> Can I use a wlan card (lucent) on BasicLinux? 
+
+I think so.  However, I do not have access to such hardware and I do not 
+have experience with wireless networking.
+
+> and how?
+
+First, you need to familiarize yourself with BasicLinux by running the 
+standard version (on ramdrive).  Then, when you are comfortable, install 
+it to its own partition on the HD.  Then (when that is working OK) install 
+the pcmcia.tgz package from Slackware 7.1 (in the /slakware/a11 directory).  
+It will install several pcmcia modules -- hopefully, one of these modules 
+will work with your card.  For more information on configuring wireless 
+LANs in Linux, see:
+-----------------------------------------------------
+http://www.hpl.hp.com/personal/Jean_Tourrilhes/Linux/
+-----------------------------------------------------
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+> How do I burn CDs with under BaslicLinux 2.x?
+
+Install ap1/cdutils.tgz from Slackware 7.1.  If your CD-RW drive is 
+connected to IDE (which is true for many newer devices), you need to 
+emulate it through SCSI, as the record utility can access the burner 
+only through SCSI connection.
+
+1. Create the devices in /dev:
+
+cd /dev/
+umask -S u=rwx,g=rwx,o-rwx
+[ -f loop0 ] \
+|| ./MAKEDEV loop \
+|| for i in 0 1 2 3 4 5 6 7; do mknod loop$i b 7 $i; done
+[ -f sg0 -o -f sga ] \
+|| ./MAKEDEV sg \
+|| for i in 0 1 2 3 4 5 6 7; do mknod sg$i  c 21 $i; done
+
+# I have not tested this script from pure BL 2.10
+
+2. Get the necessary SCSI drivers from a13/scsimods.tgz and load them
+in precisely this order:
+
+ insmod ide-cd ignore=hdc # replace hdc with the correct name
+                          # of the CD-RW device
+ insmod scsi_mod
+ insmod sg
+ insmod sr_mod
+ insmod loop
+ insmod ide-scsi
+
+You may want to add these lines to your startup-scripts.
+
+3. If you boot from DOS using loadlin.exe add a parameter
+'hdc=ide-scsi' to the command line (replace hdc with the name of
+the IDE drive that needs to be emulated), e.g.:
+
+  loadlin.exe zimage kbd-reset root=/dev/hda2 ro hdc=ide-scsi
+
+Read the manual pages for mkeisofs and cdrecord and the
+Linux CD-Writing HOWTO.
+
+(Thanks to Chris for providing this information.)
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+

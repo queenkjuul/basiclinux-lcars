@@ -1,0 +1,1192 @@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+> BasicLinux does not work on my system.  It starts to boot and 
+> then crashes.
+
+BasicLinux needs two things to boot:  DOS and 8mb RAM.  Make sure 
+that you are running in pure DOS.  Make sure that you have at least 
+8mb RAM and that *all* of your RAM is good.  
+
+It is not uncommon for old PCs to have faulty or mismatched RAM
+modules.  Just because DOS is OK does not mean the RAM is OK 
+(sometimes DOS is able to run with bad RAM modules).  Linux is 
+*very* intolerant of bad RAM.  If you have problems with Linux 
+crashing, you should run a thorough RAM test.  The automatic 
+power-on RAM test is not thorough -- do not trust it.  You need 
+a proper RAM tester, like the the one at:    
+-------------------------
+http://www.memtest86.com/
+-------------------------
+Something else that might crash Linux is an overclocked CPU or an 
+aggressive CMOS setting.  Sometimes people try to speed up their 
+systems by pushing the hardware to the limit.  If this has been
+overdone, Linux may crash (even though DOS does not).
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+> Please tell me how to install tetris.tgz step by step.
+
+Assuming that tetris.tgz is on a floppy. 
+(put floppy in drive a:)
+----------------------------
+mount /dev/fd0  /mnt        # attaches floppy at /mnt
+dir /mnt                    # can you see tetris.tgz ?
+copy /mnt/tetris.tgz  /tmp  # copies file from FD to HD 
+umount /mnt                 # un-mounts floppy 
+cd /tmp                     # goes to location of tetris.tgz
+untar tetris.tgz            # unpacks tar archive
+tetris                      # executes file
+----------------------------
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+> Central European phone lines do not have a dial tone.  
+> So we need to use ATX3DT instead of ATDT.  Can this 
+> be implemented in pppsetup?
+
+Yes.  Add the following line to the main config file:
+------------
+0 init1 ATX3
+------------
+This works for any modem init string (like ATM0L0 to turn off
+the modem speaker).
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+> What are the Linux names for my drives?
+
+The following will print the names of your partitions:
+--------
+fdisk -l
+--------
+
+> My drive layout is like this: primary master C: 
+
+Probably /dev/hda1 
+
+> Primary slave cdrom E: 
+
+Probaby /dev/hdb  (no number because CDroms aren't partitioned).
+
+> Secondary master D:.  
+
+Probably /dev/hdc1 
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+>  When I use "pr", it says it doesn't recognize that command.
+
+BasicLinux does not include a print daemon.  However, text can 
+be printed by sending it directly to the printer port.  That is 
+what wp does.
+
+> I tried using wp, and it works, although it's somewhat awkward.
+> Is there a single command I can just type to send a file directly 
+> to the printer port without going through wp?
+
+First you have to install the printer module:
+---------
+insmod lp
+---------
+Watch for the device number.  It will probably be lp0 or lp1.
+Then cat your file to that device:
+----------------------
+cat filename >/dev/lp1   (or /dev/lp0)
+----------------------
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+> With the word processor in Basiclinux, how to save those 
+> files as .txt, and then put them onto a floppy?
+
+When you have finished editing the document, exit the 
+wordprocessor and do this:
+--------------------------
+cd /tmp                   # goes to where document is stored
+ren document newname.txt  # renames document
+mount /dev/fd0  /mnt      # put floppy in drive first!
+copy newname.txt  /mnt    # copies file from HD to FD
+umount /mnt               # do this BEFORE removing floppy
+--------------------------
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+> in the /etc directory there seemed to be a bunch of 
+> configuration files.  Are there specs somewhere which can 
+> tell my what, how and why I would want to change in these?
+
+Here are a few to get you started:
+--------------------------------------------------------------
+rc       system startup file (for ramdrive BasicLinux)
+rc.d     system startup files (for HD version)
+profile  shell startup file
+fstab    table of filesystems automatically mounted at startup
+passwd   user data for login
+issue    text that gets printed on screen at login
+--------------------------------------------------------------
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+> DOS took me only a short time to get on to, the Linux CLI has 
+> been much more difficult, the command line seems longwinded and 
+> roundabout to do even simple things compared to DOS
+
+The Linux CLI is more difficult to master because it has so 
+many different options and so many ways of doing things.  
+However, for simple stuff, it parallels DOS pretty well.
+
+DOS                            Linux
+----------------------------------------------------
+cd \tmp                        cd /tmp
+cd ..                          cd ..
+copy xxxx \tmp                 cp xxxx /tmp
+move xxxx \tmp                 mv xxxx /tmp
+del xxxx                       rm xxxx
+deltree xxxx                   rm -r xxxx
+mkdir xxxx                     mkdir xxxx
+rmdir xxxx                     rmdir xxxx
+dir /w                         ls
+dir                            ls -l
+dir | more                     ls -l | more 
+xxxx  (to execute xxxx)        xxxx
+type xxxx                      cat xxxx
+CTRL-C                         CTRL-C
+------------------------------------------------------
+
+> I've also found it difficult to find a book or information that 
+> I can understand, 
+
+Have you looked in your public/university library?  When I started
+out, I found several beginners books on Linux in my public library.
+I got them all out and read the first few chapters of each.  I
+found that I usually got lost around chapter three, and it really
+helped to stop reading that book and start again with a new one.
+
+> BasicLinux so far being my best teacher.
+
+BasicLinux was designed to be a smaller, simpler Linux that could 
+be used and (eventually) understood by new users (particularly 
+users with some DOS experience).  A lot of stuff has been left 
+out; however, I tried to keep all the core tools and functionality.  
+Most of the lessons in the beginners books can be practiced in 
+BasicLinux.
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+> Was wondering if there was a way to see again all that 
+> info at bootup?
+
+Enter the following:
+------------
+dmesg | more
+------------
+The only reason 'more' is there is to stop it scrolling off
+the screen.
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+> Is it possible to increase the size of the BasicLinux ramdisk?
+
+The size of the ramdisk is fixed at 4mb.  However, if you have
+16mb RAM or more, you can create an additional ramdisk and attach 
+it to the filesystem.  For example:
+----------------------------------------------
+dd if=/dev/zero of=/dev/ram1  bs=1k count=4096
+mke2fs /dev/ram1 4096
+mount /dev/ram1 /mnt
+----------------------------------------------
+This gives you an additional 4mb of space.  The space is only 
+available in the /mnt directory (and its subdirectories).  To
+see the space available, do 'df'.  Note the separate tallies
+for / and /mnt.
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+> I boot BasicLinux on my "D:" drive in a "blinux" directory.  
+> How can I mount this drive from BasicLinux?  I tried 
+> "mount /dev/hda1 /hd" changing various parameters (like hda2) 
+> for the d: drive, but it didn't work. 
+
+You are on the right track, but first we need to figure out
+exactly where the D: drive is (physically) located.  /dev/hda 
+is the primary master IDE drive.  C: is usually the first
+partition of this drive (/dev/hda1).  If D: is on the same 
+HD as C:, it will also start with /dev/hda.  However, if D: 
+is on a different HD, it will start with something else.  
+For example, if D: is on the primary slave HD, its Linux 
+name will start with /dev/hdb.
+
+The simplest way to figure this out is to boot BasicLinux and
+do this:
+--------
+fdisk -l
+--------
+This will show you all occupied partitions.  /dev/hda1 
+is probably C:.  Can you figure out which one is D: ?
+For example, if it appears that D: is /dev/hda5, mount 
+that and have a look:
+--------------------
+mount /dev/hda5 /hd
+dir /hd
+--------------------
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+> I don't want to re-partition my HD.  Is there a UMSDOS version
+> of BasicLinux?
+
+Is is not difficult to make a UMSDOS version.  However, I do not
+recommend it.  UMSDOS has many disadvantages.  In particular, it 
+is significantly slower.  For example, I recently made a UMSDOS 
+version of BasicLinux 1.7 and put it on drive C:.  On the second 
+partition of the same drive, I did a standard HD installation 
+of BasicLinux.  The UMSDOS version took 43 seconds to run a test
+program.  The standard version took 28 seconds to run the same 
+program.  
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+> When I prepare a reply to an email message, I like to
+> quote the message.  Is there a way to do this with the
+> BasicLinux mail reader?
+
+Let's assume you are reading a message and you decide you 
+want to answer it:  
+(1) press left-arrow 
+(2) press d
+(3) save file to: /tmp/message  [ENTER}
+(4) press right-arrow
+(5) highlight destination address (down-arrow)
+(6) press right-arrow
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+> I can't login to BasicLinux from another computer. 
+
+BasicLinux includes several network clients, but no servers.  
+Only servers can accept logins from other systems. 
+
+> When i try to telnet my BasicLinux system, it says 
+> something like "could not connect"
+
+BasicLinux has a very capable telnet client, so you are able 
+to telnet *to* other systems (as long as they are running 
+telnet servers).  However, without a telnet server, BasicLinux 
+cannot accept telnet logins *from* other systems.
+ 
+The solution to your problem is to install a server.  There
+are two server add-ons at the BasicLinux site.  Or you could
+install a complete server package from Slackware 3.5.
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+> Is there a command line list for BasicLinux somewhere?
+
+agetty badblocks basename bash brc busybox cat chgrp chmod chown 
+chroot clear compress cp cut date dd df dirname dmesg dos2unix 
+du e2fsck e3 emailSMTP expr eznet false fdisk fetchmail file 
+find free fsck ftp gpm grep gunzip gzip halt head head hostname 
+ifconfig init insmod ipfwadm killall killall5 ldconfig ldd less 
+lesspipe.sh links-0.90 ln loadkmap login ls lsmod mail man mkdir 
+mke2fs mklost+found mknod mkswap more mount mount mouse mouse 
+mv nc passwd pico pidof ping pkg ppp-off ppp-on pppd pppsetup ps 
+rdev reboot receive reset rm rmdir rmmod route scan sed sed send 
+setkeycodes setleds setserial sh shutdown slattach sleep sort stty 
+swapoff swapon sync syslogd tail tar telnet top touch tput tr true 
+umount uname untar update uudecode vimage wc wp writemail zcat zless 
+
+Plus the BASH built-in commands (type 'help' to see these).
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+> I don't seem to have the "pkg" command.  
+
+The pkg command is used to install Slackware packages on the 
+harddrive version of BasicLinux.  pkg is not part of the ramdrive 
+version (because there is insufficient room on the ramdrive to 
+install complete packages).  When you install BasicLinux to its 
+own HD partition, you automatically get pkg (along with other 
+enhancements).
+
+On the BasicLinux site you will find several small add-ons that 
+will work on the ramdrive.  But they do not need pkg.  In fact, 
+if you use pkg on them, they will end up in a strange place.
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+> I am using BasicLinux on an IBM Thinkpad 360CS.  Everything
+> seems to be working OK except for the floppy disk.
+
+Most Thinkpads have an "inverted floppy drive change line" 
+(why IBM did it this way, I don't know).  To fix it, add:
+---------------
+floppy=thinkpad
+---------------
+to the loadlin line in boot.bat  (in your DOS directory)   
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+> How do I add a new username to the system?
+
+There are several different ways to add a new user.  You can 
+edit /etc/passwd by hand, or you can install useradd from 
+Slackware 3.5, or you can use the following script contributed 
+by Sebastian Ertz (basiclinux@doom-marines.de).
+
+#!/bin/bash
+echo -n "Username: "
+read USER
+echo "$USER::100:100::/home/$USER:/bin/bash" >> /etc/passwd
+mkdir -p /home/$USER
+chown $USER:users /home/$USER
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+> It appears that the svgalib driver in BasicLinux won't go 
+> above 320x200.
+
+BasicLinux is pre-configured for generic VGA.  In 256 colors that 
+is limited to 320x200, 320x240, 320x400 or 360x480.  In 16 colors, 
+640x480 is possible (that is what orb uses).  In 2 colors, 720x348 
+is possible.
+
+> How do I get higher resolutions?
+
+The svgalib in BasicLinux has been stripped of all the modes above 
+generic VGA.  For higher resolutions you need the full svgalib from 
+Slackware (the package is in /slakware/d1).  You will also need to
+to configure /etc/vga/libvga.conf.  This is not easy.  It needs 
+precise settings for your monitor and for your video card.
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+> My computer has a network card.  How do I connect BasicLinux 
+> to the network.
+
+Step 1 - install the driver for the network card
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+First, you need the appropriate module (driver).  The most common 
+type of network card is ne2000 and its module (ne) has been included 
+in BasicLinux.  There are also modules for ne2k-pci, wd and 3c509 
+network cards.  If you have a different type of network card, you 
+will need to download the appropriate module from Slackware 3.5.  
+
+Once you have the module, you use the 'insmod' command to install 
+it.  For example, with an ne2000 card at address 0x320, you use 
+these two insmod commands:
+----------------------
+insmod 8390
+insmod ne io=0x320
+----------------------
+The 8390 is a helper module used by many network modules.  
+If you insmod ne without 8390, it will complain.
+
+Step 2 - initialize the network connection
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ifconfig eth0 192.168.1.17
+
+This assumes 192.168.1.17 is the network address of this computer.  
+
+Step 3 - define the routes
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+route add -net 192.168.1.0
+route add default gw 192.168.1.1
+
+The first line assumes you want to route to other computers 
+on the 192.168.1.x network.  The second line assumes that
+192.168.1.1 is your gateway to the internet.  Any address
+not in the 192.168.1.x range will be sent to the default
+gateway.
+
+* * * * * * * * * * * * * * * * * * * * * * * * * * * *
+* For further information on setting up network cards *
+* (including a utility for determining the type and   *
+* and address of unknown network cards) look here:    *
+*   http://www.volny.cz/basiclinux/ether.html         *
+* * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+> I have tried to run the "whatnic" files and they don't
+> seem to work.  Do you have an answer for this?
+
+It needs to be executed in DOS (just like BasicLinux).  It is 
+just an old network-aware kernel (zimage); and, since it has no
+root filesystem, it simply crashes.  However, before it crashes
+it will scan for possible network cards in the machine.  If it
+recognizes one, the details will be left on the screen (usually
+a few lines up from the bottom).
+
+If it doesn't find your network card, it may be too recent.
+The kernel is around 7 years old, so it is only aware of old 
+network cards.  It was designed to identify dusty, second-hand 
+ISA cards -- I don't know if it is aware of PCI.
+
+Do you know anything about the network cards?  Do they work in
+Windows or any other OS?  If so, you should be able to get most
+(all?) of the info you need from there.
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+> how i configure Basiclinux to work as a firewall
+
+For a start, have a look at the last two lines in netsetup 
+(in the /root directory of BasicLinux):
+-------------------------------
+ipfwadm -F -p deny
+ipfwadm -F -a m -S basicnet/24
+-------------------------------
+This sets up a simple firewall which routes (and NATs) 
+traffic from basicnet (192.168.1.x) to the outside world.
+
+For more protection, you can add the following:
+-----------------------------------------
+ipfwadm -I -a deny -S 127.0.0.0 -W ppp0
+ipfwadm -I -a deny -S basicnet/24 -W ppp0
+-----------------------------------------
+If you aren't using PPP for outside traffic, change ppp0 
+to whatever you are using.
+
+For higher levels of protection, there are *many* other 
+types of screening possible.  For details see 'man ipfwadm' 
+(the HD version of BasicLinux has this manpage -- otherwise 
+it is available online).  Also online are some relevant HOWTOs.  
+You might also find the following example useful:
+------------------------------------------------
+http://www.xos.nl/linux/ipfwadm/paper/node8.html
+------------------------------------------------
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+> I have RedHat Linux on my main computer.  I also have an 
+> old 386dx40.  Is it possible to use BasicLinux on the 386 
+> to make an X terminal for the RedHat system?
+
+Yes, as long as your 386 has at least 8mb RAM.  Just follow the 
+standard instructions for installing BasicLinux to a harddrive 
+(for an X terminal you need a partition of 20mb or more).  Then 
+set up the network between the two computers (check the network 
+connection by pinging between the computers).  
+
+The next step is to install X on the 386.  Use the standard X 
+installation instructions to install the five basic X packages.  
+Do not install xpm or icewm.  Execute 'mouse' and run X to 
+make sure everything is working properly.  Note:  this basic 
+X installation uses VGA graphics and a minimal set of fonts.  
+If you wish, you can improve the appearance by installing more 
+fonts (x332fscl.tgz and x332f100.tgz) and a hi-res server from 
+Slackware 3.5.  However, installing a hi-res server is not a
+job for a newbie.
+
+The last step is to tell the 386 to slave itself to the RedHat 
+computer.  Assuming that the RedHat computer is 192.168.1.1,
+enter this at the command line:
+--------------------
+X -query 192.168.1.1
+--------------------
+If you are lucky this will work.  However, your RedHat machine might 
+not  be ready for the X terminal.  This requires two things:
+(1) The RedHat system must be using a graphical login (xdm), not a 
+    text screen.  This might be the RedHat default, I don't know.  
+    If you don't have a graphical login, you can type 'xdm' at the 
+    command line to get it -or- you can make a permanent change to 
+    the initdefault in /etc/inittab.
+(2) The Xaccess file on the RedHat system might to configured to 
+    prohibit "any host can get login".  You might find this file 
+    at  /etc/X11/xdm/Xaccess  or  /var/X11R6/lib/xdm/Xaccess. 
+
+Once all of this is working to your satisfaction, you can configure 
+the 386 to run as an X terminal from startup.  Just add something
+like this to the bottom of /etc/rc.d/rc.M
+-----------------------------------
+/usr/X11R6/bin/X -query 192.168.1.1
+-----------------------------------
+Then when you turn on the 386, it will automatically give you the
+login screen for the RedHat system.  BTW, your RedHat system should
+be able to handle this load easily.  Even a 266MHz computer with
+128mb RAM can handle several X terminals.
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+> Does BasicLinux have smbfs support?
+
+Yes, the BasicLinux kernel takes the smbfs module.  FYI, the 
+specifications of the BasicLinux kernel can be viewed at any 
+Slackware 3.5 site.  Look in this file:
+----------------------
+/kernels/bare.i/config
+----------------------
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+> I was hoping to find something that would be similar to 
+> say Windows 3.x that fit comfortably in a space of 40 megs 
+
+BasicLinux + X + icewm runs in 20mb of HD space.
+
+> and can run the internet.
+
+I recommend Netscape 3.04.  It works well with BasicLinux, 
+and is easy to install (full instructions are on the X page).
+Netscape 3.04 requires an additional 10-15mb of HD space.
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+> Can I run X on my 486DX-66 with 8mb memory? 
+
+Simple X applications can be run with 8mb RAM, but I think
+you will be disappointed with the performance of Netscape.
+Netscape 3.04 is better with 12mb RAM or more.  If you want 
+to run X with 8mb RAM, you need a minimum of 16mb swap.
+
+> I set up a 32mb swap partition.  Do I have to format it
+> or what?
+
+----------------
+mkswap /dev/????  # this formats the swap partition
+swapon /dev/????  # this turns on swap
+----------------
+Note: replace ???? with your actual swap device
+
+You can check that swap is working by doing 'free'.
+Your 32mb will be listed as SwapTotal.
+
+If you list the swap partition in /etc/fstab, it will be
+turned on automatically at system startup (and you will 
+never have to do the swapon command again).
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+> I am using the HD version of BasicLinux.  Do I have to run
+> 'mouse' every time I startx? 
+
+If you are using a serial mouse (options 1 or 2), there is no 
+need to run 'mouse' again.  The first time you use it, it makes
+a permanent link to the mouse.  However, a PS/2-type mouse 
+(option 3) also requires the psaux module.   This is installed 
+by running 'mouse'.  To automatically install the psaux module 
+(at system startup), edit /etc/rc.d/rc.S, go down to the bottom 
+of the file and remove the # at the beginning of:
+--------------
+# insmod psaux
+--------------
+Then you will never have to run 'mouse' again.
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+> How do I make X start automatically at login?  
+
+edit ~/.profile and put the following at the very bottom 
+of the file:
+------
+startx
+------
+Then BasicLinux will go directly from login to X.  If you want 
+certain applications (like Netscape) to start automatically,
+add them to ~/.xinitrc
+-----------
+netscape &
+exec icewm
+-----------
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+> How do I get rid of DOS?  I only want Linux on this machine.
+ 
+You will find a LILO package on the BasicLinux site.  Install
+it with pkg and follow the instructions.  It will boot Linux 
+directly, without the need for loadlin.exe and DOS.  You can 
+then reformat the old DOS partition (/dev/hda1) and use it for 
+swap or additional filesystem space.  
+
+If you know from the beginning that you intend to use LILO, 
+you should make just two partitions.  The first partition will 
+hold DOS (temporarily) and the second partition will be Linux 
+native.  Later (when your installation is working OK), you can 
+install LILO and turn the DOS partition into swap.
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+> I use the Netscape 3.04 you recommended. The browser
+> per se seems fine, but I constantly get Java errors. 
+
+I recommend turning off java and javascript.
+Click on Options > Network Preferences > Languages
+
+> Is the java component shipped with 3.04 known to be buggy? 
+
+Old rather than buggy.  Many new things have been added
+that are a complete mystery to Netscape 3.04.
+
+> If so, is there a clean version somewhere?
+
+More up-to-date versions of Netscape are available but 
+they are *much* more resource-hungry.  
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+> Is there a way to display PDF files in Netscape 3.04?
+
+Yes,  First, install the xpdf package from Slackware 3.5.
+It is in the /slakware/xap1 directory.
+------------
+pkg xpdf.tgz
+------------
+Then tell Netscape to use xpdf:
+----------------------------------------------------------
+1. Start Netscape 3.04
+2. Click on Options > General Preferences > Helpers 
+3. Scroll down to and click on "application/pdf" 
+4. Click on "Edit" button  
+5. Click on Application checkbox
+6. Put the following in Application field:  xpdf %s
+7. Click OK (twice)
+8. Click on Options > Save Options 
+----------------------------------------------------------
+Now Netscape will automatically display any PDF files you
+click on.
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+> Netscape 3.04 is OK, but it lacks some capabilities.
+> Is there a more up-to-date browser for BasicLinux?
+
+Slackware 3.5 has a package for Netscape 4.05 (you will find
+it in /slakware/xap1).  It also requires the elflibs package 
+(in /slakware/a2).  But before you install these packages,
+you need to make a new directory and add it to the list in
+/etc/ld.so.conf 
+-------------------------------------------
+mkdir -p /usr/ix86-linux/lib
+echo /usr/ix86-linux/lib >> /etc/ld.so.conf   
+pkg elflibs.tgz
+pkg netscape.tgz
+-------------------------------------------
+
+If 4.05 doesn't do what you need, you might try Netscape 4.51  
+(in Slackware 3.9).  Most of the packages in Slack39 will work 
+in BasicLinux, but I can't guarantee that the Netscape 4.51 
+package doesn't depend on one of the (relatively minor) changes 
+that occurred between Slack35 and Slack39.
+
+Note:  Netscape 3 has a much smaller footprint than Netscape 4
+and I continue to recommend 3.04 for older hardware.  
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+> My particular interest is NNTP protocol and I was 
+> wondering if  you could point me somewhere.
+
+Slackware 3.5 has packages for the nn newsreader, the trn 
+newsreader, the tin newsreader, lynx (which can read news), 
+and inn (NNTP transport system).  Personally, I use the 
+newsreader in Netscape 3.04.
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+> I installed gcc as suggested at the BasicLinux site. 
+> I went to make a package and got a message saying that 
+> autoconf is needed to build the program.  Where do I 
+> get this?
+
+The autoconf package can be installed from Slackware 3.5.
+You will find it in the /contrib directory.  The full name
+of the package is autoconf-2.12.tgz
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+> I have Basiclinux 1.61 on my harddrive.  Could I use 
+> Basiclinux 1.7 over the old setup 
+
+If you try to install 1.7 on top of 1.61, you will get fresh 
+(default) configuration files that replace your existing ones. 
+This could cause a mess.
+
+> or is a new instalation in order?
+
+There are two possibilities:
+(1)  A clean install
+Boot BasicLinux 1.7 to the ramdisk.  Put bas-hd.tgz in /tmp.
+Skip the fdisk step (the partition is already there).  Do the 
+mke2fs step (this will wipe the partition).  Mount the partition 
+and execute 'go' (install-to-HD)    
+
+(2)  Cherry picking
+The disadvantage of method (1) is that you lose all the
+modifications you have made.  The alternative is to keep 
+your old BasicLinux on the harddrive and copy the changes 
+one-by-one from the new BasicLinux.  Just boot BasicLinux 
+1.7 to the ramdrive and use it to mount your HD BasicLinux.  
+These are the changes:
+-----------------------------------------
+/etc/issue
+/etc/vga/libvga.config 
+/root/hotlist.html
+/root/.links/links.cfg
+/root/.links/html.cfg
+/root/mail/inbox/DELETE_MESSAGES._-~
+/usr/bin/eznet
+/usr/bin/fun
+/usr/bin/mouse
+/usr/bin/vimage
+/usr/games and everything below that
+/usr/lib/libvga.so.1.2.10 (needs ldconfig)
+/usr/sbin/pppsetup
+/usr/sbin/ppp-on
+/usr/sbin/ppp-off
+/var/eznet/eznet.conf
+------------------------------------------
+I think this is all, but I might have missed one.  
+If you find any other changes, please tell me and 
+I will add them to the list.
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+> What´s the best way to install Slackware packages?
+> "pkgtool" from Slackware or "pkg" from BasicLinux?
+> The latter can´t uninstall packages :-(
+
+pkg is just a simple script for adding packages from
+Slackware.  It is not a package management system.  The 
+package management system (setup/pkgtool/installpkg) from 
+Slackware is *much* better.  However, it requires several 
+components that are not in BasicLinux.  It is not enough 
+to install the pkgtool package (hdsetup.tgz); it needs 
+some components from the Slackware foundation packages.
+
+WARNING!  BasicLinux uses the busybox mini-binary collection
+for its foundation binaries.  They appear in the /bin and /sbin
+directories as links to busybox.  If you install a foundation
+Slackware package that contains one of these binaries, it may 
+overwrite the link to busybox.  This (unfortunately) will over-
+write busybox.  If busybox is overwritten, all of the links to 
+it will malfunction.  
+
+For example, bin.tgz is a foundation package that installs many 
+binaries.  Most of these binaries are not in BasicLinux; however, 
+it does include sed and uudecode.  When they are installed they 
+overwrite busybox (first sed and then uudecode).  That redirects 
+ls, mv, cat, rm, and other important binaries to uudecode (with 
+disasterous results).  BTW, you can see which binaries are links 
+to busybox by executing "busybox".
+
+The way to avoid overwriting busybox is to the delete the links 
+*before* installing the new version of the binary. For example:
+------------
+del sed
+del uudecode
+------------ 
+Before installing a foundation Slackware package, you should
+check the filelist to see if it includes a binary (in /bin or
+/sbin) that could overwrite busybox.  You will find a filelist
+for every package in the /contents directory of Slackware.
+
+I *strongly* recommend that you have a "safety net" to save 
+you from such disasters.  Keep a copy of baslinux.gz in your 
+DOS partition.  Then, if you accidently overwrite busybox, you 
+can boot the ramdrive version of BasicLinux and copy busybox 
+from the ramdrive to the HD.  The ramdrive "safety net" is 
+useful for fixing other problems too.
+
+In order to have room for the "safety net", your DOS partition
+will need to be at least 3mb in size.  The following files are
+the minimum necessary:
+--------------------------------------------------
+IO.SYS     (IBMBIO.COM if your DOS is not MS)
+MSDOS.SYS  (IBMDOS.COM if your DOS is not MS) 
+COMMAND.COM
+loadlin.exe
+zimage
+boot.bat   (boots HD version of Linux)
+ram.bat    (original boot.bat for ramdrive)
+baslinux.gz
+--------------------------------------------------
+If you want BasicLinux (HD version) to boot automatically, you can 
+rename boot.bat to autoexec.bat.  Then Linux will boot immediately, 
+without giving you a DOS prompt.  However, if you have a problem 
+with the HD version of BasicLinux, you will need to interrupt the
+automatic boot (this is done by holding down the SHIFT key).  You 
+will then be able to execute ram.bat.  
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+>  When I type "mount -t iso9660 -o ro /dev/optcd0 /h" 
+>  it says ...
+>  mount: the kernel does not recognize /dev/optcd0 
+
+What kind of CDrom drive do you have?  Most are ATAPI and
+simply plug into an IDE cable.  Try this:
+---------------
+dmesg | grep hd
+---------------
+Does one of the lines show an ATAPI CDrom drive?
+
+On my system, I get this:
+-----------------------------------
+hdc: WPI CDS-32X, ATAPI CDROM drive
+-----------------------------------
+
+To mount my CDrom drive, I do this:
+-------------------
+mount /dev/hdc /mnt
+-------------------
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+> If I mount a partition on the HD, say hdc1, while running
+> BasicLinux out of hdc5 partition, can I then store files on 
+> hdc1 partition up to the capacity of the partition? 
+
+Yes.  The 'df' command will show you how much space is
+available on each partition.
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+> I like the incremental idea of BasicLinux as well, but dont 
+> feel nearly competent enuf to add xwin, 
+
+Step-by-step instructions are provided for adding X.  Everything 
+has been pre-configured for VGA.  It's almost idiot-proof.
+
+> the pppd, 
+
+pppd is built in.  Anybody who has done PPP in DOS should have
+no problem with pppsetup.
+
+> netscape, 
+
+BasicLinux has been pre-configured to run Netscape 3.04 in VGA.  
+Just download and uncompress.
+
+> cdburn
+
+I do not have a CDrom burner, so I have no persoonal experience
+with this.  However, Slackware 3.5 does have a CDutils package 
+(in /slakware/ap1) that contains the following:
+-------------------------------------------------------------  
+cdwrite  -- burn discs in some CD-R drives from Philips, IMS
+'           Kodak, Yamaha, and HP.
+cdrecord -- burn discs in most ATAPI and SCSI CD-R drive
+mkisofs  -- create ISO9660 filesystem images.
+mkhybrid -- create hybrid ISO9660/HFS/Joliet CD-ROM imags
+-------------------------------------------------------------
+The pkg command will add these capabilities to BasicLinux, 
+but you would need to read the documentation to find out 
+how to use them.
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+> Why is it that when I do "ppp-on" I sometimes get
+> "Sorry, PPP is not supported in this kernel
+
+That's the message you get when the ppp module has not
+been activated.
+
+> and then I did pppsetup, but only selected #4 (exit), 
+> but then ppp-on worked. 
+
+Because pppsetup automatically activates the ppp module for you.
+
+> Am I doing something wrong or is it some problem with BL?
+
+The ppp module can be activated automatically by putting it in 
+the startup script.  Edit /etc/rc.d/rc.S and remove the # sign
+from last two lines:
+-------------
+# insmod slhc
+# insmod ppp
+-------------
+If there are any other modules that you want activated at 
+startup, you can add them there.
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+> Netscape works OK in VGA, but I would like to try a higher 
+> resolution.  Should I download x332svga.tgz and install it?
+
+Probaby.  However, your video card may need a different server.  
+(see below)
+
+> with 800x600 256 color?  
+
+Only if your video card/monitor can handle this resolution.
+
+> If so, should I just rename and save the existing .xf86config
+> and install svga?
+
+Yes, it is a good idea to backup your old VGA configuration
+(in case you want to return to it).  
+-------------------------------------------
+copy /etc/XF86Config /etc/XF86Config.backup
+-------------------------------------------
+
+> I am not sure what is the proper way to install a new
+> package over and existing one...
+
+First, select the correct high-res server for your video card:
+------------------------------------------------------------------
+x3328514:  accelerated server for cards using IBM8514 chips
+x332agx:   server for IIT AGX-016, AGX-015, AGX-014 and XGA-2
+'          chipsets (also XGA-1 and AGX-010 ?)
+x332i128:  server for Number Nine Imagine 128, series I and II
+x332ma8:   accelerated server for cards using Mach8 chips
+x332ma32:  accelerated server for cards using Mach32 chips
+x332ma64:  accelerated server for cards using Mach64 chips
+'          (including the Rage II+, Rage Pro and VT3)
+x332p9k:   accelerated server for cards using the P9000 chipset
+'          (including Diamond Viper VLB, Diamond Viper PCI, 
+'          Orchid P9000, STAR 2000).  Viper Pro and other P9100 
+'          and P9130 cards are NOT supported. 
+x332s3:    server for S3 chipsets: 911, 924, 801/805, 928, 
+'          732 (Trio32), 764 (Trio64), 864, 868, 964, 968
+x332s3v:   server for S3 ViRGE (86C325), ViRGE/DX (86C375), 
+'          ViRGE/GX (86C385) and iRGE/VX (86C988).  Tested 
+'          with ViRGE cards with 2 and 4MB DRAM, ViRGE/DX 4M,
+'          ViRGE/VX 8M (4M VRAM/4M DRAM), and 220MHz ViRGE/VX 
+'          card with 2MB VRAM up to 1600x1200 with 8/15/16bpp.
+x332svga:  server for many types of SuperVGA video cards  
+x332w32:   server for chipsets in the ET4000/W32 series (w32, 
+'          w32i, w32p and et6000)
+----------------------------------------------------------------
+The most generic hi-res server is x332svga.  Try it first if 
+you are unsure which server to choose.  
+
+Configuring a hi-res server can be difficult.  It will probably
+be easier if you use the XF86Setup utility.
+----------------
+pkg x332svga.tgz  <--change this line to the server you need
+pkg x332set.tgz
+XF86Setup
+----------------
+This will take you to a graphical environment where you can 
+configure/test your new server.
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+> Where do I find startx & mouse? 
+
+mouse is part of the bas2hd package (which installs BasicLinux 
+to its own HD partition).  startx is part of the x332bin package.
+
+> I've been through all the packages on 3.5 Slackware and can't 
+> find them.  
+
+The contents of all the packages are listed in the /contents
+directory of Slackware 3.5.  If you have the Slack35 CDrom, 
+you can cd to /contents and do this:
+--------------
+grep startx *
+--------------
+That will search through all the package listings and output 
+the name of any package that has a startx file in it:
+--------------------------------------------------------
+x332bin: 1480 1998-03-03 usr/X11R6/bin/startx
+x332man: 2135 1998-03-03 usr/X11R6/man/man1/startx.1x.gz
+--------------------------------------------------------
+
+Isn't the grep command *wonderful* ?
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+> I installed Netscape 4.51 from the Slack 3.9 distro, but
+> it doesn't appear in the icewm start menu. 
+
+Is the Netscape 4.51 executable named netscape?  Is it in your 
+path?  If so, it should appear automatically on the icewm menu 
+(assuming another netscape isn't found first in another directory).  
+Or, you can put the full pathname in the icewm menu.  Click on:  
+Control Panel > Edit Menu
+In the browser section, you should see the netscape line:
+----------------------------------------
+prog "Netscape (SVGA)" netscape netscape
+----------------------------------------
+"Netscape (SVGA)" is the name that appears on the menu.  The next 
+netscape is the name of the icon to use.  And the last netscape is 
+the name of executable.  Feel free to change the third netscape to 
+the full pathname.  For example:
+-------------------------------------------------------
+prog "Netscape (SVGA)" netscape /usr/local/bin/netscape
+-------------------------------------------------------
+
+> But so far, I haven't figured out how the menu works. 
+> Any tips? 
+
+http://www.icewm.org/files/en/guide/icewmtutor-uk.html
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+> Can I use packages from slackware distributions greater 
+> than version 3.5 (e.g. slackware 7.0 or 8.0)?
+
+Most of the packages in 3.6, 3.9 and 4.0 will work.  After that, 
+Slackware changed to the glibc2 library (and bumped the number 
+to 7.0). 
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+> BasicLinux has an old kernel and old libraries.  Can it be 
+> upgraded to something more up-to-date?
+
+Yes, it is possible to give BasicLinux a new kernel and new 
+libraries; however, this is not recommended for very old PCs 
+(which perform better with the old kernel and libraries).
+
+To upgrade the main library, get the glibc2 package from 
+Slackware 8.1 and install it with the 'pkg' command:
+---------------------------------
+pkg glibc-solibs-2.2.5-i386-2.tgz
+---------------------------------
+You will find the package in the /slackware/a directory.  If you 
+need any additional libraries (ldd will tell you), get them from 
+Slackware 8.1 and install them with pkg.  For example, the ncurses 
+library is in /slackware/l and the gpm library is in /slackware/a 
+
+To upgrade the kernel, get a 2.2.19 kernel from Slackware 8.0.  
+You will find several stock kernels in the /kernels directory. 
+BasicLinux normally uses the bare.i kernel.  Copy the new kernel 
+(bzImage) to the DOS directory where you boot BasicLinux.  Edit 
+boot.bat to change zimage to bzimage.  You are now ready to boot 
+with the new kernel.  
+
+Note:  the BasicLinux modules in /lib/modules/2.0.34/misc are 
+compiled for a 2.0.34 kernel.  They will not work with the new 
+kernel.  If you are currently using a module in BasicLinux, you 
+will need to get the equivalent module from Slackware 8.0 (you 
+will find it in the /modules/2.2.19 directory).  Copy it to the
+/lib/modules/2.2.19/misc directory of BasicLinux and gunzip it 
+(if the module ends in .gz).  
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+> Does Slackware 3.5 have dosemu somewhere?
+> I looked and did not find it there. Any idea?
+
+--------------------------------------------------
+/source/extra-stuff/DOS-emulator/dosemu-0.66.7.tgz
+-------------------------------------------------- 
+
+DOSemu 1.0.2 (latest release version) actually runs under 
+BasicLinux (Slackware 3.5).
+
+1. Get the binaries of dosemu 1.0.2 from a dosemu archive and read the
+documentation. X Window system has to be installed, too, if you want
+to run DOS applications in graphic mode. A window manager would not
+be necessary (unless you want to use it for your Linux programs).
+
+2. dosemu 1.0.2 cannot be run in root, you have to install
+it into a user directory. The login script for that user could
+automatically start dosemu.
+
+3. The use of DOS partitions on your HD and floppies requires the
+correct permissions (most DOS applications create temporary files!)
+You can change them adding an option when you mount them to the Linux
+file system.
+
+4. You can call a menu, dosshell or a single application from the
+autoexec.bat in your dosemu directory. Attention: Even if the files
+autoexec.bat and config.sys exist on the Linux file system, they
+must have the line end formatting of DOS files!
+
+5. Examples:
+
+a) script to mount a DOS partition on your HD
+
+    #!/bin/sh
+    mount -t msdos /dev/hda1 /C -o umask=000
+    echo You can execute programs from DOS partition now.
+
+b) script to start X and login to the 'dos' user directory
+   (option -s starts ICE window manager, too)
+
+    #!/bin/sh
+    if ! [ -e /tmp/.X0-lock ] ; then
+        X :0 &
+    fi
+    if [ "$1" = "-s" ] ; then
+        icewm -display :0 &
+    else
+        killall icewm
+    fi
+    echo Press Alt+F5 to go to the DOS shell
+    xterm -display :0 -e login dos &
+
+
+c) login script /usr/dos/.profile
+
+    #!/bin/sh
+    cd /usr/dos/dosemu
+    export DISPLAY=:0.0
+    exec ./xdosemu -home
+    logout
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+GhostScript 6.01 under BasicLinux 1.7 - Conversion from PS to PDF
+-----------------------------------------------------------------
+Ghostscript 6.01 doesn't create stupid Bitmaped Type3 PDF instead
+of proper Vector Type1 PDF from Vector Type1 PS ( including fonts 
+with non-standard coding vector) - so it's ideal for Eastern 
+European users.
+
+You should first get:
+------------------
+glibc-2.0.7-14.tgz
+gs6.01-slk3.5.tgz
+------------------
+from: ftp://ykbsb2.yk.psu.edu/pub/ghost/ 
+
+The author of this port, Bruce S. Babcock <babcock@math.psu.edu>, 
+is going to prepare ports of higher versions, so don't forget 
+this URL  ;)
+
+The GhostScript package requires libXt.so.6.  This is contained
+in the Slackware x332bin.tgz package (which is part of the normal
+X installation).  If you haven't installed X, you will need to
+install x332bin.tgz from the /slakware/x1 directory.
+
+Now install with:
+----------------------
+pkg glibc-2.0.7-14.tgz
+pkg gs6.01-slk3.5.tgz
+pkg x332bin.tgz        ##  if necessary
+gs
+----------------------
+
+Now it's time to tell gs what to do to convert PS to PDF.
+In many distros you can find ps2pdf scripts.  But you have 
+to write it yourself :)
+
+The right command is (ONE LINE):
+
+gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite 
+-sOutputFile=outputfile.pdf -c save pop -f infile.ps
+
+Of course instead of outputfile.pdf & infile.ps use 
+names of your files.  
+
+For further information, contact:
+Chris Suchecki <christopher.suchecki@wp.pl>
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+> Can I use a wlan card (lucent) on BasicLinux? 
+
+I think so.  However, I do not have access to such hardware 
+and I do not have experience with wireless networking.
+
+> and how?
+
+First, you need to familiarize yourself with BasicLinux by
+running the standard version (on ramdrive).  Then, when you
+are comfortable, install it to its own partition on the HD.
+Then (when that is working OK) install the pcmcia.tgz package 
+from Slackware 3.5 (in /slakware/a6 directory) using the pkg 
+command.  It will install several pcmcia modules, including 
+wave_lan.cs and netwave.cs.  Hopefully, one of these modules 
+will work with your wlan card.  For more information on 
+configuring wireless LANs in Linux, see:
+-----------------------------------------------------
+http://www.hpl.hp.com/personal/Jean_Tourrilhes/Linux/
+-----------------------------------------------------
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
