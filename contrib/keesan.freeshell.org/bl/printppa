@@ -1,0 +1,9 @@
+##pbmtext < file.txt > file.pbm  ### very low quality - change the font
+##pbmtextps 
+##pnmpad -white -width 5100 -height 6200 file.pbm > filepad.pbm (8.5x11)
+insmod parport
+insmod parport_pc
+insmod lp
+pnm2ppa -v 1000 -i $1 > /dev/lp0
+##Prints 600 dpi on HP 1000 ppa printer
+

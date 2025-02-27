@@ -1,0 +1,321 @@
+   Monday, 28. September 2009, 20:00:44
+
+   We frequently get questions about which Opera Linux package is the right one to install. Typically this is more common
+   when we offer up a snapshot or when www.opera.com/download needs updating to show the latest and most popular distro
+   version. My colleague [31]csant has covered this [32]topic before. However, as it is been a while and a few things have
+   changed I think it is probably a good time for an update. I would also like to talk a little about the reasoning for
+   the different packages and why we suggest one over another for a particular distro user.
+
+   Quick summary
+
+   Firstly for those who just want to know what to download and don't care too much about the background here is the quick
+   summary:
+     * If you use a recent version of a modern popular Linux distro, you want one of the builds that includes 'gcc4' and
+       'qt3' in the name. (OpenSUSE 11.2 users should use a 'gcc4' 'qt4' .rpm package).
+     * Consider which processor architecture you use. We offer three for Linux: Intel (also called i386 or IA-32), x86_64
+       (amd64) and PowerPC (ppc). If this means nothing to you then you are almost certainly using Intel/i386! :)
+     * What package file format does your distro use? We offer two native types: RPM Package Manager (these end with a
+       .rpm extention) and Debian Packages (these end with .deb). For users with another package management system we
+       offer .tar files, optionally compressed with either the gzip or bzip2 compressors. I realise some people may still
+       be unsure which package management system is native for them, so here are some example popular Linux distributions
+       which would use each type:
+       .rpm = ALT Linux, CentOS, Fedora, Mandriva, PCLinuxOS, Red Hat, openSUSE & Yellow Dog
+       .deb = Debian, MEPIS, Linux Mint, Ubuntu & Xandros (Eee PC)
+       .tar = Arch, Gentoo, Sabayon & Slackware
+
+   So assuming you running a modern and up to date distro, on an Intel/i386 processor and need Debian packages you would
+   want: opera_XX.XX.XXXX.gcc4.qt3_i386.deb (where the X's are the build and version numbers). Make sense? I hope so! ;)
+
+   Note: I have assumed that FreeBSD and Solaris users are able to figure out which builds they need for their OS version.
+   However, if you are not sure please do ask below as I would be happy to help!
+   Ok, now the quick summary is out of the way lets look at the changes and why I suggest the particular packages I do
+   above, or how you would decide on another package.
+
+   What the numbers mean - gcc3/4
+
+   The first major change: No more gcc295 packages, only gcc3 and gcc4. These numbers refer to the GNU Compiler Collection
+   used to build the various packages. More specifically they refer to gcc 2.95, gcc 3.x and gcc 4.x. We included the
+   number in the package name as it gives a clue as to what version of a distro we support with each package. We could
+   write it another way such as: modern (gcc4), old (gcc3) and ancient (295), but the number is actually more useful as it
+   gives a more precise idea of what version of a distro is supported. If you take your own distro you can find out what
+   version of gcc is provided by your distro vendor and this in turn will give you are fairly good idea what package is
+   the right one for you. A great way to check this is actually to use [33]distrowatch.com. On each distro specific page
+   it tells you which version of key software (including gcc) is included with each version of the distro. Look up your
+   distro, then look up the version you use and note the gcc number. Now you know if you need a gcc4, gcc3 or even gcc295
+   build!
+
+   Looking through these lists on distrowatch, plus Linux vendor sites and support forums, it soon becomes clear why we
+   dropped gcc295. You can't find any currently supported distro that would need gcc295. Indeed it is quite hard to find a
+   modern and vendor supported distro that actually uses gcc3 or lower. Damn Small Linux is one of the few, though I
+   wouldn't be suprised if they move to a more recent version of gcc with the next release. As such the effort we put in
+   to ensuring Opera can compile under gcc 2.95 simply isn't worth it anymore. Our general rule of thumb is to support
+   popular distros for at least as long as the vendor or group that supports that distro does. I have heard arguments from
+   users that they keep using old distros for pure speed and the ability to run on very basic hardware, hence they need
+   the old builds. But to me this argument doesn't ring entirely true. It is possible to run a small, fast distro, that is
+   also modern. A great demonstration of this is Puppy Linux or TinyCore but equally something as modular as Arch can help
+   you strip away the fat leaving you with a lean, mean yet modern distro! And more importantly you will be running
+   something that has received security updates!
+
+   Before moving on to the next topic, I wanted to give a further clarification: any distro with at least gcc3.4.* will
+   actually work with the gcc4 builds. That is because the key change of files we depend on actually changed at gcc3.4.*,
+   not gcc4! Hence Red Hat Enterprise Linux 4.8 (and Centos 4.8) will work with gcc4 builds despite listing gcc 3.4.6 on
+   distrowatch.com.
+
+   Note: Another way to look at this is that distros needing gcc295 are so old that libstdc++ cannot be reasonably
+   depended upon, gcc3 distros are too old to have libstdc++.so.6 but do have libstdc++.so.5, and gcc4 are distros that
+   are modern enough to provide libstdc++.so.6.
+
+   What the numbers mean - Qt3/4
+
+   Qt is one of the key software libraries that Opera uses. Qt4.x is the most recent version. We offer versions or our
+   software to work with either library. Doing this, like with the gcc3/4 packages, ensures good backwards compatibility
+   with a wide range of distros, as several have not moved onto Qt4 yet.
+
+   Our qt4-bundled builds are for people who want to test the Qt4 builds but don't have Qt4 readily available or
+   installable on their system.
+
+   Why not default to Qt4 on all modern distributions?
+
+   The eagle eyed amongst you will have noted that in the quick summary section I suggested users should download the Qt3
+   builds rather than the Qt4 builds, similarly at the time I write this [34]www.opera.com/download links all distro
+   downloads to Qt3 builds and not Qt4. Indeed for Qt4 users on modern KDE 4.x based distros you'll get slightly better
+   integration with the Qt4 builds. So why not link to them you might ask? And it is a valid question. The simple answer
+   is that the Qt3 builds have less known bugs and slightly higher performance. The plan is to link up some distros with
+   Qt4 builds once the builds get to a satisfactory level of quality. In the mean time we offer them for download in the
+   snapshots and on our ftp server for people who want to try them out and test the Qt4 status, and for users who feel the
+   integration/stability trade off is acceptable. So far it has not been a problem for us as all major modern distros
+   offer Qt3 for backward compatibility with software that requires Qt3. Rest assured we are still working to ensure our
+   browser works best with modern libraries.
+
+   One further question I have had in relation to this is why don't we make the Qt4 builds the default to get more testing
+   and feedback from our users. A fair point, however right now we have enough known Qt4 issues to work on that this is
+   not required.
+
+   Note: Following an OpenSUSE update to version 11.2, Qt3 was removed from their official repository and hence users
+   should use a gcc4-qt4 .rpm package instead. All other supported distributions (and users of older versions of openSUSE)
+   are still recommended to use the Qt3 packages.
+
+   What happened to the 'static' builds
+
+   Another change is the removal of the 'static' builds on Linux. These were packages that included Qt3 by default for
+   convenience. It saved the user having to manually get Qt3 on their system. These are gone for Linux (though we still
+   make Solaris statics). The reasoning for their removal is that they are no longer needed. When we first started
+   offering these, some popular distros didn't have an obvious straight forward way of getting the Qt3 libraries. These
+   days, this is no longer the case as pretty much every major distro allows the user to easily install Qt3 (or even Qt4).
+   Many package managers (e.g. those based on .rpm or .deb) will realise these files are needed during install and even
+   install them for the user. Since the primary need has disappeared, we removed them as this simplifies our internal
+   build system and prevents confusing users with yet another option. (Yes, in a sense our new qt4-bundled builds are the
+   spiritual successor to the statics.)
+
+   The layout of ftp.opera.com
+
+   As we have changed what packages are produced the layout of ftp.opera.com has started to look illogical and hence can
+   really confuse people. Here are two frequently asked questions with answers so that you are not caught out!
+
+   Q: Where are the the Solaris and FreeBSD packages?
+   A: They are under the 'unix' directory rather than 'linux'.
+
+   Q: Where are the i386 (Intel) and PowerPC Qt3 .rpm and tar packages?
+   A: In the 'shared' subdirectory.
+
+   Note: [35]This document shows the layout of packages under ftp://ftp.opera.com/pub/opera/, for an Opera UNIX/Linux
+   release.
+
+   Why isn't www.opera.com/download always up to date?
+
+   Simply speaking this is tough to do. Popular distros frequently change and new versions of distros are always coming
+   out. Additionally we are reluctant to list any distro or version we have not personally tested. However we are
+   currently looking to do a major revamp of download distros in the near future, so watch out for it. Although, as now
+   you understand all the packages you should easily be able to pick out your preferred package without this! :P
+
+   Alternative package names
+
+   Finally for people who have read this far, here is a little bit of extra information that might interest you.
+   Internally we now refer to the various package variants by 'generation names' using GX to refer to the generation
+   number. So for the curious, or in case these are ever referenced elsewhere, here they are:
+     * Linux G1 = gcc295, Qt3
+     * Linux G2 = gcc3, Qt3
+     * Linux G3 = gcc4, Qt3
+     * Linux G4 = gcc4, Qt4
+
+   Right so what didn't I cover, questions below please. ;)
+
+   Useful information from the comments below
+
+   As not everyone will want to trawl through all the comments below (I'm amazed you made it this far!) I shall use this
+   section to highlight key points that users have raised, with my responses. Thanks to remcolanting for the suggestion!
+   ;)
+
+   Static and bundled packages and when (if ever) should you use them:
+
+   Originally posted by arghwashier:
+
+     what is the difference between static and bundled?
+
+   The static builds have Qt3 as part of the main Opera binary. The bundled builds have libraries bundled with them as
+   separate individual files, specifically libQtCore.so.4 and libQtGui.so.4. This allows us to do a neat trick that wasn't
+   possible with the statics. If you install a qt-bundled package on a system that already has qt4 it will use the version
+   that was already present and only use the bundled libraries (libQtCore.so.4 and libQtGui.so.4) as a fall back.
+
+   That said, if you can avoid doing so, you should never use the bundled packages. They were only created for users who
+   can not easily get Qt4 for their system, i.e. those with older distributions. Our fall back trick is there because we
+   realise that some people will mistakenly install bundled packages on systems that are inappropriate.
+
+   The reason you should avoid them on most modern distributions is that they gain you no extra advantage and have the
+   disadvantage of duplicating libraries (and hence wasting space) on systems that already have Qt4+ installed or where
+   Qt4+ is installed natively later on.
+
+   I have seen some users imply that using bundled packages are smaller, or say something along the lines of "Why should I
+   install Qt on the system just for Opera? I'll use the bundled packages to avoid this.". Both arguments are flawed
+   however.
+
+   Firstly lets consider the size. The x86-64 bundled Qt 4.4.3 libraries we provide are the following size:
+
+   libQtCore.so.4 = 2.3Mb
+   libQtGui.so.4 = 9.4Mb
+   Total = 11.7Mb
+
+   To compare, here are the sizes of the Qt libraries provided by my own x86-64 distro:
+
+   libQtCore.so.4.5.3 = 2.2Mb
+   libQtGui.so.4.5.3 = 9.7Mb
+   Total = 11.9Mb
+
+   The difference in size is negligable and is probably due to the natively installed libraries being more recent.
+
+   The second argument is completely false. If you install the Opera bundled package the libraries are obviously still
+   installed but typically in /usr/lib/opera/ instead of /usr/lib/. All this means is they are of no use to any other
+   package than Opera. Install them through your native package manager and then any other Qt based software you install
+   can benefit them as well.
+
+   The Debian repository:
+
+   Originally posted by remcolanting:
+
+     What I'm missing here is something about [36]http://deb.opera.com/
+
+   Opera has maintained a Debian repository (deb.opera.com) for some time. This allows for installs and upgrades of Opera
+   software over the network using tools like apt-get and synaptic. If you use the official repository you will
+   (currently) always get Linux G3 (gcc4, Qt3) packages. The reasoning for Qt3 is the same as on www.opera.com/download
+   (see "[37]Why not default to Qt4?" above). Additionally, as all supported Debian variants should be able to handle a
+   libstdc++.so.6 dependency, only gcc4 is handed out.
+
+   Until recently this repository needed to be manually added following [38]these steps. However, as of Opera 10.00 we
+   have greatly simplified things. Our .deb file post install script adds our repository (deb.opera.com) to the list of
+   APT sources by adding the file:
+
+   /etc/apt/sources.list.d/opera.list
+
+   Here are the contents of that file:
+# This file makes sure that Opera Browser is kept up-to-date
+# as part of regular system upgrades
+
+deb http://deb.opera.com/opera/ stable non-free
+
+# The line above will make sure you get all final public releases.
+# Uncomment the following line if you want to get alpha and beta
+# releases, too.
+
+# deb http://deb.opera.com/opera-beta/ stable non-free
+
+   This ensures we can help users to remain up to date on all Debian based distros.
+
+   Note: If you would like to receive Beta updates as well simply edit that file as root or using sudo and remove the '#'
+   from the beginning of the final line.
+
+   There are a few known reasons why Opera might fail to update your APT sources:
+     * If you are the type of user who likes to install all our snapshots, you may find that your APT sources have not
+       been updated. The script that adds these sources also checks which version of Opera you had installed previously
+       and if it is 10.00 they are not added. Because this feature was included part way through 10.00 development, it is
+       possible that you could have installed a 10.00 build without this feature and then upgraded to one with it, meaning
+       your sources would not be touched.
+     * Mint users who install Opera via a .mint file configured to source Opera from a repository will also find that
+       their APT sources are not updated. This is because of the way mintInstall works. First it backs up your APT
+       sources, installs the software and then restores them. Thereby wiping out our change.
+     * Some users have reported that after a distribution upgrade the entries in '/etc/apt/sources.list.d/opera.list' get
+       commented out.
+
+   The first issue will only affect a minority of regular snapshot users and the second only happens with a non supported
+   install method (although I should mention that the Linux Mint team are good at keeping their own repository up to date,
+   so it doesn't really matter). The last problem is potentially more serious in that it could affect a larger number of
+   users but it sounds like a bug in the distribution and hence may be fixed in the future.
+
+   If you are affected by any of these issues and want to fix it you can do so by running the following as the root user:
+# dpkg-reconfigure opera
+
+   Note: You'll need to preface this command with sudo on Ubuntu, Mint or other distros that don't allow a user to easily
+   switch to the root user, i.e.:
+$ sudo dpkg-reconfigure opera
+
+   Thanks to remco for drawing my attention to the snapshot upgrade issue! :D
+
+   Why no snapshot auto-updates?
+
+   Originally posted by remcolanting:
+
+     and also why the snapshots are not on there
+
+   There are extra steps involved in updating the Debian repository. This server is not controlled by the Desktop Team but
+   rather another group within Opera. This is also the case for the Windows/Mac update server. However the Windows/Mac
+   autoupdate server uses a new, in-house developed technology. We currently offer snapshot auto-updates for Windows and
+   Mac users (as long as the users opts in and the snapshot is not released on a Friday) as this ensures testing of the
+   auto-updates server for bigger, more important releases.
+
+   The Debian auto-update technology has been around for a number of years and is successfully used for software updates
+   on a number of Linux distros, hence it has already received plenty of testing, meaning we gain no major benefit from
+   offering snapshots on this server. Additionally, we would generally prefer users read the official blog post prior to
+   installing snapshots to be advised of possible issues. This is especially true for Linux/UNIX, where installing and
+   running a snapshot will (by default) alter your main Opera profile. The Windows and Mac snapshots are set to use an
+   alternative profile but the complexity and number of the number of packages built makes this harder to offer on
+   Linux/UNIX.
+
+   That all said, many distros offer their own repositories, some of which offer the snapshots. As Sterkrig points out
+   below, Gentoo's repository (using their own technology) offers up our snapshots. Furthermore the range of powerful
+   command line tools available on UNIX/Linux make it relatively trivial to write a [39]simple script that automates
+   updating to the latest snapshot.
+
+   Note: We would still advise that Linux/UNIX users to obtain snapshots from our snapshot web server directly (after
+   having first read the associated blog post) via a regular download but ultimately this is the user's decision.
+
+   Which version am I running now?
+
+   Originally posted by remcolanting:
+
+     how about a section "Which version am I running now?". Knowing which one to install is nice, but if you already have
+     on installed... ;)
+
+   The easiest way to see exactly what you have installed is to use the '--full-version' command line option. Here is an
+   example of its usage on the system I am testing on at the moment (followed by the results):
+$ opera --full-version
+Opera 10.10 Internal. Build 4638 for Linux. Qt library 4.5.2 (x86_64 linux g++-4 full-config).
+Compiled on Sep 29 2009 by gcc 4.3.2 (ABI: 1002) for GNU libc 2.7
+using Qt 4.4.3 (x86_64 Linux g++-4 full-config).
+
+   Here you can see the key parts are 'Qt library 4.5.2', 'x86_64' and 'gcc 4.3.2'. Hence this is a Linux gcc4/Qt4 (a.k.a
+   Linux G4) build for the x86_64 processor architecture.
+
+   It still doesn't tell you which package type (.deb, .rpm, .tar) I used to install. This may seem obvious to most users
+   but there is a small potential for confusion given that many modern distros often hide their underlying package
+   managers under many GUI layers, and because it is quite easy to install non native package types (e.g. a .tar file on
+   Ubuntu, or a [40].rpm on Arch). However, once again there is an easy way to find out. Here is the command followed by
+   the output on the machine I am currently testing with:
+$ grep Package.Type /etc/operaprefs_default.ini
+Package Type=rpm
+
+   So now you know I am currently running Opera gcc4/Qt4 (Linux G4) on the x86_64 processor architecture, installed via a
+   .rpm file. For this you could assume I installed the package file: opera-10.10-4638.gcc4.qt4.x86_64.rpm. Make sense? :D
+
+   Note: If you installed via a tar package and did not have permissions to create /etc/operaprefs_default.ini (or opted
+   not to do so) then obviously this file will not be present and hence this method will fail. Additionally, if you
+   installed via a .rpm or .deb file and then later installed another package type or ran a snapshot 'in place' (See:
+   'Method 3' of my older [41]blog post) you may also get the wrong result.
+
+     what is the difference between static and bundled?
+
+   The static builds have Qt3 as part of the main Opera binary. The bundled builds have libraries bundled with them as
+   separate individual files, specifically libQtCore.so.4 and libQtGui.so.4. This allows us to do a neat trick that wasn't
+   possible with the statics. If you install a qt-bundled package on a system that already has qt4 it will use the version
+   that was already present and only use the bundled libraries (libQtCore.so.4 and libQtGui.so.4) as a fall back.
+
+
+   7. http://my.opera.com/ruario/blog/2009/09/28/which-version

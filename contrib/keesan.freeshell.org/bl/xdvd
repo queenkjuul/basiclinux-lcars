@@ -1,0 +1,12 @@
+sound-on
+
+tset -blank 0
+
+#(Xvesa -screen 800x600x16 &); DISPLAY=:0 mplayer-dvd -ao oss -vo x11 -alang en -slang en -zoom -framedrop dvd://1-20
+(Xvesa -screen 720x576x16 &); DISPLAY=:0 mplayer-dvd -ao oss -vo x11 -alang en -slang en -zoom -framedrop dvd://1-10
+#Fills the whole X screen and displays wide screen instead of squished.  Best (Xvesa)..  
+#Must use video expansion on the N5415 for X to fill screen.
+#This uses 40% of cpu.  Xvesa 800 (squished) uses 25%.
+
+#(Xfbdev &); DISPLAY=:0 mplayer-dvd -ao oss -vo x11 -alang en -slang en -framedrop dvd://1-10
+#start with vga=788

@@ -1,0 +1,5 @@
+#this file called from rc.sysinit
+#you can edit this file
+#When firewall is installed, will append lines to this file...
+modprobe snd_cs4236 port=0x530 cport=0x538 isapnp=0 irq=5 dma1=1 dma2=0
+##Use this instead of modprobe.conf and also alsamixer for cs4236

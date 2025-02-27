@@ -1,0 +1,16 @@
+chvt 3
+insmod matroxfb_misc
+insmod matroxfb_accel
+insmod matroxfb_Ti3026
+#insmod matroxfb_base vesa=788
+##Next three are needed if you compile the base module to include G100
+##even when using the plain Millenium card
+insmod g450_pll
+insmod matroxfb_g450
+insmod matroxfb_DAC1064
+insmod matroxfb_base
+chvt 1
+chvt 3
+rmmod mdacon
+insmod mdacon mda_first_vc=1 mda_last_vc=2
+reset

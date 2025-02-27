@@ -1,0 +1,15 @@
+insmod soundcore
+insmod sound
+insmod ad1848
+insmod mpu401
+insmod opl3sa2 io=0x370 mss_io=0x530 mpu_io=0x330 dma=0 dma2=1 irq=9
+##IRQ5 wrong - it complains and buffer times out. proc won't show irqs.
+#mpu_io is optional.  
+insmod opl3
+##Puppy modprobe.conf:
+#fm_port=-1 midiport=-1 port=0x370 wss_port=0x530 isapnp=0 dma1=3 dma2=1 irq=5
+##Puppy actual /proc settings that worked (very faint) from above conf file (???)
+## irq 9 dma1 0 dma2 1
+##IRQ 5 does NOT work in BL2 - IRQ/DRQ conflict
+##The above inserts and programs play, but NO SOUND at any amplification volume
+##Worked in Win98 audibly.

@@ -1,0 +1,13 @@
+insmod soundcore
+#insmod soundlow
+#above for 2.2.16
+insmod sound
+#insmod v_midi
+insmod uart401
+insmod opl3 io=0x388
+#insmod awe_wave
+#sfxload /usr/lib/sfbank/synthgm.sbk
+insmod sb_lib
+#above for 2.4.31
+insmod sb io=0x220 irq=5 dma=0 dma16=3
+#dma=1 causes a conflict on this Winbook with ES1869

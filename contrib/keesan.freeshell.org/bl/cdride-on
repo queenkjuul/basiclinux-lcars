@@ -1,0 +1,17 @@
+#insmod ide-cd ignore=hdd  #these two lines not needed with 2.4.31 scsi kernel
+#insmod scsi_mod
+insmod sr_mod
+insmod ide-scsi
+#For scsi emulation IDE CD burner and SW71 cdutils (cdrecord).  
+#For real scsi omit two ide lines and insmod scsi card module
+
+# Use SW81 cdda2wav for copy protected CDs
+#mkdevsr (b 11 0 b 11 1) to make sr0 and sr1 (sr - scsi CD-ROM drive)
+#boot with scsi kernel and end loadlin line with hdd=ide-scsi
+#/etc/profile put CDR_DEVICE=0,0,0 and CDDA_DEVICE=0,0,0 or /dev/hdd (or /dev/hdc)
+
+#readcd -v [dev=0,0,0] f=filename.raw [-speed=8]
+#cdda2wav -B [dev=0,0,0] *.wav /tmp/file.wav  where -B records all files to .wav
+#cdrecord -v [-dev=0,0,0] [-dummy] [-eject] [-reset] [-speed=8] [-data] filename.raw
+#cdrecord -v [-audio] *.wav [/tmp/file.wav to do several locations]
+

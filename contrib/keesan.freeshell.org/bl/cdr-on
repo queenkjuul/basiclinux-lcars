@@ -1,0 +1,32 @@
+##The Creative burner no longer plays music CDs or reads data CDS
+##in DOS or linux.  dmesg says 'No sense data', workbone
+## 'no medium found', cdrecord 'No read access'
+
+##Boot with any scsi kernel -- loadlin hdd=ide-scsi
+
+##2.4.31 works without the insmod ide-cd line, has no ide-cd.o
+##but 2.2.X requires it or both drives will become scsi
+
+insmod ide-cd ignore=hdd  ##use hdd as IDE (needed for 2.2.X only)
+insmod scsi_mod  ##not needed for sy kernel
+insmod sr_mod
+insmod sg
+insmod ide-scsi           ##the burner is 'scsi'
+
+cdrecord -scanbus ##Test if it is working
+
+# Use SW81 cdda2wav for copy protected CDs but cdrecord from SW71
+
+##Copy data CDs
+#readcd -v [dev=0,0,0] [speed=8] f=filename.raw
+
+##Use cdda2wav to rip audio CDs
+#cdda2wav -B [dev=hdc] [/tmp/file.wav] 
+#-B bulk makes whole CD into audio_01.wav or /tmp/file_01.wav
+
+#cdrecord -v [dev=0,0,0] [speed=8] [-dummy] [-eject] [-reset] [-data] filename.raw
+#cdrecord -v [-audio] *.wav  [or /tmp/file.wav]
+
+#/etc/profile export CDR_DEVICE=0,0,0 CDR_SPEED=8 
+#/etc/profile export CDDA_DEVICE=/dev/hdc   [or 0,0,0 or sr0 - burner]
+#and omit dev and speed above

@@ -1,0 +1,265 @@
+#
+# Automatically generated make config: don't edit
+#
+CONFIG_X86=y
+CONFIG_UID16=y
+
+#
+# Code maturity level options
+#
+CONFIG_EXPERIMENTAL=y
+
+#
+# Loadable module support
+#
+CONFIG_MODULES=y
+
+#
+# Processor type and features
+#
+CONFIG_M586=y
+# CONFIG_MPENTIUMIII is not set
+CONFIG_X86_WP_WORKS_OK=y
+CONFIG_X86_INVLPG=y
+CONFIG_X86_CMPXCHG=y
+CONFIG_X86_XADD=y
+CONFIG_X86_BSWAP=y
+CONFIG_X86_POPAD_OK=y
+CONFIG_RWSEM_XCHGADD_ALGORITHM=y
+CONFIG_X86_L1_CACHE_SHIFT=5
+CONFIG_X86_USE_STRING_486=y
+CONFIG_X86_ALIGNMENT_16=y
+CONFIG_X86_PPRO_FENCE=y
+CONFIG_NOHIGHMEM=y
+
+#
+# General setup
+#
+CONFIG_NET=y
+CONFIG_PCI=y
+CONFIG_PCI_GOANY=y
+CONFIG_PCI_BIOS=y
+CONFIG_PCI_DIRECT=y
+CONFIG_ISA=y
+CONFIG_HOTPLUG=y
+
+#
+# PCMCIA/CardBus support
+#
+# CONFIG_PCMCIA is not set
+###This is because pcmcia is modules.
+
+CONFIG_SYSVIPC=y
+CONFIG_BSD_PROCESS_ACCT=y
+CONFIG_SYSCTL=y
+CONFIG_KCORE_ELF=y
+CONFIG_BINFMT_ELF=y
+
+#
+# Parallel port support
+#
+CONFIG_PARPORT=m
+CONFIG_PARPORT_PC=m
+CONFIG_PARPORT_PC_CML1=m
+
+#
+# Block devices
+#
+CONFIG_BLK_DEV_FD=y
+CONFIG_BLK_DEV_LOOP=y
+CONFIG_BLK_DEV_RAM=y
+CONFIG_BLK_DEV_RAM_SIZE=4096
+CONFIG_BLK_DEV_INITRD=y
+
+
+#
+# Networking options
+#
+CONFIG_PACKET=y
+CONFIG_UNIX=y
+CONFIG_INET=y
+
+#
+# ATA/IDE/MFM/RLL support
+#
+CONFIG_IDE=y
+
+#
+# IDE, ATA and ATAPI Block devices
+#
+CONFIG_BLK_DEV_IDE=y
+
+CONFIG_BLK_DEV_IDEDISK=y
+CONFIG_IDEDISK_MULTI_MODE=y
+CONFIG_BLK_DEV_IDECD=m
+
+#
+# IDE chipset support/bugfixes
+#
+CONFIG_BLK_DEV_CMD640=y
+CONFIG_BLK_DEV_IDEPCI=y
+CONFIG_IDEPCI_SHARE_IRQ=y
+CONFIG_BLK_DEV_IDEDMA_PCI=y
+CONFIG_IDEDMA_PCI_AUTO=y
+CONFIG_BLK_DEV_IDEDMA=y
+CONFIG_BLK_DEV_PIIX=y
+CONFIG_IDEDMA_AUTO=y
+
+#
+# SCSI support
+#
+CONFIG_SCSI=m
+##Needed for USB storage, keep it.
+
+#
+CONFIG_BLK_DEV_SD=m
+CONFIG_SD_EXTRA_DEVS=2
+
+CONFIG_SCSI_PPA=m
+CONFIG_SCSI_IMM=m
+##Used for parport zip drive, two models, keep it.
+
+#
+# Network device support
+#
+CONFIG_NETDEVICES=y
+
+#
+# ARCnet devices
+#
+CONFIG_DUMMY=y
+
+#
+# Ethernet (10 or 100Mbit)
+#
+# CONFIG_NET_ETHERNET is not set
+###All done with pcmcia modules, don't need in laptop
+
+
+CONFIG_PPP=m
+CONFIG_PPP_ASYNC=m
+##2.4.31 uses generic and async modules
+
+#
+# Wireless LAN (non-hamradio)
+#
+CONFIG_NET_RADIO=y
+# CONFIG_AIRO is not set
+##Uses pcmcia modules instead.
+CONFIG_HERMES=m
+CONFIG_PCI_HERMES=m
+##Delete the above two, use pcmcia modules in laptop.
+
+CONFIG_NET_WIRELESS=y
+#
+# Character devices
+#
+
+CONFIG_VT=y
+CONFIG_VT_CONSOLE=y
+CONFIG_SERIAL=y
+CONFIG_PRINTER=m
+
+#
+# Mice
+#
+CONFIG_MOUSE=y
+CONFIG_PSMOUSE=y
+
+#
+# File systems
+#
+
+CONFIG_FAT_FS=y
+CONFIG_MSDOS_FS=y
+CONFIG_VFAT_FS=y
+CONFIG_RAMFS=y
+CONFIG_ISO9660_FS=m
+CONFIG_JOLIET=y
+##Delete Joliet in next laptop kernel.
+
+CONFIG_PROC_FS=y
+CONFIG_EXT2_FS=y
+
+#
+# Network File Systems
+#
+CONFIG_NFS_FS=m
+CONFIG_NFSD=m
+CONFIG_SUNRPC=m
+CONFIG_LOCKD=m
+
+#
+# Partition Types
+#
+CONFIG_MSDOS_PARTITION=y
+CONFIG_NLS=y
+
+#
+# Native Language Support
+#
+CONFIG_NLS_DEFAULT="cp437"
+CONFIG_NLS_CODEPAGE_437=y
+##Don't need the 'y' line?
+
+#
+# Console drivers
+#
+CONFIG_VGA_CONSOLE=y
+
+#
+# Frame-buffer support
+#
+# CONFIG_FB is not set
+
+#
+# Sound
+#
+# CONFIG_SOUND is not set
+
+#
+# USB support
+#
+CONFIG_USB=m
+
+#
+# Miscellaneous USB options
+#
+CONFIG_USB_DEVICEFS=y
+
+#
+# USB Host Controller Drivers
+#
+CONFIG_USB_UHCI=m
+CONFIG_USB_UHCI_ALT=m
+CONFIG_USB_OHCI=m
+#
+# USB Device Class drivers
+CONFIG_USB_STORAGE=m
+CONFIG_USB_STORAGE_DATAFAB=y
+CONFIG_USB_STORAGE_DPCM=y
+CONFIG_USB_STORAGE_SDDR09=y
+CONFIG_USB_STORAGE_SDDR55=y
+
+#
+# USB Human Interface Devices (HID)
+#
+# CONFIG_USB_HID is not set
+##mouse and keyboard, not USB in laptop
+
+
+#
+# USB Network adaptors
+CONFIG_USB_USBNET=m
+##We have one USB wireless card - is this module needed?
+
+#
+# USB Serial Converter support
+#
+# CONFIG_USB_SERIAL is not set
+##Needed in kernel for USB PDA, so use serial PDA instead.
+
+#
+# Kernel hacking
+#
+CONFIG_LOG_BUF_SHIFT=0

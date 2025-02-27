@@ -1,0 +1,280 @@
+
+I have conquered the dumb terminal!
+
+
+Instructions:
+
+1.  Plug nullmodem cable into two serial ports (com1/ttyS0 or com2/ttyS1)
+that can handle 115200 port speed (or less as you choose).
+
+2.  Edit /etc/securetty to give root login privileges (add ttyS0 through 
+ttyS3 or just the port you plan to use).
+
+3.  Edit /etc/inittab by removing the # from the line starting in s1.
+Change port and speed as desired (I changed to 115200).
+
+
+Choose an OS and a terminal program.  I used DOS with MS-Kermit,
+BL2 with C-Kermit, BL3 with C-kermit, and BL3 with microcom.
+
+
+Do what it takes to set the port number and speed and that fact that you 
+are not using a modem but a direct cable connection.
+
+
+DOS MS-Kermit.  Edit mscustom.ini to set port 1, speed 115200, define 
+_modem none.
+
+(microcom will not let me do a hard return while in pine for some reason, 
+I meant to make the above line easier to read.  Ctrl-J won't work right 
+either.  A hard return turns into a double space too or skips 
+down past the next paragraph.  I don't like microcom too much.)
+Then type msk316 (or msk31610 or kermit, depends on the version)
+C (enter)   - you get a blank screen
+Enter - gives you the BL loging screen where you are connected to.
+
+
+
+Kermit - either use .kermrc (but I have that set up for use with the modem 
+already) or go into kermit and type:
+
+set line /dev/ttyS0 ## set the com port to com1 set speed 115200 set 
+carrier-watch off ##(this means no modem)
+
+C to connect (enter)
+
+Enter (as above)
+
+
+
+Microcom was more of a puzzle.
+
+You type a tilde once in it to give commands.  It would not detect any 
+modem on my computer.  I told it
+
+
+microcom -D/dev/ttyS0
+
+Tilde (Type that character, I cannot while connected with microcom)
+
+t - sets terminal
+
+h - hardware flow control (this may be optional)
+
+tilde and t again then p to set speed to 115200 (essential!)
+
+tilde and t and then l to logon
+
+
+You should get the login prompt.
+
+Excuse the double spacing due to microcom.
+
+
+I have not yet succeeded in file transfer but I can connect to a computer 
+and run any program as root, including telnet and browsers.  Unlike 
+virtual terminals where you cannot use two programs at once but need to 
+switch between them (tho you can display two text programs on two monitors 
+at the same time) this lets you actually run two programs and type into 
+them at the same time.  Fun.  Maybe there is even a way to copy between 
+these real terminals.
+
+
+I have not yet gotten the serial telnet stuff working and may not bother 
+as it does seem complicated.  Does it offer some advantage?
+
+-------
+Ethernet telnet was pretty simply.  Just set up ethernet on both computers
+
+in.telnetd on the target computer (clark, or 192.168.1.1) telnet clark (or 
+192.168.1.1)
+
+login as root - but to do this you also have to uncomment the lines about 
+ttyp0 etc in /etc/securetty.
+
+Another option is to install su and login as user then su root, which is 
+supposed to give you more security when conected to the web.  Or you can 
+ssh instead of telnet and do a root login.
+
+Wow, finally we have a use for the 286 laptop without a floppy drive and 
+maybe even the XT without a hard drive.  DOS Kermit will fit on a floppy 
+disk.  So will all the other terminal programs I found at simtel.net.
+
+I presume if I were to use a VGA monitor to connect as dumb terminal I 
+could run X on it.  Can I run X on the dumb terminal and on the 
+maincomputer at the same time?  (You cannot do this with two virtual 
+terminals).  Just curious, no need for this.
+
+
+Sindi from BL3/microcom via BL2 via shell account.
+_______________________________________________
+BasLinux mailing list
+BasLinux@lists.ibiblio.org
+http://lists.ibiblio.org/mailman/listinfo/baslinux
+
+From keesan@sdf.lonestar.org Wed Oct 20 00:24:03 2004
+Date: Wed, 20 Oct 2004 00:23:52 +0000 (UTC)
+From: sindi keesan <keesan@sdf.lonestar.org>
+Reply-To: baslinux@lists.ibiblio.org
+To: baslinux@lists.ibiblio.org
+Subject: Re: [BL] serial networking and telnet server - the solution
+
+You cannot use the same inittab for dumb terminal and telnet server modes
+via serial cable.
+
+Plug a nullmodem cable into ttyS0 or another com port on both computers. 
+They don't need to be the same number but I am assuming both are 
+com1/ttyS0.  If you have a serial mouse move it to ttyS1, or if there is 
+a modem (internal) on that to ttyS2.  Most computers have only two 
+physical ports but the CMOS often switches what was com2 to com3 if you 
+put in a com2 internal modem.
+
+If you want to login as root to the other computer edit
+/etc/securetty by adding ttyS0 or whatever port you are using, otherwise 
+you can only login as user.  For both methods.  (For ethernet logins 
+uncomment the lines about ttyp1 etc.)
+
+Dumb Terminal
+
+To use the serial cable with computer #2 as dumb terminal on ttyS0 (com1) 
+uncomment the line on Computer #1 in /etc/inittab starting with s1 and 
+containing something about agetty and the /dev/ttyS0 and speed (which you 
+can change for a different comport and speed 115200 works for me).
+
+Go to Computer #2.
+Use a terminal program, tell it the port, speed, and direct connection
+(in Kermit set line /dev/ttyS0, set speed 115200, set carrier-watch off; 
+in DOS Kermit edit mscustom.ini to set port1, set speed 115200, define 
+_modem none), C to connect (Enter), another Enter and you are using the 
+first computer as a dumb  terminal and viewing things on the second 
+computer and using that keyboard.  Someone else can be using teh first 
+computer at the same time.  If you have both VGA and TTL monitor on the 
+second computer stick to text-only because anything graphical will appear 
+on the monitor of the first computer.
+
+Microcom in BL3 also worked as a terminal program.
+Do not type the part in parentheses which is my comments.
+
+microcom -D/dev/ttyS0    (set line)
+~
+t
+h  (probably optional - hardware flow control)
+~
+t
+p
+choose 115200  (type that letter, entery key) (set speed)
+Enter
+
+You should be asked to Login:
+
+
+In all cases you need to set the port/line, speed, and in the case of 
+kermit tell it you are not using a modem.  Other com programs also need to 
+be told it is a direct connection.  Steven likes commo.  Free at 
+simtel.net (shareware).
+
+
+  ------------------------
+Serial networking with pppd and telnetd (server)
+
+To establish a serial connection (network) between two computers you need 
+to have ppp on both of them.  DOSPPP should work.  Linux has pppd.  I only 
+tried this so far with two linux computers BL3 to BL2.
+
+Comment that line about agetty before starting if it was uncommented.
+(Is there some way to switch back and forth using command-line instead of 
+inittab to start and end agetty, rather than editing inittab and rebooting 
+to switch from dumb terminal to serial network mode?  Or can I kill the 
+agetty before setting up serial network with ppp?).
+
+Then on both computers set up the connection (command line, or you can put 
+the local and crtscts in /etc/ppp/options but it may interfere with 
+dialing so I think there is also options.ttyS0 or something like that to 
+specify these options just for the port used by teh nullmodem cable).
+
+pppd local crtscts /dev/ttyS0 11500 192.168.1.1:192.168.1.2
+
+(the order after pppd does not seem to be important)
+
+Do the same on the computer you are connecting from but switch the numbers 
+Or use clark:lois and lois:clark as defined for BL2 in /etc/hosts, or
+edit that if you like other names.  Tom and Jerry will also work.
+
+I don't know if it was necessary but I also did
+ifconfig ppp0 192.168.1.1 and the same for .2
+
+Ping when I had the inittab line uncommented worked but was giving me 
+packet transfer speeds of about 0.2 msec for 56 bytes and when I tried it 
+now I got 25-30 ms instead which indicates that I was probably 
+transferring via the ethernet cable instead of the serial cable before 
+when I thought ping was working.  Ethernet is about 1-10 MByte/sec and 
+serial 115200 about 10Kbit/sec. (1KByte).  Parallel transfer is maybe 8X 
+as fast as serial (how many pins?).
+
+
+Ping worked.
+
+On Computer #1 (target, server) run the telnet server.
+
+in.telnetd -debug  (from tcpip1, in /usr/sbin/in.telnetd)
+
+Run this every time before you do a telnet connection.
+There is something similar for ftp (ftp daemon).
+
+On computer #2
+
+telnet 192.168.1.1 (or telnet clark)
+
+GOing from BL3 to BL2 I got an immediate connection
+(which is better than I got with the dumb terminal method).
+Logged in as root.
+
+I have not yet tried file transfer with send/receive over this cable.
+I expect it to take 30/0.2 times as long as ethernet (at 100Mbit)
+because I am at 10Kbit/sec.  Fine for sending small files 
+and also for using programs on #1 with #2, which can be a small RAMdisk 
+BL2, or DOS, with any telnet program.  (Have not tried DOS yet - there is 
+CUTCP from Clarkson Univ that comes with Arachne, or Kermit telnet).
+I have to try file transfer too.
+
+DOSPP or LSPPP ought to work.  Nettamer has a separate PPP program but I 
+don't know if it can be used without a modem.
+
+Chat program can be used with pppd to automatically enter login and 
+password if you can figure out how.
+
+Steven could you write this up as a FAQ?  (First correct any errors of 
+course).  The part about securetty was not in netsetup, or the fact that 
+you cannot telnet with the same inittab that you need for dumb terminal.
+Or the dumb terminal method.
+
+You called the serial telnet 'laplink' method.  I actually found a HOWTO 
+on that.  Is a nullmodem cable called a laplink cable?  I thought laplink 
+was the name of a specific program that is used in DOS for file transfer 
+and it can also be used to view and delete files on a remote computer 
+(serial or parallel).
+
+
+
+On Tue, 19 Oct 2004, sindi keesan wrote:
+
+> For serial telnet should I be UNcommenting the line in /etc/inittab that says 
+> to use an agetty on /dev/ttyS0?  Maybe that is interfering with pppd's use of 
+> that same port?
+>
+> I recall this line interfering with using a serial mouse, a year or two ago.
+>
+> keesan@sdf.lonestar.org
+> SDF Public Access UNIX System - http://sdf.lonestar.org
+> _______________________________________________
+> BasLinux mailing list
+> BasLinux@lists.ibiblio.org
+> http://lists.ibiblio.org/mailman/listinfo/baslinux
+>
+
+keesan@sdf.lonestar.org
+SDF Public Access UNIX System - http://sdf.lonestar.org
+_______________________________________________
+BasLinux mailing list
+BasLinux@lists.ibiblio.org
+http://lists.ibiblio.org/mailman/listinfo/baslinux

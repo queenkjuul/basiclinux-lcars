@@ -1,0 +1,9 @@
+#!/bin/sh
+#for i in *[0,2,4,6,8].pbm; do pbmtolj $i > /dev/lp0; done
+
+#Use the first for printing in reverse order, the second for regular order
+#for x in `seq 8 -2 0`	
+for x in `seq 0 2 8`
+do
+for i in *$x.pbm; do pbmtolj -res 300 $i > /dev/lp0 ; done
+done

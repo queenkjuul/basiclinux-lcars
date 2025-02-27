@@ -1,0 +1,21 @@
+From: [sender's email address]
+Subject: [subject]
+Mime-Version: 1.0
+Content-Type:  multipart/mixed; boundary="123A_BOUNDARY789"
+Content-Disposition: inline
+
+--123A_BOUNDARY789
+Content-Type:  text/plain; charset=us-ascii
+Content-Disposition: inline
+
+[message body]
+
+--123A_BOUNDARY789
+Content-Type: application/octet-stream
+Content-Disposition: attachment; filename="filename.jpg"
+Content-Transfer-Encoding: base64
+
+[file encoded with 'base64 -e filename.jpg filename.64']
+
+--123A_BOUNDARY789
+

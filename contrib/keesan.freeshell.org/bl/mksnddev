@@ -1,0 +1,30 @@
+#Creates sound files needed to play on SB16 with buggy 2.2.14 kernel
+# that created these wrongly.  You can also make midi* music patmgr
+# sequencer but only dsp and mixer are needed to play. cat /dev/sndstat
+# provides info about the sound hardware and software.
+cd /dev
+rm dsp
+rm audio*
+mknod audio0 c 14 4
+mknod audio1 c 14 20
+ln -s audio0 audio
+mknod dsp0 c 14 3
+mknod dsp1 c 14 19
+ln -s dsp0 dsp
+mknod midi00 c 14 2
+#mknod midi01 c 14 18
+#mknod midi02 c 14 34
+#mknod midi03 c 14 50
+ln -s midi00 midi
+mknod music c 14 8
+mknod mixer c 14 0
+mknod mixer1 c 14 16
+#mknod patmgr0 c 14 17
+#mknod patmgr1 c 14 33
+#mknod sequencer c 14 1
+#ln -s /dev/music sequencer2
+mknod sndstat c 14 6
+chmod +x *
+
+# These will end up root root.  Correct for audio is root sys.  Works
+# anyway, at least as root.
