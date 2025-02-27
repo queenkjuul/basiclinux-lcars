@@ -1,0 +1,1 @@
+wget -O - http://pubint.ic.llnwd.net/stream/pubint_wnmufm | mpg123 -

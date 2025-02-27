@@ -1,0 +1,19 @@
+
+http://keesan.freeshell.org/bl/lucent.tgz (561K) 
+drivers for 2.2.16, 2.2.26, and 2.4.31, and dial scripts for their use 
+with BL.  
+
+mknod /dev/ttyLT0 c 62 64
+pppsetup - change ttyS0 or ttyS1 to ttyLT0
+copy the two modules to /lib/modules/2.2.26/misc/
+insmod slhc
+insmod ppp   (for 2.4.31 kernels ppp_generic and ppp_async)
+insmod lt_modem
+insmod lt_serial
+ppp-on
+
+(See the dial4 script in my package - eznet up 4 can be replaced with 
+ppp-on if you have only one modem.  chmod +x).
+
+Lucent/agere modems are PCI or found in Compaq Presario and Armada 
+laptops.  Only winmodems I have gotten working with linux.

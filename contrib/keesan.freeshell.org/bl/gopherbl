@@ -1,0 +1,1 @@
+echo /ftp/pub/users/keesan/bl/$1 | nc sdf.org 70 > $1

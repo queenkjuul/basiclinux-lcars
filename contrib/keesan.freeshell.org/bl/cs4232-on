@@ -1,0 +1,8 @@
+insmod soundcore
+insmod sound
+insmod uart401
+insmod ad1848
+insmod opl3 io=0x388
+insmod v_midi
+insmod cs4232 io=0x0534 irq=5 dma=1 dma2=3 
+# mpuio=0x330 mpuirq=9

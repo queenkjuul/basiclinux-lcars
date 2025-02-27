@@ -1,0 +1,234 @@
+PCTEL Driver for Linux Version 0.9.7-9-rht-6
+============================================
+
+This version (6) is modified to work with Kernel 2.6.16.  It now uses
+module_param instead of the deprecated MODULE_PARM.  There is a fix for
+excessive lock taking which was causing Fedora Core 4/5 to hang.  There
+is also an update to the FAQ regarding Fedora Core 5 kernels.
+-- Robert Thornburrow <robert.thornburrow@tsac.fsnet.co.uk> 25/05/06
+
+This version (5) is modified to work with Fedora Core 4, which had problems
+controlling the mouse when the modem driver was loaded.  The fix now correctly
+saves and restores the FPU registers.  There is also a fix to allow the driver
+to work with kernel 2.6.13 which has an API change of pci_match_device() to
+pci_match_id() and a fix for a compile error where linux/mca.h is not included.
+There are also a number of fixes to the configure script to support udev and
+setup now attempts to load the newly created modules.
+-- Robert Thornburrow <robert.thornburrow@tsac.fsnet.co.uk> 02/04/06
+
+This version (4c) is modified to include Gustavo Brabieri and Co's 2.6 driver
+and some further changes to make the code fully 2.6 compatible, though the only
+modem this currently works for is the pct789 (specifically PCI Id 134d:7897).
+It also fixes a problem with some missing symbols in the via686a libraries,
+which do not contain the audio routing symbols.  There is also a fix for sis
+which was broken by the previous release having an incorrect ifdef around the
+i8xx HAL specific code.  There are also fixes to the configure script to make
+this work on 2.6 and with different versions of lspci.  The install option now
+contains the missing "/sbin/depmod -a".
+This driver is known to cause problems with the mouse on Fedora Core 4 - this
+is either a problem with the Fedora applied kernel patches, or the use of GCC
+4.0 to compile the kernel.  The best solution we have at the moment is to
+downgrade to Fedora Core 3.  No other distros seem to exhibit the same problem.
+-- Robert Thornburrow <robert.thornburrow@tsac.fsnet.co.uk> 25/08/05
+
+This version (3) is modified to print the codec vendor id when the "i8xx" HAL is
+used, and also to report whether it is supported by the driver.  Also added
+Intel 82801DB/DBM AC'97 Audio Controller (8086:24c5) to the "i8xx" HAL.
+-- Robert Thornburrow <robert.thornburrow@tsac.fsnet.co.uk> 07/05/04
+
+This version (2) is modified to support Fedore Core, which defines tty->count
+as atomic_t instead of int.  The configure script detects this and sets an
+appropriate define to make the code compile.
+-- Robert Thornburrow <robert.thornburrow@tsac.fsnet.co.uk> 21/04/04
+
+This version modified in order to support VendorId 8086:24c6
+(Intel 82801DCM AC'97 Modem controller)
+-- Robert Thornburrow <robert.thornburrow@tsac.fsnet.co.uk> 09/04/04
+
+
+1. Installation
+===============
+
+1.1 Automatic installation (for beginners)
+------------------------------------------
+- You must be root
+- You must have installed a c compiler and development tools like
+  make, perl, ...
+- You must have lspci in a standard path (for automated install)
+- You must have installed your kernel sources, which corresponds
+  to your current running kernel
+
+
+a) tar zxvf pctel-version.tar.gz
+
+b) cd pctel/
+
+c) ./setup
+
+If everything was ok, you will see the message "installation done" at the
+end of the output.
+
+1.2 Manual installation (for experts)
+-------------------------------------
+- You must be root for part (e), you can run (a)-(d) as an ordinary user if you
+  wish
+- You must have installed a C compiler and development tools like
+  make, perl, ...
+- You must have installed your kernel sources, which corresponds
+  to your current running kernel
+
+
+a) tar zxvf pctel-v.w.x-y-rht-z.tar.gz
+
+b) cd pctel-v.w.x-y-rht-z/src/
+
+c) ./configure -manual
+
+d) make
+
+e) make install
+
+
+2. Try your driver
+==================
+Just to try out, if your driver works:
+
+  2.4:                 2.6:
+  insmod pctel         modprobe linmodem
+  insmod ptserial      modprobe pctel
+                       modprobe pctel_hw
+  or
+
+  insmod -f pctel
+  insmod ptserial
+
+-f means "force", which means, it will force loading the driver, even
+with warnings.
+
+then, look at:
+
+lsmod
+
+it should print pctel and ptserial (2.4) or linmodem, pctel and pctel_hw (2.6).
+
+Look at the last few lines of dmesg to see whether the driver found the
+modem or not:
+
+dmesg | tail
+
+If the driver is not finding the modem, and you have either a PCtel or
+C-Media device you can try using the vendor_id and device_id arguments with
+insmod(you can find these using lspci):
+
+insmod ptserial vendor_id=0x1234 device_id=0x5678
+
+Note that vendor_id and device_id do not work with Intel, Sis or Via devices.
+
+3. Loading your driver permanently
+==================================
+NOT YET WRITTEN
+
+
+Appendix I. PCI IDs of recognized modems
+========================================
+This table summarises the PCI devices that this driver supports.  For AC'97
+modems, this does not guarantee that the driver will work, as this is only part
+of the modem - the other part, the codec, must also be compatible for the
+driver to work.
+
+PCI ID (x)  Name                                       Chip(set)      HAL
+~~~~~~~~~~  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  ~~~~~~~~~~~~~  ~~~~~~~
+1039:7013*  SiS AC'97 Modem Controller                 SIS540 MR      sis
+1106:3068*  VIA Intel 537 [AC97 Modem]                 VIA686A MR     via686a
+134d:7890   PCtel HSP MicroModem 56                    PCT789T-C1     pct789
+134d:7891   PCtel HSP MicroModem 56                    PCT 789T       pct789
+134d:7892   PCtel HSP MicroModem 56                    PCT 789T-A     pct789
+134d:7893   PCtel HSP MicroModem 56                    S911 K017      pct789
+134d:7894   PCtel HSP MicroModem 56                    FT13           pct789
+134d:7895   PCtel HSP MicroModem 56                    PCT789T-C1     pct789
+134d:7896   PCtel HSP MicroModem 56                    PCT789T-C1     pct789
+134d:7897   PCtel HSP MicroModem 56                    PCT789T        pct789
+13f6:0211   C-Media CM8738                             CM8738         cm8738
+8086:2416*  Intel 82801AA (ICHAA) AC'97 Modem          i810 MR        i8xx
+8086:2446*  Intel 537 [82801BA/M (ICH2) AC'97 Modem]   i820           i8xx
+8086:2486*  Intel 82801CA/M (ICH3) AC'97 Modem Ctlr    i845           i8xx
+8086:24c6*  Intel 82801DB/M (ICH4) AC'97 Modem Ctlr    i855PN laptop  i8xx
+8086:7196*  Intel 82440MX (Banister) AC'97 Modem Ctlr  i810 MR laptp  i8xx
+
+* No 2.6 support - these modems are only suppoerted under 2.4 kernels.
+
+
+Appendix II. Supported AC'97 Codecs
+===================================
+This version (3) supports the printing of AC'97 Codec Vendor IDs when compiled
+with the "i8xx" HAL (hopefully the "sis" and "via686a" HALs will follow).  To
+find out which codec your modem contains, you need to load "ptserial" (and
+"pctel") modules and then start something like "minicom".  The codec vendor id
+will be printed when the modem device is used (usually /dev/modem, symlinked
+/dev/ttyS15 under 2.4 and /dev/ttyS_PCTEL0 under 2.6).  Look for a message
+(using "dmesg | tail") of the form:
+
+    Found codec SIL33 of type 2
+
+The codec vendor id is "SIL33" (note that the number is in decimal - slamr
+prints the same thing in hex - duh! - so this would equate to "SIL21").  This
+indicates a Silicon Laboratories Si3038 codec, as used by PCTel.  The type 2
+is an internal code, which catagorises the codec's compatability.  It has no
+meaning outside of this driver.
+
+The following codecs are recognised by the "i8xx" HAL (and presumably the other
+AC'97 HALs as well):
+
+Codec   Type  Codec Name
+~~~~~~  ~~~~  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+DT2-49   1    (PCTel Delta?)
+DT2-50   1    (PCTel Delta?)
+SIL17    2    Silicon Laboratories Si???? (PCTel Stinger?)
+SIL33    2    Silicon Laboratories Si3038 (PCTel)
+TRA9     3    TriTech
+
+
+Appendix III. ptserial Module Options
+=====================================
+The 2.4 "ptserial" module supports the following options:
+
+Option          Meaning
+~~~~~~~~~~~~~~  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+country_code=n  Sets the Country Code (see Appendix IV) to "n"
+irq=n           Attempts to attach the device to IRQ "n"
+iobase=n        Looks for a device at iobase address "n".
+
+iobase1=n       Forces the driver to load for the device with the given iobase,
+                iobase1 and irq.  "i8xx" and "via686a" HALs only
+
+vendor_id=n     Forces the driver to load for the device with the given vendor
+& device_id=n   and device ids.  "pct789" and "cm8738" HALs only
+
+
+The 2.6 modules support the following options:
+
+Option          Module    Meaning
+~~~~~~~~~~~~~~  ~~~~~~~~  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+country_code=n  pctel     Sets the Country Code (see Appendix IV) to "n"
+irq=n           pctel_hw  Attempts to attach the device to IRQ "n"
+
+
+Appendix IV. Country Codes
+==========================
+
+Code  Country         Code  Country         Code  Country
+~~~~  ~~~~~~~~~~~~~   ~~~~  ~~~~~~~~~~~~~   ~~~~  ~~~~~~~~~~~~~~~
+  1   USA              12   KOREA            23   DENMARK        
+  2   FRANCE           13   SWITZERLAND      24   AUSTRIA        
+  3   GERMANY          14   NORWAY           25   S.AFRICA       
+  4   ITALY            15   NETHERLANDS      26   CTR21 COUNTRIES
+  5   SWEDEN           16   BELGIUM          27   CHINA          
+  6   UK               17   CANADA           28   MALAYSIA       
+  7   JAPAN            18   IRELAND          29   LUXUMBURG      
+  8   AUSTRALIA        19   PORTUGAL         30   GREECE         
+  9   SPAIN            20   POLAND           31   ICELAND        
+ 10   TAIWAN           21   HUNGARY          32   NEW ZEALAND    
+ 11   SINGAPORE        22   FINLAND          33   BRAZIL         
+
+
+$Id: README,v 1.12 2006/04/04 14:45:04 robert Exp $

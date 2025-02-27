@@ -1,0 +1,17 @@
+#chvt 3
+insmod matroxfb_misc
+insmod matroxfb_accel
+insmod matroxfb_Ti3026
+#insmod matroxfb_base vesa=788  ##To specify mode while loading modules
+##Next three are needed with the 'base' module compiled to include G100
+##You must use a complete set compile for G100-G450 which differ
+##from the standard ones in matrox directory
+insmod g450_pll  ##Use these four for G100 (will work for millenium)
+insmod ./lib/modules/2.4.31/kernel/drivers/video/matrox-G450/matroxfb_g450
+insmod ./lib/modules/2.4.31/kernel/drivers/video/matrox-G450/matroxfb_DAC1064
+insmod ./lib/modules/2.4.31/kernel/drivers/video/matrox-G450/matroxfb_base
+chvt 1
+chvt 3
+#rmmod mdacon
+#insmod mdacon mda_first_vc=1 mda_last_vc=2
+#reset

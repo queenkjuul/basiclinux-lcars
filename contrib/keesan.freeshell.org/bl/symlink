@@ -1,0 +1,4 @@
+I broke the compiler and need the following two symlinks:
+ln -s /usr/src/linux/include/asm /usr/include/asm
+ln -s /usr/src/linux/include/linux /usr/include/linux
+

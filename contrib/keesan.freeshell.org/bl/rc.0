@@ -1,0 +1,62 @@
+#! /bin/sh
+#
+# This file is executed by init when it goes into runlevel
+# 0 (halt) or runlevel 6 (reboot). It kills all processes,
+# unmounts file systems and then either halts or reboots.
+
+PATH=/sbin:/etc:/bin:/usr/bin:/bin/busybox
+
+# Set linefeed mode to avoid staircase effect.
+stty onlcr
+
+echo "Running shutdown script $0:"
+
+# Find out how we were called.
+case "$0" in
+	*0)
+		message="The system is halted."
+		command="halt"
+		;;
+	*6)
+		message="Rebooting."
+		command=reboot
+		;;
+	*)
+		echo "$0: call me as \"rc.0\" or \"rc.6\" please!"
+		exit 1
+		;;
+esac
+
+# Kill all processes.
+if [ "$1" != "fast" ]; then # shutdown did not already kill all processes
+  kill -15 -1 
+  kill -9 -1
+fi
+
+# Before unmounting file systems write a reboot or halt record to wtmp.
+$command -w
+
+# Save localtime
+# [ -e /usr/lib/zoneinfo/localtime ] && cp /usr/lib/zoneinfo/localtime /etc
+
+# This never hurts:
+  sync
+
+# Turn off swap, then unmount file systems.
+echo "Turning off swap."
+swapoff -a
+echo "Unmounting file systems."
+umount -a
+
+# See if this is a powerfail situation.
+#  if [ -f /etc/power_is_failing ]; then
+#    echo "Turning off UPS, bye."
+#    /sbin/powerd -q
+#    exit 1
+#  fi
+
+# Now halt or reboot.
+echo "$message"
+[ ! -f /etc/fastboot ] && echo "On the next boot fsck will be FORCED."
+$command -f
+

@@ -1,0 +1,11 @@
+tar=y
+case ${1##*.} in gz) 
+  tar -ztf $1 >/dev/null 2>/dev/null || tar=n
+esac
+case $tar in y) tar -zvtf $1 2>/dev/null|more;;
+             n) zcat $1 2>/dev/null| more;;
+esac
+echo ================== Press ENTER to Continue ====================
+read
+reset
+

@@ -1,0 +1,87 @@
+From baslinux@lists.ibiblio.org Sun Jan 10 15:15:14 2010
+Date: Sun, 10 Jan 2010 16:14:59 +0100
+From: baslinux@lists.ibiblio.org
+To: baslinux@lists.ibiblio.org
+Subject: [BL] some broken links
+
+You asked to report broken links.
+Broken links on http://keesan/freeshell.org/bl/blfiles.html
+Position with links-0.95 in text mode.
+The linenumbers means about. Please don't send me to sesamstreet :)
+
+Page Line     Link                                          Comment
+ 1    7       HTTP://us.share/geocities.com/davidjmoberg/   hint
+ 4   21       his site
+ 6    9       antiword037
+ 6   10       antiword.man
+ 8    5       sqlite-3.5.9-glibc225
+ 8   19       dbf
+16    7       gs854-noX-defaults.gz
+16   11       gs854-noX-HP.gz
+16   17       gs854-noX-HP-JBIG2.gz
+16   18       gs854-noX-defaults-JBIG2.gz
+16   23       Use.htm
+17    5       gs854-docs-scipts.tgz
+17    8       gs860-noX-HP.tgz
+18   16       gs860-noX-HP.gz
+18   21       gs850.tgz
+20   21       svgalib-1.9.25-new-default
+22   14       i810 onboard chip
+22   16       Matrox G100 and G400 series
+25    5       xfbdev
+25   18       Xfbdev-glibc21
+28   16       libtiff-3.8.2-glibc225.tgz
+29   12       photopc300.tgz
+29   22       mtpaint-3.21-glibc225"
+30   10       cycas39.tgz
+32   18       aumix-2.8-glibc225-cli
+32   19       aunix-2.8-glibc225-ncurses-gpm
+34   22       awefiles.tar.gz
+37    9       HTTP://us.share/geocities.com/davidjmoberg/mplayer.tgz
+39   19       dropbear-0.52-glibc255.tgz
+40   17       curl-7.10.3-glibc20.tgz
+42    5       gzip-1.3.5-uclibc
+42    7       lynx287-glibc225.tgz
+44   16       3.8MB (2.4 gz)
+46    8       w3m-0.21.tgz
+46   10       libgc
+46   13       w3m-0.42-nano-msmtp-links2.gz
+48   20       dillo-0.86
+51   10       zoho.com
+54    2       firefox 1.5.0.12
+55    5       mplayer-1.0pre7try2-glibc236
+56   11       rp-pppoe-3.10-glib225
+57    5       zimage.4dz
+57   15       the bl directory
+59    3       zimagefb.226
+59    5       zimafbcd.226
+61    4       bzimlsfb.231
+27   16       4.8.0 binaries
+67   18       versions 2.1 3.3.6 4.0-4.8
+68    5       Xfbdev-glibc21.gz
+68    6       Xsavage-glibc21.gz
+70   18       matrox-g450.tgz
+70   22       the G400 svgalib libary
+71   23       bzimscsi431
+72    5       bzimscd.431
+72   10       coscsmpd.431
+74    9       ltmodem.o
+74   10       lt-serial.o
+75    4       ehci-hcd.o USB 2.0 module
+79   21       usb camera linux
+79   23       issue
+82   10       bl35fdfb.tgz
+
+Have a lot of fun.
+       Werner
+
+
+
+-----------------------
+BasicLinux mailing list
+-----------------------
+http://www.basiclinux.com.ru
+http://www.ibiblio.org/pub/linux/distributions/baslinux/
+------------------------------------
+To exit, send subject=unsubscribe to
+baslinux-request@lists.ibiblio.org

@@ -1,0 +1,9 @@
+insmod parport
+insmod parport_pc
+insmod scsi_mod
+insmod sd_mod
+insmod ppa
+
+##Will find /dev/sda4
+##sdb4 on computer with scsi hard disk.  
+##Put back scsi modules fornon-scsi kernel

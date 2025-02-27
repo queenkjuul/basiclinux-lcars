@@ -1,0 +1,86 @@
+                                To configure TCP/IP parameters from the control panel, use the following instructions:                                                                                 
+                                                                                                                                                                                                       
+                                1. Press the MENU button until HP MIO 1 (or 2), or HP EIO 1 (or 2) appears.                                                                                            
+                                2. Press the ITEM button until CFG NETWORK = NO appears.                                                                                                               
+                                3. Press the PLUS or VALUE button until CFG NETWORK = YES appears.                                                                                                     
+                                                                                                                                                                                                       
+                                NOTE: The CFG NETWORK = XXX (XXX being YES or NO) is a toggle, not a permanent setting. Changing it to YES allows the settings to be changed at that time. It will     
+                                appear as CFG NETWORK = NO each time this menu is accessed.                                                                                                            
+                                                                                                                                                                                                       
+                                4. Press SELECT or RESUME.                                                                                                                                             
+                                5. Press ITEM repeatedly until CFG TCP/IP = NO appears.                                                                                                                
+                                6. Press the PLUS or VALUE button until CFG TCP/IP = YES appears.                                                                                                      
+                                                                                                                                                                                                       
+                                NOTE: The CFG TCP/IP = XXX (XXX being YES or NO) is a toggle, not a permanent setting. Changing it to YES allows the settings to be changed at that time. It will      
+                                appear as CFG TCP/IP = NO each time this menu is accessed.                                                                                                             
+                                                                                                                                                                                                       
+                                7. Press SELECT or RESUME.                                                                                                                                             
+                                8. Press the ITEM repeatedly until BOOTP = YES* appears.                                                                                                               
+                                9. Press the PLUS or VALUE button until BOOTP = NO appears.                                                                                                            
+                                                                                                                                                                                                       
+                                NOTE: When using BootP or DHCP, keep the setting BOOTP = YES *. The BootP or DHCP server will configure the TCP/IP parameters on the HP Jetdirect. No other TCP/IP     
+                                configuring is necessary.                                                                                                                                              
+                                                                                                                                                                                                       
+                                10. Press SELECT or RESUME.                                                                                                                                            
+                                                                                                                                                                                                       
+                                The following two steps apply to the HP Jetdirect 610n cards only:                                                                                                     
+                                DHCP=YES appears.                                                                                                                                                      
+                                Press the PLUS or VALUE button until DHCP = NO appears.                                                                                                                
+                                NOTE: When using DHCP, keep the setting DHCP = YES *. The DHCP server will configure the TCP/IP parameters on the HP Jetdirect. No other TCP/IP configuring is         
+                                necessary.                                                                                                                                                             
+                                                                                                                                                                                                       
+                                11.Press SELECT or RESUME.                                                                                                                                             
+                                12. Press ITEM until IP BYTE 1 = (value*) appears.                                                                                                                     
+                                                                                                                                                                                                       
+                                13. Press the PLUS or VALUE button, until the desired value of the first byte of the IP address appears. By pressing and holding the PLUS or VALUE button, the value   
+                                will scroll rapidly (HP LaserJet 4000, 5000, and 8000 printers have a MINUS button to decrease the value).                                                             
+                                14. Press SELECT or RESUME to save the value.                                                                                                                          
+                                15. Press ITEM to continue. Repeat Steps 11-13 to configure the remaining bytes of the IP address.                                                                     
+                                                                                                                                                                                                       
+                                Repeat Steps 11-13 to configure the subnet mask bytes (SM BYTE 1=), syslog server IP address (LG BYTE 1=), default gateway (GW BYTE 1=), and timeout (TIMEOUT=).       
+                                                                                                                                                                                                       
+                                Press ONLINE, GO or MENU. Print a self-test page to verify the IP settings.                                                                                            
+                                                                                                                                                                                                       
+                                If the test page does not show the correct settings, power cycle the printer and reprint the test page.                                                                
+                                Comment from [56]Panjandrum                                                                       Comment                                                              
+                                Date: 10/03/2005 08:39AM PDT                                                                                                                                           
+                                Basic Configurable TCP/IP parameters                                                                                                                                   
+                                The following TCP/IP parameters can be configured using the front panel of the printer. The different models and firmware revisions of HP Jetdirect print servers have 
+                                different capabilities and therefore different menus. Also, some menu items will only appear if the HP Jetdirect is connected to the network and configured (e.g., by  
+                                DHCP) therefore the list of items below are not what you supposed to have available; rather, it is a description of those menu items that you might see on your        
+                                particular printer:                                                                                                                                                    
+                                                                                                                                                                                                       
+                                Config Method: Allows you to choose between the available configuration methods for IP addresses (DHCP, BOOTP, etc.)                                                   
+                                BootP= (Yes/No). Uses BOOTP or DHCP, which automatically downloads configuration data over the network. The default setting is YES to use BOOTP or DHCP for            
+                                configuration. Change this to NO to use the front-panel configuration.                                                                                                 
+                                                                                                                                                                                                       
+                                DHCP=(Yes/No). Uses DHCP, which automatically downloads configuration data over the network. The default setting is YES to use DHCP for configuration. Change this to  
+                                NO to use the front-panel configuration.                                                                                                                               
+                                                                                                                                                                                                       
+                                Auto IP= (Yes/No). For firmware versions x.25.xx or newer. If you choose BOOTP=NO* and DHCP=NO*, you can choose AUTO IP=YES* to have a link-local default IP address   
+                                of 169.254.x.x assigned automatically.                                                                                                                                 
+                                                                                                                                                                                                       
+                                Manual: (Yes/No). Allows the IP address to be configured using the front panel of the printer.                                                                         
+                                                                                                                                                                                                       
+                                DHCP Release. Only if the HP Jetdirect is configured by DHCP, this menu item will appear to release the IP address.                                                    
+                                                                                                                                                                                                       
+                                DHCP Renew. Only if the HP Jetdirect is configured by DHCP, this menu item will appear to renew or the IP address.                                                     
+                                Host Name. Allows the host name to be entered in using the front panel of the printer. This only appears on certain printers with certain firmware and HP Jetdirect    
+                                print servers with x.24.06 or newer firmware. Basically if the option isn't on the menu, the printer/print server combination does not have it available.              
+                                                                                                                                                                                                       
+                                Secure Web or Web= (HTTP/HTTPS). Sets the type of protocol used to access the embedded web server of the HP Jetdirect.                                                 
+                                IP address (four bytes). This is usually seen on the front panel as IP BYTE. For example: If the IP address is 192.0.0.192, then IP byte 1 = 192, IP byte 2= 0, IP     
+                                byte 3 = 0, and IP byte 4 = 192.                                                                                                                                       
+                                                                                                                                                                                                       
+                                Subnet mask (four bytes). This is usually seen on the front panel as SM BYTE. Example: If the subnet mask address is 255.255.255.0, then IP byte 1 = 255, IP byte 2=   
+                                255, IP byte 3 = 255, and IP byte 4 = 0.                                                                                                                               
+                                                                                                                                                                                                       
+                                Syslog server IP address (four bytes). This is usually seen on the front panel as LG BYTE. Example: If the syslog IP address is 192.30.40.192, then IP byte 1 = 192,   
+                                IP byte 2= 30, IP byte 3 = 40, and IP byte 4 = 192. If no syslog server is on the network, each byte should be left at zero. A syslog server is a server on the        
+                                network that runs a syslog daemon and is used to receive syslog messages. This may be useful in identifying error conditions.                                          
+                                                                                                                                                                                                       
+                                Default gateway (four bytes). This is usually seen on the front panel as GW BYTE. Example: If the Gateway IP address is 192.0.0.192, then IP byte 1 = 192, IP byte 2=  
+                                0, IP byte 3 = 0, and IP byte 4 = 192.                                                                                                                                 
+                                                                                                                                                                                                       
+                                Timeout=. Sets the TCP connection timeout (in seconds).                                                                                                                
+                                                                                                                                                                                                       

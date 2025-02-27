@@ -1,0 +1,10 @@
+#!/bin/sh
+mkfifo /tmp/audiodump.wav
+play /tmp/audiodump.wav &
+exec mplayer -ao pcm -aofile /tmp/audiodump.wav "$@"
+
+
+#You can remark out the mkfifo line after the first use of the script
+#to avoid a message telling you the file already exists.
+#This script is needed to play sound with David Moberg's mplayer for PI
+# but is not needed for the PII version.

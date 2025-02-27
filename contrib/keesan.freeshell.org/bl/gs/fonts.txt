@@ -1,0 +1,2 @@
+GS only requires .pfb fonts from gsfonts.tgz, or you can symlink
+ln -s /usr/local/Abisuite/fonts /usr/local/share/ghostscript/fonts

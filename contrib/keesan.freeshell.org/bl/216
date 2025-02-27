@@ -1,0 +1,5 @@
+#!/bin/bash
+setfont lat2-16 -u /usr/lib/kbd/consolefonts/u
+##Use with antiword -m 8859-2.txt file.doc > file.txt
+##less -r file.txt or pico file.txt to see the characters
+#setfont iso02.f16 -u /usr/lib/kbd/consolefonts/u

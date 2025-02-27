@@ -1,0 +1,1 @@
+pnmcat -lr $1 $1 $1 > file.pnm; pnmcat -tb file.pnm file.pnm > 3x2$1
