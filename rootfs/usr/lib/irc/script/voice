@@ -1,8 +1,0 @@
-# This is for my gateway server, however it shows how to emulate
-# commands to the server that the ircII doesn't know yet.
-#
-alias await quote await
-alias refuse quote refuse
-alias extra quote xtra $*;echo -> $0 *** $1-
-alias graph quote grph $*;echo -> \{$0\} $1-
-alias voice quote voice $*;echo -> \[$0] $1-

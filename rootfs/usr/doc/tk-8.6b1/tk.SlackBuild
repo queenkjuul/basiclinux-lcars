@@ -1,0 +1,42 @@
+#!/bin/sh
+# DOWNLOAD=http://downloads.sourceforge.net/tcl/tk8.6b1-src.tar.gz
+# Set initial variables:
+CWD=`pwd`
+if [ "$TMP" = "" ]; then
+  TMP=/tmp
+fi
+PKG=$TMP/package-tk
+
+if [ ! -d $TMP ]; then
+  mkdir -p $TMP # location to build the source
+fi
+if [ ! -d $PKG ]; then
+  mkdir -p $PKG # place for the package to be built
+fi
+
+echo "+==========+"
+echo "| tk-8.6b1 |"
+echo "+==========+"
+cd $TMP
+tar xzvf $CWD/tk8.6b1-src.tar.gz
+cd tk8.6b1/unix
+patch -p0 <$CWD/configure.diff
+./configure --prefix=/usr
+make
+DESTDIR=$PKG make install
+rm -rf $PKG/usr/{include,man}
+rm -rf $PKG/usr/lib/tk8.6/msgs/*
+rm -rf $PKG/usr/lib/tk8.6/{demos,images}
+mkdir -p $PKG/usr/doc/tk-8.6b1
+cp $CWD/{configure.diff,tk.SlackBuild} $TMP/tk8.6b1/README \
+  $PKG/usr/doc/tk-8.6b1/
+
+# Build the package:
+cd $PKG
+tar czvf $TMP/tk-8.6b1.tgz .
+
+# Clean up the extra stuff:
+if [ "$1" = "--cleanup" ]; then
+  rm -rf $TMP/tk8.6b1
+  rm -rf $PKG
+fi

@@ -1,9 +1,0 @@
-! Copyright (c) 1990-1997  Michael Sandrof, Troy Rollo, Matthew Green,
-! and other ircII contributors.
-!
-! All rights reserved.  See the HELP IRCII COPYRIGHT file for more
-! information.
-!
-Usage: SET SHOW_CHANNEL_NAMES [ON|OFF|TOGGLE]
-  When ON, this will show the names of all the users on a channel when 
-  you join it.  When OFF, no names will be displayed.

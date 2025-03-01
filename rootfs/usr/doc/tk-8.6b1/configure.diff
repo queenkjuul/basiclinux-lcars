@@ -1,0 +1,11 @@
+--- configure.orig	Sun Nov  8 15:03:28 2009
++++ configure	Sun Nov  8 15:04:36 2009
+@@ -9812,7 +9812,7 @@
+ # XScreenSaver is needed for Tk_GetUserInactiveTime().
+ #--------------------------------------------------------------------
+ 
+-if test $tk_aqua = no; then
++if test $tk_aqua = no -a true = false; then
+     tk_oldCFlags=$CFLAGS
+     CFLAGS="$CFLAGS $XINCLUDES"
+     tk_oldLibs=$LIBS

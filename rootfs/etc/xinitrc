@@ -1,3 +1,0 @@
-echo "WM is " $WM
-read _
-exec "$WM"

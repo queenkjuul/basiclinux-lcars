@@ -14,7 +14,7 @@ cat /proc/cmdline | grep -q swapoff && SWAPOFF=true
 if test ! $SWAPOFF;then
 [ -e /DOS/baslin/swap.img ] && swapon /DOS/baslin/swap.img
 fi
-test $SWAPOFF || mount -t msdos /dev/hda1 /hda1 >/dev/null 2>&1 && [ -e /hda1/baslin/swap.img ] && swapon /hda1/swap.img
+test $SWAPOFF || mount -t msdos /dev/hda1 /hda1 >/dev/null 2>&1 && [ -e /hda1/baslin/swap.img ] && swapon /hda1/baslin/swap.img
 
 sync
 

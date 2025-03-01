@@ -1,7 +1,0 @@
-#!/bin/sh
-
-cd /usr/local/share/mplayer/package
-./bspatch /usr/local/bin/mplayer /usr/local/bin/mencoder ./mencoder.patch
-rm -f mencoder.patch bspatch lzma
-chmod +x /usr/local/bin/mencoder
-rm -f /usr/local/bin/install-mencoder
