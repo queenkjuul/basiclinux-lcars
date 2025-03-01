@@ -1,0 +1,47 @@
+#!/bin/sh
+# DOWNLOAD=http://downloads.sourceforge.net/tcl/tcl8.6b1-src.tar.gz
+# Set initial variables:
+CWD=`pwd`
+if [ "$TMP" = "" ]; then
+  TMP=/tmp
+fi
+PKG=$TMP/package-tcl
+
+if [ ! -d $TMP ]; then
+  mkdir -p $TMP # location to build the source
+fi
+if [ ! -d $PKG ]; then
+  mkdir -p $PKG # place for the package to be built
+fi
+
+echo "+===========+"
+echo "| tcl-8.6b1 |"
+echo "+===========+"
+cd $TMP
+tar xzvf $CWD/tcl8.6b1-src.tar.gz
+cd tcl8.6b1/unix
+export CPPFLAGS="-DSHUT_RD=0 -DSHUT_WR=1 -DSHUT_RDWR=2"
+./configure --prefix=/usr
+make
+DESTDIR=$PKG make install
+rm -rf $PKG/usr/{include,man}
+rm -rf $PKG/usr/lib/tcl8.6/msgs/*
+rm -rf $PKG/usr/lib/tcl8/*
+cd $PKG/usr/lib/tcl8.6/encoding
+mkdir keepers
+mv ascii.enc cp1252.enc iso8859-1.enc keepers/
+rm *.enc
+mv keepers/* .
+rmdir keepers
+mkdir -p $PKG/usr/doc/tcl-8.6b1
+cp $CWD/tcl.SlackBuild $TMP/tcl8.6b1/README $PKG/usr/doc/tcl-8.6b1/
+
+# Build the package:
+cd $PKG
+tar czvf $TMP/tcl-8.6b1.tgz .
+
+# Clean up the extra stuff:
+if [ "$1" = "--cleanup" ]; then
+  rm -rf $TMP/tcl8.6b1
+  rm -rf $PKG
+fi

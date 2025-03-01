@@ -1,0 +1,170 @@
+#!/usr/bin/wish8.6
+package require Tk
+set ::registered 0
+set ::joined 0
+set ::server irc.freenode.org
+set ::chan   #baslinux
+set ::me     $tcl_platform(user)
+set ::meseq  0 ;# sequencial number to add to the NICK if the previous was busy
+set ::names {}
+text .t -height 30 -wrap word -font {Arial 9} -background white
+.t tag config bold   -font [linsert [.t cget -font] end bold]
+.t tag config italic -font [linsert [.t cget -font] end italic]
+set ::colors {red blue darkgreen black darkcyan darkmagenta}
+foreach color $::colors {
+    .t tag config $color -foreground $color
+}
+entry .cmd -background white
+pack .cmd -side bottom -fill x
+pack .t -fill both -expand 1
+bind .cmd <Return> post
+focus .cmd
+
+proc nickcolor nick {
+    binary scan $nick c* v
+    set hash 4817
+    set op +
+    foreach x $v {
+       set hash [expr "$hash $op $x"]
+       set op [if {$op eq {+}} {concat *} {concat +}]
+    }
+    set hash [expr {$hash%[llength $::colors]}]
+    lindex $::colors $hash
+}
+
+proc shownames {} {
+    .t insert end "\nNames:\n" bold
+    set i 0
+    foreach n $::names {
+       if {$i == 0} {
+           .t insert end [string repeat " " 8]
+       }
+       .t insert end "$n " [nickcolor $n]
+       if {[incr i] eq 5} {
+           .t insert end "\n"
+           set i 0
+       }
+    }
+    if {$i} {.t insert end "\n\n"}
+    .t yview end
+}
+
+proc recv {} {
+    gets $::fd line
+    set line [regsub -all {[^\x21-\x7e]} $line {}]
+    puts $line
+    if {[regexp {:([^!]*)![^ ].* +PRIVMSG ([^ :]+) +:(.*)} $line -> \
+        nick target msg]} {
+        set tag ""
+        if {$nick eq "ijchain"} {regexp {<([^>]+)>(.+)} $msg -> nick msg}
+        if [regexp {\001ACTION(.+)\001} $msg -> msg] {
+           set msg "$nick $msg"
+           set nick "*"
+           set tag {bold darkgreen}
+           set nicktag bold
+       } else {
+           set nicktag [nickcolor $nick]
+       }
+       if {[string index $target 0] ne {#}} {
+           set nick "=== $nick ==="
+           lappend nicktag bold
+       }
+       .t insert end $nick\t $nicktag $msg\n $tag
+    } elseif {[regexp {^:([^ ]+) +([^ ]+) +([^ ]+) +(.*)} $line -> \
+               server code target rest]} \
+    {
+       switch -- $code {
+           001 {
+               set ::registered 1
+           }
+           433 {
+               set seqlen [string length [incr ::meseq]]
+               set ::me [string range $::me 0 [expr 8-$seqlen]]$::meseq
+               send "NICK $::me"
+           }
+           353 {
+               if {[regexp {[^:]*:(.*)} $rest -> nameslist]} {
+                   foreach name $nameslist {
+                       lappend ::names $name
+                   }
+               }
+           }
+           366 {
+               shownames
+               set ::names {}
+           }
+       }
+       .t insert end $line\n italic
+    } else {
+       .t insert end $line\n italic
+    }
+    .t yview end
+}
+
+proc usererr msg {
+    .t insert end "--- $msg\n" {bold red}
+    .t yview end
+}
+
+proc post {} {
+    set msg [.cmd get]
+    .cmd delete 0 end
+    if [regexp {^/([^ ]+) *(.*)} $msg -> cmd msg] {
+       switch -- $cmd {
+           me {set msg "\001ACTION $msg\001"}
+           nick {send "NICK $msg"; set ::me $msg}
+           quit {send "QUIT $msg"; exit}
+           names {send "NAMES $::chan"}
+           quote {send $msg}
+           join {
+               send "PART $::chan"
+               send "JOIN $msg"
+               set ::chan $msg
+           }
+           msg {
+               if {[regexp {([^ ]+) +(.*)} $msg -> target querymsg]} {
+                   send "PRIVMSG $target :$msg"
+                   set tags [list [nickcolor $target] bold]
+                   set target ">>> $target <<<"
+                   .t insert end $target\t $tags $querymsg\n {black bold}
+                   .t yview end
+               }
+           }
+           help {
+               .t insert end "Available commands:\n"
+               .t insert end "/join /me /names /msg /nick /quit /quote\n"
+               .t yview end
+           }
+           default {usererr "unknown command /$cmd"}
+       }
+       if {$cmd ne {me} || $cmd eq {msg}} return
+    }
+    if [regexp {^/me (.+)} $msg -> action] {set msg "\001ACTION $action\001"}
+    foreach line [split $msg \n] {send "PRIVMSG $::chan :$line"}
+    set tag ""
+    if [regexp {\001ACTION(.+)\001} $msg -> msg] {set tag italic}
+    .t insert end $::me\t {bold blue} $msg\n [list blue $tag]
+    .t yview end
+}
+
+proc send str {
+    puts $::fd $str
+    flush $::fd
+}
+
+proc cron {} {
+    if {!$::joined && $::registered} {
+       send "JOIN $::chan"
+       set ::joined 1
+    }
+    after 2000 cron
+}
+
+set ::fd [socket $::server 6667]
+send "NICK $::me"
+send "USER $::me 0 * :PicoIRC user"
+send "JOIN $::chan"
+
+fileevent $::fd readable recv
+bind . <Escape> {exec wish $argv0 &; exit}
+cron

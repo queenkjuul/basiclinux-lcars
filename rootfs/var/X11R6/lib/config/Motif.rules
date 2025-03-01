@@ -1,0 +1,97 @@
+XCOMM
+XCOMM Motif.rules for GNU LessTif
+XCOMM
+XCOMM Copyright (C) 1997 Free Software Foundation, Inc.
+XCOMM $Id: Motif.rules.in,v 1.2 1997/02/18 07:07:44 u27113 Exp $
+XCOMM
+XCOMM This file is part of the GNU LessTif Library.
+XCOMM
+XCOMM This library is free software; you can redistribute it and/or
+XCOMM modify it under the terms of the GNU Library General Public
+XCOMM License as published by the Free Software Foundation; either
+XCOMM version 2 of the License, or (at your option) any later version.
+XCOMM
+XCOMM This library is distributed in the hope that it will be useful,
+XCOMM but WITHOUT ANY WARRANTY; without even the implied warranty of
+XCOMM MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+XCOMM Library General Public License for more details.
+XCOMM
+XCOMM You should have received a copy of the GNU Library General Public
+XCOMM License along with this library; if not, write to the Free
+XCOMM Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+XCOMM
+
+XCOMM Set some variables
+          LESSTIF = /usr/X11R6
+   EXTRA_INCLUDES = -I$(LESSTIF)/include
+            XMLIB = -L$(LESSTIF)/lib -lXm
+
+#ifndef	XmClientLibs
+#define	XmClientLibs	-L$(LESSTIF)/lib -lXm $(XTOOLLIB) $(XLIB)
+#endif	/* XmClientLibs */
+
+#ifndef	XmClientDepLibs
+#define	XmClientDepLibs
+#endif	/* XmClientDepLibs */
+
+XCOMM	SetUIDProgramTarget
+#ifndef SetUIDProgramTarget
+#define SetUIDProgramTarget NormalProgramTarget
+#endif
+
+/*
+ * MSimpleProgramTarget - generate rules for compiling and linking programs
+ * that only have one C source file.  It should only be used in Imakefiles 
+ * that describe a single program.
+ */
+#ifndef MSimpleProgramTarget
+#define	MSimpleProgramTarget(program)					@@\
+           OBJS = program.o						@@\
+           SRCS = program.c						@@\
+									@@\
+MComplexProgramTarget(program)
+#endif /* MSimpleProgramTarget */
+
+#ifndef SimpleCplusplusProgramTarget
+#define SimpleCplusplusProgramTarget(program)				@@\
+           OBJS = program.o						@@\
+           SRCS = program.CCsuf						@@\
+									@@\
+ComplexCplusplusProgramTarget(program)
+#endif /* SimpleCplusplusProgramTarget */
+
+#ifndef ProgramTargetHelper
+#define	ProgramTargetHelper(program,srcs,objs,deplib,locallib,syslib)	@@\
+ProgramTargetName(program): $(objs) $(deplib)				@@\
+	RemoveTargetProgram($@)						@@\
+	LinkRule($@,$(LDOPTIONS),$(objs),locallib $(LDLIBS) syslib)	@@\
+									@@\
+CenterProgramTarget(program,$(srcs),$(objs),locallib,syslib)		@@\
+SentinelProgramTarget(program,$(objs) $(deplib),$(objs) locallib $(LDLIBS) syslib) @@\
+PurifyProgramTarget(program,$(objs) $(deplib),$(objs) locallib $(LDLIBS) syslib) @@\
+ProofProgramTarget(program,$(objs) $(deplib),$(objs) locallib $(LDLIBS) syslib) @@\
+									@@\
+InstallProgram(program,$(BINDIR))					@@\
+InstallManPage(program,$(MANDIR))
+#endif /* ProgramTargetHelper */
+
+/*
+ * MComplexProgramTarget - generate rules for compiling and linking the 
+ * program specified by $(OBJS) and $(SRCS), installing the program and its
+ * man page, and generating dependencies.  It should only be used in 
+ * Imakefiles that describe a single program.
+ */
+#ifndef MComplexProgramTarget
+#define	MComplexProgramTarget(program)					@@\
+        PROGRAM = program						@@\
+									@@\
+AllTarget(program)							@@\
+									@@\
+ProgramTargetHelper(program,SRCS,OBJS,DEPLIBS,XmClientLibs $(LOCAL_LIBRARIES),NullParameter) @@\
+									@@\
+DependTarget()								@@\
+LintTarget()								@@\
+									@@\
+clean::									@@\
+	RemoveFile(ProgramTargetName(program))
+#endif /* MComplexProgramTarget */

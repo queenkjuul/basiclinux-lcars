@@ -1,0 +1,11 @@
+background=redbrick.lbm
+hero=regularguy.lbm
+enemy=badguy.lbm
+hidden=spiralthing.lbm
+upkey=ff97
+downkey=ff9d
+leftkey=ff96
+rightkey=ff98
+digleftkey=ff95
+digrightkey=ff9a
+slowdown=0

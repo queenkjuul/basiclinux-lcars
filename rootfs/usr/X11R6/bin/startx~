@@ -20,7 +20,7 @@ fi
 # need to be able to write to /tmp. if read-only, replace with ramdisk
 test $READONLY && mke2fs -b 1024 -i 1024 -m 0 /dev/ram1 64 
 test $READONLY && mount /dev/ram1 /tmp
-test $READONLY && export XAUTHORITY=/tmp/Xauthority
+export XAUTHORITY=/tmp/Xauthority
 
 screen=
 mouse=
@@ -45,7 +45,7 @@ echo "Examples:"
 echo "psaux (PS/2)"
 echo "ttyS0 (COM1)"
 echo "ttyS1 (COM2)"
-echo "usb"
+echo "usb (USB drivers must already be installed)"
 echo "must be one of psaux, ttyS0, ttyS1, usb, with matching capitalization"
 echo "uses psaux if left blank"
 echo ""
@@ -54,7 +54,7 @@ read mouse
 test -z "$mouse" && mouse=psaux
 umount /dev 2>/dev/null
 test $READONLY && mount -o loop /etc/$mouse.img /dev 2>/dev/null
-test ! $READONLY && ln -s /dev/$mouse /dev/mouse
+test ! $READONLY && ln -sf /dev/$mouse /dev/mouse
 
 echo "Enter your number of mouse buttons"
 echo "Examples:"
@@ -80,10 +80,11 @@ test -z $WM && export WM=icewm
 #set -- `cat /etc/Xconfig`
 
 echo "Starting X at "$screen" with "$mouse $buttons"-button mouse and "$WM" desktop"
+echo "XAUTHORITY="$XAUTHORITY
 echo "Press Enter to continue or control+C to exit"
 read _
 test -z $NOSAVEX && test ! $READONLY && echo $screen > /etc/Xconfig
 test -z $NOSAVEX && test ! $READONLY && test -w /etc/Xconfig && echo $mouse >> /etc/Xconfig
 test -z $NOSAVEX && test ! $READONLY && test -w /etc/Xconfig && echo $buttons >> /etc/Xconfig
 test -z $NOSAVEX && test ! $READONLY && test -w /etc/Xconfig && echo $WM >> /etc/Xconfig
-XAUTHORITY=$XAUTHORITY xinit -- /usr/X11/bin/Xvesa -screen $screen -"$buttons"button -terminate 
+XAUTHORITY=$XAUTHORITY xinit -- /usr/X11/bin/Xvesa -screen $screen -"$buttons"button -terminate
