@@ -1,0 +1,87 @@
+2005-04-03  Jeff Godfrey <jeff_godfrey@pobox.com>
+
+    * asteroids.tcl
+    - Fixed (for real this time...), the location of the high-score table when
+      the app is run as a starpack.  The previous fix to this problem wasn't
+      quite correct...
+      
+2005-04-23  Jeff Godfrey <jeff_godfrey@pobox.com>
+
+    * asteroids.tcl
+    - Fixed the storage location of the high-score file when app is run as
+      a starpack.  Prior to the change, when running as a starpack, the file
+      was (attempting to be) stored in the exe itself.  Now, in a wrapped state,
+      it is stored next to the exe file.
+    - Modified the code that loads the sound files into Snack so that it works
+      properly when wrapped as a starpack.
+    - Worked around an odd bug that caused the app to crash upon exit when run
+      as a starpack, *with* the Snack sound extension.  In the "appExit" proc,
+      there are one or more channels still open with names like "mk##", that
+      cause the crash.  As I don't know what's opening the channels (likely
+      MetaKit related?), I just closed them before exiting.  This seems to avoid
+      the problem, though it should likely be fixed elsewhere.
+    
+2005-03-25  Jeff Hobbs  <jeffh@ActiveState.com>
+
+	* asteroids.tcl: add exec wish at top
+
+2005-03-08  Jeff Hobbs  <jeffh@ActiveState.com>
+
+	* asteroids.tcl: redo bindGameKeys to use virtual events.  Add
+	Return as a 'fire' alternative key.
+	Add an hit accuracy counter in the bottom right corner.
+
+2005-03-02  Jeff Godfrey <jeff_godfrey@pobox.com>
+
+    * asteroids.tcl
+    - Fixed Bug #1155390 - Background "heartbeat" sound (which gets
+      progressively faster throughout a game), was not being reset to its
+      initial _slow_ speed when the game ended.
+    
+2005-02-27  Jeff Godfrey <jeff_godfrey@pobox.com>
+
+    * asteroids.tcl
+    - Fixed - Newly added "Pause" state didn't work with "Game Loop Godfrey"
+    - Added back ability to return to main menu during game play by pressing
+      <Esc> (lost when Pause mode was added)
+
+2005-02-27  Jeff Godfrey <jeff_godfrey@pobox.com>
+
+    * asteroids.tcl:
+    - General code formatting and alignment cleanup
+    - Added game Pause function, bound to "P" and "p"
+
+2005-02-25  Jeff Hobbs  <jeffh@ActiveState.com>
+
+	* asteroids.tcl: add options to the main menu to control game
+	loop, sound and color.  Removed menu and put About on main menu.
+	Made all items respond to mouse.
+
+2005-02-23  Jeff Hobbs  <jeffh@ActiveState.com>
+
+	* asteroids.tcl: introduce a sense of scaling, to allow the game
+	to adapt to smaller screens.
+
+	* asteroids.tcl: introduce named fonts, colors for items.
+	Move the FPS label into the canvas, other code cleanup.
+
+	* asteroids.tcl: Updated version from the wiki with the following:
+	- Added a second version of the "gameLoop" proc, provided by Jeff
+	  Hobbs.  The original version is not CPU friendly as it just runs
+	  the game as fast as it can inside a "while" loop.  Jeff H's mod
+	  uses the event loop for processing, and tends to place a much
+	  lighter load on the CPU.  Immediately below the two gameLoop procs
+	  (gameLoop0 and gameLoop1), you'll need to decide which one you
+	  want to use and "rename" one of them to gameLoop. Currently,
+	  Jeff H's loop is being used.  If you have any animation problems
+	  with either loop, try the other one.  Both seem to provide a
+	  similar experience.
+	- Score and level info is now *drawn* for a more authentic look
+	- Extra ship every 10,000 points
+	- Added "Help | About" menu
+	- Fixed bug when "High Score" dialog is closed using window decoration
+
+	* beat1.wav, beat2.wav, explosion.wav, shot.wav, thrust.wav:
+	* asteroids.tcl: Initial import of asteroids by Jeff Godfrey from
+	wiki page http://wiki.tcl.tk/13601
+
