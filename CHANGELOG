@@ -37,7 +37,7 @@ Originally, I had wanted to avoid this; however, the full TclX/TkX, gnuplot, and
 
 - DNS does not work in LiveCD environment (`/etc/resolv.conf` not writable, [#22](https://github.com/queenkjuul/basiclinux-lcars/issues/22))
 - ext2 install still doesn't work ([#1](https://github.com/queenkjuul/basiclinux-lcars/issues/1))
-- Automatic boot does not work of CD is not in first available CD-ROM drive ([#16](https://github.com/queenkjuul/basiclinux-lcars/issues/16))
+- Automatic boot does not work if CD is not in first available CD-ROM drive ([#16](https://github.com/queenkjuul/basiclinux-lcars/issues/16))
 
 ## Beta 1 Rev 3
 

@@ -89,11 +89,12 @@ The upstream BasicLinux project ships with:
     - Utilities (cdutils, ImageMagick, hfsutils, mpg123, mplayer, mc, Xcdroast)
     - Development tools (gcc, automake, yabasic, perl, python 1.5, Tcl/Tk 8.6, JDK 1.1.7/Java 7)
     - Desktop applications (AbiWord, Gimp, Xpaint, TkDesk, MagicPoint)
-    - Games (Xfreecell, LinCity, Freecell, and tons more)
+    - Games (Freecell, LinCity, Tetris, and tons more)
     - And many more!
 - All BasicLinux official add-on kernel modules
 - Full Slackware 4.0 binary package repository*
   - *the standard packages are there, but `xemacs`, `gnome`, and additional X drivers are omitted
+  - Files omitted from the LiveCD are still available in this repo in the `slackware/slackware-4.0/` directory
 - As many BasicLinux "contrib" packages as could be located and fit on-disc
 - Boots from SCSI and USB CD drives using a boot floppy
 - Bootable MS-DOS rescue environment
@@ -252,6 +253,8 @@ See the BasicLinux documentation on-disc (`LiveCD/docs`) for more info.
 ### Java
 
 JDK 1.1.7 is included in `/usr/local/java` and the `java` binary is included in the PATH. This JDK distribution (originating from Slackware 4.0) includes custom wrapper scripts which are not compatible with BusyBox. I have not 'backported' the fixes (commenting out offending lines) to the actual `java-1.1.7.tar.gz` package included on-disc, so be warned, using that package directly will not work. You may (or probably not) have luck using the included Bash in place of the stock BusyBox shell, or if you've installed to HDD, installing more of the Slackware base system. It's probably better just to inspect the provided [`rootfs/usr/local/java/bin/java`](rootfs/usr/local/java/bin/java) and [`/usr/local/java/bin/checkVersions`](rootfs/usr/local/java/bin/checkVersions) files and apply the changes on a new install.
+
+*This should be "backported" into a BL3 .tgz package eventually, see [#24](https://github.com/queenkjuul/basiclinux-lcars/issues/24)*
 
 ## Installation
 
