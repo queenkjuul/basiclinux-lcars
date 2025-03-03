@@ -1,0 +1,3 @@
+#mplayer -playlist http://www.radionz.co.nz/audio/live/concert
+mplayer mms://202.7.7.90/rnz-cfm
+##Radio New Zealand Concert, 32K/32KHz

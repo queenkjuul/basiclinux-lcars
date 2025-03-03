@@ -1,0 +1,1 @@
+for i in * ; do jpegtopnm $i | pnmscale .5 | pnmtojpeg > /quarter/$i; done

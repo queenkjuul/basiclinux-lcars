@@ -1,6 +1,0 @@
-# Channel alias, makes channel a part-and-join command.
-#
-alias channel {
-    if (([#]==[$[1]C]) || ([&] == [$[1]C])) {part $C}
-    join $*
-}

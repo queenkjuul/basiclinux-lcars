@@ -1,0 +1,168 @@
+netpbm-10.26.7.libc5.tgz compiled by David Moberg for BL3
+with libtiff and libpng solibs.  
+
+netbpm-bl3.tgz - selected set of programs from above.
+
+netpbm-10.31-SW81-full.tgz compiled by Sindi Keesan for BL2 against
+SW81 glibc-2.2.5 upgrade (you need to install glibc-solibs-2.2.25)
+
+netpbmlibs-SW81.tgz contains libtiff.so.3.5.7 (SW81) and recently compiled 
+libpng.so.3.1.2.8, libz.so.1.2.3 and their header files and a couple of 
+png programs and man pages, the dependencies for the above.
+
+I will eventually post the BL2 equivalent of netpbm-bl3.tgz
+
+Netpbm provides a simpler and faster way of printing black and white 
+graphics, without lpr, ghostscript, printcap, or print filters, or the 
+need to print as 'user'. First insmod parport, parport_pc, lp.
+
+Suggested scripts:
+
+To convert all .png files in current directory:
+
+for i in *.png; do pngtopnm $i > $i.pnm
+
+Netpbm will print to deskjet/laserjet (pbmtolj - default resolution
+is 75 dpi) or Epson ESCP/2 printers (pbmtoescp2 - 360 dpi) or older
+Epson (pbmtoepson - not tested).  Use the other programs to convert
+between image formats (pstopnm, jpegtopnm, pnmtopng, etc.) or modify
+pnm files (reduce, enlarge, scale, flip, rotate, cut, invert, etc.)  
+
+Up-to-date html documentation at http://netpbm.sourceforge.net/doc April 
+2005 docs for the selected programs are in netpbmdoc.tgz.  Unpack it using 
+tar -zxvf, for instance into /usr/share/doc/netpbm (where you can also put 
+this readme file).
+
+pbm - black and white, pgm - grey, ppm - color, pnm/pam - any
+
+pdfimages and pdftops are from Derek Noonberg's xpdf
+http://www.foolabs.com/xpdf
+
+scanimage is from SANE (Slackware 8.1 package sane.tgz)
+
+I compiled gs 8.50 (keesan.freeshell.org/bl/gs850.tgz)
+
+All three require glibc.so-2.2.5 (Slackware 8.1) which can be
+installed in BL2 (replacing 2.1.3) or BL3 (coexists with libc5).
+
+==============================================
+The following examples of using netpbm were tested only on my own
+printers.  Please let me know of any errors or other suggested uses at
+keesan@freeshell.org.
+
+
+Printing with a "Windows" ppa printer (HP 720, 820 and 100 series) (This 
+April 30 2005 version of pbmtoppa is broken.  It won't work on the 820 at 
+all, just flashes all the lights, and on the 722, when you can even get it 
+to accept a used color cartridge so it will let you print black, prints 
+garbage in one quarter of the page.  I am leaving this section for future 
+use.)
+
+These printers print 'ppa' files, only at exactly 600 dpi, 8.5"x11"
+(5100x6600 rowsxcolumns), so files may need to be trimmed with pamcut or
+padded with pnmpad before printing.
+
+scanimage --resolution 600|pamcut -height 6600|pbmtoppa > /dev/lp0
+
+Scan on HP scanjet 5 at 600 dpi, cut off bottom to 11" from 11.59",
+print on HP 820Cse Windows printer at 600 dpi, lp0
+
+You can shorten -height to -h, -width to -w.
+------------
+Printing a pdf file containing only images
+
+Make the following script pdftoppa, chmod +x, place in /usr/local/sbin
+
+#!/bin/sh
+pdfimages $1 name
+pnmenlarge 3 name*|pbmtoppa > /dev/lp0
+
+Convert a pdf file created by scanning at 200 dpi on a 'pdf machine' 
+to a set of up to 999 pbm files named name-???.pbm, 
+enlarge all pages to 600 dpi and print on HP 820Cse.
+
+To print colored images first convert to pnm, then pgm, then pbm.
+===================================================
+Scanning and printing on a deskjet or laserjet 
+(tested only on HP Deskjet 540 and Laserjet IIP)
+
+Make script called copylj
+
+#!/bin/sh
+scanimage --resolution 300|pbmtolj -resolution 300 -copies $1> /dev/lp1
+
+copylj 3 prints 3 copies of an image scanned at 300 dpi on deskjet, lp1 
+
+You cannot shorten --resolution, but you can shorten -resolution to -r
+and -copies to -c.
+----------------
+Older laserjet
+
+scanimage --resolution 150|pbmtolj -r 150 > /dev/lp0
+
+Scan a page at 150 dpi and print one copy on HP laserjet IIp, which has
+only 1MB RAM and won't print a 300 dpi page of graphics
+
+pnmtolj prints to a color laserjet and maybe also to a deskjet.
+=============================================================
+Printing on an Epson ESCP/2 (black only)
+(tested on Stylus Color C62 and 800 - gs stcolor devices)
+
+pbmtoescp2 *.pbm > /dev/lp0
+
+Print all .pbm files in current directory to Epson ESCP2/ printer
+at default 360 dpi, which if the scanned image was a full page scanned
+at 300 dpi will print 5/6 page width and height.  If the scanned image
+was a full page scanned at 400 dpi, it will print 9/10 of the image
+(omitting the right and bottom edges).
+=============================================================
+Printing MS WORD, png, gif, jpeg, tiff, bmp
+
+To print .doc files containing only one png image (scanner
+output) obtain doc2png for BL2 or compile doc2png.c for BL3 from
+http://keesan.freeshell.org/bl - see instructions for compilation
+
+Make a script printdoc, which prints the png parts of all
+.doc files in the current directory
+
+#!/bin/sh
+doc2png *.doc
+for i in *.png; do pngtopnm $i | pbmtolj -r 300; done > /dev/lp0
+
+This last line can be used to print gif, jpeg, tiff or ps
+by substituting giftopnm, etc.
+
+If the .doc file contains text or other image formats, use
+wvware or Abiword to view/convert.
+==============================================================
+Printing color images or pdf/ps using ghostscript
+
+Netpbm printer programs will print only black and white images.
+To print color or text, use pnmtops then print with gs in CLI mode.
+
+Make a script printdj 
+
+#!/bin/sh
+gs $1 -q -dSAFER -sDEVICE=deskjet -r300x300 -sPAPERSIZE=letter -sOutputFile=- -
+
+pnmtops filename.pnm | printdj 
+
+???Is this correct or do I need > /dev/lp0?
+
+----------------------------------------
+Printing text with cat and dos2unix
+
+pdftotext filename.pdf > filename.txt  (edit the formatting manually)
+cat filename.txt|dos2unix -d > /dev/lp0
+
+(dos2unix -d can be omitted on my Panasonic KXP-1124 dot-matrix printer)
+
+Some pdf files will not let you extract the text this way.
+
+-----------------------------------------
+Use the script quarter to scale photos to half width and height
+so you can post a 640x480 instead of 1280x960 image.
+
+Use pamcat to combine several photso into one, pampad to make
+a black border around them and match the 4x6 scale used
+by photo printing machines.

@@ -1,8 +1,0 @@
-#!/bin/sh
-exec /usr/lib/gcl-2.2.2/unixport/saved_gcl \
-   -dir /usr/lib/gcl-2.2.2/unixport/ \
-   -libdir /usr/lib/gcl-2.2.2/ \
-   -eval '(setq si::*allow-gzipped-file* t)' \
-   -eval '(setq si::*tk-library* "/usr/lib/tk4.1")' \
-     "$@"
-# other options: -load /tmp/foo.o -load jo.lsp -eval "(joe 3)"

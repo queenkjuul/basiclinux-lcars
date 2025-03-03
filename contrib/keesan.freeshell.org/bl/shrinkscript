@@ -1,0 +1,29 @@
+From 3aoo-cvfd@dea.spamcon.org Tue Dec 27 06:51:38 2005
+Date: Tue, 27 Dec 2005 19:51:20 +1300
+From: 3aoo-cvfd@dea.spamcon.org
+Reply-To: baslinux@lists.ibiblio.org
+To: baslinux@lists.ibiblio.org
+Subject: Re: [BL] script to shrink photos
+
+Sindi wrote:
+>
+> how can I shrink all the files in a directory with one command or script?
+
+To which David replied:
+> 
+> jpegtopnm infile.jpg | pnmscale .5 | pnmtojpeg >outfile.jpg
+> 
+> You need to put this in a 'for' loop in order to process multiple files
+> at once.
+
+for i in * ; do jpegtopnm $i | pnmscale .5 | pnmtojpeg >$i.new ; done
+
+Cheers,
+Steven
+
+____________________________
+http://www.basiclinux.com.ru
+_______________________________________________
+BasLinux mailing list
+BasLinux@lists.ibiblio.org
+http://lists.ibiblio.org/mailman/listinfo/baslinux

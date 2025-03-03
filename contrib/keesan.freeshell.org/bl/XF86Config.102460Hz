@@ -1,0 +1,110 @@
+RgbPath	"/usr/X11R6/lib/X11/rgb"
+
+FontPath   "/usr/X11R6/lib/X11/fonts/misc/"
+FontPath   "/usr/X11R6/lib/X11/fonts/Type1/"
+FontPath   "/usr/X11R6/lib/X11/fonts/75dpi/"
+FontPath   "/usr/X11R6/lib/X11/fonts/100dpi/"
+
+Section "Keyboard"
+    Protocol	"Standard"
+    XkbDisable
+EndSection
+
+Section "Pointer"
+#    Protocol    "Microsoft"
+    Protocol    "PS/2"
+    Device      "/dev/mouse"
+    Emulate3Buttons
+    Emulate3Timeout    50
+EndSection
+
+Section "Monitor"
+    Identifier  "My Monitor"
+    VendorName  "Unknown"
+    ModelName   "Unknown"
+    
+# Uncomment ONE HorizSync line depending on your monitor.    
+#  This works for a monitor with 800x600 max resolution    
+#   HorizSync   31.5 - 37.9
+
+#  For a monitor that does 1024x768 @ 60Hz, 48.4 kHz hsync
+   HorizSync   31.5 - 48.4
+# For a monitor that does 1024 at 70 Hz, 56.5 KHz hsync
+#    HorizSync   31.5 - 56.5
+# For a monitor that does 1024 at 76 Hz, 62.5 KHz hsync
+#    HorizSync   31.5 - 62.5
+
+#  For a monitor that does 1280x1024 @ 61 Hz, 64.2 kHz hsync
+#    HorizSync   31.5 - 64.2
+#  For a monitor that does 1280x1024 @ 70 Hz, 74.59 kHz hsync
+#    HorizSync   31.5 - 74.59
+
+    VertRefresh 55-90
+Modeline "640x400"     25.175 640  664  760  800   400  409  411  450
+Modeline "640x480"     25.175 640  664  760  800   480  491  493  525
+ModeLine "800x600"     36     800  824  896 1024   600  601  603  625
+
+Modeline "640x400"     31.5   640  672 736   832   400  401  404  445 -HSync +VSync
+Modeline "640x480"     31.5   640  680  720  864   480  488  491  521
+ModeLine "640x480"     31.5   640  656  720  840   480  481  484  500 -HSync -VSync
+Modeline "800x600"     40     800  840  968 1056   600  601  605  628 +hsync +vsync
+
+# For newer monitors, uncomment the lines starting in Modeline only
+# 1024x768 @ 87 Hz interlaced, 35.5 kHz hsync
+#Modeline "1024x768"    44.9  1024 1048 1208 1264   768  776  784  817 Interlace
+
+# 800x600 @ 72 Hz, 48.0 kHz hsync
+Modeline "800x600"     50     800  856  976 1040   600  637  643  666 +hsync +vsync
+# 1024x768 @ 60 Hz, 48.4 kHz hsync
+Modeline "1024x768"    65    1024 1032 1176 1344   768  771  777  806 -hsync -vsync
+# 1024x 768 @ 70 Hz, 56.5 kHz hsync
+#Modeline "1024x768"    75    1024 1048 1184 1328   768  771  777  806 -hsync -vsync
+
+# 1280x1024 @ 70 Hz, 74.59 kHz hsync
+#Modeline "1280x1024"   126.5  1280 1312 1472 1696  1024 1032 1040 1068 -HSync -VSync
+# 1280x1024 @ 74 Hz, 78.85  kHz hsync
+#Modeline "1280x1024"   135   1280 1312 1456 1712 1024 1027 1030 1064
+
+
+EndSection
+
+Section "Device"
+    Identifier  "MSI MS-4417"
+    VendorName  "Unknown"
+    BoardName   "Unknown"
+    #VideoRam    1024
+    # Option "no_accel" # Use this if acceleration is causing problems
+    # Option "fifo_moderate" 
+    # Option "fifo_conserv" 
+    # Option "fifo_aggresive" 
+    # Option "fast_vram"
+    # Option "pci_burst_on"
+    # Option "xaa_benchmark" # DON'T use with "ext_eng_queue" !!!
+    # Option "ext_eng_queue" # Turbo-queue. This can cause drawing 
+                             # errors, but gives some accel
+    # Insert Clocks lines here if appropriate
+EndSection
+
+Section "Screen"
+    Driver      "svga"
+    Device      "MSI MS-4417"
+    Monitor     "My Monitor"
+    Subsection "Display"
+        Depth       8
+#        Modes       "800x600" "640x480"
+	Modes	    "1024x768" "800x600" "640x480"
+        # ViewPort    0 0
+    EndSubsection
+EndSection
+
+Section "Screen"
+    Driver      "accel"
+    Device      "MSI MS-4417"
+    Monitor     "My Monitor"
+    Subsection "Display"
+        Depth       8
+        Modes       "800x600" "640x480"
+        #ViewPort    0 0
+    EndSubsection
+EndSection
+

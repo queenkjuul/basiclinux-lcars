@@ -1,0 +1,13 @@
+insmod soundcore
+#insmod soundlow  # for older kernels
+insmod sound
+insmod uart401
+insmod ad1848
+insmod cs4232 io=0x530 irq=5 dma=1 dma2=0 isapnp=0
+#mpuio=0x330 mpuirq=9  #for playmidi
+#or dma2=3, 2, 5
+#insmod opl3 io=0x388
+#use aumix full volume master, pcm and speakers
+#TP600E and TP770E have the same CS4237B ISA chip
+##Without isapnp=0 there is a IRQ/DRQ conflict message and garbled.
+##Do not compile into the kernel - may garble.

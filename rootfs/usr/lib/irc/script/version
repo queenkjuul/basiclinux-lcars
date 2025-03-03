@@ -1,8 +1,0 @@
-#
-# This file names the script set  version. Future updates to
-# IRCII may be made as updates to the script files. This file
-# sets the CLIENTINFO variable so as to indicate the client
-# version and scripts version
-#
-
-set CLIENT_INFORMATION debian-ircii 2.9: AT&T you will (ojnk!)

@@ -1,0 +1,106 @@
+<html>
+<head><script type="text/javascript" src="https://web-static.archive.org/_static/js/bundle-playback.js?v=7YQSqjSh" charset="utf-8"></script>
+<script type="text/javascript" src="https://web-static.archive.org/_static/js/wombat.js?v=txqj7nKC" charset="utf-8"></script>
+<script>window.RufflePlayer=window.RufflePlayer||{};window.RufflePlayer.config={"autoplay":"on","unmuteOverlay":"hidden"};</script>
+<script type="text/javascript" src="https://web-static.archive.org/_static/js/ruffle/ruffle.js"></script>
+<script type="text/javascript">
+    __wm.init("https://web.archive.org/web");
+  __wm.wombat("http://www.volny.cz:80/basiclinux1/bas-x.html","20040513033731","https://web.archive.org/","web","https://web-static.archive.org/_static/",
+	      "1084419451");
+</script>
+<link rel="stylesheet" type="text/css" href="https://web-static.archive.org/_static/css/banner-styles.css?v=p7PEIJWi" />
+<link rel="stylesheet" type="text/css" href="https://web-static.archive.org/_static/css/iconochive.css?v=3PDvdIFv" />
+<!-- End Wayback Rewrite JS Include -->
+
+<title>Adding X to BasicLinux</title>
+</head>
+<body bgcolor="#cccccc" text="#000000" link="#0000cc">
+<basefont size="3">
+<hr>
+<center>
+<big><b>
+Adding&nbsp; X&nbsp; to&nbsp; <font color="#660000"> Basic</font>Linux &nbsp;
+</b></big>
+</center>
+<hr><br>
+<p>
+To install X, you need five files from <a href="slack35.html">Slackware 3.5</a>: &nbsp; <b>bin</b>, <b>cfg</b>, <b>fnts</b>, <b>lib</b> and <b>vg16</b>. &nbsp; You will find these files in /slakware/x1. &nbsp; You should use the pkg command to install the files:<p>
+<table border="1" cellpadding="5"><td>
+pkg &nbsp;x332bin.tgz  <br>
+pkg &nbsp;x332cfg.tgz  <br>
+pkg &nbsp;x332fnts.tgz <br>
+pkg &nbsp;x332lib.tgz  <br>
+pkg &nbsp;x332vg16.tgz <br>
+mouse                  <br>
+startx                 <br>
+</td></table><p>
+This will take about 12mb of HD space and run X using a primitive window manager (twm). &nbsp; Before going any further, you should experiment with X to make sure it is working properly. &nbsp; For example, try executing (in an xterm) one or more of the following: &nbsp;  xcalc, xclock or xeyes. <p>
+
+The next step is to install a better window manager. &nbsp; Download the icewm package (132kb) <a href="icewm.tgz">here</a>. &nbsp; You will also need to install the <b>xpm</b> package from <a href="slack35.html">Slackware 3.5</a>. &nbsp; It is in the /slakware/x1 directory.<p>
+<table border="1" cellpadding="5"><td> 
+pkg &nbsp;xpm.tgz      <br>
+pkg &nbsp;icewm.tgz    <br>
+startx           <br>
+</td></table>
+<br>
+Icewm should now be running.  Click on the penguin to see the menu.
+<p>
+<br>
+<u>Freecell</u>
+<br> 
+xfreecell is a clone of the solitare game popularized by Windows 95. &nbsp; A version compiled for BasicLinux is available <a href="https://web.archive.org/web/20040513033731/http://www.volny.cz/basiclinux/xfreecell.tgz">here</a>.<p>
+<table border="1" cellpadding="5"><td>
+pkg &nbsp;xfreecell.tgz  <br>
+startx                   <br>
+</td></table>
+<br>
+Execute Freecell from the icewm menu.
+<p>
+<br>
+<u>Netscape</u>
+<br> 
+You need a 486dx33 with 12meg RAM (or better) to run Netscape. &nbsp; The Linux version of Netscape 3.04 is compatible with BasicLinux. &nbsp; It is a 2mb download from the Netscape <a href="https://web.archive.org/web/20040513033731/http://home.netscape.com/download/archive/client_archive30x.html">site</a>. &nbsp;  You will find it under 3.04 English &gt; Netscape Navigator &gt; Unix &gt; x86 Linux ELF.   
+<p>
+The Netscape .tgz is <b>not</b> a Slackware-type package. &nbsp; You have to install it manually. &nbsp; Do not use the pkg command.<p>
+<table border="1" cellpadding="5"><td>
+cd /usr/local/netscape <br>
+untar netscape archive in this directory <br>
+startx
+</td></table>
+<br>
+Execute Netscape from the icewm menu.
+<p>
+<br>
+<u>Swap</u>
+<br> 
+Netscape and other X applications are quite memory hungry. &nbsp; If you have 16mb RAM or less, you should create a 32mb swap partition. &nbsp; If you have more RAM than this, make the swap partition the same size as your RAM. &nbsp; A swap partition is created using fdisk and mkswap. &nbsp; It is activated by executing <b>swapon</b> or by listing it in /etc/fstab (where it is automatically activated at startup).   
+
+
+</body>
+</html>
+
+
+
+
+
+
+<!--
+     FILE ARCHIVED ON 03:37:31 May 13, 2004 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 08:21:43 Feb 27, 2025.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  captures_list: 0.485
+  exclusion.robots: 0.021
+  exclusion.robots.policy: 0.01
+  esindex: 0.01
+  cdx.remote: 77.099
+  LoadShardBlock: 300.644 (3)
+  PetaboxLoader3.datanode: 243.2 (4)
+  PetaboxLoader3.resolve: 268.15 (2)
+  load_resource: 222.358
+-->

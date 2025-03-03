@@ -1,0 +1,4 @@
+
+##For AOPEN sis900 onboard LAN kernel 2.4.31
+insmod crc32
+insmod sis900

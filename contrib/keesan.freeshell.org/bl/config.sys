@@ -1,0 +1,17 @@
+DEVICE=\dos98.az\sys\HIMEM.SYS /testmem:off
+dos=high
+
+LASTDRIVE=Z
+
+break=on
+FILES=30
+BUFFERS=20
+
+;DEVICE=\dos98.az\sys\oakcdrom.SYS /D:cd0
+
+rem USB support
+;device=\dos98.az\sys\usbaspi5.sys /v /r /w
+;device=\dos98.az\sys\di1000dd.sys
+
+shell=\dos98.az\command.com /p /k \dos98.az\sys\autoexec
+

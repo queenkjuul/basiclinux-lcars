@@ -1,0 +1,4 @@
+#!/bin/bash
+
+zcat `find /usr/X11R6/man/ -name $1.*gz` | man2html | lynx -stdin
+

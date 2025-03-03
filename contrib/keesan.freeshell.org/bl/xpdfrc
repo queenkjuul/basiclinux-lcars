@@ -1,0 +1,89 @@
+#========================================================================
+#
+# Sample xpdfrc file
+#
+# The Xpdf tools look for a config file in two places:
+# 1. ~/.xpdfrc
+# 2. in a system-wide directory, typically /usr/local/etc/xpdfrc
+#
+# This sample config file demonstrates some of the more common
+# configuration options.  Everything here is commented out.  You
+# should edit things (especially the file/directory paths, since
+# they'll likely be different on your system), and uncomment whichever
+# options you want to use.  For complete details on config file syntax
+# and available options, please see the xpdfrc(5) man page.
+#
+# Also, the Xpdf language support packages each include a set of
+# options to be added to the xpdfrc file.
+#
+# http://www.foolabs.com/xpdf/
+#
+#========================================================================
+
+#----- display fonts
+
+###X fonts section has been omitted.  This package is designed
+####to use the included ghostscript fonts instead.
+#### Fonts go into /usr/local/share/ghostscript/fonts.
+
+# These map the Base-14 fonts to the Type 1 fonts that ship with
+# ghostscript.  You'll almost certainly want to use something like
+# this, but you'll need to adjust this to point to wherever
+# ghostscript is installed on your system.
+
+#The following has been modified to Nimbus Sans fonts from ghostscript
+#for both Times and Helvetica.  You could also display italic and bold
+#and bolditalic as regular by changing all of the first four lines to
+#n019043l.pfb and delete the other n019* fonts.  
+
+#Courier is monospaced so leave it and symbols and dingbats.
+
+# The full ghostscript fonts are about 3MB, these are 4.6K each x 10.
+# If you installed the full ghostscript fonts from a Slackware package
+# symlink to them from /usr/local/share/ghostscript/fonts.
+
+displayFontT1 Times-Roman               /usr/local/share/ghostscript/fonts/n019003l.pfb
+displayFontT1 Times-Italic              /usr/local/share/ghostscript/fonts/n019023l.pfb
+displayFontT1 Times-Bold                /usr/local/share/ghostscript/fonts/n019004l.pfb
+displayFontT1 Times-BoldItalic          /usr/local/share/ghostscript/fonts/n019024l.pfb
+
+displayFontT1 Helvetica                 /usr/local/share/ghostscript/fonts/n019003l.pfb
+displayFontT1 Helvetica-Oblique         /usr/local/share/ghostscript/fonts/n019023l.pfb
+displayFontT1 Helvetica-Bold            /usr/local/share/ghostscript/fonts/n019004l.pfb
+displayFontT1 Helvetica-BoldOblique     /usr/local/share/ghostscript/fonts/n019024l.pfb
+
+displayFontT1 Courier			/usr/local/share/ghostscript/fonts/n022003l.pfb
+displayFontT1 Courier-Oblique		/usr/local/share/ghostscript/fonts/n022023l.pfb
+displayFontT1 Courier-Bold		/usr/local/share/ghostscript/fonts/n022004l.pfm
+displayFontT1 Courier-BoldOblique	/usr/local/share/ghostscript/fonts/n022024l.pfm
+
+displayFontT1 Symbol			/usr/local/share/ghostscript/fonts/s050000l.pfm
+displayFontT1 ZapfDingbats		/usr/local/share/ghostscript/fonts/d050000l.pfm
+
+
+#----- text output control
+
+# Choose a text encoding for copy-and-paste and for pdftotext output.
+# The Latin1, ASCII7, and UTF-8 encodings are built into Xpdf.  Other
+# encodings are available in the language support packages.
+
+#textEncoding		UTF-8
+
+# Choose the end-of-line convention for multi-line copy-and-past and
+# for pdftotext output.  The available options are unix, mac, and dos.
+
+#textEOL		unix
+
+#----- misc settings
+
+# Set the anti-aliasing mode for t1lib and FreeType.  These can be low
+# or high (anti-aliasing), plain (no anti-aliasing), or none (disable
+# the rasterizer entirely).
+
+#t1libControl		low
+#freetypeControl	low
+
+# Set the command used to run a web browser when a URL hyperlink is
+# clicked.
+
+#urlCommand	"netscape -remote 'openURL(%s)'"

@@ -1,0 +1,23 @@
+This uclibc zgv package, containing files compiled by David Moberg for a 1-floppy USB camera 
+linux, will overwrite any existing libc5 or libc6 libvga.so.1, used by other svgalib programs 
+such as libc6 links2 or zgv from delilinux, newzgv for BL1, or libc6 bmv which I posted for 
+BL2.
+
+zgv under kernel 2.4.31 requires libvga.so.1.4.3 (or later), available from Slackware 8.1 for 
+BL2 (or for BL3 with glibc 2.2.5 upgrade).  
+
+Use this uclibc zgv in BL3 if you have not upgraded the library and want a small non-X viewer 
+which does more formats than xli (in X), or on computers where you can't get Xvesa or other X 
+to work.  First try my Chips and Tech XF86Config for Hitachi and Toshiba laptops with SVGA X 
+server.
+
+You will also need /etc/vga/libvga.config
+
+It is in my BL3jpeg.tgz package (libc5), also svgalib-based, and usable with kernels 2.2.16 
+and 2.2.26, which provides seejpeg instead of zgv for computers with very little RAM.
+
+If zgv or seejpeg do not work, edit the file to uncomment chipset VGA (low-res) or chipset 
+VESA.  Some video cards will work with one but not the other.  Most are auto-detected and 
+don't need either.  Matrox is an odd one.
+
+Sindi Keesan

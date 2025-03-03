@@ -1,6 +1,0 @@
-The Sony CDU-924 drive has no hardware support for CDROM XA2 mode 1.
-If you want to create a multi session disk, you need to switch back to
--data (plain CD-ROM)
-
-There is currently a bug in the Sony code of cdrecord that does 
-not allow you to have different track types in one session.

@@ -1,0 +1,8 @@
+echo 1 > /proc/sys/net/ipv4/ip_forward
+iptables -t nat -A POSTROUTING -o wlan0 -j MASQUERADE
+#iptables -t nat -A POSTROUTING -o eth1 -j MASQUERADE
+iptables -A FORWARD -i eth0 -j ACCEPT
+ifconfig eth0 192.168.3.1
+
+##eth0 - wired, eth1 or wlan0 or ath0 - wireless in gateway
+##set client 192.168.3.2 etc.

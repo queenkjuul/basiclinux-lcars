@@ -1,0 +1,33 @@
+
+2.01
+--------------------------------------------
+rc.tgz:  fixed halt bug in /etc/rc.d/rc.6
+rc.tgz:  added BL2-base to /var/log/packages
+--------------------------------------------
+
+2.02
+---------------------------------------
+busybox:  removed mini version of mount
+mount:    added stardard mount to /bin
+---------------------------------------
+
+2.03
+---------------------------------------------------
+go.gz:    fixed fstab bug in HD installation script 
+dev:      added /dev/hda8 and /dev/hda9
+insmod:   moved from /bin/busybox to /sbin
+hotlist:  added URL for Discussion Group
+---------------------------------------------------
+
+2.1
+-------------------------------------------------
+make_fd.zip:  completely new routine
+boot.bat:     added parameter (kbd-reset)
+modules:      added three (eepro100, ewrk3, tlan)
+modules:      deleted eepro.o.gz
+slattach:     deleted
+netsetup:     changed some examples
+.profile:     deleted less from aliases
+--------------------------------------------------
+
+

@@ -1,0 +1,33 @@
+BasicLinux on a parallel port ZIP drive
+=======================================
+
+This file (blppaz.gz) is a gzip'ed 1.44M floppy disk image. It allows you to
+boot a BL root partition from a disk in a parallel port ZIP drive. Instead of
+using the floppy, you can also boot from DOS. Read on for details.
+
+To use, you'll need to gunzip the file. Then write the blppaz image file to a
+1.44M floppy disk. From within BL3, use
+
+dd if=blppaz of=/dev/fd0
+
+Then make a /baslin directory on a ZIP disk. Copy the fs.img loopback image
+from the BL3 loop version zip (bl3-32.zip) file to that directory. Move the
+ZIP disk to a parallel port drive, and plug that into a PC. You can then boot
+from the floppy you've just made.
+
+You can also use a more traditional BL loopback boot. First copy the
+/boot/initrd.gz file from the image file. Then replace the initrd.gz file from
+the standard BL3 loop distribution with the one from the image. You can then
+run the boot.bat batch file in DOS to boot off the ZIP drive.
+
+This floppy works by using GRUB to load the BL3 kernel image. Then, the initial
+ramdisk /linuxrc inserts the following modules to that kernel:
+
+scsi_mod
+sd_mod
+parport
+parport_pc
+ppa
+
+Finally, the /linuxrc mounts /dev/sda4 and tries to boot the /baslin/fs.img
+loopback file from there.

@@ -1,0 +1,6 @@
+insmod parport
+insmod parport_pc
+insmod scsi_mod
+insmod sd_mod
+insmod imm
+##Will find /dev/sda4 or sdb4

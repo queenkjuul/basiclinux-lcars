@@ -1,0 +1,298 @@
+
+Hallo und Willkommen zu BasicLinux!
+===================================
+
+Ich persönlich halte die BasicLinux Distro für eine des besten, wenn man:
+
+* eine möglichst kleine Distro sucht, die auch auf betagter Hardware läuft
+* ganz unproblematisch mit Linux anfangen will
+* aber doch darauf aufbauend, ausbauen möchte
+
+Begründung: Man kann:
+
+* BasicLinux als sog. loop root System unter DOS/W9x-Dosmode laufen lassen.
+  Der Vorteil: Das Linux-System ist nur eine Datei (baslinux.gz) unter DOS.
+  Es werden unter DOS (z.B www.freedos.org) nur einige Dateien benötigt:
+  * loadlin.exe	- Das Ladeprogramm
+  * zimage      - Der Kernel
+  * baslin.gz   - Das Linux Filesystem
+  * boot.bat    - Batchdatei zum Start
+  Ein Entfernen des Systems ist einfaches Löschen der Dateien bzw. des Verzeichnisses.
+
+* Man kann es aber auch von 2 Disketten laufen lassen (make_fd.bat ausführen)
+
+* Und man kann es auf einer eigenen ext2 Partition installeren. Das gibt Platz für
+  Erweiterungen!
+
+
+Alternative(n):
+---------------
+Eine evtl. Alternative zu BasicLinux ist muLinux:
+muLinux home page:	http://sunsite.dk/mulinux/
+muLinux add-on site:	http://www.abc.se/%7Emulinux/
+
+
+Systemvoraussetzungen:
+----------------------
+386; besser 486 Rechner mit mind. 8MB Ram, einem 3,5" Floppy-LW und Festplattenplatz von
+mind. 3MB (falls Installation auf eigener ext. Partition, sollte diese mind. 10-20 besser
+größer sein (100MB) um viel Platz für Erweiterungen zu haben!)
+Achtung: Es wird eine US-Tastatur vorausgesetzt! Ich zeige später noch, wie man das auf
+eine deutsche Tastatur ändert...
+
+
+Installation:
+-------------
+
+a.) Als loop root System
+Einfach die unter Download genannte Datei herunterladen und am besten in einem extra
+Verzeichnis entpacken. Danach boot.bat aufrufen und los gehts...
+Wichtige Dinge:
+pppsetup	- Alles für die PPP Verbindung
+links		- Der Webbrowser
+mail		- Alles zur elektronischen Post
+fun		- Spiele
+Ctrl-Alt-Del	- herunterfahren!
+
+b.) Als 2-Floppy System
+Denselben Schritt wie unter a.) ausführen (download + entpacken).
+2 neue, formattierte 3,5" 1,44MB Floppy's bereithalten.
+make_fd.bat ausführen.
+
+c.) Auf eigener Partition installieren
+Zuerst brauchen wir Platz für eine Partition.
+Wer ein System sowieso komplett neu einrichtet, sollte mind. 100MB für BasicLinux
+frei lassen. Ich habe auf meinem P100 Notebook mit 770MB Festplatte, eine 350MB
+DOS/W9x Partition und den Rest für BasicLinux eingerichtet.
+Wer schon allen Platz 'verbraten' hat, dem hilft evtl. Fips oder Partition Magic
+weiter ($). Vorher auf jeden Fall alle wichtigen Daten sichern!!!
+Ich gehe bei der weiteren Beschreibung aus, das jetzt ein freier Bereich auf der
+ersten IDE Platte (hda) ist und eine DOS Partition als primäre und aktive Partition
+eingerichtet ist (hda1), auf der auch DOS lauffähig installiert ist.  
+Das Paket bas2hd.zip herunterladen und auf z.B eine leere Diskette entpacken.
+Denselben Schritt wie unter a.) ausführen (download + entpacken).
+boot.bat	- BasicLinux booten
+login: root	- Als root einloggen
+
+fdisk		- fdisk starten
+m		- help. Kommandos ansehen.
+p		- (p)rint. Ersteinmal alle vorhandenen Partitionen anschauen.
+# nur falls z.B. mit fips eine partition 'verkleinert wurde. fips splittet nähmlich
+# die partition, sodas danach 2 vorhanden sind... 
+d		- (d)elete. (2) Nummer der zu löschenden Partition.
+n		- (n)ew. Neue Partition anlegen (p) primary (2)te.
+# Größe mit Cursor links/rechts einstellen.
+Wir wollen eine weitere (=2te) (p)rimäre Partition anlegen.
+Die neue Partition sollte direkt hinter der DOS Partition angelegt werden. Typ 83-Linux.
+p		- (p)rint. ist die neue Partion auch da (Typ 83-Linux)?
+w		- (w)rite. Sichern!
+
+Jetzt die neue Partition formattieren (2te Partition auf 1ter IDE Platte=hda2):
+mke2fs /dev/hda2
+
+Neue Partition mounten nach /hd!!:
+mount /dev/hda2 /hd
+
+Jetzt die oben erstellte Diskette mit bas2hd.tgz + go einlegen und nach /tmp mounten!!:
+mount /dev/fd0 /tmp
+
+Einrichtungs-Batchdatei ausführen:
+/tmp/go
+Die notwendigen Einrichtungsaktionen werden ausgeführt...
+
+Jetzt noch die /etc/fstab mit z.B e3 editieren und in der ersten Zeile hda3 durch hda2
+ersetzten! (CTRL-K-q beendet e3 und fragt, ob gesichert werden soll)
+
+Ctrl-Alt-Del zum herunterfahren des Systems.
+boot.bat nach z.B boot2.bat kopieren.
+boot2.bat editieren. 
+Inhalt:
+loadlin zimage root=/dev/hda2 rw
+Sichern.
+
+Jetzt sollte boot2 einem ins neue System auf der Festplatte bringen...
+
+
+Einige Hinweise zu Platten und Partitionen unter Linux:
+--------------------------------------------------------
+fd0	- Floppy
+hda1	- 1 Partition der Platte am 1ten IDE Kanal (Master)
+hda2
+hda3	- 3 Partition der Platte am 1ten IDE Kanal (Master)
+hda4
+hdb1	- 1 Partition der Platte am 1ten IDE Kanal (Slave)
+hdb2
+..
+hdc1	- 1 Partition der Platte am 2ten IDE Kanal (Master)
+..
+hdd1	- 1 Partition der Platte am 2ten IDE Kanal (Slave)
+..
+
+
+PCMCIA Unterstützung installieren:
+----------------------------------
+pcmcia.tgz herunterladen.
+pkg pcmcia.tgz		- installieren
+cd /usr/doc/pcmcia-howto- Howto lesen!!
+more HOWTO..		- lesen!!
+#Es muß der richtige PCMCIA-Kontroller eingetragen werden und
+#in /etc/rc.d/rc.S die PCMCIA services gestartet werden..
+e3 /etc/rc.d/rc.pcmcia	- Controler ber Bedarf fest vorgeben, sonst erfolgt probing..
+e3 /etc/rc.d/rc.M	- editieren und folgende Zeile einfügen vor rc.net1
+/etc/rc.d/rc.pcmcia start
+
+
+
+Bildbetrachter ZGV installieren und für LINKS konfigurieren:
+-------------------------------------------------------------
+Von der BasicLinux Seite zgv und libvgagl herunterlagen.
+pkg zgz*		- zgv installieren
+cd /usr/lib
+tar zxvf libvgagl*	- libvgagl entpacken
+ln -sf libvgagl.so.1... libvgagl.so.1	- link erstellen
+ldd /usr/bin/zgv	- prüfen of alle Libraries gefunden werden
+zgv			- sollte wenn alles geklappt hat, einen Dateiauswahl
+			  Bildschirm im VGA-Modus zeigen. <esc> zum Beenden.
+#links konfigurieren
+cd $HOME		- ins HOME Verzeichnis gehen
+cd .links		- ins .links Verzeichnis gehen
+cp links.cfg links.org	- Sicherheitskopie anlegen; zurück mit cp links.org links.cfg
+e3 links.cfg		- links.cfg editieren
+
+#blättern bis "image/gif" .. association... = 2 Zeilen, die vimage definieren
+#diese 2 Zeilen darunter exakt gleich eintippen!
+#dann vimage ersetzen durch zgv und gif ersetzen durch jpg.
+#die gleiche Aktion wiederholen und anstatt jpg jetzt jpeg ersetzen.
+#es sollten jetzt 3x2Zeilen dort stehen.
+#<ctrl>-k-q und y zum sichern.
+
+#Jetzt sollte ein Rechtspfeil bei [img] in links das Programm zgv starten,
+#welches dann das Bild anzeigt.
+
+
+pppsetup:
+---------
+Zum Einrichten eines Internetzugang 'pppsetup' aufrufen.
+Option setup
+Hier sind die Modem-Schnittstelle:
+ttyS0	-Com 1
+ttyS1	-Com 2
+ttyS2	-Com 3
+ttyS3	-Com 4
+die Telefonnummer des Providers (z.B Arcor: 010700192070)
+der Username (z.B Arcor: arcor)
+das Passwort (z.B Arcor: internet)
+in die Konfigurationsdateien einzutragen..
+CTRL-O speichert; CTRL-X beendet den GNU nano editor (siehe Menue unten)
+#
+# Bei Nicht-HD Installation sollte die Einstellungen auf Floppy gesichert werden!
+#
+Dann mit 'ppp-on' die Verbindung aufbauen.
+Wenn erfolgreich, wird eine IP-Adresse zurückgemeldet.
+Test z.B mit 'ping www.heise.de'
+'ppp-off' beendet die Verbindung
+
+
+Mail:
+-----
+'mail' aufrufen.
+Option setup.
+Hier sind bei pop3 + smtp die entspr. Server einzutragen.
+Dies ist bei gmx z.B mail.gmx.de (für pop3 + smtp gleich).
+Bei gmx kann man sich auch mit der numerischen Benutzerkennung (z.B 789654)
+anmelden. Dies geht hier nicht?! Deshalb muß der volle email-Name eingetragen
+werden. Z.B. peter.sieg@gmx.de
+Noch das Passwort eingeben und speichern.
+Dann sollte es klappen...
+
+
+Andere Tastaturtabellen:
+------------------------
+cd /lib
+mkdir keymaps
+cd keymaps
+tar zxvf keymaps.tgz	# entpackt einige *.map Dateien + readme.txt
+cd /etc/rc.d
+e3 rc.M
+# deutsches keymap laden
+/sbin/loadkmap </lib/keymaps/de.map	
+
+
+Swapfile einrichtet:
+--------------------
+Ich arbeite mit einer UMSDOS Version auf einem 4MB Laptop.
+Da ist es mehr als sinnvoll einen zusätzlichen Swapbereich einzurichtet.
+Dazu kann auch einfach eine Datei dienen:
+# 1. Datei erzeugen; hier 4MB. Für 8MB: count=8192 etc.
+dd if=/dev/zero of=/dev/swapfile bs=1024 count=4096
+# swap einrichten
+mkswap /dev/swapfile
+# aktivieren; dies in der /etc/rc.d/rc.S eintragen (anstatt swapon -a).
+swapon /dev/swapfile
+
+
+CD's brennen mit ATAPI Geräten:
+-------------------------------
+Für SCSI-Brenner sollte das entsprechende Controler-Modul(e) schon reichen,
+sodaß nach dem einspielen des cdutils.tgz Paketes (von slakware 3.9 = V 1.6.1 läuft)
+und einem 'cdrecord -scanbus' schon ein SCSI-brenner erkannt wird...
+Ich, wie wohl die meisten Leute heutzutage haben allerdings einen CD-RW Brenner, der
+am IDE-Bus hängt. So genannte ATAPI Geräte. cdrecord benötigt dazu eine sog. ide-scsi
+Emulationschicht. Diese ist seit Kernel 2.0.35 als Kernelconfig-Option verfügbar.
+Für Kernel 2.0.34 existiert wohl ein Kernelpatch.. Nun lange Rede kurzer Sinn..
+Ideal wäre ein 2.0.34 Kernel mit ide-scsi Emulation komplett im Kernel. Da ich mir
+die Mühe nicht machen wollte den selber zu erstellen, habe ich mich im Netz umgeschaut
+und letztlich folgende 'Lösung' gefunden:
+
+Den Susu 6.4 Satndard-Kernel für 386/486 Systeme unter suse2214 im Loadlin Verzeichnis
+kopiert. Einee Boot4.bat erstellt:
+loadlin suse2214 root=/dev/hda1 rw hdc=ide-scsi max_scsi_luns=1 
+Das Modul sg.o (aus scsi dir) als tgz-Archive gepackt,
+so das es mit 'cd / ; tar zxvf /DOS/suse2214.tgz' in /suse2214 entpackt wird.
+Nun mit boot4.bat booten (es wird der Suse Kernel 2.2.14 mit ide-scsi emulation gebootet)
+und nach dem login:root 'cd /suse2214; insmod ./sg.o' das sg Modul laden.
+Nun sollte 'cdrecord -scanbus' den ATAPI-Brenner anzeigen. 
+Natürlich laufen im 'boot4' Modus :-)) viele andere Dinge, insbesondere wenn Kernel-
+Module benötigt werden NICHT! Kann ja auch nicht, da ja eine ganz andere Kernelversion
+dann aktiv ist! Ich boote mit dem Suse-Kernel nur zum CD brennen. Alle anderen Arbeiten
+werden mit dem baslin-Kernel (2.0.34) erledigt...
+Ich habe übrigens eine TGZ-Archive für basiclinux, welches cdparanoia, bladeenc, l3enc, 
+l3dec und einige scripte enthält, welche das rippen von Audio-CD's und packen als mp3 
+Dateien erlaubt. Nun kann ich diese mp3 Dateien auch auf eine CD-brennen. Mit der 1-Floppy
+Distro Amacdys (siehe links unter www.petersieg.de) hat man so Futter für den mp3 Player.
+ 
+Wichtig!!
+=========
+Bei mit ist der Brenner vorher als hdc erkannt worden. Nur für dieses Gerät ist in der
+Batchdatei boot4.bat die ide-scsi emulation aktiviert worden. Wenn euer/ihr Gerät ein
+anderes ist, muß dies natürlich geändert werden! (Boot-Meldungen beobachten und/oder
+'dmesg | more')
+
+Kommandos für mkisofs+cdrecord:
+===============================
+Image Datei erzeugen:
+To create an image for a ISO 9660 filesystem with Rock Ridge extensions:
+
+    mkisofs -R -o /DOS/image.iso /DOS/mp3
+                  <Zieldatei>    <Quellverzeichnis der Dateien>   
+Image brennen:
+
+    cdrecord -v speed=2 dev=2,0 /DOS/image.iso
+                        <Gerät> <Imagedatei s.o>
+
+Audio CD rippen (ungetestet /DOS/wav..) Output in track#.wav; #=track nummer:
+    cdparanoia -B /DOS/wav
+
+Audio CD brennen von vorher mit cdda2wave oder cdparanoia gerippten tracks im wav Format:
+    cdrecord -v speed=2 dev=2,0 -audio /DOS/wav/track*.wav
+
+Wav Datei wandeln zum brennen (falls nötig?):
+    sox  some.wav  some.cdr
+
+
+----------------------------------------------
+Für Korrekturen und Hinweise bin ich dankbar!
+Peter.Sieg(at)gmx.de
+
+
+

@@ -1,0 +1,2 @@
+print-on
+pbmtolj -res 150 ps*3.pbm > /dev/lp0

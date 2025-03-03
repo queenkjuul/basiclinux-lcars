@@ -1,7 +1,0 @@
-HP-UX SCSI hints:
-
-Note that there are no device nodes for userland SCSI on HP-UX,
-you have to call the included shell script MKNOD.hpux first.
-
-This script will create the files in /dev/scsi/... and /dev/rscsi/...
-The permissions will be set to read/write for root only.

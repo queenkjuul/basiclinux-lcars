@@ -1,0 +1,541 @@
+#!/bin/sh
+
+echo -e '\033c'
+echo
+echo -e '\033(0'
+echo
+echo "       lqqk  lqqk  lqqk lqwqk w    lqqq  lqklqk  lqqk  qqk  lqqq"
+echo "       x     tqqu  mqqk   x   x    tqq   x mj x  tqqu   /   tqq"
+echo "       mqqj  j  m  mqqj   v   mqq  mqqq  v    v  j  m  mqq  mqqq"
+echo
+echo -e '\033(B'
+echo
+echo "                 INTERACTIVE FICTION WRITTEN IN BASH"
+echo 
+echo "                                 BY"
+echo
+echo "                           STEVEN DARNOLD"
+echo -e '\f\f\f\f\f\f'
+echo "Press ENTER to begin."
+read xx
+
+gothere () {
+ case $1 in 0) echo "You can't go that way.";;
+            *) cp=$1 ; break
+ esac
+}
+godrop () {
+ eval oo$1=$cp 
+ let carry=carry-1
+ eval echo -e "You dropped \$o$1."
+}
+goinput () {
+ REPLY=""
+ until [ "$REPLY" ] ; do
+  echo
+  echo -n "What do you want to do now?  "
+  read REPLY
+ done
+ set -- $REPLY
+ verb=$1 
+ eval noun=\$$#
+ [ "$noun" = "$verb" ] && nox=_ && return
+ yy=$noun ; until [ ${#yy} -le 3 ] ; do yy=${yy%?} ; done
+ no=1
+ for xx in $oo; do
+   [ "$xx" = "$yy" ] && break
+   let no=no+1
+ done 
+ nox=0
+ case $yy in 
+   tre) case $cp in e|f|g|h|i|j|k|l|J) nox=tr;;esac;;
+   gat) [ $cp = o ] && nox=ga;;
+   tap) [ $cp = B ] && nox=ta;;
+   kni) [ $cp = n ] && nox=kn;;
+   fir) [ $cp = S ] && nox=fi;; 
+   aca) [ $cp = S ] && nox=ac;; 
+   vol) [ $cp = S ] && nox=vo;;
+   bri) case $cp in N|n) nox=br;;esac;;
+   hol) case $cp in p|A) nox=ho;;esac;;
+   saf) [ $cp = m ] && nox=sa;;
+ esac 
+ [ "$noun" = bed ] && case $cp in M|b|w|B) nox=be;;esac
+ [ $nox != 0 ] && return
+ [ $no -gt $maxo ] && return 
+ eval xx=\$oo$no 
+ case $xx in 9) nox=c;; 
+           $cp) nox=h;; 
+             *) nox=n;;
+ esac 
+} 
+goscore () {
+ xx=0 ; [ $foe != knight ] && xx=12
+ for yy in $oo10 $oo11 $oo12 $oo14 $oo15 $oo20 $oo21 $oo25
+  do [ $yy = o ] && let xx=xx+11
+ done 
+ echo "Your score is $xx out of 100."
+ if [ $xx = 100 ] ; then
+   sleep 2 ; echo -e "\nCONGRATULATIONS.\n" ; break 2
+ fi 
+}
+godead () {
+ sleep 3 ; echo -e "\nYou are dead.\n"
+ sleep 2 ; goscore ; echo ; break 2
+} 
+gofail () {
+ echo ; case $foe in
+  knight) echo "The knight skewers you with his lance.";;
+  spider) echo -n "The spider pounces on you " ; sleep 2
+          echo "and sinks its fangs into your neck.";;
+  *) echo -n "The sorcerer waves his scepter " ; sleep 2
+     echo "and turns you into a frog." ; goinput ; echo
+     echo "The sorcerer laughs and squashes you under his boot.";; 
+ esac
+ godead
+}
+gospider () {
+ [ $foe != spider ] && return
+ echo -e "\nA giant spider drops from the ceiling.  It is as big as a car!"
+ sleep 2; echo "It is moving toward you!" 
+ goinput
+ case $verb in kill|attack) echo -n "How? ";read;set -- $REPLY;verb=$1;;esac
+ [ $verb != shoot ] && gofail
+ goshoot ; [ $? = 0 ] && sleep 2 && gofail
+ echo "The arrow rips through the spider and ricochets off the wall."
+ sleep 2 ; echo -n "Vile yellow blood gushes from the spider.  "
+ sleep 2 ; echo "It dies." ; sleep 2   
+ foe=push ; oo5=P ; o8="a broken arrow" ; goinput
+}
+gosorcerer () {
+ [ $foe != sor ] && return
+ case $verb in 
+    kill|attack) echo -n "How? ";read;set -- $REPLY;verb=$1;;
+    w|west) return;; esac
+ [ $verb != swing ] && gofail
+ [ $oo12 != 9 ] && echo "You really need a sword." && sleep 2 && gofail
+ if [ $sword = dull ] ; then
+  echo -n "The sword bounces off the sorcerer." ; sleep 2 ; gofail
+ fi
+ echo -n "Your sword slices the sorcerer.  " ; sleep 2
+ echo -n "He screams " ; sleep 1 ; echo "and disappears."
+ sleep 2 ; echo "His scepter clatters to the ground." ; sleep 2
+ foe=0; oo15=Z ; oo16=0 ; goinput
+}
+goshoot () {
+ [ $oo7 != 9 ] && echo "You have no bow." && return 0
+ [ $oo8 != 9 ] && echo "You have no arrow." && return 0
+ oo8=$cp ; let carry=carry-1 ; return 1
+}
+gotapestry () {
+ set -- $B; [ $3 = C ] && echo "Nothing of interest." && return
+ echo "You find a passageway behind the tapestry."
+ B="$1 $2 C $4 $5" ; sleep 3 ; break
+}
+a='in_a_shadowy_alcove A O P 0'
+b='in_a_bedroom_with_a_stone_floor 0 0 0 t'
+c='in_a_clearing.__Forest_surrounds_you_in_all_directions e k i g'
+d='in_a_high_tower.__A_crenelated_parapet_is_to_the_north J U 0 0'
+e='in_a_dense_dark_forest e c i g'
+f='at_the_top_of_a_big_tree 0 0 0 0'
+g='in_a_dense_dark_forest e k k g'
+h='at_the_top_of_a_big_tree 0 0 0 0'
+i='in_a_dense_dark_forest e k i k'
+j='at_the_top_of_a_big_tree 0 0 0 0'
+k='in_a_dense_dark_forest c E i g'
+l='at_the_top_of_a_big_tree 0 0 0 0'
+m='in_a_maze_of_twisty_little_passages_all_alike x x x C'
+n='on_the_south_bank_of_a_river.__A_bridge_is_nearby 0 X 0 0'
+o='at_the_end_of_the_road.__A_medieval_castle_is_to_the_south 0 0 y 0'
+p='in_a_dusty_pantry.__A_hole_is_in_the_south_wall 0 0 v K'
+q='in_a_maze_of_twisty_little_passages_all_alike x x R x'
+r='in_a_maze_of_twisty_little_passages_all_alike x x x T'
+s='in_a_cosy_sitting_room M 0 t 0'
+t='at_the_north_end_of_a_long_corridor H u b s'
+u='in_the_middle_of_a_long_corridor t v w D'
+v='at_the_south_end_of_a_long_corridor u 0 B p'
+w='in_a_bedroom_with_a_wooden_floor 0 0 0 u'
+x='in_a_maze_of_twisty_little_passages_all_alike Q m m m'
+y='on_the_Great_West_Road 0 0 X o'
+z='on_a_long_flight_of_stairs_down L Z 0 0'
+A='in_a_private_art_gallery.__A_hole_is_in_the_north_wall 0 a 0 W'
+B='in_a_bedroom_with_a_dirt_floor.\nA_large_tapestry_is_on_the_south_wall 0 0 0 v'
+C='in_a_narrow_curving_passageway B 0 m 0'
+D='in_the_dining_room 0 K u 0'
+E='at_the_edge_of_the_forest.__A_river_is_to_the_south k N 0 0'
+F='on_the_Great_East_Road 0 0 F X'
+G='on_the_Great_South_Road X G 0 0'
+H='in_a_magnificent_chamber.__The_ceiling_is_30_feet_high o t 0 M'
+I='on_the_Great_West_Road 0 0 X Y'
+J='standing_on_the_parapet.__Ten_feet_below_is_the_top_of_a_tree 0 d 0 0'
+K='in_the_kitchen D 0 p 0'
+L='in_a_mile-long_tunnel.__Stagnant_water_reaches_your_ankles U z 0 0'
+M='in_a_luxurious_bedroom 0 s H 0'
+N='on_the_north_bank_of_a_river.__A_bridge_is_nearby E 0 0 0'
+O='in_a_musty_scriptorium a 0 0 0'
+P='in_the_parlor 0 0 S a'
+Q='in_a_maze_of_twisty_little_passages_all_alike x x x q'
+R='in_a_maze_of_twisty_little_passages_all_alike x x r x'
+S='in_a_small_library.__A_fireplace_is_on_the_east_wall 0 0 0 P'
+T='in_a_small_turret,_overlooking_a_beautiful_green_valley 0 0 r 0'
+U='on_a_long_flight_of_stairs_up d L 0 0'
+V='in_a_damp_stone_passageway 0 0 Z S'
+W='in_a_storeroom.__Cobwebs_are_everywhere 0 0 A 0'
+X='at_a_crossroad n G F I' 
+Y='on_the_Great_West_Road 0 0 X y'
+Z='in_a_gruesome_torture_chamber z 0 0 V'
+
+cp=c carry=1 maxo=26 foe=knight gate=locked safe=locked sword=dull
+
+oo="sig boo kni --- spi par bow arr lan key sto swo whe pai sce sor map bot saf bar pen tuf etc has pla bed"
+o1="a large sign that says:  WARNING!  DIABOLICAL MAZE!" oo1=m
+o2="a leather-bound book" oo2=S
+o3="a dead knight" oo3=n
+o4="LEAVE TREASURES HERE etched in the pavement" oo4=o
+o5="a dead spider" oo5=0
+o6="a piece of parchment" oo6=c
+o7="a bow" oo7=9
+o8="an arrow" oo8=l 
+o9="a broken lance" oo9=n
+o10="a silver key" oo10=0
+o11="a blue stone" oo11=0
+o12="a golden sword" oo12=T
+o13="a whetstone" oo13=W
+o14="a Rembrandt painting" oo14=A
+o15="a magic scepter" oo15=0
+o16="an evil-looking sorcerer (he points his scepter at you)" oo16=Z
+o17="a small map on the north wall" oo17=b
+o18="a small green bottle" oo18=K
+o19="a safe in the wall" oo19=0
+o20="a gold bar" oo20=0
+o21="a platinum pen" oo21=O
+o22="a tuffet" oo22=P
+o23="an etching on the east wall" oo23=w
+o24="a hassock" oo24=s
+o25="a serving platter" oo25=D
+o26="a bedpan" oo26=0
+
+########################   NEW ROOM   #####################
+while :; do
+echo -e '\033c' # clear # command.com /c cls
+echo
+eval  set -- \$$cp
+OFS="$IFS" ; IFS=_ ; set -- $1 ; IFS="$OFS"
+echo -e "You are $*."
+if [ $cp = o ] ; then echo -n "The castle gate is " ; xx=$gate
+  [ $xx = locked ] && xx=closed ; echo "$xx." ; fi
+echo
+echo -n "You can see:"
+yy=0
+case $cp in e|g|k|i) echo "  trees"; yy=1;; 
+            M|b|w|B) echo "  a very large bed"; yy=1;;
+     esac
+xx=1 
+until [ $xx -gt $maxo ] ; do
+eval [ \$oo$xx = $cp ] && echo -ne "\r\t\t\b\b"  && eval echo \$o$xx && yy=1
+let xx=xx+1
+done
+[ $yy = 0 ] && echo "  (no interesting objects)"
+echo 
+echo -n "You can go:  "
+eval set -- \$$cp
+[ $2 != 0 ] && echo -n "north  "
+[ $3 != 0 ] && echo -n "south  "
+[ $4 != 0 ] && echo -n "east  "
+[ $5 != 0 ] && echo -n "west"
+echo
+echo
+####################   MAIN LOOP   ######################
+while :; do
+goinput
+[ "$verb" = go ] && verb=$noun
+[ $cp = P ] && gospider
+[ $cp = Z ] && gosorcerer
+eval set -- \$$cp
+case $verb in north|n) gothere $2;;
+              south|s) gothere $3;;
+              east|e) gothere $4;;
+              west|w) gothere $5;;
+
+inventory|inv|i)
+  echo
+  echo -n "You are carrying: "
+  case $carry in 0) echo "nothing";;
+  *) xx=1
+     until [ $xx -gt $maxo ] ; do
+     eval [ \$oo$xx = 9 ] && echo -ne "\r\t\t\t\b\b\b\b\b" && eval echo \$o$xx 
+     let xx=xx+1
+     done
+     echo
+  esac;;
+
+drop|leave|put|deposit) 
+  [ $noun = all ] && nox=x
+  case $nox in 
+      _) echo "You need to specify an object.";;
+      x) xx=1
+         until [ $xx -gt $maxo ] ; do
+           eval [ \$oo$xx = 9 ] && godrop $xx
+           let xx=xx+1
+         done;;
+      c) godrop $no;;
+      *) echo "You do not have a $noun.";;
+  esac;;
+
+get|take|pick|grab) 
+  [ $carry = 5 ] && nox=x
+  case $nox in 
+      _) echo "You need to specify an object.";;
+      x) echo "Your hands are full.";; 
+      c) echo "You are aleady carrying it.";;
+  kn|ta) echo "It is too big to carry.";;
+     sa) echo "It is part of the wall.";;
+      h) eval oo$no=9
+         let carry=carry+1
+         echo "OK"
+         [ $no = 17 ] && o17="a small map"
+         [ $no = 23 ] && o23="an etching"
+         if [ $no = 1 ] && [ $oo19 = 0 ] 
+          then echo "You find something behind the sign!"
+          oo19=m; fi;;
+      n) echo "I do not see a $noun here.";;
+      *) echo "What do you want me to pick up?";;
+  esac;;
+
+climb) case $cp in 
+  e) cp=f;break;;
+  f) cp=e;break;;
+  g) cp=h;break;;
+  h) cp=g;break;;
+  i) cp=j;break;;
+  j) cp=i;break;;
+  k) cp=l;break;;
+  l) cp=k;break;;
+ esac
+ echo "Climbing gets you nowhere.  Perhaps jumping would be better?";;
+
+cross|bridge) case $cp in N) cp=n
+ if [ $foe = knight ] ; then
+  echo -e "\nYou start across the bridge."; sleep 2
+  echo "Suddenly, a black knight rides toward you from the other side of the river." 
+  goinput
+  case $verb in kill|attack) echo -n "How? ";read;set -- $REPLY;verb=$1;;esac
+  [ $verb != shoot ] && gofail
+  goshoot ; [ $? = 0 ] && sleep 2 && gofail
+  echo -n "Your arrow strikes the knight.  "; sleep 2; echo "He falls."
+  foe=hole ; sleep 2
+ fi
+ break;;
+ n) cp=N;break;;
+ esac  
+ echo "That is not possible here.";;
+
+crawl|hole) case $cp in 
+ p) [ $foe != hole ] && cp=A && break
+    echo "You are too fat to get through the hole.";;
+ A) [ $oo14 != 9 ] && cp=p && break
+    echo "The painting is too large to go through the hole.";;          
+ esac;;
+
+examine|exa|look|refresh) case $nox in  
+   _) break;;
+ c|h) case $no in 6|18) echo "Something is written on it.";;
+       1) if [ $oo19 = 0 ] ; then echo "It is leaning against the wall."
+          else echo "It made of wood."; fi;;
+       5) if [ $oo11 = 0 ]  
+          then echo "You find a blue stone in its belly."; oo11=P
+          else echo "It is shrivelled."; fi;;
+       7) echo "It is a powerful bow, suitable for warfare.";;
+      11) echo "It appears to be a big sapphire.";;  
+      12) echo "The sword is very $sword.";;
+      13) echo "It is grey and gritty.";; 
+      14) echo "It is 3 feet high and 2 feet wide.";;
+      15) echo "It is glowing.";;
+      17) echo 'Try "read"';; 
+      23) echo "It is a picture of a unicorn.";;
+      25) echo "It appears to be made of pure silver.";;
+      26) echo "It is empty.";;
+       *) eval echo -e "It is just \$o$no.";;
+      esac;;
+  tr) echo "The trees are tall and they have many strong branches.";;
+  vo|ac) echo "It is ornamental stonework.";;
+  be) if [ $oo26 = 0 ] && [ $cp = M ]  
+        then oo26=M; echo "You find something!"
+      else echo "It has an iron frame."; fi;; 
+  sa) if [ $safe = open ] ; then echo "It is empty."
+      else echo "It has a keyhole."; fi;;
+  ho) echo "It is roughly circular, about 1.5 feet in diameter.";;
+  ta) gotapestry;;
+  kn) if [ $oo10 = 0 ] ; then echo "You find a key in his pocket."; oo10=n
+      else echo "You find nothing of interest."; fi;;
+  ga) echo "The gate is $gate.";;
+  fi) echo "The stonework is very elaborate, with a large acanthus and a small volute.";;
+   n) echo "I do not see a $noun here.";; 
+   *) echo "You see nothing of interest.";;
+ esac;;
+
+read) case $nox in
+     _) echo "Read what?";;
+   c|h) case $no in 
+        1) echo "It says:  WARNING!  DIABOLICAL MAZE!";;
+        2) echo -e "\nMany castles have secret passages.  They are often concealed behind"
+           echo "fireplaces because ornamental stonework is ideal for fashioning the"   
+           echo "triggering mechanism.  Usually the passage is opened by pushing some"
+           echo "protruding stonework, but sometimes pulling or twisting is required.";;
+        6) echo -e "\nTo see your surroundings, type look."
+           echo "To see what you are carrying, type inventory."
+           echo "To see how well you are doing, type score."   
+           echo "To get a hint, type help.";;
+       17) echo -e "\033(0"
+           echo "00000qqqqqqqqqqqqqq> 00000qqqqqqqqqqqqqqq> 00000"            
+           echo "00000 <qqqqqq00000   00000   00000 <qqqqqqq00000"             
+           echo "             00000           00000"
+           echo "               -"
+           echo "             00000"       
+           echo " qqqqqqqqqq> 00000"   
+           echo -en "\033(B";;
+       18) echo 'The label says:  "SlimFast Elixir"';;
+        *) echo "There is no writing on the $noun.";;
+        esac;; 
+     *) echo "I an unable to read that.";;
+ esac;;
+
+jump) case $cp in f|h|j|l|T) echo -e "down\fdown\fdown\fdown"; godead;;
+       J) cp=j; echo -e "down\fdown\fdown"; sleep 2; break;;
+       *) echo "wheeee!";;
+      esac;;
+
+open) case $nox in 
+       ga) case $gate in 
+            closed) echo "The gate slowly opens." ; gate=open
+                    set -- $o ; o="$1 0 H y 0"; sleep 3; break;;
+            locked) echo "The gate is locked.";;
+            open) echo "It is already open.";;     
+           esac;;
+       sa) case $safe in 
+            closed) echo -n "The safe swings open.  "; safe=open
+                    sleep 2; echo "Something falls out!"; oo20=m;;
+            locked) echo "The safe is locked.";;
+            open) echo "It is already open.";;     
+           esac;;
+       ta) gotapestry;;
+        *) echo "I do not know how to open a $noun.";;
+      esac;;
+unlock) case $nox in
+         ga) case $gate in
+              closed|open) echo "It is already unlocked.";;
+              locked) if [ $oo10 = 9 ] ; then gate=closed ; echo "-click-"
+                      else echo "You do not have the key."
+                      fi;;
+             esac;;
+         sa) case $safe in
+              closed|open) echo "It is already unlocked.";;
+              locked) if [ $oo10 = 9 ] ; then safe=closed ; echo "-click-"
+                      else echo "You do not have the key."
+                      fi;;
+             esac;;
+         *) echo "I do not know how to unlock a $noun.";;
+        esac;;
+close|lock) case $nox in 
+      ga|sa) echo "It is stuck.";;
+          *) echo "I do not know how to do that.";;
+      esac;;
+
+push|pull|twist) case $nox in
+  vo) if [ $verb = push ] && [ $foe = push ]
+      then echo "-click-" ; foe=pull
+      else echo "Nothing happens."; fi;;
+  ac) if [ $verb = pull ] && [ $foe = pull ]
+      then echo -n "The fireplace groans and rumbles.  "; sleep 2
+           echo "A passageway opens to the east." 
+           set -- $S ; S="$1 0 0 V P" ; foe=sor
+      else echo "Nothing happens."; fi;;
+  ta) gotapestry;;
+   *) if [ $no = 1 ] && [ $oo19 = 0 ] 
+      then echo "You find something behind the sign!"; oo19=m
+      else echo "Nothing happens."; fi;; 
+ esac;;
+
+use) case $no in
+    7|8) echo 'Try "shoot"';;
+  12|15) echo 'Try "swing"';;
+ 2|6|17) echo 'Try "read"';;
+     10) echo 'Try "unlock"';;
+     13) echo 'Try "sharpen"';; 
+     18) echo 'Try "drink"';; 
+      *) case $nox in
+        ga) echo 'Try "open"';;
+        ho) echo 'Try "crawl"';;
+        br) echo 'Try "cross"';;
+        be) echo 'Try "go bed"';;
+         *) echo 'I do not understand.';;
+      esac;;   
+ esac;;
+
+swing) case $nox in
+   n|h) echo "You are not holding a $noun.";;
+     c) case $no in
+       12) echo "Careful, you could hurt somebody with that.";;
+       15) echo -n "There is a flash of blue light " ; sleep 2
+           echo "and suddenly you are somewhere else."; xx=1
+           until [ $xx -gt $maxo ] ; do
+             eval [ \$oo$xx = 9 ] && eval oo$xx=$cp
+             let xx=xx+1
+           done; carry=0; cp=R;;
+        *) echo "wheee...";; esac;;
+     *) echo "I do not understand.";; 
+ esac;;
+
+drink) while :; do 
+  [ $no != 18 ] && echo "What do you want to drink?" && break
+  [ $nox != c ] && echo "In order to drink it, you must be holding it." && break
+  [ $foe != hole ] && echo "The bottle is empty." && break
+  foe=spider; echo "glug-glug-glug"; sleep 2
+  echo "You feel the fat melting from your body."   
+  break; done;;            
+
+sharpen) while :; do
+  [ $no != 12 ] && echo "It is not possible to sharpen that." && break  
+  [ $oo12 != 9 ] && echo "You do not have a sword." && break
+  [ $oo13 != 9 ] && echo "You do not have a whetstone." && break
+  echo "OK"; sword=sharp; break; done;;
+
+help) case $cp in
+  X|F|G|I|Y|y) echo "It helps to draw a map as you go.";;
+  E|e|g|k|i) echo "This adventure has a violent beginning.";;
+  l|h|f|j) echo "What goes up must come down.";;
+  N) echo "There appears to be a road on the other side of the river.";;
+  V|J) echo "Don't be a coward.";;
+  m|x|Q|q|R|r) echo "What would Hansel and Gretel do?";;
+  o) echo 'After depositing something, say "score" to see what it is worth.';; 
+  *) echo "Try examining things.";;
+ esac;;
+
+swim|river) case $cp in
+  N|n) echo "You jump into the water and swim a few strokes."; sleep 2 
+       echo "Suddenly a poisonous watersnake bites your leg."; sleep 2
+       godead;;
+  *) echo "You need to go to the river for that.";;
+ esac;;
+
+find|hunt|search) while :; do
+  [ $no = 8 ] && [ $oo8 = l ] && echo "Look for it in the forest." && break 
+  [ $no = 10 ] && [ $oo10 = 0 ] && echo "Examine things." && break
+  echo "Sorry, I can not help."; break; done;;
+
+bed) if [ $nox = be ]
+     then echo -e "\fYou climb onto the bed and have a nice nap."
+          for xx in 1 2 3 4 5; do sleep 2; echo -n "zzzz "; done; echo
+     else echo "I do not see a bed here."; fi;;
+
+shoot) goshoot; [ $? = 1 ] && echo "You shoot the arrow.";;
+score|points) goscore;;
+up|down) echo 'Try: "jump" or "climb"';;
+dig) echo "You need a shovel.";;
+quit|q|stop|end|exit|x) echo -ne "\fQuit the game?  "; read xx
+  case $xx in y|yes) goscore;break 2;; *) echo 'Try "go"';; esac;; 
+*)echo "Sorry, I do not understand what you mean by $verb." ;;
+esac
+done
+done
+
+

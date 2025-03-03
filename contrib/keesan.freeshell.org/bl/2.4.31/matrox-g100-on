@@ -1,0 +1,11 @@
+chvt 3
+insmod matroxfb_misc
+insmod matroxfb_accel
+insmod matroxfb_Ti3026
+#insmod matroxfb_base vesa=788
+insmod matroxfb_base vesa=791
+chvt 1
+chvt 3
+rmmod mdacon
+insmod mdacon mda_first_vc=1 mda_last_vc=2
+reset

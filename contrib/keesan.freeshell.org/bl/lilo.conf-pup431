@@ -1,0 +1,39 @@
+#boot=/dev/fd0
+boot=/dev/hda
+prompt  #prompts you for DOS BL3 BL2 SW11
+install=/boot/boot.b
+delay=50  #boots to BL2 after 5 seconds
+default=BL2
+
+other=/dev/hda1
+table=/dev/hda
+label=DOS
+
+image=/boot/bzimavps.431
+label=BL350
+root=/dev/hda7
+read-write
+vga=791
+
+image=/boot/bzimavps.431
+label=BL2
+root=/dev/hda9
+read-only
+vga=791
+
+image=/boot/bzimavps.431
+label=SW11
+root=/dev/hda12
+read-only
+vga=791
+
+#image=/boot/bzimapda.431
+#label=PDA
+#root=/dev/hda9
+#read-only
+
+image=/hd/pup431/vmlinuz
+label=puppy431
+initrd=/hd/pup431/initrd.gz
+append="pmedia=atahd pdev=hda9 psubdir=puppy431 nosmp"
+read-only

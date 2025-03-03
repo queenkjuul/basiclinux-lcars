@@ -1,0 +1,2 @@
+mplayer -ao oss -autosync 30 http://66.225.205.99:80/
+##KXPR sacramento 20K or maybe 16K
