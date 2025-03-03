@@ -1,0 +1,55 @@
+# Changelog
+
+## Beta 1 Rev 4
+
+Well, Rev 4 has ended up being a pretty huge update. It's also kind of still a work-in-progress, with some known issues that will be fixed in Rev 5. It's looking like 5 may not be the last of the Beta 1 series, but things are approaching a good place.
+
+Overall cleanup, bugfixes, a few new packages and some minor improvements. Repo expanded with more contrib mirrors, and a cache of vintage Opera binary builds. Repo reorganized so that `/livecd` more accurately represents actual disc image contents.
+
+In the interest of keeping the installed `FS.IMG` file usable, some "extra" documentation was removed.
+
+Originally, I had wanted to avoid this; however, the full TclX/TkX, gnuplot, and ImageMagick documentation took up a noticeable amount of space, and it's not particularly possible to do any serious Tcl/Tk development on the LiveCD. All documentation can be restored by simply reinstalling the original packages from the LiveCD/packages directory, once BasicLinux is on the HDD. ImageMagick supplies a thorough `--help` option which provides all basic usage; `gnuplot` includes a standard `man` page; as far as Tcl/Tk and Perl, well, you can look it up on your phone.
+
+- Increased unused `FS.IMG` disk space (~32MB from ~20MB)
+- gzipped most of `/usr/doc` to save space
+- Added `asteroids` from TkApps
+- Added `TkVNC` from TkApps
+- Added `pacman` (the game) (from Debian `pacman`) ([source](https://packages.debian.org/source/buster/pacman))
+- Added better Tetris ([`vitetris`](https://www.victornils.net/tetris/)) ([#2](https://github.com/queenkjuul/basiclinux-lcars/issues/2))
+- Add BasicLinux docs to `/docs` ([#8](https://github.com/queenkjuul/basiclinux-lcars/issues/8))
+- Symlink `links2ssl` as `links2` ([#9](https://github.com/queenkjuul/basiclinux-lcars/issues/9))
+- Fixed Linux include `asm` path ([#10](https://github.com/queenkjuul/basiclinux-lcars/issues/10))
+- Fixed swapfile path in `/etc/rc` ([#12](https://github.com/queenkjuul/basiclinux-lcars/issues/12))
+- Removed some redundant documentation in `/usr/doc` (apps that already have manpages or unlikely to need online help)
+- Removed Tcl language docs (can be reinstalled from CD)
+- Removed Perl language docs (can be reinstalled from CD)
+- Removed `/usr/man/man3/*` (developer documentation)
+- Removed ImageMagick docs from `/usr/doc`
+- Removed `gnuplot` docs from `/usr/doc`
+- gzipped a bunch of files in `/usr/doc/*/` (saved ~3MB, view with `zless`)
+- Changed IceWM Games>GNU Chess shortcut from `rxvt -e gnuchess` to `xboard` (left JWM due to lower requirements)
+- Removed Slackware-4.0 `ircii` package, reinstalled BL3 `picoirc` package
+- Installed contrib add-on Tcl/Tk 8.6, removed 8.0
+- New CDE-inspired theme for JWM
+- Fixed startx issues when not-read-only but NOSAVEX is used
+
+### Known Issues
+
+- DNS does not work in LiveCD environment (`/etc/resolv.conf` not writable, [#22](https://github.com/queenkjuul/basiclinux-lcars/issues/22))
+- ext2 install still doesn't work ([#1](https://github.com/queenkjuul/basiclinux-lcars/issues/1))
+- Automatic boot does not work of CD is not in first available CD-ROM drive ([#16](https://github.com/queenkjuul/basiclinux-lcars/issues/16))
+
+## Beta 1 Rev 3
+
+2025-02-19
+
+- First "stable" release
+- Desktop menu improvements
+- BasicLinux packages and Slackware-4.0 GCC toolchain
+- `startx` reworked for read-only root filesystem operation
+- USB driver support
+- SCSI driver support
+
+## Beta 1 Rev 1 - Rev 2
+
+*Information lost*
