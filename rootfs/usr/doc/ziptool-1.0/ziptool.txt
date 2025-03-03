@@ -1,0 +1,41 @@
+
+   ziptool will turn write-protection on and off for ZIP disks including
+   those that have been write-protected with a password. It can also
+   eject the disk in your ZIP drive.
+
+   The ziptool program requires read/write access to the physical disk
+   device, so it can only be run by root. It does not require any special
+   kernel patches, and it works with both the SCSI and PPA versions of
+   the drive. It makes a number of sanity checks to ensure that you don't
+   attempt to manipulate a mounted disk, and that you are actually
+   operating on a ZIP disk.
+
+   Not all protection modes supported by the hardware are available in
+   Linux. In particular, there is a mode that prevents all access to the
+   device until it is unlocked with a password. This mode is not
+   supported, as Linux is unable to open such a disk anyway.
+
+ZipTool commands
+
+   Ziptool's command syntax takes the form:
+        ziptool device command
+
+   Where device is the full device name for the raw SCSI device
+   corresponding to your ZIP drive, for example: /dev/sda, and command is
+   one of the following: eject, ro, rw or status.
+
+   eject ejects the disk from your ZIP drive. ro puts the disk in the
+   drive into read-only mode, the new mode is recorded on the disk volume
+   and remains in effect for that volume until the rw command is used to
+   change it. You can also change it with Iomega's own ZipTools programs
+   under DOS or Windows, of course.
+
+   rw restores read-write permissions on the current disk volume. If the
+   disk has been protected with a password, you will be prompted to enter
+   that password before writing is enabled. You can use the status
+   command to determine the current write-protection mode of the disk.
+
+   Whenever you change the mode on a disk, ziptool will eject the disk.
+   This behaviour is necessary to ensure that Linux rereads the
+   write-protect flag for the disk before attempting to use it again.
+
