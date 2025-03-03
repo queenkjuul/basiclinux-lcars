@@ -1,0 +1,56 @@
+<HTML>
+<Head>
+<Title>How to Activate SoundBlaster Audio</Title>
+<META NAME="keywords" CONTENT="Linux for laptops, laptop Linux, 386, 486, low, RAM, memory, Powerpoint, Power Point, footprint, resource, compact, small, tiny, mini, PCMCIA, pocket, retro, old, Xvesa, Castlemaze, microcom, swm, links browser">
+</Head>
+<BODY BGCOLOR="#cccccc" TEXT="#000000" link="#0000cc">
+<FONT size=5>
+<HR>
+<center>
+<big> 
+<B>How&nbsp; to&nbsp; Activate&nbsp; SoundBlaster&nbsp; Audio</B>
+</big></center> 
+<HR>
+<BR>
+If you are running BL3 on SoundBlaster-compatible hardware, you should be able to play audio files. &nbsp; However, BL3 does not do this automatically -- you need to add some sound modules and install an audio player.
+<P>
+<BR>
+<B><U>Step 1</B>: &nbsp; Get the sound modules&nbsp; </U>
+<P>
+Go to the <A HREF="add-ons/2_2_26/modules/misc/">2.2.26 module repository</A> and download these modules: <P>
+&nbsp; &nbsp; &nbsp; soundcore.o &nbsp; &nbsp; &nbsp; sound.o &nbsp; &nbsp; &nbsp; uart401.o &nbsp; &nbsp; &nbsp; sb.o
+<P>
+Put them in the <font color=red>/lib/modules/2.2.26/misc</font> directory of your BL3 installation.
+<P>
+<P>
+<BR>
+<B><U>Step 2</B>: &nbsp; Activate the modules</U>
+<P>
+At the beginning of each session the modules have to be activated. &nbsp;The commands can be typed in, or they can be executed automatically by putting them in the system startup script (<B>/etc/rc</B>).
+<P>
+&nbsp; &nbsp; insmod soundcore <BR>
+&nbsp; &nbsp; insmod sound <BR>
+&nbsp; &nbsp; insmod uart401 <BR>
+&nbsp; &nbsp; insmod sb io=0x220 irq=5 dma=1 dma16=0 mpu_io=0x330
+<P>
+The parameters for the sb module are the default values for SoundBlaster hardware. &nbsp;Your hardware setup might be different, and you might have to alter some of those values.
+<P>
+<BR>
+<B><U>Step 3</B>: &nbsp; Install audio player</U>
+<P>
+You will find an mp3 player in the <A HREF="add-ons/index.htm">BL3 add-ons<A>. &nbsp;The package is called <font color=red>mpg123.tgz</font>. &nbsp;It comes with a small mp3 file which you can use to test your audio:
+<P>
+&nbsp; &nbsp; &nbsp; pkg &nbsp;mpg123.tgz <BR>
+&nbsp; &nbsp; &nbsp; mpg123 &nbsp;/tmp/test.mp3
+<P>
+That should play 10 seconds of music. &nbsp;If not, there is something wrong with your configuration or with your hardware.
+<P>
+Once you have mpg123 working, you should consider installing a more capable media player. &nbsp;David Moberg has compiled a very nice version of mplayer for BL3. &nbsp;You will find a link to David's software <A HREF="contrib.html">here.
+
+</BODY>
+</HTML>
+
+
+
+
+

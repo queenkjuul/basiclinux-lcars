@@ -1,0 +1,59 @@
+SVP - A ghostscript front end for svgalib.
+
+This program uses ghostscript to display postscript and PDF
+files using svgalib. The interface is similar to tmview (dvi 
+viewer for svgalib).
+
+
+Requirements:
+
+Ghostscript needs to be installed, and the executable gs needs
+to be available in the PATH. Svp uses the drivers pbmraw, bmp256 
+and nullpage, so they all need to be available.
+
+
+Invocation:
+
+svp [-a] [-b] [-h] [-n] [-c color] [-d mode] [-r dpi] <filename>
+        -a              Use two color mode (black and white).
+        -b              Use 256 color mode.
+        -h              Display this help.
+        -n              Do not save config file when exiting.
+        -c color        Color scheme:
+                        color=0 - use standard colors.
+                        color=1 - reverse all colors.
+                        color=2 - reverse only in black and white mode.
+                        color=3 - reverse only the colors black and white.
+        -d mode         Use mode for display.
+                        mode can be WxY format (e.g. 800x600),
+                        a number of a 256 color mode (e.g. 12 for 1024x768),
+                        or an svgalib mode specification (e.g. G720x540x256).
+        -r dpi          Pass dpi as the value for gs' -r option.
+
+
+Keyboard: (case does not matter)
+
+Arrows	Scroll the displayed page.
++	Increase dpi (in effect, zoom in).
+-	Decrease dpi (zoom out).
+
+The amount of motion or change in dpi is determined by the factor,
+which is displayed within braces in the center of the status line. 
+To change the factor, just type the new factor, and press any key
+which is not 'g' or 'v'.
+
+g	Go to specified page (the page number is typed before).
+v	Set DPI.
+q	Quit SVP.
+PageUp  Go to next page.
+PageDown Go to previous page.
+
+> < Rotate clockwise/anti-clockwise.
+i   Default orientation.
+l	90 degrees from default orientation.
+k	180 degrees from default orientation.
+j	270 degrees from default orientation.
+
+(note:) rotating might be slow on not so powerful CPU, and it is done on every
+	change of DPI. If rotating is used, it might be faster to use color mode
+	than B&W mode.

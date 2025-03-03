@@ -1,0 +1,15 @@
+#Run this on the computer to which you will mount files (client)
+##Use the BL3 'big' kernel, or my 2.4.31 kernel with three modules
+
+insmod 3c59x
+ifconfig eth0 192.168.1.2
+
+insmod sunrpc  ##not needed for BL3 kernels
+insmod lockd  ##not needed for BL3 kernels
+insmod nfs  ##needed also for regular BL3 kernel
+
+rpc.portmap
+mount -t nfs 192.168.1.1:/ /mnt
+
+##On the server computer run rpc-on
+

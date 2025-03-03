@@ -1,0 +1,80 @@
+3.01
+---------------------------------------------------
+boots from hda1, hda2, hda3, hda4, hdb1, hdc1, hdd1
+bug in mail setup fixed
+mailto capability added to links
+manpage for swm
+TERM in rxvt changed from linux to xterm
+---------------------------------------------------
+
+3.02
+-------------------------------
+major improvement to pppd 
+major improvement to rxvt 
+minor improvement to eznet.conf
+-------------------------------
+
+3.10
+----------------------------
+NEW:  MagicPoint
+NEW:  install-to-hd 
+two fonts added, one removed
+minor improvement to Xsetup
+----------------------------
+
+3.20
+-----------------------------
+NEW:  PCMCIA
+minor changes in /etc/profile
+four NIC modules removed
+-----------------------------
+
+3.21
+-----------------------------
+major improvement to ldconfig
+major improvement to ldd
+/etc/mtab added
+-----------------------------
+
+3.30
+---------------------------
+major improvement to xinit
+minor improvement to pkg
+X libraries reduced in size
+more fonts in fonts.alias
+more space in fs.img
+new game added
+---------------------------
+
+3.31
+------------------------------
+xset added (needed by Abiword)
+------------------------------
+
+3.32
+----------------------------
+e2fsck incompatibility fixed
+----------------------------
+
+3.40
+----------------------------------------
+kernel upgraded to 2.2.26
+busybox upgraded to 1.01
+PCMCIA IDE and CF-card capability added
+minor changes to /dev 
+PLIP removed (still available as add-on)
+new add-on modules (eg wireless)
+----------------------------------------
+
+3.50
+------------------------------
+window manager upgraded to jwm
+sed upgraded to full version
+major improvements to calctool
+major improvements to links
+smaller busybox (same version)
+smaller less (older version)
+ADDED: /dev/random 
+DELETED: sedleds, xev, getopt
+-----------------------------
+

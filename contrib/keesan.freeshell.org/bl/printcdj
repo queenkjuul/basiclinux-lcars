@@ -1,0 +1,12 @@
+#!/bin/sh
+insmod parport
+insmod parport_pc
+insmod lp
+
+#/var/spool/lpd/postscript/deskjet.filter < $1 > /dev/lp0
+#gs -q -dSAFER -sDEVICE=deskjet -r300x300 -sPAPERSIZE=letter -sOutputFile=- - < $1 > /dev/lp0
+gs -sDEVICE=cdjcolor -r300x300  -sOutputFile=/dev/lp0 $1
+
+##cdeskjet does not work with  600 dpi printer (870).  Letter default.
+##ppmtolj did not print ppms made with pdftoppm - try pdfimages?
+

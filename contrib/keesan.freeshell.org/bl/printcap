@@ -1,0 +1,143 @@
+#
+# Copyright (c) 1983 Regents of the University of California.
+# All rights reserved.
+#
+#
+#	@(#)etc.printcap	5.2 (Berkeley) 5/5/88
+#
+
+#Put filters of these names in the postscript directory. 
+
+# sample deskjet.filter:
+
+#  #!/bin/sh
+#  /usr/local/bin/gs -q -dSAFER -sDEVICE=deskjet -r300x300 \  
+# -sPAPERSIZE=letter -sOutputFile=-- 
+# [all on one line, not the SW71 gs location, this is a newer version]
+
+# Command-line printing of pdf or ps file with script 'printdeskjet':
+
+#  #!/bin/sh
+# /var/spool/lpd/postscript/deskjet.filter < $1 > /dev/lp0
+#printdeskjet file.pdf
+
+#Using lpr and printcap:
+#To print, as root, insmod parport, parport_pc, lp (with script)
+#As root lpd
+#Start X if desired, as root, then su user (su from busybox-1.01, on the path)
+#lpr as user CLI or from within a program such as xpdf (to print selected pages)
+#lpr will not work for me in BL as root.
+
+# Here is my printcap for several printers.
+# d = draft (150/180 dpi) default (300/360 dpi) h = high quality (600 dpi)
+# Choose printer with  'lpr -Pepson filename.pdf' or use default deskjet
+
+#Tested only on ps/pdf files, should work with images.  Print text with 'wp' or cat.
+#HP PCL5 printers often work with several device drivers
+#deskjet, djet500, ljet4, cdj550, cdjcolor all work with HP 870Cse 
+# the 'c' (color) print quite slowly in mono.
+
+##Deskjet 500 and 600 series, 850 870 mono  300 dpi
+lp|ps|PS|PostScript|deskjet:sh:mx#0:\
+	:lp=/dev/lp0:\
+        :sd=/var/spool/lpd/postscript:\
+        :if=/var/spool/lpd/postscript/deskjet.filter:\
+
+##Deskjet 150 dpi
+deskjetd:sh:mx#0:\
+	:lp=/dev/lp0:\
+        :sd=/var/spool/lpd/postscript:\
+        :if=/var/spool/lpd/postscript/deskjetd.filter:\
+
+#HP870 mono and ljet 6 300 dpi
+ljet4:sh:mx#0:\
+	:lp=/dev/lp0:\
+        :sd=/var/spool/lpd/postscript:\
+	:if=/var/spool/lpd/postscript/ljet4.filter:\
+
+
+#HP870 mono and ljet 6 150 dpi
+ljet4d:sh:mx#0:\
+	:lp=/dev/lp0:\
+        :sd=/var/spool/lpd/postscript:\
+	:if=/var/spool/lpd/postscript/ljet4d.filter:\
+
+#HP870 mono and ljet 6 600 dpi
+ljet4h:sh:mx#0:\
+	:lp=/dev/lp0:\
+        :sd=/var/spool/lpd/postscript:\
+	:if=/var/spool/lpd/postscript/ljet4h.filter:\
+
+#HP Laserjet II plus mono 300 dpi
+ljet2p:sh:mx#0:\
+	:lp=/dev/lp0:\
+        :sd=/var/spool/lpd/postscript:\
+	:if=/var/spool/lpd/postscript/ljet2p.filter:\
+
+#HP Laserjet II plus draft (150)
+ljet2pd:sh:mx#0:\
+	:lp=/dev/lp0:\
+        :sd=/var/spool/lpd/postscript:\
+	:if=/var/spool/lpd/postscript/ljet2pd.filter:\
+
+#870Cse color 300 dpi (works for mono very slowly)
+cdj550:sh:mx#0:\
+	:lp=/dev/lp0:\
+        :sd=/var/spool/lpd/postscript:\
+	:if=/var/spool/lpd/postscript/cdj550.filter:\
+
+#870cse color 150 dpi
+cdj550d:sh:mx#0:\
+	:lp=/dev/lp0:\
+        :sd=/var/spool/lpd/postscript:\
+	:if=/var/spool/lpd/postscript/cdj550d.filter:\
+
+#870cse color 600 dpi
+cdj550h:sh:mx#0:\
+	:lp=/dev/lp0:\
+        :sd=/var/spool/lpd/postscript:\
+	:if=/var/spool/lpd/postscript/cdj550h.filter:\
+
+#870Cse color 300 dpi
+cdjcolor:sh:mx#0:\
+	:lp=/dev/lp0:\
+        :sd=/var/spool/lpd/postscript:\
+	:if=/var/spool/lpd/postscript/cdjcolor.filter:\
+
+#870 150 dpi
+cdjcolord:sh:mx#0:\ 
+	:lp=/dev/lp0:\
+        :sd=/var/spool/lpd/postscript:\
+	:if=/var/spool/lpd/postscript/cdjcolord.filter:\
+
+
+#870 150 dpi
+cdjcolorh:sh:mx#0:\ 
+	:lp=/dev/lp0:\
+        :sd=/var/spool/lpd/postscript:\
+	:if=/var/spool/lpd/postscript/cdjcolorh.filter:\
+
+#Epson/Panasonic 24-pin dot-matrix mono 360 dpi
+epson:sh:mx#0:\
+	:lp=/dev/lp0:\
+        :sd=/var/spool/lpd/postscript:\
+        :if=/var/spool/lpd/postscript/epson.filter:\
+
+#Epson/Panasonic dot-matrix 180 dpi
+epsond:sh:mx#0:\
+	:lp=/dev/lp0:\
+        :sd=/var/spool/lpd/postscript:\
+        :if=/var/spool/lpd/postscript/epsond.filter:\
+
+
+#Epson Stylus 800 color 360 dpi (do not use st800)
+stcolor:sh:mx#0:\
+	:lp=/dev/lp0:\
+        :sd=/var/spool/lpd/postscript:\
+	:if=/var/spool/lpd/postscript/stcolor.filter:\
+
+#Epson Stylus 800 color 140 dpi 
+stcolord:sh:mx#0:\
+	:lp=/dev/lp0:\
+        :sd=/var/spool/lpd/postscript:\
+	:if=/var/spool/lpd/postscript/stcolord.filter:\

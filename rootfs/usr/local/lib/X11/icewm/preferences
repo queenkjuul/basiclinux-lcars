@@ -144,7 +144,7 @@ AutoReloadMenus=1 # 0/1
 # TaskBarShowAPMStatus=0 # 0/1
 
 #  Task bar clock uses nice pixmapped LCD display
-# TaskBarClockLeds=0 # 0/1
+TaskBarClockLeds=0 # 0/1
 
 #  Show mailbox status on task bar
 TaskBarShowMailboxStatus=0 # 0/1
@@ -156,25 +156,25 @@ TaskBarShowMailboxStatus=0 # 0/1
 # TaskBarMailboxStatusCountMessages=0 # 0/1
 
 #  Show workspace switching buttons on task bar
-# TaskBarShowWorkspaces=1 # 0/1
+TaskBarShowWorkspaces=0 # 0/1
 
 #  Show windows on the taskbar
 # TaskBarShowWindows=1 # 0/1
 
 #  Show windows from all workspaces on task bar
-# TaskBarShowAllWindows=0 # 0/1
+TaskBarShowAllWindows=1 # 0/1
 
 #  Show 'Start' menu on task bar
 # TaskBarShowStartMenu=1 # 0/1
 
 #  Show 'window list' menu on task bar
-# TaskBarShowWindowListMenu=0 # 0/1
+TaskBarShowWindowListMenu=0 # 0/1
 
 #  Show CPU status on task bar (Linux & Solaris)
-# TaskBarShowCPUStatus=1 # 0/1
+TaskBarShowCPUStatus=1 # 0/1
 
 #  Show network status on task bar (Linux only)
-# TaskBarShowNetStatus=1 # 0/1
+TaskBarShowNetStatus=1 # 0/1
 
 #  Use double-height task bar
 # TaskBarDoubleHeight=0 # 0/1

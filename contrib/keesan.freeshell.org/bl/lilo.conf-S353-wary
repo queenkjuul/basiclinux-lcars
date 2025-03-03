@@ -1,0 +1,76 @@
+##S353 kernel 2.4.31 has built-in rtl8139 - 8139 module does not connect.
+##Also has built-in USB storage - regular usb does not work.
+##2.2.26 kernels are read-only and only 'big' even boots
+
+#boot=/dev/fd0
+boot=/dev/hda7  ##need not be active to just write boot sector?
+#boot=/dev/hda1 #must be primary active - need it be linux?
+install=/hd/boot/boot.b
+map=/hd/boot/map
+prompt  #prompts you for BL35 or BL2 or BL2-800 ##no DOS here
+delay=50  #boots to default after 5 seconds TAB for menu
+default=BL2
+#default=DOS
+
+#other=/dev/hda1
+#table=/dev/hda
+#label=DOS
+##No DOS on here.  XP was preinstalled.
+
+#image=/hd/boot/bzimage.big
+##'big' produces read-only file system
+#image=/hd/boot/zimagep1.226
+##boots but cannot mount hda1 in this computer
+#image=/hd/boot/bzimusb.431
+image=/hd/boot/bzimS353.431
+label=BL35
+root=/dev/hda6
+read-write
+vga=791
+##interferes with sound.
+
+#image=/hd/boot/bzimusb.431
+#label=BL2-800
+#root=/dev/hda7
+#read-only
+#vga=788
+#I forget why this section - not used
+
+image=/hd/boot/bzimS353.431
+#image=/hd/boot/bzimusb.431
+label=BL2
+root=/dev/hda7
+read-only
+##USB storage, no fb (disables sound and storage)
+##Use Xvesa 800x600 x8 to view DVDs, X to see more text.
+###vga=791
+
+#image=/hd/boot/bzimusb.431
+image=/hd/boot/bzimS353.431
+label=BL2-FB
+root=/dev/hda7
+read-only
+vga=791
+##No sound if framebuffer - choose one.
+
+image=/hd/pup431/vmlinuz
+label=P
+initrd=/hd/pup431/initrd.gz
+append="pmedia=atahd pdev=hda5 psubdir=puppy431 nosmp"
+read-only
+#Don't have fbcon for 431
+
+image=/hd/pulp1/vmlinuz
+label=PL
+initrd=/hd/pulp1/initrd.gz
+append="pmedia=atahd pdev=hda5 psubdir=pulp01 nosmp"
+read-only
+#vga=791
+##framebuffer eliminates sound
+
+image=/hd/wary2/vmlinuz
+label=W
+initrd=/hd/wary2/initrd.gz
+append="pmedia=satahd pdev=sda5 psubdir=wary512"
+read-only
+

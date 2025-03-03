@@ -1,0 +1,318 @@
+<html>
+<head><script type="text/javascript" src="https://web-static.archive.org/_static/js/bundle-playback.js?v=7YQSqjSh" charset="utf-8"></script>
+<script type="text/javascript" src="https://web-static.archive.org/_static/js/wombat.js?v=txqj7nKC" charset="utf-8"></script>
+<script>window.RufflePlayer=window.RufflePlayer||{};window.RufflePlayer.config={"autoplay":"on","unmuteOverlay":"hidden"};</script>
+<script type="text/javascript" src="https://web-static.archive.org/_static/js/ruffle/ruffle.js"></script>
+<script type="text/javascript">
+    __wm.init("https://web.archive.org/web");
+  __wm.wombat("http://logicassembly.com/linux/basic_linux_post_install.htm","20090105162337","https://web.archive.org/","web","https://web-static.archive.org/_static/",
+	      "1231172617");
+</script>
+<link rel="stylesheet" type="text/css" href="https://web-static.archive.org/_static/css/banner-styles.css?v=p7PEIJWi" />
+<link rel="stylesheet" type="text/css" href="https://web-static.archive.org/_static/css/iconochive.css?v=3PDvdIFv" />
+<!-- End Wayback Rewrite JS Include -->
+
+<title>Linux - Basic Linux 3.50 Post Installation Suggestions</title>
+<style type="text/css">
+<!--
+body,td,th      {font-family:verdana,tahoma;font-size:14px;color:#000000;background-color:#4070B0}
+a:link          {text-decoration:underline;color:#E07000}
+a:visited       {text-decoration:underline;color:#00FFFF}
+a:active        {text-decoration:underline;color:#FFFF00}
+a:hover         {text-decoration:underline;color:#FFFFFF}
+.pageheader     {color:#FF9000; font-size:16pt; font-weight:bold; background-color:#5080C0}
+.menulink       {font-weight:bold;font-size:12pt;font-family:arial,sans-serif}
+.navlink        {color:#00FFFF; font-size:14pt; font-weight:bold; }
+.stepnum        {font-family:sans-serif;font-size:14pt;color:#FFC300;font-weight:bold}
+.runcommand     {font-weight:bold;color:#97FF00;padding-left:32px;font-family:monospace}
+.runcommandlink {font-weight:bold;color:#006000}
+.authortext     {font-size:10pt;color:#FFC000}
+-->
+</style>
+</head>
+<body class="pagebody">
+<table style="display:inline" cellspacing="0" cellpadding="0">
+<tr>
+    <td>
+        <span class="pageheader">Linux - Basic Linux 3.50 Post Installation Suggestions</span><br/>
+        <span class="authortext"><i>Author</i>: <strong>Lee Savage</strong></span><br/>
+    </td>
+</tr>
+</table><br/>
+<br/>
+Once you get Basic Linux installed on your hard drive, there are some necessary things you need to 
+do in order to make your Linux system useful:<br/>
+<br/>
+<div class="stepnum">Configure CD/DVD-ROM</div>
+I've had good luck getting standard old ATAPI CD/DVD-ROM drives working out-of-the box with Basic Linux
+simply by uncommenting a couple lines in the bootup script.  The Basic Linux system bootup/init
+script is very simple and does not comprise of multiple files like every other Linux distro I have
+encountered.  Simply edit the "/etc/rc" file:<br/>
+<br/>
+<div class="runcommand">
+edit /etc/rc<br/>
+</div>
+<br/>
+Now locate the ##_ACTIVATE_CD_DRIVE_## section and, ensure the following lines are added
+(or uncommented by removing the "#" symbol) so that the <i>insmod</i> commands precede the "mount -avt nonfs"
+command such as:<br/>
+<br/>
+<div class="runcommand">
+##_ACTIVATE_CD_DRIVE_##<br/>
+insmod cdrom<br/>
+insmod ide-cd<br/>
+insmod isofs<br/>
+mount -avt nonfs<br/>
+</div>
+<br/>
+The last command (mount) is the command that tells the system to map all the mount points in the "/etc/fstab"
+file during bootup and is how we gain access to the files on the CD-ROM drive, your hard drive partitions, etc.
+This is why we want the CD-ROM kernel modules to be loaded prior to the mount command so that any CD-ROM
+drives you may configure in your "/etc/fstab" file will be loaded upon bootup without further user
+intervention.<br/>
+<br/>
+Now, create a mount point for your CD-ROM drive such as "/mnt/cdrom", and put this mapping in the "/etc/fstab"
+file like this:<br/>
+<br/>
+<div class="runcommand">
+mkdir /mnt/cdrom<br/>
+edit /etc/fstab<br/>
+</div>
+<br/>
+Once the editor is up, edit/add the cdrom device mapping to the new mount point you just created so it looks something like this:<br/>
+<br/>
+<div class="runcommand">
+/dev/hdX&nbsp;&nbsp;&nbsp;&nbsp;/mnt/cdrom&nbsp;&nbsp;&nbsp;&nbsp;iso9660&nbsp;&nbsp;&nbsp;&nbsp;ro,noauto&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;0<br/>
+</div>
+<br/>
+Replace "/dev/hdX" above with the actual device name of your CD-ROM drive such as "/dev/hdb".
+To find this, you may get a hint when the system is booting and detecting devices attached to the computer
+although this <i>slew</i> of information goes by rather quickly.
+Linux has a special command "dmesg" to provide access to this bootup information long after the system
+has booted.  This command gives you access into what's known as the "kernel's ringbuffer". Rather than just 
+dump the whole thing to the screen by running the "dmesg" command without arguments, you can try
+a case-insensitive search by piping the output into grep and specifying an identifier such as "CDROM"
+or "CD-ROM" to print all bootup lines containing that string.  For example:<br/>
+<br/>
+<div class="runcommand">
+dmesg|grep -i cd-rom<br/>
+</div>
+<br/>
+Results in the following output on one of my machines:<br/>
+<br/>
+<div class="runcommand">
+hdb: ATAPI 8X CD-ROM drive, 128kB Cache<br/>
+Uniform CD-ROM driver Revision: 3.11<br/>
+</div>
+<br/>
+So using the above example, I would use the device name "/dev/hdb" in place of "/dev/hdX" in while editing
+"/etc/fstab" to tell the system where and how to mount the CD-ROM device. "/dev/hdc" is also a common 
+CD-ROM device filename.  These device filenames looks similar to the hard drive's
+device filenames because [at least in this example] inside the computer, the CD-ROM interface is an IDE interface
+just like the hard drive.<br/>
+<br/>
+The "ro" option in the "/etc/fstab"
+file tells the bootup mount command that the filesystem is read-only, and the "noauto" option prevents
+the CD-ROM from auto-mounting during the bootup process.  You also see the "noauto" option in for the floppy
+drive device (/dev/fd0) because you may not always have a CD-ROM or floppy disk inserted upon bootup and
+in these cases you wouldn't want to see an extraneous bootup error indicating:<br/>
+<br/>
+<div class="runcommand">
+cdrom: open failed.<br/>
+mount: Mounting /dev/hdb on /mnt/cdrom failed: No medium found<br/>
+</div>
+<br/>
+...hence the purpose of the "noauto" command.
+Reboot your system using the "reboot" command and insert a CD-ROM into your drive once booted.  Issue the command:<br/>
+<br/>
+<div class="runcommand">
+mount /mnt/cdrom<br/>
+</div>
+<br/>
+*OR*<br/>
+<br/>
+<div class="runcommand">
+mount /dev/hdb /mnt/cdrom -t iso9660 -o ro,noauto<br/>
+</div>
+<br/>
+If you don't supply all the information to the "mount" command (as in version #1 of the command above),
+the "mount" command will fill in the missing information by matching either the device filename
+or mount-point path with the corresponding line in the "/etc/fstab" file.  In fact you can mount
+almost all your filesystems on Linux using the long version of the "mount" command and not
+even use the "/etc/fstab" file (with exception of your root filesystem and a special case filesystems
+such as "proc"), but "/etc/fstab", is your friend and is a very convenient place to
+remember your filesystem settings.<br/>
+<br/>
+If you see no output, the command likely succeeded.  Issue an "ls"
+command to test if you can see the files on the disc:<br/>
+<br/>
+<div class="runcommand">
+ls /mnt/cdrom<br/>
+</div>
+<br/>
+<div class="stepnum">Configure Network Card</div>
+You'll want to have your network/ethernet card recognized by Basic Linux if you want to get on the internet
+or at least communicate with other machines on your LAN.
+Although you can configure modem and PPP/SLIP support through Basic Linux to connect to the internet using
+dial-up, I never had the need to learn this information so these instructions assume you are hardwired into a
+LAN.<br/>
+<br/>
+I spent the bulk of my time learning Basic Linux trying to get it to recognize my ethernet
+cards not because of a problem with Basic Linux per se, but because there is such a lack of documentation out there; and to top it off,
+I was a newbie to Linux let alone Basic Linux.  By reading many of the
+blog messages about the problems people had getting their ethernet cards working, I gathered that
+it was just a matter of locating the correct kernel module (driver) file from the
+official Basic Linux Network Modules page,
+copying the file into the right place and running the "insmod" command just like configuring the 
+CD-ROM driver.  The tricky part is that there were 82 netcard driver files for Basic Linux 3.50 and
+none of the names are very descriptive, assuming you even remember the type of network card in that old
+machine you're trying to get up and running :).<br/>
+<br/>
+So let me save you some time.  I was able to get ethernet cards recognized in Basic Linux on three
+of my old machines by using
+either the "tulip" (Testing Upgrades of Linux Images Program) or "3c59x" (3COM) driver files, so try these
+first before resorting to "process of elimination".  I think I read somewhere that the "tulip" driver
+works with many types of cards, but don't quote me on that.  Once you've decided on a driver file to try,
+here is the process to see if that driver works with your ethernet hardware:<br/>
+<br/>
+Visit the <a href="https://web.archive.org/web/20090105162337/http://distro.ibiblio.org/pub/linux/distributions/baslinux/add-ons/2_2_26/modules/net/">Basic Linux Network Modules</a> page,
+download the module file (e.g. <i>tulip.o</i>) and save it to floppy disk.  Insert this disk
+into your Basic Linux machine and execute the following commands replacing <i>module</i> with the module
+you are using:<br/>
+<br/>
+<div class="runcommand">
+mount /fd<br/>
+cp /fd/<i>module.o</i> /lib/modules/2.2.26/misc<br/>
+insmod <i>module</i><br/>
+</div>
+<br/>
+If you see output such as that below, then this driver is not a suitable match for your network card hardware
+and you need to try a different one:<br/>
+<br/>
+<div class="runcommand">
+Using /lib/modules/2.2.26/misc/3c59x.o<br/>
+insmod: init_module: 3c59x: Device or resource busy<br/>
+</div>
+<br/>
+If on the other hand, if you see output like that below, then proceed on to the next step:<br/>
+<br/>
+<div class="runcommand">
+Using /lib/modules/2.2.26/misc/3c59x.o<br/>
+3c59x.c 18Feb01 Donald Becker and others http://www.scyld.com/network/vortex.html<br/>
+eth0: 3Com 3c900 Boomerang 10Mbps Combo at 0x6200,&nbsp;&nbsp;00:10:4b:95:19:cf, IRQ 11<br/>
+&nbsp;&nbsp;8K word-wide RAM 3:5 Rx:Tx split, autoselect/10baseT interface<br/>
+&nbsp;&nbsp;Enabling bus-master transmits and whole-fram receives.<br/>
+</div>
+<br/>
+If you end up trying many modules, it may be easier to download and copy all the modules
+to floppy disks (all 82 modules fit on 2 floppy disks by the way) and copying them into the "/lib/modules/2.2.26/misc"
+directory all at once.  Then you can simply issue the "insmod" commands in succession until you
+get one that works. Don't forget to remount the floppy drive each time you swap disks!<br/>
+<br/>
+Once you get a module that doesn't give you an error (obviosly this doesn't guarantee your network card will
+work with Basic Linux), you want to edit your "/etc/rc" file to load this driver upon startup:<br/>
+<br/>
+<div class="runcommand">
+edit /etc/rc<br/>
+</div>
+<br/>
+Now locate the section ###_ACTIVATE ETHERNET_### and edit it as follows:<br/>
+<br/>
+<div class="runcommand">
+###_ACTIVATE ETHERNET_###<br/>
+insmod module<br/>
+ifconfig eth0 192.168.1.100<br/>
+route add default gw 192.168.1.1<br/>
+</div>
+<br/>
+Make sure you replace <i>module</i> in the example above with the module name of your driver.  The example
+also assumes you want your netcard to have the IP address 192.168.1.100 and your gateway/router's IP address
+is 192.168.1.1.  Please adjust those values to reflect your own LAN settings as necessary.<br/>
+<br/>
+The last step is to configure at least one IP address that Basic Linux will use as a DNS starting point
+to resolve internet domains names:<br/>
+<br/>
+<div class="runcommand">
+edit /etc/resolv.conf<br/>
+</div>
+<br/>
+Now add at least one nameserver IP address separated by a linefeed:<br/>
+<br/>
+<div class="runcommand">
+nameserver 192.168.1.1<br/>
+</div>
+<br/>
+In the example above, we just specified the router's IP address which is normally fine because the router
+will simply forward the DNS request on the appropriate static or dynamic DNS server upstream to the internet
+and you won't have to fiddle with keeping this file updated.  Or you can specify the IP address(es) for the DNS
+server's your ISP has assigned you (if any), your choice.<br/>
+<br/>
+Reboot the machine and if all goes well, you should be able to browse the web with "links" or ping something you know exists on the internet such as:<br/>
+<br/>
+<div class="runcommand">
+ping google.com<br/>
+<br/>
+PING google.com (64.233.167.99): 56 data bytes<br/>
+64 bytes from 64.233.167.99: icmp_seq=0 ttl=233 time=130.2 ms<br/>
+64 bytes from 64.233.167.99: icmp_seq=1 ttl=233 time=100.3 ms<br/>
+64 bytes from 64.233.167.99: icmp_seq=2 ttl=233 time=117.9 ms<br/>
+</div>
+<br/>
+<div class="stepnum">Configure Basic Linux to Allow User Logins</div>
+Out of the box, Basic Linux requires no login.  When Basic Linux boots, you are immediately
+at a Linux prompt with full "root" access to the machine.  You can take the first step towards making your 
+Basic Linux machine a tad more secure by downloading and installing the "passwd" package from
+the Basic Linux <a href="https://web.archive.org/web/20090105162337/http://distro.ibiblio.org/pub/linux/distributions/baslinux/add-ons/index.htm">Add-Ons</a> page.
+Click the link to the left to download the "passwd.tgz" add-on from the official Basic Linux site and put the file
+on a floppy disk.  Insert the floppy disk into your Basic Linux machine and run the following commands:<br/>
+<br/>
+<div class="runcommand">
+mkdir /addons<br/>
+mount /fd<br/>
+cp /fd/passwd.tgz /addons<br/>
+cd /addons<br/>
+pkg passwd.tgz<br/>
+</div>
+<br/>
+The "pkg" command installs the "getty" utility and configures the "/etc/inittab" to spawn "getty" on each
+running Basic Linux terminal upon bootup. "getty" is the utility that prompts the user to login.
+The system will be configured to allow logins from the user "root".  If you are not prompted to set the password,
+issue the "passwd" command to set the "root" password before rebooting.<br/>
+<br/>
+<div class="stepnum">Replace Bootup Message</div>
+Get rid of the Basic Linux installation instructions by simply editing the "/etc/issue" file 
+using your favorite editor, or the following command:<br/>
+<br/>
+<div class="runcommand">
+edit /etc/issue<br/>
+</div>
+<br/>
+<br/>
+<hr/>
+Please report comments or errors on this page using the <a href="/web/20090105162337/http://logicassembly.com/contact.htm">Contact Form</a>.  Thank you!<br/>
+<hr/>
+<a class="navlink" href="/web/20090105162337/http://logicassembly.com/index.htm">&lt;&lt; Logic Assembly Home</a>
+| <a class="navlink" href="/web/20090105162337/http://logicassembly.com/linux/index.htm">&lt;&lt; Linux Help</a>
+<br/>
+
+</body>
+</html><!--
+     FILE ARCHIVED ON 16:23:37 Jan 05, 2009 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 07:02:24 Feb 27, 2025.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  captures_list: 0.462
+  exclusion.robots: 0.017
+  exclusion.robots.policy: 0.007
+  esindex: 0.01
+  cdx.remote: 40.549
+  LoadShardBlock: 200.189 (3)
+  PetaboxLoader3.resolve: 187.472 (4)
+  PetaboxLoader3.datanode: 151.578 (4)
+  load_resource: 162.367
+-->

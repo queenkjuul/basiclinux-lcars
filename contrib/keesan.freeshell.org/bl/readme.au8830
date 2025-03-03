@@ -1,0 +1,11 @@
+This module for Vortex 2 au8830 chips from Aureal is compiled for kernel 2.2. but is said to be usable with 2.2. or 2.5 
+kernels if you insmod -f au8830.o (force insertion in later kernels).  First insmod soundcore.
+
+Compiled for my Aureal VORTEX2 AU8830A2 card.  Download the .bz2 source code from sourceforge, unpackage anywhere, cd to 
+aureal, type make install, ignore the message about modules.conf (which BL does not have) and simply copy the module to 
+your sound modules directory (for BL3 /lib/modules/2.2.26/misc).  To compile for the 8820 or 8810 cards read README and 
+type make install20 or install10.
+
+Same for ppp2214.o - can be used with 2.2.16 kernel and lucent modems.  (See lucent.tgz).
+
+Not yet tested Feb 13 2007.

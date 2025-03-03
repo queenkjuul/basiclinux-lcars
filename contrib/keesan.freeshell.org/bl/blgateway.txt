@@ -1,0 +1,61 @@
+   Link: [1]Index
+   Link: [2]Previous
+   Link: [3]Next
+
+                                                [BL] gateway between two laptops
+
+   baslinux at lists.ibiblio.org [4]baslinux at lists.ibiblio.org
+   Thu Aug 21 13:10:54 EDT 2008
+
+     * Previous message: [5][BL] gateway between two laptops
+     * Next message: [6][BL] gateway between two laptops
+     * Messages sorted by: [7][ date ] [8][ thread ] [9][ subject ] [10][ author ]
+
+     ----------------------------------------------------------------------------------------------------------------------
+
+ Message from Steven
+ ===================
+ Christof wrote:
+ >
+ > - ifconfig eth0 192.168.1.1 on GW machine
+ > - ifconfig eth0 192.168.1.2 on client machine
+ > - route add default gw 192.168.1.1 on client machine
+ >
+ > Probably there is still one step missing (ip forwarding?)
+ Yes, you need to activate IP forwarding on the GW machine:
+ -----------------------------------
+ echo "1" > /proc/sys/net/ip_forward
+ -----------------------------------
+
+ Cheers,
+ Steven
+
+
+     ----------------------------------------------------------------------------------------------------------------------
+
+     * Previous message: [11][BL] gateway between two laptops
+     * Next message: [12][BL] gateway between two laptops
+     * Messages sorted by: [13][ date ] [14][ thread ] [15][ subject ] [16][ author ]
+
+     ----------------------------------------------------------------------------------------------------------------------
+
+   [17]More information about the BasLinux mailing list
+
+Links:
+1. http://lists.ibiblio.org/pipermail/baslinux/2008-August/index.html
+2. http://lists.ibiblio.org/pipermail/baslinux/2008-August/015462.html
+3. http://lists.ibiblio.org/pipermail/baslinux/2008-August/015463.html
+4. mailto:baslinux%40lists.ibiblio.org/?Subject=Re:%20%5BBL%5D%20gateway%20between%20two%20laptops&In-Reply-To=%3C20080822051054.3edce26e.ln8d-on8g%40dea.spamcon.org%3E
+5. http://lists.ibiblio.org/pipermail/baslinux/2008-August/015462.html
+6. http://lists.ibiblio.org/pipermail/baslinux/2008-August/015463.html
+7. http://lists.ibiblio.org/pipermail/baslinux/2008-August/date.html#15461
+8. http://lists.ibiblio.org/pipermail/baslinux/2008-August/thread.html#15461
+9. http://lists.ibiblio.org/pipermail/baslinux/2008-August/subject.html#15461
+10. http://lists.ibiblio.org/pipermail/baslinux/2008-August/author.html#15461
+11. http://lists.ibiblio.org/pipermail/baslinux/2008-August/015462.html
+12. http://lists.ibiblio.org/pipermail/baslinux/2008-August/015463.html
+13. http://lists.ibiblio.org/pipermail/baslinux/2008-August/date.html#15461
+14. http://lists.ibiblio.org/pipermail/baslinux/2008-August/thread.html#15461
+15. http://lists.ibiblio.org/pipermail/baslinux/2008-August/subject.html#15461
+16. http://lists.ibiblio.org/pipermail/baslinux/2008-August/author.html#15461
+17. http://lists.ibiblio.org/mailman/listinfo/baslinux

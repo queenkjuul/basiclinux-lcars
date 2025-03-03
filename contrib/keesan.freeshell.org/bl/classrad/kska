@@ -1,0 +1,1 @@
+wget -O - http://stream.kska.org:8290/| mpg123 -

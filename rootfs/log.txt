@@ -1,0 +1,34 @@
+
+Enter your desired screen mode
+Examples:
+640x480x4
+640x480x16
+800x600x32
+uses 640x480x16 if left blank
+
+
+Enter your mouse interface
+Examples:
+psaux (PS/2)
+ttyS0 (COM1)
+ttyS1 (COM2)
+usb (USB drivers must already be installed)
+must be one of psaux, ttyS0, ttyS1, usb, with matching capitalization
+uses psaux if left blank
+
+Enter your number of mouse buttons
+Examples:
+2
+3
+assumes 2 if left blank
+
+Enter your window manager
+
+Examples:
+jwm
+icewm
+Uses icewm if blank
+Starting X at 800x600x16 with ttyS0 2-button mouse and icewm desktop
+Press Enter to continue or control+C to exit
+
+Could not init font path element /usr/X11R6/lib/X11/fonts/75dpi/, removing from list!

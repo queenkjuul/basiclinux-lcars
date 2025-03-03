@@ -1,9 +1,0 @@
-! Copyright (c) 1990-1997  Michael Sandrof, Troy Rollo, Matthew Green,
-! and other ircII contributors.
-!
-! All rights reserved.  See the HELP IRCII COPYRIGHT file for more
-! information.
-!
-Usage: BIND <key> QUIT_IRC
-  Exit irc and return to whatever excuse for a shell you're
-  using.  Sorry.  Didn't mean that.

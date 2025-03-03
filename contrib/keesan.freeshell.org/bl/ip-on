@@ -1,0 +1,7 @@
+#Run on the gateway ('big' or bare.i kernel), on the other run gw-on
+##Try also with my smf kernel.  I need to add ipchains from SW.
+echo 1 > /proc/sys/net/ipv4/ip_forward
+insmod 3c59x
+ifconfig eth0 192.168.1.2
+ipchains -P forward DENY
+ipchains -A forward -s 192.168.1.0/24 -j MASQ

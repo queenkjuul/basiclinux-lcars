@@ -1,0 +1,24 @@
+
+<br><H2>
+DOSEMU for BL2
+<H2>DOSEMU for BL2 </H2>
+
+dosemu.tgz - Statically compiled by  David Moberg (but works for BL2 only) 
+DOSEMU 1.3.2, which fixes several serious problems in older versions
+such as lack of characters (A, S, i, etc.) <br>
+1) installpkg dosemu.tgz  <br>
+
+2) download  
+<a href="http://prdownloads.sourceforge.net/dosemu/dosemu-freedos-b9r5-bin.tgz?download"> 
+the required freedos file </a>, <br>
+3) move and rename to /usr/share/dosemu/dosemu-freedos-bin.tgz<br>
+Type dosemu and follow instructions to finish installing.  Do 
+NOT follow instructions in README.bindist when using this
+package.<br>
+Tested working with WP5.1 for DOS under xdosemu (but if used with 
+CLI dosemu, the Alt-F1 to F4 will switch terminals instead of acting
+as WP commands and also you have to type very very slowly or many
+letters won't even appear), with dosemu using a small text editor, and 
+with xdosemu using a small CAD program.
+WP4.2 for DOS works correctly even under plain dosemu.
+<p>

@@ -1,0 +1,213 @@
+#
+# /etc/rc.serial 
+#	Initializes the serial ports on your system
+#
+# Distributed with setserial version 2.14
+#
+
+# Standard flags you want your serial devices to have
+# Examples: SAK, pgrp_lockout, session_lockout
+#
+STD_FLAGS="session_lockout"
+
+SETSERIAL=/sbin/setserial
+
+echo -n "Configuring serial ports...."
+
+# Do wild interrupt detection
+#
+${SETSERIAL} -W /dev/ttyS0
+
+###############################################################
+#
+# AUTOMATIC CONFIGURATION 
+#
+# Uncomment the appropriate lines below to enable auto-configuration
+# of a particular board.  Or comment them out to disable them....
+#
+# NOTE!  Although the automatic configuration is enabled by default,
+# I strongly suggest that you comment out this section and use the 
+# manual configuration section instead.  It's more work to set up, but 
+# it's more reliable.
+#
+###############################################################
+
+# Do AUTOMATIC_IRQ probing
+#
+AUTO_IRQ=auto_irq
+
+# These are the standard COM1 through COM4 devices
+#
+# If you have an internal modeme with a Rockwell Chipset, add a "skip_test"
+# to the /dev/ttyS3 line below.  (It's not added by default because it will
+# screw up people with 8514 displays).
+#
+${SETSERIAL} /dev/ttyS0 ${AUTO_IRQ} skip_test autoconfig ${STD_FLAGS}
+${SETSERIAL} /dev/ttyS1 ${AUTO_IRQ} skip_test autoconfig ${STD_FLAGS}
+${SETSERIAL} /dev/ttyS2 ${AUTO_IRQ} skip_test autoconfig ${STD_FLAGS}
+${SETSERIAL} /dev/ttyS3 ${AUTO_IRQ} autoconfig ${STD_FLAGS}
+
+# These are for the first AST Fourport board (base address 0x1A0)
+#
+${SETSERIAL} /dev/ttyS4 ${AUTO_IRQ} autoconfig ${STD_FLAGS}
+${SETSERIAL} /dev/ttyS5 ${AUTO_IRQ} autoconfig ${STD_FLAGS}
+${SETSERIAL} /dev/ttyS6 ${AUTO_IRQ} autoconfig ${STD_FLAGS}
+${SETSERIAL} /dev/ttyS7 ${AUTO_IRQ} autoconfig ${STD_FLAGS}
+
+# This enables the new multiport masking feature, which is highly recommened
+# for AST FourPort boards.
+#
+#${SETSERIAL} /dev/ttyS4 set_multiport port1 0x1BF mask1 0xf match1 0xf
+
+# These are for the second AST Fourport board (base address 0x2A0)
+#
+${SETSERIAL} /dev/ttyS8 ${AUTO_IRQ} autoconfig ${STD_FLAGS}
+${SETSERIAL} /dev/ttyS9 ${AUTO_IRQ} autoconfig ${STD_FLAGS}
+${SETSERIAL} /dev/ttyS10 ${AUTO_IRQ} autoconfig ${STD_FLAGS}
+${SETSERIAL} /dev/ttyS11 ${AUTO_IRQ} autoconfig ${STD_FLAGS}
+
+# This enables the new multiport masking feature, which is highly recommened
+# for AST FourPort boards.
+#
+#${SETSERIAL} /dev/ttyS8 set_multiport port1 0x2BF mask1 0xf match1 0xf
+
+# These are the 3rd and 4th ports on the Accent Async board.
+#
+#${SETSERIAL} /dev/ttyS12 ${AUTO_IRQ} autoconfig ${STD_FLAGS}
+#${SETSERIAL} /dev/ttyS13 ${AUTO_IRQ} autoconfig ${STD_FLAGS}
+
+# Usenet Serial Board II (base address 0x100)
+#
+#${SETSERIAL} /dev/ttyS16 ${AUTO_IRQ} autoconfig ${STD_FLAGS}
+#${SETSERIAL} /dev/ttyS17 ${AUTO_IRQ} autoconfig ${STD_FLAGS}
+#${SETSERIAL} /dev/ttyS18 ${AUTO_IRQ} autoconfig ${STD_FLAGS}
+#${SETSERIAL} /dev/ttyS19 ${AUTO_IRQ} autoconfig ${STD_FLAGS}
+
+
+# BocaBoard 4 port (BB-1004) (base address 0x100)
+#
+#${SETSERIAL} /dev/ttyS16 ${AUTO_IRQ} autoconfig ${STD_FLAGS}
+#${SETSERIAL} /dev/ttyS17 ${AUTO_IRQ} autoconfig ${STD_FLAGS}
+#${SETSERIAL} /dev/ttyS18 ${AUTO_IRQ} autoconfig ${STD_FLAGS}
+#${SETSERIAL} /dev/ttyS19 ${AUTO_IRQ} autoconfig ${STD_FLAGS}
+
+# BocaBoard 8 port (BB-1008) (base address 0x100),
+# or two BB-1004's (base addresses 0x100 and 0x120)
+#
+#${SETSERIAL} /dev/ttyS16 ${AUTO_IRQ} autoconfig ${STD_FLAGS}
+#${SETSERIAL} /dev/ttyS17 ${AUTO_IRQ} autoconfig ${STD_FLAGS}
+#${SETSERIAL} /dev/ttyS18 ${AUTO_IRQ} autoconfig ${STD_FLAGS}
+#${SETSERIAL} /dev/ttyS19 ${AUTO_IRQ} autoconfig ${STD_FLAGS}
+#${SETSERIAL} /dev/ttyS20 ${AUTO_IRQ} autoconfig ${STD_FLAGS}
+#${SETSERIAL} /dev/ttyS21 ${AUTO_IRQ} autoconfig ${STD_FLAGS}
+#${SETSERIAL} /dev/ttyS22 ${AUTO_IRQ} autoconfig ${STD_FLAGS}
+#${SETSERIAL} /dev/ttyS23 ${AUTO_IRQ} autoconfig ${STD_FLAGS}
+
+# BocaBoard 16 port (BB-1008), (base address 0x100),
+# or two BB-1008's (base addresses 0x100 and 0x140),
+# or four BB-1004's (base address 0x100, 0x120, 0x140, and 0x160)
+#
+# Warning --- some of these ports may conflict with the Future Domain
+# SCSI controller.  If you want to run both the BocaBoards and the 
+# Future Domain controller, you may need to change the port assignment
+# of the Bocaboards -- see below in the section on manual configuration.
+#
+${SETSERIAL} /dev/ttyS16 ${AUTO_IRQ} autoconfig ${STD_FLAGS}
+${SETSERIAL} /dev/ttyS17 ${AUTO_IRQ} autoconfig ${STD_FLAGS}
+${SETSERIAL} /dev/ttyS18 ${AUTO_IRQ} autoconfig ${STD_FLAGS}
+${SETSERIAL} /dev/ttyS19 ${AUTO_IRQ} autoconfig ${STD_FLAGS}
+${SETSERIAL} /dev/ttyS20 ${AUTO_IRQ} autoconfig ${STD_FLAGS}
+${SETSERIAL} /dev/ttyS21 ${AUTO_IRQ} autoconfig ${STD_FLAGS}
+${SETSERIAL} /dev/ttyS22 ${AUTO_IRQ} autoconfig ${STD_FLAGS}
+${SETSERIAL} /dev/ttyS23 ${AUTO_IRQ} autoconfig ${STD_FLAGS}
+${SETSERIAL} /dev/ttyS24 ${AUTO_IRQ} autoconfig ${STD_FLAGS}
+${SETSERIAL} /dev/ttyS25 ${AUTO_IRQ} autoconfig ${STD_FLAGS}
+${SETSERIAL} /dev/ttyS26 ${AUTO_IRQ} autoconfig ${STD_FLAGS}
+${SETSERIAL} /dev/ttyS27 ${AUTO_IRQ} autoconfig ${STD_FLAGS}
+${SETSERIAL} /dev/ttyS28 ${AUTO_IRQ} autoconfig ${STD_FLAGS}
+${SETSERIAL} /dev/ttyS29 ${AUTO_IRQ} autoconfig ${STD_FLAGS}
+${SETSERIAL} /dev/ttyS30 ${AUTO_IRQ} autoconfig ${STD_FLAGS}
+${SETSERIAL} /dev/ttyS31 ${AUTO_IRQ} autoconfig ${STD_FLAGS}
+
+# This enables the new multiport masking feature, which is highly recommened
+# for Bocaboard ports.  Uncomment only the first line if you have a 
+# BB-1004 or BB-1008.  Uncomment both lines if you have a BB-2016.
+# These numbers assume the Bocaboard is located at address 0x100.  If you
+# change this, remember to change the port1 and port2 addresses.
+#
+#${SETSERIAL} /dev/ttyS16 set_multiport port1 0x107 mask1 0xff match1 0
+#${SETSERIAL} /dev/ttyS16 set_multiport port2 0x147 mask2 0xff match2 0
+
+###############################################################
+#
+# MANUAL CONFIGURATION 
+#
+# If you want to do manual configuration of one or more of your 
+# serial ports, uncomment and modify the relevant lines.
+#
+###############################################################
+
+# These are the standard COM1 through COM4 devices
+#
+#${SETSERIAL} /dev/ttyS0 uart 16450 port 0x3F8 irq 4 ${STD_FLAGS}
+#${SETSERIAL} /dev/ttyS1 uart 16450 port 0x2F8 irq 3 ${STD_FLAGS}
+#${SETSERIAL} /dev/ttyS2 uart 16450 port 0x3E8 irq 4 ${STD_FLAGS}
+#${SETSERIAL} /dev/ttyS3 uart 16450 port 0x2E8 irq 3 ${STD_FLAGS}
+
+# These are the first set of AST Fourport ports
+#
+#${SETSERIAL} /dev/ttyS4 uart 16450 port 0x1A0 irq 9 fourport ${STD_FLAGS}
+#${SETSERIAL} /dev/ttyS5 uart 16450 port 0x1A8 irq 9 fourport ${STD_FLAGS}
+#${SETSERIAL} /dev/ttyS6 uart 16450 port 0x1B0 irq 9 fourport ${STD_FLAGS}
+#${SETSERIAL} /dev/ttyS7 uart 16450 port 0x1B8 irq 9 fourport ${STD_FLAGS}
+
+# These are the second set of AST Fourport ports
+#
+#${SETSERIAL} /dev/ttyS8 uart 16450 port 0x2A0 irq 5 fourport ${STD_FLAGS}
+#${SETSERIAL} /dev/ttyS9 uart 16450 port 0x2A8 irq 5 fourport ${STD_FLAGS}
+#${SETSERIAL} /dev/ttyS10 uart 16450 port 0x2B0 irq 5 fourport ${STD_FLAGS}
+#${SETSERIAL} /dev/ttyS11 uart 16450 port 0x2B8 irq 5 fourport ${STD_FLAGS}
+
+# These are the 3rd and 4th ports on the Accent Async board.
+#
+#${SETSERIAL} /dev/ttyS12 uart 16450 port 0x330 irq 4 ${STD_FLAGS}
+#${SETSERIAL} /dev/ttyS13 uart 16450 port 0x338 irq 4 ${STD_FLAGS}
+
+# These are two spare devices you can use to customize for 
+# some board which is not supported above....
+#${SETSERIAL} /dev/ttyS14 uart XXXXX port XXXX irq X ${STD_FLAGS}
+#${SETSERIAL} /dev/ttyS15 uart XXXXX port XXXX irq X ${STD_FLAGS}
+
+# These are the ports used for either the Usenet Serial II
+# board, or the Boca Board 4, 8, or 16 port boards.
+#
+# Uncomment only the first 4 lines for the Usenet Serial II board,
+# and uncomment the first 4, 8, or all 16 lines for the
+# Boca Board BB-1004, BB-1008, and BB-2016 respectively.
+#
+#${SETSERIAL} /dev/ttyS16 uart 16550A port 0x100 irq 12 ${STD_FLAGS}
+#${SETSERIAL} /dev/ttyS17 uart 16550A port 0x108 irq 12 ${STD_FLAGS}
+#${SETSERIAL} /dev/ttyS18 uart 16550A port 0x110 irq 12 ${STD_FLAGS}
+#${SETSERIAL} /dev/ttyS19 uart 16550A port 0x118 irq 12 ${STD_FLAGS}
+#${SETSERIAL} /dev/ttyS20 uart 16550A port 0x120 irq 12 ${STD_FLAGS}
+#${SETSERIAL} /dev/ttyS21 uart 16550A port 0x128 irq 12 ${STD_FLAGS}
+#${SETSERIAL} /dev/ttyS22 uart 16550A port 0x130 irq 12 ${STD_FLAGS}
+#${SETSERIAL} /dev/ttyS23 uart 16550A port 0x138 irq 12 ${STD_FLAGS}
+#${SETSERIAL} /dev/ttyS24 uart 16550A port 0x140 irq 12 ${STD_FLAGS}
+#${SETSERIAL} /dev/ttyS25 uart 16550A port 0x148 irq 12 ${STD_FLAGS}
+#${SETSERIAL} /dev/ttyS26 uart 16550A port 0x150 irq 12 ${STD_FLAGS}
+#${SETSERIAL} /dev/ttyS27 uart 16550A port 0x158 irq 12 ${STD_FLAGS}
+#${SETSERIAL} /dev/ttyS28 uart 16550A port 0x160 irq 12 ${STD_FLAGS}
+#${SETSERIAL} /dev/ttyS29 uart 16550A port 0x168 irq 12 ${STD_FLAGS}
+#${SETSERIAL} /dev/ttyS30 uart 16550A port 0x170 irq 12 ${STD_FLAGS}
+#${SETSERIAL} /dev/ttyS31 uart 16550A port 0x178 irq 12 ${STD_FLAGS}
+
+###########################################################
+#
+# Print the results of the serial configuration process
+#
+###########################################################
+
+echo "done."
+
+${SETSERIAL} -bg /dev/ttyS? /dev/ttyS??

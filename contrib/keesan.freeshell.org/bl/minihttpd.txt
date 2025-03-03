@@ -1,0 +1,99 @@
+>> The one I submitted to the list, mini_httpd is statically compiled, 
+>> so it should work with BL2, and it's easier than copying over all of 
+>> busybox.
+>
+>
+> I took a look at it but could not understand how to configure it.  Can 
+> you explain how to set it up to work like the busybox httpd, just from 
+> the directory where it is invoked?  I have not set up a web server 
+> until yesterday.
+
+First of all, if you have the new version there's plenty of 
+documentation on it in /usr/doc/.
+
+I'll explain it however:
+The -C option specifies a config file. Config files are explained quite 
+nicely if you read the page in /usr/doc/, and you set the options like so:
+
+optionname=value
+
+-p specifies a port. The default of 80 should be what you want.
+
+-d specifies a dir to chdir to at startup.
+
+-dd is related to chrooting, see the manual.
+
+-c is for specifying your cgi-bin. Specify 'cgi-bin/**' (without the 
+quotes) for anything in cgi-bin/. '**.cgi' (yet again, without the 
+quotes) for all files ending in .cgi. Note that this path is relative to 
+the directory specified with -d.
+
+-u specifies a user to switch to after initialization as root. Default 
+is nobody. If you leave this alone in BL3, it'll somehow magically 
+change to nobody just fine, despite the user 'nobody' not being existing.
+
+-h and -v are related to virtual hosting. See the manual.
+
+-l specifies a log file name. Default is no logging.
+
+-i specifies a pidfile (a file that it writes it's PID to)
+
+-T specifies a character set to use when sending text files. Default 
+should be fine.
+
+-P specifies a P3P server header. See manual for details.
+
+-M is related to caching, see manual for details.
+
+-S is related to SSL, which I have disabled. Useless unless you 
+recompile with SSL support.
+
+-E is also related to SSL. Yet again, see the manual.
+
+-D is for debug mode. Note, however that mini_httpd does not become a 
+daemon in this mode, so it's great for a restart script.
+
+-V prints the version and exits.
+
+So, now that we have that covered, here's an example configuration file:
+
+dir=/var/www/
+cgipat=cgi-bin/**
+logfile=/var/log/mini_httpd.log
+
+With this configuration file, you'd put your files in /var/www/, and 
+your cgi files in /var/www/cgi-bin/. It would log to 
+/var/log/mini_httpd.log.
+
+You would invoke mini_httpd like this:
+
+mini_httpd -C /path/to/config/file
+
+Hope this clears things up a bit. By the way, if you have an old version 
+that does not have the (essential) manual in /usr/doc/, e-mail me for 
+the new package. The manual is essential.
+
+Thanks,
+
+Stephen Clement
+
+>
+>>
+>> Thanks,
+>>
+>> Stephen Clement
+>>
+>>>
+>>> On Sun, 13 Mar 2005, Alejandro Lieber wrote:
+>>>
+>>>> Today I used httpd:
+>>>>
+>>>> 1) made directory www
+>>>> 2) loaded a index.html file there.
+>>>> 3) cd to /www
+>>>> 4) run httpd
+>>>> 5) run ppp-on
+>>>> 6) read myip address (200.32.16.17) after loging to my IP.
+>>>> 7) run links
+>>>> 8) g 200.32.16.17
+>>>> 9) links got my /www/index.html page

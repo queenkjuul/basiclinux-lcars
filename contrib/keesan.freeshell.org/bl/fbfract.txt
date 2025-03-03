@@ -1,0 +1,38 @@
+execve("./fbfract", ["fbfract"], [/* 22 vars */]) = 0
+uname({sys="Linux", node="BasicLinux", ...}) = 0
+brk(0)                                  = 0x8049a5c
+access("/etc/ld.so.preload", R_OK)      = -1 ENOENT (No such file or directory)
+open("/etc/ld.so.cache", O_RDONLY)      = 4
+fstat64(0x4, 0xbffff2e8)                = 0
+mmap2(NULL, 13463, PROT_READ, MAP_PRIVATE, 4, 0) = 0x40018000
+close(4)                                = 0
+open("/lib/libm.so.6", O_RDONLY)        = 4
+read(4, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0\3\0\1\0\0\0`3\0\000"..., 512) = 512
+fstat64(0x4, 0xbffff380)                = 0
+mmap2(NULL, 139424, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 4, 0) = 0x4001c000
+mmap2(0x4003d000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 4, 0x20) = 0x4003d000
+close(4)                                = 0
+open("/lib/libdl.so.2", O_RDONLY)       = 4
+read(4, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0\3\0\1\0\0\0\320\v\0"..., 512) = 512
+fstat64(0x4, 0xbffff364)                = 0
+mmap2(NULL, 12392, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 4, 0) = 0x4003f000
+mmap2(0x40041000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 4, 0x1) = 0x40041000
+close(4)                                = 0
+open("/usr/lib/libFB.so.0", O_RDONLY)   = 4
+read(4, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0\3\0\1\0\0\0\200\27"..., 512) = 512
+fstat64(0x4, 0xbffff348)                = 0
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x40043000
+mmap2(NULL, 17568, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 4, 0) = 0x40044000
+mmap2(0x40048000, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 4, 0x4) = 0x40048000
+close(4)                                = 0
+open("/lib/libc.so.6", O_RDONLY)        = 4
+read(4, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0\3\0\1\0\0\0PS\1\000"..., 512) = 512
+fstat64(0x4, 0xbffff32c)                = 0
+mmap2(NULL, 1236276, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 4, 0) = 0x40049000
+mmap2(0x40171000, 16384, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 4, 0x127) = 0x40171000
+mmap2(0x40175000, 7476, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x40175000
+close(4)                                = 0
+mprotect(0x40171000, 4096, PROT_READ)   = 0
+munmap(0x40018000, 13463)               = 0
+--- SIGILL (Illegal instruction) ---
++++ killed by SIGILL +++

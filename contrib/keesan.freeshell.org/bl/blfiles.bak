@@ -1,0 +1,2880 @@
+
+<html>
+The following files are at <a href="http://keesan.freeshell.org/bl">
+http://keesan.freeshell.org/bl </a> or subdirectories 2.2.16, 2.2.26, 2.2.27,
+2.4.31 for kernels and modules and related packages.<br> 
+If a link is broken hunt in the directory and report it to me.
+
+<p>
+
+Most packages are for GLIBC225 - glibc 2.2.5 from Slackware 8.1<br>
+As of spring 2009 I am compiling for glibc 2.3.6 from Slackware 11. <br>
+
+<p>
+
+<H1>BL2 2-floppy that works on more drives by Jim D.</H1>
+<a href="bl2fdjd.tgz">bl2fdjd.tgz</a>
+Unpackage, copy disk1.img to disk 1 with dd if=disk1.img of=/dev/fd0,
+copy disk2 files with cp (or DOS copy) to disk 2
+<p>
+
+<H1>BL on CD</H1>
+<a href="bl2-2880.iso.gz">BL2.1</a><br>
+<a href="bl332.iso.gz">BL3.32</a><br>
+gunzip and burn to make bootable CD
+<p>
+
+<H1>MISC</H1>
+
+<H2>CPU/BOARD tester (static) to run from floppy linux</H2><p>
+
+<a href="cpuburn-static.tgz">cpuburn-static.tgz</a><br>
+Unpack to a floppy disk, copy to BL disk #2 burnP5 burnP6 burnK6 burnK7 
+(one or all) and run to try to crash the system.  Do not mount hd's.
+
+
+<H2>UNRAR for glibc 2.2.5</H2>
+<p>
+<a href="unrar-glibc225">unrar-glibc225</a> unpacks .rar format
+
+<p>
+
+
+<H2>USING RPM PACKAGES IN BL</H2>
+
+Install cpio.tgz (or cpio from this site, to /bin) <br>
+and if you don't have it also bin.tgz (includes rpmoffset) first.<br>
+<p>
+
+(1)  rpm2tgz  (by David Moberg): <br>
+rpmoffset < filename.rpm <br>
+Fill in the number you get here after ibs= in rpm2tgz script <br>
+rpm2tgz filename.rpm<br>
+<p>
+
+(2) or, much simpler:<br>
+rpm2targz filename.rpm<br>
+<p>
+Use installpkg to install the resulting .tar.gz file <br>
+
+<p> 
+
+
+<H2>Dual-boot Windows 2000 and BL3.50</H2>
+<p>
+
+<a href="2kbl-lilo.conf">2kbl-lilo.conf</a><br>
+
+If you installed BL from 2-floppy version, read the instructions and copy 
+the relevant parts to /etc as /lilo.conf<br>
+
+<p> Otherwise, download and unpack at / <a href="dualboot.tgz">dualboot.tgz</a>
+(which also contains /boot/boot.b and /sbin/lilo)
+
+<p>See archives for how to do this with ntloader instead (boot.ini).
+
+<p>
+
+<H2>DOSEMU for BL2 </H2>
+
+dosemu.tgz - Statically compiled by  David Moberg (but works for BL2 only) 
+DOSEMU 1.3.2, which fixes several serious problems in older versions
+such as lack of characters (A, S, i, etc.) <br>
+1) installpkg dosemu.tgz  <br>
+2) download  
+<a href="http://prdownloads.sourceforge.net/dosemu/dosemu-freedos-b9r5-bin.tgz?download"> 
+the required freedos file </a>, <br>
+3) move and rename to /usr/share/dosemu/dosemu-freedos-bin.tgz<br>
+Type dosemu and follow instructions to finish installing.  Do 
+NOT follow instructions in README.bindist when using this
+package.<br>
+Tested working with WP5.1 for DOS under xdosemu (but if used with 
+CLI dosemu, the Alt-F1 to F4 will switch terminals instead of acting
+as WP commands and also you have to type very very slowly or many
+letters won't even appear), with dosemu using a small text editor, and 
+with xdosemu using a small CAD program.
+WP4.2 for DOS works correctly even under plain dosemu.
+<p>
+
+<H1>BUSYBOX updates </H1>
+
+<p>
+<H2>
+BUSYBOX 1.3.2 static against uclibc, to be used with 2.4 kernel 
+</H2>
+<p>
+<a href="busybox-1.3.2-default">busybox-1.3.2-default</a><br>
+<a href="busybox-1.3.2-small">busybox-1.3.2-small</a><br>
+<a href="busybox-1.3.2-smaller">busybox-1.3.2-smaller</a><br>
+Compiled by Karolis Lyvens and available at
+<a href="http://82.135.162.105/~karolis/bl/bbox">his site</a>
+
+<p>
+
+Latest stable busybox default config, selected files (about 2/3 the size_
+and the same without rpm, sed and gzip.  I also compiled the latest gzip 
+for 2.2.25.  Busybox gzip does NOT work with lynx 2.8.6.
+Other busybox programs may also be deficient.  symlink /bin/pwd to busybox.
+
+<p>
+
+<H1>Tiny C Compiler</H1>
+<p>
+
+<a href="tcc-0.9.25-uclibc-dynamic.tgz">tcc-0.9.25-uclibc-dynamic.tgz"</a> (about 300K)
+Includes libtcc.h, libtcc.a, man and doc pages, examples.  Not tested, please report omissions.
+
+<p>
+Compiled dynamically against <a href="uclibc-2005.tgz">uclibc-2005</a><br>
+(About 170K).  Download and install this to use tcc.
+
+<H1>OFFICE</H1>
+
+<H2>ONLINE OFFICE </H>
+<p>
+
+Google Docs won't load with Opera and though it claims to, it 
+won't work with Firefox 2 (Bon Echo from DSL) but will work with Seamonkey 1.1.17.
+
+<p>
+
+<a href="http://writer.zoho.com">ZOHO writer</a> works with Opera
+except for some keyboard shortcuts (Opera uses them) and does much
+more than Google Docs.  Import/export lots of formats, save to your
+computer, send directly from their site as email, post online, etc.  
+Needs a fast cpu (250MHz is borderline) and broadband to be
+useful.  Also works with Seamonkey (including keyboard shortcuts).
+Abiword for BL is broken if you upgrade to glibc 2.3.6 and does
+not import WORD well anyway.
+<p>
+
+
+<H2>NANO TEXT EDITOR compiled with GLIBC 2.2.5 </H2>
+<p>
+
+<a href="nano-glibc225-dynamic">nano dynamic glibc 2.2.5</a>
+<A href="nano-glibc225-static-nomouse">nano static</a><br>ditto for 
+BL3<br>
+Does not compile properly with uclibc and I don't compile for libc5.
+
+<p>
+
+<H1>MS FORMAT convertors</H1>
+<p>
+
+<H2>
+ANTIWORD DOC to TXT convertor for GLIBC
+</H2>
+
+<p>
+
+<a href="antiword35.tgz"> antiword35.tgz </a href> glibc-2.1.3<br> 
+<p>
+<a href="antiword037.tgz"> antiword037.tgz </a href> glibc-2.2.5<br>
+
+<p>
+
+Converts MSWORD to text or ps and preserves formatting better than
+catdoc or Abiword (uvware-based).  Comes with mapping files for
+various character sets.  8859-5.txt does not work correctly (missing 'e') 
+so I included in my package cp1251.f16 which I designed for DOS, to be 
+used with cp1251.txt.  Macedonian and Serbian are not supported by cp866 
+or koi8-r.
+
+<p>
+
+<H2>DOC2PNG MSWORD image extractor</H2>
+<p>
+
+Extract images from MSWORD doc file that has one png per file.<br>
+<a href="doc2png"> doc2png </a> - my BL2 (libc6) binary of source 
+code from the net
+(http://www.cc.gatech.edu/~bbb/2001/doc2png) for extracting png files from 
+doc files (such as those created by a scanner, one png per file).<br>
+
+<p>
+For BL3 - download <a href="doc2png.c">doc2png.c </a href>, and if you are 
+set up to compile <br>
+gcc -o doc2png doc2png.c <br>
+will produce doc2png. <br>
+
+<p>
+
+doc2png file.doc produces file-00.png.  
+
+<p>
+
+
+<H2>
+UNRTF RTF to HTML/text/Latex convertor for GLIBC-2.2.5<br>
+</H2>
+
+<p>
+
+<a href="unrtf-0.20.2-glibc225.tgz">unrtf-0.20.2-glibc225.tgz</a><br>
+A small program for converting RTF to default HTML or text or Latex.
+Said to be buggy regarding paragraph alignment and picture storing.
+Includes executable and man page.
+<p>
+
+<H2>
+EXCEL/POWERPOINT CONVERTOR for GLIBC-2.2.5<br>
+</H2>
+
+<a href="xlppthtml-bl2.tgz">xlppthtml-bl2.tgz</a><br>
+
+Convert Excel 95/97/2000 or Powerpoint 95/97 to HTML or csv text (for 
+import into another spreadsheet program).  Includes scripts nsxlview and 
+nspptview to view from within a browser and xlv to produce 80-col text in 
+mutt<br>
+
+<p>
+<p>
+
+
+<H1>DATABASE PROGRAMS</H1>
+
+
+<H2>SQLITE 3.5.9 for GLIBC2.2.5</H2>
+<p>
+
+Download 191K (29K binary, 346K library, both stripped) 
+<a href="sqlite-3.5.9-glibc225.tgz">sqlite-3.5.9-glibc225</a><br> 
+
+<p> 
+
+sqlite 3 can import data from text file into an existing table.<br>
+sqlite 2 and sqlite3 databases are mutually incompatible.
+<p>
+
+The sourceforge page has a glibc 2.3.1 precompiled binary, and 
+a 1.3MB zip file of documentation. There are online tutorials for sql and 
+sqlite (which adds dot commands to sql).
+
+<p>
+<H2>DBF to SQL or CSV convertor for GLIBC 2.2.5</H2>
+<p>
+DO NOT use the convertor included in CDBF - it produces something 
+unusable that will not import into sqlite (DBF).
+
+<p>
+Download 16K <a href="dbf-0.8.3.1-glibc225">dbf-0.8.3.1-glibc225</a><br>
+<p>
+
+dbf --help<br>
+
+<p>
+dbf filename.dbf - displays the file one record at a time one line below 
+the other.
+<p>
+
+dbf --sql --trim b filename.sql filename.dbf<br>
+(The trim removes stray spaces and produces a much smaller file:
+Without trim a 437K dbf > 548K sql > 1MB (!) db, and with trim -b
+it produced 347K sql and 152K db) or <br>
+<p>
+
+dbf --separator ',' --csv filename.csv filename.dbf<br>
+Choose as separator a character not used in the data (such as @).<br>
+
+<p>
+
+<H2>IMPORTING DBF to SQLITE DB FORMAT </H2>
+<p>
+
+The simplest way, which should work on a non-buggy dbf file:
+<p>
+
+sqlite filename.db<br> 
+>.read filename.sql<br> 
+>.q<br>
+<p>
+
+Importing my large database from dbf to sql to db retained a lot of errors 
+from the original dbf file (made with cdbf).  Instead, I edited the sql 
+file made with the dbf convertor program to delete the data, and read in 
+the header info from that file.  I then used the convertor program to make 
+a csv file of the same dbf, deleted the headers, and imported the 
+data-only edited csv file. Passage through a csv file (text only) 
+eliminates all the stray characters. <p>
+
+The dbf convertor adds " " around all character strings of cvs output, 
+which some conversion programs (such as palm-db-tools) use to ignore 
+commas inside the string.  sqlite3 will NOT ignore these commas so do not 
+use comma (the default) as a separator.  If you export from sqlite to text 
+format that you want to import into pdb format, change the separator back 
+to comma first.  If you won't be importing the csv or text file into 
+anything but sqlite, you can delete the " " from the csv file before you 
+import it or  from the text file before printing to paper to save space.
+
+<p>
+
+dbf --trim b --sql file.sql file.dbf<br>
+
+Use nano or pico to remove data.
+<p>
+
+dbf --separator '@' --csv file.csv file.dbf <br>
+
+Use nano to remove headers, (and replace " with null if the database won't 
+be imported into anything but sql db format)
+<p>
+
+sqlite3 file.db<br>
+>.read file.sql    (this sets up a table called file inside file.db)<br>
+>.separator @   (change default | to @)<br>
+>.import file.csv  (read in the data)<br>
+<p>
+
+>select * from file;  (displays all the data to the screen in list 
+form)<br>
+>.mode column        (this will truncate columns to 10 char by 
+default)<br>
+>.width 10 20 30 40  (set the columns to the actual sizes, .schema 
+file)<br>
+>.header on 	     (to see column headers)<br>
+> select * from file;  (displays this time in column form)<br>
+>.output file.txt<br>
+> select * from file:  (writes data to file.txt instead of screen)<br>
+<p>
+
+You can edit then reimport the text file, or manipulate the db directly 
+with sqlite.
+
+<p> Version 0.90 (2006) of 'dbf' is 1.5MB of source code in two parts 
+(core and another part) and requires for compiling perl with XML parser 
+perl module.  To compile this module requires first compiling expat.la and 
+expat.h and pointing perl at their locations, and also requires LWP.pm 
+which Slackware 7.1 perl does not have.
+<p>
+LWP is lib world wide web perl or libwww-perl, a programming interface to 
+the web.  Why do you need to interface the web to convert a database???
+Or support XML in the first place?  Maybe Makefile can be edited to avoid 
+the need for all this?
+
+<p>
+
+<H2>XBASE/XDB for GLIBC2.2.5 - DBF database library, programs, docs, 
+sample programs</H2>
+<p>
+
+<a href="xdb-1.2-glibc225.tgz">xdb-1.2-glibc225.tgz</a><br> (180K)
+<br>
+<p>
+
+Manipulate non-SQL databases in DBF or NFX format from dBase, Clipper,
+DOS Browser, CDBF, etc.  They had to rename the later version to xBase.
+The html documentation does not 
+include dbfutil1, which seems to be the main database manager, but does 
+describe how to delete, etc.
+<p>
+
+
+<H2> PALM-DB-TOOLS GLIBC225</H2>
+<p>
+
+<p>
+Download 280K 
+<a href="palm-db-tools-glibc225.tgz">palm-db-tools-glibc225</a>
+<p>
+
+csv2pdb and pdb2csv and the solib for converting between csv (or text file 
+with other separator) to database formats used by palm programs pilot-db = 
+default DB 3 (small freeware), DB 2, MobileDB, list, Jfile3.<br>
+
+See the manual.txt in /usr/local/share/palm-db-tools.  <br>
+<p>
+
+csv2pdb -i file.ifo file.csv file.pdb<br>
+
+Produces a file.pdb (for db3, the default format) from file.ifo (below) 
+and a csv file (default separator is comma, otherwise specify separator in 
+the ifo file).
+
+<p>
+
+All three file names are required, even if you include lines
+csvfile "file.csv" and title "file" in the ifo file.  The title line is 
+required even if you have file.pdb on the CLI.
+
+<p>
+
+file.ifo contains lines (or type into command line):<br>
+title "file"<br>
+type "db"<br>
+separator "|"  [omit if comma, the default]
+field "name" string 15<br>
+field "name2" string 10<br>
+field "name3" string 15<br>
+
+<p>
+
+
+My 440K dbf file (with a lot of stray garbage) converted with <br>
+dbf  - 350K sql file (trimmed), 295K csv file (with ",")<br>
+sqlite3 (read sql headers and import csv data)- 350K db file <br>
+csv2pdb - 310K pdb file (this one not viewable with less and pico)<br>
+Use sqlite to export text in columns.
+
+<p>
+
+<H1>PALM PILOT</H1>
+
+
+<H2>
+PILOT-LINK for GLIBC-2.2.5   (see also convertor palm-db-tools above)
+</H2>
+
+1.  A small set of programs for older PDA (no sound or pictures) <br>
+<a href="pilot-link-basic-glibc-2.2.5.tgz">
+pilot-link-basic-glibc-2.2.5.tgz </a href> <br>
+
+<p>
+
+2.  A larger set of more programs (but not the .la and .a libraries)
+<a href="pilot-link-full-glibc-2.2.5.tgz">
+pilot-link-full-glibc-2.2.5.tgz</a>
+<br>
+libpisock.so.9 must be in /usr/lib; make_install puts it into
+/usr/local/lib <br>
+
+<p>
+
+SERIAL
+<p>
+
+Tested working with BL2 2.4.31 kernel and serial PDA (3COM Palm III).<br>
+pilot-xfer -p /dev/ttyS0 -l lists the files on the PDA after you push 
+the Hotsync button.
+<p>
+
+USB
+<p>
+
+2.4.31 does not work with modular usb_serial.o due to a bug.. <br>
+Pilot-link did not work for me with the 2.2.26 bzimage.big and 
+modules.  Some PDAs are said to need kernel 2.4.21 or later.<br>
+It does work with bzimapda.431 which I compiled and put into ./2.4.31,
+along with configpda.431 (compiled for ohci only, insmod usb-uhci or 
+ehci-hcd if you have uhci or USB 2) and run
+<A HREF="./2.4.31/mknodpda">mknodpda</A> (to make /dev/ttyUSB0 and USB1).<br>
+pilot-xfer -p /dev/ttyUSB0 -l <p>
+ttyUSB0 is the Hotsync port, but mknodpda also makes ttyUSB1.
+For some reason both get listed when you use these drivers.
+<p>
+
+This setup works with our m105 and used to but no longer works with the 
+visor, nor did it work with the clie.  Try a usb to serial convertor with 
+the proper driver such as <br>
+<a href="./2.4.31/kl5kusb105.o">the one for palm convertor</a> <p>
+
+<p>
+Large PDA kernel <a href=./2.4.31/bzimusbp.431>bzimusbp.431</a><br>
+Config file <a href=./2.4.31/confusbp.431>confusbp.431</a>
+Modelled on the bzimusb.431 kernel which is vns with built-in
+USB controllers (all three), to which I also added built-in
+usbserial, visor, and also ipaq support.  Not yet tested.
+Includes framebuffer, unlike the plain PDA kernel.
+<p>
+
+<H1>PRINTING and PDF</H1>
+<p>
+
+<H2>GHOSTSCRIPT 8.54 for glibc 2.2.5 </H2>
+<p>
+
+FONTS
+<p>
+
+GS works without the gsfonts.tgz, except for pdf/ps files which specify 
+the font, for which you need ONLY the .pfb fonts from gsfonts.tgz (not afm 
+gsf pfa pfm) in /usr/local/share/ghostscript/fonts. <br>
+You can instead use the Abiword fonts: <br> 
+ln /usr/local/Abisuite/fonts /usr/local/share/ghostscript/fonts<br> 
+xpdf uses these same ghostscript fonts.
+
+<p>
+EXECUTABLES
+<p>
+
+No support for X (use svp to view) or Resources (Chinese).  <br>
+Feature devices are only psl3 and pdf not eps etc.<br>
+gunzip in /usr/local/bin and symlink or rename to gs<br>
+Uninstall any previous versions.<br>
+
+<p>
+3MB version<br>
+<a href="gs/gs854-noX-defaults.gz">gs854-noX-defaults.gz</a><br>
+Contains all the default printer and image devices (sDEVICE=)
+<p>
+
+2.6MB version<br>
+<a href="gs/gs854-noX-HP.gz">gs854-noX-HP.gz</a><br>
+With HP support for deskjets, laserjet, ljet2p, ljet4 (5L and 6L), and 
+a few other devices bmp256 (for svp), p?m(raw), pdfwrite, pswrite<br>
+<p>
+
+4-4.4MB versions with support for jbig2dec (needed to 
+read pdf files compressed smaller using jbig2):<br>
+
+<a href="gs/gs854-noX-HP-JBIG2.gz">gs854-noX-HP-JBIG2.gz</a><br>
+<a href="gs/gs854-noX-defaults-JBIG2.gz">gs854-noX-defaults-JBIG2.gz</a><br>
+
+<p>
+To convert a pdf file to an image file<br>
+gs -sDEVICE=pngmono -sOutputFile=file.png file.pdf
+<p>
+
+Basic instructions: <a href="gs/Use.htm">Use.htm</a><br>
+Copy to /usr/local/share/ghostscript/8.54/doc and rename to Use.htm<br>
+
+<p>
+
+GS8.54 EXTRAS  (80K)
+<p>
+
+<a href="gs/gs854-docs-scripts.tgz">gs854-docs-scripts.tgz</a><br>
+
+GS8.60 for HP printers  (80K)
+<p>
+
+<a href="gs/gs860-noX-HP.gz">gs860-noX-HP.gz</a><br>
+4.2MB compressed.  (8.54 is only 1.2M).<br>
+Email me if you want the full version, which is even larger, or gs850.
+
+<p>
+
+<H2> CLI printing with gs-8.54 noX </H2>
+<p>
+
+Defaults are deskjet, 300 dpi and papersize letter.  Specify -r600 or 
+-sPAPERSIZE=A4 or -sDEVICE=ljet4, if needed.<br>
+
+<p>
+insmod parport, parport_pc and lp first before printing.
+
+<p> Print all pages with defaults (ps or pdf):<br>
+gs -sOutputFile=/dev/lp0 filename.pdf <p>
+
+PDF files only, and file name must be last, to print selected pages:<br>
+gs -sOutputFile=/dev/lp0 -dFirstPage=1 -dLastPage=2 filename.pdf
+<p>
+
+I posted scripts to print all or selected (n) pages at 150 (draft), 300 
+and 600 (high-res) dpi with the deskjet device.  Add options for other paper size or device.
+
+<p>
+300 dpi deskjet all pages <a href="printdj">printdjn</a><br>
+300 dpi deskjet some pages <a href="printdjn">printdjn</a><br>
+150 dpi deskjet all pages <a href="printdjd">printdjd</a><br>
+150 dpi deskjet some pages <a href="printdjdn">printdjdn</a><br>
+600 dpi deskjet all pages <a href="printdjh">printdjh</a><br>
+600 dpi deskjet some pages <a href="printdjhn">printdjhn</a><br>
+<p>
+
+<H2>XPDF convertors/viewer (BL3 or BL2)
+</H2>
+
+<a href="xpdf302-noX-nogs.tgz">xpdf302-noX-nogs.tgz</a><br>
+<p>
+
+Latest xpdf 3.02 (Feb 2007) CLI binaries usable in BL3: pdftotext, 
+pdfimages, pdftoppm, documentation, and an xpdfrc. (The graphical xpdf 
+itself requires a later X than BL3 has and is not included.)  
+
+<p>
+
+Sept 2007.  Delete the xpdfrc.  Put the gs .pfb fonts in 
+/usr/local/share/ghostscript/fonts, or symlink to there from 
+/usr/local/AbiSuite/fonts, to read pdf files with /BaseFont specified, 
+using xpdf or pdfimages. Most pdf files don't need this.
+
+<p>
+Pdfimages extracts images from pdf files made by scanners, pdftotext 
+extracts text, and pdftoppm converts mixtures of the two to ppm.<p>
+
+<p>
+
+Precompiled xpdf itself is not included because it must be used with 
+glibc2.2 libX11.  You can download it from foolabs.  It may be possible to 
+compile a version to work with libc5 X.
+
+<p> 
+
+To use precompiled xpdf with later libx11 and static Xvesa without a 
+window manager (since after upgrading libx11 the BL3 wm will not work):
+
+<p>
+
+(Xvesa -screen 800x600x15 &); DISPLAY=:0 xpdf file.pdf<br>
+
+<p>
+
+See under SVGALIB for bmv and svp PS/PDF viewers, and see netpbm
+for direct printing of images (ppmtolj).
+<p>
+
+<H2>pnm2ppa for GLIBC-2.2.5</H2>
+
+<a href="pnm2ppa-glibc225.tgz">pnm2ppa-glibc225.tgz</a><br>
+See the INSTALL file in /etc for suggestions how to use with gs, or
+use standalone with HP Deskjet ppa Windows printers 720 820 and 1000 
+series.  pnm2ppa file.pnm > /dev/lp0 .  Netpbm maintainer has added a set 
+of BDF fonts at his site for use with pbmtext for converting ascii to ppm 
+and thence to ppa for printing.
+<p>
+
+<H1>GRAPHICS</H1>
+<p>
+
+<H2>SVGALIB-1.9.25 (alternative to X11) for GLIBC-2.2.5</H2>
+<p>
+
+<a href="svgalib-1.9.25-default-glibc225.tgz">svgalib-1.9.25-default</a><br>
+<a href="svgalib-1.9.25-newdefault-glibc225.tgz">svgalib-1.9.25-newdefault</a>
+<p>
+
+The 'new' package includes both standard defaults and a 'new-default' 
+library, which is my selection (only cards for which I have drivers).  
+Choose one of these (or download one of the libraries below for a single 
+card) and symlink to libvga.so.1.9.25 or use the original default package. 
+
+<p>
+
+Both default libraries are testing working with Rendition and i740.  The 
+packages include header files and .so symlinks needed to compile zgv 
+dynamically, and /dev/svga and svgalib_helper.o for kernel 2.4.31.  
+Change NoHelper to Helper in zgv.conf
+e
+<p>
+ 
+SavageMX and Cirrus Logic don't work.
+
+<p> 
+
+zgv (and maybe Slackware) requires that these libraries be in /usr/lib.  
+Delete any older libvga.so.* from /usr/local/lib or they will be used 
+instead.  The compile setup installs to /usr/local/lib by default, but my 
+package puts them in /usr/lib.  svgalib does not compile easily with BL2 
+and the author helped.
+
+<p>
+
+libvga.config with NoHelper should work with any kernel if you run zgv, 
+links, and svp root or suid root. <p>
+
+<p>
+
+Utilities for testing video modes, etc.:<br>
+<a href="svgalib-1.9.25-utils-glibc225.tgz">svgalib-1.9.25-utils</a>
+
+<p>
+
+libvga.so.1.9.25 (default, supports most chips below but not Rendition) is 
+about 350K, or use a chip-specific libvga about half that size. <br>
+
+<p>
+
+For laptops:<br>
+<p>
+
+<a href="libvga.so.1.9.25-chips">chips and technology </a><br>
+(This chip works with Xvesa in the default package).<br>
+<a href="libvga.so.1.9.25-neo">neomagic </a><br>
+(Does not work with Gateway 2000 Solo NM chip).
+<p>
+
+For desktops (tested working except i810):<br>
+<p>
+<a href="libvga.so.1.9.25-et6000">Tseng ET6000 PCI </a><br>
+<a href="libvga.so.1.9.25-i810-broken">i810 onboard chip</a><br>
+(Only worked for me as plain VGA on several computers).<br>
+<a href="libvga.so.1.9.25-millenium">Matrox Millenium PCI</a><br>
+<a href="libvga.so.1.9.25-nv3">NVidia</a><br>
+<a href="libvga.so.1.9.25-rage">ATI RAGE (PCI or AGP)</a><br>
+<a href="libvga.so.1.9.25-r128">ATI RAGE 128</a><br>
+<a href="libvga.so.1.9.25-savage">S3 Savage AGP</a><br>
+(This one may not be working - use a default library instead).<br>
+<a href="libvga.so.1.9.25-G400">G400</a><br>
+<p>
+
+Copy to /usr/lib and ln -s libvga.so.1.9.25-XXXX libvga.so.1.9.25 .
+(My zgv looks for these two files in /usr/lib not /usr/local/lib).
+When compiling you can make shared instead of make install and the 
+libraries are found in sharelibs and you can rename and then copy.
+Delete the 1.4.3 and earlier libraries to make space. 
+<p>
+
+
+<H1>SVGALIB based PDF and image viewer and browsers</H1>
+<p>
+
+<H2> SVP PS/PDF viewer for glibc-2.2.5
+</H2>
+<p>
+
+Much faster than xpdf.  Requires gs with support for pbmraw (mono) and 
+bmp256 (if you want color).  Will zoom, rotate, let you choose dpi and 
+resolution, etc.  Compiled both statically (no need for libvga.so.1) and 
+dynamically for glibc.<br>
+<a href="svp-glibc225-static">svp-static</a> 350K <br>
+<a href="svp-glibc225">svp</a> 28K <br>
+<p>
+Requires a recent svgalib or you will get 'undefined symbol _xstat' in 
+libvga.so.1 (BL1 zgv).
+
+<H2>BMV PS viewer for glibc2  
+</H2>
+<p> 
+
+bmv requires ghostscript set to use as default svgalib support, not found 
+in SW8.1.  First use gs pdf2ps (or xpdf's pdf2ps) to convert the pdf to 
+ps<br> then view with:
+
+<a href="bmv.tgz"> bmv.tgz </a href> - for glibc-2.1.3<br> 
+<p>
+
+<a href="bmv_12.tgz"> bmv_12.tgz </a href> - later version, rotates, needs 
+glibc-2.2.5<br>
+If you have svgalib 1.9.25 glibc 2.2.5 better to use svp.
+<p>
+
+
+<H2>ZGV image viewer for glibc-2.2.5</H2>
+
+<A HREF="zgv-5.9-libpng12-glibc225.tgz">zgv-5.9-libpng12-glibc225.tgz</A><br> 
+<A HREF="zgv-5.9-withlibs-glibc225.tgz">zgv-5.9-withlibs-glibc225.tgz</A><br> 
+<p>
+
+Executable, man page, docs, and the latest libpng12.so.0 (the older one 
+won't work with this zgv) or the larger package with libpng12, libjpeg 
+libtiff (in case you don't already have them for links2 from Delilinux). 
+SECURITY explains why this suid-only (or root) program is really not a 
+security risk starting with THIS version.  Works with svgalib-1.4.3 or 
+later.  libvga* must be in /usr/lib.  An upgrade from the delilinux zgv 
+5.6 or the BL3 zgv 4.2.
+
+<p>
+
+<br><H2>ZGV  uclibc-static package
+</H2>
+
+<A HREF="./2.4.31/zgv-5.9-uclibc.tgz">zgv-5.9-uclibc.tgz</A>
+contains the recent zgv compiled by David Moberg for use 
+with kernel 2.4.31, which needs libvga.so.1.4.3 (included, uclibc 
+version).  See below under David's USB kernels for more info.
+<p>
+
+
+<H2>libFB and FRAMBEBUFFER VIEWER for GLIBC225</H>
+<p>
+
+<a href="libFB-0.2.5-i686-glibc225.tgz">libFB-0.2.5-i686-glibc225.tgz</a><br>
+<a href="libFB-0.2.5-i586-glibc225.tgz">libFB-0.2.5-i586-glibc236.tgz</a><br>
+The i586 version should work with PI, PII (with or without MMX) and AMD-K6-1 or 2.<br>
+Contains libFB.so library and fbjpeg (viewer of jpeg that works in fb mode.
+Boot with fb kernel into vesafb mode (vga=791 etc) or load riva or matrox fb 
+after booting.  fbjpeg file.jpg displays very very fast and is useful
+for cards such as neomagic and savage IX that won't do Xvesa or on laptops
+where svgalib won't display.  As is the following X driver.  
+
+<p>
+
+I compiled the library hoping it would let me use links2, w3m, and netsurf 
+in fb rather than x or svgalib mode. Don't have it quite right yet.  
+The library needs to be present during compilation and you may also need to 
+configure for it.  w3m is said to do inline images with fb or x (which may
+require specifying gdkpixbuf).
+
+<p>
+
+<H2>Xfbdev FRAMEBUFFER  X</H2>
+(see also special 2-floppy framebuffer BL3)
+
+<p>
+
+Neomagic chips in laptops (MagicGraph 128 V/ZV in a DELL Latitude, etc) 
+don't work with Xvesa (most will work with SVGA server but it is bigger)
+nor does the Savage IX/MX chip found in some Thinkpads and Satellites.
+Instead use the Xfbdev tiny-X server from Xorg.  
+
+<p>
+For both BL3 and BL2 you need to first make the framebuffer device (once):<br>
+<p>
+mknod /dev/fb0 c 29 0 <br>
+
+<p>
+Download a framebuffer-capable kernel - Steven's BL3 (2.2.26) 'big' kernel
+or one of my 2.2.16 or 2.2.26 (zimagefb.226 in ./2.2.26) or  2.4.31 kernels 
+with framebuffer support (also get the modules for them) and load linux
+with it using loadlin or lilo.
+<p>
+
+Download <a href="xfbdev.gz">xfbdev.gz</a><br> 
+libc5 tinyX framebuffer X server (compiled by David Moberg for BL3) or <br>
+<a href="Xfbdev-glibc21.gz">Xfbdev-glibc21.gz"</a> glibc2 version (from Xorg)
+and gunzip to /usr/X11R6/bin.  If xfbdev (libc5) segfaults use the newer one,
+for which you will also need to install glibc2 (minimal package of it is
+<a href="operalib.tgz">operalib.tgz</a>.  The older one can be used in BL2
+if you add libm.so.5 from Slackware 4 (no other dependencies - he could not
+manage to compile it static against libm) but it is 200K larger (static against
+libc). 
+<p> 
+
+For BL2 or BL3, install Steven's no-xvesa.tgz which will modify startx and add cursor.pcf.gz
+to misc/fonts and change fonts.dir accordingly (it adds pcf.cursor.gz at the 
+end and adds 1 to the number at the beginning).  It modifies startx too.
+<p>
+
+Substitute 'xinit Xfbdev' (or 'xinit xfbdev') for the Xvesa line in startx 
+for BL3 or use this as alias 'xfb' or 'x' in profile (or BL2 in .profile). <br>
+
+<p>
+
+Or for BL3 use my<br>
+<a href="bl3fbpkg.tgz">bl3fbpkg.tgz</a> which adds the font
+and modifies startx and installs xfbdev for libc5.  (You still need
+to make the framebuffer device and get the right kernel.)
+
+<p> 
+Using loadlin or lilo, add to the boot line vga=785 or vga=788 or vga=791 
+for 640 800 and 1024 resolution in text and X.  Text looks nicer than the 
+normal scrawny neomagic text and is full-screen unlike some 'Chips and Tech' text. <p>
+This is for vesafb only.  For rivafb or matroxfb use fbset instead. 
+They crash with vesafb if you switch consoles.  You have to set up a
+configuration file first and then fbset -n 1024x768 (where 1024x768 is
+in the configuration file).  Read the fbset manual.  Ask me for help.
+
+<p>
+I posted a 2-floppy framebuffer version of libc5 BL3 which boots very slowly
+(10 min) on my HP or Compaq laptops for some unknown reason but is usable
+where Xvesa does not work and also on Armadas with nomce boot problem.<br>
+<a href="bl3fbfd.zip"> bl3fbfd.zip</a><br>
+Unzip and install to floppy disks as for regular BL3.
+<p>
+
+<H2>X11</H2>
+
+<H2>BACKSPACE/DEL problems</H2>
+<p>
+
+For 101-key keyboards add to .xinitrc the line <br>
+xmodmap -e "keycode 22 = BackSpace"
+<p>
+
+For 84-key keyboard download <a href="xmodmap.84">xmodmap.84</a><br>
+and add a line to .xinitrc<br>
+xmodmap /path/to/xmodmap.84
+<p>
+
+<H2>X11 SVGA SERVER CONFIGURATION FILES</H2>
+<p>
+
+
+<a href="XF86Config.wd90c24.640"> XF86Config.wd90c24.640 </a> - 
+for 8-bit 640x480 wd90c24 chip (4486 Compaq, Toshiba, IBM <br>
+<p>
+
+<a href="XF86Config.102460Hz"> XF86Config.102460Hz </a> - 
+Steven's file but for 1024 or higher res.  For chips and neomagic XD.<br>
+<p>
+
+<a href="XF86Config.laptops">XF86Config.laptops </a> -- works in 
+Toshiba Satellites (420CDT and 335CDS and 220CDS with ct65550 (HiPV32) and 
+ct65555 (HiPVPro) Chips & Technology video), a Hitachi Visionbook 4140 
+133MHz (c65554) all of which also work with Xvesa, and a Gateway 
+2000 Solo 200MHz with NeoMagic MagicGraph 128XD (NM2160) - 2MB video 
+ram, 800x600x24, also used by IBM Thinkpads and Compaq Presarios, which 
+crashes with Xvesa.  Xvesa uses 4MB less RAM than SVGA X server.
+<p>
+
+Install the SVGA X server before no-xvesa.tgz then replace his XF86Config 
+with mine if you want 1024 or 1280, and remove # from Modelines as needed.
+Move the # to get Microsoft serial mouse instead of PS/2. 
+
+<p> 
+
+
+<br><H2>
+USING RXVT IN BL2 (with XVESA) <br>
+</H2> 
+<p>
+rgb.txt - put it into /usr/X11R6/lib/X11 in order to use rxvt in BL2 (which
+did not have this file to start with).  rxvt needs 'Black', which I added to
+a standard rgb.txt along with 'White'.  BL3 already has this. 
+
+<p>
+
+
+
+<br><H2>
+NETPBM for BL2 (glibc 2.2.5) and BL3
+</H2>
+
+netpbm* - netpbm.readme explains how to install and use netpbm (using my 
+packages for BL2 or BL3) to convert between images and print directly 
+without ghostscript.  Replace libc5 tifftopnm with the newer file posted 
+separately from the package, tifftopnm.gz, which is statically compiled 
+and does multipage tiffs.  The older version extracts only the first page. 
+ppmtolj - prints to color HP desket/laser with PCL5, omitted from the
+BL3 package.  (use pbmtolj to print mono).  netpbmdocs - html docs.
+<p>
+
+netpbm-10.26.7.libc5.tgz - complete BL3 package from David Moberg<br>
+netpbm-10.31-SW81.tgz - for BL2 with glibc 2.2.5 from SW81<br>
+netpbmlibs-SW81.tgz - library dependencies libtiff, libpng, libz<br>
+<p>
+
+<H2> LIBTIFF 3.8.2 for glibc 2.2.5 </H2>
+<a href="libtiff.so.3.8.2-glibc225">libtiff.so.3.8.2</a><br>
+Rename without -glibc225 and replace libtiff.so.3.5.7, ldconfig.
+
+<p>
+
+<a href="tiff2pdf">tiff2pdf</a><br>
+<a href="tiffsplit">tiffsplit</a><br>
+
+Small scripts used to deal with multiple (fax) tiffs.  Convert and then 
+view with svp or zgv or print the pdf with gs.  (Or use netpbm's tifftopnm 
+then pamsplit to extract the individual images and print with pbmtolj).
+
+<p>
+
+<a href="libtiff-3.8.2-glibc225.tgz">libtiff-3.8.2-glibc225.tgz</a><br> 
+
+This 700K package contains both man and html documentation, libtiffxx.so, 
+the .a and .la and .h files needed to compile ghostscript, and many more 
+scripts to convert gif or bmp or fax or ppm to tiff, make thumbnails, etc. 
+Much of the package is libtiff.a.  
+
+<p>
+
+
+<H2>FBSHOT framebuffer screen grabber for glibc 2.2.5</H2>
+<a href="fbshot.tgz">fbshot.tgz</a> only 8.5K package <br>
+<p>
+
+Load framebuffer modules or boot with vga=some-fb-mode using a 
+framebuffer kernel, display the screen you want to grab, for instance
+in vt4, then fbshot -c 4 file.png and view the png.  Print with pngtopnm, 
+pnminvert, pbmtolj or pnmtolj (netpbm).  The result is similar to 
+printscreen and shows, for instance, the help stuff for pico.  I used this
+to print Macedonian text from the console created from a WORD file with 
+antiword.
+
+<p>
+
+
+<H2> 
+PHOTOPC for BL2 glibc 2.1.3
+</H2> 
+
+<a href="photopc300.tgz"> photopc300.tgz </a href>- for serial camera
+download (Epson, Olympus) <br> <p>
+
+
+
+<H2>GQVIEW 1.0.2 (older) for GLIBC225 with libpng.so.3 and so libraries 
+from gtkglib.tgz and gdkpixbf.tgz</H2>
+
+<a 
+href="gqview-1.0.2-withlibs-glibc225.tgz">gqview-1.0.2-withlibs-glibc225.tgz</a>
+Photo manager (older version).  Uses xv xpaint and electric eyes to edit.
+<p>
+
+<H2>MTPAINT 2.3.1 (latest) for GLIBC 225 </H2>
+<a href="mtpaint-3.21-glibc225.tgz">mtpaint-3.21-glibc225</a> about 220K
+including html version of man page and README (which explains how to compile for gkt+2).
+I compiled using gtk+1.2 (comes with Slackware 7.1) gtkglibc.tgz - just the .so
+and .h files are needed, also the includes from xprog.tgz, and libpng libtiff
+libjpeg.  Used by DSL 4.2+ instead of xpaint - smaller and faster.
+Probably does not support gifs.  You can use this as an external editor with
+gqview version 2.0 (but 1.0 seems to have no way to add external editors).
+
+<p>
+<H2>COMPUTER AIDED DESIGN CYCAS GLIBC 2.3 </H2>
+(coming soon)
+
+<p>
+
+Precompiled by the authors <a href="cycas39.tgz">cycas39.tgz</a> 
+Works in BL2 with glibc 2.3.6.  Minimal dependencies.
+
+
+<H1> SOUND </H1>
+<p>
+
+<H2>SETTING UP SOUND</H2>
+<a href="mksnddev">mksnddev</a> run this script in /dev to make sound devices
+or use Christof's sound package instead, which also includes SB16 modules 
+and a script for insmodding them.
+
+<p>
+
+
+<H2>SOUNDBLASTER PROGRAMS for DOS and linux</H2>
+
+<p>
+
+diagnose.exe - Creative Labs SB16 diagnosis program for DOS which can
+be used to determine settings for sb16 ISA cards in linux.   These cards 
+do not seem to need initialization by isapnp or even DOS diagnose.
+hwinfo also provides irq and dma information (as do some bioses).
+Typical settings for SB16 plugnplay cards are
+<p>
+io=0x220 (or 240 260 280) irq=5 (or 7, 10) dma=1 (or 0, 3, 5)
+and if you are getting IRQ/DRQ errors trying to play mp3 files
+dma16=5 (or 6, 7 or the same as low DMA).
+<p>
+
+s64basic.exe (run and install) comes with ctcmbbs.exe which produces 
+ctcu.exe and ctcm.exe, ISA configuration utility and manager, that you can 
+use to initialize pnp SB cards in DOS.  You don't need to do this except 
+to play midis with AWE and possibly with FM synthesis.
+
+<p>
+
+<p>
+<H2>Piano Tuner program GLIBC 2.2.5 ncurses </H2>
+<p>
+
+<a href="piano-1.1-glibc225.tgz">piano-1.1-glibc225.tgz</a><br>
+<p>
+
+Console based ncurses program (my ncurses requires libgpm) for tuning a 
+piano or other instrument, including refreq to calibrate sound cards, and 
+instructions on how to tune the whole piano equally low using bias 
+setting.  25K download with help file.  Two other linux tuning programs 
+require QT. Works in 8MB memory but may need 300MHz cpu.  Uses 18% of 
+1.7GHz cpu. Don't know how to get my mike input working in linux - so 
+cannot test the program.
+
+<p>
+
+<H2>SOX 13.0.0 Feb 11, 2007 for GLIBC 2.2.5</H2>
+
+<a href="sox-13.0.0-glibc225.tgz">sox-13.0.0-glibc225.tgz</a><br>
+Latest sox, with record function, and ability to convert frequencies so it 
+works with i810 and other 48KHz-only sound chips.  Many new formats.
+<p>
+sox -t ossdsp -w -r 44100 -c 2 /dev/dsp outputfile.wav<br>
+<p>
+records 16-bit CD-quality (44KHz) stereo from line in of sound card.
+
+<p>
+
+Or use the rec script (see man page).
+
+<p>
+
+
+<H2>AUMIX GLIBC 2.2.5 sound mixer</H2>
+<a href="aumix-2.8-glibc225-cli.tgz">aumix-2.8-glibc225-cli.tgz</a> 10K<br>
+<a href="aumix-2.8-glibc225-ncurses-gpm">aumix-2.8-glibc225-ncurses-gpm</a>
+28K (in color) <br>
+
+<p>
+
+
+<H2>Console CD player mcdp for GLIBC 2.2.5 or static</H2>
+<p>
+
+<a href="mcdp-glibc225.tgz">mcdp-glibc225.tgz</a><br>
+<a href="mcdp-uclibc.tgz">mcdp-uclibc.tgz</a><br>
+<p>
+
+Unpack in /tmp, copy the executable to /usr/local/bin and mcdp.html to 
+/man in BL3 or /usr/local/share/mcdp/ in BL2 (or wherever you like).
+Works in console, or in rxvt (unlike workbone which is unreadable).
+You need the man page because -h and --help don't work.
+<p>
+
+</H2>
+
+<H2>Simple-multitrack-0.6.6 GLIBC 2.2.5 or uclibc</H2>
+
+<a href="srp-glibc225.tar.gz">srp-glibc225.tar.gz</a><br>
+<a href="srp-uclibc.tar.gz">srp-uclibc.tar.gz</a><br>
+Unpackage in /tmp and copy DESIGN and README wherever you like such as
+/usr/share/doc/srp, and the other files to /usr/local/bin.  Use at your 
+own risk.  Needs libm.so.6 libc.so.6 and ld-linux.so.2 or the uclibc 
+versions which I will post later.
+</H2>
+<p>
+
+
+<H2>MIDI PLAYERS AND RECORDER</H2>
+
+<H2>
+AWE MIDI PLAYERS for use with AWE32 SB32 AWE64 SBLive (emu8* chip)
+</H2>
+
+<a href="playmidi-2.5-bl3.tgz">playmidi-2.5-bl3.tgz</a><br>
+  - for libc5 (would not compile with glibc2), no X,
+with AWE as default and no FM synthesis support.  A precompiled version
+that I tried for glibc 2.1.3 had no AWE support.  Install libc5
+to use this with BL2<br>
+<p>
+
+<H2>OTHER MIDI PLAYERS</H2>
+(See also Ron's Timidity package)
+<p>
+
+<a href="playmidi-2.4-16.i386.tar.gz">playmidi-2.4-16.i386.tar.gz</a><br>
+ playmidi for BL2, converted from the rpm 
+using rpm2tgz-bl2 (see below), with FM synthesis included.  To play
+to awe 'playmidi -a filename.mid', to play to external midi 
+'playmidi -e -D0 filename.mid' (load the sb module last for D0, otherwise try
+other DN's;  if you have no opl3 or awe_ave or v_midi just '-e').
+
+<p>
+<a href="drvmidi-glibc225.tgz">drvmidi-glibc225.tgz</a><br>
+A much smaller awe midi player for glibc 2.2.5 
+compiled with no graphical display.<br>
+<p>
+
+<a href="awesfx-glibc225.tgz">awesfx-glibc225.tgz</a><br>
+A set of utilities including sfxload and one sound
+bank.  sfxload synthgm.sbk to load a sample sound bank, then play 
+midis.  This is version 0.4.4 without ALSA support.<br>
+<p>
+
+<a href="awefiles.tar.gz">awefiles.tar.gz</a><br>
+ The module awe_wave.o and a script to make 
+/dev/sequencer which is needed to play midis. <br>
+
+You may also need to run isapnp to get pnp cards to initialize AWE32.
+It is easier to use SB16 ctu/ctm in DOS first.
+<p>
+
+<H2>ROSEGARDEN - notation editor and sequencer (play/record midi)</H2>
+Converted from RPMs <br>
+<p>
+
+<a href="rosegarden-2.0.1-1.libc5.tgz">Rosegarden libc5  for BL3 </a><br>
+Add x-libs.tgz for BL3.  Rearranged from an rpm.  Rosegarden config
+file was moved from app-default (where it was not found) to /root,
+and edited to use /usr/local/bin/timidity and pointed at other files
+which I moved to /usr/local/bin and /usr/local/lib.  Works in BL3.5 now.
+Edit to use drvmidi or playmidi if desired.
+
+<p>
+
+<a href="rosegarden-2.1-1.libc6.tar.gz">rosegarden 2.1 libc6</a><br>
+Worked in BL2 to record midi files from a midi piano (1986 Yamaha).
+
+<p>
+
+Dependencies include libX11, X6 Xaw Xext Xmu SM and ICE, and for the
+notation editor you will need to add fonts.  This is the 'X11' Rosegarden.  
+The most recent version is Rosegarden4 and requires ALSA and KDE, 400MHz
+and 64MB RAM (or more).  Rosegarden 2 recorded fine on a Pentium I 233MHz
+and dates from 1997.
+
+<p>
+
+<H2>MP3 SOFTWARE</H2>
+<p>
+
+<H2>CLASSICAL RADIO VIA DIALUP MODEM </H2>
+<p>
+
+<a href="classrad.tgz">classrad.tgz</a><br>
+<p>
+
+Unpack into some directory on your path (/usr/local/bin?). Type rad for 
+a numbered menu of scripts which use mplayer (see below) to access over 20 
+classical webcasts, mp3, wma, realaudio or ogg, 20K-32K (for 28.8K to 56K 
+modem), 16-22KHz.  Mostly United States, also Turkey, Argentina, New 
+Zealand, Australia.  Europe to come.  The separate files are in 
+subdirectory <a href="./classrad">classrad</a>.  Scripts not ending in 'm' 
+use mpg123 to listen to mp3s, without much buffer.
+<p>
+
+April 2011, only about 10 of the above stations still work for dialup.<br>
+<a href="classrad-dialup-2011.tgz">classrad-dialup-2011.tgz</a><br>
+I left the larger package so you can hunt for currently working stations.
+
+<p>
+<H2>CLASSICAL RADIO WITH MPLAYER INCLUDING BROADBAND </H2>
+<p>
+
+<a href="mplay-class.tgz">mplay-class.tgz</a><br>
+<p>
+
+mplay-class is a menu of individual stations plus a few pointers to collections of stations.  <br>
+Use my i586 mplayers for P55C or AMD-K6-2, and P54C mplayer for P54C (less than about 200MHz).<br>.
+ 
+<p>
+Here are two larger collections of mplayer-accessible stations (no AACP):
+<p>
+<a href="mplay-us.tgz">mplay-us.tgz</a><br>
+<a href="mplay-eur.tgz">mplay-eur.tgz</a><br>
+Scripts to play US (22) or European (75) stations.
+<p>
+Unpackage on the path (such as /usr/local/bin) and type mplay-us or mplay-eur.
+You can make /mplay-us and /mplay-eur directories and add to path in /etc/profile.
+<p>
+
+
+<p>
+
+<H2>MP3 PLAYERS</H2>
+
+<H2>mpg321 for GLIBC 2.2.5 </H2>
+<p>
+
+<a href="mpg321-0.2.10-glibc225.tgz">mpg321-0.2.10-glibc225.tgz</a><br>
+120K package, 177K binary plus 55K libao.so.1 plus docs.  2002.  Like mpg123
+uses very little memory and works for streaming MP3s with a good connection.
+I can't get it to work however.  Should access pls links.   Replaced
+mpg123 starting in about Slackware 9.0.
+
+<p>
+
+<H2>mp3blaster for BLIC 2.2.5 </H2>
+<a href="mp3blaster-3.2.1-glibc225.tgz">mp3blaster-3.2.1-glibc225.tgz</a><br>
+120K package, 267K binary plus 20K nmixer plus docs.  Needs ncurses and libpthread
+and libgpm for a nice looking interface that lets you play a playlist of files
+or URLs.  2005.  This says it is missing some library that is there - a bug.
+
+<p>
+
+<H2>MPLAYER - Compiled statically against uclibc by David Moberg </H2>
+
+<p>
+
+<a href="mplayer4.tgz">mplayer4.tgz (uclibc) </a>  About 7MB.
+<p>
+
+This is version 1.0try5, and I also posted a 1.0try7 uclibc mplayer, neither
+of which will play DVDs on a 900MHz HP that works with my 3MB glibc versions.
+
+<p>
+
+<H2>MPLAYER 0.93 GLIBC about 3MB</H2>
+<p>
+
+<H2>MPLAYER 0.93 for GLIBC 2.2.5 no ogg</H2>
+
+<p>
+
+<a href="mplayer-0.93-i686-glibc225-novideo.gz">mplayer-0.93-i686-glibc225-novideo.gz</a><br>
+<a href="mplayer-0.93-i686-glibc225-video.gz">mplayer-0.93-i686-glibc225-video.gz</a><br>
+The video version includes x11 support.
+
+<p>
+
+<H2>MPLAYER 0.93 for GLIBC 2.3.6 no ogg no video </H2> 
+
+<p>
+
+<a href="mplayer-0.93-p54c-glibc236-novideo.gz">mplayer-0.93-p54c-glibc236-novideo.gz</a><br>
+<a href="mplayer-0.93-i586-glibc236-novideo.gz">mplayer-0.93-i586-glibc236-novideo.gz</a><br>
+<a href="mplayer-0.93-i686-glibc236-novideo.gz">mplayer-0.93-i686-glibc236-novideo.gz</a><br>
+<p>
+
+<H2>MPLAYER 0.93 for GLIBC 2.3.6 no ogg with video but no x11 </H2> 
+
+<a href="mplayer-0.93-i586-glibc236-nox11.gz">mplayer-0.93-i586-glibc236-nox11.gz</a><br>
+This last version plays DVDs with fbdev, vesa and svga (needs svgalib package).
+
+<p>
+
+<H2>MPLAYER 0.93 for GLIBC 2.3.6 with ogg but no video</H2> 
+<p>
+
+<a href="mplayer-0.93-p54c-glibc236-ogg-novideo.gz">mplayer-0.93-p54c-glibc236-ogg-novideo.gz</a><br>
+<a href="mplayer-0.93-i586-glibc236-ogg-novideo.gz">mplayer-0.93-i586-glibc236-ogg-novideo.gz</a><br>
+<a href="mplayer-0.93-i686-glibc236-ogg-novideo.gz">mplayer-0.93-i686-glibc236-ogg-novideo.gz</a><br>
+I did not manage to compile a video version with ogg support.
+
+<p>
+
+All versions are compiled with runtime cpu detection.<br>
+Ignore complaints, also about rtc.
+
+<p>
+
+p54c - pre 1997 PII without MMX- 120MHz to 200MHz<br>
+i586 - 1997-1998 PII with MMX - 166MHz-300MHz or 1998 AMD-K6-2 (to 550MHz). <br>
+i686 - 1999 or later P3 with MMX and SSE <br>
+
+<p>
+
+The i686 version may work offline with i586 but crash online, and the i586 version will segfault on p54C.<br>
+The i586 nox11 version works with vesa and fbdev (and svga if you add svgalib libraries) but plays very badly at 400MHz on AMD-K6-2 probably because of no MMX etc.
+I use glibc 2.3.6 on a 120MHz Compaq LTE5280.  Some versions look for rtc (the 
+p54c was compiled not to) but will work without it (realtime clock).
+
+<p>
+
+See the bl directory for other later versions.  1.0pre7 is needed for
+use with mplayer plugin.  You can use mplayer directly but to stop
+it from playing you need to kill the process (kill `pidof mplayer'
+in an rxvt).  0.93 works with Opera 9, which works at 120MHz (it 
+downloadsat 20-40K/sec instead of the full 300K, due to slow video) 
+and with 64MB total memory.
+  
+<p>
+
+Gunzip into /usr/local/bin and make a /root/.mplayer/config with
+ao=oss (or CLI player -ao oss instead).
+
+<p>
+
+To play streaming audio with mplayer instead of mpg123, edit the 
+station scripts and replace all but the URL with mplayer.<br> 
+
+<p> 
+
+To play realaudio add rp9codecs from my site - unpackage 
+in /usr/local/lib/codecs.  Few sites use realaudio now.
+mplayer can access mms: but links and lynx cannot.  See
+my <a href="mplay-class.tgz">mplay-class.tgz</a> package
+for playing classical radio stations that work with mplayer
+(installpkg puts the files into /usr/local/bin) for a script
+mplay-class that calls other scripts.  You need lynx or
+a browser linked to it to run sradio script.  You also
+need my <a href="lynx.cfg">lynx.cfg</a> which for lynx 2.8.8
+goes into /usr/local/etc and calls mplayer when you run into
+.mp3 .m3u .pls .asx .asf etc.  (/usr/etc for earlier lynx?).
+My versions do not work with ogg or aacp.
+
+<p>
+
+see http://www.mplayerhq.hu/Mplayer/releases/codecs for more codecs.<br> <p>
+
+Add to /root/.mplayer/config the line ao=oss to use OSS sound 
+or if that does not work use '-ao oss' on the CLI (and -vo 
+svga, etc. to specify video, x11 being the default.).
+
+<p>
+Add the BL sb packages to make sound devices (or make them with 
+mksnddev from here) and insmod the pertinent modules.  If you don't have 
+sb, get the modules for your sound chip from SW7.1.
+<p>
+
+To see subtitles in DVDs, download iso-8859-1-arial-18.tar.bz2
+from here or mplayer site and unpackage in /usr/local/share/mplayer/font
+If you are hearing French by American actors, force English language 
+with '-alang en', for French subtitles add '-slang fr', both after 
+dvd://1.
+
+<p>
+
+<p>
+Script for playing dvds in X without a window manager:<br>
+<a href="xdvd">xdvd</a><br>
+using Xvesa at 800x600x16.  Type Xvesa -listmodes to see if you have a 720
+resolution and use that instead to fill the screen.  DVDS are 16-bit.  You will 
+need a sound-on script for your sound card too.<br>
+<p>
+
+<a href="xp">xp</a><br> similar script for xpdf without a window manager<br>
+<a href="xo">xo</a><br>  for opera, but then you will need a mouse because the
+keyboard navigation no longer works to change focus.
+
+
+<p>
+If you get a long error message about cdrom_decode_status DriveReady 
+SeekComplete Error and ATAPI reset and DMA being turned off, skip that 
+track (start at dvd://2).
+
+<p>
+<H1>NETWORKING/INTERNET</H1>
+<p>
+
+<H2>
+KERMIT 8.0.2.11<br> for BL1/BL3 libc5
+</H2>
+
+<p>
+
+<a href="kermit-libc5-8.0.211.gz"> kermit-libc5-8.0.211.gz </a> 
+Version 11 (2003) for libc5 (BL1 and BL3).  Dial, telnet, 
+ftp, and kermit file transfer.  Without ncurses.
+
+<p>
+
+
+<H2>
+DROPBEAR (SSH) for GLIBC-2.2.5, 2.3.6 and uclibc-static</H2><br>
+<p>
+
+<a href="dropbear-0.49-glibc225.tgz">dropbear-0.49-glibc225.tgz</a><br>
+<a href="dropbear-0.49-uclibc.tgz">dropbear-0.49-uclibc.tgz</a><br>
+<a href="dropbear-0.52-glibc236.tgz">dropbear-0.52-glibc236.tgz</a><br>
+
+<p> 
+
+0.52 binaries are smaller.  dbclient 117K > 103K.<br>
+I have only tested dbclient in the 0.52 package, not scp or dropbear.
+Read the instructions for generating keys before using dropbear,
+but dbclient and scp should work out of the box.<br>
+dbclient user@host - give password when asked
+
+<p>
+
+Use the more secure scp instead of ftpput. <br>
+scp source-filename user@host:./path/to/target-filename  - asks for 
+password -  works despite four 'WARNING: Ignoring unknown argument'.<br>
+Read the BL archives for help using dropbear server for LAN.
+
+<p>
+
+<H2>
+PUTTY SCP CLI PROGRAMS for GLIBC-2.2.5<br>
+</H2>
+
+<p>
+<a href="pscp">pscp</a><br>
+<a href="psftp">psftp</a><br>
+Copy or ftp files securely.  psftp user@address and give password.<br>
+These are over 300K each.  Dropbear is similar but smaller.
+<p>
+
+<H2>CURL</H2>
+<p>
+
+<a href="curl-7.10.3-glibc2.0.tgz">curl-7.10.3-glibc2.0.tgz</a><br>
+<a href="curl-7.19.6-glibc225.tgz">curl-7.19.6-glibc225.tgz</a><br>
+Secure file transfer but appears to be broken.  Keeps uploading or
+downloading only half a file.  It omitted the middle half of this
+blfiles.htm, for instance.  Use at your own risk!
+<p>
+
+
+<H2> MSMTP for GLIBC 2.2.5 AUTHENTICATING MAIL PROGRAM </H2>
+<p>
+
+<a 
+href="msmtp-1.4.10-notls-glibc225.tgz">msmtp-1.4.10-notls-glibc225.tgz</a><br> 
+<p>
+Copy /usr/local/etc/msmtp-sample to msmtp and change to your 
+own ISP's smtp host name, from address, user and password.
+<p>
+
+Authenticating mail transfer agent with instructions how to use it with 
+Mutt.  Compiled without TLS support.  See also sylpheed-bl3.tgz and 
+sylpheed-bl2.tgz for authenticating smtp (GUIs requiring X). 
+<p>
+
+Can be used CLI:<br>
+<p>
+
+msmtp recipient@address.com<br>
+From: sender@address.com<br>
+Subject:  subject line<br>
+Cc:<br>
+Bcc:<br>
+Reply-to:<br>
+[Header lines all optional but often helpful]<br>
+Message body.....<br>
+Ctr-D [from a blank line]<br>
+
+<p>
+
+
+<H1>TEXT-BASED BROWSERS</H1>
+
+<H2>LYNX FOR BL2 and BL3 </H2>
+
+<p>
+2.8.5 has been removed.  If you don't have glibc 2.2.5, use
+Karolis's static <a href="lynx-2.8.6rel4-2_2.4.tgz">lynx 2.8.6rc4 
+uclibc-static</a><br>  
+
+<p>
+
+You do NOT need libresolv and libnss_dns (from glibc or libc5) to use 
+uclibc-static lynx online, but you do need a non-busybox gzip.
+Karolis diagnosed the 'cannot uncompress temporary file' error that occurs 
+with 2.8.6 in BL but not Slackware as being due to busybox gzip.<br>
+2.8.6 requires a full gzip, which removes html.gz files that 2.8.5 left in 
+/tmp/*.  Use gzip from SW4.0 or SW7.1 or download<br> <a 
+href="gzip-1.3.5-uclibc">gzip-1.3.5-uclibc</a> (needs 2.4.31 kernel)
+or <br> <a href="gzip-1.3.9-glibc225">gzip-1.3.9-glibc225</a> <br>
+
+<p>
+
+Stable <a href="lynx287-glibc225.tgz">lynx287-glibc225.tgz</a> 
+includes documentation and cert.pem. 
+<p>
+
+<a href="lynx287-nossl.gz">lynx 2.8.7 nossl binary </a><br>
+<a href="lynx287-ssl.gz">lynx 2.8.7 ssl binary </a><br>
+
+
+<p>
+Unstable <a href="lynx288dev1-glibc225.tgz">lynx 2.8.8dev1-glibc225.tgz</a> 
+includes documentation but not cert.pem.
+
+<p>
+
+Rename or symlink the lynx binary to lynx, and edit lynx.cfg and lynx.lss 
+as you like or use my cck versions.  Download and add my cacert.pem.gz,
+gunzip, rename, place in /usr/local/ssl/cert.pem.
+
+<p>
+
+gmail (http://mail.google.com/mail/h gets you the 'basic html' no-js 
+version which loads faster than gmail.com = mail.google.com/mail)
+no longer works with lynx 2.8.6.4 ('unsupported URL scheme'); with 
+2.8.8dev1 a login attempt takes you back to the login page.
+
+<p>
+ 
+The lynx.cfg-cck included in the 2.8.8dev1 package contains my 
+modifications for using zgv, timidity, mplayer, as viewers; links2, 
+w3m, svp, pdftotext, antiword as downloaders; msmtp as system 
+mailer.  The persistent cookies don't work.
+
+<p>
+
+<H2>OPENSSL CERTIFICATES for LYNX LINKS123 LINKS2 ELINKS W3m</H2><br>
+(Included in lynx 2.8.7).
+
+<p>
+
+Download, gunzip, rename to cert.pem, and copy to /usr/local/ssl/
+<a href="cacert.pem.gz">cacert.pem.gz</a> <br>
+to eliminate questions about self-signed and local certificates.  <br>
+Current version was downloaded here July 23, 2012. 
+<p>
+
+You can update cert.pem if you get error messages about certificates from
+<a href="http://curl.haxx.se/ca/cacert.pem.gz"> 
+http://curl.haxx.se/ca/cacert.pem.gz.</a>
+<p>
+
+
+
+<p>
+
+<H2>LINKS2 (optionally graphical) GLIBC 2.2.5 </H2>
+<p>
+
+Compiled for svgalib and x, SSL.  2.1pre28 (posted as binary only)
+is the last version with some javascript.  The supporting files
+are in the 2.2 package (links.cfg, user's manual).  Steven compiled 
+links2-pre28 for bl3 (libc5 x, no svgalib).  No persistent cookies.
+
+<p>
+
+<a href="links-2.2-glibc225.tgz">links-2.2-glibc225.tgz</a><br>
+<a href="links-2.1pre28-glibc225.gz">links-2.1pre28-glibc225.gz</a><br>
+2.1pre28 is the last version with javascript support.
+
+<p>
+
+The required glibc 2.2.5 files: <a href="./operalib.tgz">operalib.tgz</a>
+
+<p>
+
+Compiled without gpm support.  Use graphical version for svgalib mouse.  /dev/mouse
+must be specified (ln -s /dev/ttyS1 /dev/mouse, for instance).<br>
+symlink binary to links (or links2)<br>
+links -g -mode 800x600x256  or in x simply links -g
+
+<p>
+
+<H2> openssl 0.9.8 minimal package </H2>
+<p>
+
+To compile links2 with ssl support I first compiled openssl 0.9.8.  
+Compilation of links2 required only two static library files libcrypto.a 
+and libssl.a, and header files (as shown by reading the Makefile), which I 
+packaged (without bin man private misc but with cert.pem) as <br> 
+<a href="openssl-0.9.8-static.tgz">openssl-0.9.8-static.tgz</a>. <br> 
+To use this package, copy it to /usr/local/ssl and tar -zxvf *.tgz 
+(do not pkg or installpkg - I got lazy).  Shared libraries for openssl 
+0.9.7c are in Slackware 8.1.
+
+<H2> perl 5.6.0 minimal package </H2>
+<p>
+
+To compile openssl I used perl 5.6.0 and perl5 library files (in *.pm)
+taken from Slackware (7.1 or 8.1?), rather than installing the enormous 
+perl package.  I packaged these for future use in compiling other programs 
+as <a href="perl560-minimal.tgz">perl560-minimal.tgz</a>.
+
+<p>
+
+<H2>ELINKS</H2>
+<p>
+
+<a href="elinks-0.11.4rc1-small-ssl.gz">elinks-0.11.4rc1-small-ssl.gz</a><br>
+<p>
+
+Elinks is the only text browser I got to do persistent cookies and automatic
+redirection and it is thus useful at fastmail.fm, but it is a pain because it 
+does not access links in the order seen (even by number - type '.').
+
+<p>
+
+<H2>W3M</H2>
+
+Newer versions do inline images (see the linuxpackages 0.5) but I could 
+not get that to compile.  Keyboard (arrow) mouse.  Persistent cookies 
+(with some problems).  SSL.
+
+<p>
+<a href="w3m-0.2.1.tgz">w3m-0.2.1.tgz</a> (300K binary).  Does not work 
+well<br>
+
+<p>
+
+W3M-0.4.2 (requires adding <a href="libgc.so.1.0.2">libgc</a>)
+
+<p>
+
+<a 
+href="w3m-0.4.2-nano-msmtp-links2-glibc225.tgz">w3m-0.4.2-nano-msmtp-links2-glibc225.tgz</a><br>
+<a 
+href="w3m-0.4.2-nano-msmtp-links2.gz">w3m-0.4.2-nano-msmtp-links2.gz</a><br>
+Compiled with no inline image support and with my choice of editor etc.  
+About 500K each download, 1.2MB binary.
+
+<p>
+Framebuffer support for 0.4.2 requires gdk-pixbuf 0.16 or imlib2.  
+Could not compile w3m for fb device despite adding SW81 gdk-pixbuf 0.17
+"error no Imlib and GdkPixbuf support".  (I installed imlib-1.9.15).
+	
+<p>
+
+W3M-0.5.2 - adds unicode m17n language support which I omitted (but I will 
+recompile if you want that and default editor vi)
+
+<p>
+<a href="w3m-0.5.2-nano-msmtp-links2-color-nolang.gz">w3m-0.5.2-nano-msmtp-links2-color-nolang.gz</a><br>
+<p>
+
+Could not get inline images to work with 0.5.2 (where image support is 
+reported broken for gdk2). The compiler could not find lXext (I have 
+libXext.so and Xext.h).  I first had to install libungif header and .a 
+library to compile imlib.  x11 support requires gdk-pixbuf or imlib 
+and I added both (adding just gdk-pixbuf I got 'cannot find -lImlib), but 
+now it 'cannot find -lXext'.
+<p> 
+
+
+<p>
+
+w3m works at fastmail if you do NOT specify -cookies (persistent cookies) and if you do
+it won't accept them due to wrong number of dots but will log in.  Has a nice keyboard (arrow) 
+mouse and will work with nano.  Steep learning curve but powerful.  
+<p>
+
+Running w3m requires libgc 6.1 or later. Choose one (2 is a bit bigger).<br>
+<a href="libgc.so.1.0.2.gz">libgc.so.1.0.2.gz</a><br>
+<a href="libgc.so.1.0.1.gz">libgc.so.1.0.1.gz</a><br>
+Both are glibc 2.2.5.  Download to /usr/local/lib and gunzip.
+
+<p>
+<H2>Links-Hacked</H2>
+<p>
+
+See linuxpackages.net for w3m SSL (0.5) (said to do inline images) and links-hacked 
+(supposedly uses mozilla javascript but botches gmail).  These need SW9 or 10
+glibc.  links-hacked does SSL and w3m supposedly can be compiled to.  w3m
+is aimed at Asian users and is worth looking at but strange.
+<p>
+
+
+The following do not do SSL and are curiosities.  netrik is still being developed 
+as of 2009, the others are abandoned.  debris (2000) is available but not worth
+it - works only online and does not do forms including search engines<b>
+
+<p>
+<a href="retawq-0.2.6c-glibc225.tgz">retawq-0.2.6c-glibc225.tgz</a> <br>
+<a href="retawq-curses-nomouse-nonews">retawq no mouse binary</a><br>
+<a href="netrik-1.16-glibc225.tgz">netrik-1.16-glibc225.tgz</a><br>
+
+<p>
+
+None of the text browsers work with gpm mouse but most work with a mouse in X
+(not the nomouse retawq or netrik).  Use a font with extended ascii for
+box characters in the linkses.  Colors may be odd, change to mono.
+
+<p>
+
+<H2> NOJAVASCRIPT GRAPHICAL BROWSERS (see links2 - some javascript thru 28)
+
+<H2> DILLO GLIBC 225 
+<a href="dillo-0.8.6-glibc225.gz">dillo-0.8.6-glibc225.gz </a> 340K unzipped.
+<p>
+
+More recent versions do frames and SSL.  See DamnSmallLinux.
+Dillo 2 needs fltk which would not compile for me - try a later
+gcc than 2.95.3 and/or a later libX11?  Unusable without a mouse.
+
+<p>
+
+<H2> NETSURF </H2> 
+<p>
+
+is available from Puppy Linux (needs recent glibc) and is very fast 
+(it also downloads all the text before images) but has few 
+options.  In theory it can be compiled to use framebuffer instead of X.  
+Puppy uses version 1.0 not 2.0. Some day javascript. <br> <p>
+
+<H2> SKIPSTONE </H2>
+<p>
+
+ is bigger and slower and has no advantages I could find.  <br> 
+
+<H2>MIDORI 0.2</H2>
+<p>
+
+Javascript browser, which you can try to compile (500K plus lots of other 
+libraries). Said to work with AdblockPlus list.  Japanese.  GTK2 and 
+WebKitGTK+ libraries needed.  Works VERY badly precompiled for XP (won't 
+access gmail, display a nearly blank page at fastmail, and looks for help 
+files in linux locations).  Uses only about half the memory of Seamonkey 
+1.  Available for a few recent linuxes (Ubuntu?).
+
+
+<H2>BL-COMPATIBLE PRECOMPILED GRAPHICAL BROWSERS WITH JAVASCRIPT</H2>
+<p>
+
+All of these can be unpackaged in / and run from a wrapper script
+(lets you compare several versions) or installed (install.sh).<br>
+
+<p>
+
+To run 'browser' from the wrapper script
+start X <br>
+cd /browser*<br>
+./browser<br>
+You can make a script to do all this.
+
+<p>
+
+<H2> OPERA 8 and 9 FOR BL3 or BL2  </H2>
+
+<p>
+
+Download the .tar.bz2 for the chosen version from <br> 
+http://arc.opera.com/pub/opera/linux/854/final/en/i386/static/ 
+(or the opera.com site - download for Windows, other versions, linux, 
+9.64) and unpack on / (or in /opera-9.64 for my package). You can run 
+opera from /opera*/opera (*wrapper) or install with install.sh.<br>
+
+<p>
+
+Versions 8-9 need glibc 2.2.5 (or later), the essentials of which are in
+<a href="http://keesan.freeshell.org/bl/operalib.tgz">operalib.tgz</a><br>
+Glibc 2.3.1-2.3.6 work but need kernel 2.4, which is needed also if you
+want USB storage (flash drives, cameras) and elinks.  Later glibc from 
+Slackware 12+ needs kernel 2.6.
+
+<p>
+I am working on Opera 11, which has some font problem.  
+<p>
+ 
+Dependencies (all of which I have) include libraries in elflibs,
+glibc, expat, freetype, and x11.  The x11 libraries are X11, Xext, SM,
+ICE and Xft, all in <br>
+<a href="x11-6.9.0-SW11-basiclibs.tgz">x11-6.9.0-SW11-basiclibs.tgz</a>
+<br>
+2MB of the 18MB package, with about half of the X libraries (ones I recognized).
+
+<p>
+
+For BL3 also add <br>
+<a href="libz.so.1.1.3">libz</a> to /usr/lib (or Steven's misc libs) <br>
+<a href="libXext.so.6.3">libXext</a> to /usr/X11R6/lib.  <br>
+<a href="libSM.so.6.0">libSM</a> to /usr/X11R6/lib (or Steven's X libs for both).  <br>
+Run ldconfig to make symlinks.
+
+<p>
+8.54 will work in 24MB with swap, but 9.2 > 9.5 > 9.6 use up to double the memory.
+
+<p>
+Do not use 9.50b - very buggy.  Neither 9.5 nor 8.54 work with <a 
+href="zoho.com">zoho.com</a> Office programs and work badly with Viewer.
+
+<p>
+
+<H2> OPERA 9.64 </H2>
+<p>
+
+Opera.com has links for various linuxes, but not older Slackware.  The 
+102MB deb static version, if downloaded as bz2 not default format, is 
+8.8MB and will work with glibc 2.2.5 (or maybe even 2.1.3).
+
+<p>
+
+I stripped out all but english locale files and recompressed to 7.5MB. You 
+can <a href="http://keesan.freeshell.org/bl/upx-1.24.tgz"> upx </a> the 
+executable down from 15 to 6.8MB but it will load a little slower.
+
+<p>
+
+<http://keesan.freeshell.org/bl/opera-9.64.gcc296-static-qt3.i386-nolocale.tar.bz2">Opera 
+9.64 for Slackware 8.1 </a><p>
+
+mkdir /opera-9.64 and cd there and bunzip2 and tar -xvf the file, <br>
+then to run it<br>
+cd /opera-9.64<br>
+ ./opera 
+
+<p>
+
+Opera 10 can be made to work with the SW11 GLIBC and some other fiddling 
+(see archives) but the menus have little squares instead of text.
+Turbo mode downloads images at 1/2 or 1/3 quality (hard to read).
+
+<p>
+
+
+<H2>LIBRARY UPGRADES </H2> for Mozilla-based browsers and other X programs.
+For BL2 only - will destroy BL3!!!!
+
+<p>
+
+<H2>GLIBC 2.3.6 libraries only</H2>
+<p>
+
+This is the last Slackware glibc that works with kernel 2.4.<br>
+<a href="SW11libs.tgz">SW11libs.tgz</a>
+<p>
+
+Glibc 2.3.6 works for precompiled binaries such as MaPiVi 
+(needs 2.3.2) and sqlite3 (needs 2.3.1).  The browsers need 2.3.4+
+
+<p>
+
+<H2>ADDITIONAL LIBRARIES</H2>
+<a href="firelibs.tgz">firelibs.tgz</a> libraries needed by firefox 1.5 and 2
+and seamonkey 1.1 gtk1, including libstdc++ 5 (Seamonkey) 
+and 6 (Firefox), libgcc, libglib, libgmodule, libgtk, libgdk, libXi, and 
+also libX11 6.2 used by SJPhone and other recent X programs. 
+
+<p>
+
+<H2>MOZILLA-BASED BROWSERS</H2>
+Need both SW11libs and firelibs packages or equivalent.
+<p>
+
+<H2>SEAMONKEY-1.1-GTK1</H2>
+
+<p>
+<a href="http://seamonkey-project.org"> Seamonkey home page </a><br>
+<a href="http://releases.mozilla.org/pub/mozilla.org/seamonkey/releases/1.1.17/contrib/seamonkey-1.1.17.en-US.linux-i686-gtk1.tar.gz">unofficial 
+(contributed) seamonkey 1.1.17 for gtk1</a>  Around 13MB.  If link is broken look for a later version at their home page.
+<p>
+
+Does not accept as many plugins as Firefox but loads faster.
+Uses Firefox 2 code, and works with Google Docs where Firefox 2 does not.
+
+<p>
+
+I get two GDK warnings about locale which can be ignored and are related to how glibc was compiled.
+(They go away if you use Slackware 9.1 glibc 2.3.2 but then the browsers do not work).
+<p>
+
+<H2>FIREFOX-1.5-GTK1</H2>
+
+<p>
+
+<a href="firefox-1.5.0.12-en-US.linux-i686-gtk1.tar.gz">firefox 1.5.0.12</a> 
+
+<p>
+
+
+This version corresponds to Seamonkey 1.0 so is missing some 
+features found in Seamonkey 1.1.  Firefox has more modules available 
+but Seamonkey 1.1.17 can use newer modules such as Adblock Plus 1 
+(where Firefox 1.5 uses .7.5.5).
+
+<p>
+
+<H2>FIREFOX 2 </H2>
+
+<p>
+
+Extract the directory from a running version of the latest DSL linux.
+It expands to 28MB and would take me an hour to post via dialup.
+Firefox loads very slowly and uses lots of memory.  Read online
+about tricks to reduce this such as deleting history.
+
+<p>
+
+Firefox 3.0.6 would not load for me even in Slackware 11.  Use Browser or Puppy Linux.
+<p>
+
+<H2>Mplayer plugin, mplayer and X LIBRARY UPGRADE</H2> 
+<p>
+
+Mplayer plugin GTK1 verison from amigolinux requires libX11.so.6.2, 
+libXext and maybe libICE from Slackware 11 (earlier versions may work but 
+Firefox and Seamonkey need SW11 glibc 2.3.6 anyway), also mplayer 
+1.0rc2try7 (David Moberg's uclibc one), which does not resolve DNS numbers 
+on its own but does used with the plugin. 
+<p>
+
+I compiled a 1MB <br>
+<a href="mplayer-0.93-glibc225-novideo>mplayer-0.93-glibc225-novideo </a> 
+<br>
+
+which resolves DNS numbers but is too old for the plugin, and then a 5.5MB 
+<br>
+<a href="mplayer-1.0pre7try2-glibc236">mplayer-1.0pre7try2-glibc236</a>.  
+<br>
+<p>
+
+They both play mp3 online but not ogg, and the latter plays DVDs but only 
+in mode vesa (not svga or x11).  The latter would not play online when 
+compiled with gcc 2.95.3 (error message suggested a gcc problem) but works 
+when compiled with gcc 3.4.6 from Slackware 11 (full package minus locale 
+and docs).  I did not have the source code needed for ogg or xll (or 
+apparently svga).
+
+<p>
+
+To play oggs, or DVDs with x11 or svga, use <a href="mplayer4.tgz"> 
+mplayer4.tgz</a, David Moberg's uclibc-static package.  You may need the 
+other files from it to use with my versions (config file anyway).
+
+<p>
+
+
+
+<H2> VOIP SOFTWARE </H2>
+
+SJPhones' softphone works if you update from Slackware 7.1 libX11.so.6.1 
+to libX11.so.6.2 <br> 6.2 is found in Slackware 8.1 and later and reflects 
+the switch from Xfree 3.3.6 to 4.x.  (I used libX11 from SW11).
+sjphone also requires glibc 2.3.2 (SW11 has 2.3.6).  <br>
+
+<p>
+
+Slackware 7.1 libX11 is in xbin.tgz (xfree 3.3.6). <br>
+
+Slackware 8.1 libX11 is in xfree86-4.2.0-i386-5.tgz - 13MB.  SW90 has 4.3.  
+<br>
+
+Slackware 11 base package for X11 is x11-6.9.0-i486-11.tgz 19MB.  Don't 
+know the version.  Current is 4.8.<br>
+
+<p>
+
+Download <br> 
+
+<a href="http://www.sjphone.org/softphone/SJphoneLnx-299a.tar.gz">SJPphoneLnx-299a.tar.gz</a> <br> 
+
+unpack, and run from sjphone directory.  They have documentation at the site (PDF) for Windows 1.3M. The xfree package 
+contains a lot of locale and module and include and bin and xkb files that you don't need.
+
+<p>
+
+<H2>BROADBAND DSL</H2>
+
+Softphones require broadband, and a DSL connection requires either that 
+you use the DSL modem (router) provided by the ISP, or Windows, or pppoe 
+software <a href="rp-pppoe-3.10-glibc225.tgz">rp-pppoe-3.10-glibc225.tgz </a>.  
+I compiled the binaries and packaged with the help files but have not tested 
+since I don't have broadband yet.  Follow the setup instructions in the 
+HOWTO, which are rather complex. The KERNEL* file explains how to compile 
+the software into a 2.4 or later kernel instead.  Let the BL list know if 
+any of this worked.  You need to enter your ISP user name and password 
+into some file.  I proved the need for this by trying to use linux and a 
+browser with my own DSL router, and firefox in linux accessed an error 
+page instead of the desired webpage, which XP plugged into the same router 
+did access.  The ISP's DSL modem (router) and Windows come with this 
+software but BL does not. Or Ubuntu.
+
+
+<p>
+
+<H1>KERNELS and MODULES</H1>
+
+<H2>2.2.16 KERNELS</h2>
+
+<H2>486DX KERNEL for older laptops</H2>
+
+<p>
+
+<a href="2.2.16/zimage.4dz">zimage.4dz</a><br>
+a 486-dx kernel with no ethernet or cd-rom support, or sound
+support, but with vfat and parport zip drive support.  Built for use on 
+our older Compaq laptop that has no CD-ROM drive, so we transfer files via 
+parport zip drive (scsi-mod sd_mod imm).  Works for booting a 486 from 
+hard drive, or a parport zip drive plugged into a pentium, but does not 
+boot the same zip drive plugged into out Compaq Elite 486DX laptop.  Use 
+the 386 kernel.  
+<p> 
+
+<br><H2>2.2.16 SOUND KERNELS</H2>
+
+<p>
+
+Please look in <a href="2.2.16">the 2.2.16 directory</a>
+for more 2.2.16 kernels and modules.
+
+<p>
+
+zimage.sb and config.sb kernel 2.2.16 with sb sound, scsi aic7xxx, and
+ethernet - tulip, rtl8139, 3c509, 3c59x, eepro, SMC-ultra, wd80 support 
+(as modules) - and built-in ppp/slhc and atapi CD-ROM support, for use 
+with BL2 or ext2 BL3 (whose kernels don't support sound).  Tested working 
+with sound and imm and rtl8139. <br>
+
+<p>
+
+zimage.snd and config.snd - same as above but with sound module support 
+also for es1370, es1371.o (Creative/Ensoniq AudioPCI), esssolo1 (ES 1938s 
+PCI), cs4232 (Crystal 4235, may need aumix to set vol up from 0), mad16 
+(opti 931 and possibly also 930 and 929a), ad1848 and (?) uart401 (used 
+with previous two modules), trident (4D PCI card, may need aumix), mss 
+(microsoft sound system), ym3812 (needed by other cards for fm synthesis 
+and thus maybe by playmidi), s_galaxy (my old Aztech card), and opl3sa2.
+<p>
+
+<br><H2>2.2.16 FRAMEBUFFER KERNEL </H2>
+
+My zimage.fsm config.fsm mdacon.o matroxfb.o<br>
+The vesafb is built-in (but not activated unless you specify vga=XXX at 
+boot time, on the loadlin line). 
+
+<p>
+
+Vesafb with vga=XXX will crash matrox cards, insmod matroxfb vesa=788 
+after booting.  Vesafb messes up the display with riva cards, use rivafb. 
+fbset -n 1024x768-76 after insmodding it and composing /etc/fb.modes 
+(email me for details).  xfbdev followed by terminal switching crashes 
+rivafb and matroxfb, use Xvesa or full X server instead.
+
+<p>
+
+This mdacon.o works with both framebuffer and other kernels.<br>
+The one from Slackware 7.1 does not work with framebuffer kernels.
+
+<p>
+
+<H2> 2.2.26 laptop kernels with and without built-in CD-ROM support </H2>
+<A HREF="./2.2.26/zimagefb.226">zimagefb.226</A> 437K <br>
+<A HREF="./2.2.26/conffb.226">conffb.226</A> <br>
+<A HREF="./2.2.26/zimafbcd.226">zimafbcd.226</A> 465K <br>
+<A HREF="./2.2.26/conffbcd.226">conffbcd.226</A> <br>
+<A HREF="./2.2.26/mdacon.o">mdacon.o</A><br>
+<A HREF="./2.2.26/ntfs.o">ntfs.o</A><br>
+<p>
+
+2.2.26 (2.2.27? - I tried to patch it) kernel modeled on Steven's standard BL3.50 kernel for P1, 
+without SYSTEM V IPC (used by DOSEMU) or SYSCTL (/proc/sys), with built-in 
+MSDOS and VFAT (so you can copy long linux file names to DOS disks), and 
+with VESAFB. Also mdacon.o MDA console video driver for use with 
+framebuffer, and ntfs.o ntfs.o read-only to access Windows NT 2K or XP 
+files.  fb kernel does not support CD-ROM drives (the modules segfault if 
+you try), fbcd has them support built in.  No guarantees here.
+Should work with Compaq Armada laptops that have nomce error.
+
+<p>
+
+
+
+<H2>USB STORAGE (DOS drivers)</H2>
+<p>
+
+For DOS USB-storage put <br>
+<a href="usbaspi5.sys">usbaspi5.sys </a>
+and <a href="di1000dd.sys">di1000dd.sys </a>
+in your root directory and add to config.sys the lines:<br>
+devicehigh=usbaspi5.sys /v /r /w  <br>
+devicehigh=di1000dd.sys <br>
+The /w tells it to wait for you to insert the device - you can omit it
+and plug it in before boot instead.  You will be assigned a drive letter.
+
+
+<H2>2.4.31 KERNELS - with USB storage, needed for glibc 2.3.1+</H2>
+
+<p>
+<A HREF="./2.4.31/bzimagla.431">bzimagla.431</A> <br>
+(<A HREF="./2.4.31/configla.431">configla.431</A>) <br>
+(no scsi, sound, framebuffer, firewall, ide zip) <br>
+Needs to be recompiled without hermes, joliet and ISA (!) support<br>
+When used with BL3.50 the system is read-only.  Don't know why.
+This might be useful when setting up BL for people likely to mess things 
+up who don't need to be able to save or delete or edit anything.
+
+<p>
+
+<A HREF="./2.4.31/bzimapda.431">bzimapda.431</A> 
+(<A HREF="./2.4.31/configpda.431">configpda.431</A>)<br>
+same as la but with usb_serial built-in, for USB PDA, since
+usb_serial.o won't insmod in the 2.4.31 kernel (use 2.2.26 instead with 
+modules).
+<p>
+
+Use the la-nopcmcia modules package for these kernels, or the larger smf 
+modules package.
+<p>
+
+<a href="./2.4.31/bzimlafb.431">bzimlafb.431</a>634K<br> 
+<a href="./2.4.31/bzimlfsb.431">bzimlfsb.431</a>673K<br> 
+<a href="./2.4.31/bzimlafb-cb.431">bzimlafb-cb.431</a>645K<br> 
+<a href="./2.4.31/conflafb-cb.431">conflafb-cb.431</a><br> 
+<a href="./2.4.31/bzlafbsu.431">bzlafbsu.431</a>800K<br> 
+<a href="./2.4.31/colafbsu.431">colafbsu.431</a><br> 
+
+<p> 
+
+bzimlafb - bzimagla with vesafb support added, useful for neomagic chips 
+and Savage MX, where Xvesa is useless, and for S3 laptop chips (don't work 
+with BL3 Xvesa or X-SVGA.  Xfbdev uses half the RAM of SVGA server (about 
+1.2MB vs 2.4MB).  Compiled without built-in sound support.  Works with 
+modules with ymfpci (uart401, ac97_codec, ymfpci). opl3sa2 does not work 
+in my Gateway Solo 2000 in any linux (worked in Win98).
+
+<p>
+ 
+Use <a href="FB-0.2.5-glibc225.tgz">fbjpeg with dependency</a> to view jpegs without X.
+<p>
+
+bzimlsfb - same with built-in sb sound, required for laptop ESS sb 
+emulating chips, where modules will not work due to a bug in 2.4 
+kernels.  Found in my older Toshiba laptops (100 and 133MHz). <br>
+
+
+<p>
+
+bzimlafb-cb.431 adds cardbus support.  Cardbus is found in all my 
+laptops 200MHz or faster, and in one 120MHz Compaq.  (Broken in the
+Gateway 2000).  Cardbus cards do not physically insert in laptops 
+without cardbus support.  (Don't recall if sb is built-in).
+
+<p>
+bzlafbsu - adds to above built-in USB and SCSI (not usb-storage).
+Did not let me use external CD burner (sr0) to burn CDs.
+
+<p>
+
+2.2 kernels use modular sb on ESS laptop chips, but with 2.4.31 all sound 
+drivers (including SB!) must be built-in to avoid unresolved symbol error 
+messages, and you must ALSO insmod sb io=0x220 irq=5 dma=1 (change the 
+parameters in BIOS if they don't match, or use other parameters) because 
+sb is ISA in these older laptops.  The kernel is intended for PI 
+(100-233MHz). <p>
+
+Both have USB support.
+<p>
+
+More laptop kernels.  They both are smaller but have problems in a Gateway 
+2000 Solo (but work fine in a Hitachi 133MHz).  (Use lafb for Gateway).
+
+<p>
+
+
+<a href="./2.4.31/bzimlsfu.431">bzimlsfu.431</a> 632K<br>
+<a href="./2.4.31/bzimlsfu-cb.431">bzimlsfu-cb.431</a> 632K<br>
+<a href="./2.4.31/bzimlfnv.431">bzimlfnv.431</a> 600K<br>
+<a href="./2.4.31/conflsfu.431">conflsfu.431</a><br>
+<a href="./2.4.31/conflsfu-cb.431">conflsfu-cb.431</a><br>
+<a href="./2.4.31/conflfnv.431">conflfnv.431</a><br>
+
+<p>
+
+The lsfu kernel omits BSD Process Accounting, Sysctl Support (/proc/sys/), 
+System V IPC (needed for DOSEMU), ramdisk support (needed for BL2 
+ramdisk), and has LOOP as module (you can't use loop BL3 with 2.4.31).
+It supports sb sound and should not be used with other sound cards
+because it keeps /dev/dsp from being found. -cb adds cardbus support (not 
+tested yet with this kernel).
+<p>
+
+May cause problems with pcmcia - cardctl and cardmgr do not work,
+read-only file system, in my Gateway 2000 Solo.  Okay in other machines.
+(Gateway cardbus is broken and may be causing problems).
+<p>
+
+The lfnv (laptop framebuffer no-vga-console) kernel is the same but has 
+msdos/vfat only as modules, and omits vga console (use framebuffer, 
+vga=785 or vga=788 at boot time or you won't see anything at all).  
+Suggested for laptops with neomagic MagicGraph V/ZV which don't work with 
+any X server except xfbdev (or plain VGA).  USB storage is broken in the Gateway
+but pcmcia works.  
+
+<p>
+
+Booted with vga= they use about 60K extra RAM.  
+
+<p>
+
+Both based on my smf kernel without mtrr, usb kbd/mouse, and with cdrom 
+as modules to save memory.  If you don't need sound or fb but want USB 
+storage use the la kernel (600K), or if you don't need USB use the fsm 
+2.2.16 kernel (500K - framebuffer, sound, scsi) or sb (sound only - 480K) 
+and insmod all sound modules.  Steven's big 2.2.26 kernel does vesafb, and 
+also sound (as modules) (700K).
+
+<p>
+
+You need to add to laptop modules package:<br>
+<a href="./2.4.31/sb.o">sb.o</a> 
+<a href="./2.4.31/loop.o">loop.o</a> 
+<p>
+
+<H2>
+LARGER KERNELS for ATA100 CONTROLLERS
+</H2>
+<p>
+
+Form VIA82C, SIS5513, and Promise Ultra100 TX2 ATA100 and related 
+controllers (Ultra and FastTrak 33 to 133), including the onboard second 
+pair of controllers on a dual-BIOS Gigabyte B2000+.   
+<p>
+
+Drives attached to add-in or onboard Promise controllers are hde hdf hdg 
+hdh, so for the first drive, mknod /dev/hde b 33 0 (and hde1 b 33 1, etc.) 
+and edit fstab to change hda to hde before booting with this kernel (plug 
+the drive into hda and boot to it first).  BL3 will boot without first 
+editing fstab but BL2 will not.  This kernel supports older and newer 
+Promise controllers (unlike my earlier vps - only newer ones).  Slackware 
+10.2 bare.i kernel also works (use Slackware modules) as does DSL. <p>
+
+<p>
+<A HREF="./2.4.31/bzimavsp.431">bzimavsp.431</A>  <br>
+(<A HREF="./2.4.31/confvsp.431">confvsp.431</A>)<br>
+
+<p>
+None of these work as modules, they have unresolved symbols.
+<p>
+less /proc/ide/via gives info on the controller and clock.
+UDMA100, PCI clock 33.3MHz, cable type, transfer rates.
+The actual rates are about one third of theoretical (31 not 100MB/sec).
+<p>
+
+When compiling you must 'Say Y to "Use DMA by default when available" ' 
+and also "Ignore BIOS port disabled setting on FastTrak", which is needed 
+unless you use the Promise proprietary driver, since without this you will 
+get six unresolved symbols about dma and pci and pio.  
+
+<p>
+
+I also compiled with Y for the chips themselves. CONFIG_BLK_DEV_SIS5513 - 
+for SIS onboard chipset and CONFIG_PDC202XX_NEW and OLD for the Promise 
+controllers. I answered Y to "Boot offboard chipsets first support" since 
+my Promise is an add-in card.  You cannot boot from an add-in card using 
+modules unless you use initfs.gz.
+
+<p>
+
+<hr>
+
+<H2> PCI IDE CONTROLLER for NFORCE2 CHIPSET </H2> 
+<hr>
+ 
+<a href="./2.4.31/amd74xx.o">amd74xx.o</a><br> <p> 
+
+Unlike the via and promise (and maybe sis) PCI IDE controllers, which need 
+to be compiled into the kernel to work, and run hard disks at the expected 
+full speed (up to 45MB/sec), Nvidia nForce chipset driver works as a 
+module (on some computers) and increases hard disk transfer speed from 
+3.5MB/sec to 6.8MB/sec (whereas the Knoppix driver runs a udma5 drive at 
+28MB/sec).  This same nforce chip (found on a 1.9GHz AMD machine) also 
+provides OHCI USB (and EHCI USB2.0), nforce AC'97 audio (NOT i810_audio.o), and
+
+<p>
+Nforce ethernet driver
+<a href="./2.4.31/forcedeth.o">forcedeth.o</a>
+<br>
+
+<p>
+<H2> NFORCE 2.4.31 KERNEL (built in IDE support) </H2>
+<p>
+
+The module worked on an eMachine but not on an EPOX 1.9GHz AMD board, 
+where it had unresolved symbols.  Compiled into the kernel, the driver 
+runs hard disks full speed (20 MB/sec for a UDMA-2 drive).  Even if the 
+module works for you, the kernel should work faster. <br> 
+<p>
+
+<a href="2.4.31/bzimavns.431">bzimavns.431</a> (710K)<br> 
+<p>
+
+This kernel supports generic, Via, Nvidia Nforce, and SiS IDE 
+controllers (and newer Promise controllers).
+
+<p>
+<a href="./2.4.31/bzimusb.431">bzimusb.431</a> (750K)<br>
+<a href="./2.4.31/confusb.431">confusb.431</a><br>
+Same as above but with builtin usbcore, uhci, ohci and ehci,
+for use with a newer desktop with card reader plugged into
+onboard USB header, which would not boot with other kernels.
+Recognizes USB flash drive plugged into rear USB 
+but not front USB (part of card reader).
+
+
+<p>
+
+<H2> X DRIVERS </H2>
+
+<a href="./2.4.31/agpgart.o">agpgart.o</a><br>
+Supports i810 family of onboard video to allow using more than 1 MB 
+onboard RAM, also adds DRI/GLX to NVIDIA, ATI, SIS, ALI, VIA.
+Place into /lib/modules/2.4.31/kernel/drivers/char/agp  .
+
+<p>
+
+Try with the X.org 4.8.0 precompiled Xi810 server included in <br>
+<a href="Xtinyx-480-libc5.tgz">libc5 precompiled Xtinyx </a><br>
+<a href="Xtinyx-480-glibc21.tgz">glibc 2.1.* Xtinyx </a><br>
+I had no luck at all with this driver (or the i810 svgalib driver).<br>
+
+<a href="ftp://ftp.xfree86.org/pub/XFree86/4.8.0/binaries">4.8.0 binaries</a> <br>
+<p>
+<a href="ftp://ftp.xfree86.org/pub/XFree86"> versions 2.1, 3.3.6, 4.0-4.8 </a>  <br>
+<p>
+
+3.3.36 has libc5 (?), glibc 2.0 and glibc 2.1, and later versions have more 
+precompiled binaries (through glibc 2.4).
+
+<p>
+Here are three individual binaries that are smaller than Steven's
+no-dependency (uclibc) BL3 xvesa.  They require glibc 2.1.3 or later.
+Extract any others you want to try from the larger package or let me know 
+to post them separately. <br>
+<a href="Xvesa-glibc21.gz">Xvesa-glibc21.gz</a><br>
+<a href="Xfbdev-glibc21.gz">Xfbdev-glibc21.gz</a><br>
+<a href="Xsavage-glibc21.gz">Xsavage-glibc21.gz</a><br>
+<p>
+
+Gunzip, strip and chmod X*glibc21 after downloading.  The savage did not 
+work for me.  Xfbdev-glibc21 worked on a Gateway Solo 2000 where the 
+uclibc version segfaulted.  Chmod also +s Xvesa for use as 'user'.
+
+<p>
+<H2> ASSORTED 2.4.31 modules</H2>
+
+<a href="./2.4.31/via-rhine.o">via-rhine.o</a><br>
+Ethernet driver for onboard VT6103 ethernet.  BIOSTAR M7VIQ board etc.
+May work for other VT controllers (6102 6105).
+<p>
+
+<a href="./2.4.31/rtl8180_2431.o">rtl8180_2431.o</a> Driver supplied by 
+rtl for 8180 based wireless cards. See also rtl8180-2.4.31.tgz for the 
+source.  Not tested. <p>
+
+<a href="./2.4.31/svgalib_helper.o">svgalib_helper.o</a> for latest 
+svgalib (needs >= 2.4 kernels).  Works perfectly.  Insert in rc.S.
+<p>
+
+<H2> Modules for a Gigabyte board, AMD, FSB 133, Via controller. 
+(Use vps kernel for IDE PCI controller part, not via82cxxx.o).</H2>
+
+<a href="./2.4.31/via-rhine.o">via-rhine.o</a><br>
+network driver for onboard VIA network adaptor as found in my Gigabyte<br>
+insmod crc32 and mii first.  Tested working but at 3 sec/MB.
+
+<p>
+
+<a href="./2.4.31/via82cxxx_audio.o">via82cxxx_audio.o</a><br>
+sound driver, 48KHz only similar to i810_audio.o, which means it works with mplayer, timidity, sox 13.0,
+but not SW71 or older sox, or workbone, or mcdp.  Use if you don't have a free PCI slot to replace
+the onboard sound with.    insmod soundcore, sound, ac97_codec first.
+
+<p>
+The onboard video is a properly working S3 Savage (fairly fast, vesafb).
+
+<p>
+<a href="./2.4.31/ad1816.o">ad1816.o</a> for sound card.
+<p>
+
+Yamaha opl3sa2 is available for 2.4 but not 2.2 kernels.<br>
+The Yamaha OPL3SAX io=0x240 in my Hitachi and Gateway does not work with it.<p>
+
+<a href="./2.4.31/opl3sa2.o">opl3sa2.o</a><br>
+insmod soundcore<br>
+insmod sound <br>
+insmod mpu401<br>
+insmod ad1848<br>
+insmod opl3sa2 io=0x370 mss_io=0x530 irq=5 dma=0 dma2=1 mpu_io=0x330<br>
+insmod opl3 io=0x388<br>
+
+<p>
+
+The mpu_io and opl3 lines are optional, as may be mss_io.<br>
+Other laptops this age use ESS sound chips which work as sb and are 8-bit, 
+and this is a nicer 16-bit, but not usable with 2.2 kernel.
+
+<p>
+
+<a href="./2.4.31/parport_pc.o-1284">parport_pc.o-1284</a><br>
+Substitute for parport_pc.o in my main package if your printer supports
+ECP/EPP printing, for increased speed.  IEEE 1284.
+
+<p>
+<a href="./2.4.31/loop.o">loop.o</a>. Use with lsfu kernel for loop.
+
+<p>
+Matrox Millenium G100 and G400<br>
+For support for matrox G400 get the entire package of modules<br>
+<a href="2.4.31/matrox-G450.tgz">matrox-G450.tgz</a><br>
+because the modules  of the same name included in my modules package
+work for G100 but you need these larger ones for G400.  matrox-G450-on 
+lists what you need to insert for that card.  matrox-G100-on for the G100 
+with modules from the smf packages.  These cards work with 
+<a href="libvga.so.1.9.25-G400">the g400 svgalib library </a> 
+but most of my millenium cards work only as plain vga with the -mill library.
+<p>
+
+<H2>
+DESKTOP (or laptop with sound, framebuffer, etc.)
+</H2>
+<p>
+
+<A HREF="./2.4.31/bzimagsm.431">bzimagsm.431</A> 
+(<A HREF="./2.4.31/configsm.431">configsm.431</A>)<br>
+modular support for sound, scsi, framebuffer <p>
+
+<A HREF="./2.4.31/bzimagsy.431">bzimagsy.431</A> 
+(<A HREF="./2.4.31/configsy.431">configsy.431</A>)<br>
+Added built-in scsi support (scsi_mod, sd_mod, aicx777 not needed
+and you should not insert them to use zip drives, cd burners)
+Needed  to boot linux from scsi hard disk.  BL3.50 bzimage.big is
+missing the support for scsi controller card (aic7xxx).
+<p>
+
+<A HREF="./2.4.31/bzimasmf.431">bzimasmf.431</A> <br>
+<A HREF="./2.4.31/bzimasyf.431">bzimasyf.431</A> <br>
+(<A HREF="./2.4.31/confsmf.431">confsmf.431</A>)<br>
+(<A HREF="./2.4.31/confsyf.431">confsyf.431</A>)<br>
+
+Like sm and sy, added support for ipchains and firewall <br>
+Share an internet connection, one computer is default gateway.
+<p>
+
+The following scsi kernel (no IDE) for PII with Adaptec AIC7xxx (7850, 
+7895) is about the size of the smf (IDE-only) kernel.<br>
+
+
+<A HREF="./2.4.31/bzimscsi.431">bzimscsi.431</A> (removed) <br>
+(<A HREF="./2.4.31/confscsi.431">confscsi.431</A>)<br>
+
+<p>
+This kernel won't work with CD-ROM drives (the modules won't insert)
+so I compiled a 30K larger scsi kernel with built-in CD-ROM support:<br>
+
+<A HREF="./2.4.31/bzimscd.431">bzimscd.431</A> (removed) <br>
+(<A HREF="./2.4.31/confscd.431">confscd.431</A>)<br>
+
+<p>
+Next I added support for SMP (dual cpu)<br>
+	
+<A HREF="./2.4.31/bzscdsmp.431">bzscdsmp.431</A> <br>
+(<A HREF="./2.4.31/coscdsmp.431">coscsmpd.431</A>)<br>
+
+<p> This kernel refuses to dial with ppp (inserts the modules but says it 
+lacks support for them, as did an SMP 2.2.16 kernel) so I compiled it 
+again with ppp built-in which I just used to dial (it works):<br>
+
+<A HREF="./2.4.31/bzsmpppp.431">bzsmpppp.431</A> (removed) <br>
+(<A HREF="./2.4.31/cosmpppp.431">cosmpppp.431</A>)<br>
+The kernels got rather large after a while (up from about 700K to 800K).
+Ask me if you want the ones that I removed (I can recompile).
+The SMP motherboard died.
+
+<p>
+
+<H2>2.4.31 MODULES for MY KERNELS ONLY (or kernels built with gcc 2.95.3)
+</H2>
+
+<H2>
+DESKTOPS
+</H2>
+
+<A HREF="./2.4.31/modules-smf-431.tgz">modules-smf-431.tgz</A> 
+<A HREF="./2.4.31/modules-smf-usb-431.tgz">modules-smf-usb-431.tgz</A> 
+<p>
+
+Compiled with gcc 2.95.3 and won't work with David's 2.4.31 kernel. 
+The usb modules package includes additional USB modules and a larger 
+usb-storage.o which should work with most USB storage devices 
+(maybe even an older Toshiba laptop).  Use it with bzimusb.431 kernel.
+With non-usb kernels you will also need some USB modules from the
+first package (usbcore, uhci ohci ehci).  See usb-on and usb-storage-on.
+(You need two scsi modules for usb storage).
+
+<p>
+
+<H2>
+MATROX MODULES
+</H2>
+For Matrox Millenium framebuffer use the matrox modules included in the 
+smf package and <br>
+insmod matroxfb_misc <br>
+insmod matroxfb_accel <br>
+insmod matroxfb_Ti3026 <br>
+insmod matroxfb_base <br>
+<p>
+
+For Matrox G100 or G400 get the package<br>
+<a href="2.4.31/matrox-450.tgz">matrox-450.tgz</a><br>
+and replace all the matrox modules with these.  The g450 ones require 
+larger versions of the four above.  See the included file matrox-G450-on.
+<p>
+
+insmod matroxfb_misc<br>
+insmod matroxfb_accel<br
+insmod matroxfb_Ti3026<br>
+insmod g450_pll <br>
+insmod matroxfb_g450 <br>
+insmod matroxfb_DAC1064 <br>
+insmod matroxfb_base <br>
+
+<p>
+
+
+<H2>
+LUCENT/AGERE PCI LINMODEMS (software modems) - v92
+</H2>
+
+<p>
+This is the only linmodem I could get to work.  I gave up on the pctel and 
+Jaton models after compiling the modules.
+<p>
+
+<p>
+
+All lucent modules and devices for 2.2.16, 2.2.26 and 2.4.31 are in
+<a href="lucent.tgz">lucent.tgz </a> along with instructions. <br>
+
+<p>
+Untar on / or installpkg. For 2.4.31 kernel you need also ppp_async.o and 
+ppp_generic.o.  /usr/local/sbin has dialing scripts using the modules and 
+a modified eznet.conf (see /eznet.conf.add) which replaces /dev/ttyS0 with 
+/dev/ttyS14 (2.2.14/2.2.16) or /dev/ttyLT0 (other kernels). For 2.2.16 you 
+need to 'force' insertion of this older module.
+<p>
+
+
+<H2>
+USB 2.0 module<br>
+</H2>
+<p>
+<A HREF="./2.4.31/ehci-hcd.o"> ehci-hcd.o USB 2.0 module </A HREF>
+ for USB 2.0 USB controllers (onboard or add-in card).<br>
+insmod scsi_mod sd_mod usbcore ehci-hcd usb-storage<br>
+The hardware is backwards compatible with USB 1.1 but the uhci and ohci 
+modules do not work with the newer controller that I have.
+<p>
+
+Bugs:  usbserial does not work as a module in 2.4.31 (it does in 2.2.26) 
+so was not included (use the pda kernel instead), and many PCI sound cards 
+require
+<A HREF="./2.4.31/gameport.o">gameport.o</A> 
+(not listed in modules.dep).  Insert it if you see
+gameport in the list of unresolved symbols.
+
+
+<p>
+
+<H2>
+LAPTOPS
+</H2>
+
+<p>
+
+<A HREF="./2.4.31/modules-la-nonpcmcia-431.tgz">modules-la-nonpcmcia-431.tgz</A> 
+ -- unpack in /lib/modules/2.4.31/misc. <br>
+Includes scsi_mod and sd_mod, needed for USB-storage, but not sound, other 
+scsi, framebuffer, gameport, video-select, mda, plip.  cdrom as modules.
+No usb keyboard or mouse support.  You can use the desktop package too.
+<p>
+
+The most common non-wireless non-cardbus modules:<br>
+
+<A HREF="./2.4.31/modules-pcmcia-min-431.tgz">modules-pcmcia-min-431.tgz</a> 
+- unpack in /lib/modules/2.4.31/pcmcia.<br>
+<p>
+
+
+For 2.4.31 add "misc/crc32" before "misc/8390"  for wired ethernet 
+cards in the device sections.
+
+<p> 
+
+Non-cardbus wireless:<br>)
+<A HREF="./2.4.31/modules-pcmcia-wireless-431.tgz">modules-pcmcia-wireless-431.tgz</a> 
+<p>
+
+Cardbus including wireless (madwifi=ath, acx100 not tested):<br>)
+<A HREF="./2.4.31/modules-pcmcia-cardbus-431.tgz">modules-pcmcia-cardbus-431.tgz</a> 
+<p>
+
+Modules ending in _cb are Cardbus (32-bit, gold-colored strip with bumps).  
+They don't fit in some older laptops (Toshiba, Dell).  Cardbus wireless 
+cards often have no linux drivers.  I compiled and included but was unable 
+to use Madwifi/atheros and acx100 (cannot find irq).  Ralink RT2500 on 
+request (Belkin card, cannot find irq).  These do not end in cb (and 
+probably also work with PCI cards).  Insmode cb_enabler first for all 
+cardbus cards.  If no manfid, you can identify by pci 0x0000, 0x1111 
+instead.  I got a cardbus ethernet card to work.
+
+<p> 
+
+ALL the pcmcia modules that I use and a few more:<br>
+<A HREF="./2.4.31/modules-pcmcia-all-431.tgz"> modules-pcmcia-all-431.tgz</a href>
+
+<p>
+
+For BL2 you can use cardmgr from SW7.1 pcmcia.tgz or the one from BL3 if 
+you add libc5.so and ld-linux from BL3, or the latest version which I 
+compiled for glibc 2.2.5 <A HREF="cardmgr-glibc225">cardmgr-glibc225</a> 
+and <A HREF="cardctl-glibc225">cardctl-glibc225</a> Copy to /sbin and 
+rename without glibc225.  Let me know if you want ide_info ifuser ifport 
+pcic_prob scsi_info.  <p>
+
+The Slackware 10.2 <A HREF="./2.4.31/cardmgr-SW102">cardmgr-SW102</A> 
+also works with Slackware 8.1 glibc-so (2.2.5)
+libc6.so and ld-linux.  Both are in my operalib package of selected glibc 
+2.2.5 libraries from the solibs packages, which includes additional 
+libraries for X.
+
+<p>
+
+For devices not in BL3.40 /etc/pcmcia/configBL3.40 config you can add 
+device and card lines as found in the large config in the SW pcmcia 
+packages, look them up online, or if you add cardctl, 'cardctl ident' will 
+provide manfid to use on the second line of the 'card' section (instead of 
+function).  See my config.pcmcia.bl for examples.
+
+<p>
+
+<br><H2>
+scsifs.gz for SCSI BL3.40 loop - experimental 
+</H2>
+
+Replace initfs.gz with scsifs.gz (which mounts /dev/sda1)<br>
+Boot with my scsi kernel (bzimagsy.431, see below) to loop BL3,
+using a boot.bat file pointing to scsifs.gz (or rename that to initfs.gz).
+Boot with the same kernel to ext2 (root=/dev/sda2) on second partition.<br>
+
+<p>
+This did not work on an all-scsi Compaq Deskpro which is a very odd beast 
+that seems to require himem.sys to boot at all and will not do Xvesa with
+himem.sys (X_SVGA worked).  On top of which 2.4.31 loop gets mounted
+read-only.
+<p>
+
+<br><H2> 
+2.4.31 DAVID MOBERG'S USB-STORAGE KERNELS 
+</H2> 
+To be used only with David's modules (userspec.tgz)<br>
+
+<p>
+<p> 
+
+<A HREF="./2.4.31/linux-usb.tar.gz">linux-usb.tar.gz</A> 
+- by David Moberg. Unpack (package contains disk image 
+and modules and initfs.gz for use with loop linux) and write the disk 
+image to a 100% good 1.44MB floppy disk with dd if=1440.img of=/dev/fd0. 
+<p>
+
+Built-in USB support, just insmod usb-storage after booting and it will 
+find your USB-storage camera or card reader or memory stick as /dev/sda1.  
+Toggles USB mouse on and off and has a little list of things you can do, 
+and works with many usb-storage devices and does framebuffer.  Includes 
+zgv (set to default chipset VGA), less, and e3pi.
+
+<p>
+
+I cannot get the 1440.img in this package to boot - it goes in circles on 
+my newer computers and needs the boot sequence changed back to match the 
+older version
+<A HREF="./2.4.31/1440-usb-zgv.img">1440-usb-zgv.img</A>, which lacks 'less'
+and the nice mouse
+setup, but has pico, e3, and zgv (statically compiled with uclibc, do not 
+use it with other BLs - see next paragraph).  libvga.config is set to 
+chipset VESA - remark this out if it won't display properly and also try 
+chipset VGA.  This disk works with our USB zip and external drives, memory 
+stick, CF and SM and SD cameras, and CF and SM card readers.
+<p>
+
+<H1>SPECIAL VERSIONS OF BL</H1>
+<p>
+
+<H2>DAVID MOBERG'S 1-floppy linux ZGV-uclibc </H2>
+<p>
+
+See zgv-5.9-uclibc.tgz for a recent zgv which works with kernel 2.4.31 in 
+BL3 (with libc5).  Kernel 2.4.31 needs libvga.so.1.4.3 rather than an 
+earlier version, and 1.4.3 would not compile for libc5.  Use this package 
+only if you don't already have a libvga.so.1 (which you would have if 
+using delilinux links2, my bmv, Slackware 7.1 gs, etc.) because it will 
+overwrite it and disable existing programs.  Suggested use is in BL3 for a 
+small non-X viewer that views more formats than xli.  Or use Steven's 
+older zg  from the BL (BL1?) site.
+
+<p>
+
+<H2>USB CAMERA LINUX</H2>
+
+DELETED TO SAVE SPACE.  See archives.
+<p>
+
+<a href="usbcam8.gz"> usb camera linux </a> - unzip to /linux on 
+your USB storage camera's memory card<br> 
+
+<p>
+
+Copy usbcam8 to your camera memory card, then boot with David Moberg's 
+2.4.31 USB-storage 1-floppy linux, insmod usb-storage and follow 
+instructions below.
+
+<p>
+
+A mini BL3.32 without X, but with zgv and netbpm (jpeg but not tiff or 
+png), and with 2.4.31 modules for dialing and printing and using parport 
+(imm or ppa) zip drive to edit/store photos. I included as an alternate
+busybox 1.1.0 in /bin. Tested with zgv and dialing and telnet.  Should 
+print to hp or epson directly with netpbm.  Add mutt-bl3 to send photo 
+attachments.
+<p>
+
+1.  mount /dev/sda1 /mnt <br> 
+
+2.  cd /mnt/linux <br> 
+
+3.  insmod loop <br> 
+
+4.  mount -o loop usbcam /hd <br> 
+
+5.  chroot /hd /bin/sh<br> 
+
+6.  When done, exit, then umount /hd<br> 
+<p>
+
+Umount may not work, or may work but complain. 
+
+<p>
+
+<H2>David Moberg's 2.4.31 kernel</H2>
+
+David's 2.4.31 kernel
+<A HREF="./2.4.31/bzImage.431.gz">bzImage.431.gz</A> and 
+<A HREF="./2.4.31/config.431">config.431</A> 
+<p>
+and modules
+<A HREF="./2.4.31/userspec.tgz.431">userspec.tgz.431</A> 
+(delete the 431, unpack at / after renaming the old pppd
+to pppd-old).  It contains a new pppd
+to be used with the new slhc,
+ppp_generic, ppp_async, making /dev/ppp as instructed. Kernel has USB 
+support (as modules), sound support (as modules), scsi support (built-in 
+scsi_mod and sd_mod allows scsi boot), and framebuffer (vesafb, plus 
+modules for matroxfb and atyfb).
+
+<p>
+These work on a 266Mhz Toshiba with USB-storage, where my kernel/modules
+don't find the USB port.  You also need to turn off cardbus in BIOS (ESC-F1).
+Not interchangeable with his 1-floppy USB-storage BL.
+
+<p>
+
+<H2>LINUX FOR PARALLEL PORT ZIP DRIVE</H2>
+
+(Look in the bl directory for these and if missing ask me for them).
+
+blimmz.gz is David Moberg's floppy boot disk image for running loop BL3 on 
+a parallel port zip drive (Iomega) that uses the newer driver imm.o 
+instead of ppa.o, plugged into a pentium computer. 
+
+<p> 
+
+blimmz3.gz is the same thing but with the standard BL3 kernel for 386, 
+which works to boot parport zip plugged into our Compaq Elite 486DX where 
+a 486 kernel did not work.  This file is tested working with 486SX and DX.
+
+<p>
+
+blimmz350.gz has the BL3 pentium-optimized kernel, an extra 50K in 
+initfs.gz for adding things to, and loop.o and insmod loop in case you 
+want to use a kernel with loop as module (but mine would not boot).
+<p>
+
+gunzip blimmz.gz <br>
+dd if=blimmz of=/dev/fd0. <br>
+<p>
+
+Copy fs.img from BL3 to /baslin on a zip disk, plug in the drive (power 
+and parallel cable), insert disks, reboot to BL3.  Programs load slowly, 
+especially X, but I have used kermit and mutt online this way.  Add an 
+external modem and use linux online with a Windows computer. 
+
+<p> 
+
+
+<H2>Two-floppy framebuffer/wireless BL3.50 </H2> 
+<p> 
+
+<a href="bl35fb.zip">bl35fb.zip</a><br> 
+Kernel zimagefb.226 and vga=788 (800x600 fbcon, Xfbdev)<br>
+
+<a href="bl35fdfb.zip">bl35fdfb.zip</a><br> 
+Kernel zimafbcd.226 with cd support but not framebuffer,
+same modules as above.
+
+Unzip in /tmp, cd /tmp, insert first floppy disk disk2 <br> 
+
+dd if=disk1fb.img of=/dev/fd0 <br> 
+(or disk1f for the cd version)<br>
+<p>
+
+replace with second floppy disk disk2<br> 
+<p>
+
+mount /dev/fd0 /fd <br> 
+<p>
+cp disk2.tgz /fd <br>
+(or disk2f.tgz for cd version) <br> 
+
+<p>
+
+Copy additional modules or programs to disk2 if wanted.
+There is about 200K free space (room for dropbear's dbclient-uclibc)<br> 
+<p>
+
+This version uses framebuffer kernel, Xfbdev not Xvesa, and wireless 
+modules instead of mgp.  To add 800x600 fb text mode, insert disk1, mount 
+/dev/fd0 /fd and run lilo from any BL using as /etc/lilo.conf:<br>
+
+<p> 
+
+boot=/dev/fd0 <br> 
+install=/fd/boot.b <br> 
+map=/fd/map <br> 
+read-write <br> 
+append="nomce"  #needed by Compaq Armada, optional <br> 
+label=BL3_ramdisk <br> 
+root=/dev/ram0 <br> 
+initrd=/fd/disk1.gz <br> 
+image=/fd/zimage <br> 
+vga=788
+<p>
+
+Compiled with nomce in lilo.conf so will work on Compaq Armadas with the 
+Machine Check Exception error, but on Armada 4120 and LTE5280, 
+which do not support framebuffer, it takes 10 minutes to boot.
+Use BL2 instead.
+
+<p>
+
+<H2>Older versions of MUTT</H2> 
+<p>
+
+Use msmtp for authenticating mail servers such as earthlink.<br>
+<a href="mutt-bl3-old.tgz">mutt-bl3-old.tgz</a><br>
+<a hret="mutt-bl2-old.tgz">mutt-bl2-old.tgz</a><br>
+Christof Lange's contribution, with Russian and Czech support via catdoc.
+Not found at official BL site and for some purposes work better than newer version.
+
+<p> 
+
+
+
+</html>
+

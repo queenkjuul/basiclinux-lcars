@@ -1,0 +1,13 @@
+##Use on the server computer that gets mounted to the other one
+##Requires the 'big' BL3 kernel or my 2.4.31 kernel.
+
+##First edit /etc/exports here to read / 192.168.1.1(rw,no_root-squash)
+
+insmod 3c59x
+ifconfig eth0 192.168.1.2
+rpc.portmap
+rpc.mountd
+rpc.nfsd
+##These are from tcpip1.tgz
+
+#On the client computer run nfs-on

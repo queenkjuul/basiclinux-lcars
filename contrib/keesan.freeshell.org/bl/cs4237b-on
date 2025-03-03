@@ -1,0 +1,5 @@
+insmod soundcore
+insmod sound
+insmod ad1848
+insmod uart401
+insmod cs4232 io=0x530 irq=5 dma=1 dma2=0

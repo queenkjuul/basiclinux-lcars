@@ -1,3 +1,6 @@
 test -z $WM && WM=icewm
-xli -background NavyBlue -onroot /usr/share/images/earth/jpg
-exec $WM
+xli -background NavyBlue -onroot /usr/share/images/earth.jpg
+echo "$WM"runrunrunrunrunr
+echo "initlog" > initlog.txt
+echo $WM >> initlog.txt
+exec $WM &

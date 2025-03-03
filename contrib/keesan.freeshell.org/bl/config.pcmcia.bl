@@ -1,0 +1,101 @@
+device "pcnet_cs"
+  class "network" module "misc/8390", "pcnet_cs"
+
+device "smc91c92_cs"
+  class "network" module "misc/8390", "smc91c92_cs"
+
+device "3c589_cs"
+  class "network" module "3c589_cs"
+  
+#device "xirc2ps_cs"
+#  class "network" module "xirc2ps_cs"
+
+device "airo_cs"
+ class "network" module "airo_cs"
+#class "network" module "airo", "airo_cs"
+	
+device "orinoco_cs"
+class "network" module "hermes", "orinoco", "orinoco_cs"
+
+device "serial_cs"
+  class "serial" module "serial_cs"
+
+device "ide-cs"
+  class "ide" module "ide-cs"
+
+#card "Network Card"
+#  function network_adapter
+#  bind "pcnet_cs"
+# The Linksys pcnet_cs card appears not to work tho it takes this module
+
+card "Billionton LNT-10TB"
+  version "Billionton", "LNT-10TB"
+  bind "pcnet_cs"
+
+#card "Network Card"
+#  function network_adapter
+#  bind "smc91c92_cs"
+#This works with the Megahertz card (no modem)
+
+card "Megahertz CC10BT/2 Ethernet"
+  version "Megahertz", "CC10BT/2"
+  bind "smc91c92_cs"
+
+#card "Megahertz CC/XJEM3336 Ethernet/Modem"
+#  version "MEGAHERTZ", "CC/XJEM3336", "DATA/FAX/CELL ETHERNET MODEM"
+#  bind "smc91c92_cs", "serial_cs"
+#this 33MHz modem/ethernet card has dead ethernet, good modem"
+
+#card "xircom IIps Ethernet"
+#  version "Xircom", "*", "PS-CE2-10"
+#  bind "xirc2ps_cs"
+# cb_mem_base_setting error with xircom in linux, can't use it
+
+card "Farallon ENet"
+   version "Farallon", "ENet"
+   bind "3c589_cs"
+
+card "Aironet PC4800"
+  manfid 0x015f, 0x0007
+  bind "airo_cs"
+
+card "Linksys WPC11 ver 3"
+  manfid 0x0274, 0x1613
+  bind "orinoco_cs"
+
+card "Serial or Modem Card"
+  function serial_port
+  bind "serial_cs"
+
+card "ATA/IDE Fixed Disk"
+  function fixed_disk
+  bind "ide-cs"
+
+card "Portable NetMobile Data/Fax Modem"
+  manfid 0x0121, 0x3222
+  bind "serial_cs"
+
+card "DynaLink Modem"
+  version "Intelligent", "AT&T  FAX/MODEM", "            "
+  bind "serial_cs"
+
+include port 0x100-0x4ff, port 0x800-0x8ff, port 0xc00-0xcff
+include memory 0xc0000-0xfffff
+include memory 0xa0000000-0xa0ffffff, memory 0x60000000-0x60ffffff
+exclude irq 4  # COM1
+exclude irq 7  # printer
+
+# Example of option (to fix sluggish network)
+# module "pcnet_cs" opts "mem_speed=600"
+
+# Example of config for NetWave wireless card
+#--------------------------------------------------------
+# device "netwave_cs"
+#   class "wireless" module "netwave_cs"
+#--------------------------------------------------------
+# card "Xircom CreditCard Netwave"
+#   version "Xircom", "CreditCard Netwave"
+#   bind "netwave_cs"
+#--------------------------------------------------------
+# module "netwave_cs" opts "domain=0x50 scramble_key=0x0"
+#--------------------------------------------------------

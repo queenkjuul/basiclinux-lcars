@@ -1,0 +1,3 @@
+#mplayer -playlist http://www.publicbroadcasting.net/kuar/ppr/klrefm.pls
+mplayer http://pubint.ic.llnwd.net/stream/pubint_klrefm
+

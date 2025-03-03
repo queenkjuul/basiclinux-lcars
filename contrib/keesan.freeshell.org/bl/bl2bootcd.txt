@@ -1,0 +1,11 @@
+-rwxr-xr-x   1 root     root      1637698 Jun 15  2003 baslinux.gz
+-rwxr-xr-x   1 root     root          512 Jan 20  2004 bootsec.bin
+-rwxr-xr-x   1 root     root        64816 Jul 28  2003 command.com
+-rwxr-xr-x   1 root     root          163 Jan 20  2004 fdauto.bat
+-rwxr-xr-x   1 root     root          132 Jan 20  2004 fdconfig.sys
+-rwxr-xr-x   1 root     root         3512 Jul 28  2003 fdxms.sys
+-rwxr-xr-x   1 root     root        45908 Sep 24  2003 kernel.sys
+-rwxr-xr-x   1 root     root        32225 Sep  2  2002 loadlin.exe
+-rwxr-xr-x   1 root     root          640 Jan 20  2004 readme.txt
+-rwxr-xr-x   1 root     root        18183 Dec 11  1995 tdsk.exe
+-rwxr-xr-x   1 root     root       512425 Jan 24  2003 zimage

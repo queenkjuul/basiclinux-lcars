@@ -1,0 +1,152 @@
+device "pcnet_cs"
+#  class "network" module "misc/8390", "pcnet_cs"
+  class "network" module "misc/crc32", "misc/8390", "pcnet_cs"
+#2.4.31 needs crc32
+
+device "axnet_cs"
+ class "network" module "axnet_cs"
+
+device "smc91c92_cs"
+#  class "network" module "misc/8390", "smc91c92_cs"
+  class "network" module "misc/crc32", "misc/8390", "smc91c92_cs"
+##crc32 needed for 2.4.31
+
+device "3c589_cs"
+  class "network" module "3c589_cs"
+
+device "xirc2ps_cs"
+  class "network" module "xirc2ps_cs"
+
+device "airo_cs"
+   class "network" module "airo", "airo_cs"
+module "airo" opts "port_type=1"
+
+device "orinoco_cs"
+  class "network" module "hermes", "orinoco", "orinoco_cs"
+module "orinoco_cs" opts "port_type=1"
+
+device "8139too"
+  class "network" module "/misc/mii-dsl", "/misc/crc32", "/misc/8139too"
+module "8139too" opts "port_type=1"
+
+device "serial_cs"
+  class "serial" module "serial_cs"
+
+device "ide-cs"
+  class "ide" module "ide-cs"
+
+
+##Use 'manfid' or 'version' (product info) for a specific card
+##or function if you have only one card with that function (modem)
+
+card "Billionton LM5LT-10B 56K + 10 Base T Combo Card"
+ # version "Billionton 10+56Combo, "LNT-10TB", "V", "1.0"
+  manfid 0x021b, 0x101 
+ # bind "pcnet_cs", "serial_cs" - modem dead, linux and Win98
+  bind "pcnet_cs"
+  
+card "D-Link DE-660 118B6603"
+  manfid  0x0149, 0x021b
+  bind "pcnet_cs"
+##D-link card takes the same cable as 3com 589 cards
+
+card "Linksys 56K PCMLM56"
+  manfid 0x0143, 0xc0ab
+  bind "pcnet_cs", "serial_cs"
+
+#card "Linksys Etherfast PCMP100 V2.0"
+#  manfid 0x0149, 0xc1ab
+#  bind "pcnet_cs"
+#Times out reset 8390 did not complete
+
+#card "Network Everywhere AX88190"
+#  manfid 0x0149, 0xc1ab
+#  bind "axnet_cs"
+##No IRQ known, then plug in cable and MII is missing, read/write mismap
+
+card "Compaq Netelligent 10/100 PC Card 1.00"
+   manfid 0x0183, 0x010a
+   bind "xirc2ps_cs"
+
+card "Megahertz CC10BT/2 Ethernet"
+  version "Megahertz", "CC10BT/2"
+  bind "smc91c92_cs"
+
+card "Megahertz CC/SJEM3336 Ethernet/Modem"
+ version "MEGAHERTZ", "CC/XJEM3336", "DATA/FAX/CELL ETHERNET MODEM"
+ bind "serial_cs"
+ ##ethernet dead
+
+card "Farallon ENet"
+   version "Farallon", "ENet"
+   bind "3c589_cs"
+
+card "3c589 Ethernet"
+   manfid 0x0101, 0x0589
+   bind "3c589_cs"
+##From Joe Dougherty with RJ cable
+
+
+##Wireless
+
+card "Linksys WPC11 ver 2.5"
+   manfid 0x0274,0x1612
+   bind "orinoco_cs" 
+  #bind "wvlan_cs" (older driver works with fewer cards, try for 2.2.26)
+
+card "Linksys WPC11 ver 3"
+   manfid 0x0274,0x1613
+   bind "orinoco_cs" 
+
+card "Dell TrueMobile 1158 Series PC Card"
+   manfid 0x0156,0x0002
+   bind "orinoco_cs"
+##Also Prism, by lucent - card from Joe D.
+   
+card "Aironet 340"
+   manfid 0x015f, 0x0007
+   bind "airo_cs"
+#works except my 2.4.31 kernel in 335CDS
+
+card "D-Link 690TXD cardbus"
+  manfid 0x0149, 0x0000
+  bind "8139too"
+
+card "Serial or Modem Card"
+  function serial_port
+  bind "serial_cs"
+
+card "ATA/IDE Fixed Disk"
+  function fixed_disk
+  bind "ide-cs"
+##also CF adaptor"
+
+
+#card "Portable NetMobile Data/Fax Modem"
+#  manfid 0x0121, 0x3222
+#  bind "serial_cs"
+
+#card "DynaLink Modem"
+#  version "Intelligent", "AT&T  FAX/MODEM", "            "
+#  bind "serial_cs"
+
+include port 0x100-0x4ff, port 0x800-0x8ff, port 0xc00-0xcff
+include memory 0xc0000-0xfffff
+include memory 0xa0000000-0xa0ffffff, memory 0x60000000-0x60ffffff
+exclude irq 4  # COM1
+exclude irq 7  # printer
+
+# Example of option (to fix sluggish network)
+# module "pcnet_cs" opts "mem_speed=600"
+
+# Example of config for NetWave wireless card
+#--------------------------------------------------------
+# device "netwave_cs"
+#   class "wireless" module "netwave_cs"
+#--------------------------------------------------------
+# card "Xircom CreditCard Netwave"
+#   version "Xircom", "CreditCard Netwave"
+#   bind "netwave_cs"
+#--------------------------------------------------------
+# module "netwave_cs" opts "domain=0x50 scramble_key=0x0"
+#--------------------------------------------------------

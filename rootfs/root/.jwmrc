@@ -5,7 +5,7 @@
 <!-- The root menu, if this is undefined you will not get a menu. -->
 <RootMenu>
    <Program label="Xterm">rxvt -sr -ls -g 67x20 -C</Program>
-   <Menu lable="Applications">
+   <Menu label="Applications">
       <Program label="TkDesk">tkdesk</Program>
       <Program label="X File Manager">xfm</Program>
       <Program label="Image viewer">xv</Program> 
@@ -14,6 +14,7 @@
       <Program label="Gimp">gimp</Program>
       <Program label="XPaint">xpaint</Program>
       <Program label="XCDRoast">xcdroast</Program>
+      <Program label="TkVNC">tkvnc</Program>
       <Menu label="Office">
          <Program label="MagicPoint">mgp /usr/share/mgp/demo.mgp</Program>
          <Program label="AbiWord">abiword</Program>
@@ -25,7 +26,7 @@
       <Program label="Freecell">xfreecell</Program>
       <Program label="Spider Solitaire">spider</Program>
       <Program label="LinCity">xlincity</Program>
-      <Program label="Tetris">wish /usr/games/tktet.tcl</Program>
+      <Program label="Tetris">rxvt -g 40x25 -e tetris</Program>
       <Program label="Go Fish!">rxvt -e fish</Program>
       <Program label="GNU Chess">rxvt -e gnuchess</Program>
       <Program label="Mahjongg">xmahjongg</Program>
@@ -34,6 +35,15 @@
       <Program label="Digger">xdigger</Program>
       <Program label="Runner">xrunner</Program>
       <Program label="Koules">koules</Program>
+      <Program label="Tom Bomb'em">rxvt -g 40x25 -e bombem</Program>
+      <Program label="CastleMaze">rxvt -g 80x25 -e castlemaze</Program>
+      <Program label="Asteroids">asteroids</Program>
+      <Program label="Breakout">breakout</Program>
+      <Program label="Frogger">frogger</Program>
+      <Program label="Pacman">pacman</Program>
+      <Program label="XRoach">xroach</Program>
+      <Program label="XSnow">xsnow</Program>
+      <Program label="XVier">xvier</Program>
    </Menu>
    <Menu label="Tools">
       <Menu label="Calendar">
@@ -74,28 +84,29 @@
       <Program label="mail config">rxvt +sb -g 70x15 -e e3pi ~/.pmailrc</Program>
       <Program label="DNS config">rxvt +sb -g 60x10 -e e3pi /etc/resolv.conf</Program>
    </Menu>
+   <Program label="BasicLinux Docs">links2ssl /root/docs/index.html</Program>
    <Separator/>
    <Restart/>
    <Exit/>
 </RootMenu>
 
 <Border>
-   <Font antialias="false">-bitstream-charter-bold-r-normal-*-18-0-0-0-p-0-*-*</Font>
+   <Font antialias="false">-adobe-helvetica-bold-r-normal-*-18-0-0-0-p-0-*-*</Font>
    <Width>5</Width>
    <Height>20</Height>
    <Foreground>black</Foreground>
    <Background>#DCDAD5</Background>
    <ActiveForeground>black</ActiveForeground>
-   <ActiveBackground>#8899AA</ActiveBackground>
+   <ActiveBackground>#B14C7A</ActiveBackground>
 </Border>
 
 <Tray autohide="false">
-  <Font antialias="false">-bitstream-charter-bold-r-normal-*-20-0-0-0-p-0-*-*</Font>
+  <Font antialias="false">-adobe-helvetica-bold-r-normal-*-20-0-0-0-p-0-*-*</Font>
   <Height>28</Height>
   <Foreground>black</Foreground>
-  <Background>#DCDAD5</Background>
+  <Background>#AEB2C2</Background>
   <ActiveForeground>black</ActiveForeground>
-  <ActiveBackground>#8899AA</ActiveBackground>
+  <ActiveBackground>#9493A5</ActiveBackground>
 </Tray>
 
 <Pager>
@@ -103,15 +114,15 @@
    <Foreground>#DCDAD5</Foreground>
    <Background>#888888</Background>
    <ActiveForeground>#8899AA</ActiveForeground>
-   <ActiveBackground>#3A4956</ActiveBackground>
+   <ActiveBackground>#6366AB</ActiveBackground>
 </Pager>
 
 <Menu>
-   <Font antialias="false">-bitstream-charter-bold-r-normal-*-18-0-0-0-p-0-*-*</Font>
+   <Font antialias="false">-adobe-helvetica-bold-r-normal-*-18-0-0-0-p-0-*-*</Font>
    <Foreground>black</Foreground>
-   <Background>#DCDAD5</Background>
+   <Background>#AEB2C2</Background>
    <ActiveForeground>white</ActiveForeground>
-   <ActiveBackground>#3A4956</ActiveBackground>
+   <ActiveBackground>#5E626A</ActiveBackground>
 </Menu>
 
 <Popup enabled="false">
@@ -131,7 +142,7 @@
 <DoubleClickDelta>2</DoubleClickDelta>
 
 <!-- The focus model (sloppy or click) -->
-<FocusModel>sloppy</FocusModel>
+<FocusModel>click</FocusModel>
 
 <!-- Key bindings -->
 <Key key="Up">up</Key>

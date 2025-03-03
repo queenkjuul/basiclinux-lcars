@@ -1,0 +1,1 @@
+wget -O - http://audio.ibiblio.org:8000/wdav-24k | mpg123 -
