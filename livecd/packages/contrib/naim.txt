@@ -1,0 +1,13 @@
+***THE OFFICIAL BASICLINUX 3.5 NAIM PACKAGE IS ALREADY INSTALLED IN BL3-LCARS***
+***THE OFFICIAL PACKAGE IN THE PARENT DIRECTORY IS RECOMMENDED***
+
+--naim-uclibc.tgz is a version of naim compiled statically against uclibc. 
+It can be installed and used without addition of any other packages--just 
+issue pkg naim-uclibc.tgz to install it. NOTE: currently, it will not run 
+under X (in a terminal), but only from a console.
+
+--naim-0.11.8.3.1-i486-1tfn.tgz is a non-static package someone compiled for 
+Slack12 (it was downloaded from the 'net). This version of naim will only 
+run under BL3 if updated libraries are present and ncurses has been added 
+from Slack4. For BL3 library updating, see Steven's instructions for 
+installing Opera.
