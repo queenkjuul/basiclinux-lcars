@@ -100,3 +100,4 @@ xgrabsc.tgz
 bin.tgz
 bzip2.tgz
 groff.tgz
+util.tgz
