@@ -1,0 +1,47 @@
+------------------------------------------------------------------------
+BANNER    Big font looping banner       Ver 1.2 (c) 1997 Horst Schaeffer
+------------------------------------------------------------------------
+
+BANNER runs a looping message across the screen.
+Any key terminates.
+
+Syntax:    BANNER [options] [string]
+
+The string may be enclosed in (single or double) quotes, and can be as
+long as your command line can hold. The token $t (lower or upper case)
+inserts the current time (hh:mm:ss).
+
+If no color option is specified (see below), the color is taken from
+the current cursor position. ANSI driver is not used for output.
+
+Options:
+
+    /Ln     Line n (1..22), default: 12 (banner size: 4 lines)
+
+    /Pn     Starting position (Column 1..80), Default n=80,
+            Default without option /P: 16
+
+    /C...   Color: 3 values, separated by semicolon oder comma
+            (ANSI color scheme)
+            first value   40..47 for background:
+                   black,red,green,brown,blue,magenta, cyan, white
+            second value: 30..37 for foreground color
+            third value:  0:normal, 1:bright characters
+
+            Example: /c44;35;1  for bright magenta on blue background
+
+    /Q      Standard square block characters are used for pixels.
+            Default is round pixels (only works in full screen mode,
+            and if the required BIOS functions are supported).
+
+    /N      Screen not cleared at beginning nor at end.
+
+    /M1..3  Light effects... (try out)
+
+    /En     Exit after n loops
+
+----
+BANNER  is freeware by Horst Schaeffer - no warranties of any kind
+eMail: horst.schaeffer@gmx.net
+
+= 04 AUG 2002

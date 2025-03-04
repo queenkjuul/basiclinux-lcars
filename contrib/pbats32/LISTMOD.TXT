@@ -1,0 +1,133 @@
+------------------------------------------------------------------------
+LISTMOD   List utility                  Ver 2.3 (c) 1997 Horst Schaeffer
+------------------------------------------------------------------------
+
+LISTMOD generates an output list (to STDOUT) using data from a given
+input list (STDIN or thru PIPE) - line by line.
+
+Syntax:  LISTMOD [options] string < input.txt > output.txt
+                           ------
+The string is written to each output line, with tokens $1,$2... replaced
+by the 1st,2nd... word of the input line.
+
+Example:
+Let's say you want to copy all files from a directory (to A:), but you
+want to make sure they are copied in alphabetical order:
+
+        dir *.* /B/ON | listmod COPY $1 A: > temp.bat
+        ::        ^^^           ==========
+        call temp.bat
+        del  temp.bat
+
+The DIR output is piped into LISTMOD, which writes the COPY commands
+to a temporary batch file. $1 is the first (and only) word from each
+input line.
+
+In case you have long filenames (WIN95), just put quotes around $1.
+
+Tokens
+------
+    $1..$99  refers to the n-th word of the input line
+    $0       the complete input line
+    $*       same as $0
+    $( $! $) converted to: < | > for redirection symbols in output file
+    $#       generates the (input) line number, see option /N
+    $$       $
+    $L       generates a carriage return / line feed.
+             (more than 1 line may be produced from each input line)
+
+Separators
+----------
+"Words" of an input line are separated by the standard delimiters:
+blank, comma, semicolon or equal sign. The delimiters are not copied to
+the output lines - except with token $0 (complete line copied).
+
+Options
+-------
+Options must be placed before (!) the string.
+
+/S...   Additional separators. One or more additional seperators may
+        be specfied, terminated by a blank space
+
+/X...   same as /S, but there are no predefined standard separators
+        except blank space. Comma, semikolon or equal sign must be
+        specified if required. Option /X is also allowed without any
+        separators (then: only blank space is a separator).
+
+/Nnnn   starting number for the $# count (default is 001, 3 digits)
+        The number of digits written to the output lines depends
+        on this option: /N10000001 for example will produce 8 digit
+        numbers, /N00 2 digits.. Overflow will be ignored.
+
+/Pc,l   Cut out from column c (1...), length l (default: rest of line)
+        Only this section of the input lines is taken for extraction
+        of words (or will be completely copied by $0). Anything outside
+        this section is ignored.
+        Example: /P3  ignores two bytes at the beginning of each line.
+
+/E      empty lines not to be ignored (default: ignored)
+
+
+Example for the use of separators
+---------------------------------
+Delete the 5th character from each *.DAT file name
+(in the current directory):
+
+    ren *.DAT ????!???.DAT
+    dir *.DAT /B/A-D | listmod /S! ren $1!$2 $1$2 > TMP.BAT
+    ::                         ^^^ ==============
+    for %%a in (call del) do %%a TMP.BAT
+
+    First the 5th character is replaced with "!" (assuming this does
+    not occur in the given filenames).
+    Then a directory listing is piped into LISTMOD, where the "!"
+    is defined as an additional separator, dividing the file names
+    into $1 (????) and $2 (???.DAT).
+
+
+Example for the number feature
+------------------------------
+If you want to keep files with a numeric extension (FILE.001, FILE.002..
+etc.), and you want any new file (FILE.XXX) in this directory be given
+the next available number:
+
+  dir FILE.* /b/a-d/oe | listmod if not $1==FILE.$# ren $1 FILE.$# > TEMP.BAT
+  call TEMP
+
+The new file should have an extension of "999" (or any letters), so the
+directory sort will put it at the end of the list. Note that the files
+will be automatically renumbered, if you have deleted any of them.
+
+
+Leading spaces
+--------------
+There is always at least one blank space before the specified string
+in a LISTMOD command. But if you use more than one, the spaces will be
+inserted in the output lines. In the following example 4 blanks are
+inserted in each line:
+
+        listmod     $0 < input.txt > output.txt
+                ^^^^
+Trailing spaces are always removed.
+
+Notes
+-----
+The size of input and output files is not limited.
+The line size must not exceed 1 KB.
+
+Note that for execution under MS-DOS up to 6.xx a command line or any
+line in the resulting batch file must not exceed 127 bytes.
+
+If no input file is given, LISTMOD shows a brief help information.
+
+To avoid conflicts when numeric data occur in the string, you may use
+e.g. $01 instead of $1 (because max 2 digits are read for tokens):
+
+    $15       is the 15th word
+    $015      is the 1st word succeeded by constant "5"
+
+----
+LISTMOD is freeware by Horst Schaeffer - no warranties of any kind
+eMail: horst.schaeffer@gmx.net
+
+= 04 AUG 2002

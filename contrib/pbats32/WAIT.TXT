@@ -1,0 +1,47 @@
+------------------------------------------------------------------------
+WAIT                                    Ver 1.4 (c) 1997 Horst Schaeffer
+------------------------------------------------------------------------
+
+Syntax:   WAIT [minutes:]seconds[.decimal] [prompt]
+
+          waits up to 1 hour (or unlimited if no time specified)
+
+minutes:  up to 60
+seconds:  usually 0..59, but up to 3600 allowed
+decimal:  one or 2 digits for hundredth of a second
+          Note that the timer resolution is only about 0.05 seconds.
+
+prompt:   rest of the line will be displayed (ANSI supported)
+
+Examples:
+          wait 3                (3 seconds)
+          wait 1:10             (one minute and 10 seconds)
+          wait .5               (half a second)
+          wait 1.25
+
+Errorlevel:
+          0        time-out (no key pressed)
+          1..254   ASCII Code of key
+                   (lower case keys are converted to upper case)
+          255      function/cursor key or ALT combination was pressed
+
+Another example:
+
+          WAIT press any key to continue, ESC to abort
+          if errorlevel 27 if not errorlevl 28 goto EXIT
+          :CONTINUE
+
+Note:
+
+WAIT does not flush the keyboard buffer. If a key was pressed before
+the program starts, WAIT will exit immediately with the errorlevel set
+accordingly.
+
+You can even use WAIT 0, if you don't want to wait at all, but instead
+check if a key was pressed (in a batch loop for example).
+
+----
+WAIT is freeware by Horst Schaeffer - no warranties of any kind
+eMail: horst.schaeffer@gmx.net
+
+= 04 AUG 2002

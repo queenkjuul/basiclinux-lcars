@@ -1,0 +1,89 @@
+
+/etc/ae.rc for muLinux, by M. Andreoli
+
+
+1:\
+| read ^R| Write ^W| Exit & Save ^W^C| Exit ^C| Undo ^U|\n\
+| Block F2 | Cut F3 | Paste F4|\n\
+
+#.help_off
+.literal	$(kich1)
+.cursor_up	$(kcuu1)
+.cursor_down	$(kcud1)
+.cursor_left	$(kcub1)
+.cursor_right	$(kcuf1)
+.page_up	$(kpp)
+.page_down	$(knp)
+.word_left	$(kf5)
+.word_right	$(kf6)
+.line_left	$(kf15)
+.line_right	$(kf16)
+.file_top	$(khome)
+.file_bottom	$(kend)
+.delete_left	$(kbs)
+.delete_right	$(kdch1)
+.help		$(kf1)
+.block		$(kf2)
+.cut		$(kf3)
+.paste		$(kf4)
+.flip_case	$(kf7)
+.undo	        ^u	
+.file_read	$(kf13)
+.file_write	$(kf14)
+.redraw		$(kf8)
+.quit_ask	$(kf10)
+.quit		$(kf20)
+.show_version	$(kf11)
+.macro		$(kf12)
+.macro_define
+.macro_define
+.macro_define
+.macro_define
+.macro_define
+# key aliases for terminals without function keys
+.file_read	^r
+.file_write	^w
+.quit_ask	^c
+# these are from emacs
+.cursor_up	^p
+.cursor_down	^n
+.cursor_left	^b
+.cursor_right	^f
+
+2:Terminated successfully.\n
+3:Unspecified error.\n
+4:usage: %s [-f <config>] [file]\n
+5:Failed to initialize the screen.\n
+6:Problem with configuration file, line %lu.\n
+7:Failed to allocate required memory.\n
+8:Ok.
+9:An error occured.
+10:No more memory available.
+11:File \"%s\" is too big to load.
+12:Scrap is empty.  Nothing to paste.
+13:Failed to find file \"%s\".
+14:Failed to open file \"%s\".
+15:Failed to close file \"%s\".
+16:Failed to read file \"%s\".
+17:Failed to write file \"%s\".
+18:Not a portable POSIX file name.
+19:File \"%s\" %ld bytes.
+20:File \"%s\" %ld bytes saved.
+21:File \"%s\" %ld bytes read.
+22:File \"%s\" modified.
+23:Invalid control character or \\number not 0..255.
+24:No such macro defined.
+25:No more macro space.
+26:Interrupt.
+27:<< EOF >>
+28:Macro :
+29:File not saved.  Quit (y/n) ?
+30:[ Press a key to continue. ]
+31:Read file :
+32:Write file :
+33:Write block :
+34:\smore\s
+35:\sy\b
+36:\sn\b
+37:\sq\b
+38:Nothing to undo.

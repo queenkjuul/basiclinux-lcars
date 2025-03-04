@@ -1,0 +1,93 @@
+------------------------------------------------------------------------
+FPATH                                 Ver. 1.1 (c) 1998, Horst Schaeffer
+------------------------------------------------------------------------
+
+
+    FPATH locates the directory of an executable file the same way that
+    COMMAND.COM would do - searching in the current directory first, and
+    then in each directory of the PATH variable.
+
+    Syntax:     FPATH command_name [/S|/P]
+
+    If the file was found, the name with full path and extension is
+    displayed (to STDOUT, redirection supported). Errorlevel 0.
+
+    Example:    FPATH XCOPY
+    returns     C:\DOS\XCOPY.EXE        (with errorlevel 0)
+
+    If FPATH could not locate the file, "not found" is displayed, with
+    the errorlevel set to 1. (The message is not written to a file in
+    case of redirection.)
+
+    Example:    FPATH PKZIP > nul       (check if archiver available)
+                if errorlevel 1 goto NO_ZIP
+                ....
+
+    Option /S
+    ---------
+    selects the drive and directory, where the file was found.
+    (No output, errorlevel 0 or 1 as above). Examples:
+
+    Change to directory (and drive) of current BAT file:
+
+                FPATH %0 /s
+
+    Change to directory (and drive) for a given filename with path
+    (FNAME=d:\some\where\file.ext):
+
+                FPATH %FNAME% /s
+
+
+    Option /P
+    ---------
+    returns the directory path without the filename, but with a backslash,
+    so any other filename can be appended (without worrying that it might
+    be the root directory).
+
+    Example:    FPATH %0 /p     result:  C:\UTIL\
+                                    or:  A:\
+
+    The utility NSET is recommended for further processing of the result.
+
+    Example:    FPATH %0 /p | Nset BATDIR=$1
+                list %BATDIR%INFO.DOC
+
+
+    Notes:
+    ------
+    If no extension is specified, FPATH will try COM, EXE, BAT (in this
+    order).
+
+    FPATH first tries to find the specified file in the current directory
+    or in a given directory. Anything that's ok to start a program can be
+    given as command argument to FPATH.
+
+    Examples:   FPATH SOME.BAT
+                FPATH SUB\SOME
+                FPATH C:\THERE\SOME
+                FPATH F:SOME
+
+    If the program could not be located this way, and if there is no
+    backslash occurring in the command argument (!), FPATH will continue
+    the search stepping thru the directories of the PATH variable.
+    A drive letter (example: F:XCOPY) is ignored now, according to the
+    handling of COMMAND.COM.
+
+    FPATH will not only locate executable files, but any file with a
+    given extension (ANSI.SYS, for example). To look for a file without
+    extension, the point must not be omitted (example: README. ).
+
+    Wildcards are supported, but not resolved.
+
+    Example:    FPATH ATT*      returns   C:\DOS\ATT*.EXE
+
+    To get the true name, use a FOR loop:
+
+                FPATH ATT* | NSET NAME=$1
+                for %%a in (%NAME%) do set NAME=%%a
+
+----
+FPATH is freeware by Horst Schaeffer - no warranties of any kind
+eMail: horst.schaeffer@gmx.net
+
+= 04 AUG 2002

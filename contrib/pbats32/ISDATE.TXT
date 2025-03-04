@@ -1,0 +1,55 @@
+    --------------------------------------------------------------------
+    ISDATE    Compares Dates            Ver 2.3 (c) 2001 Horst Schaeffer
+    --------------------------------------------------------------------
+
+    Syntax: ISDATE date1 [not] [=|equal|before|after] date2
+
+    Specifications for date1/date2:
+
+    >>  date, format acc. to COUNTRY    e.g.:  12-05-01, 3/4/1998
+    >>  a file (date tag)               e.g.:  FOO.TXT, C:\TEMP\TEST.TXT
+    >>  a directory (date tag)          e.g.:  ARCHIVE, C:\TEMP
+    >>  TODAY
+
+        LFN's are supported (Win9x/2000); no wildcards!
+
+    In addition to each date a difference
+    (plus/minus days) can be given      e.g.:  today -14, TEST.TXT +1
+
+    Default comparison operator is "equal".
+
+    The result is returned by errorlevel:
+        0:  TRUE
+        1:  FALSE
+      255:  error: file not found, syntax error or invalid date.
+
+    Examples:
+
+        isdate %var% after A:file.ext
+        isdate \file.ext before today -%diff%
+        isdate file.ext before 1.1.1994
+        isdate file1.ext after file2.ext +1
+        isdate TODAY +7 = %var%
+
+    Extra feature:
+
+        Option /D outputs a SET statement with the absoulute(!)
+        difference (days), e.g.: SET DIFF=12
+        To use this value, redirect the output to a temporary batch
+        file, and CALL it. Note: the variable name DIFF is fixed.
+
+    Notes:
+        Time (stamp) is not checked
+        Files must exist, else: error
+        No LFN support for Win NT
+        Words not case sensitive
+        Year with 2 or 4 digits, no default year!
+
+    For each date ISDATE computes the day count based on Jan 1, 1901,
+    allowing dates up to the year 2079.
+
+    ----
+ISDATE is freeware by Horst Schaeffer - no warranties of any kind
+eMail: horst.schaeffer@gmx.net
+
+= 09 AUG 2002

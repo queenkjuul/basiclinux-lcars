@@ -1,0 +1,61 @@
+
+IMPORTANT!  It's NOT recommended to install this package, unless you want
+to test compiling software with glibc.  Once you do, you'll be unable to
+compile libc5 programs.  If you only want to RUN (not compile) glibc
+software, please install the glibc runtime support packages instead.  These
+are 'glibc1.tgz' and 'glibc2.tgz' in the Slackware A series.  (should be in
+../slakware/a*/glibc1.tgz and ../slakware/a*/glibc2.tgz)
+
+----------------------------------------------------------------------------
+
+This is the GNU glibc-2.0.7pre6 binary package (a.k.a. libc.so.6), including
+development libraries and header files.
+
+If you want to develop and run applications using GNU libc, just
+install this package (and edit your 'specs' file, see below!), and
+programs will be compiled using glibc by default:
+
+installpkg glibc-2.0.7pre6.tgz
+
+
+To change your environment to use GNU libc for compiling you need to
+change the `specs' file of your gcc.  This file is normally found at
+
+        /usr/lib/gcc-lib/<arch>/<version>/specs
+
+In this file you have to change a few things:
+
+- change `ld-linux.so.1' to `ld-linux.so.2'
+
+- remove all expression `%{...:-lgmon}';  there is no libgmon in glibc
+
+
+Note, this version of glibc was not compiled with the DES crypt add-on, 
+although it does provide a crypt() function based on MD5.  I'd have liked
+to include the real crypt(), but then wouldn't be able to export the
+resulting library.  If you really need DES crypt(), you'll have to download
+the glibc-crypt-2.0.7pre?.tar.gz add-on and compile it yourself.  At the time
+of this writing, a compatible version can be downloaded from alpha.gnu.org in
+the /gnu directory.  The most recent public release can also be found on
+prep.ai.mit.edu, in /pub/gnu.  If you are outside the USA and Canada, do not
+download glibc-crypt-2.0.6.tar.gz from prep (to do so violates US export
+restrictions).  There should be a readme file there that will point you
+to a non-US FTP site.
+
+This library does include the 'linuxthreads' add-on, which provides clone()
+and other threads-related functions, as well as the localedata add-on.
+
+If you decide to switch back to developing with libc.so.5 again, you'll first
+have to edit your 'specs' file to link with ldlinux.so.1.  (In fact, it might
+be a good plan to just make a copy of the original 'specs' file when you edit
+it in the first place)
+
+Then, remove glibc and install the old 'libc.tgz' package like this
+
+cd /var/log/packages
+removepkg glibc-2.0.7pre6
+cd <directory containing libc.tgz, such as /cdrom/slakware/d1>
+installpkg libc.tgz
+
+Have fun!
+

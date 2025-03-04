@@ -1,0 +1,42 @@
+------------------------------------------------------------------------
+DREADY    Drive ready?                  Ver 2.2 (c) 1997 Horst Schaeffer
+------------------------------------------------------------------------
+
+Syntax:   DREADY drive.... [/W]
+
+Option /W makes an additional test for "READY to WRITE".
+
+Errorlevels:  0     ok, drive ready, medium can be read
+                    (option /W: medium can also be written on)
+
+              1     drive/medium is READ ONLY (if option /W)
+
+              2     drive not ready or no read access
+
+              255   invalid drive letter
+
+The first character succeeding the DREADY command is taken as drive
+letter, the rest is ignored (path, file name... ), except option /W.
+DREADY also works with hard disks, CD-ROM's und ZIP-Drives (other types
+not tested, but should also work).
+
+DREADY prevents the DOS prompt "Not ready reading drive X: ...".
+
+Write test: DREADY with option /W will try to set a file attribute
+(without changing it). If there is no file in the root directory, the
+program attempts to make a new file (with a random name), and deletes
+it, in case this was successful.
+
+
+Drive B: issue
+
+When you try to access the (non existent) drive B:, the drive letters
+are swapped by DOS. DREADY should prevent this, but it probably only
+works properly under older DOS versions. In a DOS window you will get
+a blue screen, and DOS remains in full screen mode.
+
+----
+DREADY is freeware by Horst Schaeffer - no warranties of any kind
+eMail: horst.schaeffer@gmx.net
+
+= 04 AUG 2002

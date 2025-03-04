@@ -1,0 +1,38 @@
+From jill@rootgroup.com Tue Jan 12 10:30:35 1999
+Date: Tue, 12 Jan 1999 10:18:32 -0600
+From: Jill Nazimek <jill@rootgroup.com>
+To: alw@columbine.cs.colorado.edu, andrzej@columbine.cs.colorado.edu,
+     baveja@columbine.cs.colorado.edu, bobby@columbine.cs.colorado.edu,
+     cai@columbine.cs.colorado.edu, clayton@columbine.cs.colorado.edu,
+     duck@columbine.cs.colorado.edu, evi@columbine.cs.colorado.edu,
+     gerhard@columbine.cs.colorado.edu, grunwald@columbine.cs.colorado.edu,
+     hal@columbine.cs.colorado.edu, harry@columbine.cs.colorado.edu,
+     jessup@columbine.cs.colorado.edu, karl@columbine.cs.colorado.edu,
+     lizb@columbine.cs.colorado.edu, main@columbine.cs.colorado.edu,
+     martin@columbine.cs.colorado.edu, mcbryan@columbine.cs.colorado.edu,
+     mozer@columbine.cs.colorado.edu, nutt@columbine.cs.colorado.edu,
+     richard@cs.colorado.edu, roger@columbine.cs.colorado.edu,
+     sanders@columbine.cs.colorado.edu, skip@columbine.cs.colorado.edu,
+     waite@columbine.cs.colorado.edu, zorn@columbine.cs.colorado.edu
+Subject: 64 Bit compilers (University Workshop) (1/12/99)
+
+
+
+These are currently available in beta
+format for free download from the net (both SPARC and Intel versions).
+
+See url:  http://access1.sun.com/workshop5.0ea/
+
+Products covered are:
+
+  Sun WorkShop for Universities, 5.0 Software
+
+  Sun Visual WorkShop C++, 5.0 Software
+  Sun Performance WorkShop Fortran, 5.0 Software
+  Sun WorkShop Professional C, 5.0 Software
+  Sun WorkShop Compiler C/C++, 5.0 Software
+  Sun WorkShop Compilers Fortran, 5.0 Software
+  Sun WorkShop TeamWare, 2.1 Software
+
+Current estimates are for Q1CY99 announce/ship for FCS versions.
+

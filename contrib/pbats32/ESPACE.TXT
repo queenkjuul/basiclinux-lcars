@@ -1,0 +1,32 @@
+------------------------------------------------------------------------
+ESPACE    Check environmental space     ver 1.2 (c) 1997 Horst Schaeffer
+------------------------------------------------------------------------
+          Note: use only in DOS mode or under Windows9x
+
+Syntax:   ESPACE
+          reports total, occupied and free environment space
+          (in current COMMAND.COM environment)
+
+or:       ESPACE <bytes>
+          returns errorlevel 0 if at least <bytes> free
+          (no message)
+
+
+Notes for MS-DOS 7.x
+--------------------
+Under MS-DOS 7.x (WIN9x) ESPACE finds 1040 bytes more than specified
+in the CONFIG.SYS/SHELL option /E assignment. But this additional
+space cannot be used by the SET command (error: "not enough env....")
+
+Third party utilities (like NSET), however, use the complete space,
+and COMMAND has no problems finding variables in the "overflow" area.
+
+To be on the safe side, ESPACE subtracts 1040 bytes from the reported
+environment space, if MS-DOS 7 is detected. This may result in more
+bytes "occupied" than reflected by "total".
+
+----
+ESPACE is freeware by Horst Schaeffer - no warranties of any kind
+eMail: horst.schaeffer@gmx.net
+
+= 04 AUG 2002

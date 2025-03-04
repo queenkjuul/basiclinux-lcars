@@ -1,0 +1,44 @@
+------------------------------------------------------------------------
+WHAT  Date/time check with errorlevel   Ver 1.0 (c) 1995 Horst Schaeffer
+------------------------------------------------------------------------
+
+Syntax: WHAT hour | minute | year | month | day | wday
+
+
+    WHAT.COM checks the current date and time, and returns the value of
+    what you requested as errorlevel.
+
+    Request keywords:
+
+        hour              0..24
+        minute            0..60
+        year              97...  (100 for year 2000 etc.)
+        month             1..12
+        Day               1..31
+        Wday              0 (Sun) .. 6 (Sat)
+
+    The first letter of a keyword will do, except for minute and month
+    (at least 2 required). The rest is ignored anyway.
+    Case ignored. Help info and errorlevel 255 if invalid or missing
+    keyword.
+
+Examples:
+
+        WHAT hour
+        if not errorlevel 12 goto MORNING
+
+        WHAT wday
+        for %%a in (0 1 2 3 4 5 6) do if errorlevel %%a goto DAY_%%a
+
+        WHAT day
+        if errorlevel 8 goto CONT
+        WHAT wday
+        if errorlevel 2 goto CONT
+        if not errorlevel 1 goto CONT
+        ECHO This is the first Monday of the month
+
+----
+WHAT is freeware by Horst Schaeffer - no warranties of any kind
+eMail: horst.schaeffer@gmx.net
+
+= 04 AUG 2002

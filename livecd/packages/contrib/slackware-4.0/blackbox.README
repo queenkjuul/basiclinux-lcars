@@ -1,0 +1,15 @@
+
+This is blackbox-0.50.2, a lean and clean X11 window manager.
+
+Title:                  Blackbox
+Version:                0.50.2 beta
+Entered-date:           Mon Jan 12 17:57:00 CST 1998
+Description:            An X Window manager written from scratch in C++.
+                        Includes shaped icons, floating menus, multiple
+                        workspaces, its own graphics class and X resource
+                        configuring scheme.
+Keywords:               blackbox X xfree window manager c++
+Author:                 bhughes@arn.net (Brad Hughes)
+Primary-site:           ftp.arn.net /pub/linux
+Copying-policy:         GPL version 2.0 (copy of license included with source)
+

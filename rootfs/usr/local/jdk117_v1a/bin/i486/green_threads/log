@@ -1,0 +1,90 @@
+current locale is not supported in X11, locale is set to CX locale modifiers are not supported, using defaultWarning: translation table syntax error: Unknown keysym name:  osfActivate
+Warning: ... found while parsing ':<Key>osfActivate:		ManagerParentActivate()'
+Warning: translation table syntax error: Unknown keysym name:  osfCancel
+Warning: ... found while parsing ':<Key>osfCancel:		ManagerParentCancel()'
+Warning: translation table syntax error: Unknown keysym name:  osfSelect
+Warning: ... found while parsing ':<Key>osfSelect:		ManagerGadgetSelect()'
+Warning: translation table syntax error: Unknown keysym name:  osfHelp
+Warning: ... found while parsing ':<Key>osfHelp:			ManagerGadgetHelp()'
+Warning: translation table syntax error: Unknown keysym name:  osfBeginLine
+Warning: ... found while parsing ':<Key>osfBeginLine:		ManagerGadgetTraverseHome()'
+Warning: translation table syntax error: Unknown keysym name:  osfUp
+Warning: ... found while parsing ':<Key>osfUp:			ManagerGadgetTraverseUp()'
+Warning: translation table syntax error: Unknown keysym name:  osfDown
+Warning: ... found while parsing ':<Key>osfDown:			ManagerGadgetTraverseDown()'
+Warning: translation table syntax error: Unknown keysym name:  osfLeft
+Warning: ... found while parsing ':<Key>osfLeft:			ManagerGadgetTraverseLeft()'
+Warning: translation table syntax error: Unknown keysym name:  osfRight
+Warning: ... found while parsing ':<Key>osfRight:			ManagerGadgetTraverseRight()'
+Warning: translation table syntax error: Unknown keysym name:  osfHelp
+Warning: ... found while parsing ':<Key>osfHelp:			ManagerGadgetHelp()'
+Warning: translation table syntax error: Unknown keysym name:  osfActivate
+Warning: ... found while parsing ':<Key>osfActivate:		ManagerParentActivate()'
+Warning: translation table syntax error: Unknown keysym name:  osfCancel
+Warning: ... found while parsing ':<Key>osfCancel:		ManagerParentCancel()'
+Warning: translation table syntax error: Unknown keysym name:  osfSelect
+Warning: ... found while parsing ':<Key>osfSelect:		ManagerGadgetSelect()'
+Warning: translation table syntax error: Unknown keysym name:  osfActivate
+Warning: ... found while parsing ':<Key>osfActivate:	DrawingAreaInput() ManagerParentActivate()'
+Warning: translation table syntax error: Unknown keysym name:  osfCancel
+Warning: ... found while parsing ':<Key>osfCancel:	DrawingAreaInput() ManagerParentCancel()'
+Warning: translation table syntax error: Unknown keysym name:  osfHelp
+Warning: ... found while parsing ':<Key>osfHelp:		DrawingAreaInput() ManagerGadgetHelp()'
+Warning: translation table syntax error: Unknown keysym name:  osfSelect
+Warning: ... found while parsing ':<Key>osfSelect:	DrawingAreaInput() ManagerGadgetSelect()'
+Warning: translation table syntax error: Unknown keysym name:  osfUp
+Warning: ... found while parsing ':<Key>osfUp:		DrawingAreaInput() ManagerGadgetTraverseUp()'
+Warning: translation table syntax error: Unknown keysym name:  osfDown
+Warning: ... found while parsing ':<Key>osfDown:		DrawingAreaInput() ManagerGadgetTraverseDown()'
+Warning: translation table syntax error: Unknown keysym name:  osfLeft
+Warning: ... found while parsing ':<Key>osfLeft:		DrawingAreaInput() ManagerGadgetTraverseLeft()'
+Warning: translation table syntax error: Unknown keysym name:  osfRight
+Warning: ... found while parsing ':<Key>osfRight:		DrawingAreaInput() ManagerGadgetTraverseRight()'
+Warning: translation table syntax error: Unknown keysym name:  osfBeginLine
+Warning: ... found while parsing ':<Key>osfBeginLine:	DrawingAreaInput() ManagerGadgetTraverseHome()'
+SIGSEGV   11*  segmentation violation
+	stackbase=0xbffffa18, stackpointer=0xbffff920
+
+Full thread dump:
+    "AWT-Motif" (TID:0x40663e88, sys_thread_t:0x41403f04, state:R) prio=5
+    "AWT-Input" (TID:0x40663d38, sys_thread_t:0x413e2f04, state:R) prio=5
+    "AWT-EventQueue-0" (TID:0x40663c00, sys_thread_t:0x413c1f04, state:R) prio=5
+    "Finalizer thread" (TID:0x4065c210, sys_thread_t:0x413a0f04, state:R) prio=1
+    "Async Garbage Collector" (TID:0x4065c258, sys_thread_t:0x4137ff04, state:R) prio=1
+    "Idle thread" (TID:0x4065c2a0, sys_thread_t:0x4135ef04, state:R) prio=0
+    "Clock" (TID:0x4065c088, sys_thread_t:0x4133df04, state:CW) prio=12
+    "main" (TID:0x4065c0b0, sys_thread_t:0x8191cb8, state:R) prio=5 *current thread*
+	sun.awt.motif.MFramePeer.<init>(MFramePeer.java:67)
+	sun.awt.motif.MToolkit.createFrame(MToolkit.java:117)
+	java.awt.Frame.addNotify(Frame.java:203)
+	java.awt.Window.pack(Window.java:123)
+	sun.applet.AppletCopyright.<init>(AppletCopyright.java:37)
+	sun.applet.AppletViewer.mainInit(AppletViewer.java:1030)
+	sun.applet.AppletViewer.main(AppletViewer.java:1039)
+Monitor Cache Dump:
+    sun.awt.motif.MToolkit@1080441984/1080876248: owner "main" (0x8191cb8, 1 entry)
+    java.lang.Object@1080427056/1080800552: owner "main" (0x8191cb8, 1 entry)
+Registered Monitor Dump:
+    Thread queue lock: <unowned>
+    Name and type hash table lock: <unowned>
+    String intern lock: <unowned>
+    JNI pinning lock: <unowned>
+    JNI global reference lock: <unowned>
+    BinClass lock: <unowned>
+    Class loading lock: <unowned>
+    Java stack lock: <unowned>
+    Code rewrite lock: <unowned>
+    Heap lock: <unowned>
+    Has finalization queue lock: <unowned>
+    Finalize me queue lock: <unowned>
+    Dynamic loading lock: <unowned>
+    Monitor IO lock: <unowned>
+    Child death monitor: <unowned>
+    Event monitor: <unowned>
+    I/O monitor: <unowned>
+    Alarm monitor: <unowned>
+	Waiting to be notified:
+	    "Clock" (0x4133df04)
+    Monitor registry: owner "main" (0x8191cb8, 1 entry)
+Thread Alarm Q:
+Aborted

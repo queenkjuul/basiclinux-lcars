@@ -1,0 +1,835 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head><script type="text/javascript" src="https://web-static.archive.org/_static/js/bundle-playback.js?v=7YQSqjSh" charset="utf-8"></script>
+<script type="text/javascript" src="https://web-static.archive.org/_static/js/wombat.js?v=txqj7nKC" charset="utf-8"></script>
+<script>window.RufflePlayer=window.RufflePlayer||{};window.RufflePlayer.config={"autoplay":"on","unmuteOverlay":"hidden"};</script>
+<script type="text/javascript" src="https://web-static.archive.org/_static/js/ruffle/ruffle.js"></script>
+<script type="text/javascript">
+    __wm.init("https://web.archive.org/web");
+  __wm.wombat("http://www.home.no/mlinux/tex-img.htm","20070612172200","https://web.archive.org/","web","https://web-static.archive.org/_static/",
+	      "1181668920");
+</script>
+<link rel="stylesheet" type="text/css" href="https://web-static.archive.org/_static/css/banner-styles.css?v=p7PEIJWi" />
+<link rel="stylesheet" type="text/css" href="https://web-static.archive.org/_static/css/iconochive.css?v=3PDvdIFv" />
+<!-- End Wayback Rewrite JS Include -->
+
+<title>PostScript and images</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="author" content="Mikkel Meinike Nielsen">
+<meta name="keywords" content="eps, encapsulated PostScript, postscript images, placing images">
+<meta name="description" content="A" small guide to images with direct postscript">
+<link rev="made" href="mailto:mimeini@linuxmail.org">
+</head>
+<!--****************///\\\tex-img///\\\****************-->
+<body bgcolor="#400000" text="black" link="#400000" vlink="#400005" alink="#400010">
+<!--VENUSTAB 1X-->
+<table align="center" bgcolor="#FFFFFF" border="0" cellpadding="0" cellspacing="0" width="740" background="/web/20070612172200im_/http://www.home.no/mlinux/maintop.png">
+<tr><!--VENUSKOL 1-->
+<td height="29" valign="top" width="740"></td>
+</tr>
+</table>
+<!--SANSETAB 3X-->
+<table align="center" bgcolor="#FFFFFF" border="0" cellpadding="0" cellspacing="0" width="740">
+<tr><!--SANSEKOL 1-->
+<td align="center" valign="top" width="25%">
+<!-- Venstre kolonne tekst--><a href="https://web.archive.org/web/20070612172200/http://petition.eurolinux.org/"><img src="/web/20070612172200im_/http://www.home.no/mlinux/nopat.gif" border="0"></a> <br>
+<font size="-2"><a href="index.htm"><br>
+HOME</a><br></td>
+
+<!--SANSEKOL 2-->
+<td align="left" bgcolor="white" valign="top" width="66%">
+<!-- Her begynder hovedteksten-->
+<!-- Her begynder hovedteksten-->
+<!-- Her begynder hovedteksten-->
+<!-- Her begynder hovedteksten-->
+
+<br>
+<p align="center">TEXT WITH IMAGES</p>
+Over the years I have bin very concerned with how to overlay text and image. And
+I was so happy when I discovered that with direct PostScript this is really now
+problem. In a PostScript program the text is placed with 'x y moveto'. The order
+in which thing appear in the program does not relate to its placement on paper. 
+<br>
+<br>
+<!--BEGYND KODE TIL PAUSE I HOVEDTEKST-->
+<!--BEGYND KODE TIL PAUSE I HOVEDTEKST-->
+<!--BEGYND KODE TIL PAUSE I HOVEDTEKST-->
+<!--BEGYND KODE TIL PAUSE I HOVEDTEKST-->
+
+<!--SANSEKOL 3-->
+<td align="left" valign="top" width="8%"></td>
+</tr>
+</table>
+<!--AFSLUT KODE TIL PAUSE HOVEDTEKST-->
+<!--AFSLUT KODE TIL PAUSE HOVEDTEKST-->
+<!--AFSLUT KODE TIL PAUSE HOVEDTEKST-->
+<!--AFSLUT KODE TIL PAUSE HOVEDTEKST-->
+<!--BEGYND H. V. BOX-->
+<!--BEGYND H. V. BOX-->
+<!--BEGYND H. V. BOX-->
+<!--BEGYND H. V. BOX-->
+<table align="center" bgcolor="#FFFFFF" border="0" cellpadding="0" cellspacing="0" width="740">
+<td valign="top" width="18"></td>
+<td valign="top" width="514">
+<pre>
+%!
+/Times-Roman findfont 16 scalefont setfont
+0 0 1 setrgbcolor
+0 220 moveto (I am on top in the program text ) show
+
+
+0 250 moveto (I am below in the program text ) show 
+showpage
+</pre>
+</td>
+<td align="center" align="left" valign="top" width="208"><br><img src="/web/20070612172200im_/http://www.home.no/mlinux/text1.jpg" width="207" height="54"><br></td>
+</tr>
+</table>
+<!--AFSLUT H. V. BOX-->
+<!--AFSLUT H. V. BOX-->
+<!--AFSLUT H. V. BOX-->
+<!--AFSLUT H. V. BOX-->
+<!--SANSETAB 3X-->
+
+<!--BEGYND KODE TIL HOVEDTEKST-->
+<!--BEGYND KODE TIL HOVEDTEKST-->
+<!--BEGYND KODE TIL HOVEDTEKST-->
+<!--BEGYND KODE TIL HOVEDTEKST-->
+<table align="center" bgcolor="#FFFFFF" border="0" cellpadding="0" cellspacing="0" width="740">
+<tr><!--SANSEKOL 1-->
+<td align="center" valign="top" width="25%"></td>
+<!--SANSEKOL 2-->
+<td align="left" valign="top" width="66%">
+<!--AFSLUT KODE TIL HOVEDTEKST-->
+<!--AFSLUT KODE TIL HOVEDTEKST-->
+<!--AFSLUT KODE TIL HOVEDTEKST-->
+<!--AFSLUT KODE TIL HOVEDTEKST-->
+
+<br>
+<br>
+If you put things on the same coordinates with 'x y moveto' then they will appear on top of each other
+<br>
+<br>
+<!--BEGYND KODE TIL PAUSE I HOVEDTEKST-->
+<!--BEGYND KODE TIL PAUSE I HOVEDTEKST-->
+<!--BEGYND KODE TIL PAUSE I HOVEDTEKST-->
+<!--BEGYND KODE TIL PAUSE I HOVEDTEKST-->
+<!--BEGYND KODE TIL PAUSE I HOVEDTEKST-->
+
+<!--SANSEKOL 3-->
+<td align="left" valign="top" width="8%"></td>
+</tr>
+</table>
+
+
+<!--AFSLUT KODE TIL PAUSE HOVEDTEKST-->
+<!--AFSLUT KODE TIL PAUSE HOVEDTEKST-->
+<!--AFSLUT KODE TIL PAUSE HOVEDTEKST-->
+<!--AFSLUT KODE TIL PAUSE HOVEDTEKST-->
+<!--AFSLUT KODE TIL PAUSE HOVEDTEKST-->
+<!--BEGYND H. V. BOX-->
+<!--BEGYND H. V. BOX-->
+<!--BEGYND H. V. BOX-->
+<!--BEGYND H. V. BOX-->
+
+<table align="center" bgcolor="#FFFFFF" border="0" cellpadding="0" cellspacing="0" width="740">
+<td valign="top" width="18"></td>
+<td valign="top" width="514">
+<pre>
+%!
+/Times-Bolt findfont 68 scalefont setfont
+0 0 1 setrgbcolor
+0 220 moveto (FIRST ) show
+/Times-Bolt findfont 48 scalefont setfont
+1 0 0 setrgbcolor
+0 220 moveto (later ) show 
+showpage
+</pre>
+</td>
+<td align="center" align="left" valign="top" width="208"><br><img src="/web/20070612172200im_/http://www.home.no/mlinux/text2.jpg" width="194" height="58"><br></td>
+</tr>
+</table>
+<!--AFSLUT H. V. BOX-->
+<!--AFSLUT H. V. BOX-->
+<!--AFSLUT H. V. BOX-->
+<!--AFSLUT H. V. BOX-->
+<!--BEGYND KODE TIL HOVEDTEKST-->
+<!--BEGYND KODE TIL HOVEDTEKST-->
+<!--BEGYND KODE TIL HOVEDTEKST-->
+<!--BEGYND KODE TIL HOVEDTEKST-->
+<!--BEGYND KODE TIL HOVEDTEKST-->
+<table align="center" bgcolor="#FFFFFF" border="0" cellpadding="0" cellspacing="0" width="740">
+<tr><!--SANSEKOL 1-->
+<td align="center" valign="top" width="25%"></td>
+<!--SANSEKOL 2-->
+<td align="left" valign="top" width="66%">
+<!--AFSLUT KODE TIL HOVEDTEKST-->
+<!--AFSLUT KODE TIL HOVEDTEKST-->
+<!--AFSLUT KODE TIL HOVEDTEKST-->
+<!--AFSLUT KODE TIL HOVEDTEKST-->
+<br>
+<br>
+The later will appear on top of the earlier so here, the order in which they appear in the program is important.<br> 
+Now images are not placed on the paper wite 'x y moveto'. You put images in place with.
+'x y translate' but translate need a little bit of house keep around it.
+<br><br>
+gsave <br>
+x y translate <br> 
+(and after the image)<br>
+grestore <br>
+<br>
+Roughly spoken: 
+'Translate' moves all coordinates to new positions,
+'grestore' brings things back to normal for the next 'x y moveto'
+But that can only be done if you did 'gsave' before 'x y translate'
+
+Here is a example with a small black/white image (1 byte per pixel) placed side by side with text.<br>
+<br>
+<!--BEGYND KODE TIL PAUSE I HOVEDTEKST-->
+<!--BEGYND KODE TIL PAUSE I HOVEDTEKST-->
+<!--BEGYND KODE TIL PAUSE I HOVEDTEKST-->
+<!--BEGYND KODE TIL PAUSE I HOVEDTEKST-->
+<!--BEGYND KODE TIL PAUSE I HOVEDTEKST-->
+
+<!--SANSEKOL 3-->
+<td align="left" valign="top" width="8%"></td>
+</tr>
+</table>
+
+
+<!--AFSLUT KODE TIL PAUSE HOVEDTEKST-->
+<!--AFSLUT KODE TIL PAUSE HOVEDTEKST-->
+<!--AFSLUT KODE TIL PAUSE HOVEDTEKST-->
+<!--AFSLUT KODE TIL PAUSE HOVEDTEKST-->
+<!--AFSLUT KODE TIL PAUSE HOVEDTEKST-->
+
+<!--BEGYND H. V. BOX-->
+<!--BEGYND H. V. BOX-->
+<!--BEGYND H. V. BOX-->
+<!--BEGYND H. V. BOX-->
+
+<table align="center" bgcolor="#FFFFFF" border="0" cellpadding="0" cellspacing="0" width="740">
+<td valign="top" width="18"></td>
+<td valign="top" width="514">
+<pre>
+%!
+/Times-Roman findfont 16 scalefont setfont
+gsave                   %save before using translate
+105 210 translate %This cordinates places the images on 
+		    %the page
+%-------------The actual image begin---------------------
+76.8 86.4 scale
+40 45 1 [ 40 0 0 -45 0 45 ]
+{ &lt;<!--just to make the "bigger-then" work-->
+fffff5ffffffffdeffffffffeaffffffffdeffffffffffffffffffeeffff
+fffffefffffffffbffffffffffffffffffccffffffff77bffffffeffdfff
+fffdfff7fffffbfff7fffff77ffbffff5ebfbdfffafdbf7ebffbf3ff6fdf
+e9ef7ff7f3d6bfff7d55afff7efffafffffffffcffff7efffffffef7ffff
+fffdf77fffffffeffffffffdf7bffffffbd7bfffffffbffffffff7fbbfff
+ffef7bffffffeefbdfffffdef7bfffffffffbfffffbdefffffff7dff7fff
+ff7bdffffffff7ff7ffff977e57ffffa5ffbffffff7feebffffdbff4bfff
+ff7fffffffffffffffffffffffffff<!--just to make the "smaler-then" work-->&gt; } image
+%-------------The actual image end ---------------------
+grestore %restore the settings from before the translat
+0 245 moveto (Text and image, ) show
+0 229 moveto (side by side. ) show 
+showpage
+</pre>
+</td>
+<td align="center" align="left" valign="top" width="208"><br><br><br><br><img src="/web/20070612172200im_/http://www.home.no/mlinux/sideside.jpg" width="191" height="88"><br></td>
+</tr>
+</table>
+<!--AFSLUT H. V. BOX-->
+<!--AFSLUT H. V. BOX-->
+<!--AFSLUT H. V. BOX-->
+<!--AFSLUT H. V. BOX-->
+<!--BEGYND KODE TIL HOVEDTEKST-->
+<!--BEGYND KODE TIL HOVEDTEKST-->
+<!--BEGYND KODE TIL HOVEDTEKST-->
+<!--BEGYND KODE TIL HOVEDTEKST-->
+<!--BEGYND KODE TIL HOVEDTEKST-->
+<table align="center" bgcolor="#FFFFFF" border="0" cellpadding="0" cellspacing="0" width="740">
+<tr><!--SANSEKOL 1-->
+<td align="center" valign="top" width="25%"><td>
+<!--SANSEKOL 2-->
+<td align="left" valign="top" width="66%">
+<!--AFSLUT KODE TIL HOVEDTEKST-->
+<!--AFSLUT KODE TIL HOVEDTEKST-->
+<!--AFSLUT KODE TIL HOVEDTEKST-->
+<!--AFSLUT KODE TIL HOVEDTEKST-->
+<br>
+<br>
+Normally you will use eps images (Encapsulated PostScript) in your PostScript
+program and there is a lot of explanation on what eps is, but basically it is
+the same as the above. PostScript uses deferent operators for
+black/whit/grayscale and RGB color images. The first is 'image' the secund is
+'colorimage', but also these to function basically in the same way. Also eps uses ether the 'image' or the 'colorimage' operator to display bitmap images.<br>
+The 'image' and the 'colorimage' operators needs five arguments in order to make the image show and one of these argument is a complex one consisting of 6 arguments it self.
+<br><br>
+a b c [ d1 d2 d3 d4 d5 d6 ] e colorimage<br>
+<br>
+a = with of image <br>
+<br>
+b = hight of image<br>
+<br>
+c = byte per pixel also called color depth, 16 color, 256, color etc<br>
+<br>
+[ d1 d2 d3 d4 d5 d6 ] = A transformation matrix. The thing is that PostScript
+puts everything in place from the position of the lower left corner but, a bitmap image is put in place from its upper left corner so it needs a transformation matrix to come in the right place else it would be up side down on the paper.<br>
+<br>
+e = the image it self represented as a lot of lines of hexadecimal numbers like this: <br>
+<br>
+fffdfff7fffffbfff7fffff77ffbffff5ebfbdfffafdbf7ebffbf3ff6fdf<br>
+e9ef7ff7f3d6bfff7d55afff7efffafffffffffcffff7efffffffef7ffff<br>
+<br>
+You will often see that the 'colorimage' operator is put in before the
+hexadecemal image lines, but if you think about how the stack works you can see that this makes no deference.<br>
+Encapsulated postscript are images represented in a postscript form you can make
+theme with a image edit program like, Netpbm (pnmtops), Imagemagic, Gimp, PhotoShop, etc. 
+They come as a plane ASCII text file so you can edit, copy, past with them - and wiht in them - in a plan text editor (they are often big so the editor have to be able to "eat a lot of text").<br>
+They have some comments in theme like this:<br><br>
+%%LanguageLevel: 2<br>
+%%Pages: 1<br>
+%%BoundingBox: 14 14 568 811<br>
+%%EndComments<br><br>
+But it is noting that you have to worry about. Just leave them there. What you
+should worry about is if the program that generated the eps image has put a
+'gsave' in the
+beginning and a 'grestore' in the end and if it has put a 'showpage' in the end. If
+it did you should remove the 'showpage' and first apply it when both the image and
+the text and all the other elements that you want to together with the image on the same page
+have come to an end in the program. <br>
+Then you should look out for the 'x y translate' in the beginning of the eps image. That is the one you can use to put the image in the place where you want it on the page.
+
+So the final example will be a PostScript program with the same image as before
+but now as an eps image created with <a href="https://web.archive.org/web/20070612172200/http://netpbm.sourceforge.net/doc/pnmtops.html">pnmtops</a>, embed in the program, and the
+'x y translate' ajusted to the position that I want.
+<br>
+<pre>
+%!
+/Times-Bolt findfont 16 scalefont setfont
+%!PS-Adobe-2.0 EPSF-2.0
+%%Creator: pnmtops
+%%Title: sohalv1.ps
+%%Pages: 1
+%%BoundingBox: 286 374 325 418
+%%EndComments
+/readstring {
+  currentfile exch readhexstring pop
+} bind def
+/picstr 5 string def
+%%EndProlog
+%%Page: 1 1
+gsave 			%The gsave that we need
+25 40 translate 	%The translate you can use 
+               		%to place the image
+76.8 86.4 scale 	%With 'x y scale' you can scale 
+                	%the image up and down
+40 45 1             	%The first fore arguments for the 
+[ 40 0 0 -45 0 45 ] 	%image operator split over to lines 
+{ picstr readstring }
+image
+&lt;<!--just to make the "bigger-then" work-->
+fffff5ffffffffdeffffffffeaffffffffdeffffffffffffffffffeeffff
+fffffefffffffffbffffffffffffffffffccffffffff77bffffffeffdfff
+fffdfff7fffffbfff7fffff77ffbffff5ebfbdfffafdbf7ebffbf3ff6fdf
+e9ef7ff7f3d6bfff7d55afff7efffafffffffffcffff7efffffffef7ffff
+fffdf77fffffffeffffffffdf7bffffffbd7bfffffffbffffffff7fbbfff
+ffef7bffffffeefbdfffffdef7bfffffffffbfffffbdefffffff7dff7fff
+ff7bdffffffff7ff7ffff977e57ffffa5ffbffffff7feebffffdbff4bfff
+ff7fffffffffffffffffffffffffff<!--just to make the "bigger-then" work-->&gt;
+grestore		%The grestore that we need
+%%Trailer
+0 0 1 setrgbcolor	%Chose of color
+0 90 moveto (Text over image ) show 
+0 65 moveto (more text over image ) show
+showpage 		%and finally the showpage
+</pre>
+<p align="center">
+<img src="/web/20070612172200im_/http://www.home.no/mlinux/tex-img.jpg" width="143" height="86"></p>
+<br>
+<br>
+<b>Note:</b> I have had a comment on this the eps part from Chapman Flacks. Read  his comment <a href="comment.htm#eps">here</a>.<br><br><br>
+
+
+COMPRESSED IMAGE DATE<br><br>
+Since the bitmap images in PostScript are so big in terms of file size, compressed image date comes as a natural next thing to talk about. In the deferent levels of PostScript there are deferent ways of getting the same information out of less ASCII characters in the postscript program. The deferent levels of PostScript comes with different operators to interpreted packed information. An example would be the 'longrun' operator. The 'longrun' operator can read an image information that is packed in such a way that long runs of the same color is substituted with a short massage saying e. g. "573 pixel of this color". ASCII85 is an other operator for interpret compressed image information. Here the operator can "unpack" an image information where the original ASCII hexadecimal way to express numbers using this 15 ASCII characters:<br>
+1 2 3 4 5 6 7 8 9 a b c d e f<br>
+Is substituted with an other set of ASCII characters. A set of ASCII 
+characters express the same amount of numbers with a smaller amount of 
+characters. The 'longrun' and 'ASCII86' method of compressing can be combined in a compressed image information to be "unpacked" first through the 'ASCII85' operator and after that through the 'longrun' operator, before the "unpacked" image information is handed over to the 'image'/'colorimage' operator. Now that was two operators in combination but the deferent versions of PostScript have other operators then just this two to "unpack" other kinds of "packed" information. So compressing images to make smaller file size in PostScript is a question of making the smartest use of this PostScript operators in the deferent levels of PostScript.<br>
+The smartest program in doing this (from what I know) is 
+<a href="https://web.archive.org/web/20070612172200/http://www.inf.bme.hu/~pts/sam2p/">sam2p</a> made by Suzi Peté.
+Sam2p is a small program (some 400 KB as a tar archive). It is free and it is easy to compile from source. If you are unsure what compile from source means ore how it can be done I have made a separate page about that <a href="comp.htm">here</a>.<br>
+
+<br>
+sam2p my_image.bmp my_image.eps
+<br>
+<br>
+Produce a nice eps image that is small in terms of file size. But it is not easy to work with in direct PostScript because it can not easily be scaled and moved around on the paper like the one that we created with the
+<a href="https://web.archive.org/web/20070612172200/http://netpbm.sourceforge.net/">netpbm</a> program <a href="https://web.archive.org/web/20070612172200/http://netpbm.sourceforge.net/doc/pnmtops.html">pnmtops</a> earlier. The output of sam2p is designed to be scaled and put in place with an other application such as LaTeX. The eps file produced with pnmtops is easier to work with in direct PostScript, but I had 30 big images for my book and the file sizes was taking the breath out of my text editor so I was eager to try to find out how I could place and scale the much smaller output from sam2p to my needs.<br>
+If you give the extention '.ps' to the resulting file name instead of '.eps' like this:<br><br>
+sam2p my_image.bmp my_image.ps<br>
+<br>
+The image will be scaled to fit the page size. Now it is no longer a proper '.eps' image but that does not matter when you are doing direct PostScript you can still use it together with text and other elements in your PostScript program. So the image is scaled to fit the page size hmmm... which page size? I did not specific any page size. By testing I found out that the 'PS' "image" causes the interpreter, here 'ghostview', to do a calculation on the default page size set in the printer or in the PostScript viewer that I use and scale the image to fit that page size. In Ghostview the default page size seems to be letter page size so the image is scaled to fit the letter page size, but you can change that from the Ghostview menu and now a new calculation is don to place the image in relation to this selection. You can also select the page size from coding in the your PostScript program for A4 you can have a line like this<br><br>
+&lt;&lt;<!--just to make the "bigger-then" work-->/PageSize[595 842]/ImagingBBox
+null<!--just to make the "smaler-then" work-->&gt;&gt; setpagedevice<br><br>
+In the top of your program. Where 595 842 is the width and hight of an A4 paper in points.<br>
+<br>
+Sam2p also gives the opportunity to select the size of the right, left, top and bottom margin around the image when it is scaled to fit the paper and this gives possibility to place the image and scale it as I want by making a '.ps' image that is predetermined to a certain size and a certain placement on my chosen page format.<br>
+<br>
+I figured out this way of placing an image from the margins withe sam2p.<br>
+I know that I want my final image to be:<br>
+<br>
+615 points (=8,54 inch = 22 cm) high<br>
+I know that my chosen piper size is:<br>
+842 points high.<br>
+I decide that I want.<br>
+28 points (=1 cm) top margin when placing the image on the paper.<br>
+Now the calculation is simple.<br>
+<br>
+842 - 615 = 227 <br>
+227 - 28 (top margin) = 199 (bottom margin)<br>
+<br>
+
+<br>
+<!--BEGYND KODE TIL PAUSE I HOVEDTEKST-->
+<!--BEGYND KODE TIL PAUSE I HOVEDTEKST-->
+<!--BEGYND KODE TIL PAUSE I HOVEDTEKST-->
+<!--BEGYND KODE TIL PAUSE I HOVEDTEKST-->
+<!--BEGYND KODE TIL PAUSE I HOVEDTEKST-->
+
+<!--SANSEKOL 3-->
+<td align="left" valign="top" width="8%"></td>
+</tr>
+</table>
+
+
+<!--AFSLUT KODE TIL PAUSE HOVEDTEKST-->
+<!--AFSLUT KODE TIL PAUSE HOVEDTEKST-->
+<!--AFSLUT KODE TIL PAUSE HOVEDTEKST-->
+<!--AFSLUT KODE TIL PAUSE HOVEDTEKST-->
+<!--AFSLUT KODE TIL PAUSE HOVEDTEKST-->
+
+<!--BEGYND PREBOX-->
+<!--BEGYND PREBOX-->
+<!--BEGYND PREBOX-->
+<!--BEGYND PREBOX-->
+<table align="center" bgcolor="#FFFFFF" border="0" cellpadding="0" cellspacing="0" width="740">
+<tr><!--SANSEKOL 1-->
+<td align="center" valign="top" width="15%"></td>
+<!--SANSEKOL 2-->
+<td align="left" valign="top" width="85%">
+<pre>
+sam2p -m:bottom:199bp -m:top:28bp -e:rot:0 -c:ijg img.pnm img.ps </pre><br><br>
+</td></tr></table>
+<!--AFSLUT PREBOX-->
+<!--AFSLUT PREBOX-->
+<!--AFSLUT PREBOX-->
+<!--AFSLUT PREBOX-->
+<!--BEGYND KODE TIL HOVEDTEKST-->
+<!--BEGYND KODE TIL HOVEDTEKST-->
+<!--BEGYND KODE TIL HOVEDTEKST-->
+<!--BEGYND KODE TIL HOVEDTEKST-->
+<!--BEGYND KODE TIL HOVEDTEKST-->
+<table align="center" bgcolor="#FFFFFF" border="0" cellpadding="0" cellspacing="0" width="740">
+<tr><!--SANSEKOL 1-->
+<td align="center" valign="top" width="25%"></td>
+<!--SANSEKOL 2-->
+<td align="left" valign="top" width="66%">
+<!--AFSLUT KODE TIL HOVEDTEKST-->
+<!--AFSLUT KODE TIL HOVEDTEKST-->
+<!--AFSLUT KODE TIL HOVEDTEKST-->
+<!--AFSLUT KODE TIL HOVEDTEKST-->
+<!--AFSLUT KODE TIL HOVEDTEKST-->
+<!--AFSLUT KODE TIL HOVEDTEKST-->
+
+Now my images is placed correctly vertically and centered horizontal. Now I add a setpagedevice to the top of this new PostScript "image" generated by sam2p (img.ps)<br>
+<br>
+&lt;&lt;<!--just to make the "smaler-then" work-->/PageSize[595 842]/ImagingBBox null<!--just to make the "bigger-then" work-->&gt;&gt; setpagedevice<br>
+<br>
+And I add a point ruler to the bottom of the PostScript "image" just before the 'showpage'. You will find the ruler later on this page. Now I preview with 'gs img.ps'. I notes the amount of points from the left margin until where the image start on the ruler. Now in my case I have 50 point. I multiply that with 2 and get 100 points. Now i want the image to have 28 pints of left margin so I just do:<br>
+<br>
+100 - 28 (left margin) = 72 (right margin)<br>
+<br>
+Now I do a new sam2p "image" to overwrite the first one. For this image I add the new margins.<br><br><br>
+
+<!--BEGYND KODE TIL PAUSE I HOVEDTEKST-->
+<!--BEGYND KODE TIL PAUSE I HOVEDTEKST-->
+<!--BEGYND KODE TIL PAUSE I HOVEDTEKST-->
+<!--BEGYND KODE TIL PAUSE I HOVEDTEKST-->
+<!--BEGYND KODE TIL PAUSE I HOVEDTEKST-->
+
+<!--SANSEKOL 3-->
+<td align="left" valign="top" width="8%"></td>
+</tr>
+</table>
+
+
+<!--AFSLUT KODE TIL PAUSE HOVEDTEKST-->
+<!--AFSLUT KODE TIL PAUSE HOVEDTEKST-->
+<!--AFSLUT KODE TIL PAUSE HOVEDTEKST-->
+<!--AFSLUT KODE TIL PAUSE HOVEDTEKST-->
+<!--AFSLUT KODE TIL PAUSE HOVEDTEKST-->
+
+
+
+
+
+<!--BEGYND PREBOX-->
+<!--BEGYND PREBOX-->
+<!--BEGYND PREBOX-->
+<!--BEGYND PREBOX-->
+<table align="center" bgcolor="#FFFFFF" border="0" cellpadding="0" cellspacing="0" width="740">
+<tr><!--SANSEKOL 1-->
+<td align="center" valign="top" width="5%"></td>
+<!--SANSEKOL 2-->
+<td align="left" valign="top" width="95%">
+<pre>
+sam2p -m:left:28 -m:right:72 -m:bottom:199bp -m:top:28bp -e:rot:0 -c:ijg img.pnm img.ps </pre>
+</td></tr></table>
+<!--AFSLUT PREBOX-->
+<!--AFSLUT PREBOX-->
+<!--AFSLUT PREBOX-->
+<!--AFSLUT PREBOX-->
+
+<!--BEGYND KODE TIL HOVEDTEKST-->
+<!--BEGYND KODE TIL HOVEDTEKST-->
+<!--BEGYND KODE TIL HOVEDTEKST-->
+<!--BEGYND KODE TIL HOVEDTEKST-->
+<!--BEGYND KODE TIL HOVEDTEKST-->
+<table align="center" bgcolor="#FFFFFF" border="0" cellpadding="0" cellspacing="0" width="740">
+<tr><!--SANSEKOL 1-->
+<td align="center" valign="top" width="25%"></td>
+<!--SANSEKOL 2-->
+<td align="left" valign="top" width="66%">
+<!--AFSLUT KODE TIL HOVEDTEKST-->
+<!--AFSLUT KODE TIL HOVEDTEKST-->
+<!--AFSLUT KODE TIL HOVEDTEKST-->
+<!--AFSLUT KODE TIL HOVEDTEKST-->
+<br>
+
+This place the image where I want it.<br>
+The "-e:rot:0" means that the image should not be rotated.<br>
+The "-c" option is the choose of compression. If you just specify "-c:ijg" you will have plain compression, but if you specify "-c:ijg:75" sam2p will calculate a even smaller output, but this will happen by compromising the quality of the image just a bit.<br>
+<br>
+CONVERTING TO PDF<br>
+<br>
+So I have my PostScript program with text and images. Now I want to turn that in to PDF. I can just do that with Ghostscript, but the nice image compression I have just made with sam2p will not carry over to the PDF file. The PDF distiller, in this case Ghostscript, make new compression for the images when converting it to PDF. Sam2p can produce PDF files out of images and sam2p make better compression for bitmap images then Ghostscript does. Sins all of my postscript program is text on top of images I can produce a "better" (smaller) PDF file with sam2p. So first I convert my PostScript to PNM images. PNM is a bitmap image format. You can do that with Ghostscript like this.<br>
+<br>
+gs -sDEVICE=pnm -dNOPAUSE -r150 -sOutputFile=my.pnm my.ps -c quit<br>
+<br>
+<br>
+Byt I only get one PNM file out of this containing the first page. I don't know how to make Ghostscript put out one image file per page. <br>
+Netpbm tool pstopnm can do that.<br>
+<br>
+pstopnm -dpi=150 my.ps<br>
+<br>
+But it seems to be unprecise with text and images. Things don't end up exactly
+the right place. For me the one-page 'gs' command is enough sins I make the
+pages one by one, each as a separate PostScript program. Why that works you will see in the following
+(If you use BL and you have installed the X11 version of GS from SW4 then you can only use it when you are in X11)<br>
+Now the text has become part of the image raster in this new images. Image and text is no longer separated.<br><br>
+
+<p align="center">
+<img src="/web/20070612172200im_/http://www.home.no/mlinux/forbag_t.jpg" width="240" height="300" alt="forbag_t.jpg"></p>
+
+
+So if I look at one of this images I will have the image with the text and a whit margin around the image because the a4 page size is bigger then the image. I don't want that whit margin for my PDF file. I can remove it with just one Netpbm command <a href="https://web.archive.org/web/20070612172200/http://netpbm.sourceforge.net/doc/pnmcrop.html">pnmcrop</a>
+
+<br><br>  image1.pnm &gt; cropped1.pnm'<br><br>
+Now I have the image with text but with out the whit borders. I turn that in two PDF with sam2p<br>
+<br>
+sam2p cropped1.pnm image1.pdf<br>
+<br>
+I do the same to all the 30 images that has come out of my original 
+PostScript program. So I have about 30 PDF files. No I want to put them 
+together. Suzi Peté have build a tool for doing that. Again it a 
+small and easy to install. 
+It is called pdfconcat. You can find and download it here:<br>
+<p align="center"><a href="https://web.archive.org/web/20070612172200/http://www.inf.bme.hu/~pts/index__en.html">http://www.inf.bme.hu/~pts/index__en.html</a></p>
+The page list a lot of different software and you have to find down to pdfconcat and download pdfconcat.c. If you have a c compiler (gcc) 
+which you will probably have if you use some GNU/Linux distribution 
+(knopix, debian, slackware, redhat etc.) The file 
+contain its own compilations instructions so all you need is to make the dir where you have pdfconcat.c your working dir and enter 'pdfconcat.c' then it will compile and you will get 
+the executable file 'pdfconcat'. You can have it in your working dir or in a dir that is in your path like for instance /bin or /usr/bin (I have it together with the netpbm tools in /usr/local/netpbm/bin)<br>
+I use pdfconcat like this.<br>
+<br>
+pdfconcat -o result.pdf page1.pdf page2.pdf page3.pdf<br>
+<br>
+The first filename in the line is the the name of the concatenated file when the job is done. The following filenames are the PDF files that I wish to concatenate into one PDF file. I have about 30 pages so I haven't even tried to put all 30 up on one line. I concatenate the first fore in one command, then in the next command I add fore more to the resulting file and so on:<br>
+<br>
+pdfconcat -o result1.pdf page1.pdf page2.pdf page3.pdf page4.pdf;<br>
+pdfconcat -o result2.pdf result1.pdf page5.pdf page6.pdf page7.pdf page8.pdf;<br>
+<br>
+I have that in a script so I can concatenate all the pages in one command even thou the process is split up in several commands.<br>
+this way will produce a PDF that is small in terms of file size and still the best possible in terms of quality.<br><br>
+
+I have talked about compressed images in PostScript and in doing that I have briefly touch the subject of scaling images. I now wold like to look a little bit more on the subject of scaling images.
+<br>
+<br>
+SCALING IN POSTSCRIPT AS OPPOSE TO SCALING WITH A IMAGE EDITING PROGRAM<br>
+<br>
+Most image formats carry with them information about the printing size.
+If my images is:<br>
+<br>
+1024 pixel width<br><br>
+and it has a resolution of<br><br>
+150 dpi (dots per inch)<br><br>
+The printing size width will be:<br><br>
+1024 / 150 = 6.826 inch<br>
+<br><br>
+When I convert my image in to PostScript that print size information is lost. I have to calculate the scale factor correctly (we did that with sam2p before) in order to find back to the size that was the original print size. I could easily scale the image to a size larger then the original print size in PostScript. What happens then is very similar to what happens when you use a magnifier or you zoom in on an image. You will "get closer" to see the square pixels that that the original image consisted of.<br>
+If you scale a image up in a image processing program like Netpbm, Gimp, FotoShop, PSP etc. it is a very deferent process. You will not "get closer" to the square pixels that the original image consist of. Instead the image processor will calculate more pixel in to the image to enlarge it, it calculate a "richer" image information based upon the information in the original image. The conclusion of this most be that if you want to enlarge your image to a size bigger then the original size and you don't want to get any "closer" to the square pixel that the original image consisted of you should scale up with a image processing tool before turning it in to PostScript and EPS.<br>
+<br>
+POINT RULER FOR PREVEIWING
+<br><br>
+Sometimes I need to place tekst a very specific place in relation of an image. I have to look and piont and say "there I want the text" in order to find the cordinates of that specific point it is nice to have some point rulers. I guess there is a lot of sufisticated rulers and layout greds out there. This is my own hack and it is very simple. 
+It simply print one vertical ruler to the left hand site and 17 horisontal rulers equaly distrubuter over the page. The rulers concist of numbers like this ".250" where "." is the mesuring point.
+I use it like this. I insert the PostScript codings that makes up the ruler on the page where 
+I need to messure something. I preview with Ghostview and notes the x position from the horisontal ruler closest to my point and then I follow the line of that ruler and read the y positin on the vertical ruler to the left hand side. Now I can put in this numbers in the program code to place what ever I want to place. Then I remove the rulers code agan from my PostScript program.
+
+
+Here are the postscript code fore the rulers:<br><br>
+
+
+<!--BEGYND KODE TIL PAUSE I HOVEDTEKST-->
+<!--BEGYND KODE TIL PAUSE I HOVEDTEKST-->
+<!--BEGYND KODE TIL PAUSE I HOVEDTEKST-->
+<!--BEGYND KODE TIL PAUSE I HOVEDTEKST-->
+<!--BEGYND KODE TIL PAUSE I HOVEDTEKST-->
+
+<!--SANSEKOL 3-->
+<td align="left" valign="top" width="8%"></td>
+</tr>
+</table>
+
+
+<!--AFSLUT KODE TIL PAUSE HOVEDTEKST-->
+<!--AFSLUT KODE TIL PAUSE HOVEDTEKST-->
+<!--AFSLUT KODE TIL PAUSE HOVEDTEKST-->
+<!--AFSLUT KODE TIL PAUSE HOVEDTEKST-->
+<!--AFSLUT KODE TIL PAUSE HOVEDTEKST-->
+
+
+<!--BEGYND PREBOX-->
+<!--BEGYND PREBOX-->
+<!--BEGYND PREBOX-->
+<!--BEGYND PREBOX-->
+<table align="center" bgcolor="#FFFFFF" border="0" cellpadding="0" cellspacing="0" width="740">
+<tr><!--SANSEKOL 1-->
+<td align="center" valign="top" width="25%"></td>
+<!--SANSEKOL 2-->
+<td align="left" valign="top" width="75%">
+<pre>
+%***begin***ruler***begin***ruler***begin***ruler***begin**
+%------------------------- RULERS -------------------------
+%-------------------------XXX***XXX------------------------
+gsave
+/Times-Bolt-Italic findfont 12 scalefont setfont
+/RV { /rv exch def } def 0 RV    %Rulers vertical position
+%------------------ DEFINE HORISONTAL RULER -----------------
+/hruler {
+25 rv moveto (.25 ) show 50 rv moveto (.50 ) show 
+75 rv moveto (.75 ) show 100 rv moveto (.100 ) show 125 rv moveto (.25 ) show 
+150 rv moveto (.150 ) show 175 rv moveto (.75 ) show 200 rv moveto (.200 ) show 
+225 rv moveto (.25 ) show 250 rv moveto (.250 ) show 275 rv moveto (.75 ) show 
+300 rv moveto (.300 ) show 325 rv moveto (.25 ) show 350 rv moveto (.350 ) show 
+375 rv moveto (.75 ) show 400 rv moveto (.400 ) show 425 rv moveto (.25 ) show 
+450 rv moveto (.450 ) show 475 rv moveto (.75 ) show 500 rv moveto (.500 ) show 
+525 rv moveto (.25 ) show 550 rv moveto (.550 ) show 575 rv moveto (.75 ) show 
+600 rv moveto (.600 ) show 625 rv moveto (.25 ) show 650 rv moveto (.650 ) show 
+675 rv moveto (.75 ) show 700 rv moveto (.700 ) show } def
+%------------- END OF DEFINE HORISONTAL RULER -------------
+/go_up { 50 rv add RV } def
+/phr { go_up hruler } def %Place horisontal ruler
+%---------------------- VERTICAL RULER --------------------
+0 0 moveto (.0 ) show 0 25 moveto (.25 ) show 0 50 moveto (.50 ) show 
+0 75 moveto (.75 ) show 0 100 moveto (.100 ) show 0 125 moveto (.25 ) show 
+0 150 moveto (.150 ) show 0 175 moveto (.75 ) show 0 200 moveto (.200 ) show 
+0 225 moveto (.25 ) show 0 250 moveto (.250 ) show 0 275 moveto (.75 ) show 
+0 300 moveto (.300 ) show 0 325 moveto (.25 ) show 0 350 moveto (.350 ) show 
+0 375 moveto (.75 ) show 0 400 moveto (.400 ) show 0 425 moveto (.25 ) show 
+0 450 moveto (.450 ) show 0 475 moveto (.75 ) show 0 500 moveto (.500 ) show 
+0 525 moveto (.25 ) show 0 550 moveto (.550 ) show 0 575 moveto (.75 ) show 
+0 600 moveto (.600 ) show 0 625 moveto (.25 ) show 0 650 moveto (.650 ) show 
+0 675 moveto (.75 ) show 0 700 moveto (.700 ) show 0 725 moveto (.25 ) show 
+0 750 moveto (.750 ) show 0 775 moveto (.75 ) show 0 800 moveto (.800 ) show 
+0 825 moveto (.25 ) show 0 850 moveto (.850 ) show 0 875 moveto (.75 ) show 
+%------------------- END OF VERTICAL RULER ------------------
+hruler phr phr phr phr phr phr phr phr phr phr phr phr phr phr phr
+%-------------------------XXX***XXX------------------------
+%---------------------- END OF RULERS ---------------------
+%***end***ruler***end***ruler***end***ruler***end***ruler**
+</pre>
+</td></tr></table>
+<!--AFSLUT PREBOX-->
+<!--AFSLUT PREBOX-->
+<!--AFSLUT PREBOX-->
+<!--AFSLUT PREBOX-->
+
+<!--BEGYND KODE TIL HOVEDTEKST-->
+<!--BEGYND KODE TIL HOVEDTEKST-->
+<!--BEGYND KODE TIL HOVEDTEKST-->
+<!--BEGYND KODE TIL HOVEDTEKST-->
+<table align="center" bgcolor="#FFFFFF" border="0" cellpadding="0" cellspacing="0" width="740">
+<tr><!--SANSEKOL 1-->
+<td align="center" valign="top" width="25%"></td>
+<!--SANSEKOL 2-->
+<td align="left" valign="top" width="66%">
+<!--AFSLUT KODE TIL HOVEDTEKST-->
+<!--AFSLUT KODE TIL HOVEDTEKST-->
+<!--AFSLUT KODE TIL HOVEDTEKST-->
+<!--AFSLUT KODE TIL HOVEDTEKST-->
+<br>
+<p align="center">
+<img src="/web/20070612172200im_/http://www.home.no/mlinux/ruler1.jpg" width="204" height="199" border="0">
+</p>
+You can also use the rulers with the text box concept (pressented in David Byram-Wigfield book <i>Practical PostScript</i>) to ajust the values af the LM, RM, TM and BM variables. In this case you should place the rulers just before the grestore of the transleted textbox space.<br>
+<br>
+eks.:<br>
+gsave 72 72 translate<br>
+%Your textbox text<br>
+%Paste the rulers here<br>
+grestore<br>
+<br>PUT TOGETHER A LARGE POSTSCRIPT PROGRAM WITH CAT<br>
+<br>
+If you use UNIX (Linux) you can have good use of the small basic command 'cat' for working with a large PostScript program. With 'cat' it is easy to work on your PostScript program in some smaller separate files and then finally putting it together in to one file.<br>
+Ex. if you have one file with the prolog of your PostScript program (the part where all the routines is defined) called:<br>
+<br>
+top.ps<br>
+<br>
+Then you have a file with a PostScript/eps image (and you have remembered to remove the 'showpage' in the bottom of that file) called:<br>
+<br>
+image.ps<br>
+<br>
+Finally you have a file with the text that you want to be on top of, or together with the image (and you have remembered to put a 'showpage' in the end of this file) called:<br>
+<br>
+text.ps<br>
+<br>
+Now you want to put it all together as one PostScript program called my.ps<br>
+<br>
+#writing top.ps to a new file called my.ps<br><br>cat top.ps &gt; my.ps<br>
+<br>  #adding image.ps to the bottom of my.ps<br>
+<br>
+cat image.ps &gt;&gt; my.ps<br>
+<br> #adding text.ps to the bottom of my.ps<br>
+<br>
+cat text.ps &gt;&gt; my.ps<br>
+<br>
+Now it is one PostScript program and you can view it with Ghostview if you like.<br>
+If you have file names with the same name and just a deferent number in the end like this:<br>
+<br>
+myps.01<br>
+myps.02<br>
+myps.03<br>
+myps.04<br>
+myps.05<br>
+<br>
+You can put them all together in the right order in one short command:<br>
+<br>
+cat myps* &gt; my.ps<br>
+<br>
+<br>
+
+A BIT MORE ON BASIC UNIX TOOLS, NOW WITH SHELL SCRIPTS<br>
+<br>
+The following is only useful if you use some kind of Unix with the bash 
+shell.<br>
+Small Unix commands like 'cat' can be used in shell scripts and it is very 
+ease to make that kind of small shell script.<br>
+I use a handful of them to automata some tasks 
+when working in direct postscript with text and images.
+For instance:<br>
+<br>
+- Putting a PostScript program together from three separate files; a top, 
+an image file and a text file while at the same time removing the 'showpage' 
+from the bottom of the image file and substituting some carakteres in the 
+text file with there respective escape encodings (see <a href="fonts.htm">fonts</a>) and finaly add the showpage ad the very bottom. 
+<br>
+- Or doing the same thing but now also adding the ruler and so on. 
+<br>
+For these scripts i use the basic Unix commands 'echo', 'cat' and 'sed'. The operator's 
+'&gt;', '&gt;&gt;' and '|', the parser ';' and the argument variable '$1'. <br><br>
+ look at this it is only seven concepts and only 'sed' takes more then a few minutes to understand the rest is real simple. With this simple tools you can start to "cook your one recipes".<br>
+<br>
+I also use a shell scripts to work with images. For instance I have one to split a big BMP image in to two images with separate names, converting both in to PostScript with a specific compression and a predetermined placement on the paper. <br>
+For this script I use the above mentioned concepts plus some netpbm tools and of course sam2p.<br><br>
+There is a nice shell script tutorial here <p align="center"><a href="https://web.archive.org/web/20070612172200/http://mercury.chem.pitt.edu/~sasha/LinuxFocus/English/September2001/article216.shtml">http://mercury.chem.pitt.edu/~sasha/LinuxFocus/English/September2001/article216.shtml</a></p>
+You will find an example of one of my shell scripts on the <a href="fonts.htm">font page</a> on this site. If you like to see more of the shell scripts I used them when working on my picture book in Direct PostScript just send me an e-mail.  <br>
+<br><br>
+/Mikkel
+<br><br><br>
+<p align="right"><a href="sitemap.htm"><font size="-2">site map</font></a></p>
+<!--SLUT PÅ HOVEDTEKST-->
+<!--SLUT PÅ HOVEDTEKST-->
+<!--SLUT PÅ HOVEDTEKST-->
+<!--SLUT PÅ HOVEDTEKST-->
+</td>
+<!--SANSEKOL 3-->
+<td align="left" valign="top" width="8%"></td>
+</tr>
+</table><!--SANSETAB 3X-->
+<table align="center" bgcolor="#FFFFFF" border="0" cellpadding="0" cellspacing="0" width="740">
+<tr><!--SANSEKOL 1-->
+<td align="center" valign="top" width="25%"></td>
+<!--SANSEKOL 2-->
+<td align="left" valign="top" width="66%">
+<!-- Hovedtekst genoptages--><br>
+<br><br><!--her slutter hovedteksten--></td>
+</tr><!--SANSEKOL 3-->
+<td align="left" valign="top" width="8%"></td>
+</tr>
+</table>
+
+<!--MUNDTAB 1X-->
+<table align="center" bgcolor="#FFFFFF" border="0" cellpadding="0" cellspacing="0" width="740" background="/web/20070612172200im_/http://www.home.no/mlinux/mainbund.png">
+<tr><!--VENUSKOL 1-->
+<td height="29" valign="top" width="740"></td>
+</tr>
+</table>
+<!-- Start på ZIP Stat kode -->
+<!-- Start på ZIP Stat kode -->
+<!-- Start på ZIP Stat kode -->
+<!-- Start på ZIP Stat kode -->
+<script language="JavaScript" type="text/javascript">
+<!--
+far="Andre"; jav="Ved ikke"; skh="Andre"; jav=navigator.javaEnabled(); 
+ref=""+escape(top.document.referrer); nav=navigator.appName;
+if (navigator.appName == "Netscape" && (navigator.appVersion.charAt(0) == "2" || navigator.appVersion.charAt(0) == "3")) {skriv=false;} else {skriv=true;}
+if (skriv==true) { skh=screen.width + "x" + screen.height;
+if (nav != "Netscape"){far=screen.colorDepth;} else {far=screen.pixelDepth;}
+puri="brugernavn=mlinux&amp;version=150&amp;ssto="+skh+"&amp;referer="+ref+"&amp;colors="+far+"&amp;java="+jav+"&amp;js=true&amp;billed=trans&amp;taelnavn=";
+document.write("<a href=\"http://zipstat.dk/zipstat/stats.php?brugernavn=mlinux\" target=\"_top\">");
+document.write("<img height=\"1\" width=\"1\" border=\"0\" src=\"http://zipstat.dk/zipstat/zipstat.php?"+puri+"\" alt=\"\" align=left><\/a>"); }
+//-->
+</script> <noscript>
+<a href="https://web.archive.org/web/20070612172200/http://zipstat.dk/zipstat/stats.php?brugernavn=mlinux" target="_top">
+<img height="1" width="1" border="0" src="https://web.archive.org/web/20070612172200im_/http://zipstat.dk/zipstat/zipstat.php?brugernavn=mlinux&amp;js=false&amp;billed=trans&amp;taelnavn=" alt="" align="left"></a>
+</noscript>
+<!-- Slut på ZIP Stat kode -->
+<!-- Slut på ZIP Stat kode -->
+<!-- Slut på ZIP Stat kode -->
+<!-- Slut på ZIP Stat kode -->
+</body>
+</html>
+<!--
+     FILE ARCHIVED ON 17:22:00 Jun 12, 2007 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 05:29:30 Mar 04, 2025.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  captures_list: 2.951
+  exclusion.robots: 0.023
+  exclusion.robots.policy: 0.01
+  esindex: 0.011
+  cdx.remote: 51.599
+  LoadShardBlock: 869.567 (3)
+  PetaboxLoader3.datanode: 464.422 (4)
+  PetaboxLoader3.resolve: 268.858 (2)
+  load_resource: 261.514
+-->

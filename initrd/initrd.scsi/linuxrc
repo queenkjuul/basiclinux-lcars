@@ -1,0 +1,37 @@
+#!/bin/sh
+PATH=/bin
+
+insmod cdrom
+insmod isofs
+
+echo "Enter additional drivers disk (if you have one) and press Enter"
+read _
+mount -t msdos /dev/fd0 /floppy
+test -e /floppy/drivers.sh && sh /floppy/drivers.sh
+
+while :; do
+mount -t proc proc /proc 2>/dev/null
+
+echo "Searching for root filesystem image..."
+
+for dev in hda hdb hdc hdd sda sdb sdc sdd sr0;do
+mount /dev/$dev /DOS 2>/dev/null
+test -e /DOS/baslin/fs.img && echo "Found root image on /dev/"$dev && break
+umount /DOS 2>/dev/null
+echo "Root image not found on /dev/"$dev
+done
+
+test -e /DOS/baslin/fs.img && break
+
+echo "Root image not found. Specify a block device and hit Enter"
+read a
+mount -t msdos $a  /DOS
+test -e /DOS/baslin/fs.img && break
+umount /DOS
+echo '/baslin/fs.img not found on' $a
+
+done
+
+losetup /dev/loop0 /DOS/baslin/fs.img
+umount /proc
+

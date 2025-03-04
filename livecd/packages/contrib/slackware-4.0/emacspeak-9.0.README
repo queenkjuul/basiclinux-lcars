@@ -1,0 +1,109 @@
+
+NOTE:  This information comes from emacspeak's info file.  For more
+complete information on configuring emacspeak, see 'info emacspeak'
+after installing the package.
+
+
+
+   Emacspeak is an Emacs subsystem that allows the user to get feedback
+using synthesized speech.
+
+   Screen reading programs allow a visually impaired user to get
+feedback using synthesized speech. Such programs have been commercially
+available for well over a decade. Most of them run on PC's under DOS,
+and there are now a few screen-readers for the Windows platform.
+However, screen-readers for the UNIX environment have been conspicuous
+in their absence.
+
+   This means that most visually impaired computer users face the
+additional handicap of being DOS-impaired -- a far more serious
+problem:-)
+
+   Emacspeak is an emacs subsystem that provides basic speech access
+functionality.  Emacspeak will always have the shortcoming that it will
+only work under Emacs.  This said, there is very little that cannot be
+done inside Emacs, so it's not a real shortcoming:-)
+
+   Emacspeak does have a significant advantage: since it runs inside
+Emacs, a structure-sensitive, fully customizable editor, Emacspeak
+often has more context-specific information about what it is speaking
+than its commercial counterparts.  In this sense, Emacspeak is not a
+"screenreader", it is a subsystem that produces speech output.  A
+traditional screen-reader speaks the content of the screen, leaving it
+to the user to interpret the visually laid-out information.  Emacspeak,
+on the other hand, treats speech as a first-class output modality; it
+speaks the information in a manner that is easy to comprehend when
+listening.
+
+   This initial version provides a basic speech subsystem for Emacs;
+using Emacs' power and flexibility, it has proven straightforward to add
+modules that customize how things are spoken, e.g. depending on the
+major/minor mode of a given buffer.  Note that the basic speech
+modules that customize how things are spoken, e.g. depending on the
+major/minor mode of a given buffer.  Note that the basic speech
+functionality provided by Emacspeak is sufficient to use most Emacs
+packages effectively; adding package-specific customizations makes the
+interaction much smoother.  This is because package-specific extensions
+can take advantage of the current context.
+
+   Emacspeak currently comes with speech extensions for several popular
+Emacs subsystems and editing modes.  I would like to thank their
+respective authors for their wonderful work which makes Emacs more than
+a text editor(1).  For those who doubt the credibility of a speech
+extension to Emacs working as a full blown spoken interface, here is a
+list of Emacs subsystems that have been customized to work with speech
+output.
+
+  1. W3 for surfing the WWW.
+
+  2. VM For reading and replying to email.
+
+  3. Gnus  for reading Usenet news.
+
+  4. Calendar for maintaining appointments etc.
+
+  5. auctex for editing TeX and LaTeX.
+
+  6. Dired for navigating a file system.
+
+  7. C and C++ editing extensions.
+
+  8. Calc for working with the Emacs Calculator.
+
+  9. Info for listening to online documentation.
+
+ 10. Folding for using Emacs as a structured folding editor.
+
+ 11. Tempo a package that allows for editing templates.  This extension
+     makes html-helper-mode speech friendly.
+
+ 12. Ispell for spell checking files.
+
+ 13. Eterm for launching terminal based programs.  This extension
+     enables you to login to another system and get spoken feedback, as
+     well as running programs that can only be run from the shell.
+     Note: eterm is a new improved terminal emulator by Perl Bothner
+     (bothner@cygnus.com)
+
+ 14. Buffer-menu for navigating through the list of currently open
+     buffers.
+
+ 15. Comint for command interpreters running in an inferior process.
+
+   In addition, other editing modes like Perl and TCL modes work
+fluently with emacspeak Emacspeak; there is currently no speech
+extension for these because I have not found a need for it.
+
+   Emacs-19's font-locking facilities are extended to the speech output
+as well; for instance, a user can customize the system to have
+different types of text spoken using different kinds of voices (speech
+fonts).  Currently, this feature is used to provide "voice locking" for
+many popular editing modes like c-mode, tcl-mode, perl-mode,
+emacs-lisp-mode etc.
+
+   The basic concepts used by Emacspeak are simple; all of the Emacs
+cursor movement commands as well as the various input-output functions
+are adapted to provide speech feedback.  Hence, a user can just use
+Emacs as he normally would; Emacspeak works behind the scene to give
+audio feedback in addition to updating the screen.
+

@@ -1,0 +1,3 @@
+Internet Relay Chat client programs.
+
+Contains both ircii-4.4 and ircii-pana_0.74p2 (BitchX).

@@ -1,0 +1,62 @@
+------------------------------------------------------------------------
+LOGECHO   Echo with date/time		Ver 2.2 (c) 2001 Horst Schaeffer
+------------------------------------------------------------------------
+
+LOGECHO is used like ECHO, and supports the tokens for all sorts of data
+from the current date and time. LOGECHO was especially made to produce
+custom entries for logfiles, but it can also be used to write commands
+into a temporary BAT file (to rename, set, pkzip etc...)
+
+Tokens (see also: LOGECHO /?):
+
+	upper case tokens:		lower case tokens:
+
+	$D  day 			$h  hour
+	$M  month (01..12)		$m  minutes
+	$N  month (Jan..Dec)		$s  seconds
+	$H  month (hex 1..C)		$c  sec/100
+	$Y  year (00..99)
+	$C  century (19|20)
+	$W  day of week (Sun..Sat)
+	$V  day of week (0..6)
+	$Z  day of year (001..366)
+
+	$$  Dollar symbol
+	$+  new line
+
+
+Example for a logfile (to append use double redirection symbols!):
+
+	LOGECHO ----------  $W $D $N $Y, FDNC>> FD.LOG
+	LOGECHO # $h:$m:$s  GUS %NL% node\>> FD.LOG
+
+
+To generate a variable with YYMMDD for example, just produce the
+appropriate SET command:
+
+	LOGECHO set FN=$Y$M$D> temp.bat
+	call TEMP.BAT
+
+Be sure that there is no blank space before the redirection symbol (>)
+because this would be included in the variable.
+
+Remember to delete temporary batch files!
+
+To produce 3 variables Y, M, D:
+
+	LOGECHO set Y=$C$Y$+set M=$M$+set D=$D> temp.bat
+	call TEMP.BAT
+
+For a RENAME:
+
+	LOGECHO ren FILES.BBS $Y$M$D.BBS > temp.bat
+	for %%a in (call del) do %%a TEMP.BAT
+
+
+To test LOGECHO output at the command prompt: omit redirection.
+
+----
+LOGECHO is freeware by Horst Schaeffer - no warranties of any kind
+Email: horst.schaeffer@gmx.net
+
+= 04 AUG 2002

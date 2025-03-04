@@ -1,0 +1,2 @@
+#!/bin/sh
+appletviewer /usr/local/java/examples/OpenlookButtons/example.html

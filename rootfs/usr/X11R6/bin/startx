@@ -53,7 +53,7 @@ read mouse
 
 test -z "$mouse" && mouse=psaux
 umount /dev 2>/dev/null
-test $READONLY && mount -o loop /etc/$mouse.img /dev 2>/dev/null
+test $READONLY && mount -o loop /var/livecd/$mouse.img /dev 2>/dev/null
 test ! $READONLY && ln -sf /dev/$mouse /dev/mouse
 
 echo "Enter your number of mouse buttons"
@@ -84,4 +84,4 @@ test -z $NOSAVEX && test ! $READONLY && echo $screen > /etc/Xconfig
 test -z $NOSAVEX && test ! $READONLY && test -w /etc/Xconfig && echo $mouse >> /etc/Xconfig
 test -z $NOSAVEX && test ! $READONLY && test -w /etc/Xconfig && echo $buttons >> /etc/Xconfig
 test -z $NOSAVEX && test ! $READONLY && test -w /etc/Xconfig && echo $WM >> /etc/Xconfig
-XAUTHORITY=$XAUTHORITY xinit -- /usr/X11/bin/Xvesa -screen $screen -"$buttons"button -terminate
+XAUTHORITY=$XAUTHORITY xinit -- /usr/X11/bin/Xvesa -screen $screen -"$buttons"button -terminate "$@"

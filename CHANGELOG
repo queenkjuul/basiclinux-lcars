@@ -1,5 +1,22 @@
 # Changelog
 
+## Beta 1 Rev 5
+
+Mostly bugfixes here. Rev 5 is the most useful image yet - previously, `smbfs` and `dns` were both broken in the LiveCD environment, severely hampering network-based rescue operations. That's all been fixed now. This should be the first release to actually accomplish my original use-case goal: boot from CD, mount an SMB share, and `dd` a full HDD image over the network to my backup server. Granted, `smbfs` file size limit of 2GB means I need to `split` the backup into many pieces...
+
+Not as big as Rev 4, because it's been discovered there will need to be a Rev 6 where we rebase all our changes onto the root BL3 filesystem. Changes we've made somewhere along the way have broken the documented compatibility with Slack 9 glibc-2.3.1, which means no Opera and no Dillo. So the documentation is still a little out of whack for Rev 5, at least as far as post-install customization.
+
+After the rebase, really hoping Dillo will work with `glibc-2.3.1` and that installing `glibc-2.3.1` doesn't totally break any other apps (still skeptical of `AbiWord` based on mention in old BL3 contribs). Also, I should have an opportunity to finally rule on whether a 2.4.20 kernel can be built small enough to attempt an upgrade.
+
+- Java is fixed across the board - wrappers improved, examples added, and `java`, `javac`, and `jre` have all now been tested working. `JAVA_HOME` is now set in `/etc/profile` (or added at install time via `jdk117.tgz`) ([#24](https://github.com/queenkjuul/basiclinux-lcars/issues/24))
+- MS-DOS boot environment (`cdboot.ima`) has been retooled to support automatic booting from any CD drive (not just the first) ([#16](https://github.com/queenkjuul/basiclinux-lcars/issues/16))
+- System now creates a read-write `/etc` ramdisk at boot time. This fixes DNS failures (`udhcpc` cannot save DNS server to `/etc/resolv.conf`) as well as `smbfs` mount errors (`/etc/mtab~` lock file was not writable. `mount -t smbfs` does not work, see [Wiki](https://github.com/queenkjuul/basiclinux-lcars/wiki/Usage)) (costs ~160K RAM, bypass with `lowmem` boot parameter) ([#17](https://github.com/queenkjuul/basiclinux-lcars/issues/17))
+- Relocate `test.mp3` to `/root` (so it isn't overwritten by `startx`) ([#18](https://github.com/queenkjuul/basiclinux-lcars/issues/18))
+- Various documentation improvements
+- Added `txtutils` and `xlibs` from Slackware 4.0 (was missing `split`; Java AWT apps were failing without `xlibs`)
+- Repo organization improvements, additional `contrib` files
+- Can now override `Xvesa` mode from command-line (`startx -mode 0x011A` or similar, list modes with `Xvesa -listmodes`)
+
 ## Beta 1 Rev 4
 
 Well, Rev 4 has ended up being a pretty huge update. It's also kind of still a work-in-progress, with some known issues that will be fixed in Rev 5. It's looking like 5 may not be the last of the Beta 1 series, but things are approaching a good place.

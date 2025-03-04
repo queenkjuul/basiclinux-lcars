@@ -1,0 +1,3 @@
+#!/bin/sh
+
+jre -cp /usr/local/java/examples Hellorld

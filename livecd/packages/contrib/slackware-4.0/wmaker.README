@@ -1,0 +1,44 @@
+
+This is WindowMaker-0.51.2, a window magager for X11.
+
+To install this package, use this command:
+
+installpkg wmaker.tgz
+
+To activate WindowMaker, run 'wmaker.inst'.
+
+Here is some additional information from the man page:
+
+
+Window Maker(1x)                                 Window Maker(1x)
+
+NAME
+       wmaker - X11 window manager with a NEXTSTEP look
+
+SYNOPSIS
+       wmaker [-options]
+
+DESCRIPTION
+       Window Maker is a X11 window manager with a NEXTSTEP look.
+       It tries to emulate NeXT's look as much as  possible,  but
+       it deviates from it as necessary.
+
+SEE ALSO
+       The Window Maker User Guide
+
+       The Window Maker FAQ
+
+       X(1x),  wdwrite(1x),  wxcopy(1x),  geticonset(1x),   seti-
+       cons(1x),   wmaker(1x),  wxpaste(1x),  getstyle(1x),  set-
+       style(1x), wmsetbg(1x)
+
+AUTHOR
+       Window Maker was written by Alfredo K. Kojima <kojima@win-
+       dowmaker.org>,  Dan  Pascu <dan@windowmaker.org> with con-
+       tributions from many people around the Internet.
+
+       This manual page was written by Marcelo E. Magallon, <mma-
+       gallo@debian.org>.
+
+                           August 1998                          3
+
