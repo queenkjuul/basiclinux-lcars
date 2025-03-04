@@ -1,0 +1,454 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head><script type="text/javascript" src="https://web-static.archive.org/_static/js/bundle-playback.js?v=7YQSqjSh" charset="utf-8"></script>
+<script type="text/javascript" src="https://web-static.archive.org/_static/js/wombat.js?v=txqj7nKC" charset="utf-8"></script>
+<script>window.RufflePlayer=window.RufflePlayer||{};window.RufflePlayer.config={"autoplay":"on","unmuteOverlay":"hidden"};</script>
+<script type="text/javascript" src="https://web-static.archive.org/_static/js/ruffle/ruffle.js"></script>
+<script type="text/javascript">
+    __wm.init("https://web.archive.org/web");
+  __wm.wombat("http://www.home.no:80/mlinux/tour.htm","20070504180541","https://web.archive.org/","web","https://web-static.archive.org/_static/",
+	      "1178301941");
+</script>
+<link rel="stylesheet" type="text/css" href="https://web-static.archive.org/_static/css/banner-styles.css?v=p7PEIJWi" />
+<link rel="stylesheet" type="text/css" href="https://web-static.archive.org/_static/css/iconochive.css?v=3PDvdIFv" />
+<!-- End Wayback Rewrite JS Include -->
+
+<title>Netpbm tutorial</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="author" content="Mikkel Meinike Nielsen">
+<meta name="keywords" content="image manipulation, pbm, netpbm, linux CLI image editing">
+<meta name="description" content="A" small illustrated tour on how you can cut out a figure from a color photo and insert that figure into another background such as another color photo. photo with netpbm and po">
+<link rev="made" href="mailto:mimeini@linuxmail.org">
+</head>
+<!--****************///\\\tour///\\\****************-->
+<body bgcolor="#400000" text="black" link="#400000" vlink="#400005" alink="#400010">
+<!--............................................................-->
+<!--Tabel Hovedbox-->
+<!--\||/..\||/..\||/..\||/..\||/..\||/..\||/..\||/..\||/..\||/..-->
+<!--.\/....\/....\/....\/....\/....\/....\/....\/....\/....\/...-->
+
+
+<table align="center" bgcolor="#FFFFFF" border="0" cellpadding="0" cellspacing="0" width="740" background="/web/20070504180541im_/http://www.home.no/mlinux/maintop.png">
+<tr><!--VENUSKOL 1-->
+<td height="29" valign="top" width="740"></td>
+</tr>
+</table>
+<!--SANSETAB 3X-->
+<table align="center" bgcolor="#FFFFFF" border="0" cellpadding="0" cellspacing="0" width="740">
+<tr><!--SANSEKOL 1-->
+<td align="center" valign="top" width="25%">
+<!-- Venstre kolonne tekst--><a href="https://web.archive.org/web/20070504180541/http://petition.eurolinux.org/"><img src="/web/20070504180541im_/http://www.home.no/mlinux/nopat.gif" border="0"></a> 
+
+<br>
+<font size="-2"><a href="index.htm"><br>
+HOME</a><br></td>
+
+<!--SANSEKOL 2-->
+<td align="left" bgcolor="white" valign="top" width="66%">
+
+<!--***************************-->
+<!--Main content: Mikkel her er det stykke hvor du skal tilføje og redigere ting -->
+<!--***********_||_************-->
+<!--***********\  /************-->
+<!--************\/*************-->
+
+
+<br>
+<p align="center"><b>Illustrated tour on Po and Netpbm</b></p>
+
+To cut out a figure (an irregular shape) from a color photo and insert that figure into another 
+
+background such as another color photo is certainly no big news in the history of digital image manipulation so 
+
+you might wonder why I want to do this operation in such a strange and complicated way. Well it has to do 
+
+with computer power limitations. In the Gnu/Linux world we have a nice image manipulation program called 
+
+Gimp. Gimp can cut out a figure from a color photo and insert that figure into another color photo very 
+
+well, but it won't work with a very limited computer power. Even with 64 MB RAM I sometimes have an 
+
+image operation that slows down the computer so much that there is no point in trying to adjust things with 
+
+the mouse. I am practically stalled. Sometimes I can do the same operation on the same computer with a precise 
+
+netpbm command in just a few. For this experiment I use a computer with 8 MB RAM. This computer 
+
+wouldn't be able to do anything thing with Gimp. So this is the joy of doing an advanced image editing 
+
+task with very little computer power, but still with a good result and within reasonable time and effort.<br>
+<br>
+
+The task is to cut out a figure (an irregular shape) from a color photo and insert that figure into another 
+
+background such as another color photo. Po, which is an SVGAlib paint 
+
+tool, is not very well suited for doing this for two reasons. Po can not do an irregular selection. And Po 
+
+only works with 256 colors, witch is not enough for a color photo. With <a href="https://web.archive.org/web/20070504180541/http://netpbm.sourceforge.net/">Netpbm</a> tools you can do the operation in full color (24 bit) but 
+
+here you will need an alpha mask that has the shape of the figure you want to cut out. So the idea here is 
+
+to use the fine painting tools within Po to draw a strong black line around the figure (in a grayscale
+ 
+
+implementation of the image). Then with netpbnm extract the black line out from the rest of the 
+
+grayscale image and from that black line create the mask to finely cut out the figure and passte it into 
+
+the other color photo with Netpbm tools. There is a lot of Netpbm "gymnastics" involved in that process, but 
+
+netpbm has the advantage that the commands can be linked together as a 'bash shell script'. (There is a 
+
+little about shell scripts at the end of the 'text an image page' <a href="tex-img.htm">-here-</a>) So the 
+
+whole process can be done with the outlining in Po and four shell scripts which in practice means four commands opening the image twice in Po.<br>
+<br>
+You can view ore download the scripts used in the process. There are comments inside the script text.<br>
+<br>
+The process goes like this:<br>
+<br>
+1. Run <a href="popnma">popnma</a> which will: Prepare a special grayscale version of the initial image and open Po with that image.<br>
+<br>
+1b. Do the outline in Po with black color with the curves tool and save it.<br>
+<br>
+2. Run <a href="popnmb">popnmb</a> which will: Extract the black line out of the image and open Po with that image.<br>
+<br>
+2b. Fill out the background in Po with the bucket-fill tool and save it.<br>
+<br>
+3. Run <a href="popnmc">popnmc</a> which will: Smooth the edge of the figure a bit.<br>
+<br>
+4. Run <a href="puton">puton</a> which will: Insert the figure in to the new background image.<br>
+<br>
+The image series below illustrates the process. Maybe it is not possible to judge from this small images, but I think the result is quite good. <br>
+<br>
+<br>
+<br><b>The Tour</b><br><br><br><br>
+
+
+
+<!--************/\*************-->
+<!--***********/  \************-->
+<!--**********/-||-\***********-->
+<!--Main content-->
+<!--***************************-->
+<td align="left" valign="top" width="8%"></td>
+</tr>
+</table>
+
+<!--./\..../\..../\..../\..../\..../\..../\..../\..../\..../\...-->
+<!--/||\../||\../||\../||\../||\../||\../||\../||\../||\../||\..-->
+<!--Tabel Hovedbox-->
+<!--............................................................-->
+
+
+<!--............................................................-->
+<!--Side side tabel-->
+<!--\||/..\||/..\||/..\||/..\||/..\||/..\||/..\||/..\||/..\||/..-->
+<!--.\/....\/....\/....\/....\/....\/....\/....\/....\/....\/...-->
+
+
+
+
+
+<table align="center" bgcolor="#FFFFFF" border="0" cellpadding="0" cellspacing="0" width="740">
+<tr>
+<td valign="top" width="18"></td>
+<td align="center" valign="top" width="314">
+<!--***************************-->
+<!--Venstre side -->
+<!--***********_||_************-->
+<!--***********\  /************-->
+<!--************\/*************-->
+
+
+
+
+The photo with the figure I would like to cut out.<br>
+(Yes it is me :-))<br>
+<br>
+<img src="/web/20070504180541im_/http://www.home.no/mlinux/tour1.jpg" width="196" height="288" alt="tour1.jpg"><br>
+<!--************/\*************-->
+<!--***********/  \************-->
+<!--**********/-||-\***********-->
+<!--Venstre side-->
+<!--***************************-->
+</td>
+<td align="center" valign="top" width="408">
+
+<!--***************************-->
+<!--Højre side -->
+<!--***********_||_************-->
+<!--***********\  /************-->
+<!--************\/*************-->
+
+
+The photo I want to use as a new background.<br>
+<br>
+<br>
+
+<img src="/web/20070504180541im_/http://www.home.no/mlinux/tour2.jpg" width="247" height="344" alt="tour2.jpg"><br>
+
+
+
+
+<!--************/\*************-->
+<!--***********/  \************-->
+<!--**********/-||-\***********-->
+<!--Højre side-->
+<!--***************************-->
+</td>
+</tr>
+</table>
+<!--./\..../\..../\..../\..../\..../\..../\..../\..../\..../\...-->
+<!--/||\../||\../||\../||\../||\../||\../||\../||\../||\../||\..-->
+<!--Side side tabel-->
+<!--............................................................-->
+
+<!--............................................................-->
+<!--Tabel Hovedbox-->
+<!--\||/..\||/..\||/..\||/..\||/..\||/..\||/..\||/..\||/..\||/..-->
+<!--.\/....\/....\/....\/....\/....\/....\/....\/....\/....\/...-->
+
+
+<table align="center" bgcolor="#FFFFFF" border="0" cellpadding="0" cellspacing="0" width="740">
+<tr>
+<td align="center" valign="top" width="25%">
+<!-- Venstre kolonne tekst-->
+</td>
+<td align="left" bgcolor="white" valign="top" width="66%">
+
+<!--***************************-->
+<!--Main content: Mikkel her er det stykke hvor du skal tilføje og redigere ting -->
+<!--***********_||_************-->
+<!--***********\  /************-->
+<!--************\/*************-->
+<br>
+<br>
+<p align="center">The outline made in Po on a grayscale implementation of the image.<br>
+(A heavy black line around the figure)<br>
+<br>
+<br>
+
+
+<img src="/web/20070504180541im_/http://www.home.no/mlinux/tour3.jpg" width="197" height="288" alt="tour3.jpg"><br>
+<br>
+<br>
+The line extracted from the rest of the grayscale image. Done with netpbm tools.
+<br>
+<br>
+<img src="/web/20070504180541im_/http://www.home.no/mlinux/tour4.jpg" width="196" height="288" border="1" alt="tour4.jpg"><br>
+<br>
+<br>
+The outside of the figure filled out with black. That operation is done "manually" in Po with the 
+
+bucked-fill tool. (I have an idea that this could also be done with some Netpbm tool, but I have 
+not yet figured out how. If anyone has an idea I would be happy to hear about it. ...Yes I already 
+had a comment on the subject read <a href="comment2.htm#pambackground">here</a>) 
+<br>
+<br>
+<img src="/web/20070504180541im_/http://www.home.no/mlinux/tour5.jpg" width="180" height="249" alt="tour5.jpg"><br>
+<br>
+<br>
+The same image but if you look carefully you can see that the edge has been smoothed a little bit so that the 
+
+figure will not look too "pixelated" on the new background. Done with Netpbm tools.
+<br>
+<br>
+<img src="/web/20070504180541im_/http://www.home.no/mlinux/tour7.jpg" width="180" height="249" alt="tour7.jpg"><br>
+<br>
+<br>
+<br>
+<br>
+The three images that netpbm tool 'pnmcomp' need to do the image overlay. Note that now the two images to 
+
+the left have been cropped by Netpbm tools to exactly fit the outline of the figure.
+</p>
+<br>
+<!--************/\*************-->
+<!--***********/  \************-->
+<!--**********/-||-\***********-->
+<!--Main content-->
+<!--***************************-->
+<td align="left" valign="top" width="8%"></td>
+</tr>
+</table>
+
+<!--./\..../\..../\..../\..../\..../\..../\..../\..../\..../\...-->
+<!--/||\../||\../||\../||\../||\../||\../||\../||\../||\../||\..-->
+<!--Tabel Hovedbox-->
+<!--............................................................-->
+
+
+<!--............................................................-->
+<!--Side 1, 2, 3 tabel-->
+<!--\||/..\||/..\||/..\||/..\||/..\||/..\||/..\||/..\||/..\||/..-->
+<!--.\/....\/....\/....\/....\/....\/....\/....\/....\/....\/...-->
+
+
+
+
+
+
+<table align="center" bgcolor="#FFFFFF" border="0" cellpadding="0" cellspacing="0" width="800">
+<tr>
+<td align="center" valign="top" width="266">
+<!--***************************-->
+<!--1 -->
+<!--***********_||_************-->
+<!--***********\  /************-->
+<!--************\/*************-->
+<br>
+<br>
+<br>
+<img src="/web/20070504180541im_/http://www.home.no/mlinux/tour6.jpg" width="180" height="249" alt="tour6.jpg"><br>
+<!--************/\*************-->
+<!--***********/  \************-->
+<!--**********/-||-\***********-->
+<!--1-->
+<!--***************************-->
+</td>
+<td align="center" valign="top" width="266">
+<!--***************************-->
+<!--2 -->
+<!--***********_||_************-->
+<!--***********\  /************-->
+<!--************\/*************-->
+<br>
+<br>
+<i>The alpha mask</i><br>
+<img src="/web/20070504180541im_/http://www.home.no/mlinux/tour7.jpg" width="180" height="249" alt="tour7.jpg"><br>
+<!--************/\*************-->
+<!--***********/  \************-->
+<!--**********/-||-\***********-->
+<!--2-->
+<!--***************************-->
+</td>
+<td align="center" valign="top" width="208">
+
+<!--***************************-->
+<!--3 -->
+<!--***********_||_************-->
+<!--***********\  /************-->
+<!--************\/*************-->
+<img src="/web/20070504180541im_/http://www.home.no/mlinux/tour2.jpg" width="247" height="344" alt="tour2.jpg"><br>
+<!--************/\*************-->
+<!--***********/  \************-->
+<!--**********/-||-\***********-->
+<!--3-->
+<!--***************************-->
+</td>
+</tr>
+</table>
+<!--./\..../\..../\..../\..../\..../\..../\..../\..../\..../\...-->
+<!--/||\../||\../||\../||\../||\../||\../||\../||\../||\../||\..-->
+<!--Side 1, 2, 3 tabel-->
+<!--............................................................-->
+
+
+<!--............................................................-->
+<!--Tabel Hovedbox-->
+<!--\||/..\||/..\||/..\||/..\||/..\||/..\||/..\||/..\||/..\||/..-->
+<!--.\/....\/....\/....\/....\/....\/....\/....\/....\/....\/...-->
+
+
+<table align="center" bgcolor="#FFFFFF" border="0" cellpadding="0" cellspacing="0" width="740">
+<tr>
+<td align="center" valign="top" width="25%">
+<!-- Venstre kolonne tekst-->
+</td>
+<td align="left" bgcolor="white" valign="top" width="66%">
+
+<!--***************************-->
+<!--Main content: Mikkel her er det stykke hvor du skal tilføje og redigere ting -->
+<!--***********_||_************-->
+<!--***********\  /************-->
+<!--************\/*************-->
+
+<br>
+<br>
+<p align="center">The resulting image.<br>
+<br>
+<br>
+
+
+<img src="/web/20070504180541im_/http://www.home.no/mlinux/tour8.jpg" width="247" height="344" alt="tour8.jpg"><br>
+
+<br>
+</p>
+
+As sead before you can view ore download the scripts used in the seen above process. Inside the scripts is all the netpbm operations performed and there are comments inside the script text which explains a bit of what are going on. 
+<a href="popnma">popnma</a>, <a href="popnmb">popnmb</a>, <a href="popnmc">popnmc</a> and <a href="puton">puton</a>.  
+<br>
+<br>
+/Mikkel
+<br>
+<br>
+<br>
+<p align="right"><a href="sitemap.htm"><font size="-2">site map</font></a></p>
+<!--************/\*************-->
+<!--***********/  \************-->
+<!--**********/-||-\***********-->
+<!--Main content-->
+<!--***************************-->
+<td align="left" valign="top" width="8%"></td>
+</tr>
+</table>
+
+<!--./\..../\..../\..../\..../\..../\..../\..../\..../\..../\...-->
+<!--/||\../||\../||\../||\../||\../||\../||\../||\../||\../||\..-->
+<!--Tabel Hovedbox-->
+<!--............................................................-->
+
+<table align="center" border="0" cellpadding="0" cellspacing="0" width="740" background="/web/20070504180541im_/http://www.home.no/mlinux/mainbund.png">
+<tr><!--VENUSKOL 1-->
+<td height="29" valign="top" width="740"></td>
+</tr>
+</table>
+
+<!-- Start på ZIP Stat kode -->
+<!-- Start på ZIP Stat kode -->
+<!-- Start på ZIP Stat kode -->
+<!-- Start på ZIP Stat kode -->
+<script language="JavaScript" type="text/javascript">
+<!--
+far="Andre"; jav="Ved ikke"; skh="Andre"; jav=navigator.javaEnabled(); 
+ref=""+escape(top.document.referrer); nav=navigator.appName;
+if (navigator.appName == "Netscape" && (navigator.appVersion.charAt(0) == "2" || navigator.appVersion.charAt(0) == "3")) {skriv=false;} else {skriv=true;}
+if (skriv==true) { skh=screen.width + "x" + screen.height;
+if (nav != "Netscape"){far=screen.colorDepth;} else {far=screen.pixelDepth;}
+puri="brugernavn=mlinux&amp;version=150&amp;ssto="+skh+"&amp;referer="+ref+"&amp;colors="+far+"&amp;java="+jav+"&amp;js=true&amp;billed=trans&amp;taelnavn=";
+document.write("<a href=\"http://zipstat.dk/zipstat/stats.php?brugernavn=mlinux\" target=\"_top\">");
+document.write("<img height=\"1\" width=\"1\" border=\"0\" src=\"http://zipstat.dk/zipstat/zipstat.php?"+puri+"\" alt=\"\" align=left><\/a>"); }
+//-->
+</script> <noscript>
+<a href="https://web.archive.org/web/20070504180541/http://zipstat.dk/zipstat/stats.php?brugernavn=mlinux" target="_top">
+<img height="1" width="1" border="0" src="https://web.archive.org/web/20070504180541im_/http://zipstat.dk/zipstat/zipstat.php?brugernavn=mlinux&amp;js=false&amp;billed=trans&amp;taelnavn=" alt="" align="left"></a>
+</noscript>
+<!-- Slut på ZIP Stat kode -->
+<!-- Slut på ZIP Stat kode -->
+<!-- Slut på ZIP Stat kode -->
+<!-- Slut på ZIP Stat kode -->
+</body>
+</html>
+
+<!--
+     FILE ARCHIVED ON 18:05:41 May 04, 2007 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 05:29:03 Mar 04, 2025.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  captures_list: 0.494
+  exclusion.robots: 0.019
+  exclusion.robots.policy: 0.008
+  esindex: 0.01
+  cdx.remote: 18.849
+  LoadShardBlock: 162.96 (3)
+  PetaboxLoader3.datanode: 178.89 (4)
+  PetaboxLoader3.resolve: 162.542 (2)
+  load_resource: 248.071
+-->

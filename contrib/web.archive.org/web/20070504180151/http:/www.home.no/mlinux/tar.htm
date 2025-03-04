@@ -1,0 +1,145 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head><script type="text/javascript" src="https://web-static.archive.org/_static/js/bundle-playback.js?v=7YQSqjSh" charset="utf-8"></script>
+<script type="text/javascript" src="https://web-static.archive.org/_static/js/wombat.js?v=txqj7nKC" charset="utf-8"></script>
+<script>window.RufflePlayer=window.RufflePlayer||{};window.RufflePlayer.config={"autoplay":"on","unmuteOverlay":"hidden"};</script>
+<script type="text/javascript" src="https://web-static.archive.org/_static/js/ruffle/ruffle.js"></script>
+<script type="text/javascript">
+    __wm.init("https://web.archive.org/web");
+  __wm.wombat("http://www.home.no:80/mlinux/tar.htm","20070427081346","https://web.archive.org/","web","https://web-static.archive.org/_static/",
+	      "1177661626");
+</script>
+<link rel="stylesheet" type="text/css" href="https://web-static.archive.org/_static/css/banner-styles.css?v=p7PEIJWi" />
+<link rel="stylesheet" type="text/css" href="https://web-static.archive.org/_static/css/iconochive.css?v=3PDvdIFv" />
+<!-- End Wayback Rewrite JS Include -->
+
+<title>Tar and gzip/gunzip</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="author" content="Mikkel Meinike Nielsen">
+<meta name="keywords" content="tar.gz, tar,bz2, gzip, gunzip, decompress, Unix file compression, tar help, pack, unpack" content="Small note on tar and gzip/gunzip">
+<link rev="made" href="mailto:mimeini@linuxmail.org">
+</head>
+<!--****************///\\\Postscript///\\\****************-->
+<body bgcolor="#400000" text="black" link="#400000" vlink="#400005" alink="#400010">
+<!--VENUSTAB 1X-->
+<table align="center" border="0" cellpadding="0" cellspacing="0" width="740" background="/web/20070427081346im_/http://www.home.no/mlinux/maintop.png">
+<tr><!--VENUSKOL 1-->
+<td height="29" valign="top" width="740"></td>
+</tr>
+</table>
+<!--SANSETAB 3X-->
+<table align="center" bgcolor="#FFFFFF" border="0" cellpadding="0" cellspacing="0" width="740">
+<tr><!--SANSEKOL 1-->
+<td align="center" valign="top" width="25%">
+<!-- Venstre kolonne tekst--><br>
+<a href="https://web.archive.org/web/20070427081346/http://petition.eurolinux.org/"><img src="/web/20070427081346im_/http://www.home.no/mlinux/nopat.gif" border="0"></a> <br>
+<font size="-2"><a href="index.htm"><br>
+HOME</a><br></td>
+
+<!--SANSEKOL 2-->
+<td align="left" bgcolor="white" valign="top" width="66%">
+<!-- Her begynder hovedteksten-->
+<!-- Her begynder hovedteksten-->
+<!-- Her begynder hovedteksten-->
+<!-- Her begynder hovedteksten-->
+<!-- Her begynder hovedteksten-->
+<!-- Her begynder hovedteksten-->
+<!-- Her begynder hovedteksten--><br>
+<p align="center">SMALL NOTE ON TAR AND GZIP/GUNZIP<br>
+<br>
+By Mikkel Meinike Nielsen<br>
+<a href="https://web.archive.org/web/20070427081346/http://www.mimo.1go.dk/contact.htm">Contact</a></p>
+Again one thing that it has taken me a long time to dig. 'Tar' and 'gzip/gunzip' are different processes. 'Tar' dos not reduce file size it only bundles files while keeping track on directories and file names. <br><br>
+
+tar cv -f my.tar file1 file2<br><br>
+
+creates the file 'my.tar' containing file1 and file2<br><br>
+
+Now in order to pack the file in a way that reduce the file size you use 'gzip'<br><br>
+
+gzip my.tar<br><br>
+
+'gzip' overwrite the input file so 'my.tar' will be substituted with 'my.tar.gz' which is a size-reduced file. <br><br>
+Unpacking is the same just the other way around.  <br><br>
+
+gunzip my.tar.gz<br><br>
+
+Substitute 'my.tar.gz' with 'my.tar' which is not a size-reduced file. And then<br><br>
+
+tar xvf my.tar<br><br>
+
+Un-buntles the file.<br><br>
+
+This is not the normal way to treat a 'tar.gz' archive. Most version of 'tar' can handle both the 'tar' and the 'gzip/gunzip' process in just one go if given the right options for it, but some versions of 'tar' can't, like the 'buiseybox tar' in<br> Basiclinux 3. So it is nice to know that basically it is a two step action and that you can still do it this way.<br><br><br>
+
+/Mikkel<br><br><br>
+<p align="right"><a href="sitemap.htm"><font size="-2">site map</font></a></p>
+
+
+
+<!--her slutter hovedteksten-->
+<!--her slutter hovedteksten-->
+<!--her slutter hovedteksten-->
+<!--her slutter hovedteksten-->
+<!--her slutter hovedteksten-->
+<!--her slutter hovedteksten-->
+<!--her slutter hovedteksten-->
+<!--her slutter hovedteksten-->
+<!--her slutter hovedteksten--></td>
+<!--SANSEKOL 3-->
+<td align="left" valign="top" width="8%"></td>
+</tr>
+</table>
+
+<!--MUNDTAB 1X-->
+<table align="center" border="0" cellpadding="0" cellspacing="0" width="740" background="/web/20070427081346im_/http://www.home.no/mlinux/mainbund.png">
+<tr><!--VENUSKOL 1-->
+<td height="29" valign="top" width="740"></td>
+</tr>
+</table>
+
+<!-- Start på ZIP Stat kode -->
+<!-- Start på ZIP Stat kode -->
+<!-- Start på ZIP Stat kode -->
+<!-- Start på ZIP Stat kode -->
+<script language="JavaScript" type="text/javascript">
+<!--
+far="Andre"; jav="Ved ikke"; skh="Andre"; jav=navigator.javaEnabled(); 
+ref=""+escape(top.document.referrer); nav=navigator.appName;
+if (navigator.appName == "Netscape" && (navigator.appVersion.charAt(0) == "2" || navigator.appVersion.charAt(0) == "3")) {skriv=false;} else {skriv=true;}
+if (skriv==true) { skh=screen.width + "x" + screen.height;
+if (nav != "Netscape"){far=screen.colorDepth;} else {far=screen.pixelDepth;}
+puri="brugernavn=mlinux&amp;version=150&amp;ssto="+skh+"&amp;referer="+ref+"&amp;colors="+far+"&amp;java="+jav+"&amp;js=true&amp;billed=trans&amp;taelnavn=";
+document.write("<a href=\"http://zipstat.dk/zipstat/stats.php?brugernavn=mlinux\" target=\"_top\">");
+document.write("<img height=\"1\" width=\"1\" border=\"0\" src=\"http://zipstat.dk/zipstat/zipstat.php?"+puri+"\" alt=\"\" align=left><\/a>"); }
+//-->
+</script> <noscript>
+<a href="https://web.archive.org/web/20070427081346/http://zipstat.dk/zipstat/stats.php?brugernavn=mlinux" target="_top">
+<img height="1" width="1" border="0" src="https://web.archive.org/web/20070427081346im_/http://zipstat.dk/zipstat/zipstat.php?brugernavn=mlinux&amp;js=false&amp;billed=trans&amp;taelnavn=" alt="" align="left"></a>
+</noscript>
+<!-- Slut på ZIP Stat kode -->
+<!-- Slut på ZIP Stat kode -->
+<!-- Slut på ZIP Stat kode -->
+<!-- Slut på ZIP Stat kode -->
+</body>
+</html>
+<!--
+     FILE ARCHIVED ON 08:13:46 Apr 27, 2007 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 05:29:26 Mar 04, 2025.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  captures_list: 0.562
+  exclusion.robots: 0.022
+  exclusion.robots.policy: 0.01
+  esindex: 0.011
+  cdx.remote: 26.276
+  LoadShardBlock: 228.606 (3)
+  PetaboxLoader3.datanode: 209.288 (4)
+  PetaboxLoader3.resolve: 218.166 (2)
+  load_resource: 223.729
+-->

@@ -1,0 +1,785 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head><script src="//archive.org/includes/athena.js" type="text/javascript"></script>
+<script type="text/javascript">window.addEventListener('DOMContentLoaded',function(){var v=archive_analytics.values;v.service='wb';v.server_name='wwwb-app224.us.archive.org';v.server_ms=396;archive_analytics.send_pageview({});});</script>
+<script type="text/javascript" src="https://web-static.archive.org/_static/js/bundle-playback.js?v=7YQSqjSh" charset="utf-8"></script>
+<script type="text/javascript" src="https://web-static.archive.org/_static/js/wombat.js?v=txqj7nKC" charset="utf-8"></script>
+<script>window.RufflePlayer=window.RufflePlayer||{};window.RufflePlayer.config={"autoplay":"on","unmuteOverlay":"hidden"};</script>
+<script type="text/javascript" src="https://web-static.archive.org/_static/js/ruffle/ruffle.js"></script>
+<script type="text/javascript">
+    __wm.init("https://web.archive.org/web");
+  __wm.wombat("http://www.home.no:80/mlinux/bl.htm","20070504180151","https://web.archive.org/","web","https://web-static.archive.org/_static/",
+	      "1178301711");
+</script>
+<link rel="stylesheet" type="text/css" href="https://web-static.archive.org/_static/css/banner-styles.css?v=p7PEIJWi" />
+<link rel="stylesheet" type="text/css" href="https://web-static.archive.org/_static/css/iconochive.css?v=3PDvdIFv" />
+<!-- End Wayback Rewrite JS Include -->
+
+<title>Basic Linux related</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="author" content="Mikkel Meinike Nielsen">
+<meta name="keywords" content="Basic Linux, BL, SVGAlib, small Linux, minimalistic Linux, Linux console, 
+
+CLI, Basiclinux">
+<meta name="description" content="Description This page is centered around the small configurable Linux distribution BL3 
+(BasicLinux 3). It covers use, installation and configuration of some applications.">
+<link rev="made" href="mailto:mimeini@linuxmail.org">
+</head>
+<!--****************///\\\bl///\\\****************-->
+<body bgcolor="#400000" text="black" link="#400000" vlink="#400005" alink="#400010"><!-- BEGIN WAYBACK TOOLBAR INSERT -->
+<script>__wm.rw(0);</script>
+<div id="wm-ipp-base" lang="en" style="display:none;direction:ltr;">
+<div id="wm-ipp" style="position:fixed;left:0;top:0;right:0;">
+<div id="donato" style="position:relative;width:100%;">
+  <div id="donato-base">
+    <iframe id="donato-if" src="https://archive.org/includes/donate.php?as_page=1&amp;platform=wb&amp;referer=https%3A//web.archive.org/web/20070504180151/http%3A//www.home.no/mlinux/bl.htm"
+	    scrolling="no" frameborder="0" style="width:100%; height:100%">
+    </iframe>
+  </div>
+</div><div id="wm-ipp-inside">
+  <div id="wm-toolbar" style="position:relative;display:flex;flex-flow:row nowrap;justify-content:space-between;">
+    <div id="wm-logo" style="/*width:110px;*/padding-top:12px;">
+      <a href="/web/" title="Wayback Machine home page"><img src="https://web-static.archive.org/_static/images/toolbar/wayback-toolbar-logo-200.png" srcset="https://web-static.archive.org/_static/images/toolbar/wayback-toolbar-logo-100.png, https://web-static.archive.org/_static/images/toolbar/wayback-toolbar-logo-150.png 1.5x, https://web-static.archive.org/_static/images/toolbar/wayback-toolbar-logo-200.png 2x" alt="Wayback Machine" style="width:100px" border="0" /></a>
+    </div>
+    <div class="c" style="display:flex;flex-flow:column nowrap;justify-content:space-between;flex:1;">
+      <form class="u" style="display:flex;flex-direction:row;flex-wrap:nowrap;" target="_top" method="get" action="/web/submit" name="wmtb" id="wmtb"><input type="text" name="url" id="wmtbURL" value="http://www.home.no/mlinux/bl.htm" onfocus="this.focus();this.select();" style="flex:1;"/><input type="hidden" name="type" value="replay" /><input type="hidden" name="date" value="20070504180151" /><input type="submit" value="Go" />
+      </form>
+      <div style="display:flex;flex-flow:row nowrap;align-items:flex-end;">
+                <div class="s" id="wm-nav-captures" style="flex:1;">
+                    <a class="t" href="/web/20070504180151*/http://www.home.no/mlinux/bl.htm" title="See a list of every capture for this URL">24 captures</a>
+          <div class="r" title="Timespan for captures of this URL">04 May 2007 - 07 Aug 2020</div>
+          </div>
+        <div class="k">
+          <a href="" id="wm-graph-anchor">
+            <div id="wm-ipp-sparkline" title="Explore captures for this URL" style="position: relative">
+              <canvas id="wm-sparkline-canvas" width="750" height="27" border="0"></canvas>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="n">
+      <table>
+        <tbody>
+          <!-- NEXT/PREV MONTH NAV AND MONTH INDICATOR -->
+          <tr class="m">
+            <td class="b" nowrap="nowrap">Apr</td>
+            <td class="c" id="displayMonthEl" title="You are here: 18:01:51 May 04, 2007">MAY</td>
+            <td class="f" nowrap="nowrap"><a href="https://web.archive.org/web/20070609125913/http://www.home.no/mlinux/bl.htm" title="09 Jun 2007"><strong>Jun</strong></a></td>
+          </tr>
+          <!-- NEXT/PREV CAPTURE NAV AND DAY OF MONTH INDICATOR -->
+          <tr class="d">
+            <td class="b" nowrap="nowrap"><img src="https://web-static.archive.org/_static/images/toolbar/wm_tb_prv_off.png" alt="Previous capture" width="14" height="16" border="0" /></td>
+            <td class="c" id="displayDayEl" style="width:34px;font-size:22px;white-space:nowrap;" title="You are here: 18:01:51 May 04, 2007">04</td>
+            <td class="f" nowrap="nowrap"><a href="https://web.archive.org/web/20070512211434/http://www.home.no:80/mlinux/bl.htm" title="21:14:34 May 12, 2007"><img src="https://web-static.archive.org/_static/images/toolbar/wm_tb_nxt_on.png" alt="Next capture" width="14" height="16" border="0" /></a></td>
+          </tr>
+          <!-- NEXT/PREV YEAR NAV AND YEAR INDICATOR -->
+          <tr class="y">
+            <td class="b" nowrap="nowrap">2006</td>
+            <td class="c" id="displayYearEl" title="You are here: 18:01:51 May 04, 2007">2007</td>
+            <td class="f" nowrap="nowrap"><a href="https://web.archive.org/web/20080521181824/http://www.home.no:80/mlinux/bl.htm" title="21 May 2008"><strong>2008</strong></a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="r" style="display:flex;flex-flow:column nowrap;align-items:flex-end;justify-content:space-between;">
+      <div id="wm-btns" style="text-align:right;height:23px;">
+                <span class="xxs">
+          <div id="wm-save-snapshot-success">success</div>
+          <div id="wm-save-snapshot-fail">fail</div>
+          <a id="wm-save-snapshot-open" href="#" title="Share via My Web Archive" >
+            <span class="iconochive-web"></span>
+          </a>
+          <a href="https://archive.org/account/login.php" title="Sign In" id="wm-sign-in">
+            <span class="iconochive-person"></span>
+          </a>
+          <span id="wm-save-snapshot-in-progress" class="iconochive-web"></span>
+        </span>
+                <a class="xxs" href="http://faq.web.archive.org/" title="Get some help using the Wayback Machine" style="top:-6px;"><span class="iconochive-question" style="color:rgb(87,186,244);font-size:160%;"></span></a>
+        <a id="wm-tb-close" href="#close" style="top:-2px;" title="Close the toolbar"><span class="iconochive-remove-circle" style="color:#888888;font-size:240%;"></span></a>
+      </div>
+      <div id="wm-share" class="xxs">
+        <a href="/web/20070504180151/http://web.archive.org/screenshot/http://www.home.no/mlinux/bl.htm"
+           id="wm-screenshot"
+           title="screenshot">
+          <span class="wm-icon-screen-shot"></span>
+        </a>
+        <a href="#" id="wm-video" title="video">
+          <span class="iconochive-movies"></span>
+        </a>
+        <a id="wm-share-facebook" href="#" data-url="https://web.archive.org/web/20070504180151/http://www.home.no:80/mlinux/bl.htm" title="Share on Facebook" style="margin-right:5px;" target="_blank"><span class="iconochive-facebook" style="color:#3b5998;font-size:160%;"></span></a>
+        <a id="wm-share-twitter" href="#" data-url="https://web.archive.org/web/20070504180151/http://www.home.no:80/mlinux/bl.htm" title="Share on Twitter" style="margin-right:5px;" target="_blank"><span class="iconochive-twitter" style="color:#1dcaff;font-size:160%;"></span></a>
+      </div>
+      <div style="padding-right:2px;text-align:right;white-space:nowrap;">
+        <a id="wm-expand" class="wm-btn wm-closed" href="#expand"><span id="wm-expand-icon" class="iconochive-down-solid"></span> <span class="xxs" style="font-size:80%;">About this capture</span></a>
+      </div>
+    </div>
+  </div>
+    <div id="wm-capinfo" style="border-top:1px solid #777;display:none; overflow: hidden">
+        <div id="wm-capinfo-notice" source="api"></div>
+                <div id="wm-capinfo-collected-by">
+    <div style="background-color:#666;color:#fff;font-weight:bold;text-align:center">COLLECTED BY</div>
+    <div style="padding:3px;position:relative" id="wm-collected-by-content">
+            <div style="display:inline-block;vertical-align:top;width:50%;">
+			<span class="c-logo" style="background-image:url(https://archive.org/services/img/alexacrawls);"></span>
+		Organization: <a style="color:#33f;" href="https://archive.org/details/alexacrawls" target="_new"><span class="wm-title">Alexa Crawls</span></a>
+		<div style="max-height:75px;overflow:hidden;position:relative;">
+	  <div style="position:absolute;top:0;left:0;width:100%;height:75px;background:linear-gradient(to bottom,rgba(255,255,255,0) 0%,rgba(255,255,255,0) 90%,rgba(255,255,255,255) 100%);"></div>
+	  Starting in 1996, <a href="http://www.alexa.com/">Alexa Internet</a> has been donating their crawl data to the Internet Archive.  Flowing in every day, these data are added to the <a href="http://web.archive.org/">Wayback Machine</a> after an embargo period.
+	</div>
+	      </div>
+      <div style="display:inline-block;vertical-align:top;width:49%;">
+			<span class="c-logo" style="background-image:url(https://archive.org/services/img/41_crawl)"></span>
+		<div>Collection: <a style="color:#33f;" href="https://archive.org/details/41_crawl" target="_new"><span class="wm-title">41_crawl</span></a></div>
+		<div style="max-height:75px;overflow:hidden;position:relative;">
+	  <div style="position:absolute;top:0;left:0;width:100%;height:75px;background:linear-gradient(to bottom,rgba(255,255,255,0) 0%,rgba(255,255,255,0) 90%,rgba(255,255,255,255) 100%);"></div>
+	  this data is currently not publicly accessible.
+	</div>
+	      </div>
+    </div>
+    </div>
+    <div id="wm-capinfo-timestamps">
+    <div style="background-color:#666;color:#fff;font-weight:bold;text-align:center" title="Timestamps for the elements of this page">TIMESTAMPS</div>
+    <div>
+      <div id="wm-capresources" style="margin:0 5px 5px 5px;max-height:250px;overflow-y:scroll !important"></div>
+      <div id="wm-capresources-loading" style="text-align:left;margin:0 20px 5px 5px;display:none"><img src="https://web-static.archive.org/_static/images/loading.gif" alt="loading" /></div>
+    </div>
+    </div>
+  </div></div></div></div><div id="wm-ipp-print">The Wayback Machine - https://web.archive.org/web/20070504180151/http://www.home.no:80/mlinux/bl.htm</div>
+<script type="text/javascript">//<![CDATA[
+__wm.bt(750,27,25,2,"web","http://www.home.no/mlinux/bl.htm","20070504180151",1996,"https://web-static.archive.org/_static/",["https://web-static.archive.org/_static/css/banner-styles.css?v=p7PEIJWi","https://web-static.archive.org/_static/css/iconochive.css?v=3PDvdIFv"], false);
+  __wm.rw(1);
+//]]></script>
+<!-- END WAYBACK TOOLBAR INSERT -->
+ 
+<!--VENUSTAB 1X-->
+<table align="center" border="0" cellpadding="0" cellspacing="0" width="740" background="/web/20070504180151im_/http://www.home.no/mlinux/maintop.png">
+<tr><!--VENUSKOL 1-->
+<td height="29" valign="top" width="740"></td>
+</tr>
+</table>
+<!--SANSETAB 3X-->
+<table align="center" bgcolor="#FFFFFF" border="0" cellpadding="0" cellspacing="0" width="740">
+<tr><!--SANSEKOL 1-->
+<td align="center" valign="top" width="25%">
+<!-- Venstre kolonne tekst--><br>
+<a href="https://web.archive.org/web/20070504180151/http://petition.eurolinux.org/"><img src="/web/20070504180151im_/http://www.home.no/mlinux/nopat.gif" border="0"></a> <br>
+<font size="-2"><a href="index.htm"><br>
+HOME</a><br></td>
+
+<!--SANSEKOL 2-->
+<td align="left" bgcolor="white" valign="top" width="66%">
+
+<!-- Her begynder hovedteksten-->
+<!-- Her begynder hovedteksten-->
+<!-- Her begynder hovedteksten-->
+<!-- Her begynder hovedteksten-->
+<!-- Her begynder hovedteksten--><br><br><br>
+<p align="center"><b>The Linux-small-is-beautiful-archive</b><br><br>
+-Centered around the small configurable Linux distro Basiclinux 
+Linux.
+
+<br><br>
+By Mikkel Meinike Nielsen<br>
+<a href="https://web.archive.org/web/20070504180151/http://www.mimo.1go.dk/contact.htm">Contact</a></p>
+This page is centered around the small configurable Linux distribution BL3 
+(BasicLinux 3). It covers use, installation and configuration of some applications.
+It dos not cover the installation and configuration of BL 3 it self. For that 
+I will refer to the basiclinux homepage <br><br>
+<p align="center"><a href="https://web.archive.org/web/20070504180151/http://distro.ibiblio.org/pub/linux/distributions/baslinux/">basiclinux 
+
+homepage</a>.</p>
+(At first it look like the basiclinux homepage has very little information but as you look 
+
+around most things is dealt with and there is a very nice mailing list for help).<br><br>
+
+
+This page, (The one that you are on right now) go through the following applications in terms:<br> <b>AE</b> a 
+
+text editor, 
+<b>Netpbm</b> a tool suite for converting and manipulate images. <b>SVGAlib</b> a graphic Liberia, 
+<b>Zgv</b> an image viewer for SVGAlib, <b>Po</b> a paint program for SVGAlib. <b>Gostscript</b> a 
+program for handling PostScript, and finally a note on <b>playing sound/music through 
+the PC speaker</b>.<br><br>
+
+<b>AE</b><br><br>
+
+Ae is my favorite text editor for Linux console. It is a very simple editor
+I have a separate page about AE. 
+<p align="center"><a href="ae.htm">-here-</a>.</p>
+The difficult thing when you are customising a Linux system is that the programs is dependent on 
+
+one an other. BL 3 is lib5 dependent. Lib5 is an old and small library. I have AE in a lib5 
+
+version that I have taken from mulinux. 
+
+You can download the lib5 version of AE here:<br><br>
+<p align="center"><a href="ae">ae</a></p>
+Put this file in the '/bin' dir.<br>
+The program will only start if you have the configuration file ae.rc you can download that here:<p align="center"><a href="ae.rc">ae.rc</a></p> 
+
+just put this file in the '/etc' dir. You should also put a copy of this file in your own home dir. which 
+
+in native BL 3 is the /root dir. <br><br>
+
+You can check which other program/packages a program depends on by the 'ldd' command ex.<br><br>
+ldd ae<br><br>
+returns the following dependencies:<br><br>
+libncurses.so.3.0 =&gt; /lib/libncurses.so.3.0 (0x40009000)<br>
+libc.so.5 =&gt; /lib/libc.so.5 (0x4004a000)<br><br>
+
+
+
+
+Maybe all of this files is already in your BL system. At least 'libc.so.5' should be there.
+
+If you don't have 'libncurses.so.3.0' you can download it here:<br><br>
+<p align="center"><a href="libncurses.so.3.0">libncurses.so.3.0</a></p> and put that in the /lib 
+
+dir.<br><br>
+
+For configuration an use of AE I refer to the separate page about AE 
+<p align="center"><a href="ae.htm">-here-</a>.</p>
+
+
+<b>Netpbm</b><br><br>
+<a href="https://web.archive.org/web/20070504180151/http://netpbm.sourceforge.net/">Netpbm</a>. Is a collection of more than 220 separate small 
+
+tools/programs for digital images.
+ It is commando line tools. That means you use them by typing there names plus parameters and arguments. 
+
+The main emphasis in the Netpbm tools is put on
+ conversion between the netpbm formats and other image file formats. 
+For instance to convert from a "jpg" image to a pnm image do:<br><br>
+jpegtopnm my.jpg &gt;my.pnm<br><br>
+A "pnm" image to a "pcx" image<br><br>
+ppmtopcx my.pnm &gt;my.pcx<br><br>
+Once the image is converted to one of the Netpbm format (pbm, pgm, 
+pnm, ppm, pam) one can also edit the images with Netpbm tools. For 
+instance if you want to "flip" an image -mirror it so that left become 
+right do:<br><br>
+pamflip my.pnm &gt;myflip.pnm<br><br>
+The Netpbm packages is compiled for BL3 (lib5). and can be installed 
+with the pkg command in BL3 you can find Netpbm for BL3 here:<br><br>
+
+
+
+<a href="https://web.archive.org/web/20070504180151/http://keesan.freeshell.org/bl">http://keesan.freeshell.org/bl</a>.<br><br>
+
+look for<br><br>
+netpbm-10.26.7.libc5.tgz<br><br> 
+
+You can also find it here:<br><br>
+<a href="https://web.archive.org/web/20070504180151/http://www.ausreg.com/bl/bl3/">http://www.ausreg.com/bl/bl3/</a>.<br><br>
+
+
+look for<br><br>
+netpbm-10.26.7.libc5.tgz <br><br>
+
+
+It is 1.6 Mb which is to big for a floppy so if floppy is only entrance you will have to split it.
+(You can use arj or pkzip or dd, split, cat for DOS to split big files in DOS and Windows).<br><br>  
+
+I have put together many of the netpbm manual pages in one big text 
+file here:<br><br>
+<p align="center"><a href="pbmdoc.txt">pbmdoc.txt</a></p>
+It is very good to use with a search option in 'less' or in an editor so you can easily 
+find to the information you need.<br><br>
+
+I have made a small illustrated tour on how you can cut out a figure (an irregular shape) 
+from a color photo and insert that figure into another 
+background such as another color photo by using netpbm and the SVGAlib 
+paint program Po in combination. You will need Po and netpbm in combination to do this operation. It 
+gives a good insight into how the netpbm tools can be combined in creative ways to solve a specific 
+problem within the field of image manipulation:
+<p align="center"><a href="tour.htm">tour</a></p>
+
+
+<b>SVGAlib</b><br><br>
+
+<b>Note:</b> Before you read about setting up SVGAlib on BL3 you might want to read Stevens 
+(the creator of BasicLinux) comment on the subject <a href="comment2.htm">here</a>.<br><br>
+
+
+
+back in 1999 I got this little laptop computer Compaq contura 
+4/25c cpu 486/25 Mz, RAM 8 MB, HD 200 MB. From the beginning 
+it was the dream to get it running with Linux and to be able to 
+prepare and set document with both text and images. It wasn't 
+until 2006 that I got the system up to running that I am going 
+to say something about here. Normally in Linux, if you want to 
+do something witch involves images on the screen you will do that 
+in X (also referred to as X11 or XFree86), but there exist an 
+alternative, that I found out about much later after having used 
+a 16 colors vga version of X (the vga16 server) for a long time. 
+The alternative is called 'SVGAlib' it is less demanding on computer power and on 
+this machine more capable than X. SVGAlib is a C-library that makes 
+it possible for developers to write graphic application for the 
+(Linux) console (CLI). 
+With SVGAlib working I can set up an advanced document with 
+groff (I write just a bit about groff on <a href="basic.htm">this page</a>) or Direct PostScript (I 
+
+write quite a bit PostScript <a href="index.htm">-here-</a>), and I can edit and manipulate image with 
+
+the Netpbm program suite and with 'Po' which is a fine painting program that i found, made for 
+
+SVGAlib.<br>
+
+I tried to set up SVGAlib a couple of times where I couldn't make it work, 
+but this version worked for me.<br><br>
+
+<a href="https://web.archive.org/web/20070504180151/http://svgalib.org/svgalib-1.4.3-bin.tar.gz">http://svgalib.org/svgalib-1.4.3-bin.tar.gz</a><br>
+<br>
+
+
+Download it <a href="tar.htm">unpack</a> it to the dir. '/lib'.<br> 
+
+Now you need a 'libvga.config' file. Try to see if you have 
+one in '/etc/vga/' else take this one:<br><br>
+
+<a href="libvga.config">libvga.config</a><br><br>
+
+Make a dir. called '/etc/vga/' and drop the file in that dir.<br><br>
+
+Open 'libvga.config' in an editor:<br><br>
+
+
+First you should on-comment the right mouse. On the different computers I have had during time the 
+
+mouses has
+always been PS2 mouses. You can recognize a PS2 mouse on that 
+it is one of this small round socket withe 6 small pins inside.
+
+So I remove the the '#' from the PS2 line and add a '#' to the 
+'mouse Microsoft' line that was originally un-commented.<br><br><br>
+ 
+<!--BEGYND KODE TIL PAUSE I HOVEDTEKST-->
+<!--BEGYND KODE TIL PAUSE I HOVEDTEKST-->
+<!--BEGYND KODE TIL PAUSE I HOVEDTEKST-->
+<!--BEGYND KODE TIL PAUSE I HOVEDTEKST-->
+<!--BEGYND KODE TIL PAUSE I HOVEDTEKST-->
+
+<!--SANSEKOL 3-->
+<td align="left" valign="top" width="8%"></td>
+</tr>
+</table>
+
+
+<!--AFSLUT KODE TIL PAUSE HOVEDTEKST-->
+<!--AFSLUT KODE TIL PAUSE HOVEDTEKST-->
+<!--AFSLUT KODE TIL PAUSE HOVEDTEKST-->
+<!--AFSLUT KODE TIL PAUSE HOVEDTEKST-->
+<!--AFSLUT KODE TIL PAUSE HOVEDTEKST-->
+
+<!--BEGYND PREBOX-->
+<!--BEGYND PREBOX-->
+<!--BEGYND PREBOX-->
+<!--BEGYND PREBOX-->
+<table align="center" bgcolor="#FFFFFF" border="0" cellpadding="0" cellspacing="0" width="740">
+<tr><!--SANSEKOL 1-->
+<td align="center" valign="top" width="15%"></td>
+<!--SANSEKOL 2-->
+<td align="left" valign="top" width="85%">
+<pre>
+# mouse Microsoft	# Microsoft
+# mouse MouseSystems	# Mouse Systems
+# mouse MMSeries	# Logitech MM Series
+# mouse Logitech	# Logitech protocol (old, newer mice use Microsoft protocol)
+# mouse Busmouse	# Bus mouse
+mouse PS2		# PS/2 mouse
+# mouse MouseMan	# Logitech MouseMan
+# mouse Spaceball	# Spacetec Spaceball
+# mouse IntelliMouse	# Microsoft IntelliMouse or Logitech MouseMan+ on serial port
+# mouse IMPS2		# Microsoft IntelliMouse or Logitech MouseMan+ on PS/2 port
+# mouse none		# None</pre><br><br>
+</td></tr></table>
+<!--AFSLUT PREBOX-->
+<!--AFSLUT PREBOX-->
+<!--AFSLUT PREBOX-->
+<!--AFSLUT PREBOX-->
+<!--BEGYND KODE TIL HOVEDTEKST-->
+<!--BEGYND KODE TIL HOVEDTEKST-->
+<!--BEGYND KODE TIL HOVEDTEKST-->
+<!--BEGYND KODE TIL HOVEDTEKST-->
+<!--BEGYND KODE TIL HOVEDTEKST-->
+<table align="center" bgcolor="#FFFFFF" border="0" cellpadding="0" cellspacing="0" width="740">
+<tr><!--SANSEKOL 1-->
+<td align="center" valign="top" width="25%"></td>
+<!--SANSEKOL 2-->
+<td align="left" valign="top" width="66%">
+<!--AFSLUT KODE TIL HOVEDTEKST-->
+<!--AFSLUT KODE TIL HOVEDTEKST-->
+<!--AFSLUT KODE TIL HOVEDTEKST-->
+<!--AFSLUT KODE TIL HOVEDTEKST-->
+<!--AFSLUT KODE TIL HOVEDTEKST-->
+<!--AFSLUT KODE TIL HOVEDTEKST-->
+
+
+
+Feather down there is some lines about acceleration. 
+By testing I found that
+<br><br> 'accel_type  off'<br><br>
+
+Is the one that work for me, so add '#' to <br><br>
+
+# mouse_accel_type	power<br><br>
+
+witch was uncommended in the original
+and remove '#' from the line:<br><br>
+'accel_type  off'<br><br><br><br>
+
+<!--BEGYND KODE TIL PAUSE I HOVEDTEKST-->
+<!--BEGYND KODE TIL PAUSE I HOVEDTEKST-->
+<!--BEGYND KODE TIL PAUSE I HOVEDTEKST-->
+<!--BEGYND KODE TIL PAUSE I HOVEDTEKST-->
+<!--BEGYND KODE TIL PAUSE I HOVEDTEKST-->
+
+<!--SANSEKOL 3-->
+<td align="left" valign="top" width="8%"></td>
+</tr>
+</table>
+
+
+<!--AFSLUT KODE TIL PAUSE HOVEDTEKST-->
+<!--AFSLUT KODE TIL PAUSE HOVEDTEKST-->
+<!--AFSLUT KODE TIL PAUSE HOVEDTEKST-->
+<!--AFSLUT KODE TIL PAUSE HOVEDTEKST-->
+<!--AFSLUT KODE TIL PAUSE HOVEDTEKST-->
+
+<!--BEGYND PREBOX-->
+<!--BEGYND PREBOX-->
+<!--BEGYND PREBOX-->
+<!--BEGYND PREBOX-->
+<table align="center" bgcolor="#FFFFFF" border="0" cellpadding="0" cellspacing="0" width="740">
+<tr><!--SANSEKOL 1-->
+<td align="center" valign="top" width="15%"></td>
+<!--SANSEKOL 2-->
+<td align="left" valign="top" width="85%">
+<pre>
+
+# mouse_accel_type	normal       # No acceleration while delta is less then
+				     # threshold but delta is multiplied by
+				     # mouse_accel_mult if more. Originally done by
+				     # Mike Chapman mike@paranoia.com
+				     #-----leving out planty of lines-------
+
+# mouse_accel_type	power	     # The acceleration factor is a power function
+				     # of delta until it reaches m_accel_mult. mouse_accel_type	
+
+off	# No comment...
+
+
+
+
+</pre><br><br>
+</td></tr></table>
+<!--AFSLUT PREBOX-->
+<!--AFSLUT PREBOX-->
+<!--AFSLUT PREBOX-->
+<!--AFSLUT PREBOX-->
+<!--BEGYND KODE TIL HOVEDTEKST-->
+<!--BEGYND KODE TIL HOVEDTEKST-->
+<!--BEGYND KODE TIL HOVEDTEKST-->
+<!--BEGYND KODE TIL HOVEDTEKST-->
+<!--BEGYND KODE TIL HOVEDTEKST-->
+<table align="center" bgcolor="#FFFFFF" border="0" cellpadding="0" cellspacing="0" width="740">
+<tr><!--SANSEKOL 1-->
+<td align="center" valign="top" width="25%"></td>
+<!--SANSEKOL 2-->
+<td align="left" valign="top" width="66%">
+<!--AFSLUT KODE TIL HOVEDTEKST-->
+<!--AFSLUT KODE TIL HOVEDTEKST-->
+<!--AFSLUT KODE TIL HOVEDTEKST-->
+<!--AFSLUT KODE TIL HOVEDTEKST-->
+<!--AFSLUT KODE TIL HOVEDTEKST-->
+<!--AFSLUT KODE TIL HOVEDTEKST-->
+
+
+
+
+
+
+So now the most important thing. The monitor. There is a long way down to this lines. 
+Start with removing '#' on the VGA line. Than if this is fine after testing you can revisit the 
+
+'libvga.config' and try 'chipset VESA' ore something else.<br><br>
+
+<!--BEGYND KODE TIL PAUSE I HOVEDTEKST-->
+<!--BEGYND KODE TIL PAUSE I HOVEDTEKST-->
+<!--BEGYND KODE TIL PAUSE I HOVEDTEKST-->
+<!--BEGYND KODE TIL PAUSE I HOVEDTEKST-->
+<!--BEGYND KODE TIL PAUSE I HOVEDTEKST-->
+
+<!--SANSEKOL 3-->
+<td align="left" valign="top" width="8%"></td>
+</tr>
+</table>
+<!--BEGYND KODE TIL HOVEDTEKST-->
+<!--BEGYND KODE TIL HOVEDTEKST-->
+<!--BEGYND KODE TIL HOVEDTEKST-->
+<!--BEGYND KODE TIL HOVEDTEKST-->
+<!--BEGYND KODE TIL HOVEDTEKST-->
+<table align="center" bgcolor="#FFFFFF" border="0" cellpadding="0" cellspacing="0" width="740">
+<tr><!--SANSEKOL 1-->
+<td align="center" valign="top" width="25%"></td>
+<!--SANSEKOL 2-->
+<td align="left" valign="top" width="66%">
+<!--AFSLUT KODE TIL HOVEDTEKST-->
+<!--AFSLUT KODE TIL HOVEDTEKST-->
+<!--AFSLUT KODE TIL HOVEDTEKST-->
+<!--AFSLUT KODE TIL HOVEDTEKST-->
+<!--AFSLUT KODE TIL HOVEDTEKST-->
+<!--AFSLUT KODE TIL HOVEDTEKST-->
+<!--BEGYND KODE TIL PAUSE I HOVEDTEKST-->
+<!--BEGYND KODE TIL PAUSE I HOVEDTEKST-->
+<!--BEGYND KODE TIL PAUSE I HOVEDTEKST-->
+<!--BEGYND KODE TIL PAUSE I HOVEDTEKST-->
+<!--BEGYND KODE TIL PAUSE I HOVEDTEKST-->
+
+<!--SANSEKOL 3-->
+<td align="left" valign="top" width="8%"></td>
+</tr>
+</table>
+
+
+<!--AFSLUT KODE TIL PAUSE HOVEDTEKST-->
+<!--AFSLUT KODE TIL PAUSE HOVEDTEKST-->
+<!--AFSLUT KODE TIL PAUSE HOVEDTEKST-->
+<!--AFSLUT KODE TIL PAUSE HOVEDTEKST-->
+<!--AFSLUT KODE TIL PAUSE HOVEDTEKST-->
+
+<!--BEGYND PREBOX-->
+<!--BEGYND PREBOX-->
+<!--BEGYND PREBOX-->
+<!--BEGYND PREBOX-->
+<table align="center" bgcolor="#FFFFFF" border="0" cellpadding="0" cellspacing="0" width="740">
+<tr><!--SANSEKOL 1-->
+<td align="center" valign="top" width="15%"></td>
+<!--SANSEKOL 2-->
+<td align="left" valign="top" width="85%">
+<pre>
+
+
+
+chipset VGA		# Standard VGA
+# chipset EGA	        # EGA
+# chipset ET3000	# Tseng ET3000
+#-----leving out planty of lines-------
+# chipset VESA          # nicely behaved Vesa Bioses
+# chipset MX	        # MX86251 (some Voodoo Rush boards)
+# chipset PARADISE      # WD90C31
+</pre><br><br>
+</td></tr></table>
+<!--AFSLUT PREBOX-->
+<!--AFSLUT PREBOX-->
+<!--AFSLUT PREBOX-->
+<!--AFSLUT PREBOX-->
+<!--BEGYND KODE TIL HOVEDTEKST-->
+<!--BEGYND KODE TIL HOVEDTEKST-->
+<!--BEGYND KODE TIL HOVEDTEKST-->
+<!--BEGYND KODE TIL HOVEDTEKST-->
+<!--BEGYND KODE TIL HOVEDTEKST-->
+<table align="center" bgcolor="#FFFFFF" border="0" cellpadding="0" cellspacing="0" width="740">
+<tr><!--SANSEKOL 1-->
+<td align="center" valign="top" width="25%"></td>
+<!--SANSEKOL 2-->
+<td align="left" valign="top" width="66%">
+<!--AFSLUT KODE TIL HOVEDTEKST-->
+<!--AFSLUT KODE TIL HOVEDTEKST-->
+<!--AFSLUT KODE TIL HOVEDTEKST-->
+<!--AFSLUT KODE TIL HOVEDTEKST-->
+<!--AFSLUT KODE TIL HOVEDTEKST-->
+<!--AFSLUT KODE TIL HOVEDTEKST-->
+
+
+
+
+
+
+Now you should test. If you like there is a small test tool here: 
+<a href="vgatest">vgatest</a><br><br>
+
+Where you can test different VGA screen sizes. 
+Download and drop ether in a dir on your path or in 
+the dir. that you have as working dir. when testing. 
+If the test program starts and work 'SVGAlib' is working. 
+<br><br>
+If it works you should get and install. 'Zgv' a very good image viewer here:<br><br>
+SVGAlib image viewer <a href="zgv.tgz">zgv.tgz</a><br><br>
+ 
+This is a real tgz packages that can be installed in BL3 
+from any directory with the 'pkg' command that comes with BL3:<br><br>
+pkg zgv.tgz<br><br>
+To view for instance a 'jpg image' with zgv just do<br><br>
+
+
+zgv name.jpg<br><br>
+To quit viewing hit enter.<br><br>
+
+Po<br><br>
+
+Po is a paint program working under SVGAlib. I have found it here:<br><br>
+
+
+<a href="https://web.archive.org/web/20070504180151/http://www.tucows.com/preview/8563">http://www.tucows.com/preview/8563</a><br><br>
+
+and here:<br><br>
+
+<a href="https://web.archive.org/web/20070504180151/http://www.ibiblio.org/pub/Linux/apps/graphics/draw/!INDEX.short.html">http://www.ibiblio.org/pub/Linux/apps/graphics/draw/!INDEX.short.html
+</a><br><br>
+I think it is good. It has a README file that covers both use and installation.
+It does not have to be compiled it is pre-compiled and simple works if SVGAlib works. The README 
+
+file suggest that you unpack it in the root dir. Here they do not think of the '/root' but the 
+
+"/" dir. Mind the difference. The program then will unpack to '/usr/games'.  I moved the 
+
+executable 'po' file to '/usr/local/ben' where I have my Netpbm files, so that the program is in 
+
+my path and it can be started from any dir. I work in just by typing 'po'.<br>
+<br>
+
+Po is really a paint program to do painting with the mouse. It dos not have a lot of filters and 
+
+so. But it is very good in combination with Netpbm cause with netpbm you can't do many of the things you can't do in Po. 
+As sad before I have made a small illustrated tour 
+on using 'po' 
+together with the Netpbm tools for cutting out a figure from a color photo 
+an dumping it into another color photo. It is a playful game withe Po, shell 
+script and the possibilities within the Netpbm tools. <br><br>  
+<p align="center"><a href="tour.htm">Tour</a></p>
+
+
+
+<b>Ghostscript</b><br><br>
+
+Ghostscript is a program that can print and show Phostscript and PDF files. It is crucial if you 
+
+work with Postscript or Groff. 
+If you use BL 3 you can find ghostscript in a slackware 4 archive. 
+like fore instance:
+
+<a href="https://web.archive.org/web/20070504180151/http://text.mirror.ac.uk/mirror/ftp.slackware.com/slackware-4.0/slakware/">http://text.mirror.ac.u
+
+k/mirror/ftp.slackware.com/slackware-4.0/slakware/</a>
+
+
+To orientate your self in the big slackware archive I can recommend to download the file 
+
+'MANIFEST.gz' on this page. That is a big <a href="tar.htm">gzip</a> compressed text file. It contains 
+
+all the 
+
+packages in the whole archive as heaters and underneath each heater/packages name it list all the 
+
+file in that packages.  You can search in it with a normal text search option in 'less' (the '/' 
+
+option) or in an editor. So if I search for ghostscript I find out that it is in a packages 
+
+called. <br><br>
+./ap1/ghostscr.tgz
+<br><br>
+
+
+So I can go into the 'ap1' dir. of the slackware ftp archive and find it and download it.<br>
+Ghostscript is in two versions one for X11 and one for 'SVGAlib'. The one for X11 is called gs_x11. 
+
+I search for that in MANIFEST.gz and see that it is in.<br><br>
+
+./xap1/gs_x11.tgz
+<br><br>
+In order to install the gs_x11 to work you should first install the 'ghostscr.tgz' and then after 
+
+that the gs_x11.tgz of course you need a working X11 to use the gs_x11<br><br>
+
+
+For ghostscript to work you need to also install the 'gsfont' packages. Search in 'MANIFEST.gz' 
+
+shows.<br><br>
+./ap1/gsfonts.tgz<br><br>
+
+So you can go into the 'ap1' dir. of the slackware ftp archive and find it and download it.<br>
+About the use of 'gs' there is something about it on the <a href="tex-img.htm">text and image page</a> 
+
+and on <a href="fonts.htm">the font page.</a><br><br>
+
+
+
+<b>Note</b><br><br>
+Note on BL 3 and sound: It is possible to make a computer like for instance the old laptop I have talked 
+
+about earlier play wav (sound/music) files though the PC speaker (the one that says ?eep some time). 
+
+It is bad quality, but sometimes very usefully. If it is an old laptop like the one I talked about, 
+
+there is no sound cart and it is not possible to add a sound cart so here it is a nice possibility (or at 
+
+least it is quit funny). Basic Linux doesn't come with this feature but it can be added. If you like to 
+
+do this contact me and I will send you the files you'll need for this plus an instruction.
+<br><br>
+
+/Mikkel
+<p align="right"><a href="sitemap.htm"><font size="-2">site map</font></a></p>
+
+
+<!--her slutter hovedteksten-->
+<!--her slutter hovedteksten-->
+<!--her slutter hovedteksten-->
+<!--her slutter hovedteksten--></td>
+<!--SANSEKOL 3-->
+<td align="left" valign="top" width="8%"></td>
+</tr>
+</table>
+
+<!--MUNDTAB 1X-->
+<table align="center" border="0" cellpadding="0" cellspacing="0" width="740" background="/web/20070504180151im_/http://www.home.no/mlinux/mainbund.png">
+<tr><!--VENUSKOL 1-->
+<td height="29" valign="top" width="740"></td>
+</tr>
+</table>
+<!-- Start p ZIP Stat kode -->
+<!-- Start p ZIP Stat kode -->
+<!-- Start p ZIP Stat kode -->
+<!-- Start p ZIP Stat kode -->
+<script language="JavaScript" type="text/javascript">
+<!--
+far="Andre"; jav="Ved ikke"; skh="Andre"; jav=navigator.javaEnabled(); 
+ref=""+escape(top.document.referrer); nav=navigator.appName;
+if (navigator.appName == "Netscape" && (navigator.appVersion.charAt(0) == "2" || navigator.appVersion.charAt(0) == "3")) {skriv=false;} else {skriv=true;}
+if (skriv==true) { skh=screen.width + "x" + screen.height;
+if (nav != "Netscape"){far=screen.colorDepth;} else {far=screen.pixelDepth;}
+puri="brugernavn=mlinux&amp;version=150&amp;ssto="+skh+"&amp;referer="+ref+"&amp;colors="+far+"&amp;java="+jav+"&amp;js=true&amp;billed=trans&amp;taelnavn=";
+document.write("<a href=\"http://zipstat.dk/zipstat/stats.php?brugernavn=mlinux\" target=\"_top\">");
+document.write("<img height=\"1\" width=\"1\" border=\"0\" src=\"http://zipstat.dk/zipstat/zipstat.php?"+puri+"\" alt=\"\" align=left><\/a>"); }
+//-->
+</script> <noscript>
+<a href="https://web.archive.org/web/20070504180151/http://zipstat.dk/zipstat/stats.php?brugernavn=mlinux" target="_top">
+<img height="1" width="1" border="0" src="https://web.archive.org/web/20070504180151im_/http://zipstat.dk/zipstat/zipstat.php?brugernavn=mlinux&amp;js=false&amp;billed=trans&amp;taelnavn=" alt="" align="left"></a>
+</noscript>
+<!-- Slut p ZIP Stat kode -->
+<!-- Slut p ZIP Stat kode -->
+<!-- Slut p ZIP Stat kode -->
+<!-- Slut p ZIP Stat kode -->
+</body>
+</html>
+<!--
+     FILE ARCHIVED ON 18:01:51 May 04, 2007 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 05:27:05 Mar 04, 2025.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  captures_list: 0.685
+  exclusion.robots: 0.036
+  exclusion.robots.policy: 0.022
+  esindex: 0.011
+  cdx.remote: 21.085
+  LoadShardBlock: 202.769 (3)
+  PetaboxLoader3.datanode: 157.198 (4)
+  PetaboxLoader3.resolve: 134.056 (2)
+  load_resource: 142.372
+-->
