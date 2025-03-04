@@ -1,2 +1,0 @@
-fs.img filter=lfs diff=lfs merge=lfs -text
-livecd/baslin/fs.img filter=lfs diff=lfs merge=lfs -text

@@ -18,8 +18,6 @@ This LCARS distribution of BasicLinux 3.5 aims to provide:
 - An expansive on-disc package repository for post-install customization
 - Easy to use, mostly-automatic experience, with on-disc documentation
 
-Old versions of DamnSmallLinux were optimized more for overall image size, and less for total RAM use, and thus require 16MB of RAM (though some versions do at least support 386 explicitly). Running an actual 90s distro means you lose a lot of features and drivers, plus none of them were really designed for LiveCD use. Any vaguely modern LiveCD is going to require far too much RAM. BasicLinux strikes a great balance of modern features and ancient compatibility. This distribution of BasicLinux makes no attempt to keep the overall filesystem small, instead trying to provide as many useful software packages as possible on a single CD.
-
 The system boots via MS-DOS, so it can be started from the CD itself on native CD-booting BIOSes (including some SCSI BIOS), from an MS-DOS boot floppy (image included), or from an MS-DOS installation already present on a hard drive. Even Windows 9x (when booted into DOS mode) can boot the LiveCD.
 
 Tested on a real-life 386DX-40 with 8MB of RAM, and an emulated "MR 386DX Clone" with 4MB of RAM, as well as various more "modern" real-metal x86 systems. Compatibility seems good in general, but if PCem is accurate, some particularly old 386 BIOSes may not be compatible, and the [optional] MS-DOS USB drivers may interfere with kernel init on certain systems.
