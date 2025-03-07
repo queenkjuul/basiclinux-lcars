@@ -1,0 +1,66 @@
+#!/bin/sh
+
+THREADS_TYPE=${THREADS_FLAG:-green}_threads
+export THREADS_TYPE
+
+progname=`basename $0`
+ARCH=`arch`
+
+case $1 in
+-native)
+    THREADS_TYPE=native_threads
+    shift
+    ;;
+-green)
+    THREADS_TYPE=green_threads
+    shift
+    ;;
+esac
+
+if [ -z "$JAVA_HOME" ]
+then
+    JAVA_HOME=/usr/local/java
+    export JAVA_HOME
+fi
+
+if [ -z "$CLASSPATH" ]
+then
+    CLASSPATH=$JAVA_HOME/lib/rt.jar:$JAVA_HOME/lib/i18n.jar
+    CLASSPATH=$JAVA_HOME/classes:$JAVA_HOME/lib/classes.zip:$CLASSPATH
+    export CLASSPATH
+fi
+
+# Linux: verify libc and libdl versions are the intended ones
+binPath="${JAVA_HOME}/bin/${ARCH}/${THREADS_TYPE}"
+libPath="${JAVA_HOME}/lib/${ARCH}/${THREADS_TYPE}"
+
+# removed conditional as BasicLinux definitely requires the C libs
+JDK_LIBS="${libPath}/linuxlibs"
+
+LD_LIBRARY_PATH="$JAVA_HOME/lib/${ARCH}/$THREADS_TYPE:${JDK_LIBS}:$LD_LIBRARY_PATH"
+export LD_LIBRARY_PATH
+
+orig_progname="${progname}"
+if [ -n "$NS_JAVA" ]
+then
+    progname="${progname}_ns"
+elif [ -n "$DYN_JAVA" ]
+then
+    progname="${progname}_dyn"
+fi
+
+prog="$JAVA_HOME/bin/${ARCH}/${THREADS_TYPE}/${progname}"
+
+if [ -f "$prog" ]
+then
+    exec $DEBUG_PROG "$prog" $opts "$@"
+else
+    prog="$JAVA_HOME/bin/${ARCH}/${THREADS_TYPE}/${orig_progname}"
+    if [ -f "$prog" ]
+    then
+        exec $DEBUG_PROG "$prog" $opts "$@"
+    fi
+fi
+
+# was: 
+# exec $JAVA_HOME/bin/$ARCH/$THREADS_TYPE/$PROG "$@"

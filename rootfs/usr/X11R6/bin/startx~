@@ -53,7 +53,7 @@ read mouse
 
 test -z "$mouse" && mouse=psaux
 umount /dev 2>/dev/null
-test $READONLY && mount -o loop /etc/$mouse.img /dev 2>/dev/null
+test $READONLY && mount -o loop /var/livecd/$mouse.img /dev 2>/dev/null
 test ! $READONLY && ln -sf /dev/$mouse /dev/mouse
 
 echo "Enter your number of mouse buttons"
@@ -77,10 +77,7 @@ read wm
 test -z $wm || export WM=$wm
 test -z $WM && export WM=icewm
 
-#set -- `cat /etc/Xconfig`
-
 echo "Starting X at "$screen" with "$mouse $buttons"-button mouse and "$WM" desktop"
-echo "XAUTHORITY="$XAUTHORITY
 echo "Press Enter to continue or control+C to exit"
 read _
 test -z $NOSAVEX && test ! $READONLY && echo $screen > /etc/Xconfig

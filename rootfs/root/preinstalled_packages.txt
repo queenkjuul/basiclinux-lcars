@@ -101,3 +101,7 @@ bin.tgz
 bzip2.tgz
 groff.tgz
 util.tgz
+txtutils.tgz
+sh_utils.tgz
+fileutil.tgz
+xlib.tgz
