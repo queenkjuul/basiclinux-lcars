@@ -1,0 +1,11 @@
+fvwm-1.23b: FVWM version 1.23b
+fvwm-1.23b:
+fvwm-1.23b: Fvwm is a window manager for X11.  It is a derivative of twm, 
+fvwm-1.23b: redesigned to minimize memory consumption, provide a 3-D look to
+fvwm-1.23b: window frames, and provide a simple virtual desktop.
+fvwm-1.23b:
+fvwm-1.23b:
+fvwm-1.23b:
+fvwm-1.23b:
+fvwm-1.23b:
+fvwm-1.23b:

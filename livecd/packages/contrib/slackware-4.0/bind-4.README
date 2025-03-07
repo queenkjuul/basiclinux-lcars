@@ -1,0 +1,31 @@
+
+bind-4.9.7-REL
+
+The named daemon and support utilities such as dig, dnsquery, host,
+nslookup, nsquery, and nstest.  Documentation on setting up a name
+server will be installed in /usr/doc/bind-4.9.7-REL/.
+
+As of this writing, the most recent version of BIND is 8.1.2-REL, which is
+the version included with Slackware's N (networking) series of packages.
+However, the configuration file format is changed in BIND-8, so there are
+still some sites that may wish to run this older version of BIND instead.
+
+To use this, first you should be sure there's no other version of BIND
+installed on your system.  Change into /var/log/packages, and if you see
+files named "bind", or "bind-x.x.x" (where x.x.x is some version number),
+then use "less" to take a look at the contents and see if the package(s)
+really are BIND packages.  If they are, you'll want to remove them.  For
+example:
+
+ removepkg bind
+
+To install this version of BIND, use Slackware's "installpkg" utility:
+
+ installpkg bind-4.tgz
+
+If you don't have that, you can install it using "tar" from the root directory:
+
+ cd / ; tar xzvf bind-4.tgz
+
+Enjoy! :^)
+

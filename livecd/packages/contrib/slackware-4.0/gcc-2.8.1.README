@@ -1,0 +1,12 @@
+
+This is GNU GCC 2.8.1, compiled to support C, C++, and Objective-C.
+
+It is supplied as an alternate compiler for Slackware.  For various reasons I
+think the overall quality is superior with Cygnus' egcs compiler, though.  One
+problem with gcc-2.8.x is that you can't compile 2.0.x kernels with it.  If you
+try, you'll run into a problem starting X (among other things).
+
+To make this your default compiler, just install it with 'installpkg'.  If you
+decide later to switch back to egcs, just remove this package with 'removepkg'
+and then reinstall egcs with 'installpkg'.
+

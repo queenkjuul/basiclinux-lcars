@@ -1,0 +1,17 @@
+
+This package contains utilities for use with Casio's QV-10, QV-10a, QV-11, 
+QV-30, QV-100, and QV-300 digital cameras.  It may also work with other Casio
+cameras.  The utilities included are:
+
+Camera control utilities:
+  qvplay, qvrec:  move *.cam images from/to the camera through a serial cable.
+  qvalldel: erase camera's memory.
+
+File conversion utilities:
+  cam2ppm: extracts *.ppm thumbnail to standard output from *.cam file.
+  cam2jpeg: extracts *.ppm image to standard output from *.cam file.
+  camdump: debugging tool for extracting parts of data from *.cam files.
+  demacbin: strips MacBinary header from files fed to standard input.
+            (camdump/cam2ppm/cam2jpeg strip this automatically, but this
+             tool might be useful for other purposes)
+

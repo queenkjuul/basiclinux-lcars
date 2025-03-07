@@ -1,0 +1,27 @@
+Begin3
+Title:          noweb
+Version:        2.8a
+Entered-date:   Sat Sep 13 21:17:47 EDT 1997
+Description:  noweb - a literate-programming tool
+  Noweb supports literate programming---the art of writing programs as
+  documents for human readers.  Noweb's primary advantages are
+  simplicity, extensibility, and language-independence.  noweb works
+  ``out of the box'' with any programming language, and it supports
+  interleaved documentation written in TeX, LaTeX, and HTML.  noweb
+  comes with an efficient LaTeX->HTML converter.
+  
+  This distribution contains binaries and man pages in slackware
+  package format.
+Keywords:       literate programming, WEB
+Author:         nr@cs.virginia.edu (Norman Ramsey)
+Maintained-by:  nr@cs.virginia.edu (Norman Ramsey)
+Primary-site:   sunsite.unc.edu /pub/linux/devel/literate
+		1630 K noweb-2.8a.tgz
+		2 K noweb.lsm
+		1 K package_descriptions
+Alternate-site: 
+Original-site:  ftp.dante.de /tex-archive/web/noweb/
+		noweb.tar.gz
+Platform:       
+Copying-policy: Freely copyable, but may not be modified
+End

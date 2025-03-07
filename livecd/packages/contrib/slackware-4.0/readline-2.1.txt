@@ -1,0 +1,5 @@
+
+This is a binary package containing the GNU readline library, header files,
+and documentation.  Readline is a library used to facilitate easy command
+line input and editing in user programs.
+

@@ -1,0 +1,26 @@
+
+This is the UnderNet IRC daemon ircu2.10.05.9.
+
+
+IRCD(8)                                                   IRCD(8)
+
+NAME
+       ircd - The Internet Relay Chat Program Server
+
+SYNOPSIS
+       ircd   [-a]  [-c]  [-i]  [-o] [-q] [-t] [-d directory] [-f
+              configfile]  [-w  interface]  [-x  debuglevel]  [-h
+              hostname] [-p portnum]
+
+DESCRIPTION
+       ircd is the server (daemon) program for the Internet Relay
+       Chat Program.  The ircd is a server in that  its  function
+       is  to "serve" the client program irc(1) with messages and
+       commands.  All  commands  and  user  messages  are  passed
+       directly  to the ircd for processing and relaying to other
+       ircd sites.  The irc(1) program depends upon  there  being
+       an  ircd  server  running  somewhere (either on your local
+       UNIX site or a remote ircd site)  so  that  it  will  have
+       somewhere  to  connect to and thus allow the user to begin
+       talking to other users.
+

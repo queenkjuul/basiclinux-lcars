@@ -1,0 +1,20 @@
+Title:          cvs
+Version:        1.10
+Entered-date:   27OCT98
+Description:    CVS is a freely available collection of programs that
+                provide for software release and revision control functions
+                in a UNIX environment.
+                See also : http://www.loria.fr/~molli/cvs-index.html
+
+                Binary provided by Patrick Volkerding <volkerdi@slackware.com>
+                and of course, comes with no warranty.
+Keywords:       cvs, rcs, revision, version, software release
+Author:         dick@cs.vu.nl (Dick Grune)
+                berliner@sun.com (Brian Berliner)
+                polk@bsdi.com (Jeff Polk)
+Maintained-by:  bug-cvs@prep.ai.mit.edu (CVS Team)
+Primary-site:   prep.ai.mit.edu /pub/gnu
+Alternate-site: sunsite.unc.edu /pub/Linux/devel/ver_cont
+Platforms:      Unix with RCS v4 or later
+Copying-policy: GPL
+End
