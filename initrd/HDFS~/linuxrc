@@ -1,0 +1,50 @@
+#!/bin/sh
+PATH=/bin
+while :; do
+mount -t proc proc /proc 2>/dev/null
+
+mount -t msdos /dev/hda1 /DOS  2>/dev/null
+test -e /DOS/baslin/fs.img && break
+umount /DOS  2>/dev/null
+echo '/baslin/fs.img not found on /dev/hda1'
+
+mount -t msdos /dev/hda2 /DOS  2>/dev/null
+test -e /DOS/baslin/fs.img && break
+umount /DOS  2>/dev/null
+echo '/baslin/fs.img not found on /dev/hda2'
+
+mount -t msdos /dev/hda3 /DOS  2>/dev/null
+test -e /DOS/baslin/fs.img && break
+umount /DOS  2>/dev/null
+echo '/baslin/fs.img not found on /dev/hda3'
+
+mount -t msdos /dev/hda4 /DOS  2>/dev/null
+test -e /DOS/baslin/fs.img && break
+umount /DOS  2>/dev/null
+echo '/baslin/fs.img not found on /dev/hda4'
+
+mount -t msdos /dev/hdb1 /DOS  2>/dev/null
+test -e /DOS/baslin/fs.img && break
+umount /DOS  2>/dev/null
+echo '/baslin/fs.img not found on /dev/hdb1'
+
+mount -t msdos /dev/hdc1 /DOS  2>/dev/null
+test -e /DOS/baslin/fs.img && break
+umount /DOS  2>/dev/null
+echo '/baslin/fs.img not found on /dev/hdc1'
+
+mount -t msdos /dev/hdd1 /DOS  2>/dev/null
+test -e /DOS/baslin/fs.img && break
+umount /DOS  2>/dev/null
+echo '/baslin/fs.img not found on /dev/hdd1'
+
+read a
+mount -t msdos $a  /DOS  
+test -e /DOS/baslin/fs.img && break
+umount /DOS  
+echo '/baslin/fs.img not found on' $a
+ 
+done
+losetup /dev/loop0 /DOS/baslin/fs.img
+umount /proc
+

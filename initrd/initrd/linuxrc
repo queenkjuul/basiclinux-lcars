@@ -1,0 +1,42 @@
+#!/bin/sh
+PATH=/bin
+
+while :; do
+mount -t proc proc /proc 2>/dev/null
+
+insmod cdrom
+insmod isofs
+insmod ide-cd
+
+echo "Searching for root filesystem image"
+
+mount /dev/hda /DOS  2>/dev/null
+test -e /DOS/baslin/fs.img && break
+umount /DOS  2>/dev/null
+echo '/baslin/fs.img not found on /dev/hda'
+
+mount /dev/hdb /DOS  2>/dev/null
+test -e /DOS/baslin/fs.img && break
+umount /DOS  2>/dev/null
+echo '/baslin/fs.img not found on /dev/hdb'
+
+mount /dev/hdc /DOS  2>/dev/null
+test -e /DOS/baslin/fs.img && break
+umount /DOS  2>/dev/null
+echo '/baslin/fs.img not found on /dev/hdc'
+
+mount /dev/hdd /DOS 2>/dev/null
+test -e /DOS/baslin/fs.img && break
+umount /DOS 2>/dev/null
+echo '/baslin/fs.img not found on /dev/hdd'
+
+read a
+mount -t msdos $a  /DOS  
+test -e /DOS/baslin/fs.img && break
+umount /DOS  
+echo '/baslin/fs.img not found on' $a
+ 
+done
+losetup /dev/loop0 /DOS/baslin/fs.img
+umount /proc
+
