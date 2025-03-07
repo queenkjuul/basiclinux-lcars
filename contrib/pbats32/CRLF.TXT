@@ -1,0 +1,41 @@
+------------------------------------------------------------------------
+CRLF      CR/LF handling utility        Ver 1.3 (c) 1998 Horst Schaeffer
+------------------------------------------------------------------------
+
+DOS expects plain ASCII files to be terminated by a two characters,
+a CR+LF (Carriage Return + Line Feed) pair.  ASCII files from other
+operating systems may have lines terminated by LF only (Unix) or CR
+only (Apple Mac).
+
+CRLF.COM checks an ASCII file for line termination, and corrects it
+where necessary.  Optionally, CRLF.COM will convert files in any of the
+three formats to either of the other two, in one pass.  It will neither
+change nor add to lines that are already correctly terminated for the
+format requested.
+
+CRLF is a filter: use it with DOS redirection symbols, for example:
+
+        CRLF < text.in > text.out
+
+DOS files with standard CR+LF will be returned unchanged, if no options
+are specified.
+
+Options:
+
+    /C        Lines to be terminated by CR only
+    /L        Lines to be terminated by LF only
+
+    /T        truncate trailing blanks (and tabs)
+
+    /E[n]     Empty lines removed [exceeding n in sequence]
+              /E or /E0 will remove all empty lines.
+              /E2, for example, will remove empty lines exceeding 2.
+
+              Note: lines containing nothing but spaces or tabs are
+                    not considered empty unless option /T is used.
+
+----
+CRLF is freeware by Horst Schaeffer - no warranties of any kind
+eMail: horst.schaeffer@gmx.net
+
+= 04 AUG 2002

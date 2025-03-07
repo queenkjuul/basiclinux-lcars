@@ -1,0 +1,62 @@
+------------------------------------------------------------------------
+CHOIX   CHOICE Clone                    Ver 1.1 (c) 1997 Horst Schaeffer
+------------------------------------------------------------------------
+
+CHOIX should behave like the MS-DOS CHOICE.EXE, and supports the same
+options (for syntax pls. see CHOICE /?)
+
+Additional features (see also: CHOIX /?):
+
+    +   Optional Mouse handling (see below)
+
+    +   Option /C without specifications will allow any key
+        (returning errorlevel 1; only ESC returns errorlevel 2)
+        Note that without any /C option at all the default is /C:YN
+
+    +   For the timer option /T:c,n  the maximum value is 3600 seconds
+
+
+Mouse options:
+
+    /M  activates mouse cursor
+    /R  resets mouse (usually not necessary)
+
+    You can pick the choice character by left mouse click from anywhere
+    on the screen, usually from the prompt or menu item.
+
+    If "any key" is allowed, you can click anywhere. Right button means
+    ESC (errorlevel 2).
+
+    Special handling:
+
+    /M[:]s  marker symbol s for menue items:
+
+    This option makes mouse clicking easier: The marker symbol marks
+    each menu item, and you can click anywhere behind the marker.
+    The next non blank character following an item marker is taken
+    as choice character.
+
+    Example with /M*
+                      *  AUTOEXEC.BAT
+                      *  CONFIG.SYS
+                      *  MEM /C
+
+    You can even have multi-column menues, because CHOIX scans the line
+    to the left, beginning at the mouse position, until it finds the
+    marker. Then it scans to the right for the next visible character,
+    which is assumed to be the choice key.
+
+    Example with /M(          (marker "(", choice by number)
+
+              (1) item number one       (4) item number four
+              (2) item number two       (5) item number five
+              (3) item number three
+
+    Note that the marker option still requires option /C with the
+    allowable keys.
+
+----
+CHOIX is freeware by Horst Schaeffer - no warranties of any kind
+eMail: horst.schaeffer@gmx.net
+
+= 04 AUG 2002

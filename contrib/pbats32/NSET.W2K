@@ -1,0 +1,32 @@
+------------------------------------------------------------------------
+NSET      Work-around for WIN NT/2000/XP        NSET Ver 2.1
+------------------------------------------------------------------------
+
+NSET writes variable assignments directly into the environment variable
+space of COMMAND.COM. However, this does no work under Win NT/2000/XP.
+
+Work-around:
+
+NSET also supports sending the string to STDOUT, instead assigning it
+to a variable. This is done by omitting the variable name (not the "="
+sign).
+
+Example:     CD | nset currDir=$0       (normal mode, sets variable)
+             CD | nset =$0              (string is output to screen)
+
+Now, you prepend "SET varname=" to the string, and send the result to
+a temporary batch file (which is CALLed to execute the SET statement).
+
+Example:     CD | nset =SET currdir=$0 > temp.bat
+             call temp.bat
+
+Actually, compared to normal mode, you just insert "=SET", and redirect
+the output. Everything else remains the same.
+
+Example:     CD | nset      currDir=$0                  (normal mode)
+             CD | nset =SET currdir=$0 > temp.bat
+                       ----            ----------
+
+Remember to delete the temporary batch file after use.
+
+** 20.05.1999

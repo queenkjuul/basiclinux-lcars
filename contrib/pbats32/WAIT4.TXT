@@ -1,0 +1,101 @@
+------------------------------------------------------------------------
+WAIT4     Batch: Wait for .....         Ver 1.4 (c) 1996 Horst Schaeffer
+------------------------------------------------------------------------
+
+Syntax:   WAIT4 [+] hh:mm:ss [options]
+
+WAIT4 waits according to given time and displays a "digital clock" as
+a pop-up window - the ground is restored after the time has elapsed.
+Abort by any key (optional: ESC only).
+
+Time display/specification always in 24 hour mode (no am/pm).
+
+Time specification:
+
+(1)     Target time in the form hh:mm:ss, where seconds and minutes
+        are optional, examples:
+
+        WAIT4 12:15    means:   WAIT4 12:15:00
+        WAIT4 20       means:   WAIT4 20:00:00
+
+(2)     Period of time with preceeding "+". Here the seconds are
+        mandatory, and minutes/hours may be omitted.
+
+        WAIT4 +12:15   means:    WAIT4 + 00:12:15
+        WAIT4 +20      means:    WAIT4 + 00:00:20
+
+(3)     no specification: Clock runs until stopped by keystroke
+
+For (1) and (2) the target time is shown under the clock.
+
+Options:
+
+/O      Over midnight:
+        If the given time has passed already, the program is terminated
+        instantly (errorlevel 250, see below), unless you have specified
+        by option /O, that the given time is meant for the next day.
+
+        If you specify a period of time, option /O is not necessary.
+
+        Option /O is ignored, if the given time has not yet been reached
+        on the same day, because WAIT4 will wait a maximum of 24 hours.
+
+/D      CountDown display instead of current time.
+
+/E      ESC: abort with ESC only, other keys ignored.
+
+/B      Bell after time elapsed.
+
+/Pl,c   Position:
+        The position of the clock may be given by line and column,
+        both counting from 1. Specifications will be corrected if the
+        display window would not fit on the screen (current display
+        mode checked). Default line=current, column=32.
+
+/Rn     Random position on screen, changes every n seconds
+
+/S      Screen to clear at start (not restored at end)
+
+/Cn     Color:
+        Color code n can be obtained by addition of following color
+        values (default: 79 = bright white on red):
+
+         character:     background:
+             0               0          black
+             1              16          blue
+             2              32          green
+             3              48          cyan
+             4              64          red
+             5              80          magenta
+             6              96          brown/yellow
+             7             112          white
+            +8                          bright
+
+        Example: bright green on magenta
+               =   8   +  2    +   80      =  90
+
+Errorlevel:
+
+        0        Time elapsed
+        1-199    aborted by ASCII key with code 1..199
+        200      aborted by any other key
+        250      target time passed already at start of program
+        255      invalid command arguments
+
+
+Digit fonts to patch:
+
+The file WAIT4.PAT is a DEBUG script to patch the digit fonts.
+Use an editor to copy the section with the desired font into the
+script (or make your own digits). Then, on the command line, enter:
+
+        DEBUG WAIT4.COM < WAIT4.PAT
+
+
+Note: Time slices are released under WINDOWS, OS/2 and DV.
+
+----
+WAIT4 is freeware by Horst Schaeffer - no warranties of any kind
+eMail: horst.schaeffer@gmx.net
+
+= 04 AUG 2002

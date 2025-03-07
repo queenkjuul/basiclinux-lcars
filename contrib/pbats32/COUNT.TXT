@@ -1,0 +1,114 @@
+------------------------------------------------------------------------
+COUNT     Count / add / subtract        Ver 1.0 (c) 1997 Horst Schaeffer
+------------------------------------------------------------------------
+          Note: COUNT does not work under Win NT/2000/XP
+
+Syntax:       COUNT varname [ñ][n] [/F][/N]
+
+COUNT is a utility to count a variable up/down or add/subtract a given
+number. The result is stored in the same environmental variable.
+The default operation is PLUS, the default operand is ONE.
+
+There is a standard mode and a "fixed-length" mode (with roll-over,
+see option /F).
+
+If the varaible is not a pure numeric string, the first numeric
+substring will be handled, and other characters will remain - unless
+option /N is used.
+
+Standard mode:
+--------------
+    This mode always returns the result without leading zeros, and
+    the result cannot be negative (zero will be returned instead, with
+    errorlevel set to 1).
+
+    Examples (variable FOO):
+
+        current FOO       command        resulting FOO
+        ------------    ---------------  --------------
+              12        count FOO            13    (default: +1)
+             100        count FOO -          99    (default: 1)
+               2        count FOO +199      201
+               2        count FOO -2          0
+               2        count FOO -3          0    (errorlevel 1)
+            0001        count FOO +0          1
+
+    The number of digits is only limited by the size of the command line.
+
+
+Fixed-length mode (option /F):
+------------------------------
+    With option /F the number of digits found in the variable will be
+    preserved, no matter what you add or subtract. "999" is incremented
+    to "000", vice versa. In case of roll-over errorlevel 1 is returned.
+
+    Make sure that the variable is initialized with the appropriate
+    number of digits, by SET N=000, for example. If the variable is
+    empty, you will get an error message (errorlevel 255).
+
+    Examples (variable FOO):
+
+        current FOO       command        resulting FOO
+        ------------    ---------------  --------------
+             000        count FOO /F          001
+             000        count FOO - /F        999       (errorlevel 1)
+             123        count FOO +999 /F     122       (errorlevel 1)
+           00123        count FOO -999 /F   99124       (errorlevel 1)
+
+
+Variable with non-numeric characters
+------------------------------------
+    If the variable string includes non-numeric characters, COUNT will
+    handle the (first!) numeric substring. Standard mode or option /F
+    work as described above. In most cases you will probably use option
+    /F to increment numbers in filenames, for example.
+
+
+Option /N to extract numeric string
+-----------------------------------
+    Option /N will extract the (first!) numeric substring from the
+    given variable before the arithmetic operation. Other characters
+    will be dropped. Add +0 in case you want to get the number as it is,
+    avoiding the default increment. Leading zeros will be removed,
+    unless option /F was also specified.
+
+    If the variable was empty or completely non-numeric, 0 is returned.
+    However, with option /F the variable will be empty (errorlevel 1).
+
+    Example: check if parameter %1 is numeric
+
+              if "%1"=="" goto NO_NUMBER
+              set N=%1
+              COUNT N +0 /F/N
+              if not "%N%"=="%1" goto NOT_NUMERIC
+
+
+To extend a given number to fixed length:
+
+    Example: If you want to handle a given number (%1), but make sure
+    it has 3 digits, you just set the variable to 000, and add the
+    given number %1:
+
+              SET N=000
+              COUNT N +0%1 /F
+              if errorlevel 255 goto INVALID_NUMBER
+              if errorlevel 1 goto TOO_LARGE
+
+    The zero preceeding %1 will add 0 in case %1 is empty (avoiding
+    the default of 1). Errorlevel 1 is returned, if a roll-over occurs,
+    that means: %1 had more than 3 digits (discounting leading zeros).
+
+
+Errorlevels:
+------------
+             0   ok
+             1   over-/underflow
+           255   syntax error or non numeric operand
+                 or variable without numeric digits (option /F)
+                 or not enough variable space
+
+----
+COUNT is freeware by Horst Schaeffer - no warranties of any kind
+eMail: horst.schaeffer@gmx.net
+
+= 04 AUG 2002

@@ -1,0 +1,97 @@
+------------------------------------------------------------------------
+LOGTRIM   Trim logfiles            Ver 1.7 (c) 1995-2001 Horst Schaeffer
+------------------------------------------------------------------------
+
+LOGTRIM keeps the size of logfiles within a given range (kilobytes).
+Files are always cut at the beginning of a line. The optional string
+is used to identify the beginning of a log section for proper cutting.
+
+Syntax:    LOGTRIM logfile maxKB [minKB] ["string"] [options]
+           --------------------------------------------------
+Example:   LOGTRIM fd.log  200 160 "--------"
+
+---------- Parameters:
+
+logfile:   Name of file to trim (drive, path optional).
+           First character of filespec must not be "@" (see below).
+           File size not limited.
+
+maxKB:     There will be no action if the file size is not beyond maxKB.
+           If file size > maxKB, then:
+minKB:     the file will be reduced to minKB, which defaults to half the
+           value of maxKB. Comma separators are allowed.
+           By default the file is cut at beginning of the next line.
+
+string:    (optional, single or double quotes)
+           LOGTRIM will search for the first occurrence of this string
+           (from the break point determined by minKB) and cut at the
+           beginning of that line.
+
+           If the string cannot be found within the first 10%
+           of the remaining file, the string option is ignored.
+
+           Special feature: an empty string ("") will cause LOGTRIM
+           to look for an empty line.
+
+options:
+    /A...  Alarm if maxKB exceeded, but don't trimm.
+           The following text (colon optional), up to the end of line
+           or a slash, is assumed to be a message for display.
+           Default: "max size exceeded!"
+           Example: LOGTRIM C:\path\that.log 200 /A:time to check it! /B
+                                                 --------------------
+    /B     Bell in case of alarm (or any errors).
+
+output:    LOGTRIM confirms the filename and adds comments in these
+           cases:
+              >>  "trimmed" if file was trimmed
+              >>  message if error occurred
+              >>  message of /A if maxKB exceeded
+
+note:      No action if logfile is opened by other task (but error msg).
+
+In case of write or rename errors the temporary file LOG$$$$$.TMP may
+remain in the current directory. Before deleting this file, make sure
+that the original log file still exists.
+
+Errorlevel: 0      no action or successful completion
+            else:  error (message)
+
+
+-------- Reading parameters from a control file (optional) -------------
+
+For multiple logfile handling LOGTRIM can read the parameters from
+a control file holding the command arguments for each file to trim
+(line by line), e.g.:
+
+           C:\LOG 30 20 'on'
+           C:\FD\FD.LOG 200 160 "--------"
+           C:\FD\FDTRANX.LOG 10,6,"ÄÄÄÄ"
+
+A control file will be used by the following syntax:
+
+           LOGTRIM @ control_file
+           ----------------------
+Drive and path for control_file are optional. A space between @-sign and
+filespec is not required. Examples:
+
+           LOGTRIM @loglist
+           LOGTRIM @ C:\util\logfiles.lst
+
+In the control file any lines starting with a semicolon (;) and empty
+lines are ignored. If an asterisk (*) is found at the beginning of a
+line, the rest of the file will be ignored. The size is limited to 4 KB.
+
+In case of read errors in one of the log files, LOGTRIM proceeds with
+the next line in the control file, but LOGTRIM will abort on write/make/
+rename errors to avoid loss of data.
+
+
+Release note: Ver 1.7: fixed bug that limited the number of open files
+
+Thanks to Bat Lang for his contribution to the concept of LOGTRIM.
+
+LOGECHO is freeware by Horst Schaeffer - no warranties of any kind
+eMail: horst.schaeffer@gmx.net
+
+= 04 AUG 2002

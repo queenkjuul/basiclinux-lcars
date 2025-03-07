@@ -1,0 +1,73 @@
+------------------------------------------------------------------------
+CRC32     CRC32 Checksum Utility        Ver 2.1 (c) 1997 Horst Schaeffer
+------------------------------------------------------------------------
+
+Syntax:    CRC32 file_name [crc32]
+
+Examples:  crc32 FILE.EXT
+           crc32 THERE\FILE.EXT 46A10784
+
+CRC32 calculates the 8-digit CRC32 checksum of a file.
+If a checksum is given on the command line, the program will report
+"ok" (errorlevel 0) or "mismatch" (errorlevel 1). The report always
+includes the filename (as supplied) and the [new/correct] checksum.
+
+    Example reports:           errorlevel:
+    -------------------------- -----------
+    FILE.EXT 3E5A456E             0     (no CRC given)
+    FILE.EXT 3E5A456E ok          0     (given CRC checked: ok)
+    FILE.EXT 3E5A456E mismatch    1     (CRC checked: mismatch)
+    FILE.EXT ??                   255   (file not found or read error)
+
+
+Extra feature: list of files (CRC32 as "filter")
+------------------------------------------------
+A list of files, such as produced by DIR /B, can be fed into CRC32.COM
+by redirection or pipe (STDIN), example:
+
+    dir *.* /B | crc32 > \TEMP\UTIL.CRC
+
+CRC32.COM produces an output list with the filenames and checksums, and
+sends it to STDOUT (for redirection into a file).
+
+Once you have a file list with checksums, you can use it any time to
+detect changes: Feed the list into CRC32.COM again, and the program will
+report mismatches or errors (the "ok" results are not reported).
+Example:
+
+    CRC32 < UTIL.CRC                (sends output to screen)
+
+The errorlevel is set to the highest value reported for any of the
+files in the list, that means: you only get an errorlevel of 0 if all
+files were ok, and no output was produced.
+
+Directory path in file list:
+
+If filenames in the input list are not supplied with complete path, the
+files are assumed in the current directory (!). Note that the DIR /B
+command without the /S option does not supply full directory paths!
+
+However, the CRC32 command (in list mode) accepts a directory path,
+that will be applied to all files of the input list. This path must be
+specified with a trailing backslash, because it will be taken as it is,
+and inserted in every line of the input file.
+
+Example:
+
+    dir C:\util\*.COM /B | crc32 C:\UTIL\ > UTIL.CRC
+                           ----- ========
+    Though the DIR list comes without paths, "C:\UTIL\" is inserted
+    before each filename, so CRC32 will be able to find the files in
+    their proper directory. The full filenames will also be written to
+    the resulting checklist.
+
+Of course, this will also work when you verify a checklist, in case
+this list was produced without directory paths. Example:
+
+    CRC32 C:\UTIL\ < UTIL.CRC
+          ========
+----
+CRC32 is freeware by Horst Schaeffer - no warranties of any kind
+eMail: horst.schaeffer@gmx.net
+
+= 04 AUG 2002

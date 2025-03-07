@@ -1,0 +1,89 @@
+------------------------------------------------------------------------
+KPUSH     Keyboard buffer utility       Ver 2.0 (c) 1997 Horst Schaeffer
+------------------------------------------------------------------------
+
+KPUSH.COM stuffs keys into the keyboard buffer. This can be used to
+pass a number of keystrokes to the following program in a batch file.
+The keyboard buffer can hold up to 15 keys (see options for extension).
+Examples:
+
+        KPUSH "password" CR
+        KPUSH /59 ESC "W" 17
+              (F1)        (Ctrl-Q)
+
+Keys may be specified as follows, separated by blank space or comma:
+(examples)
+
+        "A"         ASCII character
+        "string"    ASCII string
+        17          decimal ASCII code (17=Ctrl-Q)
+        /59         non-ASCII keys with a slash (/59=F1)
+        CR,LF,BS,ESC
+
+An optional factor may be given for keystrokes (not for strings),
+examples:
+
+        /77*30      (cursor right, 30 steps)
+        " "*12      (12 spaces)
+        CR*3        (3*ENTER)
+
+KPUSH has a built-in test mode to report the codes of any key you press.
+For this mode run KPUSH without any parameters.
+
+For ASCII keys the BIOS also supplies a SCAN code (see test mode), which
+could be used by some programs. This SCAN code may be added with a slash
+(no space between!). Examples:
+
+        "+"/27      is the white "+" key
+        "+"/78      is the grey "+" key (in the numeric key pad)
+
+The SCAN code is usually the same that is returned for combination
+with the ALT key:
+
+        65/30       Letter "A" with original scan code
+        /30         is ALT+"A"
+
+If no extra SCAN code is supplied, it defaults to zero. This applies to
+strings in any case.
+
+
+OPTIONS (must be specified before any keys)
+
+/F  FLUSH buffer
+    the keyboard buffer will be flushed before the given keys are
+    stored. Examples:
+
+        KPUSH /F "XY",CR
+        KPUSH /F                (flush only)
+
+/E  EXTEND buffer
+    the extended buffer for 127 keystrokes is supplied at $200 in the
+    BIOS segment. This area is reserved, but apparently not used by DOS
+    or BIOS. No guaranty. Example:
+
+        KPUSH /E "lots of keys to stuff into buffer",CR
+
+    The extended buffer remains available until reset by /R
+
+/R  RETURN to normal buffer size (15 keystrokes)
+
+        KPUSH /R
+
+/?  help info
+
+
+Errorlevels: 0  ok, done
+             1  invalid specifications
+             2  buffer overflow
+
+Important:
+
+KPUSH will only work if the following programm ....
+   ... does not do a key buffer flush (then it's all lost)
+   ... uses standard DOS or BIOS functions for input
+
+----
+KPUSH is freeware by Horst Schaeffer - no warranties of any kind
+eMail: horst.schaeffer@gmx.net
+
+= 04 AUG 2002

@@ -1,0 +1,53 @@
+------------------------------------------------------------------------
+BIGFONT   Big font display              Ver 1.0 (c) 1997 Horst Schaeffer
+------------------------------------------------------------------------
+
+BIGFONT uses the BIOS 8*8 pixel character font to produce big characters
+(4 lines by 8 columns). Some characters may be narrower than 8 columns,
+because BIGFONT generates proportional spacing. The screen pixels are
+represented by the block and half-block characters.
+
+Syntax:    BIGFONT [options] [string]
+
+The string may be enclosed in (single or double) quotes. 10 or more
+characters will be displayed, depending on character width. (overflow
+truncated). Leading spaces may be inserted to place the string on the
+screen. But note that a blank space has a character width of only 4
+columns.
+
+If no color option is specified (see below), standard DOS functions
+are used for display (with current ANSI color if ANSI driver loaded).
+Redirection into a file supported.
+
+Options:
+
+    /Ln     Starting line n (1..25)
+
+    /C...   Color: 3 values, separated by semicolon oder comma
+            (ANSI color scheme)
+            first value   40..47 for background:
+                   black,red,green,brown,blue,magenta, cyan, white
+            second value: 30..37 for foreground color
+            third value:  0:normal, 1:bright characters
+
+            Example: /c44;35;1  for bright magenta on blue background
+
+    /C      (without any color specification) will leave the colors
+            encountered on the screen.
+
+    /R      Round pixels instead of square blocks (25 line mode only).
+            This changes the pattern of the three block characters for
+            the current screen font (only works in full screen mode,
+            and if the required BIOS functions are supported).
+
+    /Q      Reset square block characters for current font
+            (if you feel it's necessary).
+            This immediately affects the block characters on the screen,
+            so this option should be used later, after the sceeen is
+            cleared, for example. (No other command arguments necessary)
+
+----
+BIGFONT is freeware by Horst Schaeffer - no warranties of any kind
+eMail: horst.schaeffer@gmx.net
+
+= 04 AUG 2002

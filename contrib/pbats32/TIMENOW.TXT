@@ -1,0 +1,43 @@
+------------------------------------------------------------------------
+TimeNow  Time check                     Ver 1.0 (c) 1997 Horst Schaeffer
+------------------------------------------------------------------------
+
+TimeNow checks if the current time is within one or several given
+periods of time. Result by errorlevel (yes:0, no:1)
+
+A period of time is specified with starting and ending time (hh:mm)
+separated by a dash. The minutes are optional. 24 hours mode only.
+
+Examples:     TimeNow 12:00-15:30
+              TimeNow 12 - 15                   (means 12:00-15:00)
+
+The second specification is "exclusive", that means: as soon as this
+time is reached, the condition is no longer true.
+
+If one of the two time specifications is missing, the default is 0:00
+(resp. 24:00). The dash must not be omitted!
+
+If the second time specification is earlier than the first one, the
+period is assumed over midnight (!)
+
+Beispiele:    TimeNow 22-                       (22:00-24:00)
+              TimeNow -5:30                     (00:00-05:30)
+              TimeNow 21:00-2:00                (over midnight)
+
+Several periods of time may be specified, optionally separated by comma
+or the word "or".
+
+Example:      TimeNow 12:00-12:30 or 22:10-23:00
+
+Errorlevel    0     ok, condition true
+              1     not within
+              255   syntax error
+
+Note: unter DR-DOS (Novell-DOS as well?) you must not use the word "or"
+in a command line (system bug). Use comma or space.
+
+----
+TIMENOW is Freeware (c) Horst Schaeffer - no warranties of any kind
+eMail: horst.schaeffer@gmx.net
+
+= 04 AUG 2002

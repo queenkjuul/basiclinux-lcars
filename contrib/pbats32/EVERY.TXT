@@ -1,0 +1,78 @@
+------------------------------------------------------------------------
+EVERY   Do once EVERY ......            Ver 1.0 (c) 1994 Horst Schaeffer
+------------------------------------------------------------------------
+
+    EVERY.COM is used to control daily and/or weekly jobs that must
+    be done once only. EVERY.COM should be used in the AUTOEXEC.BAT.
+
+    There is no extra control file. The program keeps track of its last
+    execution in the date & time stamp of the program file (see note).
+
+(1) Daily jobs  -  Syntax: EVERY DAY
+
+    Errorlevel:
+    0   the command EVERY DAY is executed for the first time this day
+    1   this command has already been executed today
+
+    Sample batch:
+        .....
+        every day
+        if errorlevel 1 goto CONT
+        ::
+        :: run daily job
+        ::
+        :CONT
+
+    or:
+        every day
+        if not errorlevel 1 call DAILY.BAT
+
+
+(2) Weekly jobs  -  Syntax: EVERY SUN,MON,Tuesday,...
+
+    One or more days of week may be given (max 6, else see EVERY DAY)
+    separated by blank, comma or "+".
+    Case ignored. Only the first 3 letters are significant.
+
+    Errorlevel:
+    0   first time on (one of) the specified day(s)
+    1   this command has already returned errorlevel 0 today
+    2   today is not (one of) the day(s) specified
+
+Note:
+
+    The time & date stamp of EVERY.COM is updated each time errorlevel 0
+    is returned, so the program can find out, if it has been run already
+    on the same day.
+
+    In addition the daily and weekly modes are individually controlled by
+    extra bits (in the seconds field of the time stamp).
+
+    So, if you have EVERY DAY and EVERY MONDAY in your AUTOEXEC.BAT,
+    both will return errorlevel 0 for the first time on Monday.
+
+    You may use one EVERY DAY command and several EVERY <day of week>
+    commands in the AUTOEXEC.BAT. However any day of the week may only
+    occur once.
+
+(3) Status  - Syntax: EVERY  (no command parameters)
+
+    Example output:  "daily & weekly job(s) done today"
+
+(4) Reset   - Syntax: EVERY RES
+
+    File tag is set to current date, 0:00 h, control bits reset.
+    Status report:   "no job(s) done today"
+
+(5) Help    - Syntax: EVERY /?
+
+Errors:
+
+    Syntax errors or error opening file will issue a message to STDERR
+    and return errorlevel 255.
+
+----
+EVERY is freeware by Horst Schaeffer - no warranties of any kind
+eMail: horst.schaeffer@gmx.net
+
+= 04 AUG 2002

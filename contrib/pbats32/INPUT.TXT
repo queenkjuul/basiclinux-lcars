@@ -1,0 +1,67 @@
+------------------------------------------------------------------------
+INPUT     String input/editing          ver 1.2 (c) 2001 Horst Schaeffer
+------------------------------------------------------------------------
+          Note: INPUT does not work under Win NT/2000/XP
+
+INPUT prompts for a string input and returns the result in an
+environmental variable. The current variable my be offered for
+editing or confirmation.
+
+INPUT has its own edit handling, and does not use the standard DOS
+string input function.
+
+Syntax:   INPUT [line,column] [prompt] varname [options]
+
+
+line,column   sets cursor (1...) for the prompt string. Default is the
+              current cursor position.
+
+prompt        enclosed in (single or double) quotes.
+              By default the input field begins right after the prompt.
+              Add blank space(s) to the prompt string for offset.
+
+varname       name of variable for the string.
+
+options:
+        /E    edit: the current string (varname) will be offered for
+              editing or confirmation. Cursor at beginning of field.
+
+        /S    edit with special handling: cursor set to end of string;
+              any character key will clear the input field (other keys,
+              like cursor movements will allow editing).
+
+        /Ln   limit input length=n. Default (and maximum) is up to the
+              rightmost column minus 1.
+
+        /U    upper case
+        /I    insert mode
+        /N    only numeric input accepted
+        /P    password mode (make sure to clear variable before)
+        /F    flush input buffer
+        /C    allow Ctrl+Break
+
+
+Edit keys:
+
+    Cursor left/right, HOME, END, INS, DEL, BS
+
+    ESC       clear field
+    Ctrl+DEL  clear from cursor
+    ENTER     teminate input
+
+Other function/control keys ignored. However you may enter ASCII control
+codes by number (ALT held down) - on your own risk...
+
+Errorlevel:
+
+The errorlevel is set to the length of the input string. 255 on errors.
+
+Example:
+
+    INPUT "Filename: " FN /S/U
+
+----
+INPUT is freeware by Horst Schaeffer - no warranties of any kind
+eMail: horst.schaeffer@gmx.net
+
+= 04 AUG 2002

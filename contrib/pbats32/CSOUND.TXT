@@ -1,0 +1,103 @@
+------------------------------------------------------------------------
+CSOUND    Sound for PC speaker          Ver 2.2 (c) 1997 Horst Schaeffer
+------------------------------------------------------------------------
+
+CSOUND has two functions:
+
+    (1)  direct sound output to PC speaker (for BAT files)
+    (2)  resident replacement for standard BIOS beep
+
+Syntax:  CSOUND [options] frequency (duration) {....}
+
+    You may specify a number of sounds, each consisting of frequency
+    [and duration]. Pauses by frequency=0.
+
+    frequency   cycles (Hertz, table see below)
+
+    duration    number of ticks (about one eighteenth of a second)
+                duration must be specified within parentheses!
+                default duration: (1), see examples.
+                max duration for a single tone: (182) = 10 seconds.
+
+    option /i   install: the given sound sequence is taken als resident
+                replacement for the standard BIOS beep (Ctrl+G).
+                LH (load high) recommended.
+
+           /m   mute: no sound output with installation
+
+To avoid problems in a multi tasking environment, sound output is always
+done in the background, controlled by the timer interrupt.
+
+Direct sound output:
+
+    Without the /i option the CSOUND command will immediately output
+    the given sound sequence. The behavior of the program depends...
+
+    ... If CSOUND is not resident, the program will output the complete
+    sound sequence, and then terminate.
+
+    ... If CSOUND is resident, the given sound sequence is passed to
+    the resident module for execution, and the (transient) program is
+    terminated immediately. Thus a batch may already process the next
+    command while the resident CSOUND is still busy playing sounds ...
+
+    In case another CSOUND command follows, it will wait for the current
+    sound output to finish.
+
+Resident beep replacement:
+
+    With option /i you can define a new sound [sequence] as a resident
+    beep replacement. If CSOUND is already resident, the new sequence
+    will replace the old one (that's only if Option /i is used).
+
+    With CSOUND /i 0  you can completely turn off the Ctrl-G beeps.
+
+    Note: the original BIOS beep halts the program until the sound is
+    done. Since CSOUND acts in the background, the running program will
+    continue immediately.
+
+    And: A sound issued by Ctrl-G always has precedence. Other sound
+    sequences that may still be running, are stopped immediately.
+    This also applies if several Ctrl-G's come in a row: they are not
+    accumulated (but reduced to a single sequence).
+
+The resident module has space for 57 tones (shared space for resident
+and transient sound sequences).
+
+A CSOUND command without any sound sequence will make a short beep as
+default.
+
+Examples (for test):
+
+        CSOUND 523 659 523 659 523
+        CSOUND 1046 1318 1046
+        CSOUND 220(2) 294(4)
+        CSOUND 1046,2093,1318,2637,1568,3136,2093,4186(4)
+        CSOUND 4186,2093,3136,1568,2637,1318,2093,1046(4)
+        CSOUND 523 0(17) 523 0(17) 523 0(17) 523 0(17) 1046(6)
+
+
+Sound table:
+------------
+The frequencies for some octaves of the scale:
+
+        ÚÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+        ³  C    ³   65     131     262     523    1046    2093  ³
+        ³  C#   ³   69     139     277     554    1108    2217  ³
+        ³  D    ³   73     147     294     587    1175    2349  ³
+        ³  D#   ³   78     156     311     622    1245    2489  ³
+        ³  E    ³   82     165     330     659    1318    2637  ³
+        ³  F    ³   87     175     349     698    1397    2794  ³
+        ³  F#   ³   93     185     370     740    1480    2960  ³
+        ³  G    ³   98     196     392     784    1568    3136  ³
+        ³  G#   ³  104     208     415     831    1661    3322  ³
+        ³  A    ³  110     220     440     880    1760    3520  ³
+        ³  A#   ³  117     233     466     932    1865    3729  ³
+        ³  H    ³  123     247     494     988    1976    3951  ³
+        ÀÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+
+----
+CSOUND is freeware by Horst Schaeffer - no warranties of any kind
+eMail: horst.schaeffer@gmx.net
+
+= 04 AUG 2002

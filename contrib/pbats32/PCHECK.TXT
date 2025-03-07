@@ -1,0 +1,36 @@
+------------------------------------------------------------------------
+PCHECK  Printer check, reset            Ver 1.1 (c) 1997 Horst Schaeffer
+------------------------------------------------------------------------
+
+PCHECK checks if the printer is ready. Optional reset.
+Will only work for parallel printer ports.
+
+Syntax: PCHECK [options]
+
+        Option /R  printer (hardware) reset
+               /N  (n=1..4) printer device number (default=1)
+
+        Errorlevel 0     printer is ready
+                   else  not ready
+
+With Option /R the printer may return "not ready" because it usually
+takes a few seconds until the reset is done.
+
+If you care:
+A non-zero errorlevel represents the status bit pattern:
+
+        bit         decimal             status
+         0              1               time out
+         3              8               I/O error
+         4             16               NOT online
+         5             32               paper out
+         7            128               NOT ready
+
+The errorlevel is the sum of the decimal values for bits set.
+There is no general rule, which combination will be reported.
+
+----
+PCHECK is freeware by Horst Schaeffer - no warranties of any kind
+eMail: horst.schaeffer@gmx.net
+
+= 04 AUG 2002

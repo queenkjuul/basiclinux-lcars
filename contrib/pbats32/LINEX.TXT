@@ -1,0 +1,32 @@
+------------------------------------------------------------------------
+LINEX     Extract lines by number       Ver 1.2 (c) 1997 Horst Schaeffer
+------------------------------------------------------------------------
+
+Syntax:   LINEX range [, range ...] < file.in > file.out
+
+LINEX extracts a [multiple] range of lines from an ASCII file.
+Files are read from STDIN and written to STDOUT (using DOS redirection
+symbols). The file size is not limited.
+
+    Range specification:                      examples
+    ---------------------------------------   --------
+    two numbers separated by dash (from-to)   100-200
+    starting line and number of lines         100(20)
+    just a single line number                 1         (only line #1)
+    up to end of file (omit last line)        2-        (all but #1)
+
+Line count starting 1, max: 65534. A comma between range specifications
+is optional. When several ranges are given, they must be in ascending
+order (!)
+
+Errorlevels:
+              0     ok
+              1     no lines written
+              255   syntax error
+              else  read/write error
+
+----
+LINEX is freeware by Horst Schaeffer - no warranties of any kind
+eMail: horst.schaeffer@gmx.net
+
+= 04 AUG 2002

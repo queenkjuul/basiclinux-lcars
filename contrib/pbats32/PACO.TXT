@@ -1,0 +1,102 @@
+------------------------------------------------------------------------
+PACO    .COM files shell                Ver 1.2 (c) 1996 Horst Schaeffer
+------------------------------------------------------------------------
+
+With PACO several COM files can be stored in a library file - up to
+a total size of 60 KB. To execute one of these programs just use the
+name of the library as prefix.
+
+Example:    If the program ESPACE.COM has been included in the library
+            DO.COM, it is executed by:   do ESPACE
+                                         ---------
+Command arguments, redirections... everything remains as usual. Just
+prepend the prefix (assuming the library file is accessed thru PATH).
+
+The program to run is specified with its name only (extension .COM
+optional). No drive or path.
+
+PACO.COM is used to create and maintain library files. These have a
+"header" of only about 300 bytes to locate and start the specified
+program (for each program additional 14 bytes are used to keep the name,
+date/time tag, and size).
+
+To list the programs included in a lib file, run it without arguments.
+For a more detailed listing see "L" function of PACO command.
+
+
+Important:
+----------
+PACO should not be used for programs that extract their own name from
+the environment or modify their own program file or time/date tag.
+(like EVERY.COM does).
+
+PACO was made for small batch utilities. TSR's may cause problems, if
+they use the name in MCB's to identify a resident copy. Also "load high"
+may fail if the library is too large.
+
+Before a program in a library is started, the correct command tail at
+location $80 is supplied. Also the FCB's (according to DOS 1.0 standard)
+are constructed, however COMMAND.COM's handling of special characters
+("+", "/") is not exactly duplicated. But there are probably no programs
+that rely on these refinements (if FCB's are used at all).
+
+
+PACO handling
+-------------
+The library files are created and maintained with PACO.
+
+General Syntax:     PACO  function  lib_file  program_file
+
+Files must be specified with drive/path if not in the current directory.
+The extension .COM may be omitted, but files other than COM files will
+be rejected (including COM files that were renamed from .EXE).
+
+Functions are specified by a letter (upper or lower case):
+
+ADD:        PACO a lib_file program_file
+                 =
+            The program file is added to the library. If the library
+            does not exist it will be created. The program (or a program
+            with the same name) must not already exist in the library.
+
+            Examples:  PACO a DO.COM  ESPACE.COM
+                       PACO a DO  ESPACE
+                       PACO a DO  D:\UTIL\ESPACE
+
+DELETE:     PACO d lib_file program_name
+                 =
+            The program file is removed from the library.
+            Drive and path of the program file (if specified) will be
+            ignored, because only the name was kept in the library.
+
+            Example:   PACO d C:\UTIL\DO  ESPACE
+
+UPDATE      PACO u lib_file program_file
+                 =
+            The program file is replaced with a new version.
+            Same as functions D + A. If the program file cannot be found
+            in the library it will just be added.
+
+            Example:   PACO u \UTIL\DO  \TEMP\ESPACE
+
+EXTRACT:    PACO e lib_file program_file
+                 =
+            The programm is extracted from the library and stored
+            according to drive and path specified for the program file.
+            Date and time tags are restored from the original program
+            file. The program is not removed from the library.
+
+            Example:   PACO e DO  A:\ESPACE.COM
+
+LIST:       PACO l lib_file
+                 =
+            All programs contained in the library are listed with name,
+            size and date. Use MORE filter if more than 24.
+
+            Example:   PACO l \UTIL\BAT.COM | sort | more
+
+----
+PACO is freeware by Horst Schaeffer - no warranties of any kind
+eMail: horst.schaeffer@gmx.net
+
+= 04 AUG 2002
